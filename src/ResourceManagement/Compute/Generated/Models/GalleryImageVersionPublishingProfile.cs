@@ -31,11 +31,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the
         /// GalleryImageVersionPublishingProfile class.
         /// </summary>
-        /// <param name="regions">The regions where the artifact is going to be
-        /// published.</param>
-        /// <param name="scaleTier">The scale tier of the gallery image
-        /// version. Valid values are 'S30' and 'S100'. Possible values
-        /// include: 'S30', 'S100'</param>
+        /// <param name="targetRegions">The target regions where the artifact
+        /// is going to be published.</param>
+        /// <param name="replicaCount">This is the number of source blob copies
+        /// in a region.</param>
         /// <param name="excludeFromLatest">The flag means that if it is set to
         /// true, people deploying VMs with 'latest' as version will not use
         /// this version.</param>
@@ -43,10 +42,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// is published.</param>
         /// <param name="endOfLifeDate">The end of life date of the gallery
         /// image version.</param>
-        public GalleryImageVersionPublishingProfile(IList<string> regions = default(IList<string>), GalleryArtifactSource source = default(GalleryArtifactSource), ScaleTier scaleTier = default(ScaleTier), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?))
-            : base(regions, source)
+        public GalleryImageVersionPublishingProfile(GalleryArtifactSource source, IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?))
+            : base(source, targetRegions)
         {
-            ScaleTier = scaleTier;
+            ReplicaCount = replicaCount;
             ExcludeFromLatest = excludeFromLatest;
             PublishedDate = publishedDate;
             EndOfLifeDate = endOfLifeDate;
@@ -59,11 +58,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the scale tier of the gallery image version. Valid
-        /// values are 'S30' and 'S100'. Possible values include: 'S30', 'S100'
+        /// Gets or sets this is the number of source blob copies in a region.
         /// </summary>
-        [JsonProperty(PropertyName = "scaleTier")]
-        public ScaleTier ScaleTier { get; set; }
+        [JsonProperty(PropertyName = "replicaCount")]
+        public int? ReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the flag means that if it is set to true, people
@@ -84,5 +82,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "endOfLifeDate")]
         public System.DateTime? EndOfLifeDate { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

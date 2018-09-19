@@ -43,5 +43,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "managedImage")]
         public ManagedArtifact ManagedImage { get; set; }
 
+
+        public virtual void Validate()
+        {
+
+        }
     }
 }

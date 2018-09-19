@@ -22,12 +22,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<GalleryImageVersion.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Compute.Fluent.IComputeManager>
     {
-
-        /// <summary>
-        /// Gets the regions in which the image version is available.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> AvailableRegions { get; }
-
         /// <summary>
         /// Gets the date indicating image version's end of life.
         /// </summary>
@@ -63,11 +57,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the replicationStatus of image version in published regions.
         /// </summary>
         Models.ReplicationStatus ReplicationStatus { get; }
-
-        /// <summary>
-        /// Gets the image version scale tier.
-        /// </summary>
-        Models.ScaleTier ScaleTier { get; }
 
         /// <summary>
         /// Gets the image version storageProfile describing OS and data disks.

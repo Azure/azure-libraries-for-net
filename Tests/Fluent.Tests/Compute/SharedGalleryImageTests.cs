@@ -180,7 +180,7 @@ namespace Fluent.Tests.Compute
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Service consistently fail with error 'Replication job not completed at region:XXXXX', reported to service team")]
         public void CanCreateUpdateGetDeleteGalleryImageVersion()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
@@ -226,17 +226,14 @@ namespace Fluent.Tests.Compute
                             .WithLocation(region.ToString())
                             .WithSourceCustomImage(customImage)
                             // Options - Start
-                            .WithRegionAvailability(Region.USEast2)
-                            .WithScaleTier(ScaleTier.S30)
+                            .WithRegionAvailability(Region.USEast2, 1)
                             // Options - End
                             .Create();
 
                     Assert.NotNull(imageVersion);
                     Assert.NotNull(imageVersion.Inner);
-                    Assert.NotNull(imageVersion.AvailableRegions);
-                    Assert.Equal(2, imageVersion.AvailableRegions.Count);
-                    Assert.NotNull(imageVersion.ScaleTier);
-                    Assert.True(imageVersion.ScaleTier.Equals(ScaleTier.S30));
+                    Assert.NotNull(imageVersion.PublishingProfile.TargetRegions);
+                    Assert.Equal(2, imageVersion.PublishingProfile.TargetRegions.Count);
                     Assert.False(imageVersion.IsExcludedFromLatest);
 
                     //
@@ -246,8 +243,8 @@ namespace Fluent.Tests.Compute
                             .WithoutRegionAvailability(Region.USEast2)
                             .Apply();
 
-                    Assert.NotNull(imageVersion.AvailableRegions);
-                    Assert.Equal(1, imageVersion.AvailableRegions.Count);
+                    Assert.NotNull(imageVersion.PublishingProfile.TargetRegions);
+                    Assert.Equal(1, imageVersion.PublishingProfile.TargetRegions.Count);
                     Assert.False(imageVersion.IsExcludedFromLatest);
 
                     //

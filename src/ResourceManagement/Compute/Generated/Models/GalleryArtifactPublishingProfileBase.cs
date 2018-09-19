@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -31,11 +32,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the
         /// GalleryArtifactPublishingProfileBase class.
         /// </summary>
-        /// <param name="regions">The regions where the artifact is going to be
-        /// published.</param>
-        public GalleryArtifactPublishingProfileBase(IList<string> regions = default(IList<string>), GalleryArtifactSource source = default(GalleryArtifactSource))
+        /// <param name="targetRegions">The target regions where the artifact
+        /// is going to be published.</param>
+        public GalleryArtifactPublishingProfileBase(GalleryArtifactSource source, IList<TargetRegion> targetRegions = default(IList<TargetRegion>))
         {
-            Regions = regions;
+            TargetRegions = targetRegions;
             Source = source;
             CustomInit();
         }
@@ -46,16 +47,33 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the regions where the artifact is going to be
+        /// Gets or sets the target regions where the artifact is going to be
         /// published.
         /// </summary>
-        [JsonProperty(PropertyName = "regions")]
-        public IList<string> Regions { get; set; }
+        [JsonProperty(PropertyName = "targetRegions")]
+        public IList<TargetRegion> TargetRegions { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "source")]
         public GalleryArtifactSource Source { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Source == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Source");
+            }
+            if (Source != null)
+            {
+                Source.Validate();
+            }
+        }
     }
 }

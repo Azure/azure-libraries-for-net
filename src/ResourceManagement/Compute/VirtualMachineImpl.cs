@@ -1812,7 +1812,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         DiagnosticsProfile = this.Inner.DiagnosticsProfile,
                         AvailabilitySet = this.Inner.AvailabilitySet,
                         LicenseType = this.Inner.LicenseType,
-                        Zones = this.Inner.Zones
+                        Zones = this.Inner.Zones,
+                        Tags = this.Inner.Tags
                     };
                 //
                 this.virtualMachineMsiHelper.HandleExternalIdentities(updateParameter);
