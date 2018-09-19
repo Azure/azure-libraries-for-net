@@ -192,8 +192,10 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                     {
                         throw e;
                     }
-                    else if (e.Body != null && "PrincipalNotFound".Equals(e.Body.Code, StringComparison.OrdinalIgnoreCase))
+                    else if (e.Body != null 
+                        && ("PrincipalNotFound".Equals(e.Body.Code, StringComparison.OrdinalIgnoreCase) || (e.Body.Message != null && e.Body.Message.ToLowerInvariant().Contains("does not exist in the directory"))))
                     {
+                        // Ref: https://github.com/Azure/azure-cli/blob/dev/src/command_modules/azure-cli-role/azure/cli/command_modules/role/custom.py#L1048-L1065
                         await SdkContext.DelayProvider.DelayAsync((30 - limit) * 1000, cancellationToken);
                     }
                     else
