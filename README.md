@@ -464,7 +464,7 @@ var database = sqlServer.Databases.Define(databaseName)
   <tr>
     <td>Active Directory</td>
     <td><ul style="list-style-type:circle">
-<li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-service-principals">Manage service principals using Java</a></li>
+<li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-service-principals">Manage service principals using .NET</a></li>
 <li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-users-groups-and-roles">Manage users and groups and manage their roles</a></li>
 <li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-passwords">Manage passwords</li>
 <li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-resources-from-vm-with-msi-in-aad-group">Manage Azure resources from a managed service identity (MSI) enabled virtual machine that belongs to an Azure Active Directory (AAD) security group</a></li>	
