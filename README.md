@@ -612,7 +612,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.11.x to 1.15.x, you can use these release notes for [preparing your code for 1.15 from 1.15](./notes/prepare-for-1.15.md).
+If you are migrating your code from 1.14.x to 1.15.x, you can use these release notes for [preparing your code for 1.15 from 1.14](./notes/prepare-for-1.15.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
