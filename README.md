@@ -2,7 +2,7 @@
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.15). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.16). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -22,7 +22,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.15*
+:triangular_flag_on_post: *as of Version 1.16*
 
 <table>
   <tr>
@@ -527,6 +527,9 @@ var database = sqlServer.Databases.Define(databaseName)
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/monitor-dotnet-query-metrics-activitylogs">Get metrics and activity logs for a resource</a></li>
 <li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub-events">Stream Azure Service Logs and Metrics for consumption through Event Hub</a></li>
+<li><a href="https://github.com/Azure-Samples/monitor-dotnet-activitylog-alerts-on-security-breach-or-risk">Configuring activity log alerts to be triggered on potential security breaches or risks.</a></li>
+<li><a href="https://github.com/Azure-Samples/monitor-dotnet-metric-alerts-on-critical-performance">Configuring metric alerts to be triggered on potential performance downgrade.</a></li>
+<li><a href="https://github.com/Azure-Samples/monitor-dotnet-autoscale-based-on-performance">Configuring autoscale settings to scale out based on webapp request count statistic.</a></li>
 </ul></td>
   </tr>
 
@@ -572,7 +575,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.15** release builds are available on NuGet:
+**1.16** release builds are available on NuGet:
 
 |Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
@@ -612,7 +615,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.14.x to 1.15.x, you can use these release notes for [preparing your code for 1.15 from 1.14](./notes/prepare-for-1.15.md).
+If you are migrating your code from 1.15.x to 1.16.x, you can use these release notes for [preparing your code for 1.16 from 1.15](./notes/prepare-for-1.16.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -647,6 +650,7 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.16              | [1.16](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.16)        | Tagged release for 1.16 version of Azure management libraries |
 | 1.15              | [1.15](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.15)        | Tagged release for 1.15 version of Azure management libraries |
 | 1.14              | [1.14](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.14)        | Tagged release for 1.14 version of Azure management libraries |
 | 1.13              | [1.13](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.13)        | Tagged release for 1.13 version of Azure management libraries |
