@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.HasPythonIn
         /// <summary>
         /// Specifies the python interpreter path.
         /// </summary>
-        /// <param name="protocol">Path the path to python interpreter</param>
         /// <return>The next stage of the definition.</return>
         ReturnT WithPythonInterpreterPath(string path);
     }

@@ -14,10 +14,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         private IGraphRbacManager graphRbacManager;
 
         private MsiManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ManagedServiceIdentityClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new ManagedServiceIdentityClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

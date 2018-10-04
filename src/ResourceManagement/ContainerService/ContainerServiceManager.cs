@@ -16,11 +16,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         #endregion
 
         public ContainerServiceManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ContainerServiceManagementClient(
-                new Uri(restClient.BaseUri),
-                    restClient.Credentials,
-                    restClient.RootHttpHandler,
-                    restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new ContainerServiceManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

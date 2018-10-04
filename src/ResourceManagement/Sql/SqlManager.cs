@@ -14,10 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private string tenantId;
 
         public SqlManager(RestClient restClient, string subscriptionId, string tenantId) :
-            base(restClient, subscriptionId, new SqlManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new SqlManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

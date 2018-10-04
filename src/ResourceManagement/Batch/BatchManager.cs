@@ -15,10 +15,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         private IBatchAccounts batchAccounts;
 
         public BatchManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new BatchManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new BatchManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

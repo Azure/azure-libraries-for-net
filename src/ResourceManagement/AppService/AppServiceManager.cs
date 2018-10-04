@@ -34,10 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         #region ctrs
 
         public AppServiceManager(RestClient restClient, string subscriptionId, string tenantId) :
-            base(restClient, subscriptionId, new WebSiteManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new WebSiteManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })
