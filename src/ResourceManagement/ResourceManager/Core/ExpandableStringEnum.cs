@@ -3,6 +3,7 @@
 // license information.
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -14,12 +15,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// </summary>
     public abstract class ExpandableStringEnum<T> where T : ExpandableStringEnum<T>, new()
     {
-        private static Dictionary<string, T> values;
+        private static ConcurrentDictionary<string, T> values;
         internal string value;
 
         static ExpandableStringEnum()
         {
-            values = new Dictionary<string, T>();
+            values = new ConcurrentDictionary<string, T>();
         }
 
         public string Value
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             private set
             {
                 this.value = value;
-                values[value.ToLower()] = (T)this;
+                values.AddOrUpdate(value.ToLower(), (T)this, (k, v) => v);
             }
         }
 
