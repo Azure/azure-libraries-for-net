@@ -19,10 +19,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
         {
-            return new MonitorManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            return new MonitorManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             };

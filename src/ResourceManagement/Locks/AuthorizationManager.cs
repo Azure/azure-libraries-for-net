@@ -20,10 +20,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
 
 
         public AuthorizationManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ManagementLockClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new ManagementLockClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

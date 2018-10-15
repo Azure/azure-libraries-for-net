@@ -18,18 +18,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         #region ctrs
 
         private ResourceManager(RestClient restClient, string subscriptionId) :
-            base(null, subscriptionId, new ResourceManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(null, subscriptionId, new ResourceManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })
         {
-            featureClient = new FeatureClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray());
+            featureClient = new FeatureClient(restClient);
             featureClient.SubscriptionId = subscriptionId;
             ResourceManager = this;
         }
@@ -93,10 +87,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             public Authenticated(RestClient restClient)
             {
                 this.restClient = restClient;
-                subscriptionClient = new SubscriptionClient(new Uri(restClient.BaseUri),
-                    restClient.Credentials,
-                    restClient.RootHttpHandler,
-                    restClient.Handlers.ToArray());
+                subscriptionClient = new SubscriptionClient(restClient);
             }
 
             #region Implementaiton of IAuthenticated interface

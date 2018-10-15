@@ -15,11 +15,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         #endregion
 
         public CdnManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new CdnManagementClient(
-                new Uri(restClient.BaseUri),
-                    restClient.Credentials,
-                    restClient.RootHttpHandler,
-                    restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new CdnManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

@@ -15,10 +15,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         #endregion
 
         public TrafficManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new TrafficManagerManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new TrafficManagerManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

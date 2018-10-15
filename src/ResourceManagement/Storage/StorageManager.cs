@@ -13,10 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         #region ctrs
 
         private StorageManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new StorageManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new StorageManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

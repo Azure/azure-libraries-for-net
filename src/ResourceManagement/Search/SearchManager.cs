@@ -15,11 +15,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         #endregion
 
         public SearchManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new SearchManagementClient(
-                new Uri(restClient.BaseUri),
-                    restClient.Credentials,
-                    restClient.RootHttpHandler,
-                    restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new SearchManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

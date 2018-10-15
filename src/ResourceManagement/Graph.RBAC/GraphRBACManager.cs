@@ -36,17 +36,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 graphEndpoint = restClient.Credentials.Environment.GraphEndpoint;
             }
-            inner = new GraphRbacManagementClient(new Uri(graphEndpoint),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            inner = new GraphRbacManagementClient(graphEndpoint, restClient)
             {
                 TenantID = tenantId
             };
-            roleInner = new AuthorizationManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray());
+            roleInner = new AuthorizationManagementClient(restClient);
             this.tenantId = tenantId;
             this.restClient = restClient;
         }

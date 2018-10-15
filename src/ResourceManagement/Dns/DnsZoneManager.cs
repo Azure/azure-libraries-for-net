@@ -18,10 +18,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
 
 
         public DnsZoneManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new DnsManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new DnsManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

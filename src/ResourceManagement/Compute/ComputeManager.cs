@@ -37,10 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         #region ctrs
 
         public ComputeManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ComputeManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new ComputeManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

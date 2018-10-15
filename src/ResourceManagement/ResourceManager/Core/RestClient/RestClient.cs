@@ -52,10 +52,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         {
             get
             {
-                foreach (var handler in handlers)
-                {
-                    handler.InnerHandler = new HttpClientHandler();
-                }
                 return new ReadOnlyCollection<DelegatingHandler>(handlers);
             }
         }

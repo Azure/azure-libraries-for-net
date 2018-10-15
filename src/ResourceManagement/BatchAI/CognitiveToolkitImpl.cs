@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         ICognitiveToolkit,
         IDefinition<IWithCreate>
     {
-        private string BRAIN_SCRIPT;
-        private string PYTHON;
+        private string _brainScript;
+        private string _python;
         private BatchAIJobImpl parent;
 
         public CognitiveToolkitImpl WithCommandLineArgs(string commandLineArgs)
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public CognitiveToolkitImpl WithBrainScript(string configFilePath)
         {
-            Inner.LanguageType = BRAIN_SCRIPT;
+            Inner.LanguageType = _brainScript;
             Inner.ConfigFilePath = configFilePath;
             return this;
         }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public CognitiveToolkitImpl WithPythonScriptFile(string pythonScriptFilePath)
         {
-            Inner.LanguageType = PYTHON;
+            Inner.LanguageType = _python;
             Inner.PythonScriptFilePath = pythonScriptFilePath;
             return this;
         }

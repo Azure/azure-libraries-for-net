@@ -28,10 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private DdosProtectionPlansImpl ddosProtectionPlans;
 
         private NetworkManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new NetworkManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new NetworkManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

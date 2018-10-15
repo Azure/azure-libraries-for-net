@@ -17,11 +17,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         #endregion
 
         public RegistryManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ContainerRegistryManagementClient(
-                new Uri(restClient.BaseUri),
-                    restClient.Credentials,
-                    restClient.RootHttpHandler,
-                    restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new ContainerRegistryManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

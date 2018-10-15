@@ -15,10 +15,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         private IRedisCaches redisCaches;
 
         private RedisManager(RestClient restClient, string subscriptionId)
-            : base(restClient, subscriptionId, new RedisManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            : base(restClient, subscriptionId, new RedisManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             }
