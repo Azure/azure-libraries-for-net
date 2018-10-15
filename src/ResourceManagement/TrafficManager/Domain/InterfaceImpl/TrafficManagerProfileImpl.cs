@@ -354,6 +354,24 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         /// <summary>
+        /// Specifies that end user traffic should return multiple address values
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethod.WithMultiValueBasedRouting()
+        {
+            return this.WithMultiValueBasedRouting();
+        }
+
+        /// <summary>
+        /// Subnet traffic-routing method to map sets of end-user IP address ranges to a specific endpoint within a Traffic Manager profile. 
+        /// When a request is received, the endpoint returned will be the one mapped for that request’s source IP address
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethod.WithSubnetBasedRouting()
+        {
+            return this.WithSubnetBasedRouting();
+        }
+        /// <summary>
         /// Specifies the traffic routing method for the profile.
         /// </summary>
         /// <param name="routingMethod">The traffic routing method for the profile.</param>
@@ -402,6 +420,25 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod.WithGeographicBasedRouting()
         {
             return this.WithGeographicBasedRouting();
+        }
+
+        /// <summary>
+        /// Specifies that end user traffic should return multiple address values
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod.WithMultiValueBasedRouting()
+        {
+            return this.WithMultiValueBasedRouting();
+        }
+
+        /// <summary>
+        /// Subnet traffic-routing method to map sets of end-user IP address ranges to a specific endpoint within a Traffic Manager profile. 
+        /// When a request is received, the endpoint returned will be the one mapped for that request’s source IP address
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod.WithSubnetBasedRouting()
+        {
+            return this.WithSubnetBasedRouting();
         }
 
         /// <summary>

@@ -69,6 +69,16 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.Geographic));
         }
+        
+        public TrafficManagerProfileImpl WithMultiValueBasedRouting()
+        {
+            return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.MultiValue));
+        }
+
+        public TrafficManagerProfileImpl WithSubnetBasedRouting()
+        {
+            return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.Subnet));
+        }
 
         ///GENMHASH:B4A36FDF16CFB0AB15EF06C3C41DEAE6:3907B35E8FE4F9DF1790E670E5612AA5
         public TrafficManagerEndpointImpl DefineExternalTargetEndpoint(string name)
