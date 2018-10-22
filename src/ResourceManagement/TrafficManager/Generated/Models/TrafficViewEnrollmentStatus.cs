@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
 {
 
     /// <summary>
-    /// Defines values for ProfileStatus.
+    /// Defines values for TrafficViewEnrollmentStatus.
     /// </summary>
-    public static class ProfileStatus
+    public static class TrafficViewEnrollmentStatus
     {
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";

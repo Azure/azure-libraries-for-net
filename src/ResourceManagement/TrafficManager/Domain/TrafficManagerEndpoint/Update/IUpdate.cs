@@ -80,8 +80,10 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithRoutingWeight,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithRoutingPriority,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithSubnetRouting,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithCustomHeaders,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithGeographicLocation,
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithTrafficDisabledOrEnabled
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithTrafficDisabledOrEnabled        
     {
     }
 
@@ -181,5 +183,52 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
         /// <param name="externalFqdn">The external FQDN.</param>
         /// <return>The next stage of the endpoint update.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateExternalEndpoint.IUpdateExternalEndpoint ToFqdn(string externalFqdn);
+    }
+
+    /// <summary>
+    /// The stage of the traffic manager endpoint definition allowing to specify the subnet routing setting.
+    /// </summary>    
+    public interface IWithSubnetRouting
+    {
+        /// <summary>
+        /// Specifies the priority for the endpoint that will be used when the parent profile is configured with
+        /// Subnet routing method  TrafficRoutingMethod.SUBNET.
+        /// </summary>
+        /// <param name="first">first address of the range.</param>
+        /// <param name="last">last address of the range.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IUpdate WithSubnetRouting(string first, string last);
+
+        /// <summary>
+        /// Specifies the priority for the endpoint that will be used when the parent profile is configured with
+        /// Subnet routing method  TrafficRoutingMethod.SUBNET.
+        /// </summary>
+        /// <param name="ipAddress">first address of the range.</param>
+        /// <param name="mask">last address of the range.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IUpdate WithSubnetRouting(string ipAddress, int mask);
+    }
+
+
+    /// <summary>
+    /// The stage of the traffic manager endpoint definition allowing to specify the custom headers for health checks.
+    /// </summary>
+    /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
+    public interface IWithCustomHeaders
+    {
+        /// <summary>
+        /// Specifies the custom header for the endpoint that will be used with health checks        
+        /// </summary>
+        /// <param name="headers">list of custom headers.</param>        
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IUpdate WithCustomHeaders(IDictionary<string, string> headers);
+
+        /// <summary>
+        /// Specifies the custom header for the endpoint that will be used with health checks
+        /// </summary>
+        /// <param name="name">custome header name.</param>
+        /// <param name="value">custom header value.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IUpdate WithCustomHeader(string name, string value);
     }
 }

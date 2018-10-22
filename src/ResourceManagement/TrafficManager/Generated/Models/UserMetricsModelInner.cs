@@ -14,37 +14,33 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing the Geographic hierarchy used with the Geographic
-    /// traffic routing method.
+    /// Class representing Traffic Manager User Metrics.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TrafficManagerGeographicHierarchyInner : ProxyResourceInner
+    public partial class UserMetricsModelInner : ProxyResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// TrafficManagerGeographicHierarchyInner class.
+        /// Initializes a new instance of the UserMetricsModelInner class.
         /// </summary>
-        public TrafficManagerGeographicHierarchyInner()
+        public UserMetricsModelInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// TrafficManagerGeographicHierarchyInner class.
+        /// Initializes a new instance of the UserMetricsModelInner class.
         /// </summary>
         /// <param name="id">Fully qualified resource Id for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
         /// Microsoft.Network/trafficmanagerProfiles.</param>
-        /// <param name="geographicHierarchy">The region at the root of the
-        /// hierarchy from all the regions in the hierarchy can be
-        /// retrieved.</param>
-        public TrafficManagerGeographicHierarchyInner(string id = default(string), string name = default(string), string type = default(string), RegionInner geographicHierarchy = default(RegionInner))
+        /// <param name="key">The key returned by the User Metrics
+        /// operation.</param>
+        public UserMetricsModelInner(string id = default(string), string name = default(string), string type = default(string), string key = default(string))
             : base(id, name, type)
         {
-            GeographicHierarchy = geographicHierarchy;
+            Key = key;
             CustomInit();
         }
 
@@ -54,11 +50,10 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the region at the root of the hierarchy from all the
-        /// regions in the hierarchy can be retrieved.
+        /// Gets or sets the key returned by the User Metrics operation.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.geographicHierarchy")]
-        public RegionInner GeographicHierarchy { get; set; }
+        [JsonProperty(PropertyName = "properties.key")]
+        public string Key { get; set; }
 
     }
 }
