@@ -85,5 +85,27 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
                 return this.SourceTrafficLocation();
             }
         }
+
+        /// <summary>
+        /// Gets the monitor custom headers
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string, string> CustomHeaders
+        {
+            get
+            {
+                return this.CustomHeaders();
+            }
+        }
+
+        /// <summary>
+        /// Gets the subnet route for the subnet routing feature
+        /// </summary>
+        System.Collections.Generic.IReadOnlyCollection<string> SubnetRoute
+        {
+            get
+            {
+                return this.SubnetRoute();
+            }
+        }
     }
 }
