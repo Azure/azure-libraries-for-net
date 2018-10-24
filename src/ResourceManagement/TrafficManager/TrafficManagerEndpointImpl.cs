@@ -70,6 +70,26 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return (int)Inner.Weight.Value;
         }
 
+        public IReadOnlyDictionary<string,string> CustomHeaders()
+        {
+            if (Inner.CustomHeaders == null)
+            {
+                return new Dictionary<string, string>();
+            }
+
+            return Inner.CustomHeaders.ToDictionary(k => k.Name, v => v.Value);
+        }
+
+        public IReadOnlyList<string> SubnetRoute()
+        {
+            if (Inner.Subnets == null)
+            {
+                return new List<string>();
+            }
+
+            return Inner.Subnets.Select(s => string.IsNullOrEmpty(s.Last) ? $"{s.First}/{s.Scope}" : $"{s.First}-{s.Last}").ToList();
+        }
+
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:C47C4325FAE65E493A947196909A8664
         protected override async Task<EndpointInner> GetInnerAsync(CancellationToken cancellationToken)
         {
