@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// GeographicHierarchiesOperations operations.
+    /// HeatMapOperations operations.
     /// </summary>
-    internal partial class GeographicHierarchiesOperations : IServiceOperations<TrafficManagerManagementClient>, IGeographicHierarchiesOperations
+    internal partial class HeatMapOperations : IServiceOperations<TrafficManagerManagementClient>, IHeatMapOperations
     {
         /// <summary>
-        /// Initializes a new instance of the GeographicHierarchiesOperations class.
+        /// Initializes a new instance of the HeatMapOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal GeographicHierarchiesOperations(TrafficManagerManagementClient client)
+        internal HeatMapOperations(TrafficManagerManagementClient client)
         {
             if (client == null)
             {
@@ -49,9 +49,22 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public TrafficManagerManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the default Geographic Hierarchy used by the Geographic traffic
-        /// routing method.
+        /// Gets latest heatmap for Traffic Manager profile.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group containing the Traffic Manager endpoint.
+        /// </param>
+        /// <param name='profileName'>
+        /// The name of the Traffic Manager profile.
+        /// </param>
+        /// <param name='topLeft'>
+        /// The top left latitude,longitude pair of the rectangular viewport to query
+        /// for.
+        /// </param>
+        /// <param name='botRight'>
+        /// The bottom right latitude,longitude pair of the rectangular viewport to
+        /// query for.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -73,12 +86,47 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<TrafficManagerGeographicHierarchyInner>> GetDefaultWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<HeatMapModelInner>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, IList<double?> topLeft = default(IList<double?>), IList<double?> botRight = default(IList<double?>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (profileName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "profileName");
+            }
+            if (topLeft != null)
+            {
+                if (topLeft.Count > 2)
+                {
+                    throw new ValidationException(ValidationRules.MaxItems, "topLeft", 2);
+                }
+                if (topLeft.Count < 2)
+                {
+                    throw new ValidationException(ValidationRules.MinItems, "topLeft", 2);
+                }
+            }
+            if (botRight != null)
+            {
+                if (botRight.Count > 2)
+                {
+                    throw new ValidationException(ValidationRules.MaxItems, "botRight", 2);
+                }
+                if (botRight.Count < 2)
+                {
+                    throw new ValidationException(ValidationRules.MinItems, "botRight", 2);
+                }
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+            string heatMapType = "default";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -86,13 +134,30 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("profileName", profileName);
+                tracingParameters.Add("heatMapType", heatMapType);
+                tracingParameters.Add("topLeft", topLeft);
+                tracingParameters.Add("botRight", botRight);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "GetDefault", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Network/trafficManagerGeographicHierarchies/default").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/heatMaps/{heatMapType}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{profileName}", System.Uri.EscapeDataString(profileName));
+            _url = _url.Replace("{heatMapType}", System.Uri.EscapeDataString(heatMapType));
             List<string> _queryParameters = new List<string>();
+            if (topLeft != null)
+            {
+                _queryParameters.Add(string.Format("topLeft={0}", System.Uri.EscapeDataString(string.Join(",", topLeft))));
+            }
+            if (botRight != null)
+            {
+                _queryParameters.Add(string.Format("botRight={0}", System.Uri.EscapeDataString(string.Join(",", botRight))));
+            }
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
@@ -190,7 +255,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<TrafficManagerGeographicHierarchyInner>();
+            var _result = new AzureOperationResponse<HeatMapModelInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -203,7 +268,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<TrafficManagerGeographicHierarchyInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<HeatMapModelInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

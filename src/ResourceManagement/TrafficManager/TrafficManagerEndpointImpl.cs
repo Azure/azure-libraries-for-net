@@ -262,5 +262,54 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             return this.Parent;
         }
+
+        public TrafficManagerEndpointImpl WithSubnetRouting(string first, string last)
+        {
+            if (this.Inner.Subnets == null)
+            {
+                this.Inner.Subnets = new List<EndpointPropertiesSubnetsItem>();
+            }
+
+            this.Inner.Subnets.Add(new EndpointPropertiesSubnetsItem(first: first, last: last));
+            return this;
+        }
+
+        public TrafficManagerEndpointImpl WithSubnetRouting(string ipAddress, int mask)
+        {
+            if (this.Inner.Subnets == null)
+            {
+                this.Inner.Subnets = new List<EndpointPropertiesSubnetsItem>();
+            }
+
+            this.Inner.Subnets.Add(new EndpointPropertiesSubnetsItem(first: ipAddress, scope: mask));
+            return this;
+        }
+
+        public TrafficManagerEndpointImpl WithCustomHeaders(IDictionary<string, string> headers)
+        {
+            if (this.Inner.CustomHeaders == null)
+            {
+                this.Inner.CustomHeaders = new List<EndpointPropertiesCustomHeadersItem>();
+            }
+
+            foreach(var item in headers)
+            {
+                this.Inner.CustomHeaders.Add(new EndpointPropertiesCustomHeadersItem(item.Key, item.Value));
+            }
+            
+            return this;
+        }
+
+        public TrafficManagerEndpointImpl WithCustomHeader(string name, string value)
+        {
+            if (this.Inner.CustomHeaders == null)
+            {
+                this.Inner.CustomHeaders = new List<EndpointPropertiesCustomHeadersItem>();
+            }
+
+
+            this.Inner.CustomHeaders.Add(new EndpointPropertiesCustomHeadersItem(name, value));
+            return this;
+        }
     }
 }

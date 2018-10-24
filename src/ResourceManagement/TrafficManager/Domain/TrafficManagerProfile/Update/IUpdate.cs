@@ -201,6 +201,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithMultiValueBasedRouting();
 
         /// <summary>
+        /// Specifies that end user traffic should return multiple address values
+        /// </summary>
+        /// <param name="maxReturn">max number of address to be returned</param>
+        /// <returns></returns>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithMultiValueBasedRouting(int maxReturn);
+
+        /// <summary>
         /// Subnet traffic-routing method to map sets of end-user IP address ranges to a specific endpoint within a Traffic Manager profile. 
         /// When a request is received, the endpoint returned will be the one mapped for that request’s source IP address
         /// </summary>

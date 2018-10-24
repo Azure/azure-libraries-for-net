@@ -70,13 +70,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.Geographic));
         }
         
-        public TrafficManagerProfileImpl WithMultiValueBasedRouting()
+        public TrafficManagerProfileImpl WithMultiValueBasedRouting(int maxReturn = 2)
         {
+            this.Inner.MaxReturn = maxReturn;
             return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.MultiValue));
         }
 
         public TrafficManagerProfileImpl WithSubnetBasedRouting()
-        {
+        {            
             return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.Subnet));
         }
 
