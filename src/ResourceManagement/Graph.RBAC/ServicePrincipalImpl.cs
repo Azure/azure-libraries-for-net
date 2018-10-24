@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public ServicePrincipalImpl WithNewApplication(string signOnUrl)
         {
-            return WithNewApplication(manager.Applications.Define(signOnUrl)
+            return WithNewApplication(manager.Applications.Define(this.Name)
                     .WithSignOnUrl(signOnUrl)
                     .WithIdentifierUrl(signOnUrl));
         }
