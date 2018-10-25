@@ -401,26 +401,26 @@ namespace Fluent.Tests
                 try
                 {
                     var profile = azure.TrafficManagerProfiles.Define(tmProfileName)
-                                         .WithNewResourceGroup(groupName, region)
-                                         .WithLeafDomainLabel(tmProfileDnsLabel)
-                                         .WithSubnetBasedRouting()
-                                         .DefineExternalTargetEndpoint("one")
-                                         .ToFqdn("1.1.1.1")
-                                         .FromRegion(Region.USWest2)
-                                         .WithSubnetRouting("1.1.1.0", 24)
-                                         .Attach()
-                                         .DefineExternalTargetEndpoint("two")
-                                         .ToFqdn("2.2.2.2")
-                                         .FromRegion(Region.USWest2)
-                                         .WithSubnetRouting("2.2.2.0", "2.2.2.255")
-                                         .Attach()
-                                         .DefineExternalTargetEndpoint("three")
-                                         .ToFqdn("3.3.3.3")
-                                         .FromRegion(Region.USWest2)
-                                         .Attach()
-                        .WithHttpsMonitoring()
-                        .WithTimeToLive(500)
-                        .Create();
+                                        .WithNewResourceGroup(groupName, region)
+                                        .WithLeafDomainLabel(tmProfileDnsLabel)
+                                        .WithSubnetBasedRouting()
+                                        .DefineExternalTargetEndpoint("one")
+                                            .ToFqdn("1.1.1.1")
+                                            .FromRegion(Region.USWest2)
+                                            .WithSubnetRouting("1.1.1.0", 24)
+                                            .Attach()
+                                        .DefineExternalTargetEndpoint("two")
+                                            .ToFqdn("2.2.2.2")
+                                            .FromRegion(Region.USWest2)
+                                            .WithSubnetRouting("2.2.2.0", "2.2.2.255")
+                                            .Attach()
+                                        .DefineExternalTargetEndpoint("three")
+                                            .ToFqdn("3.3.3.3")
+                                            .FromRegion(Region.USWest2)
+                                            .Attach()
+                                        .WithHttpsMonitoring()
+                                        .WithTimeToLive(500)
+                                        .Create();
 
                     Assert.NotNull(profile.Inner);
                     Assert.True(profile.TrafficRoutingMethod.Equals(TrafficRoutingMethod.Subnet));
@@ -432,10 +432,11 @@ namespace Fluent.Tests
                     endpoint = profile.ExternalEndpoints["three"];
                     Assert.Equal(0, endpoint.SubnetRoute.Count());                    
 
-                    profile.Update().UpdateExternalTargetEndpoint("three")
-                                    .WithSubnetRouting("3.3.3.0", 24)
-                                    .Parent()
-                                    .Apply();
+                    profile.Update()
+                        .UpdateExternalTargetEndpoint("three")
+                            .WithSubnetRouting("3.3.3.0", 24)
+                            .Parent()
+                        .Apply();
 
                     endpoint = profile.ExternalEndpoints["three"];
                     Assert.Equal(1, endpoint.SubnetRoute.Count());
@@ -472,22 +473,22 @@ namespace Fluent.Tests
                     };
 
                     var profile = azure.TrafficManagerProfiles.Define(tmProfileName)
-                                         .WithNewResourceGroup(groupName, region)
-                                         .WithLeafDomainLabel(tmProfileDnsLabel)
-                                         .WithMultiValueBasedRouting(maxReturn)
-                                         .DefineExternalTargetEndpoint("one")
-                                         .ToFqdn("1.1.1.1")
-                                         .FromRegion(Region.USWest2)
-                                         .WithCustomHeader("one","one.com")
-                                         .Attach()
-                                         .DefineExternalTargetEndpoint("two")
-                                         .ToFqdn("2.2.2.2")
-                                         .FromRegion(Region.USWest2)
-                                         .WithCustomHeaders(twoheaders)
-                                         .Attach()
-                        .WithHttpsMonitoring()
-                        .WithTimeToLive(500)
-                        .Create();
+                                        .WithNewResourceGroup(groupName, region)
+                                        .WithLeafDomainLabel(tmProfileDnsLabel)
+                                        .WithMultiValueBasedRouting(maxReturn)
+                                        .DefineExternalTargetEndpoint("one")
+                                            .ToFqdn("1.1.1.1")
+                                            .FromRegion(Region.USWest2)
+                                            .WithCustomHeader("one","one.com")
+                                            .Attach()
+                                        .DefineExternalTargetEndpoint("two")
+                                            .ToFqdn("2.2.2.2")
+                                            .FromRegion(Region.USWest2)
+                                            .WithCustomHeaders(twoheaders)
+                                        .Attach()
+                                        .WithHttpsMonitoring()
+                                        .WithTimeToLive(500)
+                                        .Create();
 
                     Assert.NotNull(profile.Inner);
                     Assert.True(profile.TrafficRoutingMethod.Equals(TrafficRoutingMethod.MultiValue));
@@ -500,8 +501,9 @@ namespace Fluent.Tests
                     endpoint = profile.ExternalEndpoints["two"];
                     Assert.Equal(2, endpoint.CustomHeaders.Count());
 
-                    profile.Update().WithMultiValueBasedRouting(maxReturn + 2)
-                                    .Apply();
+                    profile.Update()
+                            .WithMultiValueBasedRouting(maxReturn + 2)
+                            .Apply();
 
                     Assert.True(profile.TrafficRoutingMethod.Equals(TrafficRoutingMethod.MultiValue));
                     Assert.Equal(maxReturn + 2, profile.Inner.MaxReturn);

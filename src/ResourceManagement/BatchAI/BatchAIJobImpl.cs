@@ -1,27 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System.Collections.ObjectModel;
-using System.Linq;
-using Microsoft.Azure.Management.BatchAI.Fluent;
-using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+using System.Linq;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Chainer.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.CognitiveToolkit.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Implementation for BatchAIJob and its create interface.
