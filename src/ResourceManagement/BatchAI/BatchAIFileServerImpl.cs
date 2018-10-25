@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.VmSize;
         }
 
-        public new BatchAI.Fluent.Models.ResourceId Subnet()
+        public BatchAI.Fluent.Models.ResourceId Subnet()
         {
             return Inner.Subnet;
         }
