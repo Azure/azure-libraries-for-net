@@ -363,6 +363,16 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         /// <summary>
+        /// Specifies that end user traffic should return multiple address values
+        /// </summary>
+        /// <param name="maxReturn">max number of address to be returned</param>
+        /// <returns>The next stage of the update</returns>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethod.WithMultiValueBasedRouting(int maxReturn)
+        {
+            return this.WithMultiValueBasedRouting(maxReturn);
+        }
+
+        /// <summary>
         /// Subnet traffic-routing method to map sets of end-user IP address ranges to a specific endpoint within a Traffic Manager profile. 
         /// When a request is received, the endpoint returned will be the one mapped for that request’s source IP address
         /// </summary>
@@ -427,8 +437,18 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// </summary>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod.WithMultiValueBasedRouting()
-        {
+        {            
             return this.WithMultiValueBasedRouting();
+        }
+
+        /// <summary>
+        /// Specifies that end user traffic should return multiple address values
+        /// </summary>
+        /// <param name="maxReturn">max number of address to be returned</param>
+        /// <returns>The next stage of the update</returns>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod.WithMultiValueBasedRouting(int maxReturn)
+        {
+            return this.WithMultiValueBasedRouting(maxReturn);
         }
 
         /// <summary>

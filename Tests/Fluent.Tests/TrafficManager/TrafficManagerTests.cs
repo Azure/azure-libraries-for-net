@@ -4,10 +4,13 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
+using System.Globalization;
 using System.Linq;
 using Xunit;
 
@@ -381,5 +384,136 @@ namespace Fluent.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanCreateSubnetRoutingProfile()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var region = Region.USEast;
+
+                var groupName = TestUtilities.GenerateName("rgchashtm");
+                var tmProfileName = TestUtilities.GenerateName("tm");
+                var tmProfileDnsLabel = TestUtilities.GenerateName("tmdns");
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    var profile = azure.TrafficManagerProfiles.Define(tmProfileName)
+                                        .WithNewResourceGroup(groupName, region)
+                                        .WithLeafDomainLabel(tmProfileDnsLabel)
+                                        .WithSubnetBasedRouting()
+                                        .DefineExternalTargetEndpoint("one")
+                                            .ToFqdn("1.1.1.1")
+                                            .FromRegion(Region.USWest2)
+                                            .WithSubnetRouting("1.1.1.0", 24)
+                                            .Attach()
+                                        .DefineExternalTargetEndpoint("two")
+                                            .ToFqdn("2.2.2.2")
+                                            .FromRegion(Region.USWest2)
+                                            .WithSubnetRouting("2.2.2.0", "2.2.2.255")
+                                            .Attach()
+                                        .DefineExternalTargetEndpoint("three")
+                                            .ToFqdn("3.3.3.3")
+                                            .FromRegion(Region.USWest2)
+                                            .Attach()
+                                        .WithHttpsMonitoring()
+                                        .WithTimeToLive(500)
+                                        .Create();
+
+                    Assert.NotNull(profile.Inner);
+                    Assert.True(profile.TrafficRoutingMethod.Equals(TrafficRoutingMethod.Subnet));
+                    Assert.True(profile.ExternalEndpoints.ContainsKey("one"));
+                    var endpoint = profile.ExternalEndpoints["one"];
+                    Assert.Equal(1, endpoint.SubnetRoute.Count());
+                    Assert.False(string.IsNullOrEmpty(endpoint.SubnetRoute.First()));
+
+                    endpoint = profile.ExternalEndpoints["three"];
+                    Assert.Equal(0, endpoint.SubnetRoute.Count());                    
+
+                    profile.Update()
+                        .UpdateExternalTargetEndpoint("three")
+                            .WithSubnetRouting("3.3.3.0", 24)
+                            .Parent()
+                        .Apply();
+
+                    endpoint = profile.ExternalEndpoints["three"];
+                    Assert.Equal(1, endpoint.SubnetRoute.Count());
+                    Assert.False(string.IsNullOrEmpty(endpoint.SubnetRoute.First()));
+                }
+                finally
+                {
+                    azure.ResourceGroups.BeginDeleteByName(groupName);
+                }
+            }
+        }
+
+
+        [Fact]
+        public void CanCreateMultivalueRoutingProfileAndSetCustomHeaders()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var region = Region.USEast;
+
+                var groupName = TestUtilities.GenerateName("rgchashtm");
+                var tmProfileName = TestUtilities.GenerateName("tm");
+                var tmProfileDnsLabel = TestUtilities.GenerateName("tmdns");
+                var maxReturn = 4;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    var twoheaders = new System.Collections.Generic.Dictionary<string, string>
+                    {
+                        {  "twoA", "twoA.com" },
+                        {  "twoB", "twoB.com" }
+                    };
+
+                    var profile = azure.TrafficManagerProfiles.Define(tmProfileName)
+                                        .WithNewResourceGroup(groupName, region)
+                                        .WithLeafDomainLabel(tmProfileDnsLabel)
+                                        .WithMultiValueBasedRouting(maxReturn)
+                                        .DefineExternalTargetEndpoint("one")
+                                            .ToFqdn("1.1.1.1")
+                                            .FromRegion(Region.USWest2)
+                                            .WithCustomHeader("one","one.com")
+                                            .Attach()
+                                        .DefineExternalTargetEndpoint("two")
+                                            .ToFqdn("2.2.2.2")
+                                            .FromRegion(Region.USWest2)
+                                            .WithCustomHeaders(twoheaders)
+                                        .Attach()
+                                        .WithHttpsMonitoring()
+                                        .WithTimeToLive(500)
+                                        .Create();
+
+                    Assert.NotNull(profile.Inner);
+                    Assert.True(profile.TrafficRoutingMethod.Equals(TrafficRoutingMethod.MultiValue));
+                    Assert.Equal(maxReturn, profile.Inner.MaxReturn);
+                    Assert.Equal(2, profile.ExternalEndpoints.Count());
+                    Assert.True(profile.ExternalEndpoints.ContainsKey("one"));
+                    var endpoint = profile.ExternalEndpoints["one"];
+                    Assert.Equal(1, endpoint.CustomHeaders.Count());
+                    Assert.Equal("one.com", endpoint.CustomHeaders.First().Value);
+                    endpoint = profile.ExternalEndpoints["two"];
+                    Assert.Equal(2, endpoint.CustomHeaders.Count());
+
+                    profile.Update()
+                            .WithMultiValueBasedRouting(maxReturn + 2)
+                            .Apply();
+
+                    Assert.True(profile.TrafficRoutingMethod.Equals(TrafficRoutingMethod.MultiValue));
+                    Assert.Equal(maxReturn + 2, profile.Inner.MaxReturn);
+                }
+                finally
+                {
+                    azure.ResourceGroups.BeginDeleteByName(groupName);
+                }
+            }
+        }
+
     }
 }

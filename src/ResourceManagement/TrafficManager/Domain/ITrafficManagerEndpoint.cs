@@ -44,5 +44,15 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// Gets the monitor status of the endpoint.
         /// </summary>
         Microsoft.Azure.Management.TrafficManager.Fluent.EndpointMonitorStatus MonitorStatus { get; }
+
+        /// <summary>
+        /// Gets the monitor custom headers
+        /// </summary>
+        IReadOnlyDictionary<string,string> CustomHeaders { get; }
+
+        /// <summary>
+        /// Gets the subnet route for the subnet routing feature
+        /// </summary>
+        IReadOnlyCollection<string> SubnetRoute { get; }
     }
 }

@@ -1,20 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System.Linq;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using System.Linq;
 
 namespace Microsoft.Azure.Management.Network.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition;
     using Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update;
     using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Implementation for LocalNetworkGateway and its create and update interfaces.

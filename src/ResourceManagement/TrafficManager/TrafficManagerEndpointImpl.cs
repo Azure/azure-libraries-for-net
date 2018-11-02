@@ -70,6 +70,26 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return (int)Inner.Weight.Value;
         }
 
+        public IReadOnlyDictionary<string,string> CustomHeaders()
+        {
+            if (Inner.CustomHeaders == null)
+            {
+                return new Dictionary<string, string>();
+            }
+
+            return Inner.CustomHeaders.ToDictionary(k => k.Name, v => v.Value);
+        }
+
+        public IReadOnlyList<string> SubnetRoute()
+        {
+            if (Inner.Subnets == null)
+            {
+                return new List<string>();
+            }
+
+            return Inner.Subnets.Select(s => string.IsNullOrEmpty(s.Last) ? $"{s.First}/{s.Scope}" : $"{s.First}-{s.Last}").ToList();
+        }
+
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:C47C4325FAE65E493A947196909A8664
         protected override async Task<EndpointInner> GetInnerAsync(CancellationToken cancellationToken)
         {
@@ -261,6 +281,55 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         TrafficManagerProfile.Update.IUpdate ISettable<TrafficManagerProfile.Update.IUpdate>.Parent()
         {
             return this.Parent;
+        }
+
+        public TrafficManagerEndpointImpl WithSubnetRouting(string first, string last)
+        {
+            if (this.Inner.Subnets == null)
+            {
+                this.Inner.Subnets = new List<EndpointPropertiesSubnetsItem>();
+            }
+
+            this.Inner.Subnets.Add(new EndpointPropertiesSubnetsItem(first: first, last: last));
+            return this;
+        }
+
+        public TrafficManagerEndpointImpl WithSubnetRouting(string ipAddress, int mask)
+        {
+            if (this.Inner.Subnets == null)
+            {
+                this.Inner.Subnets = new List<EndpointPropertiesSubnetsItem>();
+            }
+
+            this.Inner.Subnets.Add(new EndpointPropertiesSubnetsItem(first: ipAddress, scope: mask));
+            return this;
+        }
+
+        public TrafficManagerEndpointImpl WithCustomHeaders(IDictionary<string, string> headers)
+        {
+            if (this.Inner.CustomHeaders == null)
+            {
+                this.Inner.CustomHeaders = new List<EndpointPropertiesCustomHeadersItem>();
+            }
+
+            foreach(var item in headers)
+            {
+                this.Inner.CustomHeaders.Add(new EndpointPropertiesCustomHeadersItem(item.Key, item.Value));
+            }
+            
+            return this;
+        }
+
+        public TrafficManagerEndpointImpl WithCustomHeader(string name, string value)
+        {
+            if (this.Inner.CustomHeaders == null)
+            {
+                this.Inner.CustomHeaders = new List<EndpointPropertiesCustomHeadersItem>();
+            }
+
+
+            this.Inner.CustomHeaders.Add(new EndpointPropertiesCustomHeadersItem(name, value));
+            return this;
         }
     }
 }
