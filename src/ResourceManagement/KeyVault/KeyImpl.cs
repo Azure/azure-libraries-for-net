@@ -265,7 +265,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                     createKeyRequest.KeyOperations.Select(ops => ops.Value).ToList(),
                     createKeyRequest.KeyAttributes,
                     createKeyRequest.Tags,
-                    cancellationToken));
+                    curve: null,
+                    cancellationToken: cancellationToken));
+
                 createKeyRequest = null;
                 updateKeyRequest = new UpdateKeyRequest
                 {

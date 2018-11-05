@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                     this.accessPolicies.Add(new AccessPolicyImpl(entry, this));
                 }
             }
-            this.client = new KeyVaultClient(Manager.RestClient.Credentials, Manager.RestClient.RootHttpHandler, Manager.RestClient.Handlers.ToArray());
+            this.client = new KeyVaultClientInternal(Manager.RestClient.Credentials, Manager.RestClient.RootHttpHandler, Manager.RestClient.Handlers.ToArray());
         }
 
         ///GENMHASH:FAAD3C3E07174E29B21DE058D968BBF7:A534A23FE2D228AC3080C1CF07E66439
