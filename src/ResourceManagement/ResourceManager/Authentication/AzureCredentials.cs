@@ -204,7 +204,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 #endif
                 else if (msiTokenProviderFactory != null)
                 {
-                    //credentialsCache[adSettings.TokenAudience] = new TokenCredentials(this.msiTokenProviderFactory.Create(adSettings.TokenAudience.OriginalString));
                     credentialsCache[adSettings.TokenAudience] = new TokenCredentials(this.msiTokenProviderFactory.Create(adSettings.TokenAudience.OriginalString));
                 }
                 // no token available for communication
