@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Key Vault.
     /// </summary>
-    public interface IVaultBeta  :
+    public interface IVaultBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

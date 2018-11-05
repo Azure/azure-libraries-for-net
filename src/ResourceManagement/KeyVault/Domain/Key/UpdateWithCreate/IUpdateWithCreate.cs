@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithCreate
     /// <summary>
     /// The template for a key vault update operation, with a new key version to be created.
     /// </summary>
-    public interface IUpdateWithCreate  :
+    public interface IUpdateWithCreate :
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKeySize
     {

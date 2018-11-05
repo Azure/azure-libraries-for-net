@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport
     /// <summary>
     /// The template for a key vault update operation, with a new key version to be imported.
     /// </summary>
-    public interface IUpdateWithImport  :
+    public interface IUpdateWithImport :
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithHsm
     {

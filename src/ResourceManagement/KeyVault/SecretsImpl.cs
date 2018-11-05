@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// The implementation of Vaults and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlNlY3JldHNJbXBs
-    internal partial class SecretsImpl  :
-        CreatableResources<Microsoft.Azure.Management.KeyVault.Fluent.ISecret,Microsoft.Azure.Management.KeyVault.Fluent.SecretImpl,Microsoft.Azure.KeyVault.Models.SecretBundle>,
+    internal partial class SecretsImpl :
+        CreatableResources<Microsoft.Azure.Management.KeyVault.Fluent.ISecret, Microsoft.Azure.Management.KeyVault.Fluent.SecretImpl, Microsoft.Azure.KeyVault.Models.SecretBundle>,
         ISecrets
     {
         private IKeyVaultClient inner;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:C63853404036C3EA72DA3E0D94417F3B:8EFCE07990CA95E6F5AE1F22DEDC0454
-        internal  SecretsImpl(IKeyVaultClient client, IVault vault)
+        internal SecretsImpl(IKeyVaultClient client, IVault vault)
         {
             this.inner = client;
             this.vault = vault;

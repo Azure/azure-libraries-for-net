@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// Implementation for Vault and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLktleUltcGw=
-    internal partial class KeyImpl  :
-        CreatableUpdatable<IKey,KeyBundle,KeyImpl,IHasId,IUpdate>,
+    internal partial class KeyImpl :
+        CreatableUpdatable<IKey, KeyBundle, KeyImpl, IHasId, IUpdate>,
         IKey,
         IDefinition,
         IUpdateWithCreate,
@@ -41,16 +41,16 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             {
                 if (createKeyRequest != null)
                 {
-                    createKeyRequest.KeyAttributes = (KeyAttributes) attributes;
+                    createKeyRequest.KeyAttributes = (KeyAttributes)attributes;
                 }
                 else
                 {
-                    importKeyRequest.KeyAttributes = (KeyAttributes) attributes;
+                    importKeyRequest.KeyAttributes = (KeyAttributes)attributes;
                 }
             }
             else
             {
-                updateKeyRequest.KeyAttributes = (KeyAttributes) attributes;
+                updateKeyRequest.KeyAttributes = (KeyAttributes)attributes;
             }
             return this;
         }
@@ -138,22 +138,22 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:962949D4060A8D0ABA177599EE60802D
-        public KeyImpl WithTags(IDictionary<string,string> tags)
+        public KeyImpl WithTags(IDictionary<string, string> tags)
         {
             if (IsInCreateMode())
             {
                 if (createKeyRequest != null)
                 {
-                    createKeyRequest.Tags = (Dictionary<string, string>) tags;
+                    createKeyRequest.Tags = (Dictionary<string, string>)tags;
                 }
                 else
                 {
-                    importKeyRequest.Tags = (Dictionary<string, string>) tags;
+                    importKeyRequest.Tags = (Dictionary<string, string>)tags;
                 }
             }
             else
             {
-                updateKeyRequest.Tags = (Dictionary<string, string>) tags;
+                updateKeyRequest.Tags = (Dictionary<string, string>)tags;
             }
             return this;
         }
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:4B19A5F1B35CA91D20F63FBB66E86252:7AB4F0903C94E4BB1CF29874B5530F1C
-        public IReadOnlyDictionary<string,string> Tags()
+        public IReadOnlyDictionary<string, string> Tags()
         {
             return new ReadOnlyDictionary<string, string>(Inner.Tags);
         }
@@ -354,11 +354,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             if (IsInCreateMode())
             {
-                createKeyRequest.KeyOperations = (List<JsonWebKeyOperation>) keyOperations;
+                createKeyRequest.KeyOperations = (List<JsonWebKeyOperation>)keyOperations;
             }
             else
             {
-                updateKeyRequest.KeyOperations = (List<JsonWebKeyOperation>) keyOperations;
+                updateKeyRequest.KeyOperations = (List<JsonWebKeyOperation>)keyOperations;
             }
             return this;
         }

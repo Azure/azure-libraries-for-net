@@ -299,11 +299,13 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:15559971150DD16EE8C6A99E65B918C4:1B7756ABF8CA620B4AEA60A8AF376026
         private void InitializeCertificatePermissions()
         {
-            if (Inner.Permissions == null) {
-            	Inner.Permissions = new Permissions();
+            if (Inner.Permissions == null)
+            {
+                Inner.Permissions = new Permissions();
             }
-            if (Inner.Permissions.Certificates == null) {
-            	Inner.Permissions.Certificates = new List<string>();
+            if (Inner.Permissions.Certificates == null)
+            {
+                Inner.Permissions.Certificates = new List<string>();
             }
         }
 
@@ -319,14 +321,14 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeCertificatePermissions();
             foreach (var permission in permissions)
             {
-            	if (!Inner.Permissions.Certificates.Contains(permission.ToString()))
+                if (!Inner.Permissions.Certificates.Contains(permission.ToString()))
                 {
-                	Inner.Permissions.Certificates.Add(permission.ToString());
-				}
+                    Inner.Permissions.Certificates.Add(permission.ToString());
+                }
             }
             return this;
         }
-		
+
         ///GENMHASH:3CA9C293D3584AB382168617DC8AC2DC:1ED91EC5382646AF3251110612D16696
         public AccessPolicyImpl AllowCertificateAllPermissions()
         {

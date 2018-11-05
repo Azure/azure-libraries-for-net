@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// Entry point for Key Vault secrets API.
     /// </summary>
-    public interface ISecrets  :
+    public interface ISecrets :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Secret.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,

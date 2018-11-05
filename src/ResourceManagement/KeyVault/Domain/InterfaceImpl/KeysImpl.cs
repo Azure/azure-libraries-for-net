@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
 
-    internal partial class KeysImpl 
+    internal partial class KeysImpl
     {
         /// <summary>
         /// Restores a backup key into a Key Vault key.
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById.DeleteByIdAsync(string id, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByIdAsync(id, cancellationToken);
         }
 

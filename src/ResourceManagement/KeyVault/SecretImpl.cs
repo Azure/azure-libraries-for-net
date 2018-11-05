@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// Implementation for Vault and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlNlY3JldEltcGw=
-    internal partial class SecretImpl  :
-        CreatableUpdatable<ISecret,SecretBundle,SecretImpl,IHasId,IUpdate>,
+    internal partial class SecretImpl :
+        CreatableUpdatable<ISecret, SecretBundle, SecretImpl, IHasId, IUpdate>,
         ISecret,
         IDefinition,
         IUpdate
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:AFCF54960F557DFD8C6A8457EFAA9FD7:0C9DCA023B95F799C3FD4D6189ABC2DC
         public SecretImpl WithAttributes(Attributes attributes)
         {
-            setSecretRequest.SecretAttributes = (SecretAttributes) attributes;
+            setSecretRequest.SecretAttributes = (SecretAttributes)attributes;
             updateSecretRequest.SecretAttributes = (SecretAttributes)attributes;
             return this;
         }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:4B19A5F1B35CA91D20F63FBB66E86252:7AB4F0903C94E4BB1CF29874B5530F1C
-        public IReadOnlyDictionary<string,string> Tags()
+        public IReadOnlyDictionary<string, string> Tags()
         {
             return new ReadOnlyDictionary<string, string>(Inner.Tags);
         }
@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:EB0F52C4D98BB007BEF4118B51D50750
-        public SecretImpl WithTags(IDictionary<string,string> tags)
+        public SecretImpl WithTags(IDictionary<string, string> tags)
         {
-            setSecretRequest.Tags = (Dictionary<string, string>) tags;
-            updateSecretRequest.Tags = (Dictionary<string, string>) tags;
+            setSecretRequest.Tags = (Dictionary<string, string>)tags;
+            updateSecretRequest.Tags = (Dictionary<string, string>)tags;
             return this;
         }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:D4F352220A93EA5AA29C8B5E4597D85A:C23C77328A8E0D7CC1FB12BB56B5BE22
-        internal  SecretImpl(string name, SecretBundle innerObject, IVault vault)
+        internal SecretImpl(string name, SecretBundle innerObject, IVault vault)
             : base(name, innerObject)
         {
             this.vault = vault;

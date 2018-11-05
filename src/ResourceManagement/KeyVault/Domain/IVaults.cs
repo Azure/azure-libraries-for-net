@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// Entry point for key vaults management API.
     /// </summary>
-    public interface IVaults  :
+    public interface IVaults :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Vault.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,

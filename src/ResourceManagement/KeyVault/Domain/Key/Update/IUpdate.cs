@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// <summary>
     /// The stage of a key update allowing to specify the key size.
     /// </summary>
-    public interface IWithKeySize 
+    public interface IWithKeySize
     {
         /// <summary>
         /// Specifies the size of the key to create.
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// <summary>
     /// The template for a key update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.KeyVault.Fluent.IKey>,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKey,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKeyOperations,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// The stage of a key update allowing to specify whether to store the key in
     /// hardware security modules.
     /// </summary>
-    public interface IWithHsm 
+    public interface IWithHsm
     {
         /// <summary>
         /// Specifies whether to store the key in hardware security modules.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// <summary>
     /// The stage of a key update allowing to create a new version of the key.
     /// </summary>
-    public interface IWithKey 
+    public interface IWithKey
     {
         /// <summary>
         /// Specifies a key type to create a new key version.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// <summary>
     /// The stage of a key update allowing to specify the attributes of the key.
     /// </summary>
-    public interface IWithAttributes 
+    public interface IWithAttributes
     {
         /// <summary>
         /// Specifies the attributes of the key.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// <summary>
     /// The stage of a key update allowing to specify the allowed operations for the key.
     /// </summary>
-    public interface IWithKeyOperations 
+    public interface IWithKeyOperations
     {
         /// <summary>
         /// Specifies the list of allowed key operations. By default all operations are allowed.
@@ -105,13 +105,13 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     /// <summary>
     /// The stage of a key update allowing to specify the tags of the key.
     /// </summary>
-    public interface IWithTags 
+    public interface IWithTags
     {
         /// <summary>
         /// Specifies the tags on the key.
         /// </summary>
         /// <param name="tags">The key value pair of the tags.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate WithTags(IDictionary<string, string> tags);
     }
 }

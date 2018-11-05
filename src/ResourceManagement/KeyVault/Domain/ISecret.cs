@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Key Vault secret.
     /// </summary>
-    public interface ISecret  :
+    public interface ISecret :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.KeyVault.Models.SecretBundle>,
@@ -57,6 +57,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <summary>
         /// Gets application specific metadata in the form of key-value pairs.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Tags { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Tags { get; }
     }
 }

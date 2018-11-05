@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
     /// <summary>
     /// Container interface for all the definitions.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IBlank,
         Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithValue,
         Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithCreate
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
     /// <summary>
     /// The stage of a secret definition allowing to specify the secret attributes.
     /// </summary>
-    public interface IWithAttributes 
+    public interface IWithAttributes
     {
         /// <summary>
         /// Specifies the secret attributes.
@@ -33,20 +33,20 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
     /// <summary>
     /// The stage of a secret definition allowing to specify the tags.
     /// </summary>
-    public interface IWithTags 
+    public interface IWithTags
     {
         /// <summary>
         /// Specifies the tags on the secret.
         /// </summary>
         /// <param name="tags">The key value pair of the tags.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithCreate WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithCreate WithTags(IDictionary<string, string> tags);
     }
 
     /// <summary>
     /// The stage of a secret definition allowing to specify the secret content type.
     /// </summary>
-    public interface IWithContentType 
+    public interface IWithContentType
     {
         /// <summary>
         /// Specifies the secret content type.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
     /// <summary>
     /// The first stage of a secret definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithValue
     {
     }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
     /// The stage of the secret definition which contains all the minimum required inputs for
     /// the secret to be created but also allows for any optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.KeyVault.Fluent.ISecret>,
         Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithContentType,
         Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithAttributes,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
     /// <summary>
     /// The stage of a secret definition allowing to specify the secret value.
     /// </summary>
-    public interface IWithValue 
+    public interface IWithValue
     {
         /// <summary>
         /// Specifies the secret value.

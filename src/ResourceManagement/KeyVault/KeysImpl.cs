@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// The implementation of Vaults and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLktleXNJbXBs
-    internal partial class KeysImpl  :
-        CreatableResources<Microsoft.Azure.Management.KeyVault.Fluent.IKey,Microsoft.Azure.Management.KeyVault.Fluent.KeyImpl,Microsoft.Azure.KeyVault.Models.KeyBundle>,
+    internal partial class KeysImpl :
+        CreatableResources<Microsoft.Azure.Management.KeyVault.Fluent.IKey, Microsoft.Azure.Management.KeyVault.Fluent.KeyImpl, Microsoft.Azure.KeyVault.Models.KeyBundle>,
         IKeys
     {
         private IKeyVaultClient inner;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:D00A188D7DFFF4A60B4043C987E8B889:8EFCE07990CA95E6F5AE1F22DEDC0454
-        internal  KeysImpl(IKeyVaultClient client, IVault vault)
+        internal KeysImpl(IKeyVaultClient client, IVault vault)
         {
             this.inner = client;
             this.vault = vault;
@@ -101,8 +101,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:B08F92F88A1902E4EFF561293A34D861:4B80635BF2F0EEE24008330881A9BD10
         protected override IKey WrapModel(KeyBundle inner)
         {
-            if (inner == null) {
-            return null;
+            if (inner == null)
+            {
+                return null;
             }
             return new KeyImpl(inner.KeyIdentifier.Name, inner, vault);
         }

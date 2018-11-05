@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// <summary>
     /// The first stage of a key definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKey
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// The stage of a key definition allowing to specify whether to store the key in
     /// hardware security modules.
     /// </summary>
-    public interface IWithHsm 
+    public interface IWithHsm
     {
         /// <summary>
         /// Specifies whether to store the key in hardware security modules.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// <summary>
     /// Container interface for all the definitions.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IBlank,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKey,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithImport,
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// The stage of a key definition allowing to specify whether
     /// to create a key or to import a key.
     /// </summary>
-    public interface IWithKey 
+    public interface IWithKey
     {
         /// <summary>
         /// Specifies a key type to create a new key.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// <summary>
     /// The stage of a key definition allowing to specify the key size.
     /// </summary>
-    public interface IWithKeySize 
+    public interface IWithKeySize
     {
         /// <summary>
         /// Specifies the size of the key to create.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// <summary>
     /// The base stage of the key definition allowing for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreateBase  :
+    public interface IWithCreateBase :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.KeyVault.Fluent.IKey>,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithAttributes,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithTags
@@ -88,20 +88,20 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// <summary>
     /// The stage of a key definition allowing to specify the tags of the key.
     /// </summary>
-    public interface IWithTags 
+    public interface IWithTags
     {
         /// <summary>
         /// Specifies the tags on the key.
         /// </summary>
         /// <param name="tags">The key value pair of the tags.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate WithTags(IDictionary<string, string> tags);
     }
 
     /// <summary>
     /// The stage of a key definition allowing to specify the attributes of the key.
     /// </summary>
-    public interface IWithAttributes 
+    public interface IWithAttributes
     {
         /// <summary>
         /// Specifies the attributes of the key.
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// <summary>
     /// The stage of a key definition allowing to specify the allowed operations for the key.
     /// </summary>
-    public interface IWithKeyOperations 
+    public interface IWithKeyOperations
     {
         /// <summary>
         /// Specifies the list of allowed key operations. By default all operations are allowed.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// The stage of the key definition which contains all the minimum required inputs for
     /// the key to be created but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKeyOperations,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKeySize,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreateBase
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
     /// The stage of the key definition which contains all the minimum required inputs for
     /// the key to be imported but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithImport  :
+    public interface IWithImport :
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithHsm,
         Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreateBase
     {

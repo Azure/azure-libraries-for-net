@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class SecretImpl 
+    internal partial class SecretImpl
     {
         /// <summary>
         /// Specifies the secret value.
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <summary>
         /// Gets application specific metadata in the form of key-value pairs.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.KeyVault.Fluent.ISecret.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.KeyVault.Fluent.ISecret.Tags
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="tags">The key value pair of the tags.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithTags.WithTags(IDictionary<string,string> tags)
+        Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithTags.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags) as Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition.IWithCreate;
         }
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="tags">The key value pair of the tags.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update.IWithTags.WithTags(IDictionary<string,string> tags)
+        Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update.IWithTags.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags) as Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update.IUpdate;
         }

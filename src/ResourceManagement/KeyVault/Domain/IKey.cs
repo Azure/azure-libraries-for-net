@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Key Vault key.
     /// </summary>
-    public interface IKey  :
+    public interface IKey :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.KeyVault.Models.KeyBundle>,
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <summary>
         /// Gets application specific metadata in the form of key-value pairs.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Tags { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Tags { get; }
 
         /// <return>A list of individual key versions with the same key name.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.KeyVault.Fluent.IKey> ListVersions();
