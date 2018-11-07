@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Key.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.KeyVault.Fluent.IKey>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.KeyVault.Fluent.IKey>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.KeyVault.Fluent.IKey>
     {
         /// <summary>
@@ -30,5 +31,22 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="backup">The backup key.</param>
         /// <return>The key restored from the backup.</return>
         Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> RestoreAsync(byte[] backup, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a Key Vault key.
+        /// </summary>
+        /// <param name="name">the name of the key</param>
+        /// <param name="version">the version of the key</param>
+        /// <returns>the Key Vault key</returns>
+        Microsoft.Azure.Management.KeyVault.Fluent.IKey GetByNameAndVersion(string name, string version);
+
+        /// <summary>
+        /// Gets a Key Vault key.
+        /// </summary>
+        /// <param name="name">the name of the key</param>
+        /// <param name="version">the version of the key</param>
+        /// <param name="cancellationToken">cancellationToken the cancellation token</param>
+        /// <returns>the Key Vault key</returns>
+        Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> GetByNameAndVersionAsync(string name, string version, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

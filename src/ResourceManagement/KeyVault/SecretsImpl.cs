@@ -32,10 +32,30 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             return Extensions.Synchronize(() => GetByIdAsync(id));
         }
 
+        public ISecret GetByName(string name)
+        {
+            return Extensions.Synchronize(() => GetByNameAsync(name));
+        }
+
+        public ISecret GetByNameAndVersion(string name, string version)
+        {
+            return Extensions.Synchronize(() => GetByNameAndVersionAsync(name, version));
+        }
+
         ///GENMHASH:E776888E46F8A3FC56D24DF4A74E5B74:B752E4EC59041E9F1775EA7156FC1A6B
         public async Task<Microsoft.Azure.Management.KeyVault.Fluent.ISecret> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             return WrapModel(await inner.GetSecretAsync(id, cancellationToken));
+        }
+
+        public async Task<Microsoft.Azure.Management.KeyVault.Fluent.ISecret> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WrapModel(await inner.GetSecretAsync(vault.VaultUri, name, cancellationToken));
+        }
+
+        public async Task<Microsoft.Azure.Management.KeyVault.Fluent.ISecret> GetByNameAndVersionAsync(string name, string version, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WrapModel(await inner.GetSecretAsync(vault.VaultUri, name, version, cancellationToken));
         }
 
         ///GENMHASH:C63853404036C3EA72DA3E0D94417F3B:8EFCE07990CA95E6F5AE1F22DEDC0454

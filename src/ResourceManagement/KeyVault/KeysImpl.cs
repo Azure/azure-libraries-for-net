@@ -25,9 +25,19 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         private IKeyVaultClient inner;
         private IVault vault;
         ///GENMHASH:8526360550C053825B6A643F96D512AD:D063ACAEFB27FCE2CA0B805B84D52A40
-        public IKey Restore(params byte[] backup)
+        public IKey Restore(byte[] backup)
         {
             return Extensions.Synchronize(() => RestoreAsync(backup));
+        }
+
+        public IKey GetByName(string name)
+        {
+            return Extensions.Synchronize(() => GetByNameAsync(name));
+        }
+
+        public IKey GetByNameAndVersion(string name, string version)
+        {
+            return Extensions.Synchronize(() => GetByNameAndVersionAsync(name, version));
         }
 
         ///GENMHASH:5002116800CBAC02BBC1B4BF62BC4942:2C012F0622D372B72FB5DB57D479C088
@@ -80,6 +90,16 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         public async Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> RestoreAsync(byte[] backup, CancellationToken cancellationToken = default(CancellationToken))
         {
             return WrapModel(await inner.RestoreKeyAsync(vault.VaultUri, backup, cancellationToken));
+        }
+
+        public async Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WrapModel(await inner.GetKeyAsync(vault.VaultUri, name, cancellationToken));
+        }
+
+        public async Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> GetByNameAndVersionAsync(string name, string version, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WrapModel(await inner.GetKeyAsync(vault.VaultUri, name, version, cancellationToken));
         }
 
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:9F0C4A17AF76F97938CE0C165A9A049A

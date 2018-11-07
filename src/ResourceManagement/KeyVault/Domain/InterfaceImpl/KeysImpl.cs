@@ -35,6 +35,50 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         /// <summary>
+        /// Gets a Key Vault key.
+        /// </summary>
+        /// <param name="name">the name of the key</param>
+        /// <returns>the Key Vault key</returns>
+        Microsoft.Azure.Management.KeyVault.Fluent.IKey Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.KeyVault.Fluent.IKey>.GetByName(string name)
+        {
+            return this.GetByName(name) as Microsoft.Azure.Management.KeyVault.Fluent.IKey;
+        }
+
+        /// <summary>
+        /// Gets a Key Vault key.
+        /// </summary>
+        /// <param name="name">the name of the key</param>
+        /// <param name="cancellationToken">cancellationToken the cancellation token</param>
+        /// <returns>the Key Vault key</returns>
+        async Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.KeyVault.Fluent.IKey>.GetByNameAsync(string name, CancellationToken cancellationToken)
+        {
+            return await this.GetByNameAsync(name, cancellationToken) as Microsoft.Azure.Management.KeyVault.Fluent.IKey;
+        }
+
+        /// <summary>
+        /// Gets a Key Vault key.
+        /// </summary>
+        /// <param name="name">the name of the key</param>
+        /// <param name="version">the version of the key</param>
+        /// <returns>the Key Vault key</returns>
+        Microsoft.Azure.Management.KeyVault.Fluent.IKey Microsoft.Azure.Management.KeyVault.Fluent.IKeys.GetByNameAndVersion(string name, string version)
+        {
+            return this.GetByNameAndVersion(name, version) as Microsoft.Azure.Management.KeyVault.Fluent.IKey;
+        }
+
+        /// <summary>
+        /// Gets a Key Vault key.
+        /// </summary>
+        /// <param name="name">the name of the key</param>
+        /// <param name="version">the version of the key</param>
+        /// <param name="cancellationToken">cancellationToken the cancellation token</param>
+        /// <returns>the Key Vault key</returns>
+        async Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> Microsoft.Azure.Management.KeyVault.Fluent.IKeys.GetByNameAndVersionAsync(string name, string version, CancellationToken cancellationToken)
+        {
+            return await this.GetByNameAndVersionAsync(name, version, cancellationToken) as Microsoft.Azure.Management.KeyVault.Fluent.IKey;
+        }
+
+        /// <summary>
         /// Begins a definition for a new resource.
         /// This is the beginning of the builder pattern used to create top level resources
         /// in Azure. The final method completing the definition and starting the actual resource creation
