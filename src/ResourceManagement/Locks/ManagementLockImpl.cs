@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         ///GENMHASH:5ADDF35879E44C64A314E1510333AEFC:9685C9E48A54BFEB8A0B16BB6516EF6B
         public ManagementLockImpl WithLockedResourceGroup(string resourceGroupName)
         {
-            return WithLockedResource(Manager().SubscriptionId + "/resourceGroups/" + resourceGroupName);
+            return WithLockedResource("/subscriptions/" + Manager().SubscriptionId + "/resourceGroups/" + resourceGroupName);
         }
 
         ///GENMHASH:D5B5CE2DFAF050C55CE88CAC28B76A44:0F92E54F7B9C66E5DD4A807996D1C453
