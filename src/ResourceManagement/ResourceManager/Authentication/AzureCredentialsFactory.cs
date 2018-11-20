@@ -150,7 +150,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 jsonConfig.GetType()
                     .GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
                     .ToList()
-                    .ForEach(info => config[info.Name] = (string)info.GetValue(jsonConfig));
+                    .ForEach(info => {
+                        var value = (string)info.GetValue(jsonConfig);
+                        if (value != null)
+                        {
+                            config[info.Name] = value;
+                        }
+                    });
             }
             else
             {
