@@ -279,9 +279,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string name,
             SiteInner innerObject,
             SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig,
             ParentImplT parent,
             IAppServiceManager manager)
-                    : base(Regex.Replace(name, ".*/", ""), innerObject, configObject, manager)
+                    : base(Regex.Replace(name, ".*/", ""), innerObject, configObject, logConfig, manager)
         {
             this.name = Regex.Replace(name, ".*/", "");
             this.parent = parent;

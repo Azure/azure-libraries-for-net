@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         protected override FunctionDeploymentSlotImpl WrapModel(string name)
         {
-            var deploymentSlot = new FunctionDeploymentSlotImpl(name, new SiteInner(), null, parent, Manager);
+            var deploymentSlot = new FunctionDeploymentSlotImpl(name, new SiteInner(), null, null, parent, Manager);
 
             deploymentSlot.WithRegion(parent.RegionName);
             deploymentSlot.WithExistingResourceGroup(parent.ResourceGroupName);
@@ -87,16 +87,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return null;
             }
-            return new FunctionDeploymentSlotImpl(inner.Name, inner, null, parent, Manager);
+            return new FunctionDeploymentSlotImpl(inner.Name, inner, null, null, parent, Manager);
         }
 
-        private IFunctionDeploymentSlot WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner)
+        private IFunctionDeploymentSlot WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner, SiteLogsConfigInner logsConfigInner)
         {
             if (inner == null)
             {
                 return null;
             }
-            return new FunctionDeploymentSlotImpl(inner.Name, inner, siteConfigInner, parent, Manager);
+            return new FunctionDeploymentSlotImpl(inner.Name, inner, siteConfigInner, logsConfigInner, parent, Manager);
         }
 
         public IFunctionDeploymentSlot GetByName(string name)
@@ -112,8 +112,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 return null;
             }
             var siteConfig = await Inner.GetConfigurationSlotAsync(resourceGroup, parentName, name, cancellationToken);
+            var logConfig = await Inner.GetDiagnosticLogsConfigurationSlotAsync(resourceGroup, parentName, name, cancellationToken);
 
-            var result = WrapModel(siteInner, siteConfig);
+            var result = WrapModel(siteInner, siteConfig, logConfig);
 
             return result;
         }
@@ -126,7 +127,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private async Task<IFunctionDeploymentSlot> PopulateModelAsync(SiteInner inner, IFunctionApp parent, CancellationToken cancellationToken = default(CancellationToken))
         {
             var siteConfig = await Inner.GetConfigurationSlotAsync(inner.ResourceGroup, parent.Name, Regex.Replace(inner.Name, ".*/", ""), cancellationToken);
-            var slot = WrapModel(inner, siteConfig);
+            var logConfig = await Inner.GetDiagnosticLogsConfigurationSlotAsync(inner.ResourceGroup, parent.Name, Regex.Replace(inner.Name, ".*/", ""), cancellationToken);
+            var slot = WrapModel(inner, siteConfig, logConfig);
             return slot;
         }
 

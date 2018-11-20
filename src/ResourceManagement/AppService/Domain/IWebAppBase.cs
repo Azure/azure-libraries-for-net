@@ -413,5 +413,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the root directory for the web app.
         /// </summary>
         string DocumentRoot { get; }
+
+        /// <summary>
+        /// Gets the diagnostic logs configuration.
+        /// </summary>
+        Microsoft.Azure.Management.AppService.Fluent.IWebAppDiagnosticLogs DiagnosticLogsConfig { get; }
     }
 }

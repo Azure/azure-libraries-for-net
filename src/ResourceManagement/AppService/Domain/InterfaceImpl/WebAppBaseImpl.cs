@@ -1512,5 +1512,38 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             return await this.GetAuthenticationConfigAsync(cancellationToken);
         }
+
+        /// <summary>
+        /// Gets Specifies the definition of a new diagnostic logs configuration.
+        /// </summary>
+        /// <summary>
+        /// Gets the first stage of an diagnostic logs definition.
+        /// </summary>
+        WebAppDiagnosticLogs.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.DefineDiagnosticLogsConfiguration()
+        {
+            return this.DefineDiagnosticLogsConfiguration();
+        }
+
+        /// <summary>
+        /// Gets Specifies the update of an existing diagnostic logs configuration.
+        /// </summary>
+        /// <summary>
+        /// Gets the first stage of an diagnostic logs update.
+        /// </summary>
+        WebAppDiagnosticLogs.Update.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.UpdateDiagnosticLogsConfiguration()
+        {
+            return this.UpdateDiagnosticLogsConfiguration();
+        }
+
+        /// <summary>
+        /// Gets the diagnostic logs configuration.
+        /// </summary>
+        Microsoft.Azure.Management.AppService.Fluent.IWebAppDiagnosticLogs Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.DiagnosticLogsConfig
+        {
+            get
+            {
+                return this.DiagnosticLogsConfig();
+            }
+        }
     }
 }

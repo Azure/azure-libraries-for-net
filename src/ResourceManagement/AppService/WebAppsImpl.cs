@@ -83,7 +83,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 return null;
             }
             var siteConfig = await Inner.GetConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
-            var webApp = WrapModel(inner, siteConfig);
+            var logConfig = await Inner.GetDiagnosticLogsConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
+            var webApp = WrapModel(inner, siteConfig, logConfig);
             return webApp;
         }
 
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return new WebAppImpl(name, new SiteInner
             {
                 Kind = "app"
-            }, null, Manager);
+            }, null, null, Manager);
         }
 
         ///GENMHASH:64609469010BC4A501B1C3197AE4F243:546B78C6345DE4CB959015B4F5C52E0D
@@ -109,16 +110,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             if (inner == null) {
                 return null;
             }
-            return new WebAppImpl(inner.Name, inner, null, Manager);
+            return new WebAppImpl(inner.Name, inner, null, null, Manager);
         }
 
-        private IWebApp WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner)
+        private IWebApp WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner, SiteLogsConfigInner logsConfigInner)
         {
             if (inner == null)
             {
                 return null;
             }
-            return new WebAppImpl(inner.Name, inner, siteConfigInner, Manager);
+            return new WebAppImpl(inner.Name, inner, siteConfigInner, logsConfigInner, Manager);
         }
 
         protected override async Task<IPage<SiteInner>> ListInnerAsync(CancellationToken cancellationToken)

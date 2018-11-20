@@ -79,8 +79,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        internal  FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, IAppServiceManager manager)
-            : base(name, innerObject, configObject, manager)
+        internal  FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig, IAppServiceManager manager)
+            : base(name, innerObject, configObject, logConfig, manager)
         {
             functionCredentials = new FunctionCredentials(this);
             kuduClient = new KuduClient(this);

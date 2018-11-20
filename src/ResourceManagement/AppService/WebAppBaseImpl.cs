@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private bool sourceControlToDelete;
         private WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> authentication;
         private bool authenticationToUpdate;
-        private SiteLogsConfigInner siteLogsConfig;
+        private WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> diagnosticLogs;
+        private bool diagnosticLogsToUpdate;
         private Func<SiteInner, CancellationToken, Task<IRoleAssignment>> msiRoleHandler;
 
         internal SiteConfigResourceInner SiteConfig
@@ -147,6 +148,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             this.sourceControl = null;
             this.sourceControlToDelete = false;
             this.authenticationToUpdate = false;
+            this.diagnosticLogsToUpdate = false;
             this.sslBindingsToCreate = new Dictionary<string, HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>>();
             if (Inner.HostNames != null)
             {
@@ -177,7 +179,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     hostNameSslStateMap[hostNameSslState.Name] = hostNameSslState;
                 }
             }
-            siteLogsConfig = null;
             msiRoleHandler = null;
             return this as FluentT;
         }
@@ -565,13 +566,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             if (authenticationToUpdate)
             {
                 await UpdateAuthenticationAsync(authentication.Inner, cancellationToken);
+                authenticationToUpdate = false;
             }
 
             // Log configuration
-            if (siteLogsConfig != null)
+            if (diagnosticLogsToUpdate)
             {
-                await UpdateDiagnosticLogsConfigAsync(siteLogsConfig, cancellationToken);
-                siteLogsConfig = null;
+                await UpdateDiagnosticLogsConfigAsync(diagnosticLogs.Inner, cancellationToken);
+                diagnosticLogsToUpdate = false;
             }
 
             // MSI Roles
@@ -1038,6 +1040,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.SiteConfig.NodeVersion;
         }
 
+        public IWebAppDiagnosticLogs DiagnosticLogsConfig()
+        {
+            return this.diagnosticLogs ?? new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(new SiteLogsConfigInner(), this);
+        }
+
         internal abstract Task<SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:FA07D0476A4A7B9F0FDA17B8DF0095F1:FC345DE9B0C87952B3DE42BCE0488ECD
@@ -1086,6 +1093,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string name,
             SiteInner innerObject,
             SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig,
             IAppServiceManager manager)
             : base(name, innerObject, manager)
         {
@@ -1094,6 +1102,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 innerObject.Kind = innerObject.Kind.Replace(";", ",");
             }
             this.SiteConfig = configObject;
+            if (logConfig != null)
+            {
+                this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(logConfig, this);
+            }
             NormalizeProperties();
         }
 
@@ -1347,6 +1359,24 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }, this);
         }
 
+        ///GENMHASH:25B2FDBD9EB841C5B5CB51416AA201E2:C7CBF798130499DAE19FEBFB0D01C4CD
+        public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> DefineDiagnosticLogsConfiguration()
+        {
+            if (diagnosticLogs == null)
+            {
+                return new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(new SiteLogsConfigInner(), this);
+            }
+            else
+            {
+                return diagnosticLogs;
+            }
+        }
+
+        ///GENMHASH:1EEB2486CC5A8E1568AF656BB5DC5647:0AC50F72000A2CCED4A40A32A084B0FC
+        public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> UpdateDiagnosticLogsConfiguration()
+        {
+            return DefineDiagnosticLogsConfiguration();
+        }
 
         ///GENMHASH:8E71F8927E941B28152FA821CDDF0634:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<Models.SiteAuthSettingsInner> GetAuthenticationAsync(CancellationToken cancellationToken = default(CancellationToken));
@@ -1385,6 +1415,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
+        ///GENMHASH:4272BDDC79EB4AC6B82FF51C6947035B:17241795E93479E353D960258CAD8BE3
+        internal FluentImplT WithDiagnosticLogs(WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> diagnosticLogs)
+        {
+            this.diagnosticLogs = diagnosticLogs;
+            diagnosticLogsToUpdate = true;
+            return (FluentImplT)this;
+        }
+
         public abstract Task<IReadOnlyDictionary<string, IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken));
         public abstract Task StartAsync(CancellationToken cancellationToken = default(CancellationToken));
         public abstract Task ApplySlotConfigurationsAsync(string slotName, CancellationToken cancellationToken = default(CancellationToken));
@@ -1410,34 +1448,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public FluentImplT WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
         {
-            siteLogsConfig = new SiteLogsConfigInner
-            {
-                HttpLogs = new HttpLogsConfig
-                {
-                    FileSystem = new FileSystemHttpLogsConfig
-                    {
-                        Enabled = true,
-                        RetentionInDays = retentionDays,
-                        RetentionInMb = quotaInMB
-                    }
-                }
-            };
-            return (FluentImplT)this;
+            return UpdateDiagnosticLogsConfiguration()
+                    .WithWebServerLogging()
+                    .WithWebServerLogsStoredOnFileSystem()
+                    .WithWebServerFileSystemQuotaInMB(quotaInMB)
+                    .WithLogRetentionDays(retentionDays)
+                    .Attach();
         }
 
         public FluentImplT WithContainerLoggingDisabled()
         {
-            siteLogsConfig = new SiteLogsConfigInner
-            {
-                HttpLogs = new HttpLogsConfig
-                {
-                    FileSystem = new FileSystemHttpLogsConfig
-                    {
-                        Enabled = false
-                    }
-                }
-            };
-            return (FluentImplT)this;
+            return UpdateDiagnosticLogsConfiguration()
+                    .WithoutWebServerLogging()
+                    .Attach();
         }
 
         public string SystemAssignedManagedServiceIdentityTenantId()

@@ -53,8 +53,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string name,
             SiteInner innerObject,
             SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig,
             IAppServiceManager manager)
-            : base(name, innerObject, configObject, manager)
+            : base(name, innerObject, configObject, logConfig, manager)
         {
             kuduClient = new KuduClient(this);
         }
