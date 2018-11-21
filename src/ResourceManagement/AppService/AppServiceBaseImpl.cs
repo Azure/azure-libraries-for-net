@@ -431,9 +431,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return await Manager.Inner.WebApps.GetContainerLogsZipAsync(ResourceGroupName, Name, cancellationToken);
         }
 
-        public override async Task UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken))
+        internal override async Task<Models.SiteLogsConfigInner> UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.WebApps.UpdateDiagnosticLogsConfigAsync(ResourceGroupName, Name, siteLogConfig, cancellationToken);
+            return await Manager.Inner.WebApps.UpdateDiagnosticLogsConfigAsync(ResourceGroupName, Name, siteLogConfig, cancellationToken);
         }
     }
 }

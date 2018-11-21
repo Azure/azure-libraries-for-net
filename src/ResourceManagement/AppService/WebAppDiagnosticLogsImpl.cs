@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:C32A2DA398B0223CB3C25743147A346E:4E9B6CB1DA6A4C3D726237EB6101C250
         public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithoutApplicationLogsStoredOnStorageBlob()
         {
-            if (Inner.ApplicationLogs != null && Inner.ApplicationLogs.FileSystem != null)
+            if (Inner.ApplicationLogs != null && Inner.ApplicationLogs.AzureBlobStorage != null)
             {
                 Inner.ApplicationLogs.AzureBlobStorage.Level = LogLevel.Off;
             }
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && (bool) Inner.HttpLogs.FileSystem.Enabled)
             {
-                Inner.HttpLogs.FileSystem.RetentionInDays = quotaInMB;
+                Inner.HttpLogs.FileSystem.RetentionInMb = quotaInMB;
             }
             return this;
         }

@@ -121,12 +121,12 @@ namespace Fluent.Tests.WebApp
                 {
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
                     }
                     catch { }
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
                     }
                     catch { }
                 }

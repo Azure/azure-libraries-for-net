@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:C03B1FAF31FB94362C083BAA7332E4A4:8B19C9BFB290F4258B198AA4A8232D84
         public FluentImplT WithoutJava()
         {
-            return WithJavaVersion(Fluent.JavaVersion.Parse("")).WithWebContainer(null);
+            return WithJavaVersion(Fluent.JavaVersion.Parse("")).WithWebContainer(Fluent.WebContainer.Parse(""));
         }
 
         ///GENMHASH:3A0791A760CE20BB60B662E45E1B5A20:4FF1C3A0EBAB86346DAA7BA2FF1129CE
@@ -565,15 +565,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Authentication
             if (authenticationToUpdate)
             {
-                await UpdateAuthenticationAsync(authentication.Inner, cancellationToken);
-                authenticationToUpdate = false;
+                this.authentication = new WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(
+                    await UpdateAuthenticationAsync(authentication.Inner, cancellationToken), this);
             }
 
             // Log configuration
             if (diagnosticLogsToUpdate)
             {
-                await UpdateDiagnosticLogsConfigAsync(diagnosticLogs.Inner, cancellationToken);
-                diagnosticLogsToUpdate = false;
+                this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(
+                    await UpdateDiagnosticLogsConfigAsync(diagnosticLogs.Inner, cancellationToken), this);
             }
 
             // MSI Roles
@@ -1246,6 +1246,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 this.SiteConfig.JavaContainer = null;
                 this.SiteConfig.JavaContainerVersion = null;
             }
+            else if (webContainer.Value == "")
+            {
+                this.SiteConfig.JavaContainer = "";
+                this.SiteConfig.JavaContainerVersion = "";
+            }
             else
             {
                 string[] containerInfo = webContainer.ToString().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -1392,7 +1397,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         ///GENMHASH:21D1748197F7ECC1EFA9660DF579B414:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<Models.SiteAuthSettingsInner> UpdateAuthenticationAsync(SiteAuthSettingsInner inner, CancellationToken cancellationToken = default(CancellationToken));
-        public abstract Task UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken));
+        internal abstract Task<Models.SiteLogsConfigInner> UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:C17839133E66320367CE2F5EF66B54F4:6C685EA1512F1D3FDFEFDFE594F83AA2
         public PlatformArchitecture PlatformArchitecture()
