@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> diagnosticLogs;
         private bool diagnosticLogsToUpdate;
         private Func<SiteInner, CancellationToken, Task<IRoleAssignment>> msiRoleHandler;
+        internal KuduClient kuduClient;
 
         internal SiteConfigResourceInner SiteConfig
         {
@@ -1107,6 +1108,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(logConfig, this);
             }
             NormalizeProperties();
+            kuduClient = new KuduClient(this);
         }
 
         public override void SetInner(SiteInner innerObject)
@@ -1576,5 +1578,55 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public abstract Stream GetContainerLogs();
         public abstract Task<Stream> GetContainerLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
         public abstract Task<Stream> GetContainerLogsZipAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        public virtual Stream StreamApplicationLogs()
+        {
+            return Extensions.Synchronize(() => StreamApplicationLogsAsync());
+        }
+
+        public virtual Stream StreamHttpLogs()
+        {
+            return Extensions.Synchronize(() => StreamHttpLogsAsync());
+        }
+
+        public virtual Stream StreamTraceLogs()
+        {
+            return Extensions.Synchronize(() => StreamTraceLogsAsync());
+        }
+
+        public virtual Stream StreamDeploymentLogs()
+        {
+            return Extensions.Synchronize(() => StreamDeploymentLogsAsync());
+        }
+
+        public virtual Stream StreamAllLogs()
+        {
+            return Extensions.Synchronize(() => StreamAllLogsAsync());
+        }
+
+        public virtual async Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamApplicationLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamHttpLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamHttpLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamTraceLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamTraceLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamDeploymentLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamDeploymentLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamAllLogsAsync(cancellationToken);
+        }
     }
 }

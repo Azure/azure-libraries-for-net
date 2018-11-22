@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private IStorageAccount storageAccountToSet;
         private IStorageAccount currentStorageAccount;
         private FunctionCredentials functionCredentials;
-        private KuduClient kuduClient;
         
         public Fluent.IFunctionDeploymentSlots DeploymentSlots()
         {
@@ -84,7 +83,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             : base(name, innerObject, configObject, logConfig, manager)
         {
             functionCredentials = new FunctionCredentials(this);
-            kuduClient = new KuduClient(this);
         }
 
         public FunctionAppImpl WithNewStorageAccount(string name, Storage.Fluent.Models.SkuName sku)
@@ -713,15 +711,59 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        public Stream StreamApplicationLogs()
+        public override Stream StreamApplicationLogs()
         {
             return Extensions.Synchronize(() => StreamApplicationLogsAsync());
         }
 
-        public async Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override Stream StreamHttpLogs()
+        {
+            return Extensions.Synchronize(() => StreamHttpLogsAsync());
+        }
+
+        public override Stream StreamTraceLogs()
+        {
+            return Extensions.Synchronize(() => StreamTraceLogsAsync());
+        }
+
+        public override Stream StreamDeploymentLogs()
+        {
+            return Extensions.Synchronize(() => StreamDeploymentLogsAsync());
+        }
+
+        public override Stream StreamAllLogs()
+        {
+            return Extensions.Synchronize(() => StreamAllLogsAsync());
+        }
+
+        public async override Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await PingAsync(cancellationToken);
-            return await kuduClient.StreamApplicationLogsAsync(cancellationToken);
+            return await base.StreamApplicationLogsAsync();
+        }
+
+        public async override Task<Stream> StreamHttpLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await PingAsync(cancellationToken);
+            return await base.StreamHttpLogsAsync();
+        }
+
+        public async override Task<Stream> StreamTraceLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await PingAsync(cancellationToken);
+            return await base.StreamTraceLogsAsync();
+        }
+
+        public async override Task<Stream> StreamDeploymentLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await PingAsync(cancellationToken);
+            return await base.StreamDeploymentLogsAsync();
+        }
+
+        public async override Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await PingAsync(cancellationToken);
+            return await base.StreamAllLogsAsync();
         }
 
         private async Task PingAsync(CancellationToken cancellationToken = default(CancellationToken))

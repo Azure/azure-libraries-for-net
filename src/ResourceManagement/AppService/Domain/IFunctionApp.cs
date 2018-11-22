@@ -95,15 +95,5 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="functionName">The name of the function.</param>
         /// <return>The function key.</return>
         Task<System.Collections.Generic.IReadOnlyDictionary<string,string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Gets a open stream to the application logs.
-        /// </summary>
-        Stream StreamApplicationLogs();
-
-        /// <summary>
-        /// Gets a open stream to the application logs.
-        /// </summary>
-        Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
