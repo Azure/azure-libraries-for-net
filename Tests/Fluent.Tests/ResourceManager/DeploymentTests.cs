@@ -100,7 +100,7 @@ namespace Fluent.Tests.ResourceManager
                         .WithTemplateLink(templateUri, contentVersion)
                         .WithParametersLink(parametersUri, contentVersion)
                         .WithMode(DeploymentMode.Complete)
-                        .BeginCreate();
+                        .BeginCreateAsync().Result;
                     var deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
                     Assert.Equal(createdDeployment.CorrelationId, deployment.CorrelationId);
                     Assert.Equal(deployment.Name, deploymentName2);
