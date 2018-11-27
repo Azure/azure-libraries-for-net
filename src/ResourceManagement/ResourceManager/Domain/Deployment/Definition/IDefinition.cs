@@ -8,6 +8,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Core;
     using Management.ResourceManager.Fluent.Models;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The first stage of deployment definition.
@@ -38,6 +40,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
     {
         IDeployment BeginCreate();
 
+        Task<IDeployment> BeginCreateAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
     /// <summary>
     /// Container interface for all the deployment definitions.

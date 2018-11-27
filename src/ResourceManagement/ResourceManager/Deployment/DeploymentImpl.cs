@@ -373,9 +373,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         #endregion
 
         #endregion
-
-        #region actions 
-
+        
         public void Cancel()
         {
             Extensions.Synchronize(() => this.CancelAsync());
@@ -399,9 +397,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IDeployment BeginCreate()
         {
+            return Extensions.Synchronize(() => this.BeginCreateAsync());
+        }
+
+        public async Task<IDeployment> BeginCreateAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
             if (creatableResourceGroup != null)
             {
-                creatableResourceGroup.Create();
+                await creatableResourceGroup.CreateAsync(cancellationToken);
             }
             Models.Deployment inner = new Models.Deployment()
             {
@@ -414,11 +417,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     ParametersLink = ParametersLink
                 }
             };
-            SetInner(Extensions.Synchronize(() => Manager.Inner.Deployments.BeginCreateOrUpdateAsync(resourceGroupName, Name, inner.Properties)));
+            SetInner(await Manager.Inner.Deployments.BeginCreateOrUpdateAsync(resourceGroupName, Name, inner.Properties, cancellationToken));
             return this;
         }
-
-        #endregion
 
         #region Implementation of ICreatable interface 
 
