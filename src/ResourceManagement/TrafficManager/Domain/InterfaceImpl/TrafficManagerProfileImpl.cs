@@ -488,9 +488,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
         /// <return>The next stage of the traffic manager profile update.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringConfiguration.WithHttpMonitoring(int port, string path)
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringConfiguration.WithHttpMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null)
         {
-            return this.WithHttpMonitoring(port, path);
+            return this.WithHttpMonitoring(port, path, probingInterval, probeTimeout, toleratedNumberOfFailures, expectedStatusCodeRanges, customHeaderSettings);
         }
 
         /// <summary>
@@ -510,9 +510,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
         /// <return>The next stage of the traffic manager profile update.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringConfiguration.WithHttpsMonitoring(int port, string path)
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringConfiguration.WithHttpsMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null)
         {
-            return this.WithHttpsMonitoring(port, path);
+            return this.WithHttpsMonitoring(port, path, probingInterval, probeTimeout, toleratedNumberOfFailures, expectedStatusCodeRanges, customHeaderSettings);
         }
 
         /// <summary>
@@ -532,9 +532,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration.WithHttpMonitoring(int port, string path)
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration.WithHttpMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null)
         {
-            return this.WithHttpMonitoring(port, path);
+            return this.WithHttpMonitoring(port, path, probingInterval, probeTimeout, toleratedNumberOfFailures, expectedStatusCodeRanges, customHeaderSettings);
         }
 
         /// <summary>
@@ -554,9 +554,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration.WithHttpsMonitoring(int port, string path)
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration.WithHttpsMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null)
         {
-            return this.WithHttpsMonitoring(port, path);
+            return this.WithHttpsMonitoring(port, path, probingInterval, probeTimeout, toleratedNumberOfFailures, expectedStatusCodeRanges, customHeaderSettings);
         }
     }
 }

@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     using Microsoft.Azure.Management.TrafficManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Definition;
+    using System.Collections.Generic;
+    using MonitorConfigExpectedStatusCodeRangesItem = Microsoft.Azure.Management.TrafficManager.Fluent.Models.MonitorConfigExpectedStatusCodeRangesItem;
+    using MonitorConfigCustomHeadersItem = Microsoft.Azure.Management.TrafficManager.Fluent.Models.MonitorConfigCustomHeadersItem;
 
     /// <summary>
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
@@ -18,6 +21,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTtl,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithProfileStatus,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficViewEnrollment,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint
     {
     }
@@ -41,7 +45,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     public interface IDefinition :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IBlank,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithLeafDomainLabel,
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod,        
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate
     {
     }
@@ -127,8 +131,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// </summary>
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
+        /// <param name="probingInterval">The probing interval in seconds.</param>
+        /// <param name="probeTimeout">The probe timeout before failure in seconds.</param>
+        /// <param name="toleratedNumberOfFailures">The total number of failures tolerated before endpoint is disabled.</param>
+        /// <param name="expectedStatusCodeRanges">The expected status code ranges for a successful probe.</param>
+        /// <param name="customHeaderSettings">The custom headers to be used with probing.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithHttpMonitoring(int port, string path);
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithHttpMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null);
 
         /// <summary>
         /// Specify to use HTTPS monitoring for the endpoints that checks for HTTPS 200 response from the path '/'
@@ -143,8 +152,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// </summary>
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
+        /// <param name="probingInterval">The probing interval in seconds.</param>
+        /// <param name="probeTimeout">The probe timeout before failure in seconds.</param>
+        /// <param name="toleratedNumberOfFailures">The total number of failures tolerated before endpoint is disabled.</param>
+        /// <param name="expectedStatusCodeRanges">The expected status code ranges for a successful probe.</param>
+        /// <param name="customHeaderSettings">The custom headers to be used with probing.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithHttpsMonitoring(int port, string path);
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithHttpsMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null);
     }
 
     /// <summary>
@@ -208,5 +222,23 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// <param name="name">The name for the endpoint.</param>
         /// <return>The stage representing configuration for the endpoint.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Definition.IAzureTargetEndpointBlank<Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate> DefineAzureTargetEndpoint(string name);
+    }
+
+    /// <summary>
+    /// The stage of the traffic manager profile definition allowing to disable the traffic view feature.
+    /// </summary>
+    public interface IWithTrafficViewEnrollment
+    {
+        /// <summary>
+        /// Specify that the traffic view feature needs to be disabled.        
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithTrafficViewDisabled();
+
+        /// <summary>
+        /// Specify that the traffic view feature needs to be enabled.        
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithTrafficViewEnabled();
     }
 }

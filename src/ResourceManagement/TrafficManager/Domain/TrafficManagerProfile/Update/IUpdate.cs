@@ -4,11 +4,15 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.TrafficManager.Fluent;
+    using Microsoft.Azure.Management.TrafficManager.Fluent;    
     using Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateAzureEndpoint;
     using Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition;
     using Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateExternalEndpoint;
     using Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateNestedProfileEndpoint;
+    using System.Collections.Generic;
+    using MonitorConfigExpectedStatusCodeRangesItem = Microsoft.Azure.Management.TrafficManager.Fluent.Models.MonitorConfigExpectedStatusCodeRangesItem;
+    using MonitorConfigCustomHeadersItem = Microsoft.Azure.Management.TrafficManager.Fluent.Models.MonitorConfigCustomHeadersItem;
+
 
     /// <summary>
     /// The stage of the traffic manager profile update allowing to specify the endpoint monitoring configuration.
@@ -28,8 +32,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// </summary>
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
+        /// <param name="probingInterval">The probing interval in seconds.</param>
+        /// <param name="probeTimeout">The probe timeout before failure in seconds.</param>
+        /// <param name="toleratedNumberOfFailures">The total number of failures tolerated before endpoint is disabled.</param>
+        /// <param name="expectedStatusCodeRanges">The expected status code ranges for a successful probe.</param>
+        /// <param name="customHeaderSettings">The custom headers to be used with probing.</param>
         /// <return>The next stage of the traffic manager profile update.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithHttpMonitoring(int port, string path);
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithHttpMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null);
 
         /// <summary>
         /// Specify to use HTTPS monitoring for the endpoints that checks for HTTPS 200 response from the path '/'
@@ -44,8 +53,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// </summary>
         /// <param name="port">The monitoring port.</param>
         /// <param name="path">The monitoring path.</param>
+        /// <param name="probingInterval">The probing interval in seconds.</param>
+        /// <param name="probeTimeout">The probe timeout before failure in seconds.</param>
+        /// <param name="toleratedNumberOfFailures">The total number of failures tolerated before endpoint is disabled.</param>
+        /// <param name="expectedStatusCodeRanges">The expected status code ranges for a successful probe.</param>
+        /// <param name="customHeaderSettings">The custom headers to be used with probing.</param>
         /// <return>The next stage of the traffic manager profile update.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithHttpsMonitoring(int port, string path);
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithHttpsMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null);
     }
 
     /// <summary>
@@ -72,6 +86,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithEndpoint,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTtl,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithProfileStatus,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficViewEnrollment,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate>
     {
     }
@@ -213,5 +228,23 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// </summary>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithSubnetBasedRouting();
+    }
+
+    /// <summary>
+    /// The stage of the traffic manager profile definition allowing to disable the traffic view feature.
+    /// </summary>
+    public interface IWithTrafficViewEnrollment
+    {
+        /// <summary>
+        /// Specify that the traffic view feature needs to be disabled.        
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithTrafficViewDisabled();
+
+        /// <summary>
+        /// Specify that the traffic view feature needs to be enabled.        
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithTrafficViewEnabled();
     }
 }

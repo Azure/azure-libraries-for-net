@@ -71,5 +71,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// the profile, and the configured profile status.
         /// </summary>
         Microsoft.Azure.Management.TrafficManager.Fluent.ProfileMonitorStatus MonitorStatus { get; }
+
+        System.Threading.Tasks.Task<HeatMapModelInner> GetHeatMapAsync();
+
+        System.Threading.Tasks.Task<HeatMapModelInner> GetHeatMapAsync(GeoPoint topLeft, GeoPoint bottomRight);
     }
 }

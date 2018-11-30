@@ -31,12 +31,16 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         private const string profileStatusDisabled = "Disabled";
         private const string profileStatusEnabled = "Enabled";
         private TrafficManagerEndpointsImpl endpoints;
+        private HeatMapOperations heatMapOperations;
 
         ///GENMHASH:C5CC2EE74F2176AA6473857322F7C248:4D37314EF7F75B745F5D65EF257C1402
         internal TrafficManagerProfileImpl(string name, ProfileInner innerModel, ITrafficManager trafficManager)
             : base(name, innerModel, trafficManager)
         {
             endpoints = new TrafficManagerEndpointsImpl(this);
+
+            var test = this.Manager.Inner as TrafficManagerManagementClient;
+            heatMapOperations = new HeatMapOperations(test);
         }
 
         ///GENMHASH:C7D63CAAB4D5C78DCBABA455FA741326:50737CF16CD493FD8BB7A09EF461690C
@@ -230,11 +234,25 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         ///GENMHASH:088F115956764D909356F941714DD214:72C3991B01AC2306292D697D6CB9A5EE
-        public TrafficManagerProfileImpl WithHttpMonitoring(int port, string path)
+        public TrafficManagerProfileImpl WithHttpMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null)
         {
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "http";
+            Inner.MonitorConfig.IntervalInSeconds = probingInterval;
+            Inner.MonitorConfig.TimeoutInSeconds = probeTimeout;
+            Inner.MonitorConfig.ToleratedNumberOfFailures = toleratedNumberOfFailures;
+
+            if (customHeaderSettings != null)
+            {
+                Inner.MonitorConfig.CustomHeaders = customHeaderSettings.Select(s => new MonitorConfigCustomHeadersItem(s.Name, s.Value)).ToList();
+            }
+            
+            if (expectedStatusCodeRanges != null)
+            {
+                Inner.MonitorConfig.ExpectedStatusCodeRanges = expectedStatusCodeRanges.ToList();
+            }
+
             return this;
         }
 
@@ -245,11 +263,25 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         ///GENMHASH:339D7124F9EE53875E3B1321B2E2D9FD:A28860E9058E7040BCE32AA17CDB136B
-        public TrafficManagerProfileImpl WithHttpsMonitoring(int port, string path)
+        public TrafficManagerProfileImpl WithHttpsMonitoring(int port, string path, long? probingInterval = null, long? probeTimeout = null, long? toleratedNumberOfFailures = null, IEnumerable<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRanges = null, IEnumerable<MonitorConfigCustomHeadersItem> customHeaderSettings = null)
         {
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "https";
+            Inner.MonitorConfig.IntervalInSeconds = probingInterval;
+            Inner.MonitorConfig.TimeoutInSeconds = probeTimeout;
+            Inner.MonitorConfig.ToleratedNumberOfFailures = toleratedNumberOfFailures;
+
+            if (customHeaderSettings != null)
+            {
+                Inner.MonitorConfig.CustomHeaders = customHeaderSettings.Select(s => new MonitorConfigCustomHeadersItem(s.Name, s.Value)).ToList();
+            }
+
+            if (expectedStatusCodeRanges != null)
+            {
+                Inner.MonitorConfig.ExpectedStatusCodeRanges = expectedStatusCodeRanges.ToList();
+            }
+
             return this;
         }
 
@@ -309,5 +341,44 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             return this.endpoints.UpdateNestedProfileEndpoint(name);
         }
+
+        public IWithCreate WithTrafficViewDisabled()
+        {
+            Inner.TrafficViewEnrollmentStatus = "Disabled";
+            return this;
+        }
+
+        public IWithCreate WithTrafficViewEnabled()
+        {
+            Inner.TrafficViewEnrollmentStatus = "Enabled";
+            return this;
+        }
+
+        IUpdate TrafficManagerProfile.Update.IWithTrafficViewEnrollment.WithTrafficViewDisabled()
+        {
+            Inner.TrafficViewEnrollmentStatus = "Disabled";
+            return this;
+        }
+
+        IUpdate TrafficManagerProfile.Update.IWithTrafficViewEnrollment.WithTrafficViewEnabled()
+        {
+            Inner.TrafficViewEnrollmentStatus = "Enabled";
+            return this;
+        }
+
+        public async Task<HeatMapModelInner> GetHeatMapAsync()
+        {
+            return await this.heatMapOperations.GetAsync(this.ResourceGroupName, this.Name);
+        }
+
+        public async Task<HeatMapModelInner> GetHeatMapAsync(GeoPoint topLeft, GeoPoint bottomRight)
+        {
+            var topLeftPair = new List<double?> { topLeft.Latitude, topLeft.Longitude };
+            var botRightPair = new List<double?> { bottomRight.Latitude, bottomRight.Longitude };
+
+            return await this.heatMapOperations.GetAsync(this.ResourceGroupName, this.Name, topLeftPair, botRightPair);
+        }
+
+        
     }
 }
