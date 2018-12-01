@@ -2,19 +2,11 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition;
-    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update;
-    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
-    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Definition;
-    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition;
-    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
-    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     internal partial class RegistryImpl
     {
@@ -329,6 +321,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         Registry.Update.IUpdate Registry.Update.IWithSkuBeta.WithPremiumSku()
         {
             return this.WithPremiumSku();
+        }
+
+        /// <summary>
+        /// Gets returns entry point to manage the build tasks for the container registry.
+        /// </summary>
+        RegistryTaskRun.Definition.IBlankFromRegistry Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.ScheduleRun()
+        {
+            return this.ScheduleRun();
         }
     }
 }

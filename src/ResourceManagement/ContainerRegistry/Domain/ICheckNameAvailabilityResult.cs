@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         bool IsAvailable { get; }
 
         /// <summary>
-        /// Gets the reason why the user-provided name for the container registry could not be used.
-        /// </summary>
-        string UnavailabilityReason { get; }
-
-        /// <summary>
         /// Gets the error message that provides more detail for the reason why the name is not available.
         /// </summary>
         string UnavailabilityMessage { get; }
+
+        /// <summary>
+        /// Gets the reason why the user-provided name for the container registry could not be used.
+        /// </summary>
+        string UnavailabilityReason { get; }
     }
 }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
     /// The  task will have all information to schedule a run against it.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TaskInner : Rest.Azure.Resource
+    public partial class TaskInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the TaskInner class.

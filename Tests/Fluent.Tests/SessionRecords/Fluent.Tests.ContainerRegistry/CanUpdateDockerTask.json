@@ -1,0 +1,353 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourcegroups/rgacr7982?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmIwODU0NjAtNWYyMS00NzdlLWJhNDQtMTAzNTA0NmU5MTAxL3Jlc291cmNlZ3JvdXBzL3JnYWNyNzk4Mj9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "08db41ea-ae97-43a0-930f-917fc542b563"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.17.0.0",
+          "MacAddressHash/cf4abc88ec35afdb5bdcd5261ffce0ca8360bbdc5aed5c4d77c1f9b874f4c20b"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 01:30:45 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "76328e13-b0d6-4272-b998-bb1bbcdaedc7"
+        ],
+        "x-ms-correlation-request-id": [
+          "76328e13-b0d6-4272-b998-bb1bbcdaedc7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T013046Z:76328e13-b0d6-4272-b998-bb1bbcdaedc7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "178"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982\",\r\n  \"name\": \"rgacr7982\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982/providers/Microsoft.ContainerRegistry/registries/acr7589?api-version=2017-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmIwODU0NjAtNWYyMS00NzdlLWJhNDQtMTAzNTA0NmU5MTAxL3Jlc291cmNlR3JvdXBzL3JnYWNyNzk4Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclJlZ2lzdHJ5L3JlZ2lzdHJpZXMvYWNyNzU4OT9hcGktdmVyc2lvbj0yMDE3LTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\"\r\n  },\r\n  \"properties\": {\r\n    \"adminUserEnabled\": true\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ef4968cd-f9b0-4c29-83db-c61f4e528e6f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ContainerRegistry.Fluent.ContainerRegistryManagementClient/1.17.0.0",
+          "MacAddressHash/cf4abc88ec35afdb5bdcd5261ffce0ca8360bbdc5aed5c4d77c1f9b874f4c20b"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "172"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 01:30:46 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "8d4aae30-e189-4856-b2c6-7579387c5041"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d4aae30-e189-4856-b2c6-7579387c5041"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T013047Z:8d4aae30-e189-4856-b2c6-7579387c5041"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "520"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\"\r\n  },\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\",\r\n  \"id\": \"/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982/providers/Microsoft.ContainerRegistry/registries/acr7589\",\r\n  \"name\": \"acr7589\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"loginServer\": \"acr7589.azurecr.io\",\r\n    \"creationDate\": \"2018-12-04T01:30:46.782003Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"adminUserEnabled\": true,\r\n    \"networkRuleSet\": {\r\n      \"defaultAction\": \"Allow\",\r\n      \"virtualNetworkRules\": []\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982/providers/Microsoft.ContainerRegistry/registries/acr7589/tasks/ftere8142?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmIwODU0NjAtNWYyMS00NzdlLWJhNDQtMTAzNTA0NmU5MTAxL3Jlc291cmNlR3JvdXBzL3JnYWNyNzk4Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclJlZ2lzdHJ5L3JlZ2lzdHJpZXMvYWNyNzU4OS90YXNrcy9mdGVyZTgxNDI/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platform\": {\r\n      \"os\": \"Linux\",\r\n      \"architecture\": \"amd64\"\r\n    },\r\n    \"agentConfiguration\": {\r\n      \"cpu\": 2\r\n    },\r\n    \"step\": {\r\n      \"type\": \"Docker\",\r\n      \"dockerFilePath\": \"/samples/java/task/Dockerfile\",\r\n      \"imageNames\": [\r\n        \"java-sample:{{.Run.ID}}\"\r\n      ],\r\n      \"isPushEnabled\": true,\r\n      \"noCache\": false\r\n    },\r\n    \"trigger\": {\r\n      \"sourceTriggers\": [\r\n        {\r\n          \"sourceRepository\": {\r\n            \"sourceControlType\": \"Github\",\r\n            \"repositoryUrl\": \"https://github.com/anuchandy/docker_task_test.git\",\r\n            \"branch\": \"master\",\r\n            \"sourceControlAuthProperties\": {\r\n              \"tokenType\": \"PAT\",\r\n              \"token\": \"dummy_token\"\r\n            }\r\n          },\r\n          \"sourceTriggerEvents\": [\r\n            \"commit\",\r\n            \"pullrequest\"\r\n          ],\r\n          \"name\": \"SampleSourceTrigger\"\r\n        }\r\n      ],\r\n      \"baseImageTrigger\": {\r\n        \"baseImageTriggerType\": \"Runtime\",\r\n        \"name\": \"SampleBaseImageTrigger\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9551c042-dca1-453a-a0b7-4fac12b8c1fb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ContainerRegistry.Fluent.ContainerRegistryManagementClient/1.17.0.0",
+          "MacAddressHash/cf4abc88ec35afdb5bdcd5261ffce0ca8360bbdc5aed5c4d77c1f9b874f4c20b"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1140"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 01:30:47 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "nginx/1.13.9"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "30e94a68-cf2b-43d1-a957-3baf24a4ddbb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-request-id": [
+          "7c248a17-5c0e-468f-aef4-71691c349e84"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T013048Z:30e94a68-cf2b-43d1-a957-3baf24a4ddbb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "917"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ContainerRegistry/registries/tasks\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationDate\": \"2018-12-03T17:30:48.3859465-08:00\",\r\n    \"platform\": {\r\n      \"os\": \"Linux\",\r\n      \"architecture\": \"amd64\"\r\n    },\r\n    \"agentConfiguration\": {\r\n      \"cpu\": 2\r\n    },\r\n    \"timeout\": 0,\r\n    \"step\": {\r\n      \"type\": \"Docker\",\r\n      \"imageNames\": [\r\n        \"java-sample:{{.Run.ID}}\"\r\n      ],\r\n      \"isPushEnabled\": true,\r\n      \"noCache\": false,\r\n      \"dockerFilePath\": \"/samples/java/task/Dockerfile\"\r\n    },\r\n    \"trigger\": {\r\n      \"sourceTriggers\": [\r\n        {\r\n          \"sourceRepository\": {\r\n            \"sourceControlType\": \"Github\",\r\n            \"repositoryUrl\": \"https://github.com/anuchandy/docker_task_test.git\",\r\n            \"branch\": \"master\"\r\n          },\r\n          \"sourceTriggerEvents\": [\r\n            \"commit\"\r\n          ],\r\n          \"name\": \"SampleSourceTrigger\"\r\n        }\r\n      ],\r\n      \"baseImageTrigger\": {\r\n        \"baseImageTriggerType\": \"Runtime\",\r\n        \"name\": \"SampleBaseImageTrigger\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982/providers/Microsoft.ContainerRegistry/registries/acr7589/tasks/ftere8142\",\r\n  \"name\": \"ftere8142\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982/providers/Microsoft.ContainerRegistry/registries/acr7589/tasks/ftere8142?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmIwODU0NjAtNWYyMS00NzdlLWJhNDQtMTAzNTA0NmU5MTAxL3Jlc291cmNlR3JvdXBzL3JnYWNyNzk4Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclJlZ2lzdHJ5L3JlZ2lzdHJpZXMvYWNyNzU4OS90YXNrcy9mdGVyZTgxNDI/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"step\": {\r\n      \"type\": \"Docker\",\r\n      \"isPushEnabled\": false,\r\n      \"noCache\": true,\r\n      \"dockerFilePath\": \"/samples/java/task/Dockerfile\"\r\n    },\r\n    \"trigger\": {\r\n      \"sourceTriggers\": [\r\n        {\r\n          \"sourceRepository\": {\r\n            \"sourceControlType\": \"Github\",\r\n            \"repositoryUrl\": \"https://github.com/anuchandy/docker_task_test.git\",\r\n            \"branch\": \"master\"\r\n          },\r\n          \"sourceTriggerEvents\": [\r\n            \"commit\"\r\n          ],\r\n          \"name\": \"SampleSourceTrigger\"\r\n        }\r\n      ],\r\n      \"baseImageTrigger\": {\r\n        \"baseImageTriggerType\": \"Runtime\",\r\n        \"name\": \"SampleBaseImageTrigger\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "83fa2a57-4c3c-4aa4-aa63-503da9c5de58"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ContainerRegistry.Fluent.ContainerRegistryManagementClient/1.17.0.0",
+          "MacAddressHash/cf4abc88ec35afdb5bdcd5261ffce0ca8360bbdc5aed5c4d77c1f9b874f4c20b"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "715"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 01:30:48 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "nginx/1.13.9"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "9935ce3a-c048-424a-a025-1ceb91d694e7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-request-id": [
+          "2e6fd1e8-7fbc-473b-b7c1-7190c3e205e4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T013049Z:9935ce3a-c048-424a-a025-1ceb91d694e7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "917"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ContainerRegistry/registries/tasks\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationDate\": \"2018-12-03T17:30:48.3859465-08:00\",\r\n    \"platform\": {\r\n      \"os\": \"Linux\",\r\n      \"architecture\": \"amd64\"\r\n    },\r\n    \"agentConfiguration\": {\r\n      \"cpu\": 2\r\n    },\r\n    \"timeout\": 0,\r\n    \"step\": {\r\n      \"type\": \"Docker\",\r\n      \"imageNames\": [\r\n        \"java-sample:{{.Run.ID}}\"\r\n      ],\r\n      \"isPushEnabled\": false,\r\n      \"noCache\": true,\r\n      \"dockerFilePath\": \"/samples/java/task/Dockerfile\"\r\n    },\r\n    \"trigger\": {\r\n      \"sourceTriggers\": [\r\n        {\r\n          \"sourceRepository\": {\r\n            \"sourceControlType\": \"Github\",\r\n            \"repositoryUrl\": \"https://github.com/anuchandy/docker_task_test.git\",\r\n            \"branch\": \"master\"\r\n          },\r\n          \"sourceTriggerEvents\": [\r\n            \"commit\"\r\n          ],\r\n          \"name\": \"SampleSourceTrigger\"\r\n        }\r\n      ],\r\n      \"baseImageTrigger\": {\r\n        \"baseImageTriggerType\": \"Runtime\",\r\n        \"name\": \"SampleBaseImageTrigger\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/rgacr7982/providers/Microsoft.ContainerRegistry/registries/acr7589/tasks/ftere8142\",\r\n  \"name\": \"ftere8142\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourcegroups/rgacr7982?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmIwODU0NjAtNWYyMS00NzdlLWJhNDQtMTAzNTA0NmU5MTAxL3Jlc291cmNlZ3JvdXBzL3JnYWNyNzk4Mj9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c2cfaf88-5bbd-4671-8a84-2642635a92a9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.17.0.0",
+          "MacAddressHash/cf4abc88ec35afdb5bdcd5261ffce0ca8360bbdc5aed5c4d77c1f9b874f4c20b"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 01:30:50 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FDUjc5ODItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2017-05-10"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "77195e88-70fc-4985-9927-3da42be5aa83"
+        ],
+        "x-ms-correlation-request-id": [
+          "77195e88-70fc-4985-9927-3da42be5aa83"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T013050Z:77195e88-70fc-4985-9927-3da42be5aa83"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    }
+  ],
+  "Names": {
+    "CanUpdateDockerTask": [
+      "acr7589",
+      "rgacr7982",
+      "ftere8142"
+    ]
+  },
+  "Variables": {
+    "ServicePrincipal": "6243632f-acca-4141-a244-8402f711857b",
+    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101"
+  }
+}

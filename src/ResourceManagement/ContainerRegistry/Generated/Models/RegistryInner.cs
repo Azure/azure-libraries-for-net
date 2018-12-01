@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
     /// An object that represents a container registry.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RegistryInner : Rest.Azure.Resource
+    public partial class RegistryInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the RegistryInner class.
