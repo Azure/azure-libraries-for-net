@@ -46,6 +46,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         where DefAfterGroupT : class
         where UpdateT : class, IUpdate<FluentT>
     {
+        private static readonly Dictionary<AzureEnvironment, string> _dnsMap = new Dictionary<AzureEnvironment, string>
+        {
+            { AzureEnvironment.AzureGlobalCloud, "azurewebsites.net" },
+            { AzureEnvironment.AzureChinaCloud, "chinacloudsites.cn" },
+            { AzureEnvironment.AzureGermanCloud, "azurewebsites.de" },
+            { AzureEnvironment.AzureUSGovernment, "azurewebsites.us" }
+        };
+
         private SiteConfigResourceInner _siteConfig;
         private ISet<string> hostNamesSet;
         private ISet<string> enabledHostNamesSet;
@@ -760,7 +768,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:16DA81E02BFF9B1983571901E1CA6AB9:D68A946D17769FFBF0FF5DAAE2212551
         public string DefaultHostName()
         {
-            return Inner.DefaultHostName;
+            if (Inner.DefaultHostName != null)
+            {
+                return Inner.DefaultHostName;
+            }
+            else
+            {
+
+                AzureEnvironment environment = ResourceUtils.GuessAzureEnvironment(Manager.RestClient);
+                string dns = _dnsMap[environment];
+                string leaf = Name;
+                if (this is IDeploymentSlot ds)
+                {
+                    leaf = ds.Parent.Name + "-" + leaf;
+                }
+                else if (this is IFunctionDeploymentSlot fds)
+                {
+                    leaf = fds.Parent.Name + "-" + leaf;
+                }
+                return leaf + "." + dns;
+            }
         }
 
         ///GENMHASH:7A3D1E4A59735B1A92153B49F406A2EA:28A9E89FFAE2C02A8D6559195D5529FC

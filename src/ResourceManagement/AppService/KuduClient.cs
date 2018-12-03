@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("https://{0}.scm.azurewebsites.net", webAppBase.Name);
+            string host = webAppBase.DefaultHostName.ToLower().Replace("http://", "").Replace("https://", "");
+            string[] parts = host.Split(new char[] { '.' }, 2);
+            var _baseUrl = string.Format("https://{0}.scm.{1}", parts[0], parts[1]);
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/logstream/application").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -130,7 +132,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("https://{0}.scm.azurewebsites.net", webAppBase.Name);
+            string host = webAppBase.DefaultHostName.ToLower().Replace("http://", "").Replace("https://", "");
+            string[] parts = host.Split(new char[] { '.' }, 2);
+            var _baseUrl = string.Format("https://{0}.scm.{1}", parts[0], parts[1]);
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/logstream/http").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -222,7 +226,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("https://{0}.scm.azurewebsites.net", webAppBase.Name);
+            string host = webAppBase.DefaultHostName.ToLower().Replace("http://", "").Replace("https://", "");
+            string[] parts = host.Split(new char[] { '.' }, 2);
+            var _baseUrl = string.Format("https://{0}.scm.{1}", parts[0], parts[1]);
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/logstream/kudu/trace").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -314,7 +320,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("https://{0}.scm.azurewebsites.net", webAppBase.Name);
+            string host = webAppBase.DefaultHostName.ToLower().Replace("http://", "").Replace("https://", "");
+            string[] parts = host.Split(new char[] { '.' }, 2);
+            var _baseUrl = string.Format("https://{0}.scm.{1}", parts[0], parts[1]);
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/logstream/kudu/deployment").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -406,7 +414,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("https://{0}.scm.azurewebsites.net", webAppBase.Name);
+            string host = webAppBase.DefaultHostName.ToLower().Replace("http://", "").Replace("https://", "");
+            string[] parts = host.Split(new char[] { '.' }, 2);
+            var _baseUrl = string.Format("https://{0}.scm.{1}", parts[0], parts[1]);
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/logstream").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -504,7 +514,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "UploadFileViaBody", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("https://{0}.scm.azurewebsites.net", webAppBase.Name);
+            string host = webAppBase.DefaultHostName.ToLower().Replace("http://", "").Replace("https://", "");
+            string[] parts = host.Split(new char[] { '.' }, 2);
+            var _baseUrl = string.Format("https://{0}.scm.{1}", parts[0], parts[1]);
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/wardeploy").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
