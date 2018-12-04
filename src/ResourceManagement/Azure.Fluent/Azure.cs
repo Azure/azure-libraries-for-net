@@ -446,6 +446,22 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IRegistryTasks ContainerRegistryTasks
+        {
+            get
+            {
+                return registryManager.ContainerRegistryTasks;
+            }
+        }
+
+        public IRegistryTaskRuns RegistryTaskRuns
+        {
+            get
+            {
+                return registryManager.RegistryTaskRuns;
+            }
+        }
+
         public IAccessManagement AccessManagement
         {
             get
@@ -1148,10 +1164,19 @@ namespace Microsoft.Azure.Management.Fluent
         /// </summary>
         IAlertRules AlertRules { get; }
 
-
         /// <summary>
         /// Entry point to Azure Monitor Autoscale management.
         /// </summary>
         IAutoscaleSettings AutoscaleSettings { get; }
+
+        /// <summary>
+        /// Entry point to Azure Container registry tasks management.
+        /// </summary>
+        IRegistryTasks ContainerRegistryTasks { get; }
+
+        /// <summary>
+        /// Entry point to Azure Container registry task runs management.
+        /// </summary>
+        IRegistryTaskRuns RegistryTaskRuns { get; }
     }
 }

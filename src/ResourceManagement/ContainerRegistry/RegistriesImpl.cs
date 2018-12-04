@@ -169,5 +169,18 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             return this.Manager.Inner.Registries.ListByResourceGroupNextAsync(link, cancellationToken: cancellationToken);
         }
+
+        ///GENMHASH:5506F8122B26409DBE3F54DBAAF24C98:8BB9BEFA47265B8959D682B8516FD65E
+        public ISourceUploadDefinition GetBuildSourceUploadUrl(string rgName, string acrName)
+        {
+            return Extensions.Synchronize(() => this.GetBuildSourceUploadUrlAsync(rgName, acrName));
+        }
+
+        ///GENMHASH:034921EB1C4DD98E6705855EB7BDFAD7:67B8CBC296802144ECA22AADE9C60B74
+        public async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.ISourceUploadDefinition> GetBuildSourceUploadUrlAsync(string rgName, string acrName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var sourceUploadDefinitionInner = await this.Manager.Inner.Registries.GetBuildSourceUploadUrlAsync(rgName, acrName, cancellationToken);
+            return new SourceUploadDefinitionImpl(sourceUploadDefinitionInner);
+        }
     }
 }

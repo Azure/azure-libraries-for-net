@@ -319,7 +319,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         public RegistryImpl WithoutWebhook(string name)
         {
             webhooks.WithoutWebhook(name);
-
             return this;
         }
 
@@ -327,6 +326,25 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         public WebhookImpl UpdateWebhook(string name)
         {
             return webhooks.UpdateWebhook(name);
+        }
+
+        ///GENMHASH:80C260FB405ADDF9A777405F2C9DA241:0045F06F45851F271FCB18FF55CC5F81
+        public ISourceUploadDefinition GetBuildSourceUploadUrl()
+        {
+            return Extensions.Synchronize(() => this.GetBuildSourceUploadUrlAsync());
+        }
+
+        ///GENMHASH:FD799E82F6191CFB1384F4C3622C755D:351AAD868F1F2CA6E74074ABB0AA20A6
+        public async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.ISourceUploadDefinition> GetBuildSourceUploadUrlAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var sourceUploadDefinitionInner = await this.Manager.Inner.Registries.GetBuildSourceUploadUrlAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            return new SourceUploadDefinitionImpl(sourceUploadDefinitionInner);
+        }
+
+        ///GENMHASH:697DA3A2AFA39E4F1F646DF4F73DE4A6:96D7481BD3ADDDE1F66F52CE500EE36F
+        public RegistryTaskRun.Definition.IBlankFromRegistry ScheduleRun()
+        {
+            return new RegistryTaskRunImpl(this.Manager, new RunInner()).WithExistingRegistry(this.ResourceGroupName, this.Name);
         }
     }
 }

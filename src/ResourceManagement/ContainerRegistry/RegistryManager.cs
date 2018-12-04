@@ -5,7 +5,6 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Storage.Fluent;
 using System;
-using System.Linq;
 
 namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
 {
@@ -13,6 +12,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     {
         #region Fluent private collections
         private IRegistries registries;
+        private IRegistryTasks registryTasks;
+        private IRegistryTaskRuns registryTaskRuns;
         private IStorageManager storageManager;
         #endregion
 
@@ -75,10 +76,38 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 return registries;
             }
         }
+
+        public IRegistryTasks ContainerRegistryTasks
+        {
+            get
+            {
+                if (registryTasks == null)
+                {
+                    registryTasks = new RegistryTasksImpl(this);
+                }
+                return registryTasks;
+            }
+        }
+
+        public IRegistryTaskRuns RegistryTaskRuns
+        {
+            get
+            {
+                if (registryTaskRuns == null)
+                {
+                    registryTaskRuns = new RegistryTaskRunsImpl(this);
+                }
+                return registryTaskRuns;
+            }
+        }
     }
 
     public interface IRegistryManager : IManager<IContainerRegistryManagementClient>
     {
         IRegistries ContainerRegistries { get; }
+
+        IRegistryTasks ContainerRegistryTasks { get; }
+
+        IRegistryTaskRuns RegistryTaskRuns { get; }
     }
 }

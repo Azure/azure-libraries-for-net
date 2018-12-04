@@ -169,5 +169,28 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             return this.RegenerateCredential(resourceGroupName, registryName, accessKeyType);
         }
+
+
+        /// <summary>
+        /// The function that gets the URL of the build source upload.
+        /// </summary>
+        /// <param name="rgName">The name of the resource group.</param>
+        /// <param name="acrName">The name of the container.</param>
+        /// <return>The URL of the build source upload.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.ISourceUploadDefinition Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.GetBuildSourceUploadUrl(string rgName, string acrName)
+        {
+            return this.GetBuildSourceUploadUrl(rgName, acrName);
+        }
+
+        /// <summary>
+        /// The function that gets the URL of the build source upload ashnchronously.
+        /// </summary>
+        /// <param name="rgName">The name of the resource group.</param>
+        /// <param name="acrName">The name of the container.</param>
+        /// <return>The URL of the build source upload.</return>
+        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.ISourceUploadDefinition> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.GetBuildSourceUploadUrlAsync(string rgName, string acrName, CancellationToken cancellationToken)
+        {
+            return await this.GetBuildSourceUploadUrlAsync(rgName, acrName, cancellationToken);
+        }
     }
 }
