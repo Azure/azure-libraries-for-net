@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private IStorageAccount storageAccountToSet;
         private IStorageAccount currentStorageAccount;
         private FunctionCredentials functionCredentials;
-        private KuduClient kuduClient;
         
         public Fluent.IFunctionDeploymentSlots DeploymentSlots()
         {
@@ -79,11 +78,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        internal  FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, IAppServiceManager manager)
-            : base(name, innerObject, configObject, manager)
+        internal  FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig, IAppServiceManager manager)
+            : base(name, innerObject, configObject, logConfig, manager)
         {
             functionCredentials = new FunctionCredentials(this);
-            kuduClient = new KuduClient(this);
         }
 
         public FunctionAppImpl WithNewStorageAccount(string name, Storage.Fluent.Models.SkuName sku)
@@ -712,15 +711,59 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        public Stream StreamApplicationLogs()
+        public override Stream StreamApplicationLogs()
         {
             return Extensions.Synchronize(() => StreamApplicationLogsAsync());
         }
 
-        public async Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override Stream StreamHttpLogs()
         {
-            await PingAsync(cancellationToken);
-            return await kuduClient.StreamApplicationLogsAsync(cancellationToken);
+            return Extensions.Synchronize(() => StreamHttpLogsAsync());
+        }
+
+        public override Stream StreamTraceLogs()
+        {
+            return Extensions.Synchronize(() => StreamTraceLogsAsync());
+        }
+
+        public override Stream StreamDeploymentLogs()
+        {
+            return Extensions.Synchronize(() => StreamDeploymentLogsAsync());
+        }
+
+        public override Stream StreamAllLogs()
+        {
+            return Extensions.Synchronize(() => StreamAllLogsAsync());
+        }
+
+        public async override Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Task.WhenAll(PingAsync(cancellationToken), GetHostStatusAsync(cancellationToken));
+            return await base.StreamApplicationLogsAsync();
+        }
+
+        public async override Task<Stream> StreamHttpLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Task.WhenAll(PingAsync(cancellationToken), GetHostStatusAsync(cancellationToken));
+            return await base.StreamHttpLogsAsync();
+        }
+
+        public async override Task<Stream> StreamTraceLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Task.WhenAll(PingAsync(cancellationToken), GetHostStatusAsync(cancellationToken));
+            return await base.StreamTraceLogsAsync();
+        }
+
+        public async override Task<Stream> StreamDeploymentLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Task.WhenAll(PingAsync(cancellationToken), GetHostStatusAsync(cancellationToken));
+            return await base.StreamDeploymentLogsAsync();
+        }
+
+        public async override Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Task.WhenAll(PingAsync(cancellationToken), GetHostStatusAsync(cancellationToken));
+            return await base.StreamAllLogsAsync();
         }
 
         private async Task PingAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -742,6 +785,96 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
             _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Manager.Inner.GenerateClientRequestId != null && Manager.Inner.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Manager.Inner.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Manager.Inner.AcceptLanguage);
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            _requestContent = null;
+            // Set Credentials
+            cancellationToken.ThrowIfCancellationRequested();
+            await functionCredentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await ((WebSiteManagementClient)Manager.Inner).HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Manager.Inner.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+        }
+
+        private async Task GetHostStatusAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                var tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = string.Format("http://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "admin/host/status").ToString();
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Manager.Inner.GenerateClientRequestId != null && Manager.Inner.GenerateClientRequestId.Value)

@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+using System;
 using System.Linq;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
@@ -100,5 +102,47 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                 return $"tagname eq '{tagName.Trim('\'')}' and tagvalue eq '{tagValue.Trim('\'')}'";
             }
         }
+
+
+        /**
+         * Try to extract the environment the client is authenticated to based
+         * on the information on the rest client.
+         * @param restClient the RestClient instance
+         * @return the non-null AzureEnvironment
+         */
+        public static AzureEnvironment ExtractAzureEnvironment(RestClient restClient)
+        {
+            AzureEnvironment environment = null;
+            if (restClient.Credentials is AzureCredentials)
+            {
+                environment = restClient.Credentials.Environment;
+            }
+            else
+            {
+                string baseUrl = restClient.BaseUri;
+                if (AzureEnvironment.AzureGlobalCloud.ResourceManagerEndpoint.ToLower().Contains(baseUrl.ToLower()))
+                {
+                    environment = AzureEnvironment.AzureGlobalCloud;
+                }
+                else if (AzureEnvironment.AzureChinaCloud.ResourceManagerEndpoint.ToLower().Contains(baseUrl.ToLower()))
+                {
+                    environment = AzureEnvironment.AzureChinaCloud;
+                }
+                else if (AzureEnvironment.AzureGermanCloud.ResourceManagerEndpoint.ToLower().Contains(baseUrl.ToLower()))
+                {
+                    environment = AzureEnvironment.AzureGermanCloud;
+                }
+                else if (AzureEnvironment.AzureUSGovernment.ResourceManagerEndpoint.ToLower().Contains(baseUrl.ToLower()))
+                {
+                    environment = AzureEnvironment.AzureUSGovernment;
+                }
+                if (environment == null)
+                {
+                    throw new NotSupportedException("Unknown resource manager endpoint " + baseUrl);
+                }
+            }
+            return environment;
+        }
+
     }
 }

@@ -413,5 +413,60 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the root directory for the web app.
         /// </summary>
         string DocumentRoot { get; }
+
+        /// <summary>
+        /// Gets the diagnostic logs configuration.
+        /// </summary>
+        Microsoft.Azure.Management.AppService.Fluent.IWebAppDiagnosticLogs DiagnosticLogsConfig { get; }
+
+        /// <summary>
+        /// Gets a open stream to the application logs.
+        /// </summary>
+        Stream StreamApplicationLogs();
+
+        /// <summary>
+        /// Gets a open stream to the application logs.
+        /// </summary>
+        Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to the HTTP logs.
+        /// </summary>
+        Stream StreamHttpLogs();
+
+        /// <summary>
+        /// Gets a open stream to the HTTP logs.
+        /// </summary>
+        Task<Stream> StreamHttpLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to the trace logs.
+        /// </summary>
+        Stream StreamTraceLogs();
+
+        /// <summary>
+        /// Gets a open stream to the trace logs.
+        /// </summary>
+        Task<Stream> StreamTraceLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to the deployment logs.
+        /// </summary>
+        Stream StreamDeploymentLogs();
+
+        /// <summary>
+        /// Gets a open stream to the deployment logs.
+        /// </summary>
+        Task<Stream> StreamDeploymentLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to all logs.
+        /// </summary>
+        Stream StreamAllLogs();
+
+        /// <summary>
+        /// Gets a open stream to all logs.
+        /// </summary>
+        Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

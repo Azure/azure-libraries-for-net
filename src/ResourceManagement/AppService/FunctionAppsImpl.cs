@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private async Task<IFunctionApp> PopulateModelAsync(SiteInner inner, CancellationToken cancellationToken = default(CancellationToken))
         {
             var siteConfig = await Inner.GetConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
-            var FunctionApp = WrapModel(inner, siteConfig);
+            var logConfig = await Inner.GetDiagnosticLogsConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
+            var FunctionApp = WrapModel(inner, siteConfig, logConfig);
             return FunctionApp;
         }
 
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return new FunctionAppImpl(name, new SiteInner
             {
                 Kind = "functionapp"
-            }, null, Manager);
+            }, null, null, Manager);
         }
 
         ///GENMHASH:64609469010BC4A501B1C3197AE4F243:BEC51BB7FA5CB1F04F04C62A207332AE
@@ -104,16 +105,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return null;
             }
-            return new FunctionAppImpl(inner.Name, inner, null, Manager);
+            return new FunctionAppImpl(inner.Name, inner, null, null, Manager);
         }
 
-        private IFunctionApp WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner)
+        private IFunctionApp WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner, SiteLogsConfigInner logsConfigInner)
         {
             if (inner == null)
             {
                 return null;
             }
-            return new FunctionAppImpl(inner.Name, inner, siteConfigInner, Manager);
+            return new FunctionAppImpl(inner.Name, inner, siteConfigInner, logsConfigInner, Manager);
         }
 
         protected override async Task<IPage<SiteInner>> ListInnerAsync(CancellationToken cancellationToken)
