@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             else
             {
 
-                AzureEnvironment environment = ResourceUtils.GuessAzureEnvironment(Manager.RestClient);
+                AzureEnvironment environment = ResourceUtils.ExtractAzureEnvironment(Manager.RestClient);
                 string dns = _dnsMap[environment];
                 string leaf = Name;
                 if (this is IDeploymentSlot ds)

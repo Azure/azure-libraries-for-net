@@ -105,12 +105,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
 
         /**
-         * Try to guess the environment the client is authenticated to based
+         * Try to extract the environment the client is authenticated to based
          * on the information on the rest client.
          * @param restClient the RestClient instance
          * @return the non-null AzureEnvironment
          */
-        public static AzureEnvironment GuessAzureEnvironment(RestClient restClient)
+        public static AzureEnvironment ExtractAzureEnvironment(RestClient restClient)
         {
             AzureEnvironment environment = null;
             if (restClient.Credentials is AzureCredentials)
