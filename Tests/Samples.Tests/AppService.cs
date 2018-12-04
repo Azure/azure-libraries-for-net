@@ -197,6 +197,15 @@ namespace Samples.Tests
                 ManageFunctionAppLogs.Program.RunSample);
         }
 
+        [Fact(Skip = "Must run with AZURE_TEST_MODE set to 'None'")]
+        [Trait("Samples", "AppService")]
+        public void ManageWebAppLogsTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManageWebAppLogs.Program.RunSample);
+        }
+
         [Fact(Skip = "Waiting for 1.6 release to work")]
         [Trait("Samples", "AppService")]
         public void ManageWebAppCosmosDbByMsiTest()

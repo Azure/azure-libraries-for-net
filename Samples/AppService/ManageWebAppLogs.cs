@@ -11,15 +11,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace ManageFunctionAppLogs
+namespace ManageWebAppLogs
 {
     public class Program
     {
         /**
-         * Azure App Service basic sample for managing function apps.
-         *  - Create a function app under the same new app service plan:
-         *    - Deploy to app using FTP
-         *    - stream logs for 30 seconds
+         * Azure App Service basic sample for managing web apps.
+         *  - Create a web app under the same new app service plan:
+         *    - Deploy to app using web deploy
+         *    - stream logs for 120 seconds
          */
 
         public static void RunSample(IAzure azure)
@@ -34,50 +34,29 @@ namespace ManageFunctionAppLogs
 
 
                 //============================================================
-                // Create a function app with a new app service plan
+                // Create a web app with a new app service plan
 
-                Utilities.Log("Creating function app " + appName + " in resource group " + rgName + "...");
+                Utilities.Log("Creating web app " + appName + " in resource group " + rgName + "...");
 
-                IFunctionApp app = azure.AppServices.FunctionApps.Define(appName)
+                IWebApp app = azure.AppServices.WebApps.Define(appName)
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(rgName)
+                        .WithNewWindowsPlan(PricingTier.BasicB1)
+                        .WithJavaVersion(JavaVersion.V8Newest)
+                        .WithWebContainer(WebContainer.Tomcat8_0Newest)
                         .DefineDiagnosticLogsConfiguration()
-                            .WithApplicationLogging()
-                            .WithLogLevel(Microsoft.Azure.Management.AppService.Fluent.Models.LogLevel.Information)
-                            .WithApplicationLogsStoredOnFileSystem()
+                            .WithWebServerLogging()
+                            .WithWebServerLogsStoredOnFileSystem()
                             .Attach()
                         .Create();
 
-                Utilities.Log("Created function app " + app.Name);
+                Utilities.Log("Created web app " + app.Name);
                 Utilities.Print(app);
-
-                //============================================================
-                // Deploy to app 1 through FTP
-
-                Utilities.Log("Deploying a function app to " + appName + " through FTP...");
-
-                IPublishingProfile profile = app.GetPublishingProfile();
-                Utilities.UploadFileToFunctionApp(profile, Path.Combine(Utilities.ProjectPath, "Asset", "square-function-app", "host.json"));
-                Utilities.UploadFileToFunctionApp(profile, Path.Combine(Utilities.ProjectPath, "Asset", "square-function-app", "square", "function.json"), "square/function.json");
-                Utilities.UploadFileToFunctionApp(profile, Path.Combine(Utilities.ProjectPath, "Asset", "square-function-app", "square", "index.js"), "square/index.js");
-
-                // sync triggers
-                app.SyncTriggers();
-
-                Utilities.Log("Deployment square app to web app " + app.Name + " completed");
-                Utilities.Print(app);
-
-                // warm up
-                Utilities.Log("Warming up " + appUrl + "/api/square...");
-                Utilities.PostAddress("http://" + appUrl + "/api/square", "625");
-                SdkContext.DelayProvider.Delay(5000);
-                Utilities.Log("CURLing " + appUrl + "/api/square...");
-                Utilities.Log(Utilities.PostAddress("http://" + appUrl + "/api/square", "625"));
 
                 //============================================================
                 // Listen to logs synchronously for 30 seconds
 
-                using (var stream = app.StreamApplicationLogs())
+                using (var stream = app.StreamAllLogs())
                 {
                     var reader = new StreamReader(stream);
                     Utilities.Log("Streaming logs from function app " + appName + "...");
@@ -86,13 +65,38 @@ namespace ManageFunctionAppLogs
                     stopWatch.Start();
                     Task.Factory.StartNew(() =>
                     {
-                        Utilities.PostAddress("http://" + appUrl + "/api/square", "625");
+                        //============================================================
+                        // Deploy to app 1 through zip deploy
+
                         SdkContext.DelayProvider.Delay(10000);
-                        Utilities.PostAddress("http://" + appUrl + "/api/square", "725");
-                        SdkContext.DelayProvider.Delay(10000);
-                        Utilities.PostAddress("http://" + appUrl + "/api/square", "825");
+                        Utilities.Log("Deploying coffeeshop.war to " + appName + " through web deploy...");
+
+                        app.Deploy()
+                            .WithPackageUri("https://github.com/Azure/azure-libraries-for-java/raw/master/azure-samples/src/main/resources/coffeeshop.zip")
+                            .WithExistingDeploymentsDeleted(false)
+                            .Execute();
+
+                        Utilities.Log("Deployments to web app " + app.Name + " completed");
+                        Utilities.Print(app);
+
+                        // warm up
+                        Utilities.Log("Warming up " + appUrl + "/coffeeshop...");
+                        Utilities.CheckAddress("http://" + appUrl + "/coffeeshop");
+
+                        SdkContext.DelayProvider.Delay(5000);
+                        Utilities.Log("CURLing " + appUrl + "/coffeeshop...");
+                        Utilities.Log(Utilities.CheckAddress("http://" + appUrl + "/coffeeshop"));
+                        SdkContext.DelayProvider.Delay(15000);
+                        Utilities.Log("CURLing " + appUrl + "/coffeeshop...");
+                        Utilities.Log(Utilities.CheckAddress("http://" + appUrl + "/coffeeshop"));
+                        SdkContext.DelayProvider.Delay(25000);
+                        Utilities.Log("CURLing " + appUrl + "/coffeeshop...");
+                        Utilities.Log(Utilities.CheckAddress("http://" + appUrl + "/coffeeshop"));
+                        SdkContext.DelayProvider.Delay(35000);
+                        Utilities.Log("CURLing " + appUrl + "/coffeeshop...");
+                        Utilities.Log(Utilities.CheckAddress("http://" + appUrl + "/coffeeshop"));
                     });
-                    while (line != null && stopWatch.ElapsedMilliseconds < 90000)
+                    while (line != null && stopWatch.ElapsedMilliseconds < 120000)
                     {
                         Utilities.Log(line);
                         line = reader.ReadLine();
