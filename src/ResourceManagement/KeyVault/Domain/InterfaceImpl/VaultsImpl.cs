@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class VaultsImpl 
+    internal partial class VaultsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

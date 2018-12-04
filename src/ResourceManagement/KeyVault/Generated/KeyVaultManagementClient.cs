@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
         /// subscription. The subscription ID forms part of the URI for every service
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public KeyVaultManagementClient(RestClient restClient) 
+        public KeyVaultManagementClient(RestClient restClient)
             : base(restClient)
         {
         }

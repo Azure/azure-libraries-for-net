@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static string ToSerializedValue(this AccessPolicyUpdateKind value)
         {
-            switch( value )
+            switch (value)
             {
                 case AccessPolicyUpdateKind.Add:
                     return "add";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static AccessPolicyUpdateKind? ParseAccessPolicyUpdateKind(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "add":
                     return AccessPolicyUpdateKind.Add;

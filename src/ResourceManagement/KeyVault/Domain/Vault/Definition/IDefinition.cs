@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
     /// <summary>
     /// A key vault definition allowing various configurations to be set.
     /// </summary>
-    public interface IWithConfigurations 
+    public interface IWithConfigurations
     {
         /// <summary>
         /// Enable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
     /// <summary>
     /// A key vault definition allowing the sku to be set.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the sku of the key vault.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
     /// <summary>
     /// A key vault definition allowing access policies to be attached.
     /// </summary>
-    public interface IWithAccessPolicy 
+    public interface IWithAccessPolicy
     {
         /// <summary>
         /// Attach no access policy.

@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 { "authurl", AzureEnvironment.AzureGlobalCloud.AuthenticationEndpoint },
                 { "baseurl", AzureEnvironment.AzureGlobalCloud.ResourceManagerEndpoint },
                 { "managementuri", AzureEnvironment.AzureGlobalCloud.ManagementEndpoint },
-                { "graphurl", AzureEnvironment.AzureGlobalCloud.GraphEndpoint }
+                { "graphurl", AzureEnvironment.AzureGlobalCloud.GraphEndpoint },
+                { "keyvaultsuffix", AzureEnvironment.AzureGlobalCloud.KeyVaultSuffix }
             };
 
             var lines = File.ReadLines(authFile);
@@ -149,7 +150,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 jsonConfig.GetType()
                     .GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
                     .ToList()
-                    .ForEach(info => config[info.Name] = (string)info.GetValue(jsonConfig));
+                    .ForEach(info => {
+                        var value = (string)info.GetValue(jsonConfig);
+                        if (value != null)
+                        {
+                            config[info.Name] = value;
+                        }
+                    });
             }
             else
             {
@@ -171,7 +178,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 AuthenticationEndpoint = config["authurl"].Replace("\\", ""),
                 ManagementEndpoint = config["managementuri"].Replace("\\", ""),
                 ResourceManagerEndpoint = config["baseurl"].Replace("\\", ""),
-                GraphEndpoint = config["graphurl"].Replace("\\", "")
+                GraphEndpoint = config["graphurl"].Replace("\\", ""),
+                KeyVaultSuffix = config["keyvaultsuffix"].Replace("\\", "")
             };
 
             AzureCredentials credentials;
@@ -228,6 +236,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
             [JsonProperty("activeDirectoryGraphResourceId")]
             private string graphurl;
+
+            [JsonProperty("keyVaultDnsSuffix")]
+            private string keyvaultsuffix;
         }
     }
 }

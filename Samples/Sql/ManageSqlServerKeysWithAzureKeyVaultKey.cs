@@ -89,8 +89,8 @@ namespace ManageSqlServerKeysWithAzureKeyVaultKey
                 Utilities.Log("Creating a SQL server key with Azure Key Vault key");
 
                 KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
-                var keyBundle = kvClient.CreateKeyAsync(vault.VaultUri, keyName, JsonWebKeyType.Rsa,
-                    keyOps: JsonWebKeyOperation.AllOperations).GetAwaiter().GetResult();
+                var keyBundle = kvClient.CreateKeyAsync(vault.VaultUri, keyName, Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType.Rsa,
+                    keyOps: Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation.AllOperations).GetAwaiter().GetResult();
 
                 string keyUri = keyBundle.Key.Kid;
 
