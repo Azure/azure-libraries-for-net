@@ -61,9 +61,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        
-
-
         public void WarDeploy(FileInfo warFile)
         {
             Extensions.Synchronize(() => WarDeployAsync(warFile));
