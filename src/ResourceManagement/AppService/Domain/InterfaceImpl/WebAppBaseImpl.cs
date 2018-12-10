@@ -1019,6 +1019,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.WithWebContainer(webContainer);
         }
 
+        /// <summary>
+        /// WithIpSecurityRestriction
+        /// </summary>
+        /// <param name="ipAddress">The IP address.</param>
+        /// <param name="subnetMask">The subnet mask.</param>
+        /// <param name="action">The action specifying to Allow or Deny traffic.</param>
+        /// <param name="priority">The priority for this rule.</param>
+        /// <param name="name">Name for this rule.</param>
+        /// <param name="description">Description for this rule.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithIpSecurityRestriction<FluentT>.WithIpSecurityRestriction(string ipAddress, string subnetMask = default(string), string action = default(string), int? priority = default(int?), string name = default(string), string description = default(string))
+        {
+            return this.WithIpSecurityRestriction(ipAddress, subnetMask, action, priority, name, description);
+        }
+
         /// <return>The connection strings defined on the web app.</return>
         async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStringsAsync(CancellationToken cancellationToken)
         {

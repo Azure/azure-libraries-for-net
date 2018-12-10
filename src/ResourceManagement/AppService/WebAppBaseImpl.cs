@@ -442,6 +442,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
+        public FluentImplT WithIpSecurityRestriction(string ipAddress, string subnetMask = default(string), string action = default(string), int? priority = default(int?), string name = default(string), string description = default(string))
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            if (this.SiteConfig.IpSecurityRestrictions == null)
+            {
+                this.SiteConfig.IpSecurityRestrictions = new List<IpSecurityRestriction>();
+            }
+
+            this.SiteConfig.IpSecurityRestrictions.Add(new IpSecurityRestriction(ipAddress, subnetMask, action, priority, name, description));
+
+            return (FluentImplT)this;
+        }
+
         public FluentImplT WithVirtualApplications(IList<VirtualApplication> virtualApplications)
         {
             if (this.SiteConfig == null)
