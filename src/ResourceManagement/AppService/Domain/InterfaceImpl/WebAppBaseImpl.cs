@@ -1022,12 +1022,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// WithIpSecurityRestriction
         /// </summary>
-        /// <param name="ipAddress">The IP address.</param>
-        /// <param name="subnetMask">The subnet mask.</param>
-        /// <param name="action">The action specifying to Allow or Deny traffic.</param>
-        /// <param name="priority">The priority for this rule.</param>
-        /// <param name="name">Name for this rule.</param>
-        /// <param name="description">Description for this rule.</param>
+        /// <param name="ipAddress">IP address the security restriction is
+        /// valid for.
+        /// It can be in form of pure ipv4 address (required SubnetMask
+        /// property) or
+        /// CIDR notation such as ipv4/mask (leading bit match). For CIDR,
+        /// SubnetMask property must not be specified.</param>
+        /// <param name="subnetMask">Subnet mask for the range of IP addresses
+        /// the restriction is valid for.</param>
+        /// <param name="action">Allow or Deny access for this IP
+        /// range.</param>
+        /// <param name="priority">Priority of IP restriction rule.</param>
+        /// <param name="name">IP restriction rule name.</param>
+        /// <param name="description">IP restriction rule description.</param>
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithIpSecurityRestriction<FluentT>.WithIpSecurityRestriction(string ipAddress, string subnetMask = default(string), string action = default(string), int? priority = default(int?), string name = default(string), string description = default(string))
         {
