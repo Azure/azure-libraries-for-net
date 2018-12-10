@@ -474,7 +474,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
         /// <param name="enabled">True if web sockets are enabled.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithWebSocketsEnabled(bool enabled);
-
     }
 
     /// <summary>
@@ -516,6 +515,4 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     {
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithIpSecurityRestriction(string ipAddress, string subnetMask = default(string), string action = default(string), int? priority = default(int?), string name = default(string), string description = default(string));
     }
-
-
 }
