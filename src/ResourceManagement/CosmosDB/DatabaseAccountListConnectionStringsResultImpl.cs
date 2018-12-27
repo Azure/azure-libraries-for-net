@@ -24,7 +24,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:FA07D0476A4A7B9F0FDA17B8DF0095F1:E55076C141368AEFB417DF4F8AFB0C05
         public IReadOnlyList<Models.DatabaseAccountConnectionString> ConnectionStrings()
         {
-            return new List<Models.DatabaseAccountConnectionString>(this.Inner.ConnectionStrings).AsReadOnly();
+            List<Models.DatabaseAccountConnectionString> result = new List<Models.DatabaseAccountConnectionString>();
+            if(this.Inner != null && this.Inner.ConnectionStrings != null && this.Inner.ConnectionStrings.Count !=0)
+            {
+                result.AddRange(this.Inner.ConnectionStrings);
+            }
+            return result.AsReadOnly();
         }
     }
 }
