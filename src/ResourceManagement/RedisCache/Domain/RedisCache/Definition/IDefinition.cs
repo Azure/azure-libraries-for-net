@@ -17,37 +17,6 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     {
 
         /// <summary>
-        /// Patch schedule on a Premium Cluster Cache.
-        /// </summary>
-        /// <param name="dayOfWeek">Day of week when cache can be patched.</param>
-        /// <param name="startHourUtc">Start hour after which cache patching can start.</param>
-        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithPremiumSkuCreate WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek dayOfWeek, int startHourUtc);
-
-        /// <summary>
-        /// Patch schedule on a Premium Cluster Cache.
-        /// </summary>
-        /// <param name="dayOfWeek">Day of week when cache can be patched.</param>
-        /// <param name="startHourUtc">Start hour after which cache patching can start.</param>
-        /// <param name="maintenanceWindow">ISO8601 timespan specifying how much time cache patching can take.</param>
-        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithPremiumSkuCreate WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek dayOfWeek, int startHourUtc, TimeSpan maintenanceWindow);
-
-        /// <summary>
-        /// Patch schedule on a Premium Cluster Cache.
-        /// </summary>
-        /// <param name="scheduleEntry">Patch schedule entry for Premium Redis Cache.</param>
-        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithPremiumSkuCreate WithPatchSchedule(ScheduleEntry scheduleEntry);
-
-        /// <summary>
-        /// Patch schedule on a Premium Cluster Cache.
-        /// </summary>
-        /// <param name="scheduleEntry">List of patch schedule entries for Premium Redis Cache.</param>
-        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithPremiumSkuCreate WithPatchSchedule(IList<Microsoft.Azure.Management.Redis.Fluent.Models.ScheduleEntry> scheduleEntry);
-
-        /// <summary>
         /// The number of shards to be created on a Premium Cluster Cache.
         /// </summary>
         /// <param name="shardCount">The shard count value to set.</param>
@@ -148,6 +117,37 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
         /// </summary>
         /// <return>The next stage of Redis Cache definition.</return>
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithNonSslPort();
+
+        /// <summary>
+        /// Patch schedule on a Premium Cluster Cache.
+        /// </summary>
+        /// <param name="dayOfWeek">Day of week when cache can be patched.</param>
+        /// <param name="startHourUtc">Start hour after which cache patching can start.</param>
+        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
+        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek dayOfWeek, int startHourUtc);
+
+        /// <summary>
+        /// Patch schedule on a Premium Cluster Cache.
+        /// </summary>
+        /// <param name="dayOfWeek">Day of week when cache can be patched.</param>
+        /// <param name="startHourUtc">Start hour after which cache patching can start.</param>
+        /// <param name="maintenanceWindow">ISO8601 timespan specifying how much time cache patching can take.</param>
+        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
+        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek dayOfWeek, int startHourUtc, TimeSpan maintenanceWindow);
+
+        /// <summary>
+        /// Patch schedule on a Premium Cluster Cache.
+        /// </summary>
+        /// <param name="scheduleEntry">Patch schedule entry for Premium Redis Cache.</param>
+        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
+        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithPatchSchedule(ScheduleEntry scheduleEntry);
+
+        /// <summary>
+        /// Patch schedule on a Premium Cluster Cache.
+        /// </summary>
+        /// <param name="scheduleEntry">List of patch schedule entries for Premium Redis Cache.</param>
+        /// <return>The next stage of Redis Cache with Premium SKU definition.</return>
+        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithPatchSchedule(IList<Microsoft.Azure.Management.Redis.Fluent.Models.ScheduleEntry> scheduleEntry);
 
         /// <summary>
         /// All Redis Settings. Few possible keys:

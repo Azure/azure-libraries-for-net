@@ -25,5 +25,10 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// Gets the minimum TLS version (or higher) that clients require to use.
         /// </summary>
         Models.TlsVersion MinimumTlsVersion { get; }
+
+        /// <summary>
+        /// Gets List of patch schedules for current Redis Cache.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.ScheduleEntry> PatchSchedules { get; }
     }
 }

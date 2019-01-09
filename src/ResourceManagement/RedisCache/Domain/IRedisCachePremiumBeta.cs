@@ -16,11 +16,6 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     {
 
         /// <summary>
-        /// Gets List of patch schedules for current Redis Cache.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.ScheduleEntry> PatchSchedules { get; }
-
-        /// <summary>
         /// Adds a linked server to the current Redis cache instance.
         /// </summary>
         /// <param name="linkedRedisCacheId">The resource Id of the Redis instance to link with.</param>
