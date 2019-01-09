@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return await parent.Manager.Inner.WebApps.CreateMSDeployOperationSlotAsync(parent.ResourceGroupName, parent.Name, Name, msDeployInner, cancellationToken);
         }
 
-        public new string Name
+        public override string Name
         {
             get
             {
