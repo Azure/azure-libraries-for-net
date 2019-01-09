@@ -45,15 +45,6 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         void ForceReboot(string rebootType, int shardId);
 
         /// <summary>
-        /// Reboot specified Redis node(s). This operation requires write permission to the cache resource. There can be potential data loss.
-        /// </summary>
-        /// <param name="rebootType">
-        /// Specifies which Redis node(s) to reboot. Depending on this value data loss is
-        /// possible. Possible values include: 'PrimaryNode', 'SecondaryNode', 'AllNodes'.
-        /// </param>
-        void ForceReboot(string rebootType);
-
-        /// <summary>
         /// Import data into Redis Cache.
         /// </summary>
         /// <param name="files">Files to import.</param>

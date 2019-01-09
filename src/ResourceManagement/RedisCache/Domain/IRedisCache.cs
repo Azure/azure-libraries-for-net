@@ -87,6 +87,15 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <return>Exposes features available only to Premium Sku Redis Cache instances.</return>
         Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium AsPremium();
 
+        /// <summary>
+        /// Reboot specified Redis node(s). This operation requires write permission to the cache resource. There can be potential data loss.
+        /// </summary>
+        /// <param name="rebootType">
+        /// Specifies which Redis node(s) to reboot. Depending on this value data loss is
+        /// possible. Possible values include: 'PrimaryNode', 'SecondaryNode', 'AllNodes'.
+        /// </param>
+        void ForceReboot(string rebootType);
+
         /// <return>A Redis Cache's access keys. This operation requires write permission to the Cache resource.</return>
         Microsoft.Azure.Management.Redis.Fluent.IRedisAccessKeys GetKeys();
 
