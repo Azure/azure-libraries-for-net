@@ -27,6 +27,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the the disk encryption settings.
+        /// </summary>
+        EncryptionSettings Microsoft.Azure.Management.Compute.Fluent.IDiskBeta.EncryptionSettings
+        {
+            get
+            {
+                return this.EncryptionSettings();
+            }
+        }
+
+        /// <summary>
         /// Gets the disk creation method.
         /// </summary>
         Models.DiskCreateOption Microsoft.Azure.Management.Compute.Fluent.IDisk.CreationMethod

@@ -3,6 +3,7 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -89,5 +90,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the availability zones assigned to the disk.
         /// </summary>
         System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones { get; }
+
+        /// <summary>
+        /// Gets the the disk encryption settings.
+        /// </summary>
+        EncryptionSettings EncryptionSettings { get; }
     }
 }
