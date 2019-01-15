@@ -242,12 +242,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this.Inner.Id;
         }
 
+        public IReadOnlyDictionary<string, string> Tags()
+        {
+            return (Dictionary<string, string>) this.Inner.Tags;
+        }
+
         ///GENMHASH:09F37EE7E8975407273D6FA4FB12441D:5B750DDCC180A5B0F60DE4E3840E3CCB
         public string Collation()
         {
             return this.Inner.Collation;
         }
-
+        
         ///GENMHASH:69A889F45F764B3E541DF980DABD1473:0C2A7DB4ABEFF325916B1EFB94934EC8
         public async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition>> ListMetricDefinitionsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {

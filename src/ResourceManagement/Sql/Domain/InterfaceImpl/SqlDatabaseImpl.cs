@@ -582,6 +582,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the tags for the current SQL Database
+        /// </summary>
+        IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Tags
+        {
+            get
+            {
+                return this.Tags();
+            }
+        }
+
+        /// <summary>
         /// Gets the Id of the Azure SQL Database.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.DatabaseId

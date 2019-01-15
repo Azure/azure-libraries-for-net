@@ -1149,6 +1149,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var sqlServerManager = TestHelper.CreateSqlManager();
+                var resourceManager = TestHelper.CreateResourceManager();
 
                 GenerateNewRGAndSqlServerNameForTest();
 
@@ -1165,8 +1166,14 @@ namespace Fluent.Tests
                             .Define(SqlDatabaseName)
                             .WithNewElasticPool(sqlElasticPoolCreatable)
                             .WithCollation(Collation)
+                            .WithTag("key", "value")
                             .Create();
-
+                    // Adding bugfix check. Database has Tags which should be settable
+                    var withTags = sqlServer.Databases.GetById(sqlDatabase.Id);
+                    Assert.NotNull(withTags);
+                    Assert.NotNull(withTags.Tags);
+                    Assert.Equal("value", withTags.Tags["key"]);
+                    // End of bugfix
                     ValidateSqlDatabase(sqlDatabase, SqlDatabaseName);
 
                     sqlServer = sqlServerManager.SqlServers.GetByResourceGroup(GroupName, SqlServerName);
