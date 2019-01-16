@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        public bool HttpsOnly => Inner.HttpsOnly.HasValue ? Inner.HttpsOnly.Value : false;
+        public bool HttpsOnly => Inner.HttpsOnly ?? false;
 
         public FtpsState FtpsState => SiteConfig?.FtpsState;
 

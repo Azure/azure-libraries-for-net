@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return null;
             }
-            return (bool) Inner.IsMercurial ? Fluent.RepositoryType.Mercurial : Fluent.RepositoryType.Git;
+            return (Inner.IsMercurial.HasValue && Inner.IsMercurial .Value) ? Fluent.RepositoryType.Mercurial : Fluent.RepositoryType.Git;
         }
 
         ///GENMHASH:AF58AEB1DD43D38B7FEDF266F4F40886:63F15AB00FF6315055DD4FFBCA6BE2EC
