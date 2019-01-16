@@ -90,15 +90,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        public bool HttpsOnly => (bool) Inner.HttpsOnly;
+        public bool HttpsOnly => Inner.HttpsOnly.HasValue ? Inner.HttpsOnly.Value : false;
 
         public FtpsState FtpsState => SiteConfig?.FtpsState;
 
         public IList<VirtualApplication> VirtualApplications => SiteConfig?.VirtualApplications;
 
-        public bool Http20Enabled => (bool)SiteConfig?.Http20Enabled;
+        public bool Http20Enabled => (SiteConfig == null || SiteConfig.Http20Enabled == null) ? false : SiteConfig.Http20Enabled.Value;
 
-        public bool LocalMySqlEnabled => (bool)SiteConfig?.LocalMySqlEnabled;
+        public bool LocalMySqlEnabled => (SiteConfig == null || SiteConfig.LocalMySqlEnabled == null) ? false : SiteConfig.LocalMySqlEnabled.Value;
 
         public ScmType ScmType => SiteConfig?.ScmType;
 
