@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string Collation { get; }
 
         /// <summary>
+        /// Gets the tags for the current SQL Database
+        /// </summary>
+        IReadOnlyDictionary<string, string> Tags { get; }
+
+        /// <summary>
         /// Imports into the current database from a specified URI path; the current database must be empty.
         /// </summary>
         /// <param name="storageUri">The storage URI to use.</param>
