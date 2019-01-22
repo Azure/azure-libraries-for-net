@@ -110,13 +110,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:A6C3024A0F426DA6CF8B71DEF91E0C7E:9FE8762C1B9FACF15AB88DA1BF9597EC
         public bool DetailedErrorMessages()
         {
-            return Inner.DetailedErrorMessages != null && (bool) Inner.DetailedErrorMessages.Enabled;
+            return Inner.DetailedErrorMessages != null && Inner.DetailedErrorMessages.Enabled.HasValue && Inner.DetailedErrorMessages.Enabled.Value;
         }
 
         ///GENMHASH:34AF806990F25131F59A6070440823E0:A95CC561E4445BE3E7269A572A6BFCB2
         public bool FailedRequestsTracing()
         {
-            return Inner.FailedRequestsTracing != null && (bool) Inner.FailedRequestsTracing.Enabled;
+            return Inner.FailedRequestsTracing != null && Inner.FailedRequestsTracing.Enabled.HasValue && Inner.FailedRequestsTracing.Enabled.Value;
         }
 
         ///GENMHASH:ADA7023132C677B8E810845941E988DA:1964CEE67CCBAFF2114B8BBEF6D87DFA
@@ -235,11 +235,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:27B58505EB32F2C2A1069A5602161EB9:31DDB75D31D02F6E8C830CE7A9E778D3
         public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithLogRetentionDays(int retentionDays)
         {
-            if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && (bool) Inner.HttpLogs.FileSystem.Enabled)
+            if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && Inner.HttpLogs.FileSystem.Enabled.HasValue && Inner.HttpLogs.FileSystem.Enabled.Value)
             {
             Inner.HttpLogs.FileSystem.RetentionInDays = retentionDays;
             }
-            if (Inner.HttpLogs != null && Inner.HttpLogs.AzureBlobStorage != null && (bool)Inner.HttpLogs.AzureBlobStorage.Enabled)
+            if (Inner.HttpLogs != null && Inner.HttpLogs.AzureBlobStorage != null && Inner.HttpLogs.AzureBlobStorage.Enabled.HasValue && Inner.HttpLogs.AzureBlobStorage.Enabled.Value)
             {
             Inner.HttpLogs.AzureBlobStorage.RetentionInDays = retentionDays;
             }
@@ -305,11 +305,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:0AA703FD4D7171D9DD761057420590D4:57E8D27F0D0112D8FDF8632C55262083
         public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithUnlimitedLogRetentionDays()
         {
-            if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && (bool) Inner.HttpLogs.FileSystem.Enabled)
+            if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && Inner.HttpLogs.FileSystem.Enabled.HasValue && Inner.HttpLogs.FileSystem.Enabled.Value)
             {
                 Inner.HttpLogs.FileSystem.RetentionInDays = 0;
             }
-            if (Inner.HttpLogs != null && Inner.HttpLogs.AzureBlobStorage != null && (bool) Inner.HttpLogs.FileSystem.Enabled)
+            if (Inner.HttpLogs != null && Inner.HttpLogs.AzureBlobStorage != null && Inner.HttpLogs.FileSystem.Enabled.HasValue && Inner.HttpLogs.FileSystem.Enabled.Value)
             {
                 Inner.HttpLogs.AzureBlobStorage.RetentionInDays = 0;
             }
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:6779E4B38BCBB810944CA68774B310C3:072E24F1A9FC72304BBE1ED245652D70
         public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithWebServerFileSystemQuotaInMB(int quotaInMB)
         {
-            if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && (bool) Inner.HttpLogs.FileSystem.Enabled)
+            if (Inner.HttpLogs != null && Inner.HttpLogs.FileSystem != null && Inner.HttpLogs.FileSystem.Enabled.HasValue && Inner.HttpLogs.FileSystem.Enabled.Value)
             {
                 Inner.HttpLogs.FileSystem.RetentionInMb = quotaInMB;
             }
