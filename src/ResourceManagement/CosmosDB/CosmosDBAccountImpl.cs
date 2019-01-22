@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicyInner> failoverPolicies;
         private bool hasFailoverPolicyChanges;
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
-        private Dictionary<string,Models.VirtualNetworkRule> virtualNetworkRulesMap;
+        private Dictionary<string,List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
         {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
             if (virtualNetworkRulesMap != null)
             {
-                createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.ToList();
+                createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
                 virtualNetworkRulesMap = null;
             }
             this.AddLocationsForCreateUpdateParameters(createUpdateParametersInner, this.failoverPolicies);
@@ -470,7 +470,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.Inner.IsVirtualNetworkFilterEnabled = true;
             string vnetId = virtualNetworkId + "/subnets/" + subnetName;
-            EnsureVirtualNetworkRules().Add(vnetId, new VirtualNetworkRule() { Id = vnetId });
+            var internalMap = EnsureVirtualNetworkRules();
+            if(!internalMap.ContainsKey(vnetId))
+            {
+                internalMap.Add(vnetId, new List<VirtualNetworkRule>());
+            }
+            internalMap[vnetId].Add(new VirtualNetworkRule() { Id = vnetId });
             return this;
         }
 
@@ -488,7 +493,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 this.Inner.IsVirtualNetworkFilterEnabled = true;
                 foreach (var vnetRule in virtualNetworkRules)
                 {
-                    this.virtualNetworkRulesMap.Add(vnetRule.Id, vnetRule);
+                    if(!this.virtualNetworkRulesMap.ContainsKey(vnetRule.Id))
+                    {
+                        this.virtualNetworkRulesMap.Add(vnetRule.Id, new List<VirtualNetworkRule>());
+                    }
+                    this.virtualNetworkRulesMap[vnetRule.Id].Add(vnetRule);
                 }
             }
             return this;
@@ -514,16 +523,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         ///GENMHASH:9DD08936D3B4E402E37AEF19676FBBE5:B75CF3B3BDA8D4D5A2337A51BF9E22A0
-        private Dictionary<string,Models.VirtualNetworkRule> EnsureVirtualNetworkRules()
+        private Dictionary<string, List<Models.VirtualNetworkRule>> EnsureVirtualNetworkRules()
         {
             if (this.virtualNetworkRulesMap == null)
             {
-                this.virtualNetworkRulesMap = new Dictionary<string, VirtualNetworkRule>();
+                this.virtualNetworkRulesMap = new Dictionary<string, List<VirtualNetworkRule>>();
                 if (this.Inner != null && this.Inner.VirtualNetworkRules != null)
                 {
                     foreach (var item in this.Inner.VirtualNetworkRules)
                     {
-                        this.virtualNetworkRulesMap.Add(item.Id, item);
+                        if(!this.virtualNetworkRulesMap.ContainsKey(item.Id))
+                        {
+                            this.virtualNetworkRulesMap.Add(item.Id, new List<VirtualNetworkRule>());
+                        }
+                        this.virtualNetworkRulesMap[item.Id].Add(item);
                     }
                 }
             }
