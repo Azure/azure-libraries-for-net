@@ -26,6 +26,6 @@
         <ConvertedSymbols Include=".\Symbols\**\*.pdb"/>  
     </ItemGroup> 
 
-    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="$(SymbolShareLocation)\$(ReleaseVersion)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="\$(SymbolShareLocation)\$(ReleaseVersion)\%(RecursiveDir)" />
   </Target>
 </Project>
