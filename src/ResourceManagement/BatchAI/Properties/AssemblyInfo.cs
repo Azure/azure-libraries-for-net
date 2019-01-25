@@ -13,7 +13,7 @@ using System.Resources;
 [assembly: AssemblyDescription("Provides Microsoft Azure BatchAI management APIs.")]
 
 [assembly: AssemblyVersion("1.0.0.60")]
-[assembly: AssemblyFileVersion("1.18.0.0")]
+[assembly: AssemblyFileVersion("1.19.0.0")]
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
