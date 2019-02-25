@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Extension.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineExtensionUpdate : UpdateResource
+    public partial class VirtualMachineExtensionUpdateInner : UpdateResource
     {
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineExtensionUpdate
-        /// class.
+        /// Initializes a new instance of the
+        /// VirtualMachineExtensionUpdateInner class.
         /// </summary>
-        public VirtualMachineExtensionUpdate()
+        public VirtualMachineExtensionUpdateInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineExtensionUpdate
-        /// class.
+        /// Initializes a new instance of the
+        /// VirtualMachineExtensionUpdateInner class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
         /// <param name="forceUpdateTag">How the extension handler should be
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="protectedSettings">The extension can contain either
         /// protectedSettings or protectedSettingsFromKeyVault or no protected
         /// settings at all.</param>
-        public VirtualMachineExtensionUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object))
+        public VirtualMachineExtensionUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object))
             : base(tags)
         {
             ForceUpdateTag = forceUpdateTag;

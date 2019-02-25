@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
@@ -65,12 +63,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'None', 'ReadOnly', 'ReadWrite'</param>
         /// <param name="writeAcceleratorEnabled">Specifies whether
         /// writeAccelerator should be enabled or disabled on the disk.</param>
+        /// <param name="diffDiskSettings">Specifies the ephemeral Disk
+        /// Settings for the operating system disk used by the virtual
+        /// machine.</param>
         /// <param name="diskSizeGB">Specifies the size of an empty data disk
-        /// in gigabytes. This element can be used to overwrite the name of the
+        /// in gigabytes. This element can be used to overwrite the size of the
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public OSDisk(DiskCreateOptionTypes createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
+        public OSDisk(string createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
         {
             OsType = osType;
             EncryptionSettings = encryptionSettings;
@@ -79,6 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             Image = image;
             Caching = caching;
             WriteAcceleratorEnabled = writeAcceleratorEnabled;
+            DiffDiskSettings = diffDiskSettings;
             CreateOption = createOption;
             DiskSizeGB = diskSizeGB;
             ManagedDisk = managedDisk;
@@ -151,6 +153,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public bool? WriteAcceleratorEnabled { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the ephemeral Disk Settings for the
+        /// operating system disk used by the virtual machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "diffDiskSettings")]
+        public DiffDiskSettings DiffDiskSettings { get; set; }
+
+        /// <summary>
         /// Gets or sets specifies how the virtual machine should be
         /// created.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Possible values
         /// are:&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Attach** \u2013 This
@@ -163,11 +172,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// described. Possible values include: 'FromImage', 'Empty', 'Attach'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of an empty data disk in gigabytes.
-        /// This element can be used to overwrite the name of the disk in a
+        /// This element can be used to overwrite the size of the disk in a
         /// virtual machine image. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; This
         /// value cannot be larger than 1023 GB
         /// </summary>

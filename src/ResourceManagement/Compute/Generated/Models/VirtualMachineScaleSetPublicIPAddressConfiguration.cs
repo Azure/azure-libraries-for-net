@@ -9,6 +9,7 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -42,12 +43,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// publicIP addresses .</param>
         /// <param name="ipTags">The list of IP tags associated with the public
         /// IP address.</param>
-        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>))
+        /// <param name="publicIPPrefix">The PublicIPPrefix from which to
+        /// allocate publicIP addresses.</param>
+        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), Rest.Azure.SubResource publicIPPrefix = default(Rest.Azure.SubResource))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             DnsSettings = dnsSettings;
             IpTags = ipTags;
+            PublicIPPrefix = publicIPPrefix;
             CustomInit();
         }
 
@@ -81,6 +85,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.ipTags")]
         public IList<VirtualMachineScaleSetIpTag> IpTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PublicIPPrefix from which to allocate publicIP
+        /// addresses.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicIPPrefix")]
+        public Rest.Azure.SubResource PublicIPPrefix { get; set; }
 
         /// <summary>
         /// Validate the object.

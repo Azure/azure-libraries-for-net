@@ -8,24 +8,15 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Management.ResourceManager;
-    using Management.ResourceManager.Fluent;
-    using Management.ResourceManager.Fluent.Core;
 
-    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ReplicationState.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ReplicationState>))]
-    public class ReplicationState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ReplicationState>
+    public static class ReplicationState
     {
-        public static readonly ReplicationState Unknown = Parse("Unknown");
-        public static readonly ReplicationState Replicating = Parse("Replicating");
-        public static readonly ReplicationState Completed = Parse("Completed");
-        public static readonly ReplicationState Failed = Parse("Failed");
+        public const string Unknown = "Unknown";
+        public const string Replicating = "Replicating";
+        public const string Completed = "Completed";
+        public const string Failed = "Failed";
     }
 }

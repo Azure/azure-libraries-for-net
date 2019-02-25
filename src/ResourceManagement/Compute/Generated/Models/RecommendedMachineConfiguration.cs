@@ -12,7 +12,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the recommended machine configuration.
+    /// The properties describe the recommended machine configuration for this
+    /// Image Definition. These properties are updatable.
     /// </summary>
     public partial class RecommendedMachineConfiguration
     {

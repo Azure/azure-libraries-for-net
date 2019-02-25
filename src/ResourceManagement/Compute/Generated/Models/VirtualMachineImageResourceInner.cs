@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Virtual machine image resource information.
     /// </summary>
-    public partial class VirtualMachineImageResourceInner : Management.ResourceManager.Fluent.SubResource
+    public partial class VirtualMachineImageResourceInner : Rest.Azure.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineImageResourceInner

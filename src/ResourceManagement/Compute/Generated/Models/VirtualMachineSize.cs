@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Describes the properties of a VM size.
     /// </summary>
-    public partial class VirtualMachineSizeInner
+    public partial class VirtualMachineSize
     {
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineSizeInner class.
+        /// Initializes a new instance of the VirtualMachineSize class.
         /// </summary>
-        public VirtualMachineSizeInner()
+        public VirtualMachineSize()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineSizeInner class.
+        /// Initializes a new instance of the VirtualMachineSize class.
         /// </summary>
         /// <param name="name">The name of the virtual machine size.</param>
         /// <param name="numberOfCores">The number of cores supported by the
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// the virtual machine size.</param>
         /// <param name="maxDataDiskCount">The maximum number of data disks
         /// that can be attached to the virtual machine size.</param>
-        public VirtualMachineSizeInner(string name = default(string), int? numberOfCores = default(int?), int? osDiskSizeInMB = default(int?), int? resourceDiskSizeInMB = default(int?), int? memoryInMB = default(int?), int? maxDataDiskCount = default(int?))
+        public VirtualMachineSize(string name = default(string), int? numberOfCores = default(int?), int? osDiskSizeInMB = default(int?), int? resourceDiskSizeInMB = default(int?), int? memoryInMB = default(int?), int? maxDataDiskCount = default(int?))
         {
             Name = name;
             NumberOfCores = numberOfCores;

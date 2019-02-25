@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         /// <param name="runningStatus">Information about the overall status of
         /// the upgrade operation.</param>
-        /// <param name="progress">Counts of the VM's in each state.</param>
+        /// <param name="progress">Counts of the VMs in each state.</param>
         /// <param name="error">Error Details for this upgrade if there are
         /// any.</param>
         /// <param name="startedBy">Invoker of the Upgrade Operation. Possible
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public UpgradeOperationHistoryStatus RunningStatus { get; private set; }
 
         /// <summary>
-        /// Gets counts of the VM's in each state.
+        /// Gets counts of the VMs in each state.
         /// </summary>
         [JsonProperty(PropertyName = "progress")]
         public RollingUpgradeProgressInfo Progress { get; private set; }

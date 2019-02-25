@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the RegionalReplicationStatus class.
         /// </summary>
-        /// <param name="region">The region where the gallery image version is
-        /// published to.</param>
+        /// <param name="region">The region to which the gallery Image Version
+        /// is being replicated to.</param>
         /// <param name="state">This is the regional replication state.
         /// Possible values include: 'Unknown', 'Replicating', 'Completed',
         /// 'Failed'</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// status.</param>
         /// <param name="progress">It indicates progress of the replication
         /// job.</param>
-        public RegionalReplicationStatus(string region = default(string), ReplicationState state = default(ReplicationState), string details = default(string), int? progress = default(int?))
+        public RegionalReplicationStatus(string region = default(string), string state = default(string), string details = default(string), int? progress = default(int?))
         {
             Region = region;
             State = state;
@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the region where the gallery image version is published to.
+        /// Gets the region to which the gallery Image Version is being
+        /// replicated to.
         /// </summary>
         [JsonProperty(PropertyName = "region")]
         public string Region { get; private set; }
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// include: 'Unknown', 'Replicating', 'Completed', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
-        public ReplicationState State { get; private set; }
+        public string State { get; private set; }
 
         /// <summary>
         /// Gets the details of the replication status.

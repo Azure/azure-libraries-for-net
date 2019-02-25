@@ -17,25 +17,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Capture Virtual Machine parameters.
     /// </summary>
-    public partial class RunCommandInput
+    public partial class RunCommandInputInner
     {
         /// <summary>
-        /// Initializes a new instance of the RunCommandInput class.
+        /// Initializes a new instance of the RunCommandInputInner class.
         /// </summary>
-        public RunCommandInput()
+        public RunCommandInputInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RunCommandInput class.
+        /// Initializes a new instance of the RunCommandInputInner class.
         /// </summary>
         /// <param name="commandId">The run command id.</param>
         /// <param name="script">Optional. The script to be executed.  When
         /// this value is given, the given script will override the default
         /// script of the command.</param>
         /// <param name="parameters">The run command parameters.</param>
-        public RunCommandInput(string commandId, IList<string> script = default(IList<string>), IList<RunCommandInputParameter> parameters = default(IList<RunCommandInputParameter>))
+        public RunCommandInputInner(string commandId, IList<string> script = default(IList<string>), IList<RunCommandInputParameter> parameters = default(IList<RunCommandInputParameter>))
         {
             CommandId = commandId;
             Script = script;

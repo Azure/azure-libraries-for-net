@@ -15,20 +15,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Capture Virtual Machine parameters.
     /// </summary>
-    public partial class VirtualMachineCaptureParameters
+    public partial class VirtualMachineCaptureParametersInner
     {
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineCaptureParameters
-        /// class.
+        /// Initializes a new instance of the
+        /// VirtualMachineCaptureParametersInner class.
         /// </summary>
-        public VirtualMachineCaptureParameters()
+        public VirtualMachineCaptureParametersInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineCaptureParameters
-        /// class.
+        /// Initializes a new instance of the
+        /// VirtualMachineCaptureParametersInner class.
         /// </summary>
         /// <param name="vhdPrefix">The captured virtual hard disk's name
         /// prefix.</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// name.</param>
         /// <param name="overwriteVhds">Specifies whether to overwrite the
         /// destination virtual hard disk, in case of conflict.</param>
-        public VirtualMachineCaptureParameters(string vhdPrefix, string destinationContainerName, bool overwriteVhds)
+        public VirtualMachineCaptureParametersInner(string vhdPrefix, string destinationContainerName, bool overwriteVhds)
         {
             VhdPrefix = vhdPrefix;
             DestinationContainerName = destinationContainerName;

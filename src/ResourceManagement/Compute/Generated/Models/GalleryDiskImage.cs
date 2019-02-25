@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GalleryDiskImage class.
         /// </summary>
-        /// <param name="sizeInGB">It indicates the size of the VHD to
-        /// create.</param>
+        /// <param name="sizeInGB">This property indicates the size of the VHD
+        /// to be created.</param>
         /// <param name="hostCaching">The host caching of the disk. Valid
         /// values are 'None', 'ReadOnly', and 'ReadWrite'. Possible values
         /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets it indicates the size of the VHD to create.
+        /// Gets this property indicates the size of the VHD to be created.
         /// </summary>
         [JsonProperty(PropertyName = "sizeInGB")]
         public int? SizeInGB { get; private set; }

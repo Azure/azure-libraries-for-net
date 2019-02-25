@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -21,18 +20,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// The source user image virtual hard disk. Only tags may be updated.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ImageUpdate : UpdateResource
+    public partial class ImageUpdateInner : UpdateResource
     {
         /// <summary>
-        /// Initializes a new instance of the ImageUpdate class.
+        /// Initializes a new instance of the ImageUpdateInner class.
         /// </summary>
-        public ImageUpdate()
+        public ImageUpdateInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ImageUpdate class.
+        /// Initializes a new instance of the ImageUpdateInner class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
         /// <param name="sourceVirtualMachine">The source virtual machine from
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
         /// <param name="provisioningState">The provisioning state.</param>
-        public ImageUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
+        public ImageUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), Rest.Azure.SubResource sourceVirtualMachine = default(Rest.Azure.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
             : base(tags)
         {
             SourceVirtualMachine = sourceVirtualMachine;
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceVirtualMachine")]
-        public Management.ResourceManager.Fluent.SubResource SourceVirtualMachine { get; set; }
+        public Rest.Azure.SubResource SourceVirtualMachine { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine

@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a virtual machine scale set virtual machine.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetVMInner : Management.ResourceManager.Fluent.Resource
+    public partial class VirtualMachineScaleSetVMInner : Rest.Azure.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetVMInner
@@ -40,6 +39,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="sku">The virtual machine SKU.</param>
         /// <param name="latestModelApplied">Specifies whether the latest model
         /// has been applied to the virtual machine.</param>
+        /// <param name="protectFromScaleIn">Specifies whether the virtual
+        /// machine instance shouldn't be considered for deletion during a
+        /// scale-in operation</param>
         /// <param name="vmId">Azure VM unique ID.</param>
         /// <param name="instanceView">The virtual machine instance
         /// view.</param>
@@ -47,6 +49,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// the virtual machine.</param>
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
+        /// <param name="additionalCapabilities">Specifies additional
+        /// capabilities enabled or disabled on the virtual machine in the
+        /// scale set. For instance: whether the virtual machine has the
+        /// capability to support attaching managed data disks with
+        /// UltraSSD_LRS storage account type.</param>
         /// <param name="osProfile">Specifies the operating system settings for
         /// the virtual machine.</param>
         /// <param name="networkProfile">Specifies the network interfaces of
@@ -62,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// of virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
         /// &lt;br&gt;&lt;br&gt; For more information on Azure planned
-        /// maintainance, see [Planned maintenance for virtual machines in
+        /// maintenance, see [Planned maintenance for virtual machines in
         /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
         /// &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to
         /// availability set at creation time. An existing VM cannot be added
@@ -90,16 +97,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="resources">The virtual machine child extension
         /// resources.</param>
         /// <param name="zones">The virtual machine zones.</param>
-        public VirtualMachineScaleSetVMInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), IList<string> zones = default(IList<string>))
+        public VirtualMachineScaleSetVMInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), bool? protectFromScaleIn = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceViewInner instanceView = default(VirtualMachineScaleSetVMInstanceViewInner), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Rest.Azure.SubResource availabilitySet = default(Rest.Azure.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             InstanceId = instanceId;
             Sku = sku;
             LatestModelApplied = latestModelApplied;
+            ProtectFromScaleIn = protectFromScaleIn;
             VmId = vmId;
             InstanceView = instanceView;
             HardwareProfile = hardwareProfile;
             StorageProfile = storageProfile;
+            AdditionalCapabilities = additionalCapabilities;
             OsProfile = osProfile;
             NetworkProfile = networkProfile;
             DiagnosticsProfile = diagnosticsProfile;
@@ -137,6 +146,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public bool? LatestModelApplied { get; private set; }
 
         /// <summary>
+        /// Gets or sets specifies whether the virtual machine instance
+        /// shouldn't be considered for deletion during a scale-in operation
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.protectFromScaleIn")]
+        public bool? ProtectFromScaleIn { get; set; }
+
+        /// <summary>
         /// Gets azure VM unique ID.
         /// </summary>
         [JsonProperty(PropertyName = "properties.vmId")]
@@ -146,7 +162,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets the virtual machine instance view.
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
-        public VirtualMachineInstanceView InstanceView { get; private set; }
+        public VirtualMachineScaleSetVMInstanceViewInner InstanceView { get; private set; }
 
         /// <summary>
         /// Gets or sets specifies the hardware settings for the virtual
@@ -161,6 +177,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageProfile")]
         public StorageProfile StorageProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies additional capabilities enabled or disabled
+        /// on the virtual machine in the scale set. For instance: whether the
+        /// virtual machine has the capability to support attaching managed
+        /// data disks with UltraSSD_LRS storage account type.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.additionalCapabilities")]
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the operating system settings for the
@@ -192,7 +217,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// availability sets, see [Manage the availability of virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For more information on Azure
-        /// planned maintainance, see [Planned maintenance for virtual machines
+        /// planned maintenance, see [Planned maintenance for virtual machines
         /// in
         /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Currently, a VM can only be
@@ -200,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// be added to an availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilitySet")]
-        public Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
+        public Rest.Azure.SubResource AvailabilitySet { get; set; }
 
         /// <summary>
         /// Gets the provisioning state, which only appears in the response.
@@ -256,22 +281,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();
-            }
-            if (Resources != null)
-            {
-                foreach (var element in Resources)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }

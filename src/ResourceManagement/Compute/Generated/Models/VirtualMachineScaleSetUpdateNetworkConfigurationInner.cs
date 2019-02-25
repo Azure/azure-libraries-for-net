@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// configurations.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetUpdateNetworkConfigurationInner : Management.ResourceManager.Fluent.SubResource
+    public partial class VirtualMachineScaleSetUpdateNetworkConfigurationInner : Rest.Azure.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Configuration.</param>
         /// <param name="enableIPForwarding">Whether IP forwarding enabled on
         /// this NIC.</param>
-        public VirtualMachineScaleSetUpdateNetworkConfigurationInner(string id = default(string), string name = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), Management.ResourceManager.Fluent.SubResource networkSecurityGroup = default(Management.ResourceManager.Fluent.SubResource), VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetNetworkConfigurationDnsSettings), IList<VirtualMachineScaleSetUpdateIPConfigurationInner> ipConfigurations = default(IList<VirtualMachineScaleSetUpdateIPConfigurationInner>), bool? enableIPForwarding = default(bool?))
+        public VirtualMachineScaleSetUpdateNetworkConfigurationInner(string id = default(string), string name = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), Rest.Azure.SubResource networkSecurityGroup = default(Rest.Azure.SubResource), VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetNetworkConfigurationDnsSettings), IList<VirtualMachineScaleSetUpdateIPConfigurationInner> ipConfigurations = default(IList<VirtualMachineScaleSetUpdateIPConfigurationInner>), bool? enableIPForwarding = default(bool?))
             : base(id)
         {
             Name = name;
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the network security group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkSecurityGroup")]
-        public Management.ResourceManager.Fluent.SubResource NetworkSecurityGroup { get; set; }
+        public Rest.Azure.SubResource NetworkSecurityGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the dns settings to be applied on the network

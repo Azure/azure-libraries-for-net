@@ -8,22 +8,13 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Management.ResourceManager;
-    using Management.ResourceManager.Fluent;
-    using Management.ResourceManager.Fluent.Core;
 
-    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for AccessLevel.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<AccessLevel>))]
-    public class AccessLevel : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<AccessLevel>
+    public static class AccessLevel
     {
-        public static readonly AccessLevel None = Parse("None");
-        public static readonly AccessLevel Read = Parse("Read");
+        public const string None = "None";
+        public const string Read = "Read";
     }
 }

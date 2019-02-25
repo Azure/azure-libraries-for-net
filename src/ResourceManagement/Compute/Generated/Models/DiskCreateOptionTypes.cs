@@ -8,23 +8,14 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Management.ResourceManager;
-    using Management.ResourceManager.Fluent;
-    using Management.ResourceManager.Fluent.Core;
 
-    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for DiskCreateOptionTypes.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<DiskCreateOptionTypes>))]
-    public class DiskCreateOptionTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DiskCreateOptionTypes>
+    public static class DiskCreateOptionTypes
     {
-        public static readonly DiskCreateOptionTypes FromImage = Parse("FromImage");
-        public static readonly DiskCreateOptionTypes Empty = Parse("Empty");
-        public static readonly DiskCreateOptionTypes Attach = Parse("Attach");
+        public const string FromImage = "FromImage";
+        public const string Empty = "Empty";
+        public const string Attach = "Attach";
     }
 }

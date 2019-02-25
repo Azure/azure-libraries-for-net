@@ -8,22 +8,13 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Management.ResourceManager;
-    using Management.ResourceManager.Fluent;
-    using Management.ResourceManager.Fluent.Core;
 
-    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for IPVersion.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<IPVersion>))]
-    public class IPVersion : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<IPVersion>
+    public static class IPVersion
     {
-        public static readonly IPVersion IPv4 = Parse("IPv4");
-        public static readonly IPVersion IPv6 = Parse("IPv6");
+        public const string IPv4 = "IPv4";
+        public const string IPv6 = "IPv6";
     }
 }

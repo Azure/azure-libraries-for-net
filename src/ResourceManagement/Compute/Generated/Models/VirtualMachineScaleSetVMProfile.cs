@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// the virtual machines in the scale set.</param>
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
+        /// <param name="additionalCapabilities">Specifies additional
+        /// capabilities enabled or disabled on the virtual machine in the
+        /// scale set. For instance: whether the virtual machine has the
+        /// capability to support attaching managed data disks with
+        /// UltraSSD_LRS storage account type.</param>
         /// <param name="networkProfile">Specifies properties of the network
         /// interfaces of the virtual machines in the scale set.</param>
         /// <param name="diagnosticsProfile">Specifies the boot diagnostic
@@ -60,10 +65,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// virtual machines in a low priority scale set.
         /// &lt;br&gt;&lt;br&gt;Minimum api-version: 2017-10-30-preview.
         /// Possible values include: 'Deallocate', 'Delete'</param>
-        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), VirtualMachinePriorityTypes priority = default(VirtualMachinePriorityTypes), VirtualMachineEvictionPolicyTypes evictionPolicy = default(VirtualMachineEvictionPolicyTypes))
+        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string))
         {
             OsProfile = osProfile;
             StorageProfile = storageProfile;
+            AdditionalCapabilities = additionalCapabilities;
             NetworkProfile = networkProfile;
             DiagnosticsProfile = diagnosticsProfile;
             ExtensionProfile = extensionProfile;
@@ -91,6 +97,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "storageProfile")]
         public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies additional capabilities enabled or disabled
+        /// on the virtual machine in the scale set. For instance: whether the
+        /// virtual machine has the capability to support attaching managed
+        /// data disks with UltraSSD_LRS storage account type.
+        /// </summary>
+        [JsonProperty(PropertyName = "additionalCapabilities")]
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
 
         /// <summary>
         /// Gets or sets specifies properties of the network interfaces of the
@@ -138,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2017-10-30-preview. Possible values include: 'Regular', 'Low'
         /// </summary>
         [JsonProperty(PropertyName = "priority")]
-        public VirtualMachinePriorityTypes Priority { get; set; }
+        public string Priority { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the eviction policy for virtual machines in
@@ -147,7 +162,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
         /// </summary>
         [JsonProperty(PropertyName = "evictionPolicy")]
-        public VirtualMachineEvictionPolicyTypes EvictionPolicy { get; set; }
+        public string EvictionPolicy { get; set; }
 
         /// <summary>
         /// Validate the object.

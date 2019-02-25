@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -18,11 +17,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Specifies information about the gallery that you want to create or
-    /// update.
+    /// Specifies information about the Shared Image Gallery that you want to
+    /// create or update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryInner : Management.ResourceManager.Fluent.Resource
+    public partial class GalleryInner : Rest.Azure.Resource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryInner class.
@@ -35,11 +34,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GalleryInner class.
         /// </summary>
-        /// <param name="description">The description of this gallery
-        /// resource.</param>
+        /// <param name="description">The description of this Shared Image
+        /// Gallery resource. This property is updatable.</param>
         /// <param name="provisioningState">The current state of the
         /// gallery.</param>
-        public GalleryInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), ProvisioningState provisioningState = default(ProvisioningState))
+        public GalleryInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -54,7 +53,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the description of this gallery resource.
+        /// Gets or sets the description of this Shared Image Gallery resource.
+        /// This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.description")]
         public string Description { get; set; }
@@ -73,17 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; private set; }
+        public string ProvisioningState { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

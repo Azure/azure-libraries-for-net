@@ -19,19 +19,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Scale Set.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetUpdate : UpdateResource
+    public partial class VirtualMachineScaleSetUpdateInner : UpdateResource
     {
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineScaleSetUpdate
+        /// Initializes a new instance of the VirtualMachineScaleSetUpdateInner
         /// class.
         /// </summary>
-        public VirtualMachineScaleSetUpdate()
+        public VirtualMachineScaleSetUpdateInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineScaleSetUpdate
+        /// Initializes a new instance of the VirtualMachineScaleSetUpdateInner
         /// class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machines.</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        public VirtualMachineScaleSetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? singlePlacementGroup = default(bool?), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
+        public VirtualMachineScaleSetUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? singlePlacementGroup = default(bool?), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
             : base(tags)
         {
             Sku = sku;

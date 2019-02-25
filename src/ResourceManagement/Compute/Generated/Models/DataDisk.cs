@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
@@ -59,11 +57,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="writeAcceleratorEnabled">Specifies whether
         /// writeAccelerator should be enabled or disabled on the disk.</param>
         /// <param name="diskSizeGB">Specifies the size of an empty data disk
-        /// in gigabytes. This element can be used to overwrite the name of the
+        /// in gigabytes. This element can be used to overwrite the size of the
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public DataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
+        public DataDisk(int lun, string createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
         {
             Lun = lun;
             Name = name;
@@ -144,11 +142,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// described. Possible values include: 'FromImage', 'Empty', 'Attach'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of an empty data disk in gigabytes.
-        /// This element can be used to overwrite the name of the disk in a
+        /// This element can be used to overwrite the size of the disk in a
         /// virtual machine image. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; This
         /// value cannot be larger than 1023 GB
         /// </summary>

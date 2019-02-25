@@ -16,18 +16,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// The instance view of a virtual machine.
     /// </summary>
-    public partial class VirtualMachineInstanceView
+    public partial class VirtualMachineInstanceViewInner
     {
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineInstanceView class.
+        /// Initializes a new instance of the VirtualMachineInstanceViewInner
+        /// class.
         /// </summary>
-        public VirtualMachineInstanceView()
+        public VirtualMachineInstanceViewInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineInstanceView class.
+        /// Initializes a new instance of the VirtualMachineInstanceViewInner
+        /// class.
         /// </summary>
         /// <param name="platformUpdateDomain">Specifies the update domain of
         /// the virtual machine.</param>
@@ -49,13 +51,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="extensions">The extensions information.</param>
         /// <param name="bootDiagnostics">Boot Diagnostics is a debugging
         /// feature which allows you to view Console Output and Screenshot to
-        /// diagnose VM status. &lt;br&gt;&lt;br&gt; For Linux Virtual
-        /// Machines, you can easily view the output of your console log.
-        /// &lt;br&gt;&lt;br&gt; For both Windows and Linux virtual machines,
-        /// Azure also enables you to see a screenshot of the VM from the
-        /// hypervisor.</param>
+        /// diagnose VM status. &lt;br&gt;&lt;br&gt; You can easily view the
+        /// output of your console log. &lt;br&gt;&lt;br&gt; Azure also enables
+        /// you to see a screenshot of the VM from the hypervisor.</param>
         /// <param name="statuses">The resource status information.</param>
-        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
+        public VirtualMachineInstanceViewInner(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             PlatformUpdateDomain = platformUpdateDomain;
             PlatformFaultDomain = platformFaultDomain;
@@ -142,11 +142,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Gets or sets boot Diagnostics is a debugging feature which allows
         /// you to view Console Output and Screenshot to diagnose VM status.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For Linux Virtual Machines,
-        /// you can easily view the output of your console log.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For both Windows and Linux
-        /// virtual machines, Azure also enables you to see a screenshot of the
-        /// VM from the hypervisor.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; You can easily view the output
+        /// of your console log. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Azure
+        /// also enables you to see a screenshot of the VM from the hypervisor.
         /// </summary>
         [JsonProperty(PropertyName = "bootDiagnostics")]
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }

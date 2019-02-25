@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// configuration.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetUpdateIPConfigurationInner : Management.ResourceManager.Fluent.SubResource
+    public partial class VirtualMachineScaleSetUpdateIPConfigurationInner : Rest.Azure.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// backend address pools.</param>
         /// <param name="loadBalancerInboundNatPools">The load balancer inbound
         /// nat pools.</param>
-        public VirtualMachineScaleSetUpdateIPConfigurationInner(string id = default(string), string name = default(string), ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetUpdatePublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetUpdatePublicIPAddressConfiguration), IPVersion privateIPAddressVersion = default(IPVersion), IList<Management.ResourceManager.Fluent.SubResource> applicationGatewayBackendAddressPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> applicationSecurityGroups = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancerBackendAddressPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancerInboundNatPools = default(IList<Management.ResourceManager.Fluent.SubResource>))
+        public VirtualMachineScaleSetUpdateIPConfigurationInner(string id = default(string), string name = default(string), ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetUpdatePublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetUpdatePublicIPAddressConfiguration), string privateIPAddressVersion = default(string), IList<Rest.Azure.SubResource> applicationGatewayBackendAddressPools = default(IList<Rest.Azure.SubResource>), IList<Rest.Azure.SubResource> applicationSecurityGroups = default(IList<Rest.Azure.SubResource>), IList<Rest.Azure.SubResource> loadBalancerBackendAddressPools = default(IList<Rest.Azure.SubResource>), IList<Rest.Azure.SubResource> loadBalancerInboundNatPools = default(IList<Rest.Azure.SubResource>))
             : base(id)
         {
             Name = name;
@@ -109,32 +108,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Possible values include: 'IPv4', 'IPv6'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
-        public IPVersion PrivateIPAddressVersion { get; set; }
+        public string PrivateIPAddressVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the application gateway backend address pools.
         /// </summary>
         [JsonProperty(PropertyName = "properties.applicationGatewayBackendAddressPools")]
-        public IList<Management.ResourceManager.Fluent.SubResource> ApplicationGatewayBackendAddressPools { get; set; }
+        public IList<Rest.Azure.SubResource> ApplicationGatewayBackendAddressPools { get; set; }
 
         /// <summary>
         /// Gets or sets specifies an array of references to application
         /// security group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.applicationSecurityGroups")]
-        public IList<Management.ResourceManager.Fluent.SubResource> ApplicationSecurityGroups { get; set; }
+        public IList<Rest.Azure.SubResource> ApplicationSecurityGroups { get; set; }
 
         /// <summary>
         /// Gets or sets the load balancer backend address pools.
         /// </summary>
         [JsonProperty(PropertyName = "properties.loadBalancerBackendAddressPools")]
-        public IList<Management.ResourceManager.Fluent.SubResource> LoadBalancerBackendAddressPools { get; set; }
+        public IList<Rest.Azure.SubResource> LoadBalancerBackendAddressPools { get; set; }
 
         /// <summary>
         /// Gets or sets the load balancer inbound nat pools.
         /// </summary>
         [JsonProperty(PropertyName = "properties.loadBalancerInboundNatPools")]
-        public IList<Management.ResourceManager.Fluent.SubResource> LoadBalancerInboundNatPools { get; set; }
+        public IList<Rest.Azure.SubResource> LoadBalancerInboundNatPools { get; set; }
 
         /// <summary>
         /// Validate the object.

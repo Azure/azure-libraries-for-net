@@ -15,25 +15,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Describes Compute Resource Usage.
     /// </summary>
-    public partial class UsageInner
+    public partial class Usage
     {
         /// <summary>
-        /// Initializes a new instance of the UsageInner class.
+        /// Initializes a new instance of the Usage class.
         /// </summary>
-        public UsageInner()
+        public Usage()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UsageInner class.
+        /// Initializes a new instance of the Usage class.
         /// </summary>
         /// <param name="currentValue">The current usage of the
         /// resource.</param>
         /// <param name="limit">The maximum permitted usage of the
         /// resource.</param>
         /// <param name="name">The name of the type of usage.</param>
-        public UsageInner(int currentValue, long limit, UsageName name)
+        public Usage(int currentValue, long limit, UsageName name)
         {
             CurrentValue = currentValue;
             Limit = limit;
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             CustomInit();
         }
         /// <summary>
-        /// Static constructor for UsageInner class.
+        /// Static constructor for Usage class.
         /// </summary>
-        static UsageInner()
+        static Usage()
         {
             Unit = "Count";
         }

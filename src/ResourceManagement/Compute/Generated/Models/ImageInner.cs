@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// provided, the destination virtual hard drive must not exist.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ImageInner : Management.ResourceManager.Fluent.Resource
+    public partial class ImageInner : Rest.Azure.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ImageInner class.
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
         /// <param name="provisioningState">The provisioning state.</param>
-        public ImageInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
+        public ImageInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Rest.Azure.SubResource sourceVirtualMachine = default(Rest.Azure.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             SourceVirtualMachine = sourceVirtualMachine;
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceVirtualMachine")]
-        public Management.ResourceManager.Fluent.SubResource SourceVirtualMachine { get; set; }
+        public Rest.Azure.SubResource SourceVirtualMachine { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine
@@ -81,9 +80,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();

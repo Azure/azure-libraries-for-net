@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Vault.</param>
         /// <param name="sourceVault">The relative URL of the Key Vault
         /// containing the secret.</param>
-        public KeyVaultSecretReference(string secretUrl, Management.ResourceManager.Fluent.SubResource sourceVault)
+        public KeyVaultSecretReference(string secretUrl, Rest.Azure.SubResource sourceVault)
         {
             SecretUrl = secretUrl;
             SourceVault = sourceVault;
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// secret.
         /// </summary>
         [JsonProperty(PropertyName = "sourceVault")]
-        public Management.ResourceManager.Fluent.SubResource SourceVault { get; set; }
+        public Rest.Azure.SubResource SourceVault { get; set; }
 
         /// <summary>
         /// Validate the object.

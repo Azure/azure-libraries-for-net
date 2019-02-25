@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the gallery image purchase plan. This is used by marketplace
-    /// images.
+    /// Describes the gallery Image Definition purchase plan. This is used by
+    /// marketplace images.
     /// </summary>
     public partial class ImagePurchasePlan
     {

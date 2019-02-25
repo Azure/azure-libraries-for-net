@@ -15,6 +15,10 @@
 	<Import Project="$(NetSdkBuildTargetsDir)\core\_Directory.Build.props" Condition=" Exists('$(NetSdkBuildTargetsDir)\core\_Directory.Build.props') "/>
 	
 	<PropertyGroup>
+           <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+  
+	<PropertyGroup>
     		<LibrarySourceFolder>$(LibraryRoot)</LibrarySourceFolder>
 	</PropertyGroup>		
 </Project>
