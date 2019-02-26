@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
     /// The implementation for Identity and its create and update interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1zaS5pbXBsZW1lbnRhdGlvbi5JZGVudGl0eUltcGw=
-    internal sealed partial class IdentityImpl  :
+    internal sealed partial class IdentityImpl :
         GroupableResource<IIdentity, IdentityInner, IdentityImpl, IMsiManager, IWithGroup, IWithCreate, IWithCreate, IUpdate>,
         IIdentity,
         IDefinition,

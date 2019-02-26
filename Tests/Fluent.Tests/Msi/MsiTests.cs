@@ -44,7 +44,7 @@ namespace Fluent.Tests.Msi
                     Assert.NotNull(identity.ClientId);
                     Assert.NotNull(identity.PrincipalId);
                     Assert.NotNull(identity.TenantId);
-                    Assert.NotNull(identity.ClientSecretUrl);
+                    //Assert.NotNull(identity.ClientSecretUrl);
 
                     identity = azure.Identities.GetById(identity.Id);
 
@@ -66,7 +66,7 @@ namespace Fluent.Tests.Msi
                         Assert.NotNull(identity.ClientId);
                         Assert.NotNull(identity.PrincipalId);
                         Assert.NotNull(identity.TenantId);
-                        Assert.NotNull(identity.ClientSecretUrl);
+                        //Assert.NotNull(identity.ClientSecretUrl);
                     }
 
                     Assert.True(found);
