@@ -9,8 +9,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent.Identity.Definition
     /// The stage of the identity definition allowing to set access role (permission) for it
     /// to access a resource.
     /// </summary>
-    public interface IWithAccess  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithAccess 
     {
         /// <summary>
         /// Specifies that the identity should have the given access (described by the role)
