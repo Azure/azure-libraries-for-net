@@ -150,7 +150,7 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
 
         private static RunCommandResultInner RunCommandOnVM(IAzure azure, IVirtualMachine virtualMachine, List<String> commands)
         {
-            RunCommandInput runParams = new RunCommandInput()
+            RunCommandInputInner runParams = new RunCommandInputInner()
             {
                 CommandId = "RunShellScript",
                 Script = commands

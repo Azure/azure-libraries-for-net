@@ -95,7 +95,7 @@ namespace ManageBatchAI
                 // Create Batch AI cluster that uses Azure file share to host the training data and scripts for the learning job
                 Utilities.Log("Creating Batch AI cluster...");
                 IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
-                    .WithVMSize(VirtualMachineSizeTypes.StandardNC6.Value)
+                    .WithVMSize(VirtualMachineSizeTypes.StandardNC6)
                     .WithUserName(userName)
                     .WithPassword("MyPassword")
                     .WithAutoScale(0, 2)
