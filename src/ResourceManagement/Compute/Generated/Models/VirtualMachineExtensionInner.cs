@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Extension.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineExtensionInner : Rest.Azure.Resource
+    public partial class VirtualMachineExtensionInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineExtensionInner

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the provisioningState of image version resource.
         /// </summary>
-        ProvisioningState ProvisioningState { get; }
+        string ProvisioningState { get; }
 
         /// <summary>
         /// Gets the publishingProfile configuration of the image version.

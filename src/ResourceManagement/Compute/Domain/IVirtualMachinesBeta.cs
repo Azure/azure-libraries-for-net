@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner RunCommand(string groupName, string name, RunCommandInput inputCommand);
+        Models.RunCommandResultInner RunCommand(string groupName, string name, RunCommandInputInner inputCommand);
 
         /// <summary>
         /// Run commands in a virtual machine asynchronously.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run shell script in a virtual machine.

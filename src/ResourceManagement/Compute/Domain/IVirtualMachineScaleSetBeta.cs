@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the storage account type of the OS managed disk. A null value will be returned if the
         /// virtual machine scale set is based on un-managed disk.
         /// </summary>
-        Models.StorageAccountTypes ManagedOSDiskStorageAccountType { get; }
+        string ManagedOSDiskStorageAccountType { get; }
 
         /// <summary>
         /// Gets the type of Managed Service Identity used for the virtual machine scale set.
@@ -91,12 +91,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the eviction policy of the virtual machines in the scale set.
         /// </summary>
-        Models.VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy { get; }
+        string VirtualMachineEvictionPolicy { get; }
 
         /// <summary>
         /// Gets the priority of virtual machines in the scale set.
         /// </summary>
-        Models.VirtualMachinePriorityTypes VirtualMachinePriority { get; }
+        string VirtualMachinePriority { get; }
 
         /// <summary>
         /// Gets the public ip configuration of virtual machines in the scale set.
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner RunCommandInVMInstance(string vmId, RunCommandInput inputCommand);
+        Models.RunCommandResultInner RunCommandInVMInstance(string vmId, RunCommandInputInner inputCommand);
 
         /// <summary>
         /// Run commands in a virtual machine instance in a scale set asynchronously.
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run PowerShell script in a virtual machine instance in a scale set.

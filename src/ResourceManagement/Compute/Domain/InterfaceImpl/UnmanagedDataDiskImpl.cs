@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the creation method used while creating this disk.
         /// </summary>
-        Models.DiskCreateOptionTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk.CreationMethod
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk.CreationMethod
         {
             get
             {

@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.vmSizes = new VirtualMachineSizesImpl(computeManager.Inner.VirtualMachineSizes);
         }
 
-        public RunCommandResultInner RunCommand(string groupName, string name, RunCommandInput inputCommand)
+        public RunCommandResultInner RunCommand(string groupName, string name, RunCommandInputInner inputCommand)
         {
             return Extensions.Synchronize(() => RunCommandAsync(groupName, name, inputCommand));
         }
 
-        public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Inner.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
         }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inputCommand = new RunCommandInput
+            var inputCommand = new RunCommandInputInner
                 {
                     CommandId = "RunPowerShellScript",
                     Script = scriptLines,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inputCommand = new RunCommandInput
+            var inputCommand = new RunCommandInputInner
                 {
                     CommandId = "RunShellScript",
                     Script = scriptLines,
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             bool overwriteVhd,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
+            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;

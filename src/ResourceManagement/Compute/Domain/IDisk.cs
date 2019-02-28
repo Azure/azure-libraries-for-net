@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the disk creation method.
         /// </summary>
-        Models.DiskCreateOption CreationMethod { get; }
+        string CreationMethod { get; }
 
         /// <summary>
         /// Gets true if the disk is attached to a virtual machine, otherwise false.

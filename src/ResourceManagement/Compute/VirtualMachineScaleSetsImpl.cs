@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.rbacManager = rbacManager;
         }
 
-        public RunCommandResultInner RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand)
+        public RunCommandResultInner RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand)
         {
             return Extensions.Synchronize(() => RunCommandVMInstanceAsync(groupName, scaleSetName, vmId, inputCommand));
         }
 
-        public async Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.Inner.VirtualMachineScaleSetVMs.RunCommandAsync(groupName, scaleSetName, vmId, inputCommand, cancellationToken);
         }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunPowerShellScriptInVMInstanceAsync(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inputCommand = new RunCommandInput
+            var inputCommand = new RunCommandInputInner
                 {
                     CommandId = "RunPowerShellScript",
                     Script = scriptLines,
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunShellScriptInVMInstanceAsync(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inputCommand = new RunCommandInput
+            var inputCommand = new RunCommandInputInner
                 {
                     CommandId = "RunShellScript",
                     Script = scriptLines,

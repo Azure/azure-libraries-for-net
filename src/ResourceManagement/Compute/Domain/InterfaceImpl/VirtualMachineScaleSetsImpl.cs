@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand)
         {
             return this.RunCommandInVMInstance(groupName, scaleSetName, vmId, inputCommand);
         }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandVMInstanceAsync(groupName, scaleSetName, vmId, inputCommand, cancellationToken);
         }

@@ -9,7 +9,6 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Snapshot resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SnapshotInner : Rest.Azure.Resource
+    public partial class SnapshotInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the SnapshotInner class.

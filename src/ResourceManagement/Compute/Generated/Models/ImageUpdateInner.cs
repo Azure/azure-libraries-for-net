@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
         /// <param name="provisioningState">The provisioning state.</param>
-        public ImageUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), Rest.Azure.SubResource sourceVirtualMachine = default(Rest.Azure.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
+        public ImageUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
             : base(tags)
         {
             SourceVirtualMachine = sourceVirtualMachine;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceVirtualMachine")]
-        public Rest.Azure.SubResource SourceVirtualMachine { get; set; }
+        public Management.ResourceManager.Fluent.SubResource SourceVirtualMachine { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine

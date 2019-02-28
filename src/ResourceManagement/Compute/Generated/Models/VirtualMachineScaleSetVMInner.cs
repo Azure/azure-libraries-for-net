@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a virtual machine scale set virtual machine.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetVMInner : Rest.Azure.Resource
+    public partial class VirtualMachineScaleSetVMInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetVMInner
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="resources">The virtual machine child extension
         /// resources.</param>
         /// <param name="zones">The virtual machine zones.</param>
-        public VirtualMachineScaleSetVMInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), bool? protectFromScaleIn = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceViewInner instanceView = default(VirtualMachineScaleSetVMInstanceViewInner), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Rest.Azure.SubResource availabilitySet = default(Rest.Azure.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), IList<string> zones = default(IList<string>))
+        public VirtualMachineScaleSetVMInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), bool? protectFromScaleIn = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceViewInner instanceView = default(VirtualMachineScaleSetVMInstanceViewInner), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             InstanceId = instanceId;
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// be added to an availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilitySet")]
-        public Rest.Azure.SubResource AvailabilitySet { get; set; }
+        public Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
 
         /// <summary>
         /// Gets the provisioning state, which only appears in the response.

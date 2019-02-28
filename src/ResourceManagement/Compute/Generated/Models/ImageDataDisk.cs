@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disks, it cannot be used with OS Disk. Possible values include:
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
         /// 'UltraSSD_LRS'</param>
-        public ImageDataDisk(int lun, Rest.Azure.SubResource snapshot = default(Rest.Azure.SubResource), Rest.Azure.SubResource managedDisk = default(Rest.Azure.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string))
+        public ImageDataDisk(int lun, Management.ResourceManager.Fluent.SubResource snapshot = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string))
         {
             Lun = lun;
             Snapshot = snapshot;
@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the snapshot.
         /// </summary>
         [JsonProperty(PropertyName = "snapshot")]
-        public Rest.Azure.SubResource Snapshot { get; set; }
+        public Management.ResourceManager.Fluent.SubResource Snapshot { get; set; }
 
         /// <summary>
         /// Gets or sets the managedDisk.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public Rest.Azure.SubResource ManagedDisk { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
 
         /// <summary>
         /// Gets or sets the Virtual Hard Disk.

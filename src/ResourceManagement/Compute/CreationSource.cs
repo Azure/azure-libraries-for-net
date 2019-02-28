@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         {
             get
             {
-                DiskCreateOption createOption = this.creationData.CreateOption;
+                string createOption = this.creationData.CreateOption;
                 if (createOption == DiskCreateOption.FromImage)
                 {
                     ImageDiskReference imageReference = this.creationData.ImageReference;

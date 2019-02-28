@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand);
+        Models.RunCommandResultInner RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand);
 
         /// <summary>
         /// Run commands in a virtual machine instance in a scale set asynchronously.
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run PowerShell script in a virtual machine instance in a scale set.

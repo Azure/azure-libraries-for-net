@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     public interface IComputeSku :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ResourceSkuInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ResourceSku>
     {
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the availability set sku type.
         /// </summary>
-        Models.AvailabilitySetSkuTypes AvailabilitySetSkuType { get; }
+        string AvailabilitySetSkuType { get; }
 
         /// <summary>
         /// Gets the capabilities of the sku.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine size type.
         /// </summary>
-        Models.VirtualMachineSizeTypes VirtualMachineSizeType { get; }
+        string VirtualMachineSizeType { get; }
 
         /// <summary>
         /// Gets the availability zones supported for this sku, index by region.

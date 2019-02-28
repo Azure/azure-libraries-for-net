@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the provisioningState of image resource.
         /// </summary>
-        ProvisioningState ProvisioningState { get; }
+        string ProvisioningState { get; }
 
         /// <summary>
         /// Gets the purchasePlan of the image.

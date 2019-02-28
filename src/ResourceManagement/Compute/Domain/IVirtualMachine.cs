@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine's instance view.
         /// </summary>
-        Models.VirtualMachineInstanceView InstanceView { get; }
+        Models.VirtualMachineInstanceViewInner InstanceView { get; }
 
         /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine.
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the managed disk backing OS disk.
         /// </summary>
-        Models.StorageAccountTypes OSDiskStorageAccountType { get; }
+        string OSDiskStorageAccountType { get; }
 
         /// <summary>
         /// Gets the operating system profile.
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine size.
         /// </summary>
-        Models.VirtualMachineSizeTypes Size { get; }
+        string Size { get; }
 
         /// <summary>
         /// Gets Returns the storage profile of an Azure virtual machine.
@@ -251,13 +251,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The instance view will be cached for later retrieval using <code>instanceView</code>.
         /// </summary>
         /// <return>The refreshed instance view.</return>
-        Models.VirtualMachineInstanceView RefreshInstanceView();
+        Models.VirtualMachineInstanceViewInner RefreshInstanceView();
 
         /// <summary>
         /// Refreshes the virtual machine instance view to sync with Azure.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine.</return>
-        Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.VirtualMachineInstanceViewInner> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Restarts the virtual machine.

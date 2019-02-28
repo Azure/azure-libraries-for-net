@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the snapshot creation method.
         /// </summary>
-        Models.DiskCreateOption Microsoft.Azure.Management.Compute.Fluent.ISnapshot.CreationMethod
+        string Microsoft.Azure.Management.Compute.Fluent.ISnapshot.CreationMethod
         {
             get
             {

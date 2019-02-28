@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="virtualMachineInstanceView">the virtual machine instance view</param>
         /// <returns>the PowerState</returns>
-        public static PowerState FromInstanceView(VirtualMachineInstanceView virtualMachineInstanceView)
+        public static PowerState FromInstanceView(VirtualMachineInstanceViewInner virtualMachineInstanceView)
         {
             if (virtualMachineInstanceView != null && virtualMachineInstanceView.Statuses != null)
             {

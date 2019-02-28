@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private INetworkInterface existingPrimaryNetworkInterfaceToAssociate;
         // reference to a list of existing network interfaces that needs to be used as virtual machine's secondary network interface
         private IList<INetworkInterface> existingSecondaryNetworkInterfacesToAssociate;
-        private VirtualMachineInstanceView virtualMachineInstanceView;
+        private VirtualMachineInstanceViewInner virtualMachineInstanceView;
         private bool isMarketplaceLinuxImage;
         // Intermediate state of network interface definition to which private IP can be associated
         private Network.Fluent.NetworkInterface.Definition.IWithPrimaryPrivateIP nicDefinitionWithPrivateIP;
@@ -125,12 +125,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
         
-        public RunCommandResultInner RunCommand(RunCommandInput inputCommand)
+        public RunCommandResultInner RunCommand(RunCommandInputInner inputCommand)
         {
             return Extensions.Synchronize(() => this.RunCommandAsync(inputCommand));
         }
 
-        public async Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachines.RunCommandAsync(this.ResourceGroupName, this.Name, inputCommand, cancellationToken);
         }
@@ -197,13 +197,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:F5949CB4AFA8DD0B8DED0F369B12A8F6:6AC69BE8BE090CDE9822C84DD5F906F3
-        public VirtualMachineInstanceView RefreshInstanceView()
+        public VirtualMachineInstanceViewInner RefreshInstanceView()
         {
             return Extensions.Synchronize(() => RefreshInstanceViewAsync());
         }
 
         ///GENMHASH:D97B6272C7E7717C00D4F9B818A713C0:8DD09B90F0555BB3E1AEF7B9AF044379
-        public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.VirtualMachineInstanceViewInner> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var virtualMachineInner = await this.Manager.Inner.VirtualMachines.GetAsync(this.ResourceGroupName,
                 this.Name,
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C345130B595C0FF585A57651EFDC3A0F:E97CAC99D13041F7FEAACC7E4508DC7B
         public async Task<string> CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
+            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
@@ -728,16 +728,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:3EDA6D9B767CDD07D76DD15C0E0B7128:7E4761B66D0FB9A09715DA978222FC55
         public VirtualMachineImpl WithSize(string sizeName)
         {
-            Inner.HardwareProfile.VmSize = VirtualMachineSizeTypes.Parse(sizeName);
+            Inner.HardwareProfile.VmSize = sizeName;
             return this;
         }
 
-        ///GENMHASH:619ABAAD3F8A01F52AFF9E0735BDAE77:EC0CEDDCD615AA4EFB41DF60CEE2588B
-        public VirtualMachineImpl WithSize(VirtualMachineSizeTypes size)
-        {
-            Inner.HardwareProfile.VmSize = size;
-            return this;
-        }
 
         ///GENMHASH:68806A9EFF9AE1233F4E313BFAB88A1E:89DEE527C9AED179FFFF9E5303751431
         public VirtualMachineImpl WithOSDiskCaching(CachingTypes cachingType)
@@ -796,7 +790,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:90924DCFADE551C6E90B738982E6C2F7:279439FCFF8597A1B86C671E92AB9C4F
-        public VirtualMachineImpl WithOSDiskStorageAccountType(StorageAccountTypes accountType)
+        public VirtualMachineImpl WithOSDiskStorageAccountType(string accountType)
         {
             if (Inner.StorageProfile.OsDisk.ManagedDisk == null)
             {
@@ -821,7 +815,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:B37B5DD609CF1DB836ABB9CBB32E93E3:EBFBB1CB0457C2978B29376127013BE6
-        public VirtualMachineImpl WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
+        public VirtualMachineImpl WithDataDiskDefaultStorageAccountType(string storageAccountType)
         {
             this.managedDataDisks.SetDefaultStorageAccountType(storageAccountType);
             return this;
@@ -975,7 +969,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:1D3A0A89681FFD35007B24FCED6BF299:A69C7823EE7EC5B383A6E9CA6366F777
-        public VirtualMachineImpl WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        public VirtualMachineImpl WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
         {
             ThrowIfManagedDiskDisabled(ManagedUnmanagedDiskErrors.VM_Both_Unmanaged_And_Managed_Disk_Not_Allowed);
             ManagedDiskParametersInner managedDiskParameters = new ManagedDiskParametersInner();
@@ -1058,7 +1052,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:BABD7F4E5FDF4ECA60DB2F163B33F4C7:17AC541DFB3C3AEDF45259848089B054
-        public VirtualMachineImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        public VirtualMachineImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, string storageAccountType)
         {
             ManagedDiskParametersInner managedDiskParameters = new ManagedDiskParametersInner();
             managedDiskParameters.StorageAccountType = storageAccountType;
@@ -1383,7 +1377,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C19382933BDE655D0F0F95CD9474DFE7:2F66035F0CB425AA1735B96753E25A51
-        public VirtualMachineSizeTypes Size()
+        public string Size()
         {
             return Inner.HardwareProfile.VmSize;
         }
@@ -1423,7 +1417,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E5CADE85564466522E512C04EB3F57B6:086F150AD4D805B10FE2EDCCE4784829
-        public StorageAccountTypes OSDiskStorageAccountType()
+        public string OSDiskStorageAccountType()
         {
             if (!IsManagedDiskEnabled()
                 || this.StorageProfile().OsDisk.ManagedDisk == null
@@ -1593,7 +1587,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E21E3E6E61153DDD23E28BC18B49F1AC:BAF1B6669763368768C132F520B23A67
-        public VirtualMachineInstanceView InstanceView()
+        public VirtualMachineInstanceViewInner InstanceView()
         {
             if (this.virtualMachineInstanceView == null)
             {
@@ -1802,7 +1796,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
 
                 //
-                VirtualMachineUpdate updateParameter = new VirtualMachineUpdate
+                VirtualMachineUpdateInner updateParameter = new VirtualMachineUpdateInner
                     {
                         Plan = this.Inner.Plan,
                         HardwareProfile = this.Inner.HardwareProfile,
@@ -2473,7 +2467,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public IList<Models.DataDisk> NewDisksFromImage;
             private VirtualMachineImpl vm;
             private CachingTypes? defaultCachingType;
-            private StorageAccountTypes defaultStorageAccountType;
+            private string defaultStorageAccountType;
 
             ///GENMHASH:CA7F491172B86E1C8B0D8508E4161245:D1D4C18FF276F4E074EBD85D149B5349
             internal void SetDataDisksDefaults()
@@ -2652,7 +2646,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             ///GENMHASH:E896A9714FD3ED579D3A806B2D670211:9EC21D752F2334263B0BF51F5BEF2FE2
-            internal void SetDefaultStorageAccountType(StorageAccountTypes defaultStorageAccountType)
+            internal void SetDefaultStorageAccountType(string defaultStorageAccountType)
             {
                 this.defaultStorageAccountType = defaultStorageAccountType;
             }
@@ -2709,7 +2703,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             ///GENMHASH:647794DB64052F8555CB8ABDABF9F24D:419FDCEEC4AAB55470C80A42C1D69868
-            internal StorageAccountTypes GetDefaultStorageAccountType()
+            internal string GetDefaultStorageAccountType()
             {
                 if (defaultStorageAccountType == null)
                 {

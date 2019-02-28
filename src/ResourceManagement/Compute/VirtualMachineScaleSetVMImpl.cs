@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ChildResource<VirtualMachineScaleSetVMInner, VirtualMachineScaleSetImpl, IVirtualMachineScaleSet>,
         IVirtualMachineScaleSetVM
     {
-        private VirtualMachineInstanceView virtualMachineInstanceView;
+        private VirtualMachineInstanceViewInner virtualMachineInstanceView;
 
-        public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.VirtualMachineInstanceViewInner> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var instanceViewInner = await Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
                 this.Parent.ResourceGroupName,
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (instanceViewInner != null)
             {
-                this.virtualMachineInstanceView = new VirtualMachineInstanceView()
+                this.virtualMachineInstanceView = new VirtualMachineInstanceViewInner()
                 {
                     BootDiagnostics = instanceViewInner.BootDiagnostics,
                     Disks = instanceViewInner.Disks,
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:F5949CB4AFA8DD0B8DED0F369B12A8F6:E8FB723EB69B1FF154465213A3298460
-        public VirtualMachineInstanceView RefreshInstanceView()
+        public VirtualMachineInstanceViewInner RefreshInstanceView()
         {
             return ResourceManager.Fluent.Core.Extensions.Synchronize(() => RefreshInstanceViewAsync());
         }
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C19382933BDE655D0F0F95CD9474DFE7:DB5E59650C351CEA1A8047EAB8DFA902
-        public VirtualMachineSizeTypes Size()
+        public string Size()
         {
             if (Inner.HardwareProfile != null && Inner.HardwareProfile.VmSize != null)
             {
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             if (Sku() != null && Sku().Name != null)
             {
-                return VirtualMachineSizeTypes.Parse(Sku().Name);
+                return Sku().Name;
             }
             return null;
         }
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E21E3E6E61153DDD23E28BC18B49F1AC:1C335DE060E2C5BE410D8822875D2876
-        public VirtualMachineInstanceView InstanceView()
+        public VirtualMachineInstanceViewInner InstanceView()
         {
             if (this.virtualMachineInstanceView == null)
             {
@@ -507,10 +507,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:960A44940EE0E051601BB59CD935FE22:09B1869890AC6095FE0FBE503BBBBFB6
         public async Task ReimageAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Parent.Manager.Inner.VirtualMachineScaleSetVMs.ReimageAsync(
+            await Parent.Manager.Inner.VirtualMachineScaleSetVMs.ReimageWithHttpMessagesAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 InstanceId(),
+                false,
+                null,
                 cancellationToken);
         }
 
@@ -570,7 +572,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineScaleSetVMImpl(VirtualMachineScaleSetVMInner inner, VirtualMachineScaleSetImpl parent)
             : base(inner, parent)
         {
-            virtualMachineInstanceView = Inner.InstanceView;
+            virtualMachineInstanceView = new VirtualMachineInstanceViewInner()
+            {
+                BootDiagnostics = Inner.InstanceView.BootDiagnostics,
+                Disks = Inner.InstanceView.Disks,
+                Extensions = Inner.InstanceView.Extensions,
+                PlatformFaultDomain = Inner.InstanceView.PlatformFaultDomain,
+                PlatformUpdateDomain = Inner.InstanceView.PlatformUpdateDomain,
+                RdpThumbPrint = Inner.InstanceView.RdpThumbPrint,
+                Statuses = Inner.InstanceView.Statuses,
+                VmAgent = Inner.InstanceView.VmAgent
+            };
         }
 
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6

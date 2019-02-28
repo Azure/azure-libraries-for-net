@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:BFD5BBE75FF2933909C9A5EE4D96DB28
-        public DiskCreateOptionTypes CreationMethod()
+        public string CreationMethod()
         {
             if (Inner.CreateOption == null)
             {

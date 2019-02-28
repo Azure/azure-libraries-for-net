@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommand(string groupName, string name, RunCommandInput inputCommand)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommand(string groupName, string name, RunCommandInputInner inputCommand)
         {
             return this.RunCommand(groupName, name, inputCommand);
         }
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommandAsync(string groupName, string name, RunCommandInputInner inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
         }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the provisioning state of the gallery resource.
         /// </summary>
-        ProvisioningState ProvisioningState { get; }
+        string ProvisioningState { get; }
 
         /// <summary>
         /// Gets the unique name of the gallery resource.

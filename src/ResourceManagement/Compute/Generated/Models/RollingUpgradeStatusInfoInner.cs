@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// The status of the latest virtual machine scale set rolling upgrade.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RollingUpgradeStatusInfoInner : Rest.Azure.Resource
+    public partial class RollingUpgradeStatusInfoInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the RollingUpgradeStatusInfoInner

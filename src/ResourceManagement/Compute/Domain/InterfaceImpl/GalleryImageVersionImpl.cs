@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the provisioningState of image version resource.
         /// </summary>
-        ProvisioningState Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.ProvisioningState
+        string Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.ProvisioningState
         {
             get
             {

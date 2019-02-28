@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machines in the availability set.</param>
         /// <param name="statuses">The resource status information.</param>
         /// <param name="sku">Sku of the availability set</param>
-        public AvailabilitySetUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Rest.Azure.SubResource> virtualMachines = default(IList<Rest.Azure.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
+        public AvailabilitySetUpdateInner(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
             : base(tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachines")]
-        public IList<Rest.Azure.SubResource> VirtualMachines { get; set; }
+        public IList<Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
 
         /// <summary>
         /// Gets the resource status information.

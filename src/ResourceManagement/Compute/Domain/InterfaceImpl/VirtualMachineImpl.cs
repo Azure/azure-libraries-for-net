@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine's instance view.
         /// </summary>
-        Models.VirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.InstanceView
+        Models.VirtualMachineInstanceViewInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.InstanceView
         {
             get
             {
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the managed disk backing OS disk.
         /// </summary>
-        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.OSDiskStorageAccountType
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.OSDiskStorageAccountType
         {
             get
             {
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine size.
         /// </summary>
-        Models.VirtualMachineSizeTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.Size
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.Size
         {
             get
             {
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The instance view will be cached for later retrieval using <code>instanceView</code>.
         /// </summary>
         /// <return>The refreshed instance view.</return>
-        Models.VirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceView()
+        Models.VirtualMachineInstanceViewInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceView()
         {
             return this.RefreshInstanceView();
         }
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Refreshes the virtual machine instance view to sync with Azure.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine.</return>
-        async Task<Models.VirtualMachineInstanceView> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceViewAsync(CancellationToken cancellationToken)
+        async Task<Models.VirtualMachineInstanceViewInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceViewAsync(CancellationToken cancellationToken)
         {
             return await this.RefreshInstanceViewAsync(cancellationToken);
         }
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommand(RunCommandInput inputCommand)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommand(RunCommandInputInner inputCommand)
         {
             return this.RunCommand(inputCommand);
         }
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommandAsync(RunCommandInput inputCommand, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandAsync(inputCommand, cancellationToken);
         }
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the update.</return>
-        VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithDataDiskDefaultStorageAccountType(string storageAccountType)
         {
             return this.WithDataDiskDefaultStorageAccountType(storageAccountType);
         }
@@ -958,7 +958,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
+        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithDataDiskDefaultStorageAccountType(string storageAccountType)
         {
             return this.WithDataDiskDefaultStorageAccountType(storageAccountType);
         }
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="cachingType">The caching type.</param>
         /// <param name="storageAccountType">The storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
         {
             return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
@@ -1351,7 +1351,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="cachingType">A caching type.</param>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the update.</return>
-        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
         {
             return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
@@ -1386,7 +1386,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="cachingType">A caching type.</param>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, string storageAccountType)
         {
             return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType, storageAccountType);
         }
@@ -1615,7 +1615,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="accountType">Storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithOSDiskStorageAccountType(StorageAccountTypes accountType)
+        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithOSDiskStorageAccountType(string accountType)
         {
             return this.WithOSDiskStorageAccountType(accountType);
         }
@@ -1897,16 +1897,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Specifies a new size for the virtual machine.
-        /// </summary>
-        /// <param name="size">A size from the list of available sizes for the virtual machine.</param>
-        /// <return>The next stage of the definition.</return>
-        VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithSize(VirtualMachineSizeTypes size)
-        {
-            return this.WithSize(size);
-        }
-
-        /// <summary>
         /// Selects the size of the virtual machine.
         /// </summary>
         /// <param name="sizeName">The name of a size for the virtual machine as text.</param>
@@ -1914,16 +1904,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithVMSize.WithSize(string sizeName)
         {
             return this.WithSize(sizeName);
-        }
-
-        /// <summary>
-        /// Specifies the size of the virtual machine.
-        /// </summary>
-        /// <param name="size">A size from the list of available sizes for the virtual machine.</param>
-        /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithVMSize.WithSize(VirtualMachineSizeTypes size)
-        {
-            return this.WithSize(size);
         }
 
         /// <summary>

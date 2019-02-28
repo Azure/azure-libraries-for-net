@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the creation method used while creating this disk.
         /// </summary>
-        Models.DiskCreateOptionTypes CreationMethod { get; }
+        string CreationMethod { get; }
 
         /// <summary>
         /// Gets the logical unit number assigned to this data disk.

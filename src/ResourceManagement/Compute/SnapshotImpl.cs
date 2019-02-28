@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:DAC486F08AF23F259E630032FC20FAF1:3FE53F300A729DFBC3C1F55BBB117CA1
         public async Task<string> GrantAccessAsync(int accessDurationInSeconds, CancellationToken cancellationToken = default(CancellationToken))
         {
-            GrantAccessData grantAccessDataInner = new GrantAccessData();
+            GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
             grantAccessDataInner.Access = AccessLevel.Read;
             grantAccessDataInner.DurationInSeconds = accessDurationInSeconds;
 
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:507C952D65DEB7C06C2758D22266AB43
-        public DiskCreateOption CreationMethod()
+        public string CreationMethod()
         {
             if (Inner.CreationData.CreateOption == null)
             {
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             SnapshotSku snapshotSku = new SnapshotSku
             {
-                Name = SnapshotStorageAccountTypes.Parse(sku.AccountType.ToString())
+                Name = sku.AccountType.ToString()
             };
             Inner.Sku = snapshotSku;
             return this;
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             SnapshotSku snapshotSku = new SnapshotSku
             {
-                Name = sku.AccountType
+                Name = sku.AccountType.ToString()
             };
             Inner.Sku = snapshotSku;
             return this;
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (Inner.Sku != null && Inner.Sku.Name != null && Inner.Sku.Name != null)
             {
-                return DiskSkuTypes.FromStorageAccountType(StorageAccountTypes.Parse(Inner.Sku.Name.ToString()));
+                return DiskSkuTypes.FromStorageAccountType(Inner.Sku.Name.ToString());
             }
             return null;
         }

@@ -38,13 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="sizeName">The name of a size for the virtual machine as text.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate WithSize(string sizeName);
-
-        /// <summary>
-        /// Specifies the size of the virtual machine.
-        /// </summary>
-        /// <param name="size">A size from the list of available sizes for the virtual machine.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate WithSize(VirtualMachineSizeTypes size);
     }
 
     /// <summary>
@@ -573,14 +566,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// </summary>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithDataDiskDefaultStorageAccountType(string storageAccountType);
 
         /// <summary>
         /// Specifies the storage account type for the managed OS disk.
         /// </summary>
         /// <param name="accountType">Storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithOSDiskStorageAccountType(StorageAccountTypes accountType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithOSDiskStorageAccountType(string accountType);
     }
 
     /// <summary>
@@ -829,7 +822,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="cachingType">The caching type.</param>
         /// <param name="storageAccountType">The storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType);
 
         /// <summary>
         /// Specifies the data disk to be created from the data disk image in the virtual machine image.
@@ -855,7 +848,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="cachingType">A caching type.</param>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, string storageAccountType);
     }
 
     /// <summary>

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// IP address.</param>
         /// <param name="publicIPPrefix">The PublicIPPrefix from which to
         /// allocate publicIP addresses.</param>
-        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), Rest.Azure.SubResource publicIPPrefix = default(Rest.Azure.SubResource))
+        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), Management.ResourceManager.Fluent.SubResource publicIPPrefix = default(Management.ResourceManager.Fluent.SubResource))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// addresses.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPPrefix")]
-        public Rest.Azure.SubResource PublicIPPrefix { get; set; }
+        public Management.ResourceManager.Fluent.SubResource PublicIPPrefix { get; set; }
 
         /// <summary>
         /// Validate the object.

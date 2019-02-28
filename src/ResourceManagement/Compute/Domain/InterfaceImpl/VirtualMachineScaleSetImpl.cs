@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the storage account type of the OS managed disk. A null value will be returned if the
         /// virtual machine scale set is based on un-managed disk.
         /// </summary>
-        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.ManagedOSDiskStorageAccountType
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.ManagedOSDiskStorageAccountType
         {
             get
             {
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the eviction policy of the virtual machines in the scale set.
         /// </summary>
-        Models.VirtualMachineEvictionPolicyTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.VirtualMachineEvictionPolicy
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.VirtualMachineEvictionPolicy
         {
             get
             {
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the priority of virtual machines in the scale set.
         /// </summary>
-        Models.VirtualMachinePriorityTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.VirtualMachinePriority
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.VirtualMachinePriority
         {
             get
             {
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.RunCommandInVMInstance(string vmId, RunCommandInput inputCommand)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.RunCommandInVMInstance(string vmId, RunCommandInputInner inputCommand)
         {
             return this.RunCommandInVMInstance(vmId, inputCommand);
         }
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.RunCommandVMInstanceAsync(string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.RunCommandVMInstanceAsync(string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandVMInstanceAsync(vmId, inputCommand, cancellationToken);
         }
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="storageAccountType">The storage account type.</param>
         /// <return>The stage representing creatable VM definition.</return>
-        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
+        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithDataDiskDefaultStorageAccountType(string storageAccountType)
         {
             return this.WithDataDiskDefaultStorageAccountType(storageAccountType);
         }
@@ -1219,7 +1219,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="policy">Eviction policy for the virtual machines in the scale set.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine(string policy)
         {
             return this.WithLowPriorityVirtualMachine(policy);
         }
@@ -1254,7 +1254,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="cachingType">The caching type.</param>
         /// <param name="storageAccountType">The storage account type.</param>
         /// <return>The next stage of virtual machine scale set update.</return>
-        VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
         {
             return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="cachingType">The caching type.</param>
         /// <param name="storageAccountType">The storage account type.</param>
         /// <return>The next stage of virtual machine definition.</return>
-        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
         {
             return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
@@ -1324,7 +1324,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="cachingType">The caching type.</param>
         /// <param name="storageAccountType">The storage account type.</param>
         /// <return>The next stage of virtual machine definition.</return>
-        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, string storageAccountType)
         {
             return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType, storageAccountType);
         }
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="accountType">The storage account type.</param>
         /// <return>The stage representing creatable VM definition.</return>
-        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithOSDiskStorageAccountType(StorageAccountTypes accountType)
+        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithOSDiskStorageAccountType(string accountType)
         {
             return this.WithOSDiskStorageAccountType(accountType);
         }
@@ -2187,7 +2187,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="priority">The priority.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithVirtualMachinePriority(string priority)
         {
             return this.WithVirtualMachinePriority(priority);
         }

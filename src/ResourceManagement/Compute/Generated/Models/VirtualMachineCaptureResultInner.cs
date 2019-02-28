@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Output of virtual machine capture operation.
     /// </summary>
-    public partial class VirtualMachineCaptureResultInner : Rest.Azure.SubResource
+    public partial class VirtualMachineCaptureResultInner : Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineCaptureResultInner

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the creation method used while creating this disk.
         /// </summary>
-        Models.DiskCreateOptionTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.CreationMethod
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.CreationMethod
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the disk.
         /// </summary>
-        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.StorageAccountType
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.StorageAccountType
         {
             get
             {

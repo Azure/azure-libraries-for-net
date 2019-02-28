@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// create or update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryImageVersionInner : Rest.Azure.Resource
+    public partial class GalleryImageVersionInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryImageVersionInner class.

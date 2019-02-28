@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the instance view.
         /// </summary>
-        Models.VirtualMachineInstanceView InstanceView { get; }
+        Models.VirtualMachineInstanceViewInner InstanceView { get; }
 
         /// <summary>
         /// Gets true if the latest scale set model changes are applied to the virtual machine instance.
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets virtual machine instance size.
         /// </summary>
-        Models.VirtualMachineSizeTypes Size { get; }
+        string Size { get; }
 
         /// <summary>
         /// Gets the SKU of the virtual machine instance, this will be SKU used while creating the parent
@@ -262,13 +262,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Refreshes the instance view.
         /// </summary>
         /// <return>The instance view.</return>
-        Models.VirtualMachineInstanceView RefreshInstanceView();
+        Models.VirtualMachineInstanceViewInner RefreshInstanceView();
 
         /// <summary>
         /// Refreshes the instance view.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine instance.</return>
-        Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.VirtualMachineInstanceViewInner> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Updates the version of the installed operating system in the virtual machine instance.

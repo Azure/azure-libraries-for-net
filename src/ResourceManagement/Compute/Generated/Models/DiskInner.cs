@@ -9,8 +9,6 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Disk resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiskInner : Rest.Azure.Resource
+    public partial class DiskInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the DiskInner class.

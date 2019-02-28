@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner RunCommand(RunCommandInput inputCommand);
+        Models.RunCommandResultInner RunCommand(RunCommandInputInner inputCommand);
 
         /// <summary>
         /// Run commands in the virtual machine asynchronously.
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run shell script in a virtual machine.

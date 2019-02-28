@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         public static readonly SnapshotSkuType PremiumLRS = new SnapshotSkuType(SnapshotStorageAccountTypes.PremiumLRS);
 
-        private SnapshotStorageAccountTypes value;
+        private string value;
 
         /// <summary>
         /// Creates a custom value for DiskSkuTypes.
         /// </summary>
         /// <param name="value">the custom value</param>
-        public SnapshotSkuType(SnapshotStorageAccountTypes value)
+        public SnapshotSkuType(string value)
         {
             if (ValuesByName == null)
             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="value">a storage account type</param>
         /// <returns>a snapshot SKU type</returns>
-        public static SnapshotSkuType FromStorageAccountType(SnapshotStorageAccountTypes value)
+        public static SnapshotSkuType FromStorageAccountType(string value)
         {
             SnapshotSkuType result;
             if (ValuesByName == null)
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
-        public SnapshotStorageAccountTypes AccountType
+        public string AccountType
         {
             get
             {
