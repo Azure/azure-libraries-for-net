@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:60625ECBA02456ACAA508AE89C60D15A:538FA83196E649561A55A428573B44CE
-        public AvailabilitySetSkuTypes AvailabilitySetSkuType()
+        public string AvailabilitySetSkuType()
         {
             if (this.inner.ResourceType != null
                 && this.inner.ResourceType.Equals("availabilitySets", System.StringComparison.OrdinalIgnoreCase)
                 && this.inner.Name != null)
             {
-                return AvailabilitySetSkuTypes.Parse(this.inner.Name);
+                return this.inner.Name;
             }
             else
             {
