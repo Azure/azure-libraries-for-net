@@ -688,20 +688,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.Inner);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachineScaleSet.Extensions;
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
 
                     // Ensure no role assigned for resource group
                     //
@@ -803,20 +789,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.Inner);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachineScaleSet.Extensions;
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
 
                     // Ensure role assigned for resource group
                     //

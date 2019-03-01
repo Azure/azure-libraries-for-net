@@ -572,17 +572,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineScaleSetVMImpl(VirtualMachineScaleSetVMInner inner, VirtualMachineScaleSetImpl parent)
             : base(inner, parent)
         {
-            virtualMachineInstanceView = new VirtualMachineInstanceViewInner()
+            if (inner.InstanceView == null)
             {
-                BootDiagnostics = Inner.InstanceView.BootDiagnostics,
-                Disks = Inner.InstanceView.Disks,
-                Extensions = Inner.InstanceView.Extensions,
-                PlatformFaultDomain = Inner.InstanceView.PlatformFaultDomain,
-                PlatformUpdateDomain = Inner.InstanceView.PlatformUpdateDomain,
-                RdpThumbPrint = Inner.InstanceView.RdpThumbPrint,
-                Statuses = Inner.InstanceView.Statuses,
-                VmAgent = Inner.InstanceView.VmAgent
-            };
+                virtualMachineInstanceView = null;
+            }
+            else
+            {
+                virtualMachineInstanceView = new VirtualMachineInstanceViewInner()
+                {
+                    BootDiagnostics = inner.InstanceView.BootDiagnostics,
+                    Disks = inner.InstanceView.Disks,
+                    Extensions = inner.InstanceView.Extensions,
+                    PlatformFaultDomain = inner.InstanceView.PlatformFaultDomain,
+                    PlatformUpdateDomain = inner.InstanceView.PlatformUpdateDomain,
+                    RdpThumbPrint = inner.InstanceView.RdpThumbPrint,
+                    Statuses = inner.InstanceView.Statuses,
+                    VmAgent = inner.InstanceView.VmAgent
+                };
+            }
         }
 
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
