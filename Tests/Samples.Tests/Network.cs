@@ -25,7 +25,7 @@ namespace Samples.Tests
                 ManageNetworkPeeringInSameSubscription.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot pass because: Cannot create more than 1 network watchers for this subscription in this region. ")]
         [Trait("Samples", "Network")]
         public void VerifyNetworkPeeringWithNetworkWatcherTest()
         {
@@ -135,7 +135,7 @@ namespace Samples.Tests
                 ManageNetworkWatcher.Program.RunSample);
         }
 
-        [Fact]
+        [Fact (Skip = "Cannot pass because: Cannot create more than 1 network watchers for this subscription in this region. ")]
         [Trait("Samples", "Network")]
         public void ManageVpnGatewayVNet2VNetConnectionTest()
         {
