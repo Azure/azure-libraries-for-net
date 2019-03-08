@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the instance view.
         /// </summary>
-        Models.VirtualMachineInstanceViewInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.InstanceView
+        IVirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.InstanceView
         {
             get
             {
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Refreshes the instance view.
         /// </summary>
         /// <return>The instance view.</return>
-        Models.VirtualMachineInstanceViewInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.RefreshInstanceView()
+        IVirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.RefreshInstanceView()
         {
             return this.RefreshInstanceView();
         }
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Refreshes the instance view.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine instance.</return>
-        async Task<Models.VirtualMachineInstanceViewInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.RefreshInstanceViewAsync(CancellationToken cancellationToken)
+        async Task<IVirtualMachineInstanceView> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.RefreshInstanceViewAsync(CancellationToken cancellationToken)
         {
             return await this.RefreshInstanceViewAsync(cancellationToken);
         }

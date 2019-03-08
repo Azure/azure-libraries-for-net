@@ -333,32 +333,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return null;
         }
 
-        public RunCommandResultInner RunCommandInVMInstance(string vmId, RunCommandInputInner inputCommand)
+        public IRunCommandResult RunCommandInVMInstance(string vmId, RunCommandInputInner inputCommand)
         {
             return Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => RunCommandVMInstanceAsync(vmId, inputCommand));
         }
 
-        public async Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IRunCommandResult> RunCommandVMInstanceAsync(string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachineScaleSets.RunCommandVMInstanceAsync(this.ResourceGroupName, this.Name, vmId, inputCommand, cancellationToken);
         }
 
-        public RunCommandResultInner RunPowerShellScriptInVMInstance(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        public IRunCommandResult RunPowerShellScriptInVMInstance(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => RunPowerShellScriptInVMInstanceAsync(vmId, scriptLines, scriptParameters));
         }
 
-        public async Task<Models.RunCommandResultInner> RunPowerShellScriptInVMInstanceAsync(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IRunCommandResult> RunPowerShellScriptInVMInstanceAsync(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachineScaleSets.RunPowerShellScriptInVMInstanceAsync(this.ResourceGroupName, this.Name, vmId, scriptLines, scriptParameters, cancellationToken);
         }
 
-        public RunCommandResultInner RunShellScriptInVMInstance(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        public IRunCommandResult RunShellScriptInVMInstance(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => RunShellScriptInVMInstanceAsync(vmId, scriptLines, scriptParameters));
         }
 
-        public async Task<Models.RunCommandResultInner> RunShellScriptInVMInstanceAsync(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IRunCommandResult> RunShellScriptInVMInstanceAsync(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachineScaleSets.RunShellScriptInVMInstanceAsync(this.ResourceGroupName, this.Name, vmId, scriptLines, scriptParameters, cancellationToken);
         }

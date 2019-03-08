@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private INetworkInterface existingPrimaryNetworkInterfaceToAssociate;
         // reference to a list of existing network interfaces that needs to be used as virtual machine's secondary network interface
         private IList<INetworkInterface> existingSecondaryNetworkInterfacesToAssociate;
-        private VirtualMachineInstanceViewInner virtualMachineInstanceView;
+        private IVirtualMachineInstanceView virtualMachineInstanceView;
         private bool isMarketplaceLinuxImage;
         // Intermediate state of network interface definition to which private IP can be associated
         private Network.Fluent.NetworkInterface.Definition.IWithPrimaryPrivateIP nicDefinitionWithPrivateIP;
@@ -125,22 +125,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
         
-        public RunCommandResultInner RunCommand(RunCommandInputInner inputCommand)
+        public IRunCommandResult RunCommand(RunCommandInputInner inputCommand)
         {
             return Extensions.Synchronize(() => this.RunCommandAsync(inputCommand));
         }
 
-        public async Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IRunCommandResult> RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachines.RunCommandAsync(this.ResourceGroupName, this.Name, inputCommand, cancellationToken);
         }
 
-        public RunCommandResultInner RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        public IRunCommandResult RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return Extensions.Synchronize(() => RunPowerShellScriptAsync(scriptLines, scriptParameters));
         }
 
-        public async Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IRunCommandResult> RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachines.RunPowerShellScriptAsync(this.ResourceGroupName,
                 this.Name,
@@ -149,12 +149,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 cancellationToken);
         }
 
-        public RunCommandResultInner RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        public IRunCommandResult RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return Extensions.Synchronize(() => RunShellScriptAsync(scriptLines, scriptParameters));
         }
 
-        public async Task<Models.RunCommandResultInner> RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IRunCommandResult> RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.VirtualMachines.RunShellScriptAsync(this.ResourceGroupName,
                 this.Name,
@@ -197,19 +197,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:F5949CB4AFA8DD0B8DED0F369B12A8F6:6AC69BE8BE090CDE9822C84DD5F906F3
-        public VirtualMachineInstanceViewInner RefreshInstanceView()
+        public IVirtualMachineInstanceView RefreshInstanceView()
         {
             return Extensions.Synchronize(() => RefreshInstanceViewAsync());
         }
 
         ///GENMHASH:D97B6272C7E7717C00D4F9B818A713C0:8DD09B90F0555BB3E1AEF7B9AF044379
-        public async Task<Models.VirtualMachineInstanceViewInner> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IVirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var virtualMachineInner = await this.Manager.Inner.VirtualMachines.GetAsync(this.ResourceGroupName,
                 this.Name,
                 InstanceViewTypes.InstanceView,
                 cancellationToken);
-            this.virtualMachineInstanceView = virtualMachineInner.InstanceView;
+            this.virtualMachineInstanceView = new VirtualMachineInstanceViewImpl(virtualMachineInner.InstanceView);
             return this.virtualMachineInstanceView;
         }
 
@@ -1587,7 +1587,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E21E3E6E61153DDD23E28BC18B49F1AC:BAF1B6669763368768C132F520B23A67
-        public VirtualMachineInstanceViewInner InstanceView()
+        public IVirtualMachineInstanceView InstanceView()
         {
             if (this.virtualMachineInstanceView == null)
             {

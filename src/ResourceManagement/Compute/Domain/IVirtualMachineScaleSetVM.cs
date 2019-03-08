@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the instance view.
         /// </summary>
-        Models.VirtualMachineInstanceViewInner InstanceView { get; }
+        IVirtualMachineInstanceView InstanceView { get; }
 
         /// <summary>
         /// Gets true if the latest scale set model changes are applied to the virtual machine instance.
@@ -262,13 +262,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Refreshes the instance view.
         /// </summary>
         /// <return>The instance view.</return>
-        Models.VirtualMachineInstanceViewInner RefreshInstanceView();
+        IVirtualMachineInstanceView RefreshInstanceView();
 
         /// <summary>
         /// Refreshes the instance view.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine instance.</return>
-        Task<Models.VirtualMachineInstanceViewInner> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IVirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Updates the version of the installed operating system in the virtual machine instance.

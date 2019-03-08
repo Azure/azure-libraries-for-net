@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine's instance view.
         /// </summary>
-        Models.VirtualMachineInstanceViewInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.InstanceView
+        IVirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.InstanceView
         {
             get
             {
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The instance view will be cached for later retrieval using <code>instanceView</code>.
         /// </summary>
         /// <return>The refreshed instance view.</return>
-        Models.VirtualMachineInstanceViewInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceView()
+        IVirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceView()
         {
             return this.RefreshInstanceView();
         }
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Refreshes the virtual machine instance view to sync with Azure.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine.</return>
-        async Task<Models.VirtualMachineInstanceViewInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceViewAsync(CancellationToken cancellationToken)
+        async Task<IVirtualMachineInstanceView> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceViewAsync(CancellationToken cancellationToken)
         {
             return await this.RefreshInstanceViewAsync(cancellationToken);
         }
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommand(RunCommandInputInner inputCommand)
+        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommand(RunCommandInputInner inputCommand)
         {
             return this.RunCommand(inputCommand);
         }
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken)
+        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandAsync(inputCommand, cancellationToken);
         }
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of PowerShell script execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return this.RunPowerShellScript(scriptLines, scriptParameters);
         }
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
         {
             return await this.RunPowerShellScriptAsync(scriptLines, scriptParameters, cancellationToken);
         }
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of shell script execution.</return>
-        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return this.RunShellScript(scriptLines, scriptParameters);
         }
@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
         {
             return await this.RunShellScriptAsync(scriptLines, scriptParameters, cancellationToken);
         }
