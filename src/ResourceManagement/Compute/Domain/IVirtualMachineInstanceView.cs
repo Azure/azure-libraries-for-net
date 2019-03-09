@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets or sets specifies the update domain of the virtual machine.
         /// </summary>
-        int? PlatformUpdateDomain { get; }
+        int PlatformUpdateDomain { get; }
 
         /// <summary>
         /// Gets or sets specifies the fault domain of the virtual machine.
         /// </summary>
-        int? PlatformFaultDomain { get; }
+        int PlatformFaultDomain { get; }
 
         /// <summary>
         /// Gets or sets the computer name assigned to the virtual machine.

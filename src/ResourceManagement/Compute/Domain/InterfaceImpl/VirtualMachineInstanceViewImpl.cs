@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uRG9tYWluTGVnYWxBZ3JlZW1lbnRJbXBs
     internal partial class VirtualMachineInstanceViewImpl
     {
-        int? IVirtualMachineInstanceView.PlatformUpdateDomain
+        int IVirtualMachineInstanceView.PlatformUpdateDomain
         {
             get {
-                return this.PlatformUpdateDomain();
+                return this.PlatformUpdateDomain().HasValue ? this.PlatformUpdateDomain().Value : 0;
             }
         }
 
-        int? IVirtualMachineInstanceView.PlatformFaultDomain
+        int IVirtualMachineInstanceView.PlatformFaultDomain
         {
             get
             {
-                return this.PlatformFaultDomain();
+                return this.PlatformFaultDomain().HasValue ? this.PlatformFaultDomain().Value : 0;
             }
         }
 
