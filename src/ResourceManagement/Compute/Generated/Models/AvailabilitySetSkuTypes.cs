@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Defines values for AvailabilitySetSkuTypes.
     /// </summary>
-    public static class AvailabilitySetSkuTypesInner
+    public static class AvailabilitySetSkuTypes
     {
         public const string Classic = "Classic";
         public const string Aligned = "Aligned";
