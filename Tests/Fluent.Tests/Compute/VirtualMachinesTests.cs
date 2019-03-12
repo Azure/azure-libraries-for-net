@@ -149,7 +149,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     // Fetch instance view
                     PowerState powerState = foundedVM.PowerState;
                     Assert.True(powerState == PowerState.Running);
-                    IVirtualMachineInstanceView instanceView = foundedVM.InstanceView;
+                    VirtualMachineInstanceView instanceView = foundedVM.InstanceView;
                     Assert.NotNull(instanceView);
                     Assert.NotEmpty(instanceView.Statuses);
 

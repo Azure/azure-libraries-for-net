@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommand(string groupName, string name, RunCommandInputInner inputCommand)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommand(string groupName, string name, RunCommandInput inputCommand)
         {
             return this.RunCommand(groupName, name, inputCommand);
         }
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommandAsync(string groupName, string name, RunCommandInputInner inputCommand, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
         }
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of PowerShell script execution.</return>
-        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return this.RunPowerShellScript(groupName, name, scriptLines, scriptParameters);
         }
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
         {
             return await this.RunPowerShellScriptAsync(groupName, name, scriptLines, scriptParameters, cancellationToken);
         }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of shell script execution.</return>
-        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return this.RunShellScript(groupName, name, scriptLines, scriptParameters);
         }
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
         {
             return await this.RunShellScriptAsync(groupName, name, scriptLines, scriptParameters, cancellationToken);
         }

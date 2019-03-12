@@ -148,9 +148,9 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
             }
         }
 
-        private static IRunCommandResult RunCommandOnVM(IAzure azure, IVirtualMachine virtualMachine, List<String> commands)
+        private static RunCommandResultInner RunCommandOnVM(IAzure azure, IVirtualMachine virtualMachine, List<String> commands)
         {
-            RunCommandInputInner runParams = new RunCommandInputInner()
+            RunCommandInput runParams = new RunCommandInput()
             {
                 CommandId = "RunShellScript",
                 Script = commands

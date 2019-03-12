@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand)
         {
             return this.RunCommandInVMInstance(groupName, scaleSetName, vmId, inputCommand);
         }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vmId">The virtual machine instance id.</param>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInputInner inputCommand, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken)
         {
             return await this.RunCommandVMInstanceAsync(groupName, scaleSetName, vmId, inputCommand, cancellationToken);
         }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of PowerShell script execution.</return>
-        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunPowerShellScriptInVMInstance(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunPowerShellScriptInVMInstance(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return this.RunPowerShellScriptInVMInstance(groupName, scaleSetName, vmId, scriptLines, scriptParameters);
         }
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunPowerShellScriptInVMInstanceAsync(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunPowerShellScriptInVMInstanceAsync(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
         {
             return await this.RunPowerShellScriptInVMInstanceAsync(groupName, scaleSetName, vmId, scriptLines, scriptParameters, cancellationToken);
         }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of shell script execution.</return>
-        IRunCommandResult Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunShellScriptInVMInstance(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunShellScriptInVMInstance(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return this.RunShellScriptInVMInstance(groupName, scaleSetName, vmId, scriptLines, scriptParameters);
         }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        async Task<IRunCommandResult> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunShellScriptInVMInstanceAsync(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetsBeta.RunShellScriptInVMInstanceAsync(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
         {
             return await this.RunShellScriptInVMInstanceAsync(groupName, scaleSetName, vmId, scriptLines, scriptParameters, cancellationToken);
         }

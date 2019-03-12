@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ChildResource<VirtualMachineScaleSetVMInner, VirtualMachineScaleSetImpl, IVirtualMachineScaleSet>,
         IVirtualMachineScaleSetVM
     {
-        private VirtualMachineInstanceViewImpl virtualMachineInstanceView;
+        private VirtualMachineInstanceView virtualMachineInstanceView;
 
-        public async Task<IVirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var instanceViewInner = await Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
                 this.Parent.ResourceGroupName,
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (instanceViewInner != null)
             {
-                this.virtualMachineInstanceView = new VirtualMachineInstanceViewImpl(new VirtualMachineInstanceViewInner()
+                this.virtualMachineInstanceView = new VirtualMachineInstanceView()
                 {
                     BootDiagnostics = instanceViewInner.BootDiagnostics,
                     Disks = instanceViewInner.Disks,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     RdpThumbPrint = instanceViewInner.RdpThumbPrint,
                     Statuses = instanceViewInner.Statuses,
                     VmAgent = instanceViewInner.VmAgent
-                });
+                };
             }
             return this.virtualMachineInstanceView;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:F5949CB4AFA8DD0B8DED0F369B12A8F6:E8FB723EB69B1FF154465213A3298460
-        public IVirtualMachineInstanceView RefreshInstanceView()
+        public VirtualMachineInstanceView RefreshInstanceView()
         {
             return ResourceManager.Fluent.Core.Extensions.Synchronize(() => RefreshInstanceViewAsync());
         }
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E21E3E6E61153DDD23E28BC18B49F1AC:1C335DE060E2C5BE410D8822875D2876
-        public IVirtualMachineInstanceView InstanceView()
+        public VirtualMachineInstanceView InstanceView()
         {
             if (this.virtualMachineInstanceView == null)
             {
@@ -572,23 +572,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineScaleSetVMImpl(VirtualMachineScaleSetVMInner inner, VirtualMachineScaleSetImpl parent)
             : base(inner, parent)
         {
-            if (inner.InstanceView == null)
+            if (inner.InstanceView != null)
             {
-                virtualMachineInstanceView = null;
+                virtualMachineInstanceView = new VirtualMachineInstanceView(
+                    Inner.InstanceView.PlatformFaultDomain, Inner.InstanceView.PlatformUpdateDomain, null,
+                    null, null, Inner.InstanceView.RdpThumbPrint,
+                    Inner.InstanceView.VmAgent, Inner.InstanceView.MaintenanceRedeployStatus, Inner.InstanceView.Disks,
+                    Inner.InstanceView.Extensions, Inner.InstanceView.BootDiagnostics, Inner.InstanceView.Statuses);
             }
             else
             {
-                virtualMachineInstanceView = new VirtualMachineInstanceViewImpl(new VirtualMachineInstanceViewInner()
-                {
-                    BootDiagnostics = inner.InstanceView.BootDiagnostics,
-                    Disks = inner.InstanceView.Disks,
-                    Extensions = inner.InstanceView.Extensions,
-                    PlatformFaultDomain = inner.InstanceView.PlatformFaultDomain,
-                    PlatformUpdateDomain = inner.InstanceView.PlatformUpdateDomain,
-                    RdpThumbPrint = inner.InstanceView.RdpThumbPrint,
-                    Statuses = inner.InstanceView.Statuses,
-                    VmAgent = inner.InstanceView.VmAgent
-                });
+                virtualMachineInstanceView = null;
             }
         }
 

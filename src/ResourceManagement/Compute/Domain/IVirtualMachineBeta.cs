@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Result of execution.</return>
-        IRunCommandResult RunCommand(RunCommandInputInner inputCommand);
+        Models.RunCommandResultInner RunCommand(RunCommandInput inputCommand);
 
         /// <summary>
         /// Run commands in the virtual machine asynchronously.
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<IRunCommandResult> RunCommandAsync(RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run shell script in a virtual machine.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of PowerShell script execution.</return>
-        IRunCommandResult RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters);
+        Models.RunCommandResultInner RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters);
 
         /// <summary>
         /// Run shell script in the virtual machine asynchronously.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">PowerShell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<IRunCommandResult> RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run shell script in the virtual machine.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Result of shell script execution.</return>
-        IRunCommandResult RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters);
+        Models.RunCommandResultInner RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters);
 
         /// <summary>
         /// Run shell script in the virtual machine asynchronously.
@@ -93,6 +93,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scriptLines">Shell script lines.</param>
         /// <param name="scriptParameters">Script parameters.</param>
         /// <return>Handle to the asynchronous execution.</return>
-        Task<IRunCommandResult> RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.RunCommandResultInner> RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine's instance view.
         /// </summary>
-        IVirtualMachineInstanceView InstanceView { get; }
+        Models.VirtualMachineInstanceView InstanceView { get; }
 
         /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine.
@@ -251,13 +251,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The instance view will be cached for later retrieval using <code>instanceView</code>.
         /// </summary>
         /// <return>The refreshed instance view.</return>
-        IVirtualMachineInstanceView RefreshInstanceView();
+        Models.VirtualMachineInstanceView RefreshInstanceView();
 
         /// <summary>
         /// Refreshes the virtual machine instance view to sync with Azure.
         /// </summary>
         /// <return>An observable that emits the instance view of the virtual machine.</return>
-        Task<IVirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Restarts the virtual machine.

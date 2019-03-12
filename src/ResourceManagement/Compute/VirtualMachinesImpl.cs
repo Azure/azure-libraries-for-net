@@ -49,24 +49,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.vmSizes = new VirtualMachineSizesImpl(computeManager.Inner.VirtualMachineSizes);
         }
 
-        public IRunCommandResult RunCommand(string groupName, string name, RunCommandInputInner inputCommand)
+        public RunCommandResultInner RunCommand(string groupName, string name, RunCommandInput inputCommand)
         {
             return Extensions.Synchronize(() => RunCommandAsync(groupName, name, inputCommand));
         }
 
-        public async Task<IRunCommandResult> RunCommandAsync(string groupName, string name, RunCommandInputInner inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return new RunCommandResultImpl(await this.Inner.RunCommandAsync(groupName, name, inputCommand, cancellationToken));
+            RunCommandInputInner innerInput = new RunCommandInputInner(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
+            return await this.Inner.RunCommandAsync(groupName, name, innerInput, cancellationToken);
         }
 
-        public IRunCommandResult RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        public RunCommandResultInner RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return Extensions.Synchronize(() => this.RunPowerShellScriptAsync(groupName, name, scriptLines, scriptParameters));
         }
 
-        public async Task<IRunCommandResult> RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inputCommand = new RunCommandInputInner
+            var inputCommand = new RunCommandInput
                 {
                     CommandId = "RunPowerShellScript",
                     Script = scriptLines,
@@ -75,14 +76,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
         }
 
-        public IRunCommandResult RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        public RunCommandResultInner RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
         {
             return Extensions.Synchronize(() => this.RunShellScriptAsync(groupName, name, scriptLines, scriptParameters));
         }
 
-        public async Task<IRunCommandResult> RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Models.RunCommandResultInner> RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inputCommand = new RunCommandInputInner
+            var inputCommand = new RunCommandInput
                 {
                     CommandId = "RunShellScript",
                     Script = scriptLines,
