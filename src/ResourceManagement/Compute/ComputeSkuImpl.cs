@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:60625ECBA02456ACAA508AE89C60D15A:538FA83196E649561A55A428573B44CE
-        public string AvailabilitySetSkuType()
+        public AvailabilitySetSkuTypes AvailabilitySetSkuType()
         {
             if (this.inner.ResourceType != null
                 && this.inner.ResourceType.Equals("availabilitySets", System.StringComparison.OrdinalIgnoreCase)
                 && this.inner.Name != null)
             {
-                return this.inner.Name;
+                return AvailabilitySetSkuTypes.Parse(this.inner.Name);
             }
             else
             {
@@ -175,13 +175,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:ADBB2BA7D9DA68A975B518B1AED2CBC7:625A4487ABCC03FFC076F2A5FA047ABB
-        public string VirtualMachineSizeType()
+        public VirtualMachineSizeTypes VirtualMachineSizeType()
         {
             if (this.inner.ResourceType != null
                 && this.inner.ResourceType.Equals("virtualMachines", System.StringComparison.OrdinalIgnoreCase)
                 && this.inner.Name != null)
             {
-                return this.inner.Name;
+                return VirtualMachineSizeTypes.Parse(this.inner.Name);
             }
             else
             {

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the availability set sku type.
         /// </summary>
-        string AvailabilitySetSkuType { get; }
+        Models.AvailabilitySetSkuTypes AvailabilitySetSkuType { get; }
 
         /// <summary>
         /// Gets the capabilities of the sku.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine size type.
         /// </summary>
-        string VirtualMachineSizeType { get; }
+        Models.VirtualMachineSizeTypes VirtualMachineSizeType { get; }
 
         /// <summary>
         /// Gets the availability zones supported for this sku, index by region.

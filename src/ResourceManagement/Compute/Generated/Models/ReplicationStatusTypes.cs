@@ -8,12 +8,21 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ReplicationStatusTypes.
     /// </summary>
-    public static class ReplicationStatusTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ReplicationStatusTypes>))]
+    public class ReplicationStatusTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ReplicationStatusTypes>
     {
-        public const string ReplicationStatus = "ReplicationStatus";
+        public static readonly ReplicationStatusTypes ReplicationStatus = Parse("ReplicationStatus");
     }
 }

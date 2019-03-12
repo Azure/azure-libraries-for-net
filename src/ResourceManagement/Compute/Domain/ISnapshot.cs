@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the snapshot creation method.
         /// </summary>
-        string CreationMethod { get; }
+        Models.DiskCreateOption CreationMethod { get; }
 
         /// <summary>
         /// Gets the type of operating system in the snapshot.

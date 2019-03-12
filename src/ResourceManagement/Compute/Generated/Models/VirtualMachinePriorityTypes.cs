@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for VirtualMachinePriorityTypes.
     /// </summary>
-    public static class VirtualMachinePriorityTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<VirtualMachinePriorityTypes>))]
+    public class VirtualMachinePriorityTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<VirtualMachinePriorityTypes>
     {
-        public const string Regular = "Regular";
-        public const string Low = "Low";
+        public static readonly VirtualMachinePriorityTypes Regular = Parse("Regular");
+        public static readonly VirtualMachinePriorityTypes Low = Parse("Low");
     }
 }

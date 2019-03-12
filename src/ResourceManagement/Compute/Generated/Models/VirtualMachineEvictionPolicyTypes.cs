@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for VirtualMachineEvictionPolicyTypes.
     /// </summary>
-    public static class VirtualMachineEvictionPolicyTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<VirtualMachineEvictionPolicyTypes>))]
+    public class VirtualMachineEvictionPolicyTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<VirtualMachineEvictionPolicyTypes>
     {
-        public const string Deallocate = "Deallocate";
-        public const string Delete = "Delete";
+        public static readonly VirtualMachineEvictionPolicyTypes Deallocate = Parse("Deallocate");
+        public static readonly VirtualMachineEvictionPolicyTypes Delete = Parse("Delete");
     }
 }

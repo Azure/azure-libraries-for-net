@@ -30,11 +30,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the ManagedDiskParametersInner class.
         /// </summary>
         /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-        /// disks, it cannot be used with OS Disk. Possible values include:
-        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
-        /// 'UltraSSD_LRS'</param>
-        public ManagedDiskParametersInner(string id = default(string), string storageAccountType = default(string))
+        /// for the managed disk. Possible values are: Standard_LRS,
+        /// Premium_LRS, and StandardSSD_LRS. Possible values include:
+        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        public ManagedDiskParametersInner(string id = default(string), StorageAccountTypes storageAccountType = default(StorageAccountTypes))
             : base(id)
         {
             StorageAccountType = storageAccountType;
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType { get; set; }
+        public StorageAccountTypes StorageAccountType { get; set; }
 
     }
 }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C2E2A5650639245BC0993A33DCAA5D61:AB53C4E88693DA816105A74AACCB3115
-        public string GrantAccess(string resourceGroupName, string diskName, string accessLevel, int accessDuration)
+        public string GrantAccess(string resourceGroupName, string diskName, AccessLevel accessLevel, int accessDuration)
         {
             return Extensions.Synchronize(() => this.GrantAccessAsync(resourceGroupName, diskName, accessLevel, accessDuration));
         }
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<string> GrantAccessAsync(
             string resourceGroupName,
             string diskName,
-            string accessLevel,
+            AccessLevel accessLevel,
             int accessDuration,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
-            grantAccessDataInner.Access = accessLevel;
+            grantAccessDataInner.Access = accessLevel.Value;
             grantAccessDataInner.DurationInSeconds = accessDuration;
             AccessUriInner accessUriInner = await Inner.GrantAccessAsync(resourceGroupName,
                 diskName,

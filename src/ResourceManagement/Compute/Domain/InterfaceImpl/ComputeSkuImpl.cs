@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the availability set sku type.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IComputeSku.AvailabilitySetSkuType
+        Models.AvailabilitySetSkuTypes Microsoft.Azure.Management.Compute.Fluent.IComputeSku.AvailabilitySetSkuType
         {
             get
             {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine size type.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IComputeSku.VirtualMachineSizeType
+        Models.VirtualMachineSizeTypes Microsoft.Azure.Management.Compute.Fluent.IComputeSku.VirtualMachineSizeType
         {
             get
             {

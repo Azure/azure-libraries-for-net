@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:507C952D65DEB7C06C2758D22266AB43
-        public string CreationMethod()
+        public DiskCreateOption CreationMethod()
         {
             if (Inner.CreationData.CreateOption == null)
             {
@@ -158,7 +158,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (Inner.Sku != null && Inner.Sku.Name != null && Inner.Sku.Name != null)
             {
-                return DiskSkuTypes.FromStorageAccountType(Inner.Sku.Name);
+                return DiskSkuTypes.FromStorageAccountType(DiskStorageAccountTypes.Parse(
+                    Inner.Sku.Name.Value));
             }
             return null;
         }
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<string> GrantAccessAsync(int accessDurationInSeconds, CancellationToken cancellationToken = default(CancellationToken))
         {
             GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
-            grantAccessDataInner.Access = AccessLevel.Read;
+            grantAccessDataInner.Access = AccessLevel.Read.Value;
             grantAccessDataInner.DurationInSeconds = accessDurationInSeconds;
 
             AccessUriInner accessUriInner = await Manager.Inner.Disks.GrantAccessAsync(ResourceGroupName, Name, grantAccessDataInner, cancellationToken);
@@ -268,7 +269,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.Sku = new DiskSku
             {
-                Name = sku.AccountType
+                Name = StorageAccountTypes.Parse(sku.AccountType.Value)
             };
             return this;
         }

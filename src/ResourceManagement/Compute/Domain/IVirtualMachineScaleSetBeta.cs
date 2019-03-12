@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the storage account type of the OS managed disk. A null value will be returned if the
         /// virtual machine scale set is based on un-managed disk.
         /// </summary>
-        string ManagedOSDiskStorageAccountType { get; }
+        Models.StorageAccountTypes ManagedOSDiskStorageAccountType { get; }
 
         /// <summary>
         /// Gets the type of Managed Service Identity used for the virtual machine scale set.
@@ -91,12 +91,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the eviction policy of the virtual machines in the scale set.
         /// </summary>
-        string VirtualMachineEvictionPolicy { get; }
+        Models.VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy { get; }
 
         /// <summary>
         /// Gets the priority of virtual machines in the scale set.
         /// </summary>
-        string VirtualMachinePriority { get; }
+        Models.VirtualMachinePriorityTypes VirtualMachinePriority { get; }
 
         /// <summary>
         /// Gets the public ip configuration of virtual machines in the scale set.

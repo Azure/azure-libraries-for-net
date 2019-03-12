@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Failed'</param>
         /// <param name="summary">This is a summary of replication status for
         /// each region.</param>
-        public ReplicationStatus(string aggregatedState = default(string), IList<RegionalReplicationStatus> summary = default(IList<RegionalReplicationStatus>))
+        public ReplicationStatus(AggregatedReplicationState aggregatedState = default(AggregatedReplicationState), IList<RegionalReplicationStatus> summary = default(IList<RegionalReplicationStatus>))
         {
             AggregatedState = aggregatedState;
             Summary = summary;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Unknown', 'InProgress', 'Completed', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "aggregatedState")]
-        public string AggregatedState { get; private set; }
+        public AggregatedReplicationState AggregatedState { get; private set; }
 
         /// <summary>
         /// Gets this is a summary of replication status for each region.

@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the managed disk backing OS disk.
         /// </summary>
-        string OSDiskStorageAccountType { get; }
+        Models.StorageAccountTypes OSDiskStorageAccountType { get; }
 
         /// <summary>
         /// Gets the operating system profile.
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the virtual machine size.
         /// </summary>
-        string Size { get; }
+        Models.VirtualMachineSizeTypes Size { get; }
 
         /// <summary>
         /// Gets Returns the storage profile of an Azure virtual machine.

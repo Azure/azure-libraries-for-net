@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets virtual machine instance size.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Size
+        Models.VirtualMachineSizeTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Size
         {
             get
             {

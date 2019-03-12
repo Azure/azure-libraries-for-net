@@ -728,10 +728,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:3EDA6D9B767CDD07D76DD15C0E0B7128:7E4761B66D0FB9A09715DA978222FC55
         public VirtualMachineImpl WithSize(string sizeName)
         {
-            Inner.HardwareProfile.VmSize = sizeName;
+            Inner.HardwareProfile.VmSize = VirtualMachineSizeTypes.Parse(sizeName);
             return this;
         }
 
+        ///GENMHASH:619ABAAD3F8A01F52AFF9E0735BDAE77:EC0CEDDCD615AA4EFB41DF60CEE2588B
+        public VirtualMachineImpl WithSize(VirtualMachineSizeTypes size)
+        {
+            Inner.HardwareProfile.VmSize = size;
+            return this;
+        }
 
         ///GENMHASH:68806A9EFF9AE1233F4E313BFAB88A1E:89DEE527C9AED179FFFF9E5303751431
         public VirtualMachineImpl WithOSDiskCaching(CachingTypes cachingType)
@@ -790,7 +796,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:90924DCFADE551C6E90B738982E6C2F7:279439FCFF8597A1B86C671E92AB9C4F
-        public VirtualMachineImpl WithOSDiskStorageAccountType(string accountType)
+        public VirtualMachineImpl WithOSDiskStorageAccountType(StorageAccountTypes accountType)
         {
             if (Inner.StorageProfile.OsDisk.ManagedDisk == null)
             {
@@ -815,7 +821,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:B37B5DD609CF1DB836ABB9CBB32E93E3:EBFBB1CB0457C2978B29376127013BE6
-        public VirtualMachineImpl WithDataDiskDefaultStorageAccountType(string storageAccountType)
+        public VirtualMachineImpl WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
         {
             this.managedDataDisks.SetDefaultStorageAccountType(storageAccountType);
             return this;
@@ -969,7 +975,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:1D3A0A89681FFD35007B24FCED6BF299:A69C7823EE7EC5B383A6E9CA6366F777
-        public VirtualMachineImpl WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
+        public VirtualMachineImpl WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
             ThrowIfManagedDiskDisabled(ManagedUnmanagedDiskErrors.VM_Both_Unmanaged_And_Managed_Disk_Not_Allowed);
             ManagedDiskParametersInner managedDiskParameters = new ManagedDiskParametersInner();
@@ -1052,7 +1058,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:BABD7F4E5FDF4ECA60DB2F163B33F4C7:17AC541DFB3C3AEDF45259848089B054
-        public VirtualMachineImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, string storageAccountType)
+        public VirtualMachineImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
             ManagedDiskParametersInner managedDiskParameters = new ManagedDiskParametersInner();
             managedDiskParameters.StorageAccountType = storageAccountType;
@@ -1377,7 +1383,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C19382933BDE655D0F0F95CD9474DFE7:2F66035F0CB425AA1735B96753E25A51
-        public string Size()
+        public VirtualMachineSizeTypes Size()
         {
             return Inner.HardwareProfile.VmSize;
         }
@@ -1417,7 +1423,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E5CADE85564466522E512C04EB3F57B6:086F150AD4D805B10FE2EDCCE4784829
-        public string OSDiskStorageAccountType()
+        public StorageAccountTypes OSDiskStorageAccountType()
         {
             if (!IsManagedDiskEnabled()
                 || this.StorageProfile().OsDisk.ManagedDisk == null
@@ -2467,7 +2473,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public IList<Models.DataDisk> NewDisksFromImage;
             private VirtualMachineImpl vm;
             private CachingTypes? defaultCachingType;
-            private string defaultStorageAccountType;
+            private StorageAccountTypes defaultStorageAccountType;
 
             ///GENMHASH:CA7F491172B86E1C8B0D8508E4161245:D1D4C18FF276F4E074EBD85D149B5349
             internal void SetDataDisksDefaults()
@@ -2646,7 +2652,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             ///GENMHASH:E896A9714FD3ED579D3A806B2D670211:9EC21D752F2334263B0BF51F5BEF2FE2
-            internal void SetDefaultStorageAccountType(string defaultStorageAccountType)
+            internal void SetDefaultStorageAccountType(StorageAccountTypes defaultStorageAccountType)
             {
                 this.defaultStorageAccountType = defaultStorageAccountType;
             }
@@ -2703,7 +2709,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             ///GENMHASH:647794DB64052F8555CB8ABDABF9F24D:419FDCEEC4AAB55470C80A42C1D69868
-            internal string GetDefaultStorageAccountType()
+            internal StorageAccountTypes GetDefaultStorageAccountType()
             {
                 if (defaultStorageAccountType == null)
                 {

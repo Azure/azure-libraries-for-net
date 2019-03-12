@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// status.</param>
         /// <param name="progress">It indicates progress of the replication
         /// job.</param>
-        public RegionalReplicationStatus(string region = default(string), string state = default(string), string details = default(string), int? progress = default(int?))
+        public RegionalReplicationStatus(string region = default(string), ReplicationState state = default(ReplicationState), string details = default(string), int? progress = default(int?))
         {
             Region = region;
             State = state;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// include: 'Unknown', 'Replicating', 'Completed', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
-        public string State { get; private set; }
+        public ReplicationState State { get; private set; }
 
         /// <summary>
         /// Gets the details of the replication status.

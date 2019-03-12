@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:220D4662AAC7DF3BEFAF2B253278E85C
-        public string ProvisioningState()
+        public ProvisioningState ProvisioningState()
         {
             return this.Inner.ProvisioningState;
         }
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 List<DiskSkuTypes> diskTypes = new List<DiskSkuTypes>();
                 foreach(var diskTypeStr in this.Inner.Disallowed.DiskTypes)
                 {
-                    diskTypes.Add(DiskSkuTypes.FromStorageAccountType(diskTypeStr));
+                    diskTypes.Add(DiskSkuTypes.FromStorageAccountType(DiskStorageAccountTypes.Parse(diskTypeStr)));
                 }
                 return diskTypes;
             }

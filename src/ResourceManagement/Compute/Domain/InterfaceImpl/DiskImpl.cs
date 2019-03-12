@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the disk creation method.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IDisk.CreationMethod
+        Models.DiskCreateOption Microsoft.Azure.Management.Compute.Fluent.IDisk.CreationMethod
         {
             get
             {

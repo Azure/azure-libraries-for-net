@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="accessLevel">Access level.</param>
         /// <param name="accessDuration">Access duration.</param>
         /// <return>The read-only SAS URI to the snapshot.</return>
-        string Microsoft.Azure.Management.Compute.Fluent.ISnapshots.GrantAccess(string resourceGroupName, string snapshotName, string accessLevel, int accessDuration)
+        string Microsoft.Azure.Management.Compute.Fluent.ISnapshots.GrantAccess(string resourceGroupName, string snapshotName, AccessLevel accessLevel, int accessDuration)
         {
             return this.GrantAccess(resourceGroupName, snapshotName, accessLevel, accessDuration);
         }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="accessLevel">Access level.</param>
         /// <param name="accessDuration">Access duration.</param>
         /// <return>A representation of the deferred computation of this call returning a read-only SAS URI to the snapshot.</return>
-        async Task<string> Microsoft.Azure.Management.Compute.Fluent.ISnapshotsBeta.GrantAccessAsync(string resourceGroupName, string snapshotName, string accessLevel, int accessDuration, CancellationToken cancellationToken)
+        async Task<string> Microsoft.Azure.Management.Compute.Fluent.ISnapshotsBeta.GrantAccessAsync(string resourceGroupName, string snapshotName, AccessLevel accessLevel, int accessDuration, CancellationToken cancellationToken)
         {
             return await this.GrantAccessAsync(resourceGroupName, snapshotName, accessLevel, accessDuration, cancellationToken);
         }

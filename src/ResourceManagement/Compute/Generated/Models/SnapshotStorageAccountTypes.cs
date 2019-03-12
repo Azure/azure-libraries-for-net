@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for SnapshotStorageAccountTypes.
     /// </summary>
-    public static class SnapshotStorageAccountTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<SnapshotStorageAccountTypes>))]
+    public class SnapshotStorageAccountTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<SnapshotStorageAccountTypes>
     {
-        public const string StandardLRS = "Standard_LRS";
-        public const string PremiumLRS = "Premium_LRS";
-        public const string StandardZRS = "Standard_ZRS";
+        public static readonly SnapshotStorageAccountTypes StandardLRS = Parse("Standard_LRS");
+        public static readonly SnapshotStorageAccountTypes PremiumLRS = Parse("Premium_LRS");
+        public static readonly SnapshotStorageAccountTypes StandardZRS = Parse("Standard_ZRS");
     }
 }

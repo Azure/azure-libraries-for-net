@@ -33,14 +33,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Static value PremiumLRS for DiskSkuTypes.
         /// </summary>
         public static readonly DiskSkuTypes PremiumLRS = new DiskSkuTypes(DiskStorageAccountTypes.PremiumLRS);
+        /// <summary>
+        /// Static value StandardSSD_LRS for DiskSkuTypes.
+        /// </summary>
+        public static readonly DiskSkuTypes SStandardSSDLRS = new DiskSkuTypes(DiskStorageAccountTypes.StandardSSDLRS);
+        /// <summary>
+        /// Static value UltraSSDLRS for DiskSkuTypes.
+        /// </summary>
+        public static readonly DiskSkuTypes UltraSSDLRS = new DiskSkuTypes(DiskStorageAccountTypes.UltraSSDLRS);
 
-        private string value;
+        private DiskStorageAccountTypes value;
 
         /// <summary>
         /// Creates a custom value for DiskSkuTypes.
         /// </summary>
         /// <param name="value">the custom value</param>
-        public DiskSkuTypes(string value)
+        public DiskSkuTypes(DiskStorageAccountTypes value)
         {
             if (ValuesByName == null)
             {
@@ -56,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         /// <param name="value">a storage account type</param>
         /// <returns>a disk SKU type</returns>
-        public static DiskSkuTypes FromStorageAccountType(string value)
+        public static DiskSkuTypes FromStorageAccountType(DiskStorageAccountTypes value)
         {
             DiskSkuTypes result;
             if (ValuesByName == null)
@@ -73,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             }
         }
 
-        public string AccountType
+        public DiskStorageAccountTypes AccountType
         {
             get
             {

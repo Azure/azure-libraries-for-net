@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="accessLevel">Access level.</param>
         /// <param name="accessDuration">Access duration.</param>
         /// <return>The read-only SAS URI to the disk.</return>
-        string Microsoft.Azure.Management.Compute.Fluent.IDisks.GrantAccess(string resourceGroupName, string diskName, string accessLevel, int accessDuration)
+        string Microsoft.Azure.Management.Compute.Fluent.IDisks.GrantAccess(string resourceGroupName, string diskName, AccessLevel accessLevel, int accessDuration)
         {
             return this.GrantAccess(resourceGroupName, diskName, accessLevel, accessDuration);
         }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="accessLevel">Access level.</param>
         /// <param name="accessDuration">Access duration.</param>
         /// <return>A representation of the deferred computation of this call returning a read-only SAS URI to the disk.</return>
-        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IDisksBeta.GrantAccessAsync(string resourceGroupName, string diskName, string accessLevel, int accessDuration, CancellationToken cancellationToken)
+        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IDisksBeta.GrantAccessAsync(string resourceGroupName, string diskName, AccessLevel accessLevel, int accessDuration, CancellationToken cancellationToken)
         {
             return await this.GrantAccessAsync(resourceGroupName, diskName, accessLevel, accessDuration, cancellationToken);
         }

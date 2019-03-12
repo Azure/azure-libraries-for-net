@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="accessLevel">Access level.</param>
         /// <param name="accessDuration">Access duration.</param>
         /// <return>A representation of the deferred computation of this call returning a read-only SAS URI to the snapshot.</return>
-        Task<string> GrantAccessAsync(string resourceGroupName, string snapshotName, string accessLevel, int accessDuration, CancellationToken cancellationToken = default(CancellationToken));
+        Task<string> GrantAccessAsync(string resourceGroupName, string snapshotName, AccessLevel accessLevel, int accessDuration, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Revoke access granted to the snapshot asynchronously.

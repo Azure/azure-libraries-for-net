@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:529D413DA27B62CF8FA74DD34751A761:2AB50F106A2C0F2D00579F7B1825D8B0
-        public string StorageAccountType()
+        public StorageAccountTypes StorageAccountType()
         {
             if (Inner.ManagedDisk == null || Inner.ManagedDisk.StorageAccountType == null)
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:BFD5BBE75FF2933909C9A5EE4D96DB28
-        string CreationMethod()
+        public DiskCreateOptionTypes CreationMethod()
         {
             if (Inner.CreateOption == null)
             {

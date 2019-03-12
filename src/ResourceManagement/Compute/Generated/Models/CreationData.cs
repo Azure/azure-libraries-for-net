@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// of a blob to be imported into a managed disk.</param>
         /// <param name="sourceResourceId">If createOption is Copy, this is the
         /// ARM id of the source snapshot or disk.</param>
-        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string))
+        public CreationData(DiskCreateOption createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string))
         {
             CreateOption = createOption;
             StorageAccountId = storageAccountId;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Import', 'Copy', 'Restore'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
-        public string CreateOption { get; set; }
+        public DiskCreateOption CreateOption { get; set; }
 
         /// <summary>
         /// Gets or sets if createOption is Import, the Azure Resource Manager

@@ -47,11 +47,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-        /// disks, it cannot be used with OS Disk. Possible values include:
-        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
-        /// 'UltraSSD_LRS'</param>
-        public ImageDataDisk(int lun, Management.ResourceManager.Fluent.SubResource snapshot = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string))
+        /// for the managed disk. Possible values are: Standard_LRS,
+        /// Premium_LRS, and StandardSSD_LRS. Possible values include:
+        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        public ImageDataDisk(int lun, Management.ResourceManager.Fluent.SubResource snapshot = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), StorageAccountTypes storageAccountType = default(StorageAccountTypes))
         {
             Lun = lun;
             Snapshot = snapshot;
@@ -123,7 +122,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType { get; set; }
+        public StorageAccountTypes StorageAccountType { get; set; }
 
         /// <summary>
         /// Validate the object.

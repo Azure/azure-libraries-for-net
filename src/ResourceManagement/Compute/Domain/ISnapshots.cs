@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="accessLevel">Access level.</param>
         /// <param name="accessDuration">Access duration.</param>
         /// <return>The read-only SAS URI to the snapshot.</return>
-        string GrantAccess(string resourceGroupName, string snapshotName, string accessLevel, int accessDuration);
+        string GrantAccess(string resourceGroupName, string snapshotName, AccessLevel accessLevel, int accessDuration);
 
         /// <summary>
         /// Revoke access granted to a snapshot.

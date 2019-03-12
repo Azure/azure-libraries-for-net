@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets virtual machine instance size.
         /// </summary>
-        string Size { get; }
+        Models.VirtualMachineSizeTypes Size { get; }
 
         /// <summary>
         /// Gets the SKU of the virtual machine instance, this will be SKU used while creating the parent

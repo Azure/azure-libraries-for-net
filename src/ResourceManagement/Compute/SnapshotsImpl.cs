@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C2E2A5650639245BC0993A33DCAA5D61:4AB1078BF23153C40209095ABAF6C89C
-        public string GrantAccess(string resourceGroupName, string snapshotName, string accessLevel, int accessDuration)
+        public string GrantAccess(string resourceGroupName, string snapshotName, AccessLevel accessLevel, int accessDuration)
         {
             return Extensions.Synchronize(() => this.GrantAccessAsync(resourceGroupName, snapshotName, accessLevel, accessDuration));
         }
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<string> GrantAccessAsync(
             string resourceGroupName,
             string snapshotName,
-            string accessLevel,
+            AccessLevel accessLevel,
             int accessDuration,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
-            grantAccessDataInner.Access = accessLevel;
+            grantAccessDataInner.Access = accessLevel.Value;
             grantAccessDataInner.DurationInSeconds = accessDuration;
             AccessUriInner accessUriInner = await Inner.GrantAccessAsync(resourceGroupName,
                 snapshotName,

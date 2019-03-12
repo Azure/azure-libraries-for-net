@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the provisioning state of the gallery resource.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IGallery.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Compute.Fluent.IGallery.ProvisioningState
         {
             get
             {

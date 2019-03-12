@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// </summary>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithDataDiskDefaultStorageAccountType(string storageAccountType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType);
 
         /// <summary>
         /// Specifies the caching type for the OS disk.
@@ -92,6 +92,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// <param name="sizeName">The name of a size for the virtual machine as text.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithSize(string sizeName);
+
+        /// <summary>
+        /// Specifies a new size for the virtual machine.
+        /// </summary>
+        /// <param name="size">A size from the list of available sizes for the virtual machine.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithSize(VirtualMachineSizeTypes size);
     }
 
     /// <summary>
@@ -168,7 +175,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// <param name="cachingType">A caching type.</param>
         /// <param name="storageAccountType">A storage account type.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType);
 
         /// <summary>
         /// Detaches a managed data disk with the given LUN from the virtual machine.

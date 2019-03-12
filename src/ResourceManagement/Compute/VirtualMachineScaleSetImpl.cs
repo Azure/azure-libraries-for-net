@@ -1118,18 +1118,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C5E4011AAE57A5F6132092A4B8B874FF:36531E34809D3A8C9FAE365A128266D5
-        public string VirtualMachinePriority()
+        public VirtualMachinePriorityTypes VirtualMachinePriority()
         {
             return this.Inner.VirtualMachineProfile?.Priority;
         }
 
-        public string VirtualMachineEvictionPolicy()
+        public VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy()
         {
             return this.Inner.VirtualMachineProfile?.EvictionPolicy;
         }
 
         ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
-        public string ManagedOSDiskStorageAccountType()
+        public StorageAccountTypes ManagedOSDiskStorageAccountType()
         {
             if (this.Inner.VirtualMachineProfile != null
                 && this.Inner.VirtualMachineProfile.StorageProfile != null
@@ -1513,7 +1513,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:BABD7F4E5FDF4ECA60DB2F163B33F4C7:70147D65554CF848675D35124D742DB0
-        public VirtualMachineScaleSetImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, string storageAccountType)
+        public VirtualMachineScaleSetImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
             VirtualMachineScaleSetManagedDiskParameters managedDiskParameters = new VirtualMachineScaleSetManagedDiskParameters();
             managedDiskParameters.StorageAccountType = storageAccountType;
@@ -1614,7 +1614,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:90924DCFADE551C6E90B738982E6C2F7:8E8BCFD08143E85B586E9D48D32AF4E0
-        public VirtualMachineScaleSetImpl WithOSDiskStorageAccountType(string accountType)
+        public VirtualMachineScaleSetImpl WithOSDiskStorageAccountType(StorageAccountTypes accountType)
         {
             // withers is limited to VMSS based on ManagedDisk.
             this.Inner
@@ -2153,7 +2153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:B37B5DD609CF1DB836ABB9CBB32E93E3:EBFBB1CB0457C2978B29376127013BE6
-        public VirtualMachineScaleSetImpl WithDataDiskDefaultStorageAccountType(string storageAccountType)
+        public VirtualMachineScaleSetImpl WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
         {
             this.managedDataDisks.SetDefaultStorageAccountType(storageAccountType);
             return this;
@@ -2714,7 +2714,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:1D3A0A89681FFD35007B24FCED6BF299:96D67639BA263640D554DB8A3CC5D75C
-        public VirtualMachineScaleSetImpl WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, string storageAccountType)
+        public VirtualMachineScaleSetImpl WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
             ThrowIfManagedDiskDisabled(ManagedUnmanagedDiskErrors.VMSS_Both_Unmanaged_And_Managed_Disk_Not_Aallowed);
             VirtualMachineScaleSetManagedDiskParameters managedDiskParameters = new VirtualMachineScaleSetManagedDiskParameters();
@@ -2816,7 +2816,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:6519A067F8EC19017417E77E98CBFAB4:29848F9AE1C8DDE847A8C3F172BFE8CE
-        public VirtualMachineScaleSetImpl WithVirtualMachinePriority(string priority)
+        public VirtualMachineScaleSetImpl WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
         {
             this.Inner.VirtualMachineProfile.Priority = priority;
             return this;
@@ -2828,7 +2828,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
-        public VirtualMachineScaleSetImpl WithLowPriorityVirtualMachine(string policy)
+        public VirtualMachineScaleSetImpl WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
         {
             this.WithLowPriorityVirtualMachine();
             this.Inner.VirtualMachineProfile.EvictionPolicy = policy;
@@ -2892,7 +2892,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public IList<Models.VirtualMachineScaleSetDataDisk> newDisksFromImage;
             private VirtualMachineScaleSetImpl vmss;
             private CachingTypes? defaultCachingType;
-            private string defaultStorageAccountType;
+            private StorageAccountTypes defaultStorageAccountType;
 
             internal ManagedDataDiskCollection(VirtualMachineScaleSetImpl vmss)
             {
@@ -2903,7 +2903,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             ///GENMHASH:E896A9714FD3ED579D3A806B2D670211:9EC21D752F2334263B0BF51F5BEF2FE2
-            internal void SetDefaultStorageAccountType(string defaultStorageAccountType)
+            internal void SetDefaultStorageAccountType(StorageAccountTypes defaultStorageAccountType)
             {
                 this.defaultStorageAccountType = defaultStorageAccountType;
             }
@@ -3043,7 +3043,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             ///GENMHASH:647794DB64052F8555CB8ABDABF9F24D:419FDCEEC4AAB55470C80A42C1D69868
-            private string GetDefaultStorageAccountType()
+            private StorageAccountTypes GetDefaultStorageAccountType()
             {
                 if (defaultStorageAccountType == null)
                 {

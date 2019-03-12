@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for AggregatedReplicationState.
     /// </summary>
-    public static class AggregatedReplicationState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<AggregatedReplicationState>))]
+    public class AggregatedReplicationState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<AggregatedReplicationState>
     {
-        public const string Unknown = "Unknown";
-        public const string InProgress = "InProgress";
-        public const string Completed = "Completed";
-        public const string Failed = "Failed";
+        public static readonly AggregatedReplicationState Unknown = Parse("Unknown");
+        public static readonly AggregatedReplicationState InProgress = Parse("InProgress");
+        public static readonly AggregatedReplicationState Completed = Parse("Completed");
+        public static readonly AggregatedReplicationState Failed = Parse("Failed");
     }
 }
