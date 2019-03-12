@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -28,9 +29,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the TargetRegion class.
         /// </summary>
         /// <param name="name">The name of the region.</param>
-        /// <param name="regionalReplicaCount">This is the number of source
-        /// blob copies in this specific region.</param>
-        public TargetRegion(string name = default(string), int? regionalReplicaCount = default(int?))
+        /// <param name="regionalReplicaCount">The number of replicas of the
+        /// Image Version to be created per region. This property is
+        /// updatable.</param>
+        public TargetRegion(string name, int? regionalReplicaCount = default(int?))
         {
             Name = name;
             RegionalReplicaCount = regionalReplicaCount;
@@ -49,11 +51,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets this is the number of source blob copies in this
-        /// specific region.
+        /// Gets or sets the number of replicas of the Image Version to be
+        /// created per region. This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "regionalReplicaCount")]
         public int? RegionalReplicaCount { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Name == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+        }
     }
 }

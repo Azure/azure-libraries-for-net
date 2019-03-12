@@ -15,24 +15,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Data used for requesting a SAS.
     /// </summary>
-    public partial class GrantAccessData
+    public partial class GrantAccessDataInner
     {
         /// <summary>
-        /// Initializes a new instance of the GrantAccessData class.
+        /// Initializes a new instance of the GrantAccessDataInner class.
         /// </summary>
-        public GrantAccessData()
+        public GrantAccessDataInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GrantAccessData class.
+        /// Initializes a new instance of the GrantAccessDataInner class.
         /// </summary>
         /// <param name="access">Possible values include: 'None',
         /// 'Read'</param>
         /// <param name="durationInSeconds">Time duration in seconds until the
         /// SAS access expires.</param>
-        public GrantAccessData(AccessLevel access, int durationInSeconds)
+        public GrantAccessDataInner(string access, int durationInSeconds)
         {
             Access = access;
             DurationInSeconds = durationInSeconds;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets possible values include: 'None', 'Read'
         /// </summary>
         [JsonProperty(PropertyName = "access")]
-        public AccessLevel Access { get; set; }
+        public string Access { get; set; }
 
         /// <summary>
         /// Gets or sets time duration in seconds until the SAS access expires.

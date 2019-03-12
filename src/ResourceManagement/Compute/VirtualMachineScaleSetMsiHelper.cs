@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
-        internal void HandleExternalIdentities(VirtualMachineScaleSetUpdate vmssUpdate)
+        internal void HandleExternalIdentities(VirtualMachineScaleSetUpdateInner vmssUpdate)
         {
             if (this.HandleRemoveAllExternalIdentitiesCase(vmssUpdate))
             {
@@ -172,18 +172,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (this.scaleSet.Inner.Identity == null || 
                 this.scaleSet.Inner.Identity.Type == null || 
-                this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.None), StringComparison.OrdinalIgnoreCase) || 
-                this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.UserAssigned), StringComparison.OrdinalIgnoreCase))
+                this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityType.None) || 
+                this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityType.UserAssigned))
             {
                 return this;
             }
-            else if (this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssigned), StringComparison.OrdinalIgnoreCase))
+            else if (this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityType.SystemAssigned))
             {
-                this.scaleSet.Inner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.None);
+                this.scaleSet.Inner.Identity.Type = ResourceIdentityType.None;
             }
-            else if (this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned), StringComparison.OrdinalIgnoreCase))
+            else if (this.scaleSet.Inner.Identity.Type.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
             {
-                this.scaleSet.Inner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.UserAssigned);
+                this.scaleSet.Inner.Identity.Type = ResourceIdentityType.UserAssigned;
             }
             return this;
         }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="vmssUpdate">The vm update payload model.</param>
         /// <return>True if user indented to remove all the identities.</return>
-        private bool HandleRemoveAllExternalIdentitiesCase(VirtualMachineScaleSetUpdate vmssUpdate)
+        private bool HandleRemoveAllExternalIdentitiesCase(VirtualMachineScaleSetUpdateInner vmssUpdate)
         {
             if (this.userAssignedIdentities.Any())
             {
@@ -239,17 +239,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         // If so adjust  the identity type [Setting type to SYSTEM_ASSIGNED orNONE will remove all the identities]
                         if (currentIdentity == null || currentIdentity.Type == null)
                         {
-                            vmssUpdate.Identity = new VirtualMachineScaleSetIdentity { Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.None) };
+                            vmssUpdate.Identity = new VirtualMachineScaleSetIdentity { Type = ResourceIdentityType.None };
                         }
-                        else if (currentIdentity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned), StringComparison.OrdinalIgnoreCase))
+                        else if (currentIdentity.Type.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
                         {
                             vmssUpdate.Identity = currentIdentity;
-                            vmssUpdate.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssigned);
+                            vmssUpdate.Identity.Type = ResourceIdentityType.SystemAssigned;
                         }
-                        else if (currentIdentity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.UserAssigned), StringComparison.OrdinalIgnoreCase))
+                        else if (currentIdentity.Type.Equals(ResourceIdentityType.UserAssigned))
                         {
                             vmssUpdate.Identity = currentIdentity;
-                            vmssUpdate.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.None);
+                            vmssUpdate.Identity.Type = ResourceIdentityType.None;
                         }
                         // and set identities property in the payload model to null so that it won't be sent
                         vmssUpdate.Identity.UserAssignedIdentities = null;
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         {
                             // If so we are in a invalid state but we want to send user input to service and let service
                             // handle it (ignore or error).
-                            vmssUpdate.Identity = new VirtualMachineScaleSetIdentity { Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.None) };
+                            vmssUpdate.Identity = new VirtualMachineScaleSetIdentity { Type = ResourceIdentityType.None };
                             vmssUpdate.Identity.UserAssignedIdentities = null;
                             return true;
                         }
@@ -292,14 +292,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 scaleSetInner.Identity = new VirtualMachineScaleSetIdentity();
             }
             if (scaleSetInner.Identity.Type == null || 
-                scaleSetInner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.None), StringComparison.OrdinalIgnoreCase) || 
-                scaleSetInner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType), StringComparison.OrdinalIgnoreCase))
+                scaleSetInner.Identity.Type.Equals(ResourceIdentityType.None) || 
+                scaleSetInner.Identity.Type.Equals(identityType))
             {
-                scaleSetInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
+                scaleSetInner.Identity.Type = identityType;
             }
             else
             {
-                scaleSetInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
+                scaleSetInner.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
             }
         }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (inner.Identity != null)
             {
                 //ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssigned);
-                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
+                return inner.Identity.Type;
             }
             return null;
         }

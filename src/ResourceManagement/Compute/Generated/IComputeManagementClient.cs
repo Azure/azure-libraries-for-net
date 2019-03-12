@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IUsageOperations Usage { get; }
 
         /// <summary>
+        /// Gets the IVirtualMachinesOperations.
+        /// </summary>
+        IVirtualMachinesOperations VirtualMachines { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineSizesOperations.
         /// </summary>
         IVirtualMachineSizesOperations VirtualMachineSizes { get; }
@@ -103,11 +108,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IImagesOperations.
         /// </summary>
         IImagesOperations Images { get; }
-
-        /// <summary>
-        /// Gets the IVirtualMachinesOperations.
-        /// </summary>
-        IVirtualMachinesOperations VirtualMachines { get; }
 
         /// <summary>
         /// Gets the IVirtualMachineScaleSetsOperations.
@@ -168,6 +168,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IGalleryImageVersionsOperations.
         /// </summary>
         IGalleryImageVersionsOperations GalleryImageVersions { get; }
+
+        /// <summary>
+        /// Gets the IContainerServicesOperations.
+        /// </summary>
+        IContainerServicesOperations ContainerServices { get; }
 
     }
 }

@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -18,7 +17,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Specifies information about the gallery image version that you want to
+    /// Specifies information about the gallery Image Version that you want to
     /// create or update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
@@ -36,8 +35,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the GalleryImageVersionInner class.
         /// </summary>
         /// <param name="provisioningState">The current state of the gallery
-        /// image version.</param>
-        public GalleryImageVersionInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), ProvisioningState provisioningState = default(ProvisioningState), GalleryImageVersionStorageProfile storageProfile = default(GalleryImageVersionStorageProfile), ReplicationStatus replicationStatus = default(ReplicationStatus))
+        /// Image Version.</param>
+        public GalleryImageVersionInner(GalleryImageVersionPublishingProfile publishingProfile, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState provisioningState = default(ProvisioningState), GalleryImageVersionStorageProfile storageProfile = default(GalleryImageVersionStorageProfile), ReplicationStatus replicationStatus = default(ReplicationStatus))
             : base(location, id, name, type, tags)
         {
             PublishingProfile = publishingProfile;
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public GalleryImageVersionPublishingProfile PublishingProfile { get; set; }
 
         /// <summary>
-        /// Gets the current state of the gallery image version.
+        /// Gets the current state of the gallery Image Version.
         /// </summary>
         /// <remarks>
         /// The provisioning state, which only appears in the response.
@@ -84,9 +83,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
+            if (PublishingProfile == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "PublishingProfile");
+            }
+            if (PublishingProfile != null)
+            {
+                PublishingProfile.Validate();
+            }
         }
     }
 }

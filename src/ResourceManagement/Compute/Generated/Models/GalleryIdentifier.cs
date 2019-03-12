@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GalleryIdentifier class.
         /// </summary>
-        /// <param name="uniqueName">The unique name of the gallery</param>
+        /// <param name="uniqueName">The unique name of the Shared Image
+        /// Gallery. This name is generated automatically by Azure.</param>
         public GalleryIdentifier(string uniqueName = default(string))
         {
             UniqueName = uniqueName;
@@ -40,7 +41,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the unique name of the gallery
+        /// Gets the unique name of the Shared Image Gallery. This name is
+        /// generated automatically by Azure.
         /// </summary>
         [JsonProperty(PropertyName = "uniqueName")]
         public string UniqueName { get; private set; }

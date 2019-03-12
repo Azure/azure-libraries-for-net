@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     public interface IComputeSku :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ResourceSkuInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ResourceSku>
     {
 
         /// <summary>

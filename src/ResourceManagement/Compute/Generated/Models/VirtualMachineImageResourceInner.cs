@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;

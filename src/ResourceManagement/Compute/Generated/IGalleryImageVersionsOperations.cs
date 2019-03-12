@@ -22,25 +22,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public partial interface IGalleryImageVersionsOperations
     {
         /// <summary>
-        /// Create or update a gallery image version.
+        /// Create or update a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition
+        /// resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// is to be created.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version. Needs to follow semantic
-        /// version name pattern: The allowed characters are digit and period.
-        /// Digits must be within the range of a 32-bit integer. Format:
+        /// The name of the gallery Image Version to be created. Needs to
+        /// follow semantic version name pattern: The allowed characters are
+        /// digit and period. Digits must be within the range of a 32-bit
+        /// integer. Format:
         /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
         /// </param>
         /// <param name='galleryImageVersion'>
-        /// Parameters supplied to the create or update gallery image version
+        /// Parameters supplied to the create or update gallery Image Version
         /// operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -60,19 +63,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryImageVersionInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, GalleryImageVersionInner galleryImageVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Retrieves information about a gallery image version.
+        /// Retrieves information about a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition
+        /// resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// resides.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version.
+        /// The name of the gallery Image Version to be retrieved.
         /// </param>
         /// <param name='expand'>
         /// The expand expression to apply on the operation. Possible values
@@ -95,19 +100,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryImageVersionInner>> GetWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, ReplicationStatusTypes expand = default(ReplicationStatusTypes), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a gallery image version.
+        /// Delete a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition
+        /// resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// resides.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version.
+        /// The name of the gallery Image Version to be deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -123,16 +130,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List gallery image versions under a gallery image.
+        /// List gallery Image Versions in a gallery Image Definition.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition
+        /// resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the Shared Image Gallery Image Definition from which
+        /// the Image Versions are to be listed.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -151,25 +160,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<GalleryImageVersionInner>>> ListByGalleryImageWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update a gallery image version.
+        /// Create or update a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition
+        /// resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// is to be created.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version. Needs to follow semantic
-        /// version name pattern: The allowed characters are digit and period.
-        /// Digits must be within the range of a 32-bit integer. Format:
+        /// The name of the gallery Image Version to be created. Needs to
+        /// follow semantic version name pattern: The allowed characters are
+        /// digit and period. Digits must be within the range of a 32-bit
+        /// integer. Format:
         /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
         /// </param>
         /// <param name='galleryImageVersion'>
-        /// Parameters supplied to the create or update gallery image version
+        /// Parameters supplied to the create or update gallery Image Version
         /// operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -189,19 +201,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryImageVersionInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, GalleryImageVersionInner galleryImageVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a gallery image version.
+        /// Delete a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition
+        /// resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// resides.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version.
+        /// The name of the gallery Image Version to be deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -217,7 +231,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List gallery image versions under a gallery image.
+        /// List gallery Image Versions in a gallery Image Definition.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

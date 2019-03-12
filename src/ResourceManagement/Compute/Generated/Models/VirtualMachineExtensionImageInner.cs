@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// not VMSS.</param>
         /// <param name="supportsMultipleExtensions">Whether the handler can
         /// support multiple extensions.</param>
-        public VirtualMachineExtensionImageInner(string location, string operatingSystem, string computeRole, string handlerSchema, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? vmScaleSetEnabled = default(bool?), bool? supportsMultipleExtensions = default(bool?))
+        public VirtualMachineExtensionImageInner(string operatingSystem, string computeRole, string handlerSchema, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? vmScaleSetEnabled = default(bool?), bool? supportsMultipleExtensions = default(bool?))
             : base(location, id, name, type, tags)
         {
             OperatingSystem = operatingSystem;
@@ -107,9 +106,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (OperatingSystem == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "OperatingSystem");

@@ -14,18 +14,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Api request input for LogAnalytics getRequestRateByInterval Api.
     /// </summary>
-    public partial class RequestRateByIntervalInput : LogAnalyticsInputBase
+    public partial class RequestRateByIntervalInputInner : LogAnalyticsInputBase
     {
         /// <summary>
-        /// Initializes a new instance of the RequestRateByIntervalInput class.
+        /// Initializes a new instance of the RequestRateByIntervalInputInner
+        /// class.
         /// </summary>
-        public RequestRateByIntervalInput()
+        public RequestRateByIntervalInputInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RequestRateByIntervalInput class.
+        /// Initializes a new instance of the RequestRateByIntervalInputInner
+        /// class.
         /// </summary>
         /// <param name="blobContainerSasUri">SAS Uri of the logging blob
         /// container to which LogAnalytics Api writes output logs to.</param>
@@ -36,11 +38,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'ThreeMins', 'FiveMins', 'ThirtyMins', 'SixtyMins'</param>
         /// <param name="groupByThrottlePolicy">Group query result by Throttle
         /// Policy applied.</param>
-        /// <param name="groupByOperationName">Group query result by  by
-        /// Operation Name.</param>
+        /// <param name="groupByOperationName">Group query result by Operation
+        /// Name.</param>
         /// <param name="groupByResourceName">Group query result by Resource
         /// Name.</param>
-        public RequestRateByIntervalInput(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, IntervalInMins intervalLength, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?))
+        public RequestRateByIntervalInputInner(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, IntervalInMins intervalLength, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?))
             : base(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName)
         {
             IntervalLength = intervalLength;

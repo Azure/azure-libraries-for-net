@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ImageInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImageInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
             AzureOperationResponse<ImageInner> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-06-01";
+            string apiVersion = "2018-10-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-06-01";
+            string apiVersion = "2018-10-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-06-01";
+            string apiVersion = "2018-10-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-06-01";
+            string apiVersion = "2018-10-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -804,11 +804,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImageInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImageInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-06-01";
+            string apiVersion = "2018-10-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1030,11 +1030,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1182,7 +1182,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-06-01";
+            string apiVersion = "2018-10-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1233,7 +1233,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1271,7 +1271,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1388,7 +1388,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1563,7 +1563,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1601,7 +1601,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this UpgradeOperationInvoker value)
         {
-            switch (value)
+            switch( value )
             {
                 case UpgradeOperationInvoker.Unknown:
                     return "Unknown";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static UpgradeOperationInvoker? ParseUpgradeOperationInvoker(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "Unknown":
                     return UpgradeOperationInvoker.Unknown;

@@ -32,8 +32,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the
         /// GalleryArtifactPublishingProfileBase class.
         /// </summary>
-        /// <param name="targetRegions">The target regions where the artifact
-        /// is going to be published.</param>
+        /// <param name="targetRegions">The target regions where the Image
+        /// Version is going to be replicated to. This property is
+        /// updatable.</param>
         public GalleryArtifactPublishingProfileBase(GalleryArtifactSource source, IList<TargetRegion> targetRegions = default(IList<TargetRegion>))
         {
             TargetRegions = targetRegions;
@@ -47,8 +48,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target regions where the artifact is going to be
-        /// published.
+        /// Gets or sets the target regions where the Image Version is going to
+        /// be replicated to. This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "targetRegions")]
         public IList<TargetRegion> TargetRegions { get; set; }
@@ -69,6 +70,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             if (Source == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Source");
+            }
+            if (TargetRegions != null)
+            {
+                foreach (var element in TargetRegions)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
             if (Source != null)
             {

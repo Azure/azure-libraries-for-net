@@ -16,21 +16,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Snapshot update resource.
+    /// Disk update resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SnapshotUpdate
+    public partial class DiskUpdateInner
     {
         /// <summary>
-        /// Initializes a new instance of the SnapshotUpdate class.
+        /// Initializes a new instance of the DiskUpdateInner class.
         /// </summary>
-        public SnapshotUpdate()
+        public DiskUpdateInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SnapshotUpdate class.
+        /// Initializes a new instance of the DiskUpdateInner class.
         /// </summary>
         /// <param name="osType">the Operating System type. Possible values
         /// include: 'Windows', 'Linux'</param>
@@ -42,12 +42,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk's size.</param>
         /// <param name="encryptionSettings">Encryption settings for disk or
         /// snapshot</param>
+        /// <param name="diskIOPSReadWrite">The number of IOPS allowed for this
+        /// disk; only settable for UltraSSD disks. One operation can transfer
+        /// between 4k and 256k bytes.</param>
+        /// <param name="diskMBpsReadWrite">The bandwidth allowed for this
+        /// disk; only settable for UltraSSD disks. MBps means millions of
+        /// bytes per second - MB here uses the ISO notation, of powers of
+        /// 10.</param>
         /// <param name="tags">Resource tags</param>
-        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
+        public DiskUpdateInner(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), long? diskIOPSReadWrite = default(long?), int? diskMBpsReadWrite = default(int?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
             EncryptionSettings = encryptionSettings;
+            DiskIOPSReadWrite = diskIOPSReadWrite;
+            DiskMBpsReadWrite = diskMBpsReadWrite;
             Tags = tags;
             Sku = sku;
             CustomInit();
@@ -82,6 +91,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public EncryptionSettings EncryptionSettings { get; set; }
 
         /// <summary>
+        /// Gets or sets the number of IOPS allowed for this disk; only
+        /// settable for UltraSSD disks. One operation can transfer between 4k
+        /// and 256k bytes.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskIOPSReadWrite")]
+        public long? DiskIOPSReadWrite { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bandwidth allowed for this disk; only settable for
+        /// UltraSSD disks. MBps means millions of bytes per second - MB here
+        /// uses the ISO notation, of powers of 10.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskMBpsReadWrite")]
+        public int? DiskMBpsReadWrite { get; set; }
+
+        /// <summary>
         /// Gets or sets resource tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
@@ -90,7 +115,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public SnapshotSku Sku { get; set; }
+        public DiskSku Sku { get; set; }
 
         /// <summary>
         /// Validate the object.

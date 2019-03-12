@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a VM scale set.
         /// </summary>
@@ -412,7 +412,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task<AzureOperationResponse> RedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Perform maintenance on one or more virtual machines in a VM scale
-        /// set.
+        /// set. Operation on instances which are not eligible for perform
+        /// maintenance will be failed. Please refer to best practices for more
+        /// details:
+        /// https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -466,7 +469,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task<AzureOperationResponse> UpdateInstancesWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Reimages (upgrade the operating system) one or more virtual
-        /// machines in a VM scale set.
+        /// machines in a VM scale set which don't have a ephemeral OS disk,
+        /// for virtual machines who have a ephemeral OS disk the virtual
+        /// machine is reset to initial state.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -474,10 +479,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='vmScaleSetName'>
         /// The name of the VM scale set.
         /// </param>
-        /// <param name='instanceIds'>
-        /// The virtual machine scale set instance ids. Omitting the virtual
-        /// machine scale set instance ids will result in the operation being
-        /// performed on all virtual machines in the virtual machine scale set.
+        /// <param name='vmScaleSetReimageInput'>
+        /// Parameters for Reimaging VM ScaleSet.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -491,7 +494,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetReimageParametersInner vmScaleSetReimageInput = default(VirtualMachineScaleSetReimageParametersInner), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Reimages all the disks ( including data disks ) in the virtual
         /// machines in a VM scale set. This operation is only supported for
@@ -606,7 +609,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a VM scale set.
         /// </summary>
@@ -797,7 +800,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task<AzureOperationResponse> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Perform maintenance on one or more virtual machines in a VM scale
-        /// set.
+        /// set. Operation on instances which are not eligible for perform
+        /// maintenance will be failed. Please refer to best practices for more
+        /// details:
+        /// https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -851,7 +857,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task<AzureOperationResponse> BeginUpdateInstancesWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Reimages (upgrade the operating system) one or more virtual
-        /// machines in a VM scale set.
+        /// machines in a VM scale set which don't have a ephemeral OS disk,
+        /// for virtual machines who have a ephemeral OS disk the virtual
+        /// machine is reset to initial state.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -859,10 +867,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='vmScaleSetName'>
         /// The name of the VM scale set.
         /// </param>
-        /// <param name='instanceIds'>
-        /// The virtual machine scale set instance ids. Omitting the virtual
-        /// machine scale set instance ids will result in the operation being
-        /// performed on all virtual machines in the virtual machine scale set.
+        /// <param name='vmScaleSetReimageInput'>
+        /// Parameters for Reimaging VM ScaleSet.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -876,7 +882,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetReimageParametersInner vmScaleSetReimageInput = default(VirtualMachineScaleSetReimageParametersInner), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Reimages all the disks ( including data disks ) in the virtual
         /// machines in a VM scale set. This operation is only supported for

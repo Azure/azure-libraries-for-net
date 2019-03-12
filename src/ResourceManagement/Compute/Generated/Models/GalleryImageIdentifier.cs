@@ -8,11 +8,12 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// This is the gallery image identifier.
+    /// This is the gallery Image Definition identifier.
     /// </summary>
     public partial class GalleryImageIdentifier
     {
@@ -27,10 +28,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GalleryImageIdentifier class.
         /// </summary>
-        /// <param name="publisher">The gallery image publisher name.</param>
-        /// <param name="offer">The gallery image offer name.</param>
-        /// <param name="sku">The gallery image sku name.</param>
-        public GalleryImageIdentifier(string publisher = default(string), string offer = default(string), string sku = default(string))
+        /// <param name="publisher">The name of the gallery Image Definition
+        /// publisher.</param>
+        /// <param name="offer">The name of the gallery Image Definition
+        /// offer.</param>
+        /// <param name="sku">The name of the gallery Image Definition
+        /// SKU.</param>
+        public GalleryImageIdentifier(string publisher, string offer, string sku)
         {
             Publisher = publisher;
             Offer = offer;
@@ -44,22 +48,43 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the gallery image publisher name.
+        /// Gets or sets the name of the gallery Image Definition publisher.
         /// </summary>
         [JsonProperty(PropertyName = "publisher")]
         public string Publisher { get; set; }
 
         /// <summary>
-        /// Gets or sets the gallery image offer name.
+        /// Gets or sets the name of the gallery Image Definition offer.
         /// </summary>
         [JsonProperty(PropertyName = "offer")]
         public string Offer { get; set; }
 
         /// <summary>
-        /// Gets or sets the gallery image sku name.
+        /// Gets or sets the name of the gallery Image Definition SKU.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public string Sku { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Publisher == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Publisher");
+            }
+            if (Offer == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Offer");
+            }
+            if (Sku == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
+            }
+        }
     }
 }

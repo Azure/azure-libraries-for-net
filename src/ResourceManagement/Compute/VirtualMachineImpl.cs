@@ -209,7 +209,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.Name,
                 InstanceViewTypes.InstanceView,
                 cancellationToken);
-            this.virtualMachineInstanceView = virtualMachineInner.InstanceView;
+            this.virtualMachineInstanceView = new VirtualMachineInstanceView(
+                virtualMachineInner.InstanceView.PlatformFaultDomain, virtualMachineInner.InstanceView.PlatformUpdateDomain, virtualMachineInner.InstanceView.ComputerName,
+                virtualMachineInner.InstanceView.OsName, virtualMachineInner.InstanceView.OsVersion, virtualMachineInner.InstanceView.RdpThumbPrint,
+                virtualMachineInner.InstanceView.VmAgent, virtualMachineInner.InstanceView.MaintenanceRedeployStatus, virtualMachineInner.InstanceView.Disks,
+                virtualMachineInner.InstanceView.Extensions, virtualMachineInner.InstanceView.BootDiagnostics, virtualMachineInner.InstanceView.Statuses);
+
             return this.virtualMachineInstanceView;
         }
 
@@ -298,7 +303,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C345130B595C0FF585A57651EFDC3A0F:E97CAC99D13041F7FEAACC7E4508DC7B
         public async Task<string> CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
+            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
@@ -1802,7 +1807,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
 
                 //
-                VirtualMachineUpdate updateParameter = new VirtualMachineUpdate
+                VirtualMachineUpdateInner updateParameter = new VirtualMachineUpdateInner
                     {
                         Plan = this.Inner.Plan,
                         HardwareProfile = this.Inner.HardwareProfile,

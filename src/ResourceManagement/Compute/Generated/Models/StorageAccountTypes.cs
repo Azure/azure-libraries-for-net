@@ -26,5 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public static readonly StorageAccountTypes StandardLRS = Parse("Standard_LRS");
         public static readonly StorageAccountTypes PremiumLRS = Parse("Premium_LRS");
         public static readonly StorageAccountTypes StandardSSDLRS = Parse("StandardSSD_LRS");
+        public static readonly StorageAccountTypes UltraSSDLRS = Parse("UltraSSD_LRS");
     }
 }

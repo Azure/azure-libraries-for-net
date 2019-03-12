@@ -8,8 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets specifies the storage account type for the managed
-        /// disk. Possible values are: Standard_LRS, Premium_LRS, and
-        /// StandardSSD_LRS. Possible values include: 'Standard_LRS',
-        /// 'Premium_LRS', 'StandardSSD_LRS'
+        /// disk. UltraSSD_LRS cannot be used with OS Disk. Possible values
+        /// include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+        /// 'UltraSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
         public StorageAccountTypes StorageAccountType { get; set; }
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()

@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public partial interface IVirtualMachineSizesOperations
     {
         /// <summary>
-        /// Lists all available virtual machine sizes for a subscription in a
-        /// location.
+        /// This API is deprecated. Use [Resources
+        /// Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
         /// </summary>
         /// <param name='location'>
         /// The location upon which virtual-machine-sizes is queried.
@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<VirtualMachineSizeInner>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<VirtualMachineSize>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

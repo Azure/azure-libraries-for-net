@@ -13,18 +13,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Api request input for LogAnalytics getThrottledRequests Api.
     /// </summary>
-    public partial class ThrottledRequestsInput : LogAnalyticsInputBase
+    public partial class ThrottledRequestsInputInner : LogAnalyticsInputBase
     {
         /// <summary>
-        /// Initializes a new instance of the ThrottledRequestsInput class.
+        /// Initializes a new instance of the ThrottledRequestsInputInner
+        /// class.
         /// </summary>
-        public ThrottledRequestsInput()
+        public ThrottledRequestsInputInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ThrottledRequestsInput class.
+        /// Initializes a new instance of the ThrottledRequestsInputInner
+        /// class.
         /// </summary>
         /// <param name="blobContainerSasUri">SAS Uri of the logging blob
         /// container to which LogAnalytics Api writes output logs to.</param>
@@ -32,11 +34,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="toTime">To time of the query</param>
         /// <param name="groupByThrottlePolicy">Group query result by Throttle
         /// Policy applied.</param>
-        /// <param name="groupByOperationName">Group query result by  by
-        /// Operation Name.</param>
+        /// <param name="groupByOperationName">Group query result by Operation
+        /// Name.</param>
         /// <param name="groupByResourceName">Group query result by Resource
         /// Name.</param>
-        public ThrottledRequestsInput(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?))
+        public ThrottledRequestsInputInner(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?))
             : base(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName)
         {
             CustomInit();

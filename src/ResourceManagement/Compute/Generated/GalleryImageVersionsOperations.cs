@@ -49,25 +49,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public ComputeManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Create or update a gallery image version.
+        /// Create or update a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version is to
+        /// be created.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version. Needs to follow semantic version
-        /// name pattern: The allowed characters are digit and period. Digits must be
-        /// within the range of a 32-bit integer. Format:
+        /// The name of the gallery Image Version to be created. Needs to follow
+        /// semantic version name pattern: The allowed characters are digit and period.
+        /// Digits must be within the range of a 32-bit integer. Format:
         /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
         /// </param>
         /// <param name='galleryImageVersion'>
-        /// Parameters supplied to the create or update gallery image version
+        /// Parameters supplied to the create or update gallery Image Version
         /// operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -84,19 +85,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Retrieves information about a gallery image version.
+        /// Retrieves information about a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// resides.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version.
+        /// The name of the gallery Image Version to be retrieved.
         /// </param>
         /// <param name='expand'>
         /// The expand expression to apply on the operation. Possible values include:
@@ -205,7 +207,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -243,7 +245,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -305,19 +307,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Delete a gallery image version.
+        /// Delete a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// resides.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version.
+        /// The name of the gallery Image Version to be deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -333,16 +336,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// List gallery image versions under a gallery image.
+        /// List gallery Image Versions in a gallery Image Definition.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the Shared Image Gallery Image Definition from which the Image
+        /// Versions are to be listed.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -436,7 +440,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -474,7 +478,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -536,25 +540,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Create or update a gallery image version.
+        /// Create or update a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version is to
+        /// be created.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version. Needs to follow semantic version
-        /// name pattern: The allowed characters are digit and period. Digits must be
-        /// within the range of a 32-bit integer. Format:
+        /// The name of the gallery Image Version to be created. Needs to follow
+        /// semantic version name pattern: The allowed characters are digit and period.
+        /// Digits must be within the range of a 32-bit integer. Format:
         /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
         /// </param>
         /// <param name='galleryImageVersion'>
-        /// Parameters supplied to the create or update gallery image version
+        /// Parameters supplied to the create or update gallery Image Version
         /// operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -664,7 +669,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -676,11 +681,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (galleryImageVersion != null)
+            if(galleryImageVersion != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(galleryImageVersion, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -708,7 +713,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -806,19 +811,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Delete a gallery image version.
+        /// Delete a gallery Image Version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery in which the Image Definition resides.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image.
+        /// The name of the gallery Image Definition in which the Image Version
+        /// resides.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version.
+        /// The name of the gallery Image Version to be deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -915,7 +921,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -953,7 +959,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -997,7 +1003,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// List gallery image versions under a gallery image.
+        /// List gallery Image Versions in a gallery Image Definition.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1070,7 +1076,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1108,7 +1114,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);

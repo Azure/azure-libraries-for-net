@@ -91,6 +91,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual IUsageOperations Usage { get; private set; }
 
         /// <summary>
+        /// Gets the IVirtualMachinesOperations.
+        /// </summary>
+        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
+
+        /// <summary>
         /// Gets the IVirtualMachineSizesOperations.
         /// </summary>
         public virtual IVirtualMachineSizesOperations VirtualMachineSizes { get; private set; }
@@ -99,11 +104,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IImagesOperations.
         /// </summary>
         public virtual IImagesOperations Images { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachinesOperations.
-        /// </summary>
-        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineScaleSetsOperations.
@@ -166,8 +166,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual IGalleryImageVersionsOperations GalleryImageVersions { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IContainerServicesOperations.
         /// </summary>
+        public virtual IContainerServicesOperations ContainerServices { get; private set; }
+
+
+        /// <summary>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -176,10 +180,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
         }
 
-        /// <summary>
-        /// An optional partial-method to perform custom initialization.
-        /// </summary>
-        partial void CustomInitialize();
         /// <summary>
         /// Initializes client properties.
         /// </summary>
@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             VirtualMachineImages = new VirtualMachineImagesOperations(this);
             Usage = new UsageOperations(this);
+            VirtualMachines = new VirtualMachinesOperations(this);
             VirtualMachineSizes = new VirtualMachineSizesOperations(this);
             Images = new ImagesOperations(this);
-            VirtualMachines = new VirtualMachinesOperations(this);
             VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
             VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
@@ -206,6 +206,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
+            ContainerServices = new ContainerServicesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -236,7 +237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         new Iso8601TimeSpanConverter()
                     }
             };
-            CustomInitialize();
+            
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }

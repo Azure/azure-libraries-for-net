@@ -16,21 +16,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Disk update resource.
+    /// Snapshot update resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiskUpdate
+    public partial class SnapshotUpdateInner
     {
         /// <summary>
-        /// Initializes a new instance of the DiskUpdate class.
+        /// Initializes a new instance of the SnapshotUpdateInner class.
         /// </summary>
-        public DiskUpdate()
+        public SnapshotUpdateInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DiskUpdate class.
+        /// Initializes a new instance of the SnapshotUpdateInner class.
         /// </summary>
         /// <param name="osType">the Operating System type. Possible values
         /// include: 'Windows', 'Linux'</param>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="encryptionSettings">Encryption settings for disk or
         /// snapshot</param>
         /// <param name="tags">Resource tags</param>
-        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
+        public SnapshotUpdateInner(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public DiskSku Sku { get; set; }
+        public SnapshotSku Sku { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+            RunCommandInputInner innerInput = new RunCommandInputInner(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
+            return await this.Inner.RunCommandAsync(groupName, name, innerInput, cancellationToken);
         }
 
         public RunCommandResultInner RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
@@ -218,7 +219,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             bool overwriteVhd,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
+            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;

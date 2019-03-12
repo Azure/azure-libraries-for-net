@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// This is the replication status of the gallery image version.
+    /// This is the replication status of the gallery Image Version.
     /// </summary>
     public partial class ReplicationStatus
     {
@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the ReplicationStatus class.
         /// </summary>
         /// <param name="aggregatedState">This is the aggregated replication
-        /// status based on the regional replication status. Possible values
-        /// include: 'Unknown', 'InProgress', 'Completed', 'Failed'</param>
+        /// status based on all the regional replication status flags. Possible
+        /// values include: 'Unknown', 'InProgress', 'Completed',
+        /// 'Failed'</param>
         /// <param name="summary">This is a summary of replication status for
         /// each region.</param>
         public ReplicationStatus(AggregatedReplicationState aggregatedState = default(AggregatedReplicationState), IList<RegionalReplicationStatus> summary = default(IList<RegionalReplicationStatus>))
@@ -47,9 +48,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets this is the aggregated replication status based on the
-        /// regional replication status. Possible values include: 'Unknown',
-        /// 'InProgress', 'Completed', 'Failed'
+        /// Gets this is the aggregated replication status based on all the
+        /// regional replication status flags. Possible values include:
+        /// 'Unknown', 'InProgress', 'Completed', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "aggregatedState")]
         public AggregatedReplicationState AggregatedState { get; private set; }

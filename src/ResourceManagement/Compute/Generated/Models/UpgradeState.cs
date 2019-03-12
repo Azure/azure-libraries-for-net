@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this UpgradeState value)
         {
-            switch (value)
+            switch( value )
             {
                 case UpgradeState.RollingForward:
                     return "RollingForward";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static UpgradeState? ParseUpgradeState(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "RollingForward":
                     return UpgradeState.RollingForward;

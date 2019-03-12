@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// An immutable client-side representation of an Azure compute resource usage info object.
     /// </summary>
     public interface IComputeUsage :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.UsageInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.Usage>
     {
 
         /// <summary>

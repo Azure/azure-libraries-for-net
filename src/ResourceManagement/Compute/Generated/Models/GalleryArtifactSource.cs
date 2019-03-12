@@ -8,11 +8,12 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// The source of the gallery artifact.
+    /// The source image from which the Image Version is going to be created.
     /// </summary>
     public partial class GalleryArtifactSource
     {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GalleryArtifactSource class.
         /// </summary>
-        public GalleryArtifactSource(ManagedArtifact managedImage = default(ManagedArtifact))
+        public GalleryArtifactSource(ManagedArtifact managedImage)
         {
             ManagedImage = managedImage;
             CustomInit();
@@ -43,10 +44,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "managedImage")]
         public ManagedArtifact ManagedImage { get; set; }
 
-
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
         public virtual void Validate()
         {
-
+            if (ManagedImage == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "ManagedImage");
+            }
+            if (ManagedImage != null)
+            {
+                ManagedImage.Validate();
+            }
         }
     }
 }

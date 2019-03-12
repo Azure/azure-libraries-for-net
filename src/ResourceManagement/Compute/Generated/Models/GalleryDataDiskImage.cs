@@ -27,15 +27,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GalleryDataDiskImage class.
         /// </summary>
-        /// <param name="sizeInGB">It indicates the size of the VHD to
-        /// create.</param>
+        /// <param name="sizeInGB">This property indicates the size of the VHD
+        /// to be created.</param>
         /// <param name="hostCaching">The host caching of the disk. Valid
         /// values are 'None', 'ReadOnly', and 'ReadWrite'. Possible values
         /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
-        /// <param name="lun">Specifies the logical unit number of the data
-        /// disk. This value is used to identify data disks within the VM and
-        /// therefore must be unique for each data disk attached to a
-        /// VM.</param>
+        /// <param name="lun">This property specifies the logical unit number
+        /// of the data disk. This value is used to identify data disks within
+        /// the Virtual Machine and therefore must be unique for each data disk
+        /// attached to the Virtual Machine.</param>
         public GalleryDataDiskImage(int? sizeInGB = default(int?), HostCaching? hostCaching = default(HostCaching?), int? lun = default(int?))
             : base(sizeInGB, hostCaching)
         {
@@ -49,9 +49,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the logical unit number of the data disk. This value
-        /// is used to identify data disks within the VM and therefore must be
-        /// unique for each data disk attached to a VM.
+        /// Gets this property specifies the logical unit number of the data
+        /// disk. This value is used to identify data disks within the Virtual
+        /// Machine and therefore must be unique for each data disk attached to
+        /// the Virtual Machine.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int? Lun { get; private set; }

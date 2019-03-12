@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 List<DiskSkuTypes> diskTypes = new List<DiskSkuTypes>();
                 foreach(var diskTypeStr in this.Inner.Disallowed.DiskTypes)
                 {
-                    diskTypes.Add(DiskSkuTypes.FromStorageAccountType(StorageAccountTypes.Parse(diskTypeStr)));
+                    diskTypes.Add(DiskSkuTypes.FromStorageAccountType(DiskStorageAccountTypes.Parse(diskTypeStr)));
                 }
                 return diskTypes;
             }

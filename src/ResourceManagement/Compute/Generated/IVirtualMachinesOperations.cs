@@ -22,6 +22,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public partial interface IVirtualMachinesOperations
     {
         /// <summary>
+        /// Gets all the virtual machines under the specified subscription for
+        /// the specified location.
+        /// </summary>
+        /// <param name='location'>
+        /// The location for which virtual machines under the subscription are
+        /// queried.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<VirtualMachineInner>>> ListByLocationWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Captures the VM by copying virtual hard disks of the VM and outputs
         /// a template that can be used to create similar VMs.
         /// </summary>
@@ -49,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineCaptureResultInner>> CaptureWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineCaptureResultInner>> CaptureWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineCaptureParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to create or update a virtual machine.
         /// </summary>
@@ -105,7 +129,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to delete a virtual machine.
         /// </summary>
@@ -183,7 +207,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineInstanceView>> InstanceViewWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineInstanceViewInner>> InstanceViewWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Converts virtual machine disks from blob-based to managed disks.
         /// Virtual machine must be stop-deallocated before invoking this
@@ -324,7 +348,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<VirtualMachineSizeInner>>> ListAvailableSizesWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<VirtualMachineSize>>> ListAvailableSizesWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to power off (stop) a virtual machine. The virtual
         /// machine can be restarted with the same provisioned resources. You
@@ -416,6 +440,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse> RedeployWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Reimages the virtual machine which has an ephemeral OS disk back to
+        /// its initial state.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the virtual machine.
+        /// </param>
+        /// <param name='tempDisk'>
+        /// Specifies whether to reimage temp disk. Default value: false.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmName, bool? tempDisk = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// The operation to perform maintenance on a virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -464,7 +514,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RunCommandResultInner>> RunCommandWithHttpMessagesAsync(string resourceGroupName, string vmName, RunCommandInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RunCommandResultInner>> RunCommandWithHttpMessagesAsync(string resourceGroupName, string vmName, RunCommandInputInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Captures the VM by copying virtual hard disks of the VM and outputs
         /// a template that can be used to create similar VMs.
@@ -493,7 +543,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineCaptureResultInner>> BeginCaptureWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineCaptureResultInner>> BeginCaptureWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineCaptureParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to create or update a virtual machine.
         /// </summary>
@@ -549,7 +599,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, VirtualMachineUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to delete a virtual machine.
         /// </summary>
@@ -711,6 +761,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Reimages the virtual machine which has an ephemeral OS disk back to
+        /// its initial state.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the virtual machine.
+        /// </param>
+        /// <param name='tempDisk'>
+        /// Specifies whether to reimage temp disk. Default value: false.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string vmName, bool? tempDisk = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// The operation to perform maintenance on a virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -759,7 +835,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RunCommandResultInner>> BeginRunCommandWithHttpMessagesAsync(string resourceGroupName, string vmName, RunCommandInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RunCommandResultInner>> BeginRunCommandWithHttpMessagesAsync(string resourceGroupName, string vmName, RunCommandInputInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets all the virtual machines under the specified subscription for
+        /// the specified location.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<VirtualMachineInner>>> ListByLocationNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all of the virtual machines in the specified resource group.
         /// Use the nextLink property in the response to get the next page of

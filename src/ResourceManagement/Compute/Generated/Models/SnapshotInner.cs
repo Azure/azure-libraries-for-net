@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -52,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// snapshot</param>
         /// <param name="provisioningState">The disk provisioning
         /// state.</param>
-        public SnapshotInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), string provisioningState = default(string))
+        public SnapshotInner(CreationData creationData, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             ManagedBy = managedBy;
@@ -130,9 +128,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (CreationData == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CreationData");

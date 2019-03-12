@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The publishing profile of a gallery image version.
+    /// The publishing profile of a gallery Image Version.
     /// </summary>
     public partial class GalleryImageVersionPublishingProfile : GalleryArtifactPublishingProfileBase
     {
@@ -31,17 +31,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the
         /// GalleryImageVersionPublishingProfile class.
         /// </summary>
-        /// <param name="targetRegions">The target regions where the artifact
-        /// is going to be published.</param>
-        /// <param name="replicaCount">This is the number of source blob copies
-        /// in a region.</param>
-        /// <param name="excludeFromLatest">The flag means that if it is set to
-        /// true, people deploying VMs with 'latest' as version will not use
-        /// this version.</param>
-        /// <param name="publishedDate">The time when the gallery image version
-        /// is published.</param>
+        /// <param name="targetRegions">The target regions where the Image
+        /// Version is going to be replicated to. This property is
+        /// updatable.</param>
+        /// <param name="replicaCount">The number of replicas of the Image
+        /// Version to be created per region. This property would take effect
+        /// for a region when regionalReplicaCount is not specified. This
+        /// property is updatable.</param>
+        /// <param name="excludeFromLatest">If set to true, Virtual Machines
+        /// deployed from the latest version of the Image Definition won't use
+        /// this Image Version.</param>
+        /// <param name="publishedDate">The timestamp for when the gallery
+        /// Image Version is published.</param>
         /// <param name="endOfLifeDate">The end of life date of the gallery
-        /// image version.</param>
+        /// Image Version. This property can be used for decommissioning
+        /// purposes. This property is updatable.</param>
         public GalleryImageVersionPublishingProfile(GalleryArtifactSource source, IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?))
             : base(source, targetRegions)
         {
@@ -58,26 +62,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this is the number of source blob copies in a region.
+        /// Gets or sets the number of replicas of the Image Version to be
+        /// created per region. This property would take effect for a region
+        /// when regionalReplicaCount is not specified. This property is
+        /// updatable.
         /// </summary>
         [JsonProperty(PropertyName = "replicaCount")]
         public int? ReplicaCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the flag means that if it is set to true, people
-        /// deploying VMs with 'latest' as version will not use this version.
+        /// Gets or sets if set to true, Virtual Machines deployed from the
+        /// latest version of the Image Definition won't use this Image
+        /// Version.
         /// </summary>
         [JsonProperty(PropertyName = "excludeFromLatest")]
         public bool? ExcludeFromLatest { get; set; }
 
         /// <summary>
-        /// Gets the time when the gallery image version is published.
+        /// Gets the timestamp for when the gallery Image Version is published.
         /// </summary>
         [JsonProperty(PropertyName = "publishedDate")]
         public System.DateTime? PublishedDate { get; private set; }
 
         /// <summary>
-        /// Gets or sets the end of life date of the gallery image version.
+        /// Gets or sets the end of life date of the gallery Image Version.
+        /// This property can be used for decommissioning purposes. This
+        /// property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "endOfLifeDate")]
         public System.DateTime? EndOfLifeDate { get; set; }

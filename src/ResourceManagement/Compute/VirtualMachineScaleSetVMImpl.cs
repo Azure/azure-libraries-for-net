@@ -507,10 +507,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:960A44940EE0E051601BB59CD935FE22:09B1869890AC6095FE0FBE503BBBBFB6
         public async Task ReimageAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Parent.Manager.Inner.VirtualMachineScaleSetVMs.ReimageAsync(
+            await Parent.Manager.Inner.VirtualMachineScaleSetVMs.ReimageWithHttpMessagesAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 InstanceId(),
+                false,
+                null,
                 cancellationToken);
         }
 
@@ -570,7 +572,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineScaleSetVMImpl(VirtualMachineScaleSetVMInner inner, VirtualMachineScaleSetImpl parent)
             : base(inner, parent)
         {
-            virtualMachineInstanceView = Inner.InstanceView;
+            if (inner.InstanceView != null)
+            {
+                virtualMachineInstanceView = new VirtualMachineInstanceView(
+                    Inner.InstanceView.PlatformFaultDomain, Inner.InstanceView.PlatformUpdateDomain, null,
+                    null, null, Inner.InstanceView.RdpThumbPrint,
+                    Inner.InstanceView.VmAgent, Inner.InstanceView.MaintenanceRedeployStatus, Inner.InstanceView.Disks,
+                    Inner.InstanceView.Extensions, Inner.InstanceView.BootDiagnostics, Inner.InstanceView.Statuses);
+            }
+            else
+            {
+                virtualMachineInstanceView = null;
+            }
         }
 
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6

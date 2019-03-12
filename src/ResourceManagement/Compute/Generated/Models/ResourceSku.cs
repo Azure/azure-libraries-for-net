@@ -16,18 +16,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Describes an available Compute SKU.
     /// </summary>
-    public partial class ResourceSkuInner
+    public partial class ResourceSku
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceSkuInner class.
+        /// Initializes a new instance of the ResourceSku class.
         /// </summary>
-        public ResourceSkuInner()
+        public ResourceSku()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceSkuInner class.
+        /// Initializes a new instance of the ResourceSku class.
         /// </summary>
         /// <param name="resourceType">The type of resource the SKU applies
         /// to.</param>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// capability.</param>
         /// <param name="restrictions">The restrictions because of which SKU
         /// cannot be used. This is empty if there are no restrictions.</param>
-        public ResourceSkuInner(string resourceType = default(string), string name = default(string), string tier = default(string), string size = default(string), string family = default(string), string kind = default(string), ResourceSkuCapacity capacity = default(ResourceSkuCapacity), IList<string> locations = default(IList<string>), IList<ResourceSkuLocationInfo> locationInfo = default(IList<ResourceSkuLocationInfo>), IList<string> apiVersions = default(IList<string>), IList<ResourceSkuCosts> costs = default(IList<ResourceSkuCosts>), IList<ResourceSkuCapabilities> capabilities = default(IList<ResourceSkuCapabilities>), IList<ResourceSkuRestrictions> restrictions = default(IList<ResourceSkuRestrictions>))
+        public ResourceSku(string resourceType = default(string), string name = default(string), string tier = default(string), string size = default(string), string family = default(string), string kind = default(string), ResourceSkuCapacity capacity = default(ResourceSkuCapacity), IList<string> locations = default(IList<string>), IList<ResourceSkuLocationInfo> locationInfo = default(IList<ResourceSkuLocationInfo>), IList<string> apiVersions = default(IList<string>), IList<ResourceSkuCosts> costs = default(IList<ResourceSkuCosts>), IList<ResourceSkuCapabilities> capabilities = default(IList<ResourceSkuCapabilities>), IList<ResourceSkuRestrictions> restrictions = default(IList<ResourceSkuRestrictions>))
         {
             ResourceType = resourceType;
             Name = name;

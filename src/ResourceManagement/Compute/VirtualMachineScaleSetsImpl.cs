@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.VirtualMachineScaleSetVMs.RunCommandAsync(groupName, scaleSetName, vmId, inputCommand, cancellationToken);
+            RunCommandInputInner innerInput = new RunCommandInputInner(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
+            return await this.Manager.Inner.VirtualMachineScaleSetVMs.RunCommandAsync(groupName, scaleSetName, vmId, innerInput, cancellationToken);
         }
 
         public RunCommandResultInner RunPowerShellScriptInVMInstance(string groupName, string scaleSetName, string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)

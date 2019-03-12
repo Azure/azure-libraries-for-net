@@ -22,16 +22,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public partial interface IGalleriesOperations
     {
         /// <summary>
-        /// Create or update a gallery.
+        /// Create or update a Shared Image Gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery. The allowed characters are
+        /// alphabets and numbers with dots and periods allowed in the middle.
+        /// The maximum length is 80 characters.
         /// </param>
         /// <param name='gallery'>
-        /// Parameters supplied to the create or update gallery operation.
+        /// Parameters supplied to the create or update Shared Image Gallery
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,13 +53,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, GalleryInner gallery, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Retrieves information about a gallery.
+        /// Retrieves information about a Shared Image Gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,13 +78,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryInner>> GetWithHttpMessagesAsync(string resourceGroupName, string galleryName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a gallery.
+        /// Delete a Shared Image Gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery to be deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -138,16 +141,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<GalleryInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update a gallery.
+        /// Create or update a Shared Image Gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery. The allowed characters are
+        /// alphabets and numbers with dots and periods allowed in the middle.
+        /// The maximum length is 80 characters.
         /// </param>
         /// <param name='gallery'>
-        /// Parameters supplied to the create or update gallery operation.
+        /// Parameters supplied to the create or update Shared Image Gallery
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -166,13 +172,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, GalleryInner gallery, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a gallery.
+        /// Delete a Shared Image Gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the gallery.
+        /// The name of the Shared Image Gallery to be deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

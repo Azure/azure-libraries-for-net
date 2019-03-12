@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// associated with the virtual machine scale set. The user identity
         /// dictionary key references will be ARM resource ids in the form:
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
-        public VirtualMachineScaleSetIdentity(string principalId = default(string), string tenantId = default(string), string type = default(string), IDictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>))
+        public VirtualMachineScaleSetIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>))
         {
             PrincipalId = principalId;
             TenantId = tenantId;
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public ResourceIdentityType? Type { get; set; }
 
         /// <summary>
         /// Gets or sets the list of user identities associated with the

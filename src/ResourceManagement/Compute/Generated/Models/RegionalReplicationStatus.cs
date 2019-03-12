@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the RegionalReplicationStatus class.
         /// </summary>
-        /// <param name="region">The region where the gallery image version is
-        /// published to.</param>
+        /// <param name="region">The region to which the gallery Image Version
+        /// is being replicated to.</param>
         /// <param name="state">This is the regional replication state.
         /// Possible values include: 'Unknown', 'Replicating', 'Completed',
         /// 'Failed'</param>
@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the region where the gallery image version is published to.
+        /// Gets the region to which the gallery Image Version is being
+        /// replicated to.
         /// </summary>
         [JsonProperty(PropertyName = "region")]
         public string Region { get; private set; }

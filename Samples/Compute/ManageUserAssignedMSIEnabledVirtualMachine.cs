@@ -156,7 +156,6 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
                 Script = commands
             };
             return azure.VirtualMachines
-                    .Inner
                     .RunCommandAsync(virtualMachine.ResourceGroupName, virtualMachine.Name, runParams).Result;
         }
 
