@@ -62,7 +62,7 @@ namespace Fluent.Tests
                         .Create();
 
                     IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
-                        .WithVMSize(VirtualMachineSizeTypes.StandardD1V2)
+                        .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)
                         .WithPassword("MyPassword")
                         .WithAutoScale(1, 1)
@@ -141,7 +141,7 @@ namespace Fluent.Tests
                     IBatchAIExperiment experiment = workspace.CreateExperiment(experimentName);
 
                     IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
-                        .WithVMSize(VirtualMachineSizeTypes.StandardD1V2)
+                        .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)
                         .WithPassword("MyPassword")
                         .WithAutoScale(1, 1)
@@ -219,7 +219,7 @@ namespace Fluent.Tests
 
                     IBatchAIFileServer fileServer = workspace.FileServers.Define(fsName)
                         .WithDataDisks(10, 2, StorageAccountType.StandardLRS, CachingType.Readwrite)
-                        .WithVMSize(VirtualMachineSizeTypes.StandardD1V2)
+                        .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)
                         .WithPassword("MyPassword!")
                         .WithSubnet(network.Id, subnetName)
