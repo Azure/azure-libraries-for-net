@@ -33,6 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
 using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
 
@@ -716,6 +717,8 @@ namespace Microsoft.Azure.Management.Fluent
             IAzure WithSubscription(string subscriptionId);
 
             IAzure WithDefaultSubscription();
+
+            Task<IAzure> WithDefaultSubscriptionAsync();
         }
 
         protected class Authenticated : IAuthenticated
@@ -824,17 +827,44 @@ namespace Microsoft.Azure.Management.Fluent
                 }
                 else
                 {
-                    var resourceManager = ResourceManager.Fluent.ResourceManager.Authenticate(
-                        RestClient.Configure()
-                            .WithBaseUri(restClient.BaseUri)
-                            .WithCredentials(restClient.Credentials).Build());
-                    var subscription = resourceManager.Subscriptions.List()
-                        .FirstOrDefault(s =>
-                            StringComparer.OrdinalIgnoreCase.Equals(s.State, "Enabled") ||
-                            StringComparer.OrdinalIgnoreCase.Equals(s.State, "Warned"));
+                    var resourceManager = GetResourceManager();
+                    var subscriptions = resourceManager.Subscriptions.List();
+                    var subscription = GetDefaultSubscription(subscriptions);
 
                     return WithSubscription(subscription?.SubscriptionId);
                 }
+            }
+
+            public async Task<IAzure> WithDefaultSubscriptionAsync()
+            {
+                if (!string.IsNullOrWhiteSpace(defaultSubscription))
+                {
+                    return WithSubscription(defaultSubscription);
+                }
+                else
+                {
+                    var resourceManager = GetResourceManager();
+                    var subscriptions = await resourceManager.Subscriptions.ListAsync();
+                    var subscription = GetDefaultSubscription(subscriptions);
+
+                    return WithSubscription(subscription?.SubscriptionId);
+                }
+            }
+
+            private static ISubscription GetDefaultSubscription(IEnumerable<ISubscription> subscriptions)
+            {
+                return subscriptions
+                    .FirstOrDefault(s =>
+                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "Enabled") ||
+                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "Warned"));
+            }
+
+            private ResourceManager.Fluent.ResourceManager.IAuthenticated GetResourceManager()
+            {
+                return ResourceManager.Fluent.ResourceManager.Authenticate(
+                    RestClient.Configure()
+                        .WithBaseUri(restClient.BaseUri)
+                        .WithCredentials(restClient.Credentials).Build());
             }
         }
 
