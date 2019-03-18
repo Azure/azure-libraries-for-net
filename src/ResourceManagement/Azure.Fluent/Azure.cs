@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Management.Fluent
                 else
                 {
                     var resourceManager = GetResourceManager();
-                    var subscriptions = await resourceManager.Subscriptions.ListAsync();
+                    var subscriptions = await resourceManager.Subscriptions.ListAsync().ConfigureAwait(false);
                     var subscription = GetDefaultSubscription(subscriptions);
 
                     return WithSubscription(subscription?.SubscriptionId);
