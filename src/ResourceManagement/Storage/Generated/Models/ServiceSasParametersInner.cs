@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The parameters to list service SAS credentials of a speicific resource.
+    /// The parameters to list service SAS credentials of a specific resource.
     /// </summary>
     public partial class ServiceSasParametersInner
     {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// content language.</param>
         /// <param name="contentType">The response header override for content
         /// type.</param>
-        public ServiceSasParametersInner(string canonicalizedResource, string resource, string permissions = default(string), string iPAddressOrRange = default(string), HttpProtocol? protocols = default(HttpProtocol?), System.DateTime? sharedAccessStartTime = default(System.DateTime?), System.DateTime? sharedAccessExpiryTime = default(System.DateTime?), string identifier = default(string), string partitionKeyStart = default(string), string partitionKeyEnd = default(string), string rowKeyStart = default(string), string rowKeyEnd = default(string), string keyToSign = default(string), string cacheControl = default(string), string contentDisposition = default(string), string contentEncoding = default(string), string contentLanguage = default(string), string contentType = default(string))
+        public ServiceSasParametersInner(string canonicalizedResource, string resource = default(string), string permissions = default(string), string iPAddressOrRange = default(string), HttpProtocol? protocols = default(HttpProtocol?), System.DateTime? sharedAccessStartTime = default(System.DateTime?), System.DateTime? sharedAccessExpiryTime = default(System.DateTime?), string identifier = default(string), string partitionKeyStart = default(string), string partitionKeyEnd = default(string), string rowKeyStart = default(string), string rowKeyEnd = default(string), string keyToSign = default(string), string cacheControl = default(string), string contentDisposition = default(string), string contentEncoding = default(string), string contentLanguage = default(string), string contentType = default(string))
         {
             CanonicalizedResource = canonicalizedResource;
             Resource = resource;
@@ -222,10 +222,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
             if (CanonicalizedResource == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CanonicalizedResource");
-            }
-            if (Resource == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Resource");
             }
             if (Identifier != null)
             {

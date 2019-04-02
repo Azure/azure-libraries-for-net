@@ -36,8 +36,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// StorageAccountUpdateParametersInner class.
         /// </summary>
         /// <param name="sku">Gets or sets the SKU name. Note that the SKU name
-        /// cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts
-        /// of those sku names be updated to any other value.</param>
+        /// cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
+        /// can accounts of those SKU names be updated to any other
+        /// value.</param>
         /// <param name="tags">Gets or sets a list of key value pairs that
         /// describe the resource. These tags can be used in viewing and
         /// grouping this resource (across resource groups). A maximum of 15
@@ -55,13 +56,16 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="accessTier">Required for storage accounts where kind =
         /// BlobStorage. The access tier used for billing. Possible values
         /// include: 'Hot', 'Cool'</param>
+        /// <param name="enableAzureFilesAadIntegration">Enables Azure Files
+        /// AAD Integration for SMB if sets to true.</param>
         /// <param name="enableHttpsTrafficOnly">Allows https traffic only to
         /// storage service if sets to true.</param>
         /// <param name="networkRuleSet">Network rule set</param>
         /// <param name="kind">Optional. Indicates the type of storage account.
         /// Currently only StorageV2 value supported by server. Possible values
-        /// include: 'Storage', 'StorageV2', 'BlobStorage'</param>
-        public StorageAccountUpdateParametersInner(SkuInner sku = default(SkuInner), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
+        /// include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+        /// 'BlockBlobStorage'</param>
+        public StorageAccountUpdateParametersInner(Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
         {
             Sku = sku;
             Tags = tags;
@@ -69,6 +73,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
             CustomDomain = customDomain;
             Encryption = encryption;
             AccessTier = accessTier;
+            EnableAzureFilesAadIntegration = enableAzureFilesAadIntegration;
             EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             NetworkRuleSet = networkRuleSet;
             Kind = kind;
@@ -82,11 +87,11 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
 
         /// <summary>
         /// Gets or sets the SKU name. Note that the SKU name cannot be updated
-        /// to Standard_ZRS or Premium_LRS, nor can accounts of those sku names
-        /// be updated to any other value.
+        /// to Standard_ZRS, Premium_LRS or Premium_ZRS, nor can accounts of
+        /// those SKU names be updated to any other value.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public SkuInner Sku { get; set; }
+        public Sku Sku { get; set; }
 
         /// <summary>
         /// Gets or sets a list of key value pairs that describe the resource.
@@ -129,6 +134,13 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         public AccessTier? AccessTier { get; set; }
 
         /// <summary>
+        /// Gets or sets enables Azure Files AAD Integration for SMB if sets to
+        /// true.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureFilesAadIntegration")]
+        public bool? EnableAzureFilesAadIntegration { get; set; }
+
+        /// <summary>
         /// Gets or sets allows https traffic only to storage service if sets
         /// to true.
         /// </summary>
@@ -144,7 +156,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <summary>
         /// Gets or sets optional. Indicates the type of storage account.
         /// Currently only StorageV2 value supported by server. Possible values
-        /// include: 'Storage', 'StorageV2', 'BlobStorage'
+        /// include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+        /// 'BlockBlobStorage'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public Kind? Kind { get; set; }

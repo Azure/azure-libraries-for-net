@@ -17,14 +17,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// UsageOperations operations.
+    /// UsagesOperations operations.
     /// </summary>
-    public partial interface IUsageOperations
+    public partial interface IUsagesOperations
     {
         /// <summary>
-        /// Gets the current usage count and the limit for the resources under
-        /// the subscription.
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
         /// </summary>
+        /// <param name='location'>
+        /// The location of the Azure Storage resource.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -40,6 +43,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Usage>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<Usage>>> ListByLocationWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

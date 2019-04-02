@@ -17,23 +17,26 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for UsageOperations.
+    /// Extension methods for UsagesOperations.
     /// </summary>
-    public static partial class UsageOperationsExtensions
+    public static partial class UsagesOperationsExtensions
     {
             /// <summary>
-            /// Gets the current usage count and the limit for the resources under the
-            /// subscription.
+            /// Gets the current usage count and the limit for the resources of the
+            /// location under the subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='location'>
+            /// The location of the Azure Storage resource.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Usage>> ListAsync(this IUsageOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Usage>> ListByLocationAsync(this IUsagesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
