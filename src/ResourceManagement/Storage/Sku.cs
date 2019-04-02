@@ -10,13 +10,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     public partial class Sku
     {
         /// <summary>
-        /// Initializes a new instance of the Sku.
-        /// </summary>
-        public Sku()
-        {
-        }
-
-        /// <summary>
         ///  Creates Sku.
         /// </summary>
         /// <param name="name">the sku ame</param>
@@ -26,15 +19,5 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
             Name = name;
             Tier = tier;
         }
-
-        /// <summary>
-        /// The SkuName.
-        /// </summary>
-        public SkuName Name { get; set; }
-
-        /// <summary>
-        /// The SkuTier
-        /// </summary>
-        public SkuTier? Tier { get; private set; }
     }
 }

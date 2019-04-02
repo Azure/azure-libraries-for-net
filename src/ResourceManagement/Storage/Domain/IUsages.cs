@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     /// </summary>
     public interface IUsages :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<IUsageOperations>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<IUsagesOperations>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Storage.Fluent.IStorageManager>
     {
     }

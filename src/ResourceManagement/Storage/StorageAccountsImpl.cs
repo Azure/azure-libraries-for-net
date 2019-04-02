@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             // Note: Using GetPropertiesAsync instead of GetAsync to get extended information about the storage account.
             //
-            return await Inner.GetPropertiesAsync(groupName, name, cancellationToken);
+            return await Inner.GetPropertiesAsync(groupName, name, default(StorageAccountExpand?), cancellationToken);
         }
 
         protected async override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)

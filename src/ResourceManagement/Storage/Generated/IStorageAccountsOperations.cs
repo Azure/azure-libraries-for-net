@@ -119,6 +119,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
+        /// <param name='expand'>
+        /// May be used to expand the properties within account's properties.
+        /// By default, data is not included when fetching properties.
+        /// Currently we only support geoReplicationStats. Possible values
+        /// include: 'geoReplicationStats'
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -134,7 +140,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<StorageAccountInner>> GetPropertiesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StorageAccountInner>> GetPropertiesWithHttpMessagesAsync(string resourceGroupName, string accountName, StorageAccountExpand? expand = default(StorageAccountExpand?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The update operation can be used to update the SKU, encryption,
         /// access tier, or tags for a storage account. It can also be used to
@@ -265,7 +271,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// </param>
         /// <param name='keyName'>
         /// The name of storage keys that want to be regenerated, possible
-        /// vaules are key1, key2.
+        /// values are key1, key2.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -347,6 +353,59 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// </exception>
         Task<AzureOperationResponse<ListServiceSasResponseInner>> ListServiceSASWithHttpMessagesAsync(string resourceGroupName, string accountName, ServiceSasParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Failover request can be triggered for a storage account in case of
+        /// availability issues. The failover occurs from the storage account's
+        /// primary cluster to secondary cluster for RA-GRS accounts. The
+        /// secondary cluster will become primary after failover.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user's subscription. The
+        /// name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource
+        /// group. Storage account names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Revoke user delegation keys.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user's subscription. The
+        /// name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource
+        /// group. Storage account names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RevokeUserDelegationKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Asynchronously creates a new storage account with the specified
         /// parameters. If an account is already created and a subsequent
         /// create request is issued with different properties, the account
@@ -382,5 +441,33 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<StorageAccountInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, StorageAccountCreateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Failover request can be triggered for a storage account in case of
+        /// availability issues. The failover occurs from the storage account's
+        /// primary cluster to secondary cluster for RA-GRS accounts. The
+        /// secondary cluster will become primary after failover.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user's subscription. The
+        /// name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource
+        /// group. Storage account names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
