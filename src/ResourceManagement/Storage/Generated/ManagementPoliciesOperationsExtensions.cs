@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ManagementPolicyInner> CreateOrUpdateAsync(this IManagementPoliciesOperations operations, string resourceGroupName, string accountName, ManagementPolicySchemaInner policy, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagementPolicyInner> CreateOrUpdateAsync(this IManagementPoliciesOperations operations, string resourceGroupName, string accountName, ManagementPolicySchema policy, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, policy, null, cancellationToken).ConfigureAwait(false))
                 {

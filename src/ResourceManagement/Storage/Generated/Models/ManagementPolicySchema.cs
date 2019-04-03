@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// The Storage Account ManagementPolicies Rules. See more details in:
     /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     /// </summary>
-    public partial class ManagementPolicySchemaInner
+    public partial class ManagementPolicySchema
     {
         /// <summary>
         /// Initializes a new instance of the ManagementPolicySchemaInner
         /// class.
         /// </summary>
-        public ManagementPolicySchemaInner()
+        public ManagementPolicySchema()
         {
             CustomInit();
         }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="rules">The Storage Account ManagementPolicies Rules.
         /// See more details in:
         /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.</param>
-        public ManagementPolicySchemaInner(IList<ManagementPolicyRule> rules)
+        public ManagementPolicySchema(IList<ManagementPolicyRule> rules)
         {
             Rules = rules;
             CustomInit();

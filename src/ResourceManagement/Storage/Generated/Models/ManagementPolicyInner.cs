@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.</param>
         /// <param name="lastModifiedTime">Returns the date and time the
         /// ManagementPolicies was last modified.</param>
-        public ManagementPolicyInner(ManagementPolicySchemaInner policy, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? lastModifiedTime = default(System.DateTime?))
+        public ManagementPolicyInner(ManagementPolicySchema policy, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? lastModifiedTime = default(System.DateTime?))
             : base(location, id, name, type, tags)
         {
             LastModifiedTime = lastModifiedTime;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </summary>
         [JsonProperty(PropertyName = "properties.policy")]
-        public ManagementPolicySchemaInner Policy { get; set; }
+        public ManagementPolicySchema Policy { get; set; }
 
         /// <summary>
         /// Validate the object.
