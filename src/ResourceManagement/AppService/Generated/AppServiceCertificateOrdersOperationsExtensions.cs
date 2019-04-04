@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the certificate order.
             /// </param>
             /// <param name='certificateDistinguishedName'>
-            /// Distinguished name to to use for the certificate order.
+            /// Distinguished name to use for the certificate order.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the certificate order.
             /// </param>
             /// <param name='certificateDistinguishedName'>
-            /// Distinguished name to to use for the certificate order.
+            /// Distinguished name to use for the certificate order.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the certificate order.
             /// </param>
             /// <param name='certificateDistinguishedName'>
-            /// Distinguished name to to use for the certificate order.
+            /// Distinguished name to use for the certificate order.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

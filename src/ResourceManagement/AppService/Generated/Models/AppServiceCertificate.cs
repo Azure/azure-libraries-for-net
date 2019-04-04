@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// <summary>
     /// Key Vault container for a certificate that is purchased through Azure.
     /// </summary>
-    public partial class AppServiceCertificateInner
+    public partial class AppServiceCertificate
     {
         /// <summary>
-        /// Initializes a new instance of the AppServiceCertificateInner class.
+        /// Initializes a new instance of the AppServiceCertificate class.
         /// </summary>
-        public AppServiceCertificateInner()
+        public AppServiceCertificate()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AppServiceCertificateInner class.
+        /// Initializes a new instance of the AppServiceCertificate class.
         /// </summary>
         /// <param name="keyVaultId">Key Vault resource Id.</param>
         /// <param name="keyVaultSecretName">Key Vault secret name.</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
         /// 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
         /// 'Unknown'</param>
-        public AppServiceCertificateInner(string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
+        public AppServiceCertificate(string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
         {
             KeyVaultId = keyVaultId;
             KeyVaultSecretName = keyVaultSecretName;

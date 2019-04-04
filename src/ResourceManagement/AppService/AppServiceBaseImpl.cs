@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:3F0152723C985A22C1032733AB942C96:9A3E19132DCD027C4BA1BBB085642F29
         public override IPublishingProfile GetPublishingProfile()
         {
-            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name));
+            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, null));
             StreamReader reader = new StreamReader(stream);
             string xml = reader.ReadToEnd();
             return new PublishingProfileImpl(xml);

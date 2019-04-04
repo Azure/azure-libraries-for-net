@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     public static partial class AppServicePlansOperationsExtensions
     {
             /// <summary>
-            /// Get all App Service plans for a subcription.
+            /// Get all App Service plans for a subscription.
             /// </summary>
             /// <remarks>
-            /// Get all App Service plans for a subcription.
+            /// Get all App Service plans for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -411,10 +411,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
-            /// Get metrics for an App Serice plan.
+            /// Get metrics for an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Get metrics for an App Serice plan.
+            /// Get metrics for an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -432,8 +432,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='filter'>
             /// Return only usages/metrics specified in the filter. Filter conforms to
             /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-            /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-            /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the App Service plan.
             /// </param>
             /// <param name='softRestart'>
-            /// Specify &lt;code&gt;true&lt;/code&gt; to performa a soft restart, applies
+            /// Specify &lt;code&gt;true&lt;/code&gt; to perform a soft restart, applies
             /// the configuration settings and restarts the apps if necessary. The default
             /// is &lt;code&gt;false&lt;/code&gt;, which always restarts and reprovisions
             /// the apps
@@ -515,10 +515,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
-            /// Gets all selectable sku's for a given App Service Plan
+            /// Gets all selectable SKUs for a given App Service Plan
             /// </summary>
             /// <remarks>
-            /// Gets all selectable sku's for a given App Service Plan
+            /// Gets all selectable SKUs for a given App Service Plan
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -911,10 +911,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
-            /// Get all App Service plans for a subcription.
+            /// Get all App Service plans for a subscription.
             /// </summary>
             /// <remarks>
-            /// Get all App Service plans for a subcription.
+            /// Get all App Service plans for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1028,10 +1028,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
-            /// Get metrics for an App Serice plan.
+            /// Get metrics for an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Get metrics for an App Serice plan.
+            /// Get metrics for an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

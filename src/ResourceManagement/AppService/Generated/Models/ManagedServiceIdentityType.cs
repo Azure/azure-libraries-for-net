@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     {
         public static readonly ManagedServiceIdentityType SystemAssigned = Parse("SystemAssigned");
         public static readonly ManagedServiceIdentityType UserAssigned = Parse("UserAssigned");
+        public static readonly ManagedServiceIdentityType SystemAssignedUserAssigned = Parse("SystemAssigned, UserAssigned");
+        public static readonly ManagedServiceIdentityType None = Parse("None");
     }
 }

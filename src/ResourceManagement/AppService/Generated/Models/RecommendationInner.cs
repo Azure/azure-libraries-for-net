@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="enabled">True if this recommendation is still valid
         /// (i.e. "actionable"). False if it is invalid.</param>
         /// <param name="states">The list of states of this recommendation. If
-        /// it's null then it shoud be considered "Active".</param>
+        /// it's null then it should be considered "Active".</param>
         /// <param name="startTime">The beginning time in UTC of a range that
         /// the recommendation refers to.</param>
         /// <param name="endTime">The end time in UTC of a range that the
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         /// <summary>
         /// Gets or sets the list of states of this recommendation. If it's
-        /// null then it shoud be considered "Active".
+        /// null then it should be considered "Active".
         /// </summary>
         [JsonProperty(PropertyName = "properties.states")]
         public IList<string> States { get; set; }

@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="dnsServers">DNS servers to be used by this Virtual
         /// Network. This should be a comma-separated list of IP
         /// addresses.</param>
-        public VnetInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), byte[] certBlob = default(byte[]), IList<VnetRouteInner> routes = default(IList<VnetRouteInner>), bool? resyncRequired = default(bool?), string dnsServers = default(string))
+        /// <param name="isSwift">Flag that is used to denote if this is VNET
+        /// injection</param>
+        public VnetInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), byte[] certBlob = default(byte[]), IList<VnetRouteInner> routes = default(IList<VnetRouteInner>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
             : base(id, name, type, kind)
         {
             VnetResourceId = vnetResourceId;
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             Routes = routes;
             ResyncRequired = resyncRequired;
             DnsServers = dnsServers;
+            IsSwift = isSwift;
             CustomInit();
         }
 
@@ -105,6 +108,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsServers")]
         public string DnsServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag that is used to denote if this is VNET injection
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isSwift")]
+        public bool? IsSwift { get; set; }
 
     }
 }

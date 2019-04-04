@@ -34,9 +34,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// WebDeploy -- default
         /// Ftp. Possible values include: 'FileZilla3', 'WebDeploy',
         /// 'Ftp'</param>
-        public CsmPublishingProfileOptions(PublishingProfileFormat format = default(PublishingProfileFormat))
+        /// <param name="includeDisasterRecoveryEndpoints">Include the
+        /// DisasterRecover endpoint if true</param>
+        public CsmPublishingProfileOptions(PublishingProfileFormat format = default(PublishingProfileFormat), bool? includeDisasterRecoveryEndpoints = default(bool?))
         {
             Format = format;
+            IncludeDisasterRecoveryEndpoints = includeDisasterRecoveryEndpoints;
             CustomInit();
         }
 
@@ -53,6 +56,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "format")]
         public PublishingProfileFormat Format { get; set; }
+
+        /// <summary>
+        /// Gets or sets include the DisasterRecover endpoint if true
+        /// </summary>
+        [JsonProperty(PropertyName = "includeDisasterRecoveryEndpoints")]
+        public bool? IncludeDisasterRecoveryEndpoints { get; set; }
 
     }
 }

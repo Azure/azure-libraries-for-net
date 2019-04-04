@@ -42,11 +42,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:4F0D740E9E59D0D4200100B1E5043A8C:82E3C68D55C51B0D4FAD431C149BC6B0
         public WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithPackageUri(string packageUri)
         {
-            request.AddOnPackages = new List<MSDeployCore>();
-            request.AddOnPackages.Add(new MSDeployCore
-            {
-                PackageUri = packageUri
-            });
+            request.PackageUri = packageUri;
             return this;
         }
 
@@ -60,11 +56,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:3144537BD6A278A87EA02D472D16E90E:2629FF96BE4E0E1338A320296353D369
         public WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithAddOnPackage(string packageUri)
         {
-            request.AddOnPackages.Add(new MSDeployCore
-            {
-                PackageUri = packageUri
-            });
-            return this;
+           return WithPackageUri(packageUri);
         }
 
         ///GENMHASH:8550B4F26F41D82222F735D9324AEB6D:6DE5F99ABF2A46D2506D498C0AFBD12C
@@ -76,12 +68,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:1B9199BB67565D6E00DD683ADFA81CF1:F8976BBC028E6D69345A1C5BFC0F0AE3
         public WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithExistingDeploymentsDeleted(bool deleteExisting)
         {
-            if (deleteExisting)
-            {
-                MSDeployCore first = request.AddOnPackages[0];
-                request.AddOnPackages.RemoveAt(0);
-                request.PackageUri = first.PackageUri;
-            }
+            //no-op
             return this;
         }
 

@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     {
         public static readonly OsTypeSelected Windows = Parse("Windows");
         public static readonly OsTypeSelected Linux = Parse("Linux");
+        public static readonly OsTypeSelected WindowsFunctions = Parse("WindowsFunctions");
+        public static readonly OsTypeSelected LinuxFunctions = Parse("LinuxFunctions");
     }
 }

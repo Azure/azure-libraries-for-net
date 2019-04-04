@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// moment.</param>
         /// <param name="nextAutoRenewalTimeStamp">Time stamp when the
         /// certificate would be auto renewed next</param>
-        public AppServiceCertificateOrderPatchResource(CertificateProductType productType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IDictionary<string, AppServiceCertificateInner> certificates = default(IDictionary<string, AppServiceCertificateInner>), string distinguishedName = default(string), string domainVerificationToken = default(string), int? validityInYears = default(int?), int? keySize = default(int?), bool? autoRenew = default(bool?), ProvisioningState? provisioningState = default(ProvisioningState?), CertificateOrderStatus? status = default(CertificateOrderStatus?), CertificateDetails signedCertificate = default(CertificateDetails), string csr = default(string), CertificateDetails intermediate = default(CertificateDetails), CertificateDetails root = default(CertificateDetails), string serialNumber = default(string), System.DateTime? lastCertificateIssuanceTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), bool? isPrivateKeyExternal = default(bool?), IList<AppServiceCertificateNotRenewableReasons1> appServiceCertificateNotRenewableReasons = default(IList<AppServiceCertificateNotRenewableReasons1>), System.DateTime? nextAutoRenewalTimeStamp = default(System.DateTime?))
+        public AppServiceCertificateOrderPatchResource(CertificateProductType productType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IDictionary<string, AppServiceCertificate> certificates = default(IDictionary<string, AppServiceCertificate>), string distinguishedName = default(string), string domainVerificationToken = default(string), int? validityInYears = default(int?), int? keySize = default(int?), bool? autoRenew = default(bool?), ProvisioningState? provisioningState = default(ProvisioningState?), CertificateOrderStatus? status = default(CertificateOrderStatus?), CertificateDetails signedCertificate = default(CertificateDetails), string csr = default(string), CertificateDetails intermediate = default(CertificateDetails), CertificateDetails root = default(CertificateDetails), string serialNumber = default(string), System.DateTime? lastCertificateIssuanceTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), bool? isPrivateKeyExternal = default(bool?), IList<AppServiceCertificateNotRenewableReasons1> appServiceCertificateNotRenewableReasons = default(IList<AppServiceCertificateNotRenewableReasons1>), System.DateTime? nextAutoRenewalTimeStamp = default(System.DateTime?))
             : base(id, name, type, kind)
         {
             Certificates = certificates;
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Gets or sets state of the Key Vault secret.
         /// </summary>
         [JsonProperty(PropertyName = "properties.certificates")]
-        public IDictionary<string, AppServiceCertificateInner> Certificates { get; set; }
+        public IDictionary<string, AppServiceCertificate> Certificates { get; set; }
 
         /// <summary>
         /// Gets or sets certificate distinguished name.
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
             if (ValidityInYears > 3)
             {
