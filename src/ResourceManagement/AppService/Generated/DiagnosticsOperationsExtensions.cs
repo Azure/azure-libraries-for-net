@@ -20,6 +20,134 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     public static partial class DiagnosticsOperationsExtensions
     {
             /// <summary>
+            /// List Hosting Environment Detector Responses
+            /// </summary>
+            /// <remarks>
+            /// List Hosting Environment Detector Responses
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Site Name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DetectorResponseInner>> ListHostingEnvironmentDetectorResponsesAsync(this IDiagnosticsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListHostingEnvironmentDetectorResponsesWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get Hosting Environment Detector Response
+            /// </summary>
+            /// <remarks>
+            /// Get Hosting Environment Detector Response
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// App Service Environment Name
+            /// </param>
+            /// <param name='detectorName'>
+            /// Detector Resource Name
+            /// </param>
+            /// <param name='startTime'>
+            /// Start Time
+            /// </param>
+            /// <param name='endTime'>
+            /// End Time
+            /// </param>
+            /// <param name='timeGrain'>
+            /// Time Grain
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DetectorResponseInner> GetHostingEnvironmentDetectorResponseAsync(this IDiagnosticsOperations operations, string resourceGroupName, string name, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetHostingEnvironmentDetectorResponseWithHttpMessagesAsync(resourceGroupName, name, detectorName, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List Site Detector Responses
+            /// </summary>
+            /// <remarks>
+            /// List Site Detector Responses
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='siteName'>
+            /// Site Name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DetectorResponseInner>> ListSiteDetectorResponsesAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSiteDetectorResponsesWithHttpMessagesAsync(resourceGroupName, siteName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get site detector response
+            /// </summary>
+            /// <remarks>
+            /// Get site detector response
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='siteName'>
+            /// Site Name
+            /// </param>
+            /// <param name='detectorName'>
+            /// Detector Resource Name
+            /// </param>
+            /// <param name='startTime'>
+            /// Start Time
+            /// </param>
+            /// <param name='endTime'>
+            /// End Time
+            /// </param>
+            /// <param name='timeGrain'>
+            /// Time Grain
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DetectorResponseInner> GetSiteDetectorResponseAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSiteDetectorResponseWithHttpMessagesAsync(resourceGroupName, siteName, detectorName, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get Diagnostics Categories
             /// </summary>
             /// <remarks>
@@ -273,6 +401,76 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<DiagnosticDetectorResponseInner> ExecuteSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ExecuteSiteDetectorWithHttpMessagesAsync(resourceGroupName, siteName, detectorName, diagnosticCategory, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List Site Detector Responses
+            /// </summary>
+            /// <remarks>
+            /// List Site Detector Responses
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='siteName'>
+            /// Site Name
+            /// </param>
+            /// <param name='slot'>
+            /// Slot Name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DetectorResponseInner>> ListSiteDetectorResponsesSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSiteDetectorResponsesSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get site detector response
+            /// </summary>
+            /// <remarks>
+            /// Get site detector response
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='siteName'>
+            /// Site Name
+            /// </param>
+            /// <param name='detectorName'>
+            /// Detector Resource Name
+            /// </param>
+            /// <param name='slot'>
+            /// Slot Name
+            /// </param>
+            /// <param name='startTime'>
+            /// Start Time
+            /// </param>
+            /// <param name='endTime'>
+            /// End Time
+            /// </param>
+            /// <param name='timeGrain'>
+            /// Time Grain
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DetectorResponseInner> GetSiteDetectorResponseSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSiteDetectorResponseSlotWithHttpMessagesAsync(resourceGroupName, siteName, detectorName, slot, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -562,6 +760,52 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// List Hosting Environment Detector Responses
+            /// </summary>
+            /// <remarks>
+            /// List Hosting Environment Detector Responses
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DetectorResponseInner>> ListHostingEnvironmentDetectorResponsesNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListHostingEnvironmentDetectorResponsesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List Site Detector Responses
+            /// </summary>
+            /// <remarks>
+            /// List Site Detector Responses
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DetectorResponseInner>> ListSiteDetectorResponsesNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSiteDetectorResponsesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get Diagnostics Categories
             /// </summary>
             /// <remarks>
@@ -648,6 +892,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<DetectorDefinition>> GetSiteDetectorNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteDetectorNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List Site Detector Responses
+            /// </summary>
+            /// <remarks>
+            /// List Site Detector Responses
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DetectorResponseInner>> ListSiteDetectorResponsesSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSiteDetectorResponsesSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

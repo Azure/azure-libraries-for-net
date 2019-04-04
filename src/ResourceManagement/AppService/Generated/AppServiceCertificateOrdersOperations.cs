@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the certificate order.
         /// </param>
         /// <param name='certificateDistinguishedName'>
-        /// Distinguished name to to use for the certificate order.
+        /// Distinguished name to use for the certificate order.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the certificate order.
         /// </param>
         /// <param name='certificateDistinguishedName'>
-        /// Distinguished name to to use for the certificate order.
+        /// Distinguished name to use for the certificate order.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3845,7 +3845,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the certificate order.
         /// </param>
         /// <param name='certificateDistinguishedName'>
-        /// Distinguished name to to use for the certificate order.
+        /// Distinguished name to use for the certificate order.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

@@ -45,10 +45,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// plan is for Spot instances; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
         /// <param name="capacity">Target capacity of the App Service plan
-        /// (number of VM's).</param>
+        /// (number of VMs).</param>
         /// <param name="hostingEnvironment">Name of App Service Environment
         /// where app or App Service plan should be created.</param>
-        public ValidateRequest(string name, ValidateResourceTypes type, string location, string serverFarmId = default(string), string skuName = default(string), bool? needLinuxWorkers = default(bool?), bool? isSpot = default(bool?), int? capacity = default(int?), string hostingEnvironment = default(string))
+        /// <param name="isXenon">&lt;code&gt;true&lt;/code&gt; if App Service
+        /// plan is running as a windows container</param>
+        public ValidateRequest(string name, ValidateResourceTypes type, string location, string serverFarmId = default(string), string skuName = default(string), bool? needLinuxWorkers = default(bool?), bool? isSpot = default(bool?), int? capacity = default(int?), string hostingEnvironment = default(string), bool? isXenon = default(bool?))
         {
             Name = name;
             Type = type;
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             IsSpot = isSpot;
             Capacity = capacity;
             HostingEnvironment = hostingEnvironment;
+            IsXenon = isXenon;
             CustomInit();
         }
 
@@ -117,7 +120,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         /// <summary>
         /// Gets or sets target capacity of the App Service plan (number of
-        /// VM's).
+        /// VMs).
         /// </summary>
         [JsonProperty(PropertyName = "properties.capacity")]
         public int? Capacity { get; set; }
@@ -128,6 +131,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostingEnvironment")]
         public string HostingEnvironment { get; set; }
+
+        /// <summary>
+        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if App
+        /// Service plan is running as a windows container
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isXenon")]
+        public bool? IsXenon { get; set; }
 
         /// <summary>
         /// Validate the object.

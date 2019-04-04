@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DataSource class.
         /// </summary>
-        /// <param name="instructions">Instrunctions if any for the data
+        /// <param name="instructions">Instructions if any for the data
         /// source</param>
         /// <param name="dataSourceUri">Datasource Uri Links</param>
         public DataSource(IList<string> instructions = default(IList<string>), IList<NameValuePair> dataSourceUri = default(IList<NameValuePair>))
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets instrunctions if any for the data source
+        /// Gets or sets instructions if any for the data source
         /// </summary>
         [JsonProperty(PropertyName = "instructions")]
         public IList<string> Instructions { get; set; }

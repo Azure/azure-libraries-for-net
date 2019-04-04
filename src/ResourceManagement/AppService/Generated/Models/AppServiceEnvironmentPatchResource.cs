@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// ARM resource for a app service enviroment.
+    /// ARM resource for a app service environment.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class AppServiceEnvironmentPatchResource : ProxyOnlyResourceInner
@@ -117,7 +117,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// whitelist on ASE db</param>
         /// <param name="hasLinuxWorkers">Flag that displays whether an ASE has
         /// linux workers or not</param>
-        public AppServiceEnvironmentPatchResource(string appServiceEnvironmentPatchResourceName, string location, VirtualNetworkProfile virtualNetwork, IList<WorkerPool> workerPools, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string vnetName = default(string), string vnetResourceGroupName = default(string), string vnetSubnetName = default(string), InternalLoadBalancingMode? internalLoadBalancingMode = default(InternalLoadBalancingMode?), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string databaseEdition = default(string), string databaseServiceObjective = default(string), int? upgradeDomains = default(int?), string subscriptionId = default(string), string dnsSuffix = default(string), string lastAction = default(string), string lastActionResult = default(string), string allowedMultiSizes = default(string), string allowedWorkerSizes = default(string), int? maximumNumberOfMachines = default(int?), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>), IList<StampCapacity> environmentCapacities = default(IList<StampCapacity>), IList<NetworkAccessControlEntry> networkAccessControlList = default(IList<NetworkAccessControlEntry>), bool? environmentIsHealthy = default(bool?), string environmentStatus = default(string), string resourceGroup = default(string), int? frontEndScaleFactor = default(int?), int? defaultFrontEndScaleFactor = default(int?), string apiManagementAccountId = default(string), bool? suspended = default(bool?), bool? dynamicCacheEnabled = default(bool?), IList<NameValuePair> clusterSettings = default(IList<NameValuePair>), IList<string> userWhitelistedIpRanges = default(IList<string>), bool? hasLinuxWorkers = default(bool?))
+        /// <param name="sslCertKeyVaultId">Key Vault ID for ILB App Service
+        /// Environment default SSL certificate</param>
+        /// <param name="sslCertKeyVaultSecretName">Key Vault Secret Name for
+        /// ILB App Service Environment default SSL certificate</param>
+        public AppServiceEnvironmentPatchResource(string appServiceEnvironmentPatchResourceName, string location, VirtualNetworkProfile virtualNetwork, IList<WorkerPool> workerPools, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string vnetName = default(string), string vnetResourceGroupName = default(string), string vnetSubnetName = default(string), InternalLoadBalancingMode? internalLoadBalancingMode = default(InternalLoadBalancingMode?), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string databaseEdition = default(string), string databaseServiceObjective = default(string), int? upgradeDomains = default(int?), string subscriptionId = default(string), string dnsSuffix = default(string), string lastAction = default(string), string lastActionResult = default(string), string allowedMultiSizes = default(string), string allowedWorkerSizes = default(string), int? maximumNumberOfMachines = default(int?), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>), IList<StampCapacity> environmentCapacities = default(IList<StampCapacity>), IList<NetworkAccessControlEntry> networkAccessControlList = default(IList<NetworkAccessControlEntry>), bool? environmentIsHealthy = default(bool?), string environmentStatus = default(string), string resourceGroup = default(string), int? frontEndScaleFactor = default(int?), int? defaultFrontEndScaleFactor = default(int?), string apiManagementAccountId = default(string), bool? suspended = default(bool?), bool? dynamicCacheEnabled = default(bool?), IList<NameValuePair> clusterSettings = default(IList<NameValuePair>), IList<string> userWhitelistedIpRanges = default(IList<string>), bool? hasLinuxWorkers = default(bool?), string sslCertKeyVaultId = default(string), string sslCertKeyVaultSecretName = default(string))
             : base(id, name, type, kind)
         {
             AppServiceEnvironmentPatchResourceName = appServiceEnvironmentPatchResourceName;
@@ -157,6 +161,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             ClusterSettings = clusterSettings;
             UserWhitelistedIpRanges = userWhitelistedIpRanges;
             HasLinuxWorkers = hasLinuxWorkers;
+            SslCertKeyVaultId = sslCertKeyVaultId;
+            SslCertKeyVaultSecretName = sslCertKeyVaultSecretName;
             CustomInit();
         }
 
@@ -416,12 +422,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public bool? HasLinuxWorkers { get; set; }
 
         /// <summary>
+        /// Gets or sets key Vault ID for ILB App Service Environment default
+        /// SSL certificate
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sslCertKeyVaultId")]
+        public string SslCertKeyVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets key Vault Secret Name for ILB App Service Environment
+        /// default SSL certificate
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sslCertKeyVaultSecretName")]
+        public string SslCertKeyVaultSecretName { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
             if (AppServiceEnvironmentPatchResourceName == null)
             {

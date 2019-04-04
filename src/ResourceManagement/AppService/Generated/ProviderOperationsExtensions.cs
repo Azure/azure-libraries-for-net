@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='osTypeSelected'>
-            /// Possible values include: 'Windows', 'Linux'
+            /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
+            /// 'LinuxFunctions'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -74,7 +75,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='osTypeSelected'>
-            /// Possible values include: 'Windows', 'Linux'
+            /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
+            /// 'LinuxFunctions'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

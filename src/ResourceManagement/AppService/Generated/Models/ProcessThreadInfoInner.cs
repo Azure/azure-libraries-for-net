@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="startTime">Start time.</param>
         /// <param name="totalProcessorTime">Total processor time.</param>
         /// <param name="userProcessorTime">User processor time.</param>
-        /// <param name="priviledgedProcessorTime">Priviledged processor
+        /// <param name="priviledgedProcessorTime">Privileged processor
         /// time.</param>
         /// <param name="state">Thread state.</param>
         /// <param name="waitReason">Wait reason.</param>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public string UserProcessorTime { get; set; }
 
         /// <summary>
-        /// Gets or sets priviledged processor time.
+        /// Gets or sets privileged processor time.
         /// </summary>
         [JsonProperty(PropertyName = "properties.priviledged_processor_time")]
         public string PriviledgedProcessorTime { get; set; }

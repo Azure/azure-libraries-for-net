@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get available application frameworks and their versions
         /// </remarks>
         /// <param name='osTypeSelected'>
-        /// Possible values include: 'Windows', 'Linux'
+        /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
+        /// 'LinuxFunctions'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,7 +78,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get available application frameworks and their versions
         /// </remarks>
         /// <param name='osTypeSelected'>
-        /// Possible values include: 'Windows', 'Linux'
+        /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
+        /// 'LinuxFunctions'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

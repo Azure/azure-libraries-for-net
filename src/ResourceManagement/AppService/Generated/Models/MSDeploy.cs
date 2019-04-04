@@ -50,9 +50,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="appOffline">Sets the AppOffline rule while the
         /// MSDeploy operation executes.
         /// Setting is &lt;code&gt;false&lt;/code&gt; by default.</param>
-        /// <param name="addOnPackages">List of Add-On packages. Add-On
-        /// packages implicitly enable the Do Not Delete MSDeploy rule.</param>
-        public MSDeploy(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string packageUri = default(string), string connectionString = default(string), string dbType = default(string), string setParametersXmlFileUri = default(string), IDictionary<string, string> setParameters = default(IDictionary<string, string>), bool? skipAppData = default(bool?), bool? appOffline = default(bool?), IList<MSDeployCore> addOnPackages = default(IList<MSDeployCore>))
+        public MSDeploy(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string packageUri = default(string), string connectionString = default(string), string dbType = default(string), string setParametersXmlFileUri = default(string), IDictionary<string, string> setParameters = default(IDictionary<string, string>), bool? skipAppData = default(bool?), bool? appOffline = default(bool?))
             : base(id, name, type, kind)
         {
             PackageUri = packageUri;
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             SetParameters = setParameters;
             SkipAppData = skipAppData;
             AppOffline = appOffline;
-            AddOnPackages = addOnPackages;
             CustomInit();
         }
 
@@ -124,13 +121,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.appOffline")]
         public bool? AppOffline { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of Add-On packages. Add-On packages implicitly
-        /// enable the Do Not Delete MSDeploy rule.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.addOnPackages")]
-        public IList<MSDeployCore> AddOnPackages { get; set; }
 
     }
 }

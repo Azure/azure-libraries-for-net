@@ -34,15 +34,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         /// <param name="storageAccountUrl">SAS URL to the container.</param>
         /// <param name="kind">Kind of resource.</param>
+        /// <param name="backupName">Name of the backup.</param>
         /// <param name="enabled">True if the backup schedule is enabled (must
         /// be included in that case), false if the backup schedule should be
         /// disabled.</param>
         /// <param name="backupSchedule">Schedule for the backup if it is
         /// executed periodically.</param>
         /// <param name="databases">Databases included in the backup.</param>
-        public BackupRequestInner(string storageAccountUrl, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
+        public BackupRequestInner(string storageAccountUrl, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string backupName = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
             : base(id, name, type, kind)
         {
+            BackupName = backupName;
             Enabled = enabled;
             StorageAccountUrl = storageAccountUrl;
             BackupSchedule = backupSchedule;
@@ -54,6 +56,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets name of the backup.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.backupName")]
+        public string BackupName { get; set; }
 
         /// <summary>
         /// Gets or sets true if the backup schedule is enabled (must be
@@ -88,7 +96,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
             if (StorageAccountUrl == null)
             {

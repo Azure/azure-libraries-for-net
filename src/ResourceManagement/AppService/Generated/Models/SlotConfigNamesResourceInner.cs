@@ -39,11 +39,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// names.</param>
         /// <param name="appSettingNames">List of application settings
         /// names.</param>
-        public SlotConfigNamesResourceInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>))
+        /// <param name="azureStorageConfigNames">List of external Azure
+        /// storage account identifiers.</param>
+        public SlotConfigNamesResourceInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>), IList<string> azureStorageConfigNames = default(IList<string>))
             : base(id, name, type, kind)
         {
             ConnectionStringNames = connectionStringNames;
             AppSettingNames = appSettingNames;
+            AzureStorageConfigNames = azureStorageConfigNames;
             CustomInit();
         }
 
@@ -63,6 +66,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.appSettingNames")]
         public IList<string> AppSettingNames { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of external Azure storage account identifiers.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureStorageConfigNames")]
+        public IList<string> AzureStorageConfigNames { get; set; }
 
     }
 }

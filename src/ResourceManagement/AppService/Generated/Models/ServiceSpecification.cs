@@ -30,9 +30,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ServiceSpecification class.
         /// </summary>
-        public ServiceSpecification(IList<MetricSpecification> metricSpecifications = default(IList<MetricSpecification>))
+        public ServiceSpecification(IList<MetricSpecification> metricSpecifications = default(IList<MetricSpecification>), IList<LogSpecification> logSpecifications = default(IList<LogSpecification>))
         {
             MetricSpecifications = metricSpecifications;
+            LogSpecifications = logSpecifications;
             CustomInit();
         }
 
@@ -45,6 +46,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "metricSpecifications")]
         public IList<MetricSpecification> MetricSpecifications { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "logSpecifications")]
+        public IList<LogSpecification> LogSpecifications { get; set; }
 
     }
 }

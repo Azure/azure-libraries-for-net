@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public WebSiteManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get all App Service plans for a subcription.
+        /// Get all App Service plans for a subscription.
         /// </summary>
         /// <remarks>
-        /// Get all App Service plans for a subcription.
+        /// Get all App Service plans for a subscription.
         /// </remarks>
         /// <param name='detailed'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to return all App Service plan
@@ -2844,10 +2844,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Get metrics for an App Serice plan.
+        /// Get metrics for an App Service plan.
         /// </summary>
         /// <remarks>
-        /// Get metrics for an App Serice plan.
+        /// Get metrics for an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2862,8 +2862,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms to
         /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-        /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-        /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+        /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+        /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3085,7 +3085,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the App Service plan.
         /// </param>
         /// <param name='softRestart'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to performa a soft restart, applies
+        /// Specify &lt;code&gt;true&lt;/code&gt; to perform a soft restart, applies
         /// the configuration settings and restarts the apps if necessary. The default
         /// is &lt;code&gt;false&lt;/code&gt;, which always restarts and reprovisions
         /// the apps
@@ -3514,10 +3514,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets all selectable sku's for a given App Service Plan
+        /// Gets all selectable SKUs for a given App Service Plan
         /// </summary>
         /// <remarks>
-        /// Gets all selectable sku's for a given App Service Plan
+        /// Gets all selectable SKUs for a given App Service Plan
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6367,7 +6367,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
             {
                 var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -6423,6 +6423,24 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
             }
             // Deserialize Response
+            if ((int)_statusCode == 201)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AppServicePlanInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
             if ((int)_statusCode == 202)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -6448,10 +6466,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Get all App Service plans for a subcription.
+        /// Get all App Service plans for a subscription.
         /// </summary>
         /// <remarks>
-        /// Get all App Service plans for a subcription.
+        /// Get all App Service plans for a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -7305,10 +7323,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Get metrics for an App Serice plan.
+        /// Get metrics for an App Service plan.
         /// </summary>
         /// <remarks>
-        /// Get metrics for an App Serice plan.
+        /// Get metrics for an App Service plan.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

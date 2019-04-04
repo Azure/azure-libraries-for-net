@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Information regarding availbility of a resource name.
+    /// Information regarding availability of a resource name.
     /// </summary>
     public partial class ResourceNameAvailabilityInner
     {

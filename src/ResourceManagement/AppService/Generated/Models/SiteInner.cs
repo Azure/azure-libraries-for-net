@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".</param>
         /// <param name="reserved">&lt;code&gt;true&lt;/code&gt; if reserved;
         /// otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="isXenon">Hyper-V sandbox.</param>
+        /// <param name="isXenon">Obsolete: Hyper-V sandbox.</param>
+        /// <param name="hyperV">Hyper-V sandbox.</param>
         /// <param name="lastModifiedTimeUtc">Last time the app was modified,
         /// in UTC. Read-only.</param>
         /// <param name="siteConfig">Configuration of the app.</param>
@@ -81,6 +82,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// enable client certificate authentication (TLS mutual
         /// authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default
         /// is &lt;code&gt;false&lt;/code&gt;.</param>
+        /// <param name="clientCertExclusionPaths">client certificate
+        /// authentication comma-separated exclusion paths</param>
         /// <param name="hostNamesDisabled">&lt;code&gt;true&lt;/code&gt; to
         /// disable the public hostnames of the app; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.
@@ -102,8 +105,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// This only applies to Functions container.</param>
         /// <param name="cloningInfo">If specified during app creation, the app
         /// is cloned from a source app.</param>
-        /// <param name="snapshotInfo">If specified during app creation, the
-        /// app is created from a previous snapshot.</param>
         /// <param name="resourceGroup">Name of the resource group the app
         /// belongs to. Read-only.</param>
         /// <param name="isDefaultContainer">&lt;code&gt;true&lt;/code&gt; if
@@ -116,8 +117,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="httpsOnly">HttpsOnly: configures a web site to accept
         /// only https requests. Issues redirect for
         /// http requests</param>
+        /// <param name="redundancyMode">Site redundancy mode. Possible values
+        /// include: 'None', 'Manual', 'Failover', 'ActiveActive',
+        /// 'GeoRedundant'</param>
+        /// <param name="inProgressOperationId">Specifies an operation id if
+        /// this site has a pending operation.</param>
+        /// <param name="geoDistributions">GeoDistributions for this
+        /// site</param>
         /// <param name="kind">Kind of resource.</param>
-        public SiteInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), SnapshotRecoveryRequest snapshotInfo = default(SnapshotRecoveryRequest), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string))
+        public SiteInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), IList<GeoDistribution> geoDistributions = default(IList<GeoDistribution>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             State = state;
@@ -131,6 +139,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             ServerFarmId = serverFarmId;
             Reserved = reserved;
             IsXenon = isXenon;
+            HyperV = hyperV;
             LastModifiedTimeUtc = lastModifiedTimeUtc;
             SiteConfig = siteConfig;
             TrafficManagerHostNames = trafficManagerHostNames;
@@ -139,6 +148,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             HostingEnvironmentProfile = hostingEnvironmentProfile;
             ClientAffinityEnabled = clientAffinityEnabled;
             ClientCertEnabled = clientCertEnabled;
+            ClientCertExclusionPaths = clientCertExclusionPaths;
             HostNamesDisabled = hostNamesDisabled;
             OutboundIpAddresses = outboundIpAddresses;
             PossibleOutboundIpAddresses = possibleOutboundIpAddresses;
@@ -147,12 +157,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             SuspendedTill = suspendedTill;
             MaxNumberOfWorkers = maxNumberOfWorkers;
             CloningInfo = cloningInfo;
-            SnapshotInfo = snapshotInfo;
             ResourceGroup = resourceGroup;
             IsDefaultContainer = isDefaultContainer;
             DefaultHostName = defaultHostName;
             SlotSwapStatus = slotSwapStatus;
             HttpsOnly = httpsOnly;
+            RedundancyMode = redundancyMode;
+            InProgressOperationId = inProgressOperationId;
+            GeoDistributions = geoDistributions;
             Identity = identity;
             Kind = kind;
             CustomInit();
@@ -237,10 +249,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public bool? Reserved { get; set; }
 
         /// <summary>
-        /// Gets or sets hyper-V sandbox.
+        /// Gets or sets obsolete: Hyper-V sandbox.
         /// </summary>
         [JsonProperty(PropertyName = "properties.isXenon")]
         public bool? IsXenon { get; set; }
+
+        /// <summary>
+        /// Gets or sets hyper-V sandbox.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hyperV")]
+        public bool? HyperV { get; set; }
 
         /// <summary>
         /// Gets last time the app was modified, in UTC. Read-only.
@@ -305,6 +323,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public bool? ClientCertEnabled { get; set; }
 
         /// <summary>
+        /// Gets or sets client certificate authentication comma-separated
+        /// exclusion paths
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.clientCertExclusionPaths")]
+        public string ClientCertExclusionPaths { get; set; }
+
+        /// <summary>
         /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
         /// disable the public hostnames of the app; otherwise,
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
@@ -364,13 +389,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public CloningInfo CloningInfo { get; set; }
 
         /// <summary>
-        /// Gets or sets if specified during app creation, the app is created
-        /// from a previous snapshot.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.snapshotInfo")]
-        public SnapshotRecoveryRequest SnapshotInfo { get; set; }
-
-        /// <summary>
         /// Gets name of the resource group the app belongs to. Read-only.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGroup")]
@@ -405,6 +423,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public bool? HttpsOnly { get; set; }
 
         /// <summary>
+        /// Gets or sets site redundancy mode. Possible values include: 'None',
+        /// 'Manual', 'Failover', 'ActiveActive', 'GeoRedundant'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.redundancyMode")]
+        public RedundancyMode? RedundancyMode { get; set; }
+
+        /// <summary>
+        /// Gets specifies an operation id if this site has a pending
+        /// operation.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.inProgressOperationId")]
+        public System.Guid? InProgressOperationId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets geoDistributions for this site
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.geoDistributions")]
+        public IList<GeoDistribution> GeoDistributions { get; set; }
+
+        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public ManagedServiceIdentity Identity { get; set; }
@@ -431,10 +469,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             if (CloningInfo != null)
             {
                 CloningInfo.Validate();
-            }
-            if (SnapshotInfo != null)
-            {
-                SnapshotInfo.Validate();
             }
         }
     }
