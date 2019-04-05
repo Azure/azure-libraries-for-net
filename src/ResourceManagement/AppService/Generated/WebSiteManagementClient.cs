@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -24,13 +25,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// WebSite Management Client
     /// </summary>
-    public partial class WebSiteManagementClient : ServiceClient<WebSiteManagementClient>, IWebSiteManagementClient, IAzureClient
+    public partial class WebSiteManagementClient : FluentServiceClientBase<WebSiteManagementClient>, IWebSiteManagementClient, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -40,11 +36,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Your Azure subscription ID. This is a GUID-formatted string (e.g.
@@ -148,193 +139,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Initializes a new instance of the WebSiteManagementClient class.
         /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected WebSiteManagementClient(params DelegatingHandler[] handlers) : base(handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected WebSiteManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected WebSiteManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public WebSiteManagementClient(RestClient restClient) 
+            : base(restClient)
         {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected WebSiteManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public WebSiteManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public WebSiteManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public WebSiteManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the WebSiteManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public WebSiteManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
         }
 
         /// <summary>
@@ -344,7 +154,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Initializes client properties.
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             AppServiceCertificateOrders = new AppServiceCertificateOrdersOperations(this);
             CertificateRegistrationProvider = new CertificateRegistrationProviderOperations(this);
@@ -1953,7 +1763,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             List<string> _queryParameters = new List<string>();
             if (sku != null)
             {
-                _queryParameters.Add(string.Format("sku={0}", System.Uri.EscapeDataString(sku.Value)));
+                _queryParameters.Add(string.Format("sku={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(sku, SerializationSettings).Trim('"'))));
             }
             if (linuxWorkersEnabled != null)
             {
