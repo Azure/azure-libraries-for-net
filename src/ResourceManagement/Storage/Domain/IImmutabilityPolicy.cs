@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     public interface IImmutabilityPolicy  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ImmutabilityPolicyInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ImmutabilityPolicy.Update.IUpdate>,
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the state value.
         /// </summary>
-        ImmutabilityPolicyState State { get; }
+        string State { get; }
 
         /// <summary>
         /// Gets the type value.

@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     public interface IBlobServiceProperties  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<BlobServicePropertiesInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<BlobServiceProperties.Update.IUpdate>,

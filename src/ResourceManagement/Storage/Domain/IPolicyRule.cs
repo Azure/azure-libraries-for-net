@@ -31,22 +31,22 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the number of days after a filtered base blob is last modified when the tier to archive action is enacted.
         /// </summary>
-        int DaysAfterBaseBlobModificationUntilArchiving { get; }
+        int? DaysAfterBaseBlobModificationUntilArchiving { get; }
 
         /// <summary>
         /// Gets the number of days after a filtered base blob is last modified when the tier to cool action is enacted.
         /// </summary>
-        int DaysAfterBaseBlobModificationUntilCooling { get; }
+        int? DaysAfterBaseBlobModificationUntilCooling { get; }
 
         /// <summary>
         /// Gets the number of days after a filtered base blob is last modified when the delete action is enacted.
         /// </summary>
-        int DaysAfterBaseBlobModificationUntilDeleting { get; }
+        int? DaysAfterBaseBlobModificationUntilDeleting { get; }
 
         /// <summary>
         /// Gets the number of days after a filtered snapshot is created when the delete action is enacted.
         /// </summary>
-        int DaysAfterSnapShotCreationUntilDeleting { get; }
+        int? DaysAfterSnapShotCreationUntilDeleting { get; }
 
         /// <summary>
         /// Gets whether there is a delete action specified for the filtered base blobs in this rule.

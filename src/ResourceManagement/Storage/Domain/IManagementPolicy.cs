@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     public interface IManagementPolicy  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ManagementPolicyInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Storage.Fluent.IManagementPolicy>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ManagementPolicy.Update.IUpdate>,

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     public interface IBlobContainer  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<BlobContainerInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<BlobContainer.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Storage.Fluent.StorageManager>
@@ -54,17 +55,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the leaseDuration value.
         /// </summary>
-        LeaseDuration LeaseDuration { get; }
+        String LeaseDuration { get; }
 
         /// <summary>
         /// Gets the leaseState value.
         /// </summary>
-        LeaseState LeaseState { get; }
+        String LeaseState { get; }
 
         /// <summary>
         /// Gets the leaseStatus value.
         /// </summary>
-        LeaseStatus LeaseStatus { get; }
+        String LeaseStatus { get; }
 
         /// <summary>
         /// Gets the legalHold value.
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the publicAccess value.
         /// </summary>
-        PublicAccess PublicAccess { get; }
+        PublicAccess? PublicAccess { get; }
 
         /// <summary>
         /// Gets the type value.
