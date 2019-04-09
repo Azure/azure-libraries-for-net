@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using FunctionDeploymentSlot.Definition;
     using FunctionDeploymentSlot.Update;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Models;
     using ResourceManager.Fluent.Core;
     using System;

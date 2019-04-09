@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Linq;
     using System.Text.RegularExpressions;
     using System;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The implementation for DeploymentSlot.
@@ -144,6 +145,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal override async Task<Models.SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Manager.Inner.WebApps.CreateOrUpdateSlotAsync(ResourceGroupName, parent.Name, site, Name, cancellationToken: cancellationToken);
+        }
+
+        internal async override Task<SiteInner> UpdateInnerAsync(SitePatchResource siteUpdate, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.UpdateSlotAsync(ResourceGroupName, parent.Name, siteUpdate, Name, cancellationToken: cancellationToken);
         }
 
         ///GENMHASH:21FDAEDB996672BE017C01C5DD8758D4:42826DB217BC1AEE5AAA977944F4318D

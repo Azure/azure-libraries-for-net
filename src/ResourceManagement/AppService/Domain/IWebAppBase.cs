@@ -177,6 +177,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         string SystemAssignedManagedServiceIdentityPrincipalId { get; }
 
         /// <summary>
+        /// Gets The ids of the user assigned identities.
+        /// </summary>
+        System.Collections.Generic.ISet<string> UserAssignedManagedServiceIdentityIds { get; }
+
+        /// <summary>
         /// Verifies the ownership of the domain for a certificate order by verifying a hostname
         /// of the domain is bound to this web app.
         /// </summary>

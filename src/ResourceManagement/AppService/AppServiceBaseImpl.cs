@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using ResourceManager.Fluent.Models;
     using System.Linq;
     using System;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The base implementation for web apps and function apps.
@@ -35,6 +36,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal async override Task<SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Manager.Inner.WebApps.CreateOrUpdateAsync(ResourceGroupName, Name, site, cancellationToken: cancellationToken);
+        }
+
+        internal async override Task<SiteInner> UpdateInnerAsync(SitePatchResource siteUpdate, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.UpdateAsync(ResourceGroupName, Name, siteUpdate, cancellationToken: cancellationToken);
         }
 
         ///GENMHASH:EB854F18026EDB6E01762FA4580BE789:E0C4A1757552CAB0ED8F92E2EB35D2E2

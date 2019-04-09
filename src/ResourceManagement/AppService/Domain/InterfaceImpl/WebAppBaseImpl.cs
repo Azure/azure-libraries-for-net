@@ -3,7 +3,11 @@
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using Microsoft.Azure.Management.AppService.Fluent.Models;
+    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
+    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -124,12 +128,60 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        ///  Specifies that User Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithManagedServiceIdentity<FluentT>.WithUserAssignedManagedServiceIdentity()
+        {
+            return this.WithUserAssignedManagedServiceIdentity();
+        }
+
+        /// <summary>
         /// Specifies that System Assigned Managed Service Identity needs to be enabled in the web app.
         /// </summary>
         /// <return>The next stage of the web app definition.</return>
         WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithManagedServiceIdentity<FluentT>.WithSystemAssignedManagedServiceIdentity()
         {
             return this.WithSystemAssignedManagedServiceIdentity();
+        }
+
+        /// <summary>
+        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Definition.IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithManagedServiceIdentity<FluentT>.WithUserAssignedManagedServiceIdentity()
+        {
+            return this.WithUserAssignedManagedServiceIdentity();
+        }
+
+        IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT>.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
+        }
+
+        IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT>.WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
+        }
+
+        IUpdate<FluentT> WebAppBase.Definition.IWithManagedServiceIdentity<FluentT>.WithoutSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithoutSystemAssignedManagedServiceIdentity();
+        }
+
+        IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT>.WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId);
+        }
+
+        IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT>.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
+        }
+
+        IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT>.WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
         }
 
         /// <summary>
