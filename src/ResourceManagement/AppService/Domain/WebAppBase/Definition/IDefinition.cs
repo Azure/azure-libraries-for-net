@@ -7,6 +7,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.AppService.Fluent;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// A web app definition stage allowing setting if SCM site is also stopped when the web app is stopped.
@@ -67,7 +69,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
     public interface IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>
     {
 
@@ -201,7 +202,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     public interface IDefinition<FluentT>  :
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithWebContainer<FluentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT>
     {
 
     }
@@ -333,6 +335,35 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
         /// <param name="webContainer">The Java web container.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithWebContainer(WebContainer webContainer);
+    }
+
+    /// <summary>
+    /// The stage of the web app update allowing to add User Assigned (External) Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT>  :
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>
+    {
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the web app.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT> WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the web app.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT> WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the web app should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithoutUserAssignedManagedServiceIdentity(string identityId);
     }
 
     /// <summary>
@@ -479,15 +510,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     /// A web app definition stage allowing System Assigned Managed Service Identity to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithManagedServiceIdentity<FluentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithManagedServiceIdentity<FluentT> 
     {
+
+        /// <summary>
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be disabled.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithoutSystemAssignedManagedServiceIdentity();
 
         /// <summary>
         /// Specifies that System Assigned Managed Service Identity needs to be enabled in the web app.
         /// </summary>
         /// <return>The next stage of the web app definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WithSystemAssignedManagedServiceIdentity();
+
+        /// <summary>
+        /// Specifies that User Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT> WithUserAssignedManagedServiceIdentity();
     }
 
     /// <summary>

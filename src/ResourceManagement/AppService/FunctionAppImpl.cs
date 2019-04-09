@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Linq;
     using System.Collections.ObjectModel;
     using System.IO;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The implementation for FunctionApp.
