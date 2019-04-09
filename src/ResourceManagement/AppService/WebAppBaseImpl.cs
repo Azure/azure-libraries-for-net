@@ -163,7 +163,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             this.sourceControlToDelete = false;
             this.authenticationToUpdate = false;
             this.diagnosticLogsToUpdate = false;
-            this.msiHandler.Clear();
+            if (this.msiHandler != null)
+            {
+                this.msiHandler.Clear();
+            }
             this.sslBindingsToCreate = new Dictionary<string, HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>>();
             if (Inner.HostNames != null)
             {
@@ -1180,9 +1183,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(logConfig, this);
             }
+
+            msiHandler = new WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(manager.GraphRbacManager, this);
             NormalizeProperties();
             kuduClient = new KuduClient(this);
-            msiHandler = new WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(manager.GraphRbacManager, this);
         }
 
         public override void SetInner(SiteInner innerObject)
