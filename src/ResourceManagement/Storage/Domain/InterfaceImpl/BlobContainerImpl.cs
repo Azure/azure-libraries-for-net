@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the hasImmutabilityPolicy value.
         /// </summary>
-        bool Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.HasImmutabilityPolicy
+        bool? Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.HasImmutabilityPolicy
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the hasLegalHold value.
         /// </summary>
-        bool Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.HasLegalHold
+        bool? Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.HasLegalHold
         {
             get
             {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the lastModifiedTime value.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LastModifiedTime
+        System.DateTime? Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LastModifiedTime
         {
             get
             {

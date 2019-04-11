@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the lastModifiedTime value.
         /// </summary>
-        System.DateTime LastModifiedTime { get; }
+        System.DateTime? LastModifiedTime { get; }
 
         /// <summary>
         /// Gets the name value.

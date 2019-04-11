@@ -10,6 +10,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.Storage.Fluent.Models;
+    using System.Collections.Generic;
+    using System;
 
     public partial class ImmutabilityPolicyImpl  :
         CreatableUpdatable<
@@ -33,148 +35,154 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 
         string IHasId.Id => Inner.Id;
 
-        StorageManager IHasManager<StorageManager>.Manager => throw new System.NotImplementedException();
+        StorageManager IHasManager<StorageManager>.Manager => this.manager;
 
         internal  ImmutabilityPolicyImpl(string name, StorageManager manager) : base(name, new ImmutabilityPolicyInner())
         {
-            //$ super(name, new ImmutabilityPolicyInner());
-            //$ this.manager = manager;
-            //$ // Set resource name
-            //$ this.containerName = name;
-            //$ //
-            //$ }
+            this.manager = manager;
+            // Set resource name
+            this.containerName = name;
 
         }
 
-                internal  ImmutabilityPolicyImpl(ImmutabilityPolicyInner inner, StorageManager manager) : base(inner.Name, inner)
+        internal  ImmutabilityPolicyImpl(ImmutabilityPolicyInner inner, StorageManager manager) : base(inner.Name, inner)
         {
-            //$ super(inner.Name(), inner);
-            //$ this.manager = manager;
-            //$ // Set resource name
-            //$ this.containerName = inner.Name();
-            //$ // set resource ancestor and positional variables
-            //$ this.resourceGroupName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "resourceGroups");
-            //$ this.accountName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "storageAccounts");
-            //$ this.containerName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "containers");
-            //$ //
-            //$ }
+            this.manager = manager;
+            // Set resource name
+            this.containerName = inner.Name;
+            // set resource ancestor and positional variables
+            this.resourceGroupName = GetValueFromIdByName(inner.Id, "resourceGroups");
+            this.accountName = GetValueFromIdByName(inner.Id, "storageAccounts");
+            this.containerName = GetValueFromIdByName(inner.Id, "containers");
 
         }
 
-                protected override async Task<ImmutabilityPolicyInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<ImmutabilityPolicyInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ BlobContainersInner client = this.manager().Inner().BlobContainers();
-            //$ return client.GetImmutabilityPolicyAsync(this.resourceGroupName, this.accountName, this.containerName);
-
-            return null;
+            IBlobContainersOperations client = this.manager.Inner.BlobContainers;
+            return await client.GetImmutabilityPolicyAsync(this.resourceGroupName, this.accountName, this.containerName);
         }
 
-                public override async Task<Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ BlobContainersInner client = this.manager().Inner().BlobContainers();
-            //$ return client.CreateOrUpdateImmutabilityPolicyAsync(this.resourceGroupName, this.accountName, this.containerName, this.cimmutabilityPeriodSinceCreationInDays, this.cifMatch)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
-        }
-
-                public string Etag()
-        {
-            //$ return this.Inner().Etag();
-
-            return null;
-        }
-
-                public string Id()
-        {
-            //$ return this.Inner().Id();
-
-            return null;
-        }
-
-                public int ImmutabilityPeriodSinceCreationInDays()
-        {
-            //$ return this.Inner().ImmutabilityPeriodSinceCreationInDays();
-
-            return 0;
-        }
-
-                public bool IsInCreateMode()
-        {
-            //$ return this.Inner().Id() == null;
-
-            return false;
-        }
-
-                public StorageManager Manager()
-        {
-            //$ return this.manager;
-
-            return null;
-        }
-
-                public string Name()
-        {
-            //$ return this.Inner().Name();
-
-            return null;
-        }
-
-                public string State()
-        {
-            //$ return this.Inner().State();
-
-            return null;
-        }
-
-                public string Type()
-        {
-            //$ return this.Inner().Type();
-
-            return null;
-        }
-
-                public async Task<Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            //$ BlobContainersInner client = this.manager().Inner().BlobContainers();
-            //$ return client.CreateOrUpdateImmutabilityPolicyAsync(this.resourceGroupName, this.accountName, this.containerName, this.uimmutabilityPeriodSinceCreationInDays, this.uifMatch)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
-        }
-
-                public ImmutabilityPolicyImpl WithExistingContainer(string resourceGroupName, string accountName, string containerName)
-        {
-            //$ this.resourceGroupName = resourceGroupName;
-            //$ this.accountName = accountName;
-            //$ this.containerName = containerName;
-            //$ return this;
-
+            IBlobContainersOperations client = this.manager.Inner.BlobContainers;
+            ImmutabilityPolicyInner immutabilityPolicyInner = await client.CreateOrUpdateImmutabilityPolicyAsync(this.resourceGroupName, this.accountName, this.containerName, this.cimmutabilityPeriodSinceCreationInDays, this.cifMatch);
+            this.SetInner(immutabilityPolicyInner);
             return this;
         }
 
-                public ImmutabilityPolicyImpl WithIfMatch(string ifMatch)
+        public string Etag()
         {
-            //$ if (isInCreateMode()) {
-            //$ this.cifMatch = ifMatch;
-            //$ } else {
-            //$ this.uifMatch = ifMatch;
-            //$ }
-            //$ return this;
+            return this.Inner.Etag;
+        }
 
+        public string Id()
+        {
+            return this.Inner.Id;
+        }
+
+        public int ImmutabilityPeriodSinceCreationInDays()
+        {
+            return this.Inner.ImmutabilityPeriodSinceCreationInDays;
+        }
+
+        public bool IsInCreateMode()
+        {
+            return this.Inner.Id == null;
+        }
+
+        public StorageManager Manager()
+        {
+            return this.manager;
+        }
+
+        public string Name()
+        {
+            return this.Inner.Name;
+        }
+
+        public string State()
+        {
+            return this.Inner.State;
+        }
+
+        public string Type()
+        {
+            return this.Inner.Type;
+        }
+
+        public async Task<Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            IBlobContainersOperations client = this.manager.Inner.BlobContainers;
+            ImmutabilityPolicyInner immutabilityPolicyInner = await client.CreateOrUpdateImmutabilityPolicyAsync(this.resourceGroupName, this.accountName, this.containerName, this.uimmutabilityPeriodSinceCreationInDays, this.uifMatch);
+            this.SetInner(immutabilityPolicyInner);
             return this;
         }
 
-                public ImmutabilityPolicyImpl WithImmutabilityPeriodSinceCreationInDays(int immutabilityPeriodSinceCreationInDays)
+        public ImmutabilityPolicyImpl WithExistingContainer(string resourceGroupName, string accountName, string containerName)
         {
-            //$ if (isInCreateMode()) {
-            //$ this.cimmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
-            //$ } else {
-            //$ this.uimmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
-            //$ }
-            //$ return this;
-
+            this.resourceGroupName = resourceGroupName;
+            this.accountName = accountName;
+            this.containerName = containerName;
             return this;
+        }
+
+        public ImmutabilityPolicyImpl WithIfMatch(string ifMatch)
+        {
+            if (IsInCreateMode())
+            {
+                this.cifMatch = ifMatch;
+            }
+            else
+            {
+                this.uifMatch = ifMatch;
+            }
+            return this;
+        }
+
+        public ImmutabilityPolicyImpl WithImmutabilityPeriodSinceCreationInDays(int immutabilityPeriodSinceCreationInDays)
+        {
+            if (IsInCreateMode())
+            {
+                this.cimmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
+            }
+            else
+            {
+                this.uimmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
+            }
+            return this;
+        }
+
+        private static string GetValueFromIdByName(string id, string name)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            else
+            {
+                IEnumerable<string> enumerable = id.Split(new char[] { '/' });
+                var itr = enumerable.GetEnumerator();
+                while (itr.MoveNext())
+                {
+                    string part = itr.Current;
+                    if (!string.IsNullOrEmpty(part))
+                    {
+                        if (part.Equals(name, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (itr.MoveNext())
+                            {
+                                return itr.Current;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
         }
     }
 }

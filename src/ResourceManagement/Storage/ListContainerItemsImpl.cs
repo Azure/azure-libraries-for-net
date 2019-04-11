@@ -13,28 +13,22 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     {
         private StorageManager manager;
 
-                internal  ListContainerItemsImpl(ListContainerItemsInner inner, StorageManager manager) : base(inner)
+        internal  ListContainerItemsImpl(ListContainerItemsInner inner, StorageManager manager) : base(inner)
         {
-            //$ super(inner);
-            //$ this.manager = manager;
-            //$ }
-
+            this.manager = manager;
         }
 
         StorageManager IHasManager<StorageManager>.Manager => this.manager;
 
         public StorageManager Manager()
         {
-            //$ return this.manager;
-
-            return null;
+            return this.manager;
         }
 
-                public IReadOnlyList<ListContainerItem> Value()
+        public IReadOnlyList<ListContainerItem> Value()
         {
-            //$ return this.Inner().Value();
-
-            return null;
+            List<ListContainerItem> value = this.Inner.Value as List<ListContainerItem>;
+            return value.AsReadOnly();
         }
     }
 }

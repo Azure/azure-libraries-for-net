@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public System.Uri BaseUri { get; set; }
+        //public System.Uri BaseUri { get; set; }
 
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
+        ///// <summary>
+        ///// Credentials needed for the client to connect to Azure.
+        ///// </summary>
+        //public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// The ID of the target subscription.

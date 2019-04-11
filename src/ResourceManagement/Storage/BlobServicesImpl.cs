@@ -16,57 +16,36 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     {
         private StorageManager manager;
 
-                internal  BlobServicesImpl(StorageManager manager) : base(manager.Inner.BlobServices)
+        internal  BlobServicesImpl(StorageManager manager) : base(manager.Inner.BlobServices)
         {
-            //$ super(manager.Inner().BlobServices());
-            //$ this.manager = manager;
-            //$ }
-
+            this.manager = manager;
         }
 
-                private BlobServicePropertiesImpl WrapModel(BlobServicePropertiesInner inner)
+        private BlobServicePropertiesImpl WrapModel(BlobServicePropertiesInner inner)
         {
-            //$ return  new BlobServicePropertiesImpl(inner, manager());
-            //$ }
-
-            return null;
+            return new BlobServicePropertiesImpl(inner, this.manager);
         }
 
-                private BlobServicePropertiesImpl WrapModel(string name)
+        private BlobServicePropertiesImpl WrapModel(string name)
         {
-            //$ return new BlobServicePropertiesImpl(name, this.manager());
-            //$ }
-
-            return null;
+            return new BlobServicePropertiesImpl(name, this.manager);
         }
 
-                public BlobServicePropertiesImpl Define(string name)
+        public BlobServicePropertiesImpl Define(string name)
         {
-            //$ return wrapModel(name);
-
-            return null;
+            return WrapModel(name);
         }
 
-                public async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties> GetServicePropertiesAsync(string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties> GetServicePropertiesAsync(string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ BlobServicesInner client = this.Inner();
-            //$ return client.GetServicePropertiesAsync(resourceGroupName, accountName)
-            //$ .Map(new Func1<BlobServicePropertiesInner, BlobServiceProperties>() {
-            //$ @Override
-            //$ public BlobServiceProperties call(BlobServicePropertiesInner inner) {
-            //$ return wrapModel(inner);
-            //$ }
-            //$ });
-
-            return null;
+            IBlobServicesOperations client = this.Inner;
+            BlobServicePropertiesInner blobServicePropertiesInner = await client.GetServicePropertiesAsync(resourceGroupName, accountName);
+            return WrapModel(blobServicePropertiesInner);
         }
 
-                public StorageManager Manager()
+        public StorageManager Manager()
         {
-            //$ return this.manager;
-            //$ }
-
-            return null;
+            return this.manager;
         }
 
         BlobServiceProperties.Definition.IBlank ISupportsCreating<BlobServiceProperties.Definition.IBlank>.Define(string name)

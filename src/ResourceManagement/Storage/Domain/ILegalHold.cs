@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the hasLegalHold value.
         /// </summary>
-        bool HasLegalHold { get; }
+        bool? HasLegalHold { get; }
 
         /// <summary>
         /// Gets the tags value.

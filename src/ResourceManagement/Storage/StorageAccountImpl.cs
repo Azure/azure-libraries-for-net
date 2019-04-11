@@ -28,6 +28,21 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         private StorageNetworkRulesHelper networkRulesHelper;
         private StorageEncryptionHelper encryptionHelper;
 
+        public bool? AzureFilesAadIntegration
+        { get
+            {
+                return this.Inner.EnableAzureFilesAadIntegration;
+            }
+        }
+
+        public bool? HnsEnabled
+        {
+            get
+            {
+                return this.Inner.IsHnsEnabled;
+            }
+        }
+
         ///GENMHASH:9EC86FDAF9C3238B45EB0EE4355F4919:01A8E19E4477D51C1F8BB7C63F151C69
         internal StorageAccountImpl(string name, StorageAccountInner innerModel, IStorageManager storageManager) : base(name, innerModel, storageManager)
         {
@@ -493,6 +508,24 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         public StorageAccountImpl WithReadAccessToLogEntriesFromAnyNetwork()
         {
             this.networkRulesHelper.WithReadAccessToLoggingFromAnyNetwork();
+            return this;
+        }
+
+        public StorageAccountImpl WithHnsEnabled(bool enabled)
+        {
+            this.createParameters.IsHnsEnabled = enabled;
+            return this;
+        }
+
+        public StorageAccountImpl WithAzureFilesAadIntegrationEnabled(bool enabled)
+        {
+            if (IsInCreateMode)
+            {
+                this.createParameters.EnableAzureFilesAadIntegration = enabled;
+            } else
+            {
+                this.updateParameters.EnableAzureFilesAadIntegration = enabled;
+            }
             return this;
         }
 

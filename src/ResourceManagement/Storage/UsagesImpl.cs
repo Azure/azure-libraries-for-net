@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.Storage.Fluent.Models;
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             //    return new List<IStorageUsage>();
             //}
             //return WrapList(storageUsages);
-            return null;
+            throw new NotImplementedException("Storage is no longer supporting usages listing anymore");
         }
 
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:FF27DF14BEE91BED69598A874F25301A
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             //TODO: service is not supporting this listing anymore
             //return await PagedCollection<IStorageUsage, Usage>.LoadPage(this.manager.Inner.Usages.ListAsync, WrapModel, cancellationToken);
-            return null;
+            throw new NotImplementedException("Storage is no longer supporting usages listing anymore");
         }
 
         ///GENMHASH:438AA0AEE9E5AB3F7FB0CB3404AB0062:36C68AF6A66967842C933E2D8D22EACE

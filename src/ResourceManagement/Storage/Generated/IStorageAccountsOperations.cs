@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ListServiceSasResponseInner>> ListServiceSASWithHttpMessagesAsync(string resourceGroupName, string accountName, ServiceSasParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ListServiceSasResponseInner>> ListServiceSASWithHttpMessagesAsync(string resourceGroupName, string accountName, ServiceSasParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Failover request can be triggered for a storage account in case of
         /// availability issues. The failover occurs from the storage account's

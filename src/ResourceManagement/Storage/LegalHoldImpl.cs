@@ -13,35 +13,27 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     {
         private StorageManager manager;
 
-                internal  LegalHoldImpl(LegalHoldInner inner, StorageManager manager) : base(inner)
+        internal  LegalHoldImpl(LegalHoldInner inner, StorageManager manager) : base(inner)
         {
-            //$ super(inner);
-            //$ this.manager = manager;
-            //$ }
-
+            this.manager = manager;
         }
 
         StorageManager IHasManager<StorageManager>.Manager => this.manager;
 
-        public bool HasLegalHold()
+        public bool? HasLegalHold()
         {
-            //$ return this.Inner().HasLegalHold();
-
-            return false;
+            return this.Inner.HasLegalHold;
         }
 
-                public StorageManager Manager()
+        public StorageManager Manager()
         {
-            //$ return this.manager;
-
-            return null;
+            return this.manager;
         }
 
-                public IReadOnlyList<string> Tags()
+        public IReadOnlyList<string> Tags()
         {
-            //$ return this.Inner().Tags();
-
-            return null;
+            List<string> tagsList = this.Inner.Tags as List<string>;
+            return tagsList.AsReadOnly();
         }
     }
 }

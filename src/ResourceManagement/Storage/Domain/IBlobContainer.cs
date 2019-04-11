@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the hasImmutabilityPolicy value.
         /// </summary>
-        bool HasImmutabilityPolicy { get; }
+        bool? HasImmutabilityPolicy { get; }
 
         /// <summary>
         /// Gets the hasLegalHold value.
         /// </summary>
-        bool HasLegalHold { get; }
+        bool? HasLegalHold { get; }
 
         /// <summary>
         /// Gets the id value.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the lastModifiedTime value.
         /// </summary>
-        System.DateTime LastModifiedTime { get; }
+        System.DateTime? LastModifiedTime { get; }
 
         /// <summary>
         /// Gets the leaseDuration value.

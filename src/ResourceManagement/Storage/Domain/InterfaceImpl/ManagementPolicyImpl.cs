@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the lastModifiedTime value.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Storage.Fluent.IManagementPolicy.LastModifiedTime
+        System.DateTime? Microsoft.Azure.Management.Storage.Fluent.IManagementPolicy.LastModifiedTime
         {
             get
             {

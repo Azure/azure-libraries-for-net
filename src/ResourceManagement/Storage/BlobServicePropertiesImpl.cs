@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using System;
 
     public partial class BlobServicePropertiesImpl  :
         CreatableUpdatable<
@@ -33,175 +34,168 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 
         internal  BlobServicePropertiesImpl(string name, StorageManager manager) : base(name, new BlobServicePropertiesInner())
         {
-            //$ super(name, new BlobServicePropertiesInner());
-            //$ this.manager = manager;
-            //$ // Set resource name
-            //$ this.accountName = name;
-            //$ //
-            //$ }
+            this.manager = manager;
+            // Set resource name
+            this.accountName = name;
+        }
+
+        internal  BlobServicePropertiesImpl(BlobServicePropertiesInner inner, StorageManager manager) : base(inner.Name, inner)
+        {
+            this.manager = manager;
+            // Set resource name
+            this.accountName = inner.Name;
+            // set resource ancestor and positional variables
+            this.resourceGroupName = GetValueFromIdByName(inner.Id, "resourceGroups");
+            this.accountName = GetValueFromIdByName(inner.Id, "storageAccounts");
 
         }
 
-                internal  BlobServicePropertiesImpl(BlobServicePropertiesInner inner, StorageManager manager) : base(inner.Name, inner)
+       protected override async Task<BlobServicePropertiesInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ super(inner.Name(), inner);
-            //$ this.manager = manager;
-            //$ // Set resource name
-            //$ this.accountName = inner.Name();
-            //$ // set resource ancestor and positional variables
-            //$ this.resourceGroupName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "resourceGroups");
-            //$ this.accountName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "storageAccounts");
-            //$ //
-            //$ }
-
+            IBlobServicesOperations client = this.manager.Inner.BlobServices;
+            return await client.GetServicePropertiesAsync(this.resourceGroupName, this.accountName);
         }
 
-                protected override async Task<BlobServicePropertiesInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public CorsRules Cors()
         {
-            //$ BlobServicesInner client = this.manager().Inner().BlobServices();
-            //$ return client.GetServicePropertiesAsync(this.resourceGroupName, this.accountName);
-
-            return null;
+            return this.Inner.Cors;
         }
 
-                public CorsRules Cors()
+        public override async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Inner().Cors();
-
-            return null;
-        }
-
-                public override async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            //$ BlobServicesInner client = this.manager().Inner().BlobServices();
-            //$ return client.SetServicePropertiesAsync(this.resourceGroupName, this.accountName, this.Inner())
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
-        }
-
-                public string DefaultServiceVersion()
-        {
-            //$ return this.Inner().DefaultServiceVersion();
-
-            return null;
-        }
-
-                public DeleteRetentionPolicy DeleteRetentionPolicy()
-        {
-            //$ return this.Inner().DeleteRetentionPolicy();
-
-            return null;
-        }
-
-                public string Id()
-        {
-            //$ return this.Inner().Id();
-
-            return null;
-        }
-
-                public bool IsInCreateMode()
-        {
-            //$ return this.Inner().Id() == null;
-
-            return false;
-        }
-
-                public StorageManager Manager()
-        {
-            //$ return this.manager;
-
-            return null;
-        }
-
-                public string Name()
-        {
-            //$ return this.Inner().Name();
-
-            return null;
-        }
-
-                public string Type()
-        {
-            //$ return this.Inner().Type();
-
-            return null;
-        }
-
-                public async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            //$ BlobServicesInner client = this.manager().Inner().BlobServices();
-            //$ return client.SetServicePropertiesAsync(this.resourceGroupName, this.accountName, this.Inner())
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
-        }
-
-                public BlobServicePropertiesImpl WithCORSRule(CorsRule corsRule)
-        {
-            //$ CorsRules corsRules = this.Inner().Cors();
-            //$ if (corsRules == null) {
-            //$ List<CorsRule> firstCorsRule = new ArrayList<>();
-            //$ firstCorsRule.Add(corsRule);
-            //$ this.Inner().WithCors(new CorsRules().WithCorsRules(firstCorsRule));
-            //$ } else {
-            //$ List<CorsRule> currentCorsRules = corsRules.CorsRules();
-            //$ currentCorsRules.Add(corsRule);
-            //$ this.Inner().WithCors(corsRules.WithCorsRules(currentCorsRules));
-            //$ }
-            //$ return this;
-
+            IBlobServicesOperations client = this.manager.Inner.BlobServices;
+            BlobServicePropertiesInner blobServicePropertiesInner = await client.SetServicePropertiesAsync(this.resourceGroupName, this.accountName, this.Inner);
+            this.SetInner(blobServicePropertiesInner);
             return this;
         }
 
-                public BlobServicePropertiesImpl WithCORSRules(IList<CorsRule> corsRules)
+        public string DefaultServiceVersion()
         {
-            //$ this.Inner().WithCors(new CorsRules().WithCorsRules(corsRules));
-            //$ return this;
+            return this.Inner.DefaultServiceVersion;
+        }
 
+        public DeleteRetentionPolicy DeleteRetentionPolicy()
+        {
+            return this.Inner.DeleteRetentionPolicy;
+        }
+
+        public string Id()
+        {
+            return this.Inner.Id;
+        }
+
+        public bool IsInCreateMode()
+        {
+            return this.Inner.Id == null;
+        }
+
+        public StorageManager Manager()
+        {
+            return this.manager;
+        }
+
+        public string Name()
+        {
+            return this.Inner.Name;
+        }
+
+        public string Type()
+        {
+            return this.Inner.Type;
+        }
+
+        public async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobServiceProperties> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            IBlobServicesOperations client = this.manager.Inner.BlobServices;
+            BlobServicePropertiesInner blobServicePropertiesInner = await client.SetServicePropertiesAsync(this.resourceGroupName, this.accountName, this.Inner);
+            return new BlobServicePropertiesImpl(blobServicePropertiesInner, this.manager);
+        }
+
+        public BlobServicePropertiesImpl WithCORSRule(CorsRule corsRule)
+        {
+            CorsRules corsRules = this.Inner.Cors;
+            if (corsRules == null)
+            {
+                List<CorsRule> firstCorsRule = new List<CorsRule>();
+                firstCorsRule.Add(corsRule);
+                this.Inner.Cors = new CorsRules(firstCorsRule);
+            }
+            else
+            {
+                List<CorsRule> currentCorsRules = corsRules.CorsRulesProperty as List<CorsRule>;
+                currentCorsRules.Add(corsRule);
+                this.Inner.Cors = new CorsRules(currentCorsRules);
+            }
             return this;
         }
 
-                public BlobServicePropertiesImpl WithDefaultServiceVersion(string defaultServiceVersion)
+        public BlobServicePropertiesImpl WithCORSRules(IList<CorsRule> corsRules)
         {
-            //$ this.Inner().WithDefaultServiceVersion(defaultServiceVersion);
-            //$ return this;
-
+            this.Inner.Cors = new CorsRules(corsRules);
             return this;
         }
 
-                public BlobServicePropertiesImpl WithDeleteRetentionPolicy(DeleteRetentionPolicy deleteRetentionPolicy)
+        public BlobServicePropertiesImpl WithDefaultServiceVersion(string defaultServiceVersion)
         {
-            //$ this.Inner().WithDeleteRetentionPolicy(deleteRetentionPolicy);
-            //$ return this;
-
+            this.Inner.DefaultServiceVersion = defaultServiceVersion;
             return this;
         }
 
-                public BlobServicePropertiesImpl WithDeleteRetentionPolicyDisabled()
+        public BlobServicePropertiesImpl WithDeleteRetentionPolicy(DeleteRetentionPolicy deleteRetentionPolicy)
         {
-            //$ this.Inner().WithDeleteRetentionPolicy(new DeleteRetentionPolicy().WithEnabled(false));
-            //$ return this;
-
+            this.Inner.DeleteRetentionPolicy = deleteRetentionPolicy;
             return this;
         }
 
-                public BlobServicePropertiesImpl WithDeleteRetentionPolicyEnabled(int numDaysEnabled)
+        public BlobServicePropertiesImpl WithDeleteRetentionPolicyDisabled()
         {
-            //$ this.Inner().WithDeleteRetentionPolicy(new DeleteRetentionPolicy().WithEnabled(true).WithDays(numDaysEnabled));
-            //$ return this;
-
+            this.Inner.DeleteRetentionPolicy = new DeleteRetentionPolicy(false);
             return this;
         }
 
-                public BlobServicePropertiesImpl WithExistingStorageAccount(string resourceGroupName, string accountName)
+        public BlobServicePropertiesImpl WithDeleteRetentionPolicyEnabled(int numDaysEnabled)
         {
-            //$ this.resourceGroupName = resourceGroupName;
-            //$ this.accountName = accountName;
-            //$ return this;
-
+            this.Inner.DeleteRetentionPolicy = new DeleteRetentionPolicy(true, numDaysEnabled);
             return this;
+        }
+
+        public BlobServicePropertiesImpl WithExistingStorageAccount(string resourceGroupName, string accountName)
+        {
+            this.resourceGroupName = resourceGroupName;
+            this.accountName = accountName;
+            return this;
+        }
+
+        private static string GetValueFromIdByName(string id, string name)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            else
+            {
+                IEnumerable<string> enumerable = id.Split(new char[] { '/' });
+                var itr = enumerable.GetEnumerator();
+                while (itr.MoveNext())
+                {
+                    string part = itr.Current;
+                    if (!string.IsNullOrEmpty(part))
+                    {
+                        if (part.Equals(name, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (itr.MoveNext())
+                            {
+                                return itr.Current;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
         }
     }
 }

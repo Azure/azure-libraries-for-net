@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the hasLegalHold value.
         /// </summary>
-        bool Microsoft.Azure.Management.Storage.Fluent.ILegalHold.HasLegalHold
+        bool? Microsoft.Azure.Management.Storage.Fluent.ILegalHold.HasLegalHold
         {
             get
             {

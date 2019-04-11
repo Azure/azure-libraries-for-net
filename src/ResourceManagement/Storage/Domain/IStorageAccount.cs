@@ -116,5 +116,15 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Gets the source of the key used for encryption.
         /// </summary>
         Microsoft.Azure.Management.Storage.Fluent.StorageAccountEncryptionKeySource EncryptionKeySource { get; }
+
+        /// <summary>
+        /// Gets whether Azure files AAD integration is enabled on the storage account.
+        /// </summary>
+        bool? AzureFilesAadIntegration { get; }
+
+        /// <summary>
+        /// Gets whether Hns is enabled on the storage account.
+        /// </summary>
+        bool? HnsEnabled { get; }
     }
 }

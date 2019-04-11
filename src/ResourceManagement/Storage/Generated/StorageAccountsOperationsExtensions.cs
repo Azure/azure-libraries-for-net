@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ListServiceSasResponseInner> ListServiceSASAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, ServiceSasParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ListServiceSasResponseInner> ListServiceSASAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, ServiceSasParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListServiceSASWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

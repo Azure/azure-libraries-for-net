@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.Storage.Fluent.ManagementPolicy.Definition;
+    using Microsoft.Azure.Management.Storage.Fluent.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -15,63 +16,43 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     {
         private StorageManager manager;
 
-                internal  ManagementPoliciesImpl(StorageManager manager) : base(manager.Inner.ManagementPolicies)
+        internal  ManagementPoliciesImpl(StorageManager manager) : base(manager.Inner.ManagementPolicies)
         {
-            //$ super(manager.Inner().ManagementPolicies());
-            //$ this.manager = manager;
-            //$ }
+            this.manager = manager;
 
         }
 
-                private ManagementPolicyImpl WrapModel(ManagementPoliciesOperations inner)
+        private ManagementPolicyImpl WrapModel(ManagementPolicyInner inner)
         {
-            //$ return  new ManagementPolicyImpl(inner, manager());
-            //$ }
-
-            return null;
+            return new ManagementPolicyImpl(inner, this.manager);
         }
 
-                private ManagementPolicyImpl WrapModel(string name)
+        private ManagementPolicyImpl WrapModel(string name)
         {
-            //$ return new ManagementPolicyImpl(name, this.manager());
-            //$ }
-
-            return null;
+            return new ManagementPolicyImpl(name, this.manager);
         }
 
-                public ManagementPolicyImpl Define(string name)
+        public ManagementPolicyImpl Define(string name)
         {
-            //$ return wrapModel(name);
-
-            return null;
+            return WrapModel(name);
         }
 
-                public async Task DeleteAsync(string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteAsync(string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ ManagementPoliciesInner client = this.Inner();
-            //$ return client.DeleteAsync(resourceGroupName, accountName).ToCompletable();
+            IManagementPoliciesOperations client = this.Inner;
+            await client.DeleteAsync(resourceGroupName, accountName);
         }
 
-                public async Task<Microsoft.Azure.Management.Storage.Fluent.IManagementPolicy> GetAsync(string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.Storage.Fluent.IManagementPolicy> GetAsync(string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ ManagementPoliciesInner client = this.Inner();
-            //$ return client.GetAsync(resourceGroupName, accountName)
-            //$ .Map(new Func1<ManagementPolicyInner, ManagementPolicy>() {
-            //$ @Override
-            //$ public ManagementPolicy call(ManagementPolicyInner inner) {
-            //$ return wrapModel(inner);
-            //$ }
-            //$ });
-
-            return null;
+            IManagementPoliciesOperations client = this.Inner;
+            ManagementPolicyInner managementPolicyInner = await client.GetAsync(resourceGroupName, accountName);
+            return WrapModel(managementPolicyInner);
         }
 
-                public StorageManager Manager()
+        public StorageManager Manager()
         {
-            //$ return this.manager;
-            //$ }
-
-            return null;
+            return this.manager;
         }
 
         IBlank ISupportsCreating<IBlank>.Define(string name)

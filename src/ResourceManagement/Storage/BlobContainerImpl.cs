@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.ObjectModel;
 
     public partial class BlobContainerImpl  :
         CreatableUpdatable<
@@ -26,231 +27,231 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         IUpdate
     {
         private string accountName;
-        private Dictionary<string,string> cmetadata;
+        private IDictionary<string,string> cmetadata;
         private string containerName;
         private PublicAccess cpublicAccess;
         private StorageManager manager;
         private string resourceGroupName;
-        private Dictionary<string,string> umetadata;
+        private IDictionary<string,string> umetadata;
         private PublicAccess upublicAccess;
 
         StorageManager IHasManager<StorageManager>.Manager => this.manager;
 
         string IHasId.Id => Inner.Id;
 
-        internal  BlobContainerImpl(string name, StorageManager manager) : base(name, new BlobContainerInner())
+        internal BlobContainerImpl(string name, StorageManager manager) : base(name, new BlobContainerInner())
         {
-            //$ super(name, new BlobContainerInner());
-            //$ this.manager = manager;
-            //$ // Set resource name
-            //$ this.containerName = name;
-            //$ //
-            //$ }
-
+            this.manager = manager;
+            // Set resource name
+            this.containerName = name;
         }
 
-                internal  BlobContainerImpl(BlobContainerInner inner, StorageManager manager) : base(inner.Name, inner)
-        {
-            //$ super(inner.Name(), inner);
-            //$ this.manager = manager;
-            //$ // Set resource name
-            //$ this.containerName = inner.Name();
-            //$ // set resource ancestor and positional variables
-            //$ this.resourceGroupName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "resourceGroups");
-            //$ this.accountName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "storageAccounts");
-            //$ this.containerName = IdParsingUtils.GetValueFromIdByName(inner.Id(), "containers");
-            //$ //
-            //$ }
 
+        internal  BlobContainerImpl(BlobContainerInner inner, StorageManager manager) : base(inner.Name, inner)
+        {
+            this.manager = manager;
+            // Set resource name
+            this.containerName = inner.Name;
+            // set resource ancestor and positional variables
+            this.resourceGroupName = GetValueFromIdByName(inner.Id, "resourceGroups");
+            this.accountName = GetValueFromIdByName(inner.Id, "storageAccounts");
+            this.containerName = GetValueFromIdByName(inner.Id, "containers");
         }
 
-                protected async override Task<BlobContainerInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected async override Task<BlobContainerInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ BlobContainersInner client = this.manager().Inner().BlobContainers();
-            //$ return null; // NOP getInnerAsync implementation as get is not supported
-
-            return null;
+            IBlobContainersOperations client = this.manager.Inner.BlobContainers;
+            return null; // NOP getInnerAsync implementation as get is not supported
         }
 
-                public async override Task<Microsoft.Azure.Management.Storage.Fluent.IBlobContainer> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<Microsoft.Azure.Management.Storage.Fluent.IBlobContainer> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ BlobContainersInner client = this.manager().Inner().BlobContainers();
-            //$ return client.CreateAsync(this.resourceGroupName, this.accountName, this.containerName, this.cpublicAccess, this.cmetadata)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
+            if (IsInCreateMode())
+            {
+                IBlobContainersOperations client = this.manager.Inner.BlobContainers;
+                var blobContainerInner = await client.CreateAsync(this.resourceGroupName, this.accountName, this.containerName, this.cpublicAccess, this.cmetadata);
+                this.SetInner(blobContainerInner);
+                return this;
+            } else
+            {
+                await UpdateResourceAsync(cancellationToken);
+                return this;
+            }
         }
 
-                public string Etag()
+        public string Etag()
         {
-            //$ return this.Inner().Etag();
-
-            return null;
+            return this.Inner.Etag;
         }
 
-                public bool HasImmutabilityPolicy()
+        public bool? HasImmutabilityPolicy()
         {
-            //$ return this.Inner().HasImmutabilityPolicy();
-
-            return false;
+           return this.Inner.HasImmutabilityPolicy;
         }
 
-                public bool HasLegalHold()
+        public bool? HasLegalHold()
         {
-            //$ return this.Inner().HasLegalHold();
-
-            return false;
+            return this.Inner.HasLegalHold;
         }
 
-                public string Id()
+        public string Id()
         {
-            //$ return this.Inner().Id();
-
-            return null;
+            return this.Inner.Id;
         }
 
-                public ImmutabilityPolicyProperties ImmutabilityPolicy()
+        public ImmutabilityPolicyProperties ImmutabilityPolicy()
         {
-            //$ return this.Inner().ImmutabilityPolicy();
-
-            return null;
+            return this.Inner.ImmutabilityPolicy;
         }
 
-                public bool IsInCreateMode()
+        public bool IsInCreateMode()
         {
-            //$ return this.Inner().Id() == null;
-
-            return false;
+            return this.Inner.Id == null;
         }
 
-                public DateTime LastModifiedTime()
+        public DateTime? LastModifiedTime()
         {
-            //$ return this.Inner().LastModifiedTime();
-
-            return DateTime.Now;
+            return this.Inner.LastModifiedTime;
         }
 
-                public String LeaseDuration()
+        public String LeaseDuration()
         {
-            //$ return this.Inner().LeaseDuration();
-
-            return null;
+            return this.Inner.LeaseDuration;
         }
 
-                public String LeaseState()
+        public String LeaseState()
         {
-            //$ return this.Inner().LeaseState();
-
-            return null;
+            return this.Inner.LeaseState;
         }
 
-                public String LeaseStatus()
+        public String LeaseStatus()
         {
-            //$ return this.Inner().LeaseStatus();
-
-            return null;
+            return this.Inner.LeaseStatus;
         }
 
-                public LegalHoldProperties LegalHold()
+        public LegalHoldProperties LegalHold()
         {
-            //$ return this.Inner().LegalHold();
-
-            return null;
+            return this.Inner.LegalHold;
         }
 
-                public StorageManager Manager()
+        public StorageManager Manager()
         {
-            //$ return this.manager;
-
-            return null;
+            return this.manager;
         }
 
-                public IReadOnlyDictionary<string,string> Metadata()
+        public IReadOnlyDictionary<string,string> Metadata()
         {
-            //$ return this.Inner().Metadata();
-
-            return null;
+            return new ReadOnlyDictionary<string, string>(this.Inner.Metadata);
         }
 
-                public string Name()
+        public string Name()
         {
-            //$ return this.Inner().Name();
-
-            return null;
+            return this.Inner.Name;
         }
 
-                public PublicAccess? PublicAccess()
+        public PublicAccess? PublicAccess()
         {
-            //$ return this.Inner().PublicAccess();
-
             return this.Inner.PublicAccess;
         }
 
-                public string Type()
+        public string Type()
         {
-            //$ return this.Inner().Type();
-
-            return null;
+            return this.Inner.Type;
         }
 
-                public async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobContainer> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        private async Task<Microsoft.Azure.Management.Storage.Fluent.IBlobContainer> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ BlobContainersInner client = this.manager().Inner().BlobContainers();
-            //$ return client.UpdateAsync(this.resourceGroupName, this.accountName, this.containerName, this.upublicAccess, this.umetadata)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
-        }
-
-                public BlobContainerImpl WithExistingBlobService(string resourceGroupName, string accountName)
-        {
-            //$ this.resourceGroupName = resourceGroupName;
-            //$ this.accountName = accountName;
-            //$ return this;
-
+            IBlobContainersOperations client = this.manager.Inner.BlobContainers;
+            var blobContainerInner = await client.UpdateAsync(this.resourceGroupName, this.accountName, this.containerName, this.upublicAccess, this.umetadata);
+            this.SetInner(blobContainerInner);
             return this;
         }
 
-                public BlobContainerImpl WithMetadata(IDictionary<string,string> metadata)
+        public BlobContainerImpl WithExistingBlobService(string resourceGroupName, string accountName)
         {
-            //$ if (isInCreateMode()) {
-            //$ this.cmetadata = metadata;
-            //$ } else {
-            //$ this.umetadata = metadata;
-            //$ }
-            //$ return this;
+            this.resourceGroupName = resourceGroupName;
+            this.accountName = accountName;
+            return this;
 
+        }
+
+        public BlobContainerImpl WithMetadata(IDictionary<string,string> metadata)
+        {
+            if (IsInCreateMode())
+            {
+                this.cmetadata = metadata;
+            }
+            else
+            {
+                this.umetadata = metadata;
+            }
             return this;
         }
 
-                public BlobContainerImpl WithMetadata(string name, string value)
+        public BlobContainerImpl WithMetadata(string name, string value)
         {
-            //$ if (isInCreateMode()) {
-            //$ if (this.cmetadata == null) {
-            //$ this.cmetadata = new HashMap<>();
-            //$ }
-            //$ this.cmetadata.Put(name, value);
-            //$ } else {
-            //$ if (this.umetadata == null) {
-            //$ this.umetadata = new HashMap<>();
-            //$ }
-            //$ this.umetadata.Put(name, value);
-            //$ }
-            //$ return this;
-
+            if (IsInCreateMode())
+            {
+                if (this.cmetadata == null)
+                {
+                    this.cmetadata = new Dictionary<string, string>();
+                }
+                this.cmetadata.Add(name, value);
+            }
+            else
+            {
+                if (this.umetadata == null)
+                    {
+                    this.umetadata = new Dictionary<string, string>();
+                    }
+                this.umetadata.Add(name, value);
+            }
             return this;
         }
 
-                public BlobContainerImpl WithPublicAccess(PublicAccess publicAccess)
+        public BlobContainerImpl WithPublicAccess(PublicAccess publicAccess)
         {
-            //$ if (isInCreateMode()) {
-            //$ this.cpublicAccess = publicAccess;
-            //$ } else {
-            //$ this.upublicAccess = publicAccess;
-            //$ }
-            //$ return this;
-
+            if (IsInCreateMode())
+            {
+                this.cpublicAccess = publicAccess;
+            }
+            else
+            {
+                this.upublicAccess = publicAccess;
+            }
             return this;
+        }
+
+        private static string GetValueFromIdByName(string id, string name)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            else
+            {
+                IEnumerable<string> enumerable = id.Split(new char[] { '/' });
+                var itr = enumerable.GetEnumerator();
+                while (itr.MoveNext())
+                {
+                    string part = itr.Current;
+                    if (!string.IsNullOrEmpty(part))
+                    {
+                        if (part.Equals(name, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (itr.MoveNext())
+                            {
+                                return itr.Current;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
         }
     }
 }
