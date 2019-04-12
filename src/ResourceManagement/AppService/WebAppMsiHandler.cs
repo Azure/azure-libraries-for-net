@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Collections.Generic;
     using System;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Linq;
 
     /// <summary>
     /// Utility class to set Managed Service Identity (MSI) property on a web app,
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         where DefAfterGroupT : class
         where UpdateT : class, WebAppBase.Update.IUpdate<FluentT>
     {
-        private IList<string> creatableIdentityKeys;
+        private ISet<string> creatableIdentityKeys;
         private IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> userAssignedIdentities;
         private WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> webAppBaseImpl;
 
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             : base(rbacManager, new WebAppIdProvider(webAppBaseImpl))
         {
             this.webAppBaseImpl = webAppBaseImpl;
-            this.creatableIdentityKeys = new List<string>();
+            this.creatableIdentityKeys = new HashSet<string>();
             this.userAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>();
         }
 
@@ -48,13 +49,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         internal void Clear()
         {
-            this.userAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>();
+            this.userAssignedIdentities.Clear();
         }
-
+        
         internal void HandleExternalIdentities()
         {
             SiteInner siteInner = (SiteInner)this.webAppBaseImpl.Inner;
-            if (!(this.userAssignedIdentities.Count == 0)) {
+            if (!(this.userAssignedIdentities.Any())) {
                 siteInner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
             }
         }
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 SiteInner siteInner = this.webAppBaseImpl.Inner;
                 ManagedServiceIdentity currentIdentity = siteInner.Identity;
                 siteUpdate.Identity = currentIdentity;
-                if (!(this.userAssignedIdentities.Count == 0)) {
+                if (!(this.userAssignedIdentities.Any())) {
                     // At this point its guaranteed that 'currentIdentity' is not null so vmUpdate.Identity() is.
                     siteUpdate.Identity.UserAssignedIdentities = this.userAssignedIdentities;
                 } else {
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithExistingExternalManagedServiceIdentity(IIdentity identity)
         {
             this.InitSiteIdentity(ManagedServiceIdentityType.UserAssigned);
-            this.userAssignedIdentities.Add(identity.Id, new ManagedServiceIdentityUserAssignedIdentitiesValue());
+            this.userAssignedIdentities[identity.Id] = new ManagedServiceIdentityUserAssignedIdentitiesValue();
             return this;
         }
 
@@ -155,7 +156,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>WebAppMsiHandler.</return>
         internal WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithoutExternalManagedServiceIdentity(string identityId)
         {
-            this.userAssignedIdentities.Add(identityId, null);
+            this.userAssignedIdentities[identityId] =  null;
             return this;
         }
 
@@ -169,12 +170,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
             if (siteInner.Identity == null
             || siteInner.Identity.Type == null
-            || siteInner.Identity.Type.Equals(ManagedServiceIdentityType.None)
-            || siteInner.Identity.Type.Equals(ManagedServiceIdentityType.UserAssigned)) {
+            || siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.None)
+            || siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.UserAssigned)) {
                 return this;
-            } else if (siteInner.Identity.Type.Equals(ManagedServiceIdentityType.SystemAssigned)) {
+            } else if (siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.SystemAssigned)) {
                 siteInner.Identity.Type = ManagedServiceIdentityType.None;
-            } else if (siteInner.Identity.Type.Equals(ManagedServiceIdentityType.SystemAssignedUserAssigned)) {
+            } else if (siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.SystemAssignedUserAssigned)) {
                 siteInner.Identity.Type = ManagedServiceIdentityType.UserAssigned;
             }
             return this;
@@ -189,15 +190,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private bool HandleRemoveAllExternalIdentitiesCase(SitePatchResource siteUpdate)
         {
             SiteInner siteInner = (SiteInner)this.webAppBaseImpl.Inner;
-            if (!(this.userAssignedIdentities.Count == 0)) {
+            if (!(this.userAssignedIdentities.Any()))
+            {
                 int rmCount = 0;
-                foreach (ManagedServiceIdentityUserAssignedIdentitiesValue v in this.userAssignedIdentities.Values) {
-                    if (v == null) {
+                foreach (var v in this.userAssignedIdentities.Values)
+                {
+                    if (v == null)
+                    {
                         rmCount++;
-                    } else {
+                    }
+                    else
+                    {
                         break;
                     }
                 }
+
                 bool containsRemoveOnly = rmCount > 0 && rmCount == this.userAssignedIdentities.Count;
                 // Check if user request contains only request for removal of identities.
                 if (containsRemoveOnly) {
@@ -209,21 +216,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                         }
                     }
                     HashSet<string> removeIds = new HashSet<string>();
-                    foreach (string key in this.userAssignedIdentities.Keys) {
-                        if (this.userAssignedIdentities[key] == null) {
-                            removeIds.Add(key.ToLower());
+                    foreach (var entrySet in this.userAssignedIdentities)
+                    {
+                        if (entrySet.Value == null)
+                        {
+                            removeIds.Add(entrySet.Key.ToLower());
                         }
                     }
 
 
-                    // If so check user want to remove all the identities
-                    var commonCount = 0;
-                    foreach (string id in removeIds)
-                    {
-                        commonCount += (currentIds.Contains(id)) ? 1 : 0;
-                    }
-
-                    bool removeAllCurrentIds = currentIds.Count == removeIds.Count && commonCount == currentIds.Count;
+                    var removeAllCurrentIds = currentIds.Count == removeIds.Count && !removeIds.Any(id => !currentIds.Contains(id)); // Java part looks like this -> && currentIds.ContainsAll(removeIds);
                     if (removeAllCurrentIds) {
                         // If so adjust  the identity type [Setting type to SYSTEM_ASSIGNED orNONE will remove all the identities]
                         if (currentIdentity == null || currentIdentity.Type == null) {
