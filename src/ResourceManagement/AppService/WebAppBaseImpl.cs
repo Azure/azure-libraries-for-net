@@ -529,6 +529,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 SitePatchResource siteUpdate = new SitePatchResource()
                 {
                     HostNameSslStates = siteInner1.HostNameSslStates,
+                    Tags = siteInner1.Tags,
                     Kind = siteInner1.Kind,
                     Enabled = siteInner1.Enabled,
                     ServerFarmId = siteInner1.ServerFarmId,
@@ -547,12 +548,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     HttpsOnly = siteInner1.HttpsOnly,
                     RedundancyMode = siteInner1.RedundancyMode,
                     GeoDistributions = siteInner1.GeoDistributions,
+                    
                     SiteConfig = new SiteConfig()
                 };
 
                 msiHandler.HandleExternalIdentities();
 
                 await UpdateInnerAsync(siteUpdate, cancellationToken);
+
+                // App settings
+                await (SubmitAppSettingsAsync(Inner, cancellationToken));
+
             }
 
             // app setting and connection string stickiness
