@@ -68,7 +68,6 @@ namespace Fluent.Tests.WebApp
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(GroupName1)
                         .WithNewWindowsPlan(PricingTier.BasicB1)
-                        .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2013)
                         .WithSystemAssignedManagedServiceIdentity()
                         .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                         .WithUserAssignedManagedServiceIdentity()
@@ -112,8 +111,8 @@ namespace Fluent.Tests.WebApp
 
                     Assert.NotNull(webApp);
 
-                    Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityPrincipalId);
-                    Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityTenantId);
+                    Assert.Null(webApp.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.Null(webApp.SystemAssignedManagedServiceIdentityTenantId);
                     Assert.NotNull(webApp.UserAssignedManagedServiceIdentityIds);
                     Assert.Equal(2, webApp.UserAssignedManagedServiceIdentityIds.Count);
                     Assert.True(SetContainsStringWithSubstring(webApp.UserAssignedManagedServiceIdentityIds, identityName1));
@@ -124,6 +123,7 @@ namespace Fluent.Tests.WebApp
                     try
                     {
                         TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(groupName);
                     }
                     catch { }
                 }
