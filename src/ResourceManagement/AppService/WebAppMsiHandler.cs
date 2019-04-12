@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal void HandleExternalIdentities()
         {
             SiteInner siteInner = (SiteInner)this.webAppBaseImpl.Inner;
-            if (!(this.userAssignedIdentities.Any())) {
+            if (this.userAssignedIdentities.Any()) {
                 siteInner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
             }
         }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 SiteInner siteInner = this.webAppBaseImpl.Inner;
                 ManagedServiceIdentity currentIdentity = siteInner.Identity;
                 siteUpdate.Identity = currentIdentity;
-                if (!(this.userAssignedIdentities.Any())) {
+                if (this.userAssignedIdentities.Any()) {
                     // At this point its guaranteed that 'currentIdentity' is not null so vmUpdate.Identity() is.
                     siteUpdate.Identity.UserAssignedIdentities = this.userAssignedIdentities;
                 } else {
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private bool HandleRemoveAllExternalIdentitiesCase(SitePatchResource siteUpdate)
         {
             SiteInner siteInner = (SiteInner)this.webAppBaseImpl.Inner;
-            if (!(this.userAssignedIdentities.Any()))
+            if (this.userAssignedIdentities.Any())
             {
                 int rmCount = 0;
                 foreach (var v in this.userAssignedIdentities.Values)

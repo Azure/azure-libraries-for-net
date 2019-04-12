@@ -107,7 +107,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public string DocumentRoot => SiteConfig?.DocumentRoot;
 
-        public ISet<string> UserAssignedManagedServiceIdentityIds => throw new NotImplementedException();
+        internal ISet<string> UserAssignedManagedServiceIdentityIds()
+        {
+            if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
+            {
+                return new HashSet<string>(this.Inner.Identity.UserAssignedIdentities.Keys);
+            }
+
+            return new HashSet<string>();
+        }
 
         ///GENMHASH:6779D3D3C7AB7AAAE805BA0ABEE95C51:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<StringDictionaryInner> UpdateAppSettingsAsync(StringDictionaryInner inner, CancellationToken cancellationToken = default(CancellationToken));
