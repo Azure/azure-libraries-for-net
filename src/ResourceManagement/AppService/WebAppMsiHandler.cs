@@ -170,12 +170,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
             if (siteInner.Identity == null
             || siteInner.Identity.Type == null
-            || siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.None)
-            || siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.UserAssigned)) {
+            || siteInner.Identity.Type.Equals(ManagedServiceIdentityType.None)
+            || siteInner.Identity.Type.Equals(ManagedServiceIdentityType.UserAssigned)) {
                 return this;
-            } else if (siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.SystemAssigned)) {
+            } else if (siteInner.Identity.Type.Equals(ManagedServiceIdentityType.SystemAssigned)) {
                 siteInner.Identity.Type = ManagedServiceIdentityType.None;
-            } else if (siteInner.Identity.Type.Value.Equals(ManagedServiceIdentityType.SystemAssignedUserAssigned)) {
+            } else if (siteInner.Identity.Type.Equals(ManagedServiceIdentityType.SystemAssignedUserAssigned)) {
                 siteInner.Identity.Type = ManagedServiceIdentityType.UserAssigned;
             }
             return this;

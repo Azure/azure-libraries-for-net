@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     SiteConfig = new SiteConfig()
                 };
 
-                msiHandler.HandleExternalIdentities();
+                msiHandler.HandleExternalIdentities(siteUpdate);
 
                 site = await UpdateInnerAsync(siteUpdate, cancellationToken);
             }
