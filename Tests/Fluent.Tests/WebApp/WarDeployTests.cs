@@ -62,5 +62,51 @@ namespace Fluent.Tests.WebApp
                 }
             }
         }
+
+        [Fact]
+        public async Task CanDeployWarOnJava11()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var GroupName = TestUtilities.GenerateName("javacsmrg");
+                var WebAppName = TestUtilities.GenerateName("java-webapp-");
+                var AppServicePlanName = TestUtilities.GenerateName("java-asp-");
+
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                try
+                {
+                    // Create web app
+                    var webApp = appServiceManager.WebApps.Define(WebAppName)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName)
+                        .WithNewWindowsPlan(PricingTier.StandardS1)
+                        .WithJavaVersion(JavaVersion.V11Newest)
+                        .WithWebContainer(WebContainer.Tomcat8_5Newest)
+                        .Create();
+
+                    webApp.WarDeploy(new System.IO.FileInfo(Path.Combine(".", "Assets", "helloworld.war")));
+
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotNull(webApp);
+                        var response = await TestHelper.CheckAddress("https://" + WebAppName + "." + "azurewebsites.net");
+                        Assert.Equal(System.Net.HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
+
+                        var body = await response.Content.ReadAsStringAsync();
+                        Assert.NotNull(body);
+                        Assert.Contains("Azure Samples Hello World", body);
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }
