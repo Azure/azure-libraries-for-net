@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithoutSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithoutSystemAssignedManagedServiceIdentity();
+        }
+
         /// <summary>
         /// Specifies that web app's system assigned (local) identity should have the given access
         /// (described by the role) on the resource group that web app resides. Applications running
@@ -169,6 +174,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.WithoutSystemAssignedManagedServiceIdentity();
         }
 
+
         IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccessOrCreate<FluentT>.WithoutUserAssignedManagedServiceIdentity(string identityId)
         {
             return this.WithoutUserAssignedManagedServiceIdentity(identityId);
@@ -177,6 +183,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT>.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
             return this.WithExistingUserAssignedManagedServiceIdentity(identity);
+        }
+
+        IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT>.WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId);
         }
 
         IUpdate<FluentT> IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT>.WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
@@ -1220,6 +1231,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.SystemAssignedManagedServiceIdentityTenantId();
+            }
+        }
+
+        /// <summary>
+        /// The user Assigned Identity Ids.
+        /// </summary>
+        ISet<string> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.UserAssignedManagedServiceIdentityIds
+        {
+            get
+            {
+                return this.UserAssignedManagedServiceIdentityIds();
             }
         }
 

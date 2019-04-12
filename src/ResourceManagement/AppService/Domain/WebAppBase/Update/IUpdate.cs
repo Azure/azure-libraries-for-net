@@ -334,6 +334,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
+
+        /// <summary>
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be disabled.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithoutSystemAssignedManagedServiceIdentity();
     }
 
     /// <summary>
@@ -568,6 +574,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// <param name="creatableIdentity">A creatable identity definition.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the web app should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithoutUserAssignedManagedServiceIdentity(string identityId);
     }
 
     /// <summary>

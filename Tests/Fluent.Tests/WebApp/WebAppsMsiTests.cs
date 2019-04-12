@@ -29,11 +29,40 @@ namespace Fluent.Tests.WebApp
                 string GroupName1 = TestUtilities.GenerateName("javacsmrg");
                 string WebAppName1 = TestUtilities.GenerateName("java-webapp-");
                 string AppServicePlanName1 = TestUtilities.GenerateName("java-asp-");
+                var groupName = TestUtilities.GenerateName("rgmsi");
+
+                String identityName1 = TestUtilities.GenerateName("msi-id");
+                String identityName2 = TestUtilities.GenerateName("msi-id");
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
+                var azure = TestHelper.CreateRollupClient();
 
                 try
                 {
+                    // Prepare a definition for yet-to-be-created resource group
+                    //
+                    var creatableRG = azure.ResourceGroups
+                            .Define(groupName)
+                            .WithRegion(Region.USSouthCentral);
+
+                    // Create an "User Assigned (External) MSI" residing in the above RG and assign reader access to the virtual network
+                    //
+                    var createdIdentity = azure.Identities
+                            .Define(identityName1)
+                            .WithRegion(Region.USWest)
+                            .WithNewResourceGroup(creatableRG)
+                            .WithAccessToCurrentResourceGroup(BuiltInRole.Reader)
+                            .Create();
+
+                    // Prepare a definition for yet-to-be-created "User Assigned (External) MSI" with contributor access to the resource group
+                    // it resides
+                    //
+                    var creatableIdentity = azure.Identities
+                            .Define(identityName2)
+                            .WithRegion(Region.USWest)
+                            .WithNewResourceGroup(creatableRG)
+                            .WithAccessToCurrentResourceGroup(BuiltInRole.Contributor);
+
                     // Create with new app service plan
                     var webApp = appServiceManager.WebApps.Define(WebAppName1)
                         .WithRegion(Region.USWest)
@@ -42,6 +71,9 @@ namespace Fluent.Tests.WebApp
                         .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2013)
                         .WithSystemAssignedManagedServiceIdentity()
                         .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                        .WithUserAssignedManagedServiceIdentity()
+                        .WithNewUserAssignedManagedServiceIdentity(creatableIdentity)
+                        .WithExistingUserAssignedManagedServiceIdentity(createdIdentity)
                         .WithJavaVersion(JavaVersion.V8Newest)
                         .WithWebContainer(WebContainer.Tomcat8_0Newest)
                         .Create();
@@ -53,6 +85,10 @@ namespace Fluent.Tests.WebApp
                     Assert.Equal(PricingTier.BasicB1, plan.PricingTier);
                     Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityTenantId);
+                    Assert.NotNull(webApp.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(2, webApp.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.True(SetContainsStringWithSubstring(webApp.UserAssignedManagedServiceIdentityIds, identityName1));
+                    Assert.True(SetContainsStringWithSubstring(webApp.UserAssignedManagedServiceIdentityIds, identityName2));
 
                     if (HttpMockServer.Mode != HttpRecorderMode.Playback)
                     {
@@ -65,6 +101,23 @@ namespace Fluent.Tests.WebApp
                         Assert.Contains(webApp.ResourceGroupName, response);
                         Assert.Contains(webApp.Id, response);
                     }
+
+                    //Remove the system assigned identity
+                    webApp.Update().
+                        WithoutSystemAssignedManagedServiceIdentity().
+                        Apply();
+
+                    //Do a fetch so that we can test the update path 
+                    webApp = appServiceManager.WebApps.GetById(webApp.Id);
+
+                    Assert.NotNull(webApp);
+
+                    Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityTenantId);
+                    Assert.NotNull(webApp.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(2, webApp.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.True(SetContainsStringWithSubstring(webApp.UserAssignedManagedServiceIdentityIds, identityName1));
+                    Assert.True(SetContainsStringWithSubstring(webApp.UserAssignedManagedServiceIdentityIds, identityName2));
                 }
                 finally
                 {
@@ -76,6 +129,20 @@ namespace Fluent.Tests.WebApp
                 }
             }
         }
+
+        private static bool SetContainsStringWithSubstring(ISet<string> setOfStrings, string stringToSearch)
+        {
+            foreach (var value in setOfStrings)
+            {
+                if (value.Contains(stringToSearch))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
 
         private static string CheckAddress(string url, IDictionary<string, string> headers = null)
         {
