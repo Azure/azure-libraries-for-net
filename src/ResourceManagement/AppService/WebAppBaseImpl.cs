@@ -463,6 +463,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         internal async Task<FluentT> CreateResourceInternalAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
+            SiteInner site = null;
             if (IsInCreateMode)
             {
                 //We are creating a new resource
@@ -476,48 +477,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
                 // Web app creation
                 Inner.SiteConfig = new Models.SiteConfig();
-                var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
+                site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
                 Inner.SiteConfig = null;
-                // Submit hostname bindings
-                var bindingTasks = new List<Task>();
-                foreach (var binding in hostNameBindingsToCreate.Values)
-                {
-                    bindingTasks.Add(binding.CreateAsync(cancellationToken));
-                }
-                foreach (string binding in hostNameBindingsToDelete)
-                {
-                    bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
-                }
-                await Task.WhenAll(bindingTasks);
-
-                // Refresh after hostname bindings
-                site = await GetSiteAsync(cancellationToken);
-
-                // Submit SSL bindings
-                var certTasks = new List<Task<IAppServiceCertificate>>();
-                foreach (var binding in sslBindingsToCreate.Values)
-                {
-                    binding.Inner.ToUpdate = true;
-                    certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
-                    hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
-                }
-                site.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
-                if (certTasks.Any())
-                {
-                    await Task.WhenAll(certTasks);
-
-                    site = await CreateOrUpdateInnerAsync(site, cancellationToken);
-                }
-
-                // Submit site config
-                if (this.SiteConfig != null)
-                {
-                    SiteConfigResourceInner configInner = await CreateOrUpdateSiteConfigAsync(this.SiteConfig, cancellationToken);
-                    this.SiteConfig = configInner;
-                }
-
-                // App settings && connection strings
-                await Task.WhenAll(SubmitAppSettingsAsync(Inner, cancellationToken), SubmitConnectionStringsAsync(Inner, cancellationToken));
             }
             else
             {
@@ -554,12 +515,49 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
                 msiHandler.HandleExternalIdentities();
 
-                await UpdateInnerAsync(siteUpdate, cancellationToken);
-
-                // App settings
-                await (SubmitAppSettingsAsync(Inner, cancellationToken));
-
+                site = await UpdateInnerAsync(siteUpdate, cancellationToken);
             }
+
+            // Submit hostname bindings
+            var bindingTasks = new List<Task>();
+            foreach (var binding in hostNameBindingsToCreate.Values)
+            {
+                bindingTasks.Add(binding.CreateAsync(cancellationToken));
+            }
+            foreach (string binding in hostNameBindingsToDelete)
+            {
+                bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
+            }
+            await Task.WhenAll(bindingTasks);
+
+            // Refresh after hostname bindings
+            site = await GetSiteAsync(cancellationToken);
+
+            // Submit SSL bindings
+            var certTasks = new List<Task<IAppServiceCertificate>>();
+            foreach (var binding in sslBindingsToCreate.Values)
+            {
+                binding.Inner.ToUpdate = true;
+                certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
+                hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
+            }
+            site.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+            if (certTasks.Any())
+            {
+                await Task.WhenAll(certTasks);
+
+                site = await CreateOrUpdateInnerAsync(site, cancellationToken);
+            }
+
+            // Submit site config
+            if (this.SiteConfig != null)
+            {
+                SiteConfigResourceInner configInner = await CreateOrUpdateSiteConfigAsync(this.SiteConfig, cancellationToken);
+                this.SiteConfig = configInner;
+            }
+
+            // App settings && connection strings
+            await Task.WhenAll(SubmitAppSettingsAsync(Inner, cancellationToken), SubmitConnectionStringsAsync(Inner, cancellationToken));
 
             // app setting and connection string stickiness
             if (appSettingStickiness.Count > 0 || connectionStringStickiness.Count > 0)
