@@ -1,21 +1,23 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor56023?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjU2MDIzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgmonitor11490?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjExNDkwP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"southcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "deee4e00-d419-4ced-8ab5-e1b56d1c36ed"
+          "720175b5-a8b5-41ff-873c-1606d57e271b"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -28,29 +30,29 @@
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:25 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-request-id": [
-          "def90c04-546f-4c1a-ad7f-c142a75e911a"
+          "c8f2b2c0-2621-468c-b907-131f271345f7"
         ],
         "x-ms-correlation-request-id": [
-          "def90c04-546f-4c1a-ad7f-c142a75e911a"
+          "c8f2b2c0-2621-468c-b907-131f271345f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183726Z:def90c04-546f-4c1a-ad7f-c142a75e911a"
+          "WESTUS:20190413T022814Z:c8f2b2c0-2621-468c-b907-131f271345f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:13 GMT"
         ],
         "Content-Length": [
           "189"
@@ -62,25 +64,27 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023\",\r\n  \"name\": \"rgmonitor56023\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490\",\r\n  \"name\": \"rgmonitor11490\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/serverfarms/mytestscalewebappc9e93063plan20997?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NlcnZlcmZhcm1zL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjNwbGFuMjA5OTc/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NlcnZlcmZhcm1zL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMThwbGFuOTg0NzI/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\"\r\n  },\r\n  \"kind\": \"app\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "12499135-ad62-43cc-a266-de59613f84aa"
+          "094eb3f0-b877-4c2a-8ec8-7ac5ba4f4d65"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -93,20 +97,17 @@
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:36 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cc8dab42-f63d-431b-9cfc-4771cfb3b4ac"
+          "e1a75942-ccb2-4845-8dd7-55a9decc4ada"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -115,19 +116,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "5df0c511-1868-4337-bf44-a263cd45e7e7"
+          "1b945896-1fc3-43e0-9296-a882e86b10b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183737Z:5df0c511-1868-4337-bf44-a263cd45e7e7"
+          "WESTUS:20190413T022821Z:1b945896-1fc3-43e0-9296-a882e86b10b6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:20 GMT"
+        ],
         "Content-Length": [
-          "1332"
+          "1379"
         ],
         "Content-Type": [
           "application/json"
@@ -136,25 +140,27 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/serverfarms/mytestscalewebappc9e93063plan20997\",\r\n  \"name\": \"mytestscalewebappc9e93063plan20997\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"serverFarmId\": 6566,\r\n    \"name\": \"mytestscalewebappc9e93063plan20997\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": \"Ready\",\r\n    \"webSpace\": \"rgmonitor56023-SouthCentralUSwebspace\",\r\n    \"subscription\": \"c549f475-dee8-428c-bb19-829a55e52f77\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 20,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"South Central US\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": {},\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"rgmonitor56023\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"mdmId\": \"waws-prod-sn1-159_6566\",\r\n    \"targetWorkerCount\": 0,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\",\r\n    \"family\": \"P\",\r\n    \"capacity\": 1\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472\",\r\n  \"name\": \"mytestscalewebappa4605018plan98472\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"serverFarmId\": 20287,\r\n    \"name\": \"mytestscalewebappa4605018plan98472\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": \"Ready\",\r\n    \"webSpace\": \"rgmonitor11490-SouthCentralUSwebspace\",\r\n    \"subscription\": \"0b1f6471-1bf0-4dda-aec3-cb9272f09590\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 20,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"South Central US\",\r\n    \"perSiteScaling\": false,\r\n    \"maximumElasticWorkerCount\": 1,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": {},\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"rgmonitor11490\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"mdmId\": \"waws-prod-sn1-149_20287\",\r\n    \"targetWorkerCount\": 0,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\",\r\n    \"family\": \"P\",\r\n    \"capacity\": 1\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjM/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTg/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor56023/providers/Microsoft.Web/serverFarms/mytestscalewebappc9e93063plan20997\",\r\n    \"siteConfig\": {}\r\n  },\r\n  \"kind\": \"app\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgmonitor11490/providers/Microsoft.Web/serverFarms/mytestscalewebappa4605018plan98472\",\r\n    \"siteConfig\": {}\r\n  },\r\n  \"kind\": \"app\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f0b0781a-3fe1-4d22-8b0a-0b7c8d5f35fa"
+          "26dfdb1b-ac0e-4a9c-aaa3-386f2190a8f5"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -167,23 +173,20 @@
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:42 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
         "ETag": [
-          "\"1D446D9DAC75DD5\""
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+          "\"1D4F1A092013100\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "85ca98ae-a801-4d3e-97ad-df27a92bc75f"
+          "856c129b-178f-4753-9c92-1cc343c0df11"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -195,16 +198,19 @@
           "499"
         ],
         "x-ms-correlation-request-id": [
-          "8a12d56a-c5a9-42a8-ba2b-43119ba37957"
+          "19f5b7cc-b5ae-4539-9298-773d92290acf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183743Z:8a12d56a-c5a9-42a8-ba2b-43119ba37957"
+          "WESTUS:20190413T022840Z:19f5b7cc-b5ae-4539-9298-773d92290acf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:40 GMT"
+        ],
         "Content-Length": [
-          "2948"
+          "3090"
         ],
         "Content-Type": [
           "application/json"
@@ -213,119 +219,47 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063\",\r\n  \"name\": \"mytestscalewebappc9e93063\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"mytestscalewebappc9e93063\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"mytestscalewebappc9e93063.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"rgmonitor56023-SouthCentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-sn1-159.api.azurewebsites.windows.net:454/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/webspaces/rgmonitor56023-SouthCentralUSwebspace/sites/mytestscalewebappc9e93063\",\r\n    \"repositorySiteName\": \"mytestscalewebappc9e93063\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"mytestscalewebappc9e93063.azurewebsites.net\",\r\n      \"mytestscalewebappc9e93063.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"mytestscalewebappc9e93063.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"mytestscalewebappc9e93063.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/serverfarms/mytestscalewebappc9e93063plan20997\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"lastModifiedTimeUtc\": \"2018-09-07T18:37:38.9633333\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"mytestscalewebappc9e93063\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"13.66.16.101,13.66.35.97,13.66.21.249,13.66.20.98,13.66.33.183\",\r\n    \"possibleOutboundIpAddresses\": \"13.66.16.101,13.66.35.97,13.66.21.249,13.66.20.98,13.66.33.183,52.171.216.165,13.85.31.117\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-sn1-159\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {},\r\n    \"resourceGroup\": \"rgmonitor56023\",\r\n    \"defaultHostName\": \"mytestscalewebappc9e93063.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n  \"name\": \"mytestscalewebappa4605018\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"mytestscalewebappa4605018\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"mytestscalewebappa4605018.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"rgmonitor11490-SouthCentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-sn1-149.api.azurewebsites.windows.net:454/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/webspaces/rgmonitor11490-SouthCentralUSwebspace/sites/mytestscalewebappa4605018\",\r\n    \"repositorySiteName\": \"mytestscalewebappa4605018\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"mytestscalewebappa4605018.azurewebsites.net\",\r\n      \"mytestscalewebappa4605018.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"mytestscalewebappa4605018.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"mytestscalewebappa4605018.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2019-04-13T02:28:24.2066667\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"mytestscalewebappa4605018\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"13.65.212.252,13.66.37.235,13.66.36.172,13.84.40.155,13.66.37.11\",\r\n    \"possibleOutboundIpAddresses\": \"13.65.212.252,13.66.37.235,13.66.36.172,13.84.40.155,13.66.37.11,40.84.136.198,23.98.144.222,23.98.128.142\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-sn1-149\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {},\r\n    \"resourceGroup\": \"rgmonitor11490\",\r\n    \"defaultHostName\": \"mytestscalewebappa4605018.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjM/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTg/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dfd3d114-91ff-41e1-a4d3-9f4a39fdc45b"
+          "626e9474-ff91-4b4a-a5c6-8b18c4cb375e"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:42 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
         "ETag": [
-          "\"1D446D9DAC75DD5\""
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+          "\"1D4F1A092013100\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "262629b9-62d2-4645-9c7e-549292e54fb8"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "ab47cb36-a0b3-4047-b65b-e6a89e000c27"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183743Z:ab47cb36-a0b3-4047-b65b-e6a89e000c27"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "2950"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063\",\r\n  \"name\": \"mytestscalewebappc9e93063\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"mytestscalewebappc9e93063\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"mytestscalewebappc9e93063.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"rgmonitor56023-SouthCentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-sn1-159.api.azurewebsites.windows.net:454/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/webspaces/rgmonitor56023-SouthCentralUSwebspace/sites/mytestscalewebappc9e93063\",\r\n    \"repositorySiteName\": \"mytestscalewebappc9e93063\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"mytestscalewebappc9e93063.azurewebsites.net\",\r\n      \"mytestscalewebappc9e93063.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"mytestscalewebappc9e93063.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"mytestscalewebappc9e93063.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/serverfarms/mytestscalewebappc9e93063plan20997\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"lastModifiedTimeUtc\": \"2018-09-07T18:37:39.2933333\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"mytestscalewebappc9e93063\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"13.66.16.101,13.66.35.97,13.66.21.249,13.66.20.98,13.66.33.183\",\r\n    \"possibleOutboundIpAddresses\": \"13.66.16.101,13.66.35.97,13.66.21.249,13.66.20.98,13.66.33.183,52.171.216.165,13.85.31.117\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-sn1-159\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {},\r\n    \"resourceGroup\": \"rgmonitor56023\",\r\n    \"defaultHostName\": \"mytestscalewebappc9e93063.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/hostNameBindings?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjMvaG9zdE5hbWVCaW5kaW5ncz9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "718f3768-39fd-406c-a746-e779a0441566"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:44 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"1D446D9DAC75DD5\""
+          "6c664bb0-d39d-499d-a93d-3ce159a3327c"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "4d97051b-4462-4cae-b505-5f00213b53d9"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -337,13 +271,162 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "b38f9b10-669d-462a-bcfd-41ffde1fe6cc"
+          "5af31e86-00c3-4794-88ce-d408a9273572"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183744Z:b38f9b10-669d-462a-bcfd-41ffde1fe6cc"
+          "WESTUS:20190413T022840Z:5af31e86-00c3-4794-88ce-d408a9273572"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:40 GMT"
+        ],
+        "Content-Length": [
+          "3087"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n  \"name\": \"mytestscalewebappa4605018\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"mytestscalewebappa4605018\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"mytestscalewebappa4605018.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"rgmonitor11490-SouthCentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-sn1-149.api.azurewebsites.windows.net:454/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/webspaces/rgmonitor11490-SouthCentralUSwebspace/sites/mytestscalewebappa4605018\",\r\n    \"repositorySiteName\": \"mytestscalewebappa4605018\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"mytestscalewebappa4605018.azurewebsites.net\",\r\n      \"mytestscalewebappa4605018.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"mytestscalewebappa4605018.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"mytestscalewebappa4605018.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2019-04-13T02:28:24.72\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"mytestscalewebappa4605018\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"13.65.212.252,13.66.37.235,13.66.36.172,13.84.40.155,13.66.37.11\",\r\n    \"possibleOutboundIpAddresses\": \"13.65.212.252,13.66.37.235,13.66.36.172,13.84.40.155,13.66.37.11,40.84.136.198,23.98.144.222,23.98.128.142\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-sn1-149\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {},\r\n    \"resourceGroup\": \"rgmonitor11490\",\r\n    \"defaultHostName\": \"mytestscalewebappa4605018.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTg/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a6470055-709e-4fc5-bb7e-837a5ac88cde"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"1D4F1A092013100\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "639cf04e-2307-47a2-a4b7-6aa4c7b31cf8"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "ab27db00-405f-4dd2-b4f1-f5dc0e318a64"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190413T022840Z:ab27db00-405f-4dd2-b4f1-f5dc0e318a64"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:40 GMT"
+        ],
+        "Content-Length": [
+          "3087"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n  \"name\": \"mytestscalewebappa4605018\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"mytestscalewebappa4605018\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"mytestscalewebappa4605018.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"rgmonitor11490-SouthCentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-sn1-149.api.azurewebsites.windows.net:454/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/webspaces/rgmonitor11490-SouthCentralUSwebspace/sites/mytestscalewebappa4605018\",\r\n    \"repositorySiteName\": \"mytestscalewebappa4605018\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"mytestscalewebappa4605018.azurewebsites.net\",\r\n      \"mytestscalewebappa4605018.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"mytestscalewebappa4605018.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"mytestscalewebappa4605018.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2019-04-13T02:28:24.72\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"mytestscalewebappa4605018\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"13.65.212.252,13.66.37.235,13.66.36.172,13.84.40.155,13.66.37.11\",\r\n    \"possibleOutboundIpAddresses\": \"13.65.212.252,13.66.37.235,13.66.36.172,13.84.40.155,13.66.37.11,40.84.136.198,23.98.144.222,23.98.128.142\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-sn1-149\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {},\r\n    \"resourceGroup\": \"rgmonitor11490\",\r\n    \"defaultHostName\": \"mytestscalewebappa4605018.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/hostNameBindings?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTgvaG9zdE5hbWVCaW5kaW5ncz9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "de74a9e6-9734-4266-acb3-1bcfd912b956"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"1D4F1A092013100\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d908d20f-e3e5-4170-8383-58cfa7a56f37"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "076e6d1c-d475-49d6-a671-7844c4bf4369"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190413T022840Z:076e6d1c-d475-49d6-a671-7844c4bf4369"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:40 GMT"
         ],
         "Content-Length": [
           "496"
@@ -355,45 +438,44 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/hostNameBindings/mytestscalewebappc9e93063.azurewebsites.net\",\r\n      \"name\": \"mytestscalewebappc9e93063/mytestscalewebappc9e93063.azurewebsites.net\",\r\n      \"type\": \"Microsoft.Web/sites/hostNameBindings\",\r\n      \"location\": \"South Central US\",\r\n      \"properties\": {\r\n        \"siteName\": \"mytestscalewebappc9e93063\",\r\n        \"domainId\": null,\r\n        \"hostNameType\": \"Verified\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/hostNameBindings/mytestscalewebappa4605018.azurewebsites.net\",\r\n      \"name\": \"mytestscalewebappa4605018/mytestscalewebappa4605018.azurewebsites.net\",\r\n      \"type\": \"Microsoft.Web/sites/hostNameBindings\",\r\n      \"location\": \"South Central US\",\r\n      \"properties\": {\r\n        \"siteName\": \"mytestscalewebappa4605018\",\r\n        \"domainId\": null,\r\n        \"hostNameType\": \"Verified\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/config/appsettings/list?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjMvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/config/appsettings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTgvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "85692521-5e4e-452e-b653-71f772c75e4d"
+          "73b3fab9-2698-4ace-a9a3-12af4600f76a"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:44 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bcf6b64d-7724-4280-9d12-8b45c313deb1"
+          "4d77c025-39af-4071-bdbc-4ec33be01239"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -405,13 +487,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "182b8f0c-70e2-42ba-a282-232b34638210"
+          "3e48c5e7-edf5-4dee-82da-f6b2a2d4be7c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183744Z:182b8f0c-70e2-42ba-a282-232b34638210"
+          "WESTUS:20190413T022841Z:3e48c5e7-edf5-4dee-82da-f6b2a2d4be7c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:41 GMT"
         ],
         "Content-Length": [
           "316"
@@ -423,45 +508,44 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/config/slotConfigNames?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjMvY29uZmlnL3Nsb3RDb25maWdOYW1lcz9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/config/slotConfigNames?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTgvY29uZmlnL3Nsb3RDb25maWdOYW1lcz9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6fc9cd02-ceb2-4384-be04-4cd3179ec18c"
+          "d800053f-72a3-42f7-a040-10f985ed0594"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:43 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c68cee39-7252-4af8-87a3-359f6a1382ad"
+          "9c398b4b-3530-43a6-9de7-a4fe89044f56"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -470,16 +554,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11973"
         ],
         "x-ms-correlation-request-id": [
-          "a77bb7dd-ea31-459b-85dd-02615d0250b6"
+          "9c8e67e6-554b-4d28-a467-ba9601ce3d87"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183744Z:a77bb7dd-ea31-459b-85dd-02615d0250b6"
+          "WESTUS:20190413T022841Z:9c8e67e6-554b-4d28-a467-ba9601ce3d87"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:41 GMT"
         ],
         "Content-Length": [
           "213"
@@ -491,45 +578,44 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": \"mytestscalewebappc9e93063\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"connectionStringNames\": null,\r\n    \"appSettingNames\": null,\r\n    \"azureStorageConfigNames\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": \"mytestscalewebappa4605018\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"connectionStringNames\": null,\r\n    \"appSettingNames\": null,\r\n    \"azureStorageConfigNames\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/config/slotConfigNames?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjMvY29uZmlnL3Nsb3RDb25maWdOYW1lcz9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/config/slotConfigNames?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTgvY29uZmlnL3Nsb3RDb25maWdOYW1lcz9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d0b4147d-a7ce-4081-9faa-3f1782fe009d"
+          "82a31930-1947-4039-a8f5-e22dd4f51815"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:43 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "39d920f1-7a62-4480-848c-f64a9f70eeb8"
+          "429fe975-a522-4207-ac16-d5bfdc145d15"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -538,16 +624,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "f083512b-56f6-47e9-b72d-20255e71d932"
+          "7f39f86b-b763-4202-a9d3-cb8890cb0d58"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183744Z:f083512b-56f6-47e9-b72d-20255e71d932"
+          "WESTUS:20190413T022841Z:7f39f86b-b763-4202-a9d3-cb8890cb0d58"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:41 GMT"
         ],
         "Content-Length": [
           "213"
@@ -559,45 +648,44 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": \"mytestscalewebappc9e93063\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"connectionStringNames\": null,\r\n    \"appSettingNames\": null,\r\n    \"azureStorageConfigNames\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": \"mytestscalewebappa4605018\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"connectionStringNames\": null,\r\n    \"appSettingNames\": null,\r\n    \"azureStorageConfigNames\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/config/connectionstrings/list?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYzllOTMwNjMvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/config/connectionstrings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL215dGVzdHNjYWxld2ViYXBwYTQ2MDUwMTgvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e051682f-c577-4a6b-9e25-b0d407751148"
+          "27e37639-6273-420d-8dc2-bcd52e1657eb"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:37:44 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cbb5e56a-3a31-4e0d-ab67-686cf3d3febd"
+          "86982079-fdd6-4b43-b903-b1743fa339e2"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -606,16 +694,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11998"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "d5791ba1-13d8-4de7-8878-9ca68273ecb1"
+          "d195542f-d211-4cd9-9102-9a807997df5c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183744Z:d5791ba1-13d8-4de7-8878-9ca68273ecb1"
+          "WESTUS:20190413T022841Z:d195542f-d211-4cd9-9102-9a807997df5c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:41 GMT"
         ],
         "Content-Length": [
           "290"
@@ -627,25 +718,27 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {}\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor56023/providers/microsoft.insights/autoscalesettings/autoscalename163007?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjU2MDIzL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3MvYXV0b3NjYWxlbmFtZTE2MzAwNz9hcGktdmVyc2lvbj0yMDE1LTA0LTAx",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgmonitor11490/providers/microsoft.insights/autoscalesettings/autoscalename117433?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjExNDkwL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3MvYXV0b3NjYWxlbmFtZTExNzQzMz9hcGktdmVyc2lvbj0yMDE1LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": []\r\n      },\r\n      {\r\n        \"name\": \"Monday to Friday\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"2\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricResourceUri\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Sum\",\r\n              \"timeWindow\": \"PT5M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 10.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          },\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricResourceUri\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 5.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              9\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"{\\\"name\\\":\\\"Default\\\",\\\"for\\\":\\\"Monday to Friday\\\"}\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              30\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\"\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"targetResourceUri\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/serverfarms/mytestscalewebappc9e93063plan20997\"\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": []\r\n      },\r\n      {\r\n        \"name\": \"Monday to Friday\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"2\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Sum\",\r\n              \"timeWindow\": \"PT5M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 10.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          },\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 5.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              9\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"{\\\"name\\\":\\\"Default\\\",\\\"for\\\":\\\"Monday to Friday\\\"}\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              30\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\"\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"targetResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472\"\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0d3763eb-1e05-4c9a-b3e9-cee88dfd4a53"
+          "02b99428-1ce9-4459-9ece-c8c6ad463edd"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -658,35 +751,35 @@
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:38:04 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b458e859-8eb6-4b2e-84ab-df537d44fb01"
+          "ef87d930-9e48-46fa-a7a6-d07f0c7b9230"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "3dc827fe-99b4-41f0-ac93-aebcc9641715"
+          "05af7b24-ad29-4401-9998-b69039e06892"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183805Z:3dc827fe-99b4-41f0-ac93-aebcc9641715"
+          "WESTUS:20190413T022847Z:05af7b24-ad29-4401-9998-b69039e06892"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Date": [
+          "Sat, 13 Apr 2019 02:28:47 GMT"
+        ],
         "Content-Length": [
-          "2252"
+          "2288"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -695,48 +788,47 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/microsoft.insights/autoscalesettings/autoscalename163007\",\r\n  \"name\": \"autoscalename163007\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"$type\": \"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\"\r\n  },\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": []\r\n      },\r\n      {\r\n        \"name\": \"Monday to Friday\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"2\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Sum\",\r\n              \"timeWindow\": \"PT5M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 10.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          },\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/sites/mytestscalewebappc9e93063\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 5.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              9\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"{\\\"name\\\":\\\"Default\\\",\\\"for\\\":\\\"Monday to Friday\\\"}\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              30\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"name\": \"autoscalename163007\",\r\n    \"targetResourceUri\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023/providers/Microsoft.Web/serverfarms/mytestscalewebappc9e93063plan20997\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": null,\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/microsoft.insights/autoscalesettings/autoscalename117433\",\r\n  \"name\": \"autoscalename117433\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"$type\": \"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\"\r\n  },\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": []\r\n      },\r\n      {\r\n        \"name\": \"Monday to Friday\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"2\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Sum\",\r\n              \"timeWindow\": \"PT5M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 10.0,\r\n              \"dimensions\": null\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          },\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Requests\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/sites/mytestscalewebappa4605018\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 5.0,\r\n              \"dimensions\": null\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              9\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"{\\\"name\\\":\\\"Default\\\",\\\"for\\\":\\\"Monday to Friday\\\"}\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"1\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"Pacific Standard Time\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Wednesday\",\r\n              \"Thursday\",\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              30\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"name\": \"autoscalename117433\",\r\n    \"targetResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490/providers/Microsoft.Web/serverfarms/mytestscalewebappa4605018plan98472\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": null,\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor56023?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjU2MDIzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgmonitor11490?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjExNDkwP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "95858e7d-be39-4aea-b06d-7b0940429916"
+          "4accedab-823c-435f-8c3a-dff62fdf15cb"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
-        ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:39:05 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11972"
         ],
         "x-ms-request-id": [
-          "c8eb4865-8a39-4b0e-8522-d88de9f110c7"
+          "2cb90946-c66d-48dc-8530-a67b35cf2bbf"
         ],
         "x-ms-correlation-request-id": [
-          "c8eb4865-8a39-4b0e-8522-d88de9f110c7"
+          "2cb90946-c66d-48dc-8530-a67b35cf2bbf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183906Z:c8eb4865-8a39-4b0e-8522-d88de9f110c7"
+          "WESTUS:20190413T022954Z:2cb90946-c66d-48dc-8530-a67b35cf2bbf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -744,64 +836,66 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Content-Length": [
-          "189"
+        "Date": [
+          "Sat, 13 Apr 2019 02:29:54 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "189"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor56023\",\r\n  \"name\": \"rgmonitor56023\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgmonitor11490\",\r\n  \"name\": \"rgmonitor11490\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor56023?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjU2MDIzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgmonitor11490?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjExNDkwP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ea016c9a-1994-461d-9a78-e53cd2e64619"
+          "890a7b26-14f7-4a6e-a11f-6097963c589c"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.15.1.0",
-          "MacAddressHash/3606383d3cf618d6f5dea1ad3ef23ac525db732b736fa3458a7c5cd325c2ece0"
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 07 Sep 2018 18:39:06 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR01PTklUT1I1NjAyMy1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ?api-version=2017-05-10"
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR01PTklUT1IxMTQ5MC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ?api-version=2017-05-10"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-request-id": [
-          "cc9f96cb-55a2-40c4-b4b2-e89157c9299c"
+          "ef5c5215-2e00-43b1-9701-f4e07376459c"
         ],
         "x-ms-correlation-request-id": [
-          "cc9f96cb-55a2-40c4-b4b2-e89157c9299c"
+          "ef5c5215-2e00-43b1-9701-f4e07376459c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180907T183906Z:cc9f96cb-55a2-40c4-b4b2-e89157c9299c"
+          "WESTUS:20190413T022955Z:ef5c5215-2e00-43b1-9701-f4e07376459c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -809,11 +903,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Content-Length": [
-          "0"
+        "Date": [
+          "Sat, 13 Apr 2019 02:29:55 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "",
@@ -822,15 +919,15 @@
   ],
   "Names": {
     "AutoscaleSettingsBasedOnPerformanceOrScheduleTest": [
-      "mytestscalewebappc9e93063",
-      "autoscalename163007",
-      "rgmonitor56023",
-      "mytestscalewebappc9e93063plan20997"
+      "mytestscalewebappa4605018",
+      "autoscalename117433",
+      "rgmonitor11490",
+      "mytestscalewebappa4605018plan98472"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "f74ae42a-23b2-4924-ae42-7bd7777b84a6",
-    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "SubscriptionId": "c549f475-dee8-428c-bb19-829a55e52f77"
+    "ServicePrincipal": "39e3d217-cb72-4b90-8532-394a7e784d93",
+    "AADTenant": "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a",
+    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
   }
 }
