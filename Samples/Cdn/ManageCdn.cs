@@ -34,7 +34,7 @@ namespace ManageCdn
         {
             string cdnProfileName = Utilities.CreateRandomName("cdnStandardProfile");
             string rgName = SdkContext.RandomResourceName("rgCDN_", 24);
-            var appNames = new string[8];
+            var appNames = new string[7];
 
             try
             {
@@ -45,7 +45,7 @@ namespace ManageCdn
 
                 // ============================================================
                 // Create 8 websites
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     appNames[i] = SdkContext.RandomResourceName("webapp" + (i + 1) + "-", 20);
                 }
@@ -63,10 +63,10 @@ namespace ManageCdn
                 CreateWebApp(azure, rgName, appNames[5], Region.AustraliaSouthEast);
 
                 // 1 in Brazil
-                CreateWebApp(azure, rgName, appNames[6], Region.BrazilSouth);
+                // CreateWebApp(azure, rgName, appNames[6], Region.BrazilSouth);
 
                 // 1 in Japan
-                CreateWebApp(azure, rgName, appNames[7], Region.JapanWest);
+                CreateWebApp(azure, rgName, appNames[6], Region.JapanWest);
 
                 // =======================================================================================
                 // Create CDN profile using Standard Verizon SKU with endpoints in each region of Web apps.
@@ -75,7 +75,7 @@ namespace ManageCdn
                 // create Cdn Profile definition object that will let us do a for loop
                 // to define all 8 endpoints and then parallelize their creation
                 var profileDefinition = azure.CdnProfiles.Define(cdnProfileName)
-                        .WithRegion(Region.USCentral)
+                        .WithRegion(Region.USSouthCentral)
                         .WithExistingResourceGroup(rgName)
                         .WithStandardVerizonSku();
 

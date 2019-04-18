@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:4F0DD1E3F09332DAEE78A7163765E0EA:DC09185D93597A9B3912ED6CC825299E
         public override async Task<Microsoft.Azure.Management.AppService.Fluent.IPublishingProfile> GetPublishingProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            using (var stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsSlotAsync(ResourceGroupName, parent.Name, null, Name, cancellationToken))
+            using (var stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsSlotAsync(ResourceGroupName, parent.Name, new CsmPublishingProfileOptions(), Name, cancellationToken))
             {
                 using (var reader = new StreamReader(stream))
                 {
@@ -226,6 +226,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public FluentImplT WithBrandNewConfiguration()
         {
             Inner.SiteConfig = new Models.SiteConfig();
+
+            Inner.SiteConfig.AppSettings = new List<NameValuePair>();
 
             return (FluentImplT) this;
         }

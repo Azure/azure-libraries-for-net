@@ -484,9 +484,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 msiHandler.HandleExternalIdentities();
 
                 // Web app creation
-                Inner.SiteConfig = new Models.SiteConfig();
                 site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
-                Inner.SiteConfig = null;
             }
             else
             {
@@ -621,7 +619,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Wait for previous settings to be effective before deployment
             if (sourceControlToDelete || sourceControl != null)
             {
-                await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
+                await SdkContext.DelayProvider.DelayAsync(60 * 1000, cancellationToken);
             }
 
             // Delete source control
