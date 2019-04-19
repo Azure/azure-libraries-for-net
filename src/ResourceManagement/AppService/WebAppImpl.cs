@@ -226,6 +226,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
+        public WebAppImpl WithIpSecurityRestriction(string ipAddress, string subnetMask = default(string))
+        {
+            SiteConfig.IpSecurityRestrictions.Add(new IpSecurityRestriction(ipAddress, subnetMask));
+            return this;
+        }
+
         IWithCreate IExistingWindowsPlanWithGroup.WithNewResourceGroup(string name)
         {
             WithNewResourceGroup(name);
