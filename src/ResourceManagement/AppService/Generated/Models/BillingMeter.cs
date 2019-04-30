@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="friendlyName">Friendly name of the meter</param>
         /// <param name="resourceType">App Service ResourceType meter used
         /// for</param>
-        public BillingMeter(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string meterId = default(string), string billingLocation = default(string), string shortName = default(string), string friendlyName = default(string), string resourceType = default(string))
+        /// <param name="osType">App Service OS type meter used for</param>
+        public BillingMeter(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string meterId = default(string), string billingLocation = default(string), string shortName = default(string), string friendlyName = default(string), string resourceType = default(string), string osType = default(string))
             : base(id, name, type, kind)
         {
             MeterId = meterId;
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             ShortName = shortName;
             FriendlyName = friendlyName;
             ResourceType = resourceType;
+            OsType = osType;
             CustomInit();
         }
 
@@ -85,6 +87,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceType")]
         public string ResourceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets app Service OS type meter used for
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.osType")]
+        public string OsType { get; set; }
 
     }
 }

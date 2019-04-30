@@ -7,6 +7,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     using System.Collections.Generic;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The template for a site update operation, containing all the settings that can be modified.
@@ -27,7 +29,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithAuthentication<FluentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithDiagnosticLogging<FluentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithManagedServiceIdentity<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT>
     {
 
     }
@@ -36,8 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// A web app definition stage allowing System Assigned Managed Service Identity to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithManagedServiceIdentity<FluentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithManagedServiceIdentity<FluentT> 
     {
 
         /// <summary>
@@ -45,6 +47,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// </summary>
         /// <return>The next stage of the web app definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithSystemAssignedManagedServiceIdentity();
+
+        /// <summary>
+        /// Specifies that User Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithUserAssignedManagedServiceIdentity();
     }
 
     /// <summary>
@@ -285,8 +293,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// set access role for the identity.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSystemAssignedIdentityBasedAccess<FluentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithSystemAssignedIdentityBasedAccess<FluentT> 
     {
 
         /// <summary>
@@ -327,6 +334,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
+
+        /// <summary>
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be disabled.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithoutSystemAssignedManagedServiceIdentity();
     }
 
     /// <summary>
@@ -540,6 +553,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// <param name="enabled">True if web sockets are enabled.</param>
         /// <return>The next stage of web app update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithWebSocketsEnabled(bool enabled);
+    }
+
+    /// <summary>
+    /// The stage of the web app update allowing to add User Assigned (External) Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentityBasedAccess<FluentT> 
+    {
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the web app.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the web app.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the web app should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithoutUserAssignedManagedServiceIdentity(string identityId);
     }
 
     /// <summary>

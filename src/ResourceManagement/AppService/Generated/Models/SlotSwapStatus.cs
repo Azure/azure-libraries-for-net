@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The status of the last successfull slot swap operation.
+    /// The status of the last successful slot swap operation.
     /// </summary>
     public partial class SlotSwapStatus
     {

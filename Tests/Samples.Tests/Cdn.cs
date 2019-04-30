@@ -15,7 +15,7 @@ namespace Samples.Tests
         {
         }
 
-        [Fact]
+        [Fact(Skip ="Fails with server side issue, need to follow up with the CDN service team")]
         [Trait("Samples", "Cdn")]
         public void ManageCdnTest()
         {

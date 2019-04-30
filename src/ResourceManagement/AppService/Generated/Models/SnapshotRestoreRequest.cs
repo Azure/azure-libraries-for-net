@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// conflicts will be ignored when recovering to a target web app.
         /// This setting is only necessary when RecoverConfiguration is
         /// enabled.</param>
-        public SnapshotRestoreRequest(bool overwrite, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string snapshotTime = default(string), SnapshotRecoverySource recoverySource = default(SnapshotRecoverySource), bool? recoverConfiguration = default(bool?), bool? ignoreConflictingHostNames = default(bool?))
+        /// <param name="useDRSecondary">If true, the snapshot is retrieved
+        /// from DRSecondary endpoint.</param>
+        public SnapshotRestoreRequest(bool overwrite, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string snapshotTime = default(string), SnapshotRecoverySource recoverySource = default(SnapshotRecoverySource), bool? recoverConfiguration = default(bool?), bool? ignoreConflictingHostNames = default(bool?), bool? useDRSecondary = default(bool?))
             : base(id, name, type, kind)
         {
             SnapshotTime = snapshotTime;
@@ -53,6 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             Overwrite = overwrite;
             RecoverConfiguration = recoverConfiguration;
             IgnoreConflictingHostNames = ignoreConflictingHostNames;
+            UseDRSecondary = useDRSecondary;
             CustomInit();
         }
 
@@ -101,12 +104,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public bool? IgnoreConflictingHostNames { get; set; }
 
         /// <summary>
+        /// Gets or sets if true, the snapshot is retrieved from DRSecondary
+        /// endpoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.useDRSecondary")]
+        public bool? UseDRSecondary { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
         }
     }

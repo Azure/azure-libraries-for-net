@@ -31,5 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public static readonly SkuName Dynamic = Parse("Dynamic");
         public static readonly SkuName Isolated = Parse("Isolated");
         public static readonly SkuName PremiumV2 = Parse("PremiumV2");
+        public static readonly SkuName ElasticPremium = Parse("ElasticPremium");
+        public static readonly SkuName ElasticIsolated = Parse("ElasticIsolated");
     }
 }

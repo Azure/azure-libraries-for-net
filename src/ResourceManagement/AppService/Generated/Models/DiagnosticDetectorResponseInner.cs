@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing Reponse from Diagnostic Detectors
+    /// Class representing Response from Diagnostic Detectors
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class DiagnosticDetectorResponseInner : ProxyOnlyResourceInner

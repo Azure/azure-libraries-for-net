@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using ResourceManager.Fluent.Models;
     using System.Linq;
     using System;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The base implementation for web apps and function apps.
@@ -35,6 +36,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal async override Task<SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Manager.Inner.WebApps.CreateOrUpdateAsync(ResourceGroupName, Name, site, cancellationToken: cancellationToken);
+        }
+
+        internal async override Task<SiteInner> UpdateInnerAsync(SitePatchResource siteUpdate, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.UpdateAsync(ResourceGroupName, Name, siteUpdate, cancellationToken: cancellationToken);
         }
 
         ///GENMHASH:EB854F18026EDB6E01762FA4580BE789:E0C4A1757552CAB0ED8F92E2EB35D2E2
@@ -139,7 +145,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:3F0152723C985A22C1032733AB942C96:9A3E19132DCD027C4BA1BBB085642F29
         public override IPublishingProfile GetPublishingProfile()
         {
-            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name));
+            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, new CsmPublishingProfileOptions()));
             StreamReader reader = new StreamReader(stream);
             string xml = reader.ReadToEnd();
             return new PublishingProfileImpl(xml);
@@ -383,7 +389,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public async override Task<IPublishingProfile> GetPublishingProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            Stream stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, null, cancellationToken);
+            Stream stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, new CsmPublishingProfileOptions(), cancellationToken);
             StreamReader reader = new StreamReader(stream);
             string xml = reader.ReadToEnd();
             return new PublishingProfileImpl(xml);

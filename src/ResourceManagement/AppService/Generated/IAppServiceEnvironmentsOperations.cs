@@ -337,6 +337,36 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse<HostingEnvironmentDiagnosticsInner>> GetDiagnosticsItemWithHttpMessagesAsync(string resourceGroupName, string name, string diagnosticsName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get the network endpoints of all inbound dependencies of an App
+        /// Service Environment.
+        /// </summary>
+        /// <remarks>
+        /// Get the network endpoints of all inbound dependencies of an App
+        /// Service Environment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<InboundEnvironmentEndpoint>>> GetInboundNetworkDependenciesEndpointsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get global metric definitions of an App Service Environment.
         /// </summary>
         /// <remarks>
@@ -383,8 +413,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -649,8 +679,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -757,6 +787,36 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IList<OperationInner>>> ListOperationsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get the network endpoints of all outbound dependencies of an App
+        /// Service Environment.
+        /// </summary>
+        /// <remarks>
+        /// Get the network endpoints of all outbound dependencies of an App
+        /// Service Environment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<OutboundEnvironmentEndpoint>>> GetOutboundNetworkDependenciesEndpointsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Reboot all machines in an App Service Environment.
         /// </summary>
@@ -898,31 +958,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<SiteInner>>> SuspendWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Resume an App Service Environment.
-        /// </summary>
-        /// <remarks>
-        /// Resume an App Service Environment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service Environment.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> SyncVirtualNetworkInfoWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Get global usage metrics of an App Service Environment.
         /// </summary>
         /// <remarks>
@@ -937,8 +972,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -1147,8 +1182,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -1224,8 +1259,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -1622,6 +1657,33 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<SiteInner>>> ChangeVnetNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get the network endpoints of all inbound dependencies of an App
+        /// Service Environment.
+        /// </summary>
+        /// <remarks>
+        /// Get the network endpoints of all inbound dependencies of an App
+        /// Service Environment.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<InboundEnvironmentEndpoint>>> GetInboundNetworkDependenciesEndpointsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get global metrics of an App Service Environment.
         /// </summary>
         /// <remarks>
@@ -1829,6 +1891,33 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Usage>>> ListMultiRoleUsagesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get the network endpoints of all outbound dependencies of an App
+        /// Service Environment.
+        /// </summary>
+        /// <remarks>
+        /// Get the network endpoints of all outbound dependencies of an App
+        /// Service Environment.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<OutboundEnvironmentEndpoint>>> GetOutboundNetworkDependenciesEndpointsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Resume an App Service Environment.
         /// </summary>

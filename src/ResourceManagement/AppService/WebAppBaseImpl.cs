@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.IO;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The implementation for WebAppBase.
@@ -77,6 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private bool diagnosticLogsToUpdate;
         private Func<SiteInner, CancellationToken, Task<IRoleAssignment>> msiRoleHandler;
         internal KuduClient kuduClient;
+        private WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> msiHandler;
 
         internal SiteConfigResourceInner SiteConfig
         {
@@ -103,6 +106,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public ScmType ScmType => SiteConfig?.ScmType;
 
         public string DocumentRoot => SiteConfig?.DocumentRoot;
+
+        internal ISet<string> UserAssignedManagedServiceIdentityIds()
+        {
+            if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
+            {
+                return new HashSet<string>(this.Inner.Identity.UserAssignedIdentities.Keys);
+            }
+
+            return new HashSet<string>();
+        }
 
         ///GENMHASH:6779D3D3C7AB7AAAE805BA0ABEE95C51:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<StringDictionaryInner> UpdateAppSettingsAsync(StringDictionaryInner inner, CancellationToken cancellationToken = default(CancellationToken));
@@ -158,6 +171,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             this.sourceControlToDelete = false;
             this.authenticationToUpdate = false;
             this.diagnosticLogsToUpdate = false;
+            if (this.msiHandler != null)
+            {
+                this.msiHandler.Clear();
+            }
             this.sslBindingsToCreate = new Dictionary<string, HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>>();
             if (Inner.HostNames != null)
             {
@@ -454,15 +471,59 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         internal async Task<FluentT> CreateResourceInternalAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (hostNameSslStateMap.Count > 0)
+            SiteInner site = null;
+            if (IsInCreateMode)
             {
-                Inner.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+                //We are creating a new resource
+                if (hostNameSslStateMap.Count > 0)
+                {
+                    Inner.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+                }
+
+                msiHandler.ProcessCreatedExternalIdentities();
+                msiHandler.HandleExternalIdentities();
+
+                // Web app creation
+                site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
+            }
+            else
+            {
+                var siteInner1 = (SiteInner)this.Inner;
+
+                msiHandler.ProcessCreatedExternalIdentities();
+
+                //We are updating an existing resource
+                SitePatchResource siteUpdate = new SitePatchResource()
+                {
+                    HostNameSslStates = siteInner1.HostNameSslStates,
+                    Tags = siteInner1.Tags,
+                    Kind = siteInner1.Kind,
+                    Enabled = siteInner1.Enabled,
+                    ServerFarmId = siteInner1.ServerFarmId,
+                    Reserved = siteInner1.Reserved,
+                    IsXenon = siteInner1.IsXenon,
+                    HyperV = siteInner1.HyperV,
+                    ScmSiteAlsoStopped = siteInner1.ScmSiteAlsoStopped,
+                    HostingEnvironmentProfile = siteInner1.HostingEnvironmentProfile,
+                    ClientAffinityEnabled = siteInner1.ClientAffinityEnabled,
+                    ClientCertEnabled = siteInner1.ClientCertEnabled,
+                    ClientCertExclusionPaths = siteInner1.ClientCertExclusionPaths,
+                    HostNamesDisabled = siteInner1.HostNamesDisabled,
+                    ContainerSize = siteInner1.ContainerSize,
+                    DailyMemoryTimeQuota = siteInner1.DailyMemoryTimeQuota,
+                    CloningInfo = siteInner1.CloningInfo,
+                    HttpsOnly = siteInner1.HttpsOnly,
+                    RedundancyMode = siteInner1.RedundancyMode,
+                    GeoDistributions = siteInner1.GeoDistributions,
+                    
+                    SiteConfig = new SiteConfig()
+                };
+
+                msiHandler.HandleExternalIdentities(siteUpdate);
+
+                site = await UpdateInnerAsync(siteUpdate, cancellationToken);
             }
 
-            // Web app creation
-            Inner.SiteConfig = new Models.SiteConfig();
-            var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
-            Inner.SiteConfig = null;
             // Submit hostname bindings
             var bindingTasks = new List<Task>();
             foreach (var binding in hostNameBindingsToCreate.Values)
@@ -551,10 +612,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 slotConfigs = await UpdateSlotConfigurationsAsync(slotConfigs, cancellationToken);
             }
 
+
+            // Refresh after hostname bindings
+            var siteInner = await GetSiteAsync(cancellationToken);
+
             // Wait for previous settings to be effective before deployment
             if (sourceControlToDelete || sourceControl != null)
             {
-                await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
+                await SdkContext.DelayProvider.DelayAsync(60 * 1000, cancellationToken);
             }
 
             // Delete source control
@@ -585,19 +650,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     await UpdateDiagnosticLogsConfigAsync(diagnosticLogs.Inner, cancellationToken), this);
             }
 
-            // MSI Roles
-            if (msiRoleHandler != null)
-            {
-                if (site.Identity == null || site.Identity.PrincipalId == null)
-                {
-                    throw new CloudException("A managed service identity was failed to be created for this web app.");
-                }
-                await msiRoleHandler.Invoke(site, cancellationToken);
-            }
 
             // convert from Inner
-            SetInner(site);
+            SetInner(siteInner);
             NormalizeProperties();
+            await msiHandler.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
 
             return this as FluentT;
         }
@@ -1075,6 +1132,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         internal abstract Task<SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken));
 
+        internal abstract Task<SiteInner> UpdateInnerAsync(SitePatchResource siteUpdate, CancellationToken cancellationToken = default(CancellationToken));
+
         ///GENMHASH:FA07D0476A4A7B9F0FDA17B8DF0095F1:FC345DE9B0C87952B3DE42BCE0488ECD
         public IReadOnlyDictionary<string, IConnectionString> GetConnectionStrings()
         {
@@ -1134,6 +1193,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(logConfig, this);
             }
+
+            msiHandler = new WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(manager.GraphRbacManager, this);
             NormalizeProperties();
             kuduClient = new KuduClient(this);
         }
@@ -1515,12 +1576,38 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return Inner.Identity.PrincipalId;
         }
 
+        public FluentImplT WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            this.msiHandler.WithNewExternalManagedServiceIdentity(creatableIdentity);
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            this.msiHandler.WithoutExternalManagedServiceIdentity(identityId);
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithoutSystemAssignedManagedServiceIdentity()
+        {
+            this.msiHandler.WithoutLocalManagedServiceIdentity();
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            this.msiHandler.WithExistingExternalManagedServiceIdentity(identity);
+            return (FluentImplT)this;
+        }
+
         public FluentImplT WithSystemAssignedManagedServiceIdentity()
         {
-            Inner.Identity = new ManagedServiceIdentity
-            {
-                Type = ManagedServiceIdentityType.SystemAssigned
-            };
+            this.msiHandler.WithLocalManagedServiceIdentity();
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithUserAssignedManagedServiceIdentity()
+        {
             return (FluentImplT)this;
         }
 
@@ -1531,13 +1618,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithBuiltInRole(role)
-                .WithScope(resourceId)
-                .CreateAsync(c);
-
+            this.msiHandler.WithAccessTo(resourceId, role);
             return (FluentImplT)this;
         }
 
@@ -1548,12 +1629,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithBuiltInRole(role)
-                .WithScope(ResourceGroupId(site.Id))
-                .CreateAsync(c);
+            this.msiHandler.WithAccessToCurrentResourceGroup(role);
 
             return (FluentImplT)this;
         }
@@ -1565,12 +1641,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithRoleDefinition(roleDefinitionId)
-                .WithScope(resourceId)
-                .CreateAsync(c);
+            this.msiHandler.WithAccessTo(resourceId, roleDefinitionId);
 
             return (FluentImplT)this;
         }
@@ -1582,12 +1653,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithRoleDefinition(roleDefinitionId)
-                .WithScope(ResourceGroupId(site.Id))
-                .CreateAsync(c);
+            msiHandler.WithAccessToCurrentResourceGroup(roleDefinitionId);
 
             return (FluentImplT)this;
         }

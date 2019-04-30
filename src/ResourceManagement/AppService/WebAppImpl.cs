@@ -3,6 +3,7 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Rest.Azure;
     using Models;
     using ResourceManager.Fluent;

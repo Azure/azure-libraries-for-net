@@ -53,7 +53,7 @@ namespace ManageLinuxWebAppWithTrafficManager
                 Utilities.Log("Purchasing a domain " + domainName + "...");
 
                 azure.ResourceGroups.Define(resourceGroupName)
-                        .WithRegion(Region.USWest)
+                        .WithRegion(Region.USNorthCentral)
                         .Create();
 
                 var domain = azure.AppServices.AppServiceDomains.Define(domainName)
@@ -90,7 +90,7 @@ namespace ManageLinuxWebAppWithTrafficManager
 
                 Utilities.Log("Creating app service plan " + plan1Name + " in US West...");
 
-                var plan1 = CreateAppServicePlan(azure, resourceGroupName, plan1Name, Region.USWest);
+                var plan1 = CreateAppServicePlan(azure, resourceGroupName, plan1Name, Region.USNorthCentral);
 
                 Utilities.Log("Created app service plan " + plan1.Name);
                 Utilities.Print(plan1);

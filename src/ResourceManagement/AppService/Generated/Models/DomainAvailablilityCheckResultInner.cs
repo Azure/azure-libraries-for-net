@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Domain availablility check result.
+    /// Domain availability check result.
     /// </summary>
     public partial class DomainAvailablilityCheckResultInner
     {

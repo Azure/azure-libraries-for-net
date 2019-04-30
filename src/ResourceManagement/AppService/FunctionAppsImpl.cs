@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The implementation for FunctionApps.
@@ -27,7 +28,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             IAppServiceManager>,
         IFunctionApps
     {
-
         ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:437A8ECA353AAE23242BFC82A5066CC3
         public override IEnumerable<IFunctionApp> ListByResourceGroup(string resourceGroupName)
         {

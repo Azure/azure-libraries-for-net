@@ -250,7 +250,7 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
           "0234c67e-d66c-4aa9-8e88-a37bd730ae59"
@@ -392,8 +392,8 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "499"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
         ],
         "x-ms-correlation-request-id": [
           "383a7668-b8da-46da-af67-18a5337be2c3"
@@ -497,7 +497,7 @@
       "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/javacsmrg7672/providers/Microsoft.Web/sites/java-webapp-4253/config/web?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzc2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtNDI1My9jb25maWcvd2ViP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"alwaysOn\": true,\r\n    \"javaVersion\": \"1.7.0_51\",\r\n    \"javaContainer\": \"Tomcat\",\r\n    \"javaContainerVersion\": \"7.0.50\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"alwaysOn\": true,\r\n    \"javaVersion\": \"11\",\r\n    \"javaContainer\": \"Tomcat\",\r\n    \"javaContainerVersion\": \"8.5\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "2a55038f-c287-4bcc-a083-6c6e201b58b8"
@@ -516,7 +516,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "153"
+          "144"
         ]
       },
       "ResponseHeaders": {
@@ -4737,7 +4737,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "263"
+          "294"
         ]
       },
       "ResponseHeaders": {
@@ -4910,6 +4910,9 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -5290,7 +5293,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "263"
+          "240"
         ]
       },
       "ResponseHeaders": {
@@ -6633,7 +6636,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "263"
+          "244"
         ]
       },
       "ResponseHeaders": {
@@ -7357,6 +7360,67 @@
         "ETag": [
           "\"1D4FF0A7FB967C0\""
         ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "333279c9-9474-44b6-8b38-220a1f59a346"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190418T205137Z:333279c9-9474-44b6-8b38-220a1f59a346"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 18 Apr 2019 20:51:37 GMT"
+        ],
+        "Content-Length": [
+          "995"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg2104/providers/Microsoft.Web/sites/java-webapp-6236/slots/java-slot-8389/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp623637628;AccountKey=HYUXp2bEl6VdO0YwBmAty3XcKzRocuPfuzu2MrAqTqL3YPtnf9oDTN0fxWKZtYUoGIZZq1ZClMRzhQdGYWOYoA==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp623637628;AccountKey=HYUXp2bEl6VdO0YwBmAty3XcKzRocuPfuzu2MrAqTqL3YPtnf9oDTN0fxWKZtYUoGIZZq1ZClMRzhQdGYWOYoA==\",\r\n    \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp623637628;AccountKey=HYUXp2bEl6VdO0YwBmAty3XcKzRocuPfuzu2MrAqTqL3YPtnf9oDTN0fxWKZtYUoGIZZq1ZClMRzhQdGYWOYoA==\",\r\n    \"WEBSITE_CONTENTSHARE\": \"java-webapp-6236-2111afae\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg2104/providers/Microsoft.Web/sites/java-webapp-6236/slots/java-slot-8389/config/appsettings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzIxMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtNjIzNi9zbG90cy9qYXZhLXNsb3QtODM4OS9jb25maWcvYXBwc2V0dGluZ3MvbGlzdD9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "74094c71-214a-459e-a0f9-79d9635da1b1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
@@ -7435,6 +7499,64 @@
         ],
         "ETag": [
           "\"1D4FF0A7FB967C0\""
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd54727d-3f36-465b-ab8c-0792b7ab2d4d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190418T205140Z:fd54727d-3f36-465b-ab8c-0792b7ab2d4d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 18 Apr 2019 20:51:40 GMT"
+        ],
+        "Content-Length": [
+          "1050"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg2104/providers/Microsoft.Web/sites/java-webapp-6236/slots/java-slot-8389/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp623637628;AccountKey=HYUXp2bEl6VdO0YwBmAty3XcKzRocuPfuzu2MrAqTqL3YPtnf9oDTN0fxWKZtYUoGIZZq1ZClMRzhQdGYWOYoA==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp623637628;AccountKey=HYUXp2bEl6VdO0YwBmAty3XcKzRocuPfuzu2MrAqTqL3YPtnf9oDTN0fxWKZtYUoGIZZq1ZClMRzhQdGYWOYoA==\",\r\n    \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp623637628;AccountKey=HYUXp2bEl6VdO0YwBmAty3XcKzRocuPfuzu2MrAqTqL3YPtnf9oDTN0fxWKZtYUoGIZZq1ZClMRzhQdGYWOYoA==\",\r\n    \"WEBSITE_CONTENTSHARE\": \"java-webapp-623601b0751972d9\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg2104/providers/Microsoft.Web/sites/java-webapp-6236/slots/java-slot-8389/config/web?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzIxMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtNjIzNi9zbG90cy9qYXZhLXNsb3QtODM4OS9jb25maWcvd2ViP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c0ba5ff9-4ded-433c-b7e0-14bad5488c25"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -7910,6 +8032,67 @@
         "ETag": [
           "\"1D4FF0A7FB967C0\""
         ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-correlation-request-id": [
+          "fa1531be-425f-4981-b337-102ada070ada"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190418T205143Z:fa1531be-425f-4981-b337-102ada070ada"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 18 Apr 2019 20:51:43 GMT"
+        ],
+        "Content-Length": [
+          "2703"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg2104/providers/Microsoft.Web/sites/java-webapp-6236/slots/java-slot-792/config/web\",\r\n  \"name\": \"java-webapp-6236\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.6\",\r\n    \"pythonVersion\": \"2.7\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$java-webapp-6236__java-slot-792\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"clientSecretCertificateThumbprint\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"apiManagementConfig\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": null,\r\n    \"scmIpSecurityRestrictions\": null,\r\n    \"scmIpSecurityRestrictionsUseMain\": false,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"reservedInstanceCount\": 0,\r\n    \"preWarmedInstanceCount\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg2104/providers/Microsoft.Web/sites/java-webapp-6236/slots/java-slot-792/config/web?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzIxMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtNjIzNi9zbG90cy9qYXZhLXNsb3QtNzkyL2NvbmZpZy93ZWI/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9b8aaf8-0f31-4803-944b-4883e2d0a271"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26725.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.21.0.0",
+          "MacAddressHash/1706214d8731cf2405675fdf5fb8b4bf75f06e7a9bb34e8d93f8f4a5d61acc28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
@@ -8343,6 +8526,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -8422,6 +8608,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -8501,6 +8690,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -8580,6 +8772,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -8659,6 +8854,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -8738,6 +8936,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -8817,6 +9018,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"BadRequest\",\r\n  \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n    },\r\n    {\r\n      \"Code\": \"BadRequest\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"04122\",\r\n        \"MessageTemplate\": \"Function App app settings are not expected to be empty. Please try again with {0} as a storage account connection string.\",\r\n        \"Parameters\": [\r\n          \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\"\r\n        ],\r\n        \"Code\": \"BadRequest\",\r\n        \"Message\": \"Function App app settings are not expected to be empty. Please try again with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING as a storage account connection string.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",

@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The implementation for DeploymentSlots.
