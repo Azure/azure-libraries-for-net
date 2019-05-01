@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uU3RvcmFnZVNrdUltcGw=
     internal partial class StorageSkuImpl : IStorageSku
     {
-        private SkuInner inner;
+        private Sku inner;
 
-        SkuInner IHasInner<SkuInner>.Inner => inner;
+        Sku IHasInner<Sku>.Inner => inner;
 
         ///GENMHASH:2DA3D402EF2F4EF1A5D6599913EC4354:65E408C71959AFC55032CE444A61E039
-        internal StorageSkuImpl(SkuInner inner)
+        internal StorageSkuImpl(Sku inner)
         {
             this.inner = inner;
         }

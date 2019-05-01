@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The parameters used to check the availabity of the storage account
+    /// The parameters used to check the availability of the storage account
     /// name.
     /// </summary>
     public partial class StorageAccountCheckNameAvailabilityParameters

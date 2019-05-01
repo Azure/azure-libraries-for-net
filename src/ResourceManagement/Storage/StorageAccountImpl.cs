@@ -28,6 +28,21 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         private StorageNetworkRulesHelper networkRulesHelper;
         private StorageEncryptionHelper encryptionHelper;
 
+        public bool? AzureFilesAadIntegration
+        { get
+            {
+                return this.Inner.EnableAzureFilesAadIntegration;
+            }
+        }
+
+        public bool? HnsEnabled
+        {
+            get
+            {
+                return this.Inner.IsHnsEnabled;
+            }
+        }
+
         ///GENMHASH:9EC86FDAF9C3238B45EB0EE4355F4919:01A8E19E4477D51C1F8BB7C63F151C69
         internal StorageAccountImpl(string name, StorageAccountInner innerModel, IStorageManager storageManager) : base(name, innerModel, storageManager)
         {
@@ -156,7 +171,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             // Note: Using GetPropertiesAsync instead of GetAsync to get extended information about the storage account.
             //
-            return this.Manager.Inner.StorageAccounts.GetPropertiesAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            return this.Manager.Inner.StorageAccounts.GetPropertiesAsync(this.ResourceGroupName, this.Name, default(StorageAccountExpand?), cancellationToken);
         }
 
         ///GENMHASH:B5E3D903BDA1F2A62441339A3042D8F4:39725B0498CCC3701985F13AE17C0DB9
@@ -227,7 +242,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         ///GENMHASH:FFCBE36D39C79DC1A7BAEB75300E5C0B:7D6B565DFE17585F8E3B4BB3D13BDD7A
         public StorageAccountImpl WithCustomDomain(string name, bool useSubDomain)
         {
-            return WithCustomDomain(new CustomDomain() { Name = name, UseSubDomain = useSubDomain });
+            return WithCustomDomain(new CustomDomain() { Name = name, UseSubDomainName = useSubDomain });
         }
 
         ///GENMHASH:F3C7D5F595E480B52B33BC7ACD704928:6B5BD9106155829D3669430155DCDD3B
@@ -273,7 +288,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             // Note: Using GetPropertiesAsync instead of GetAsync to get extended information about the storage account.
             //
-            var response = await Manager.Inner.StorageAccounts.GetPropertiesAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            var response = await Manager.Inner.StorageAccounts.GetPropertiesAsync(this.ResourceGroupName, this.Name, default(StorageAccountExpand?), cancellationToken);
             SetInner(response);
             return this;
         }
@@ -389,14 +404,14 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             if (IsInCreateMode)
             {
-                createParameters.Sku = new SkuInner()
+                createParameters.Sku = new Sku()
                 {
                     Name = sku.Name
                 };
             }
             else
             {
-                updateParameters.Sku = new SkuInner()
+                updateParameters.Sku = new Sku()
                 {
                     Name = sku.Name
                 };
@@ -493,6 +508,24 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         public StorageAccountImpl WithReadAccessToLogEntriesFromAnyNetwork()
         {
             this.networkRulesHelper.WithReadAccessToLoggingFromAnyNetwork();
+            return this;
+        }
+
+        public StorageAccountImpl WithHnsEnabled(bool enabled)
+        {
+            this.createParameters.IsHnsEnabled = enabled;
+            return this;
+        }
+
+        public StorageAccountImpl WithAzureFilesAadIntegrationEnabled(bool enabled)
+        {
+            if (IsInCreateMode)
+            {
+                this.createParameters.EnableAzureFilesAadIntegration = enabled;
+            } else
+            {
+                this.updateParameters.EnableAzureFilesAadIntegration = enabled;
+            }
             return this;
         }
 

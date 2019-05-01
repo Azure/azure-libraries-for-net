@@ -6,4 +6,4 @@ sudo apt-get update
 sudo apt-get -y install apache2
 
 # restart Apache
-sudo apachectl restart
+sudo service apache2 restart

@@ -324,7 +324,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string rgName = TestUtilities.GenerateName("javacsmrg");
                 string vmssName = TestUtilities.GenerateName("vmss");
                 string apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh";
-                string installCommand = "bash install_apache.sh";
+                string installCommand = "bash install_apache.sh Abc.123x(";
                 List<string> fileUris = new List<string>();
                 fileUris.Add(apacheInstallScript);
 
@@ -360,7 +360,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootPassword("123OData!@#123")
                             .WithUnmanagedDisks()
                             .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
-                            .WithNewStorageAccount(TestUtilities.GenerateName("stg2"))
+                            .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                             .DefineNewExtension("CustomScriptForLinux")
                                 .WithPublisher("Microsoft.OSTCExtensions")
                                 .WithType("CustomScriptForLinux")
@@ -368,7 +368,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .WithMinorVersionAutoUpgrade()
                                 .WithPublicSetting("fileUris", fileUris)
                                 .WithPublicSetting("commandToExecute", installCommand)
-                            .Attach()
+                                .Attach()
+                            .WithUpgradeMode(UpgradeMode.Manual)
                             .Create();
 
                     IReadOnlyList<string> publicIPAddressIds = virtualMachineScaleSet.PrimaryPublicIPAddressIds;
@@ -1482,7 +1483,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             CloudBlockBlob blob = container.GetBlockBlobReference("install_apache.sh");
             using (HttpClient client = new HttpClient())
             {
-                blob.UploadFromStreamAsync(client.GetStreamAsync("https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh").Result).Wait();
+                blob.UploadFromStreamAsync(client.GetStreamAsync("https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh").Result).Wait();
             }
             return blob.Uri.ToString();
         }

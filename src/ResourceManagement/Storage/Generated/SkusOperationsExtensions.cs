@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<SkuInner>> ListAsync(this ISkusOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Sku>> ListAsync(this ISkusOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {

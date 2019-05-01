@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
+    using Microsoft.Azure.Management.Storage.Fluent.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -34,5 +35,25 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <param name="name">The account name to check.</param>
         /// <return>Whether the name is available and other info if not.</return>
         Microsoft.Azure.Management.Storage.Fluent.CheckNameAvailabilityResult CheckNameAvailability(string name);
+
+        
+        /// <summary>
+        /// Creates an Sas token for the storage account asynchronously.
+        /// </summary>
+        /// <param name="resourceGroupName">the name of the account's resource group</param>
+        /// <param name="accountName">the account name to check</param>
+        /// <param name="parameters">the parameters to list service SAS credentials of a specific resource</param>
+        /// <returns>the created SAS token</returns>
+        Task<string> createSasTokenAsync(string resourceGroupName, string accountName, ServiceSasParameters parameters);
+
+
+        /// <summary>
+        /// Creates an Sas token for the storage account.
+        /// </summary>
+        /// <param name="resourceGroupName">the name of the account's resource group</param>
+        /// <param name="accountName">the account name to check</param>
+        /// <param name="parameters">the parameters to list service SAS credentials of a specific resource</param>
+        /// <returns>the created SAS token</returns>
+        string createSasToken(string resourceGroupName, string accountName, ServiceSasParameters parameters);
     }
 }

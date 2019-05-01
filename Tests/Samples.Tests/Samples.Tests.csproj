@@ -7,6 +7,9 @@
     <PackageId>Fluent.Sample.Tests</PackageId>
     <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1" />
+  </ItemGroup>
 <!--
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
