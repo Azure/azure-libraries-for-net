@@ -210,26 +210,6 @@ namespace Fluent.Tests.Storage
                     Assert.NotNull(blobServiceEncryptionStatus.LastEnabledTime);
                     Assert.NotNull(storageAccount.EncryptionKeySource);
                     Assert.True(storageAccount.EncryptionKeySource.Equals(StorageAccountEncryptionKeySource.Microsoft_Storage));
-
-                    //STORAGE NO LONGER SUPPORTS DISABLING ENCRYPTION
-
-                    //storageAccount = storageAccount.Update()
-                    //    .WithoutEncryption()
-                    //    .WithTag("cc", "cc")
-                    //    .WithoutTag("aa")
-                    //    .Apply();
-
-                    //statuses = storageAccount.EncryptionStatuses;
-                    //Assert.NotNull(statuses);
-                    //Assert.True(statuses.Count() > 0);
-                    //Assert.True(statuses.ContainsKey(StorageService.Blob));
-                    //blobServiceEncryptionStatus = statuses[StorageService.Blob];
-                    //Assert.NotNull(blobServiceEncryptionStatus);
-                    //Assert.False(blobServiceEncryptionStatus.IsEnabled);
-
-                    //Assert.NotNull(storageAccount.Tags);
-                    //Assert.True(storageAccount.Tags.ContainsKey("cc"));
-                    //Assert.False(storageAccount.Tags.ContainsKey("aa"));
                 }
                 finally
                 {

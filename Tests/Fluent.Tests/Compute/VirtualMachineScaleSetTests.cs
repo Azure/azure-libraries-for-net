@@ -323,7 +323,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 string rgName = TestUtilities.GenerateName("javacsmrg");
                 string vmssName = TestUtilities.GenerateName("vmss");
-                string apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-java/09a1d41f217ab41dd53bef0aefd2ee3fc9b3ed54/azure-mgmt-compute/src/test/assets/install_apache.sh";
+                string apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh";
                 string installCommand = "bash install_apache.sh Abc.123x(";
                 List<string> fileUris = new List<string>();
                 fileUris.Add(apacheInstallScript);
