@@ -90,7 +90,7 @@ namespace Samples.Tests
                 ManageVirtualMachineExtension.Program.RunSample);
         }
 
-        [Fact(Skip ="Shell script running on created VM is failing, will investigate for next release")]
+        [Fact]
         [Trait("Samples", "Compute")]
         public void ManageVirtualMachineScaleSetWithUnmanagedDisksTest()
         {
