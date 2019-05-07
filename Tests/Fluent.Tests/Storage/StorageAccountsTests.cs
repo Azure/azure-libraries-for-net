@@ -10,6 +10,7 @@ using Fluent.Tests.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Azure.Tests;
 using System;
+using System.Collections.Generic;
 
 namespace Fluent.Tests.Storage
 {
@@ -95,6 +96,12 @@ namespace Fluent.Tests.Storage
         [Fact]
         public void CanCreateWithKindSkuAndUpdateAccessTier()
         {
+            var customerTags = new Dictionary<string, string>
+            {
+                ["ID"] = "1234",
+                ["Customer"] = "foo"
+            };
+
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rgName = TestUtilities.GenerateName("rgstg");
@@ -106,10 +113,12 @@ namespace Fluent.Tests.Storage
                     var storageAccount = storageManager.StorageAccounts.Define(stgName)
                         .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(rgName)
+
                         .WithBlobStorageAccountKind()     // Override the default which is GeneralPursposeKind
                         .WithSku(StorageAccountSkuType.Standard_RAGRS)   // Override the default which is StandardGRS
                         .WithHnsEnabled(true)
                         .WithAzureFilesAadIntegrationEnabled(false)
+                        .WithTags(customerTags)
                         .Create();
 
                     // Check the overridden settings
@@ -119,6 +128,7 @@ namespace Fluent.Tests.Storage
                     Assert.Equal(AccessTier.Hot, storageAccount.AccessTier);    // Default access tier
                     Assert.True(storageAccount.HnsEnabled);
                     Assert.False(storageAccount.AzureFilesAadIntegration);
+                    Assert.Equal(customerTags, storageAccount.Tags);
 
                     storageAccount = storageAccount.Update()
                         .WithAccessTier(AccessTier.Cool)
