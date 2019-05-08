@@ -37,6 +37,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task DeleteInstancesAsync(string[] instanceIds, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Get the specified virtual machine instance from the scale set.
+        /// </summary>
+        /// <param name="instanceId">Instance ID of the virtual machine scale set instance to be fetched.</param>
+        /// <returns>The virtual machine scale set instance.</returns>
+        IVirtualMachineScaleSetVM GetInstance(string instanceId);
+
+        /// <summary>
+        /// Get the specified virtual machine instance from the scale set.
+        /// </summary>
+        /// <param name="instanceId">Instance ID of the virtual machine scale set instance to be fetched.</param>
+        /// <returns>The virtual machine scale set instance.</returns>
+        Task<IVirtualMachineScaleSetVM> GetInstanceAsync(string instanceId, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Updates the specified virtual machine instances from the scale set.
         /// </summary>
         /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be updated.</param>
