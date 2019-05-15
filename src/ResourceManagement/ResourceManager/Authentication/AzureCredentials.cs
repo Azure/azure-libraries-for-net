@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             this.servicePrincipalLoginInformation = servicePrincipalLoginInformation;
         }
 
-        public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
-            : this(tenantId: null, environment: environment)
+        public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment, string tenantId = null)
+            : this(tenantId: tenantId, environment: environment)
         {
             this.msiTokenProviderFactory = new MSITokenProviderFactory(msiLoginInformation);
         }

@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// <param name="msiLoginInformation">the information needed for MSI authentication</param>
         /// <param name="environment">the environment to authenticate to</param>
         /// <returns>an authenticated credentials object</returns>
-        public AzureCredentials FromMSI(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
+        public AzureCredentials FromMSI(MSILoginInformation msiLoginInformation, AzureEnvironment environment, string tenantId = null)
         {
-            return new AzureCredentials(msiLoginInformation, environment);
+            return new AzureCredentials(msiLoginInformation, environment, tenantId);
         }
 
         /// <summary>
