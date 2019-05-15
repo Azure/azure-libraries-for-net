@@ -1192,9 +1192,112 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
+        [Fact]
+        public void CanGetSingleVMSSInstance()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string vmss_name = TestUtilities.GenerateName("vmss");
+                string rgName = TestUtilities.GenerateName("javacsmrg");
 
+                var azure = TestHelper.CreateRollupClient();
 
+                try
+                {
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
+                        .WithRegion(Location)
+                        .Create();
 
+                    INetwork network = azure
+                        .Networks
+                        .Define("vmssvnet")
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithAddressSpace("10.0.0.0/28")
+                        .WithSubnet("subnet1", "10.0.0.0/28")
+                        .Create();
+
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
+                    List<string> backends = new List<string>();
+                    foreach (string backend in publicLoadBalancer.Backends.Keys)
+                    {
+                        backends.Add(backend);
+                    }
+
+                    IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
+                        .Define(vmss_name)
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                        .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                        .WithPrimaryInternetFacingLoadBalancerBackends(backends[0], backends[1])
+                        .WithoutPrimaryInternalLoadBalancer()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("jvuser")
+                        .WithRootPassword("123OData!@#123")
+                        .WithUnmanagedDisks()
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
+                        .WithUpgradeMode(UpgradeMode.Manual)
+                        .Create();
+
+                    virtualMachineScaleSet = azure
+                        .VirtualMachineScaleSets
+                        .GetByResourceGroup(rgName, vmss_name);
+
+                    var virtualMachineScaleSetVMs = virtualMachineScaleSet.VirtualMachines;
+                    var firstVm = virtualMachineScaleSetVMs.List().First();
+                    var fetchedVm = virtualMachineScaleSetVMs.GetInstance(firstVm.InstanceId);
+                    this.CheckVMsEqual(firstVm, fetchedVm);
+                    var fetchedAsyncVm = virtualMachineScaleSetVMs.GetInstanceAsync(firstVm.InstanceId).ConfigureAwait(false).GetAwaiter().GetResult();
+                    this.CheckVMsEqual(firstVm, fetchedAsyncVm);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        private void CheckVMsEqual(IVirtualMachineScaleSetVM original, IVirtualMachineScaleSetVM fetched)
+        {
+            Assert.Equal(original.AdministratorUserName, fetched.AdministratorUserName);
+            Assert.Equal(original.AvailabilitySetId, fetched.AvailabilitySetId);
+            Assert.Equal(original.BootDiagnosticEnabled, fetched.BootDiagnosticEnabled);
+            Assert.Equal(original.BootDiagnosticStorageAccountUri, fetched.BootDiagnosticStorageAccountUri);
+            Assert.Equal(original.ComputerName, fetched.ComputerName);
+            Assert.Equal(original.DataDisks.Count, fetched.DataDisks.Count);
+            Assert.Equal(original.Extensions.Count, fetched.Extensions.Count);
+            Assert.Equal(original.InstanceId, fetched.InstanceId);
+            Assert.Equal(original.IsLatestScaleSetUpdateApplied, fetched.IsLatestScaleSetUpdateApplied);
+            Assert.Equal(original.IsLinuxPasswordAuthenticationEnabled, fetched.IsLinuxPasswordAuthenticationEnabled);
+            Assert.Equal(original.IsManagedDiskEnabled, fetched.IsManagedDiskEnabled);
+            Assert.Equal(original.IsOSBasedOnCustomImage, fetched.IsOSBasedOnCustomImage);
+            Assert.Equal(original.IsOSBasedOnPlatformImage, fetched.IsOSBasedOnPlatformImage);
+            Assert.Equal(original.IsOSBasedOnStoredImage, fetched.IsOSBasedOnStoredImage);
+            Assert.Equal(original.IsWindowsAutoUpdateEnabled, fetched.IsWindowsAutoUpdateEnabled);
+            Assert.Equal(original.IsWindowsVMAgentProvisioned, original.IsWindowsVMAgentProvisioned);
+            Assert.Equal(original.NetworkInterfaceIds.Count, fetched.NetworkInterfaceIds.Count);
+            Assert.Equal(original.OSDiskCachingType, fetched.OSDiskCachingType);
+            Assert.Equal(original.OSDiskId, fetched.OSDiskId);
+            Assert.Equal(original.OSDiskName, fetched.OSDiskName);
+            Assert.Equal(original.OSDiskSizeInGB, fetched.OSDiskSizeInGB);
+            Assert.Equal(original.OSType, fetched.OSType);
+            Assert.Equal(original.OSUnmanagedDiskVhdUri, fetched.OSUnmanagedDiskVhdUri);
+            Assert.Equal(original.PowerState, fetched.PowerState);
+            Assert.Equal(original.PrimaryNetworkInterfaceId, fetched.PrimaryNetworkInterfaceId);
+            Assert.Equal(original.Size, fetched.Size);
+            Assert.Equal(original.Sku.Name, fetched.Sku.Name);
+            Assert.Equal(original.StoredImageUnmanagedVhdUri, fetched.StoredImageUnmanagedVhdUri);
+            Assert.Equal(original.UnmanagedDataDisks.Count, fetched.UnmanagedDataDisks.Count);
+            Assert.Equal(original.WindowsTimeZone, fetched.WindowsTimeZone);
+        }
 
         private void CheckVMInstances(IVirtualMachineScaleSet vmScaleSet)
         {
