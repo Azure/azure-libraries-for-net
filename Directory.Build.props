@@ -1,24 +1,40 @@
 ﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<PropertyGroup>
-		<LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
-		<LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
-		<BuildAssetsDir>$(LibraryToolsFolder)\BuildAssets</BuildAssetsDir>
-		<SdkBuildToolsDir>$(LibraryToolsFolder)\SdkBuildTools</SdkBuildToolsDir>
-	</PropertyGroup>
-	<PropertyGroup>
-		<NetSdkBuildTargetsDir Condition=" Exists('$(BuildAssetsDir)') ">$(BuildAssetsDir)\targets</NetSdkBuildTargetsDir>
-		<NetSdkBuildTargetsDir Condition=" Exists('$(SdkBuildToolsDir)') AND '$(NetSdkBuildTargetsDir)' == '' ">$(SdkBuildToolsDir)\targets</NetSdkBuildTargetsDir>		
-		<NetSdkBuildToolsDir Condition=" Exists('$(BuildAssetsDir)') ">$(BuildAssetsDir)</NetSdkBuildToolsDir>
-		<NetSdkBuildToolsDir Condition=" Exists('$(SdkBuildToolsDir)') AND '$(NetSdkBuildToolsDir)' == '' ">$(SdkBuildToolsDir)</NetSdkBuildToolsDir>
-	</PropertyGroup>
-  
-	<Import Project="$(NetSdkBuildTargetsDir)\core\_Directory.Build.props" Condition=" Exists('$(NetSdkBuildTargetsDir)\core\_Directory.Build.props') "/>
-	
-	<PropertyGroup>
-           <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    </PropertyGroup>
-  
-	<PropertyGroup>
-    		<LibrarySourceFolder>$(LibraryRoot)</LibrarySourceFolder>
-	</PropertyGroup>		
+  <PropertyGroup>
+    <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
+    <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
+    <BuildAssetsDir>$(LibraryToolsFolder)\BuildAssets</BuildAssetsDir>
+    <SdkBuildToolsDir>$(LibraryToolsFolder)\SdkBuildTools</SdkBuildToolsDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NetSdkBuildTargetsDir Condition=" Exists('$(BuildAssetsDir)') ">$(BuildAssetsDir)\targets</NetSdkBuildTargetsDir>
+    <NetSdkBuildTargetsDir Condition=" Exists('$(SdkBuildToolsDir)') AND '$(NetSdkBuildTargetsDir)' == '' ">$(SdkBuildToolsDir)\targets</NetSdkBuildTargetsDir>
+    <NetSdkBuildToolsDir Condition=" Exists('$(BuildAssetsDir)') ">$(BuildAssetsDir)</NetSdkBuildToolsDir>
+    <NetSdkBuildToolsDir Condition=" Exists('$(SdkBuildToolsDir)') AND '$(NetSdkBuildToolsDir)' == '' ">$(SdkBuildToolsDir)</NetSdkBuildToolsDir>
+  </PropertyGroup>
+
+  <Import Project="$(NetSdkBuildTargetsDir)\core\_Directory.Build.props" Condition=" Exists('$(NetSdkBuildTargetsDir)\core\_Directory.Build.props') "/>
+
+  <PropertyGroup>
+    <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
+     <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>true</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyCompanyAttribute>true</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>true</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>true</GenerateAssemblyCopyrightAttribute>
+    <GenerateNeutralResourcesLanguageAttribute>true</GenerateNeutralResourcesLanguageAttribute>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <FluentVersion>1.22.0</FluentVersion>
+    <VersionPrefix>$(FluentVersion)</VersionPrefix>
+
+    <!-- Keep the assembly version pinned unless a breaking change is made -->
+    <AssemblyVersion>1.0.0.60</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LibrarySourceFolder>$(LibraryRoot)</LibrarySourceFolder>
+  </PropertyGroup>
 </Project>
