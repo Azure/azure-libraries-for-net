@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Azure/azure-libraries-for-net.svg?style=flat-square&label=build&branch=master)](https://travis-ci.org/Azure/azure-libraries-for-net)
 
+#Test edit to test the new ADO CI process...
+
 # Azure Management Libraries for .NET
 
 This README is based on the released stable version (1.22). If you are looking for other releases, see [More Information](#more-information)
