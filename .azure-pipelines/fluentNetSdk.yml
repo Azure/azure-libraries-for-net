@@ -33,9 +33,9 @@ jobs:
           testResultsFormat: 'VSTest'
           mergeTestResults: true
           
-    - job: Ubuntu_Build
-      pool:
-        vmImage: 'ubuntu-16.04'
+  - job: Ubuntu_Build
+    pool:
+      vmImage: 'ubuntu-16.04'
   
     steps:
         - task: DotNetCoreInstaller@0
