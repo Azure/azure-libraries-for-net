@@ -19,20 +19,24 @@ jobs:
           filename: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.2 Tools\sn.exe
           arguments: -Vr *,31bf3856ad364e35
       - task: MSBuild@1
+        displayName: 'Getting latest build tools'
         inputs:
           solution: build.proj
       - task: MSBuild@1
+        displayName: 'Running tests'
         inputs:
           solution: build.proj
           msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)
       - task: MSBuild@1
+        displayName: 'creating packages'
         inputs:
           solution: build.proj
-          msbuildArguments: /t:Package /clp:ShowTimestamp $(LoggingArgs) /p:DCC_ExeOutput="$(Build.ArtifactStagingDirectory)"
+          msbuildArguments: /t:PackageNoBuild /clp:ShowTimestamp $(LoggingArgs) /p:Configuration=Release"
       - task: PublishBuildArtifacts@1
         condition: succeededOrFailed()
         displayName: 'Publish Artifacts'
         inputs:
+          PathtoPublish: 'binaries\packages'
           ArtifactName: packages
       - task: PublishTestResults@2
         condition: succeededOrFailed()
