@@ -24,7 +24,7 @@ jobs:
       - task: MSBuild@1
         inputs:
           solution: build.proj
-          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)"
+          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)
       - task: PublishTestResults@2
         condition: succeededOrFailed()
         inputs:
