@@ -2,8 +2,6 @@ pr:
   branches:
     include:
     - master
-    - search-preview
-    - BuildToolsForSdk
 
 variables:
   DotNetCoreVersion: '2.1.503'
@@ -13,7 +11,6 @@ jobs:
     pool:
       vmImage: 'VS2017-Win2016'
     variables:
-      IgnoreBuildTokens: ''
       LoggingArgs: '/flp:Summary;Verbosity=minimal;LogFile=msbuild.sum /flp1:warningsonly;logfile=msbuild.wrn /flp2:errorsonly;logfile=msbuild.err'
 
     steps:
@@ -27,7 +24,7 @@ jobs:
       - task: MSBuild@1
         inputs:
           solution: build.proj
-          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs) /p:IgnorePathTokens="$(IgnoreBuildTokens)"
+          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)"
       - task: PublishTestResults@2
         condition: succeededOrFailed()
         inputs:
