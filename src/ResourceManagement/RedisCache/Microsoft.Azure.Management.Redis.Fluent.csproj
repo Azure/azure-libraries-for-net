@@ -5,7 +5,6 @@
 
   <PropertyGroup>
     <Description>Provides Redis cache service management (Fluent) capabilities for Microsoft Azure.</Description>
-    <Version>1.22.0</Version>
     <AssemblyName>Microsoft.Azure.Management.Redis.Fluent</AssemblyName>
     <PackageId>Microsoft.Azure.Management.Redis.Fluent</PackageId>
     <PackageTags>Microsoft Azure Redis Cache management;redis management;Fluent</PackageTags>
@@ -16,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.22.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
   </ItemGroup>
 
 
