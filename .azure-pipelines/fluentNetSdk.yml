@@ -25,6 +25,15 @@ jobs:
         inputs:
           solution: build.proj
           msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)
+      - task: MSBuild@1
+        inputs:
+          solution: build.proj
+          msbuildArguments: /t:CreateNugetPackage /clp:ShowTimestamp $(LoggingArgs) /p:DCC_ExeOutput="$(Build.ArtifactStagingDirectory)"
+      - task: PublishBuildArtifacts@1
+        condition: succeededOrFailed()
+        displayName: 'Publish Artifacts'
+        inputs:
+          ArtifactName: packages
       - task: PublishTestResults@2
         condition: succeededOrFailed()
         inputs:
