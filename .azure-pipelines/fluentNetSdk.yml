@@ -28,11 +28,6 @@ jobs:
           solution: build.proj
           msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)
       - task: MSBuild@1
-        displayName: 'restore projects'
-        inputs:
-          solution: build.proj
-          msbuildArguments: /t:Restore /clp:ShowTimestamp $(LoggingArgs)
-      - task: MSBuild@1
         displayName: 'creating packages'
         inputs:
           solution: build.proj
