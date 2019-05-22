@@ -26,17 +26,16 @@ jobs:
         displayName: 'Running tests'
         inputs:
           solution: build.proj
-          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)
+          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs) 
       - task: MSBuild@1
         displayName: 'creating packages'
         inputs:
           solution: build.proj
-          msbuildArguments: /t:PackageNoBuild /clp:ShowTimestamp $(LoggingArgs)
+          msbuildArguments: /t:PackageNoBuild /clp:ShowTimestamp $(LoggingArgs) /p:PackageOutputPath="$(Build.ArtifactStagingDirectory)"
       - task: PublishBuildArtifacts@1
         condition: succeededOrFailed()
         displayName: 'Publish Artifacts'
         inputs:
-          PathtoPublish: 'binaries\packages'
           ArtifactName: packages
       - task: PublishTestResults@2
         condition: succeededOrFailed()

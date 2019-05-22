@@ -33,6 +33,10 @@
     <!-- Keep the assembly version pinned unless a breaking change is made -->
     <AssemblyVersion>1.0.0.60</AssemblyVersion>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefaultPathTokenToIgnore>$(DefaultPathTokenToIgnore) restoredPackages</DefaultPathTokenToIgnore>
+  </PropertyGroup>
 
   <PropertyGroup>
     <LibrarySourceFolder>$(LibraryRoot)</LibrarySourceFolder>
