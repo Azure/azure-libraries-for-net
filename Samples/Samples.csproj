@@ -95,6 +95,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  
+  <ItemGroup>
+    <IsPackable>false</IsPackable>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\src\ResourceManagement\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
