@@ -19,12 +19,24 @@ jobs:
           filename: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.2 Tools\sn.exe
           arguments: -Vr *,31bf3856ad364e35
       - task: MSBuild@1
+        displayName: 'Getting latest build tools'
         inputs:
           solution: build.proj
       - task: MSBuild@1
+        displayName: 'Running tests'
         inputs:
           solution: build.proj
-          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs)
+          msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs) 
+      - task: MSBuild@1
+        displayName: 'creating packages'
+        inputs:
+          solution: build.proj
+          msbuildArguments: /t:PackageNoBuild /clp:ShowTimestamp $(LoggingArgs) /p:PackageOutputPath="$(Build.ArtifactStagingDirectory)"
+      - task: PublishBuildArtifacts@1
+        condition: succeededOrFailed()
+        displayName: 'Publish Artifacts'
+        inputs:
+          ArtifactName: packages
       - task: PublishTestResults@2
         condition: succeededOrFailed()
         inputs:
@@ -32,3 +44,22 @@ jobs:
           testRunTitle: 'Windows Test Results'
           testResultsFormat: 'VSTest'
           mergeTestResults: true
+          
+  - job: Ubuntu_Build
+    pool:
+      vmImage: 'ubuntu-16.04'
+  
+    steps:
+        - task: DotNetCoreInstaller@0
+          displayName: 'Use .NET Core sdk $(DotNetCoreVersion)'
+          inputs:
+            version: '$(DotNetCoreVersion)'
+        - script: './test_on_linux.sh'
+          displayName: 'Build and test on Non-windows machine'
+        - task: PublishTestResults@2
+          condition: succeededOrFailed()
+          inputs:
+            testResultsFiles: '**/*.trx'
+            testRunTitle: 'Ubuntu Test Results'
+            testResultsFormat: 'VSTest'
+            mergeTestResults: true
