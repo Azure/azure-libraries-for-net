@@ -154,10 +154,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 Inner.Tags = new Dictionary<string, string>();
             }
 
-            if (!Inner.Tags.ContainsKey(key))
-            {
-                Inner.Tags.Add(key, value);
-            }
+            Inner.Tags[key] = value;
+            
             return this;
         }
 

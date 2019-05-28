@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             if (key != null && value != null)
             {
-                this.EnsureValidTags().Add(key, value);
+                this.EnsureValidTags()[key] = value;
             }
 
             return this;

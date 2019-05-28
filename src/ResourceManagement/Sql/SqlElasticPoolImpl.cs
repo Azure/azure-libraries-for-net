@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 this.Inner.Tags = new Dictionary<string, string>();
             }
-            this.Inner.Tags.Add(key, value);
+            this.Inner.Tags[key] = value;
             return this;
         }
 
