@@ -32,23 +32,20 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// </summary>
         /// <param name="ports">The list of ports exposed on the container
         /// group.</param>
+        /// <param name="type">Specifies if the IP is exposed to the public
+        /// internet or private VNET. Possible values include: 'Public',
+        /// 'Private'</param>
         /// <param name="ip">The IP exposed to the public internet.</param>
         /// <param name="dnsNameLabel">The Dns name label for the IP.</param>
         /// <param name="fqdn">The FQDN for the IP.</param>
-        public IpAddress(IList<Port> ports, string ip = default(string), string dnsNameLabel = default(string), string fqdn = default(string))
+        public IpAddress(IList<Port> ports, string type, string ip = default(string), string dnsNameLabel = default(string), string fqdn = default(string))
         {
             Ports = ports;
+            Type = type;
             Ip = ip;
             DnsNameLabel = dnsNameLabel;
             Fqdn = fqdn;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for IpAddress class.
-        /// </summary>
-        static IpAddress()
-        {
-            Type = "Public";
         }
 
         /// <summary>
@@ -61,6 +58,13 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "ports")]
         public IList<Port> Ports { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies if the IP is exposed to the public internet
+        /// or private VNET. Possible values include: 'Public', 'Private'
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the IP exposed to the public internet.
@@ -81,12 +85,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public string Fqdn { get; private set; }
 
         /// <summary>
-        /// Specifies if the IP is exposed to the public internet.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public static string Type { get; private set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -97,6 +95,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
             if (Ports == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Ports");
+            }
+            if (Type == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Type");
             }
             if (Ports != null)
             {

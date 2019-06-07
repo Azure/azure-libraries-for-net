@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:EE87A5D4CD5A141684404A7DCC098A5E:69C48C874380FD258ED24236ECFF7545
         public bool IsIPAddressPublic()
         {
-            return this.Inner.IpAddress != null && IpAddress.Type.Equals("Public");
+            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type == "Public";
         }
 
         ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:99ECDF2C7D842BA7D2742AC2953EDA92
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:72D8F838766D2FA789A06DBB8ACE4C8C:6688B3D6EDBA6430DBE60C201714B737
         public ContainerGroupRestartPolicy RestartPolicy()
         {
-            return ContainerGroupRestartPolicy.Parse(this.Inner.RestartPolicy);
+            return this.Inner.RestartPolicy;
         }
 
         public void Restart()
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:1C73260E17F72F996B485F399B1A7E02:93461D0A597F2906607068C9C6F891F6
         public ContainerGroupImpl WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy)
         {
-            this.Inner.RestartPolicy = restartPolicy.Value;
+            this.Inner.RestartPolicy = restartPolicy;
 
             return this;
         }
