@@ -8,8 +8,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
-    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
-    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
@@ -17,6 +15,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
     using System.Linq;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Update;
 
     /// <summary>
     /// Implementation for ContainerGroup and its create interfaces.
@@ -24,10 +26,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcmluc3RhbmNlLmltcGxlbWVudGF0aW9uLkNvbnRhaW5lckdyb3VwSW1wbA==
     internal partial class ContainerGroupImpl  :
         GroupableResource<
-            Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup,
-            Models.ContainerGroupInner,
-            Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroupImpl,
-            Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerInstanceManager,
+            IContainerGroup,
+            ContainerGroupInner,
+            ContainerGroupImpl,
+            IContainerInstanceManager,
             IWithGroup,
             IWithOsType,
             IWithCreate,
@@ -44,17 +46,90 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         private IList<string> imageRegistryServers;
         private int[] externalTcpPorts;
         private int[] externalUdpPorts;
+        private ContainerGroupMsiHandler containerGroupMsiHandler;
+
+        ContainerInstanceManager IHasManager<ContainerInstanceManager>.Manager => throw new NotImplementedException();
+
+        ///GENMHASH:C4B69D63304D818F517794AA4D07AAC6:C2773B13EB9D03F0091114E1241E51EB
+        internal ContainerGroupImpl(string name, ContainerGroupInner innerObject, IContainerInstanceManager manager, IStorageManager storageManager, IGraphRbacManager rbacManager)
+            : base(name, innerObject, manager)
+        {
+            this.storageManager = storageManager;
+            if (innerObject != null)
+            {
+                this.InitializeChildrenFromInner();
+            }
+            this.containerGroupMsiHandler = new ContainerGroupMsiHandler(rbacManager, this);
+        }
+
+        public DnsConfiguration DnsConfig()
+        {
+            return this.Inner.DnsConfig;
+        }
+
+        public bool IsIPAddressPrivate()
+        {
+            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type != null && this.Inner.IpAddress.Type == ContainerGroupIpAddressType.Private;
+        }
+
+        public bool IsIPAddressPublic()
+        {
+            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type != null && this.Inner.IpAddress.Type == ContainerGroupIpAddressType.Public;
+        }
+
+        public bool IsManagedServiceIdentityEnabled()
+        {
+            ResourceIdentityType? type = this.ManagedServiceIdentityType();
+            return type != null && type != ResourceIdentityType.None;
+        }
+        public LogAnalytics LogAnalytics() {
+            return this.Inner.Diagnostics.LogAnalytics;
+        }
+
+        public ResourceIdentityType? ManagedServiceIdentityType()
+        {
+            if (this.Inner.Identity != null)
+            {
+                return this.Inner.Identity.Type;
+            }
+            return null;
+        }
+
+        public string NetworkProfileId() {
+            return this.Inner.NetworkProfile.Id;
+        }
+
+        public string SystemAssignedManagedServiceIdentityPrincipalId()
+        {
+            if (this.Inner.Identity != null)
+            {
+                return this.Inner.Identity.PrincipalId;
+            }
+            return null;
+        }
+
+        public string SystemAssignedManagedServiceIdentityTenantId()
+        {
+            if (this.Inner.Identity != null)
+            {
+                return this.Inner.Identity.TenantId;
+            }
+            return null;
+        }
+
+        public IReadOnlyCollection<string> UserAssignedManagedServiceIdentityIds()
+        {
+            if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
+            {
+                return this.Inner.Identity.UserAssignedIdentities.Keys as ReadOnlyCollection<String>;
+            }
+            return new ReadOnlyCollection<String>(new List<String>());
+        }
 
         ///GENMHASH:9C262E34A24F538EA2B9CCF05B5DDC31:B1054C7ABC568976F407B3F83CBEF497
         public int[] ExternalTcpPorts()
         {
             return this.externalTcpPorts;
-        }
-
-        ///GENMHASH:EE87A5D4CD5A141684404A7DCC098A5E:69C48C874380FD258ED24236ECFF7545
-        public bool IsIPAddressPublic()
-        {
-            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type == "Public";
         }
 
         ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:99ECDF2C7D842BA7D2742AC2953EDA92
@@ -106,9 +181,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this.Inner.ProvisioningState;
         }
 
-        public OSTypeName OSType()
+        public OperatingSystemTypes OSType()
         {
-            return Fluent.OSTypeName.Parse(this.Inner.OsType);
+            return this.Inner.OsType;
         }
 
         ///GENMHASH:72D8F838766D2FA789A06DBB8ACE4C8C:6688B3D6EDBA6430DBE60C201714B737
@@ -144,18 +219,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 this.Inner.InstanceView.Events : new List<Models.EventModel>());
         }
 
-
-        ///GENMHASH:C4B69D63304D818F517794AA4D07AAC6:C2773B13EB9D03F0091114E1241E51EB
-        internal ContainerGroupImpl(string name, ContainerGroupInner innerObject, IContainerInstanceManager manager, IStorageManager storageManager)
-            : base(name, innerObject, manager)
-        {
-            this.storageManager = storageManager;
-            if (innerObject != null)
-            {
-                this.InitializeChildrenFromInner();
-            }
-        }
-
         ///GENMHASH:6D9F740D6D73C56877B02D9F1C96F6E7:40DC8096FB53D9EA447C99B67637E40C
         protected void InitializeChildrenFromInner()
         {
@@ -169,9 +232,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             // Getting the container instances
             if (this.Inner.Containers != null && this.Inner.Containers.Count > 0)
             {
-                foreach (var containerInstance in this.Inner.Containers)
+                foreach (var ContainerInstance in this.Inner.Containers)
                 {
-                    this.containers.Add(containerInstance.Name, containerInstance);
+                    this.containers.Add(ContainerInstance.Name, ContainerInstance);
                 }
             }
 
@@ -207,7 +270,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         ///GENMHASH:5A2D79502EDA81E37A36694062AEDC65:30511FD503549EDC455B6D09D542DB93
-        public async override Task<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<IContainerGroup> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await base.RefreshAsync(cancellationToken);
             this.InitializeChildrenFromInner();
@@ -480,6 +543,101 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             var containerExecResponseInner = await this.Manager.Inner.Container
                 .ExecuteCommandAsync(this.ResourceGroupName, this.Name, containerName, containerExecRequestInner, cancellationToken);
             return new ContainerExecResponseImpl(containerExecResponseInner);
+        }
+
+        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedManagedServiceIdentity()
+        {
+            this.containerGroupMsiHandler.WithLocalManagedServiceIdentity();
+            return this;
+        }
+
+        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        {
+            this.containerGroupMsiHandler.WithAccessTo(resourceId, role);
+            return this;
+        }
+
+        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        {
+            this.containerGroupMsiHandler.WithAccessTo(resourceId, roleDefinitionId);
+            return this;
+        }
+
+        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        {
+            this.containerGroupMsiHandler.WithAccessToCurrentResourceGroup(role);
+            return this;
+        }
+
+        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        {
+            this.containerGroupMsiHandler.WithAccessToCurrentResourceGroup(roleDefinitionId);
+            return this;
+        }
+
+        public IWithCreate WithDnsConfiguration(IList<string> dnsServerNames, string dnsSearchDomains, string dnsOptions)
+        {
+            DnsConfiguration dnsConfiguration = new DnsConfiguration();
+            dnsConfiguration.NameServers = dnsServerNames;
+            dnsConfiguration.SearchDomains = dnsSearchDomains;
+            dnsConfiguration.Options = dnsOptions;
+            this.Inner.DnsConfig = dnsConfiguration;
+            return this;
+        }
+
+        public IWithCreate WithDnsServerNames(IList<string> dnsServerNames)
+        {
+            DnsConfiguration dnsConfiguration = new DnsConfiguration();
+            dnsConfiguration.NameServers = dnsServerNames;
+            this.Inner.DnsConfig = dnsConfiguration;
+            return this;
+        }
+
+        public IWithCreate WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            this.containerGroupMsiHandler.WithExistingExternalManagedServiceIdentity(identity);
+            return this;
+        }
+
+        public IWithCreate WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            this.containerGroupMsiHandler.WithNewExternalManagedServiceIdentity(creatableIdentity);
+            return this;
+        }
+
+        public IDnsConfigFork WithNetworkProfileId(string subscriptionId, string resourceGroupName, string networkProfileName)
+        {
+            String networkProfileId = "/subscriptions/" + subscriptionId + "/resourceGroups/" + resourceGroupName + "/providers/Microsoft.Network/networkProfiles/" + networkProfileName;
+            ContainerGroupNetworkProfile containerGroupNetworkProfile = new ContainerGroupNetworkProfile();
+            containerGroupNetworkProfile.Id = networkProfileId;
+            if (this.Inner.IpAddress == null)
+            {
+                this.Inner.IpAddress = new IpAddress();
+            }
+            this.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private;
+            return this;
+        }
+
+        public IWithCreate WithLogAnalytics(string workspaceId, string workspaceKey)
+        {
+            LogAnalytics logAnalytics = new LogAnalytics();
+            logAnalytics.WorkspaceId = workspaceId;
+            logAnalytics.WorkspaceKey = workspaceKey;
+            this.Inner.Diagnostics = new ContainerGroupDiagnostics();
+            this.Inner.Diagnostics.LogAnalytics = logAnalytics;
+            return this;
+        }
+
+        public IWithCreate WithLogAnalytics(string workspaceId, string workspaceKey, LogAnalyticsLogType logType, IDictionary<string, string> metadata)
+        {
+            LogAnalytics logAnalytics = new LogAnalytics();
+            logAnalytics.WorkspaceId = workspaceId;
+            logAnalytics.WorkspaceKey = workspaceKey;
+            logAnalytics.LogType = logType;
+            logAnalytics.Metadata = metadata;
+            this.Inner.Diagnostics = new ContainerGroupDiagnostics();
+            this.Inner.Diagnostics.LogAnalytics = logAnalytics;
+            return this;
         }
     }
 }

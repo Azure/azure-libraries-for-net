@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// in the container group. Possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osType")]
-        public string OsType { get; set; }
+        public OperatingSystemTypes OsType { get; set; }
 
         /// <summary>
         /// Gets or sets the list of volumes that can be mounted by containers

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IAppServiceManager appServiceManager;
         private ISearchManager searchManager;
         private IServiceBusManager serviceBusManager;
-        private IContainerInstanceManager containerInstanceManager;
+        private IContainerInstanceManager ContainerInstanceManager;
         private IRegistryManager registryManager;
         private IContainerServiceManager containerServiceManager;
         private ICosmosDBManager cosmosDBManager;
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Management.Fluent
         {
             get
             {
-                return containerInstanceManager.ContainerGroups;
+                return ContainerInstanceManager.ContainerGroups;
             }
         }
 
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Management.Fluent
             appServiceManager = AppServiceManager.Authenticate(restClient, subscriptionId, tenantId);
             searchManager = SearchManager.Authenticate(restClient, subscriptionId);
             serviceBusManager = ServiceBusManager.Authenticate(restClient, subscriptionId);
-            containerInstanceManager = ContainerInstanceManager.Authenticate(restClient, subscriptionId);
+            ContainerInstanceManager = ContainerInstanceManager.Authenticate(restClient, subscriptionId);
             registryManager = RegistryManager.Authenticate(restClient, subscriptionId);
             containerServiceManager = ContainerServiceManager.Authenticate(restClient, subscriptionId);
             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);

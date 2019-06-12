@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// 'ContainerInsights', 'ContainerInstanceLogs'
         /// </summary>
         [JsonProperty(PropertyName = "logType")]
-        public string LogType { get; set; }
+        public LogAnalyticsLogType LogType { get; set; }
 
         /// <summary>
         /// Gets or sets metadata for log analytics.
