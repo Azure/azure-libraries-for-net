@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Management.Fluent
         IVirtualMachineImages VirtualMachineImages { get; }
 
         /// <summary>
-        /// Entry point to virtual machine extendion image management.
+        /// Entry point to virtual machine extension image management.
         /// </summary>
         IVirtualMachineExtensionImages VirtualMachineExtensionImages { get; }
 
