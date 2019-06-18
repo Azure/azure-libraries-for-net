@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// <param name="count">The count of the GPU resource.</param>
         /// <param name="sku">The SKU of the GPU resource. Possible values
         /// include: 'K80', 'P100', 'V100'</param>
-        public GpuResource(int count, string sku)
+        public GpuResource(int count, GpuSku sku)
         {
             Count = count;
             Sku = sku;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// 'K80', 'P100', 'V100'
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public string Sku { get; set; }
+        public GpuSku Sku { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;

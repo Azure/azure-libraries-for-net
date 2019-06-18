@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <param name="environmentVariables">The environment variables in a name and value pair to be set after the container gets initialized.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithEnvironmentVariables<ContainerGroup.Definition.IWithNextContainerInstance>.WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables)
+        IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> IWithEnvironmentVariables<ContainerGroup.Definition.IWithNextContainerInstance>.WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables)
         {
             return this.WithEnvironmentVariablesWithSecuredValue(environmentVariables);
         }

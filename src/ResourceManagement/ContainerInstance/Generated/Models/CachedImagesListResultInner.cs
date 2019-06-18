@@ -57,6 +57,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "nextLink")]
         public string NextLink { get; set; }
-
+        public CachedImagesListResultInner Body { get; internal set; }
     }
 }

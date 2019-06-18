@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// <param name="logType">The log type to be used. Possible values
         /// include: 'ContainerInsights', 'ContainerInstanceLogs'</param>
         /// <param name="metadata">Metadata for log analytics.</param>
-        public LogAnalytics(string workspaceId, string workspaceKey, string logType = default(string), IDictionary<string, string> metadata = default(IDictionary<string, string>))
+        public LogAnalytics(string workspaceId, string workspaceKey, LogAnalyticsLogType logType = default(LogAnalyticsLogType), IDictionary<string, string> metadata = default(IDictionary<string, string>))
         {
             WorkspaceId = workspaceId;
             WorkspaceKey = workspaceKey;

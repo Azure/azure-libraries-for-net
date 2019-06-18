@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         /// </summary>
         /// <param name="environmentVariables">The environment variables in a name and value pair to be set after the container gets initialized.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithEnvironmentVariableWithSecuredValue(IDictionary<string, string> environmentVariables);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables);
 
         /// <summary>
         /// Specifies the environment variable that has a secured value.
@@ -430,7 +430,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     public interface IWithRestartPolicy :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithRestartPolicyBeta
     {
-
     }
 
     /// <summary>
@@ -525,9 +524,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
 
     }
 
-    /// <summary>
-    /// Starts the exec command for a specific container instance within the current group asynchronously.
-    /// </summary>
+    ///// <summary>
+    ///// Starts the exec command for a specific container instance within the current group asynchronously.
+    ///// </summary>
     public interface IDefinition :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IBlank,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGroup,
@@ -553,7 +552,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta
     {
-
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
     }
 
     /// <summary>
@@ -602,7 +604,15 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitRevision<ParentT>,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolumeAttach<ParentT>
     {
+    }
 
+    /// <summary>
+    /// The first stage of the volume definition.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IVolumeDefinitionBlank<ParentT> :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithAzureFileShare<ParentT>
+    {
     }
 
     /// <summary>
@@ -620,16 +630,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithSecretsMap<ParentT> :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSecretsMapBeta<ParentT>
-    {
-
-    }
-
-    /// <summary>
-    /// The first stage of the volume definition.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IVolumeDefinitionBlank<ParentT> :
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithAzureFileShare<ParentT>
     {
 
     }
@@ -761,10 +761,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume WithPublicImageRegistryOnly();
     }
 
-    /// <summary>
-    /// The stage of the definition which contains all the minimum required inputs for the resource to be created
-    /// (via  WithCreate.create()), but also allows for any other optional settings to be specified.
-    /// </summary>
+    ///// <summary>
+    ///// The stage of the definition which contains all the minimum required inputs for the resource to be created
+    ///// (via  WithCreate.create()), but also allows for any other optional settings to be specified.
+    ///// </summary>
     public interface IWithCreate :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithRestartPolicy,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedManagedServiceIdentity,

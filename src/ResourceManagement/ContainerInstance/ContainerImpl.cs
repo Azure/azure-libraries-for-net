@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcmluc3RhbmNlLmltcGxlbWVudGF0aW9uLkNvbnRhaW5lckltcGw=
     internal partial class ContainerImpl :
-        IContainerInstanceDefinition<ContainerGroup.Definition.IWithNextContainerInstance>
+        IContainerInstanceDefinition<IWithNextContainerInstance>
     {
         private Container innerContainer;
         private ContainerGroupImpl parent;
@@ -323,6 +323,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             parent.Inner.Containers.Add(innerContainer);
 
             return this.parent;
+        }
+
+        public IWithContainerInstanceAttach<IWithNextContainerInstance> WithGpuResource(int gpuCoreCount, GpuSku gpuSku)
+        {
+            GpuResource gpuResource = new GpuResource();
+            gpuResource.Count = gpuCoreCount;
+            gpuResource.Sku = gpuSku;
+            this.innerContainer.Resources.Requests.Gpu = gpuResource;
+
+            return this;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         #region ctrs
         private ContainerInstanceManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ContainerInstanceManagementClient(restClient.Credentials)
+            base(restClient, subscriptionId, new ContainerInstanceManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

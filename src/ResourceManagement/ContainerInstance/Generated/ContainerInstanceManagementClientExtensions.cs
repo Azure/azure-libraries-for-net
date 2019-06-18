@@ -37,34 +37,28 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             /// </param>
             public static async Task<CachedImagesListResultInner> ListCachedImagesAsync(this IContainerInstanceManagementClient operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListCachedImagesWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+            var _result = await operations.ListCachedImagesAsync(location, cancellationToken).ConfigureAwait(false);
+            return _result.Body;
             }
 
-            /// <summary>
-            /// Get the list of capabilities of the location.
-            /// </summary>
-            /// <remarks>
-            /// Get the list of CPU/memory/GPU capabilities of a region.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The identifier for the physical azure location.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CapabilitiesListResultInner> ListCapabilitiesAsync(this IContainerInstanceManagementClient operations, string location, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListCapabilitiesWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
+        /// <summary>
+        /// Get the list of capabilities of the location.
+        /// </summary>
+        /// <remarks>
+        /// Get the list of CPU/memory/GPU capabilities of a region.
+        /// </remarks>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The identifier for the physical azure location.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<CapabilitiesListResultInner> ListCapabilitiesAsync(this IContainerInstanceManagementClient operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await operations.ListCapabilitiesAsync(location, cancellationToken).ConfigureAwait(false);
+        }
     }
 }

@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         private int[] externalUdpPorts;
         private ContainerGroupMsiHandler containerGroupMsiHandler;
 
-        ContainerInstanceManager IHasManager<ContainerInstanceManager>.Manager => throw new NotImplementedException();
-
         ///GENMHASH:C4B69D63304D818F517794AA4D07AAC6:C2773B13EB9D03F0091114E1241E51EB
         internal ContainerGroupImpl(string name, ContainerGroupInner innerObject, IContainerInstanceManager manager, IStorageManager storageManager, IGraphRbacManager rbacManager)
             : base(name, innerObject, manager)
@@ -396,10 +394,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 this.Inner.Volumes = new List<Volume>();
             }
             this.Inner.Volumes.Add(new Volume()
-                {
-                    Name = volumeName,
-                    EmptyDir = new Object()
-                });
+            {
+                Name = volumeName,
+                EmptyDir = new Object()
+            });
 
             return this;
         }
