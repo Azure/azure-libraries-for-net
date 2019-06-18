@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single Namespace item in List or Get Operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EHNamespaceInner : Resource
+    public partial class EHNamespaceInner : TrackedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the EHNamespaceInner class.
@@ -33,6 +32,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the EHNamespaceInner class.
         /// </summary>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource name</param>
+        /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
         /// <param name="sku">Properties of sku resource</param>
@@ -47,10 +49,12 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// <param name="isAutoInflateEnabled">Value that indicates whether
         /// AutoInflate is enabled for eventhub namespace.</param>
         /// <param name="maximumThroughputUnits">Upper limit of throughput
-        /// units when AutoInflate is enabled, vaule should be within 0 to 20
+        /// units when AutoInflate is enabled, value should be within 0 to 20
         /// throughput units. ( '0' if AutoInflateEnabled = true)</param>
-        public EHNamespaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string provisioningState = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string metricId = default(string), bool? isAutoInflateEnabled = default(bool?), int? maximumThroughputUnits = default(int?))
-            : base(location, id, name, type, tags)
+        /// <param name="kafkaEnabled">Value that indicates whether Kafka is
+        /// enabled for eventhub namespace.</param>
+        public EHNamespaceInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string provisioningState = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string metricId = default(string), bool? isAutoInflateEnabled = default(bool?), int? maximumThroughputUnits = default(int?), bool? kafkaEnabled = default(bool?))
+            : base(id, name, type, location, tags)
         {
             Sku = sku;
             ProvisioningState = provisioningState;
@@ -60,6 +64,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
             MetricId = metricId;
             IsAutoInflateEnabled = isAutoInflateEnabled;
             MaximumThroughputUnits = maximumThroughputUnits;
+            KafkaEnabled = kafkaEnabled;
             CustomInit();
         }
 
@@ -113,11 +118,18 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 
         /// <summary>
         /// Gets or sets upper limit of throughput units when AutoInflate is
-        /// enabled, vaule should be within 0 to 20 throughput units. ( '0' if
+        /// enabled, value should be within 0 to 20 throughput units. ( '0' if
         /// AutoInflateEnabled = true)
         /// </summary>
         [JsonProperty(PropertyName = "properties.maximumThroughputUnits")]
         public int? MaximumThroughputUnits { get; set; }
+
+        /// <summary>
+        /// Gets or sets value that indicates whether Kafka is enabled for
+        /// eventhub namespace.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.kafkaEnabled")]
+        public bool? KafkaEnabled { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -125,7 +137,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
             if (Sku != null)
             {

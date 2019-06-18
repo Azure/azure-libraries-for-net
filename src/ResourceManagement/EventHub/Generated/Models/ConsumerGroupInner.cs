@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Consumer group operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ConsumerGroupInner : NestedResourceInner
+    public partial class ConsumerGroupInner : Rest.Azure.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ConsumerGroupInner class.
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// <param name="createdAt">Exact time the message was created.</param>
         /// <param name="updatedAt">The exact time the message was
         /// updated.</param>
-        /// <param name="userMetadata">Usermetadata is a placeholder to store
+        /// <param name="userMetadata">User Metadata is a placeholder to store
         /// user-defined string data with maximum length 1024. e.g. it can be
         /// used to store descriptive data, such as list of teams and their
         /// contact information also user-defined configuration settings can be
         /// stored.</param>
-        public ConsumerGroupInner(string id = default(string), string name = default(string), string type = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string userMetadata = default(string))
-            : base(id, name, type)
+        public ConsumerGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string userMetadata = default(string))
+            : base(location, id, name, type, tags)
         {
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         public System.DateTime? UpdatedAt { get; private set; }
 
         /// <summary>
-        /// Gets or sets usermetadata is a placeholder to store user-defined
+        /// Gets or sets user Metadata is a placeholder to store user-defined
         /// string data with maximum length 1024. e.g. it can be used to store
         /// descriptive data, such as list of teams and their contact
         /// information also user-defined configuration settings can be stored.

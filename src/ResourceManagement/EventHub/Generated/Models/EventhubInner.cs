@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Event Hub operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EventhubInner : NestedResourceInner
+    public partial class EventhubInner : Rest.Azure.Resource
     {
         /// <summary>
         /// Initializes a new instance of the EventhubInner class.
@@ -50,8 +49,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// 'Deleting', 'Renaming', 'Unknown'</param>
         /// <param name="captureDescription">Properties of capture
         /// description</param>
-        public EventhubInner(string id = default(string), string name = default(string), string type = default(string), IList<string> partitionIds = default(IList<string>), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), long? messageRetentionInDays = default(long?), long? partitionCount = default(long?), EntityStatus? status = default(EntityStatus?), CaptureDescription captureDescription = default(CaptureDescription))
-            : base(id, name, type)
+        public EventhubInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> partitionIds = default(IList<string>), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), long? messageRetentionInDays = default(long?), long? partitionCount = default(long?), EntityStatus? status = default(EntityStatus?), CaptureDescription captureDescription = default(CaptureDescription))
+            : base(location, id, name, type, tags)
         {
             PartitionIds = partitionIds;
             CreatedAt = createdAt;

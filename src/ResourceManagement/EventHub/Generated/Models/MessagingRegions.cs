@@ -14,31 +14,30 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Definition of Resource
+    /// Messaging Region
     /// </summary>
-    public partial class TrackedResourceInner : Resource
+    public partial class MessagingRegions : TrackedResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the TrackedResourceInner class.
+        /// Initializes a new instance of the MessagingRegions class.
         /// </summary>
-        public TrackedResourceInner()
+        public MessagingRegions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TrackedResourceInner class.
+        /// Initializes a new instance of the MessagingRegions class.
         /// </summary>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        public TrackedResourceInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(id, name, type)
+        public MessagingRegions(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), MessagingRegionsProperties properties = default(MessagingRegionsProperties))
+            : base(id, name, type, location, tags)
         {
-            Location = location;
-            Tags = tags;
+            Properties = properties;
             CustomInit();
         }
 
@@ -48,16 +47,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource location
         /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "properties")]
+        public MessagingRegionsProperties Properties { get; set; }
 
     }
 }
