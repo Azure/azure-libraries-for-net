@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Description of NetworkRuleSet resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class NetworkRuleSetInner : Rest.Azure.Resource
+    public partial class NetworkRuleSetInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the NetworkRuleSetInner class.
@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// Possible values include: 'Allow', 'Deny'</param>
         /// <param name="virtualNetworkRules">List VirtualNetwork Rules</param>
         /// <param name="ipRules">List of IpRules</param>
-        public NetworkRuleSetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string defaultAction = default(string), IList<NWRuleSetVirtualNetworkRules> virtualNetworkRules = default(IList<NWRuleSetVirtualNetworkRules>), IList<NWRuleSetIpRules> ipRules = default(IList<NWRuleSetIpRules>))
-            : base(location, id, name, type, tags)
+        public NetworkRuleSetInner(string id = default(string), string name = default(string), string type = default(string), string defaultAction = default(string), IList<NWRuleSetVirtualNetworkRules> virtualNetworkRules = default(IList<NWRuleSetVirtualNetworkRules>), IList<NWRuleSetIpRules> ipRules = default(IList<NWRuleSetIpRules>))
+            : base(id, name, type)
         {
             DefaultAction = defaultAction;
             VirtualNetworkRules = virtualNetworkRules;

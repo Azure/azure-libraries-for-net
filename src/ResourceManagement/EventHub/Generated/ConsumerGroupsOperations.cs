@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// The consumer group name
         /// </param>
         /// <param name='userMetadata'>
-        /// User Metadata is a placeholder to store user-defined string data with
+        /// Usermetadata is a placeholder to store user-defined string data with
         /// maximum length 1024. e.g. it can be used to store descriptive data, such as
         /// list of teams and their contact information also user-defined configuration
         /// settings can be stored.
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if(parameters != null)
+            if (parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -806,16 +806,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='eventHubName'>
         /// The Event Hub name
         /// </param>
-        /// <param name='skip'>
-        /// Skip is only used if a previous operation returned a partial result. If a
-        /// previous response contains a nextLink element, the value of the nextLink
-        /// element will include a skip parameter that specifies a starting point to
-        /// use for subsequent calls.
-        /// </param>
-        /// <param name='top'>
-        /// May be used to limit the number of results to the most recent N
-        /// usageDetails.
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -837,7 +827,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ConsumerGroupInner>>> ListByEventHubWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, int? skip = default(int?), int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ConsumerGroupInner>>> ListByEventHubWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -888,22 +878,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (skip > 1000)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "skip", 1000);
-            }
-            if (skip < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "skip", 0);
-            }
-            if (top > 1000)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "top", 1000);
-            }
-            if (top < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "top", 1);
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -914,8 +888,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("namespaceName", namespaceName);
                 tracingParameters.Add("eventHubName", eventHubName);
-                tracingParameters.Add("skip", skip);
-                tracingParameters.Add("top", top);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListByEventHub", tracingParameters);
             }
@@ -930,14 +902,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (skip != null)
-            {
-                _queryParameters.Add(string.Format("$skip={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(skip, Client.SerializationSettings).Trim('"'))));
-            }
-            if (top != null)
-            {
-                _queryParameters.Add(string.Format("$top={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(top, Client.SerializationSettings).Trim('"'))));
             }
             if (_queryParameters.Count > 0)
             {
@@ -965,7 +929,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1003,7 +967,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1134,7 +1098,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1172,7 +1136,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

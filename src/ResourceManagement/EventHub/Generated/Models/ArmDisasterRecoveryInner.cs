@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ArmDisasterRecoveryInner : Rest.Azure.Resource
+    public partial class ArmDisasterRecoveryInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ArmDisasterRecoveryInner class.
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// 'Secondary'</param>
         /// <param name="pendingReplicationOperationsCount">Number of entities
         /// pending to be replicated.</param>
-        public ArmDisasterRecoveryInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningStateDR? provisioningState = default(ProvisioningStateDR?), string partnerNamespace = default(string), string alternateName = default(string), RoleDisasterRecovery? role = default(RoleDisasterRecovery?), long? pendingReplicationOperationsCount = default(long?))
-            : base(location, id, name, type, tags)
+        public ArmDisasterRecoveryInner(string id = default(string), string name = default(string), string type = default(string), ProvisioningStateDR? provisioningState = default(ProvisioningStateDR?), string partnerNamespace = default(string), string alternateName = default(string), RoleDisasterRecovery? role = default(RoleDisasterRecovery?), long? pendingReplicationOperationsCount = default(long?))
+            : base(id, name, type)
         {
             ProvisioningState = provisioningState;
             PartnerNamespace = partnerNamespace;
