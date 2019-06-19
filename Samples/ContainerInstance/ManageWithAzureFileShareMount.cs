@@ -53,6 +53,7 @@ namespace ManageWithAzureFileShareMount
                         .WithExternalTcpPort(80)
                         .WithVolumeMountSetting(volumeMountName, "/aci/logs/")
                         .Attach()
+                    .WithDnsPrefix(aciName)
                     .Create();
 
                 Utilities.Print(containerGroup);

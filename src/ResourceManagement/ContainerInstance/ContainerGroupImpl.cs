@@ -513,6 +513,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 this.Inner.IpAddress = new IpAddress();
             }
             this.Inner.IpAddress.DnsNameLabel = dnsPrefix;
+            this.Inner.IpAddress.Type = ContainerGroupIpAddressType.Public.ToString();
 
             return this;
         }
@@ -610,6 +611,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             String networkProfileId = "/subscriptions/" + subscriptionId + "/resourceGroups/" + resourceGroupName + "/providers/Microsoft.Network/networkProfiles/" + networkProfileName;
             ContainerGroupNetworkProfile containerGroupNetworkProfile = new ContainerGroupNetworkProfile();
             containerGroupNetworkProfile.Id = networkProfileId;
+            this.Inner.NetworkProfile = containerGroupNetworkProfile;
             if (this.Inner.IpAddress == null)
             {
                 this.Inner.IpAddress = new IpAddress();
