@@ -63,14 +63,14 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// container group.</param>
         /// <param name="dnsConfig">The DNS config information for a container
         /// group.</param>
-        public ContainerGroupInner(IList<Container> containers, OperatingSystemTypes osType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ContainerGroupIdentity identity = default(ContainerGroupIdentity), string provisioningState = default(string), IList<ImageRegistryCredential> imageRegistryCredentials = default(IList<ImageRegistryCredential>), string restartPolicy = default(string), IpAddress ipAddress = default(IpAddress), IList<Volume> volumes = default(IList<Volume>), ContainerGroupPropertiesInstanceView instanceView = default(ContainerGroupPropertiesInstanceView), ContainerGroupDiagnostics diagnostics = default(ContainerGroupDiagnostics), ContainerGroupNetworkProfile networkProfile = default(ContainerGroupNetworkProfile), DnsConfiguration dnsConfig = default(DnsConfiguration))
+        public ContainerGroupInner(IList<Container> containers, string osType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ContainerGroupIdentity identity = default(ContainerGroupIdentity), string provisioningState = default(string), IList<ImageRegistryCredential> imageRegistryCredentials = default(IList<ImageRegistryCredential>), string restartPolicy = default(string), IpAddress ipAddress = default(IpAddress), IList<Volume> volumes = default(IList<Volume>), ContainerGroupPropertiesInstanceView instanceView = default(ContainerGroupPropertiesInstanceView), ContainerGroupDiagnostics diagnostics = default(ContainerGroupDiagnostics), ContainerGroupNetworkProfile networkProfile = default(ContainerGroupNetworkProfile), DnsConfiguration dnsConfig = default(DnsConfiguration))
             : base(location, id, name, type, tags)
         {
             Identity = identity;
             ProvisioningState = provisioningState;
             Containers = containers;
             ImageRegistryCredentials = imageRegistryCredentials;
-            RestartPolicy = ContainerGroupRestartPolicy.Parse(restartPolicy);
+            RestartPolicy = restartPolicy;
             IpAddress = ipAddress;
             OsType = osType;
             Volumes = volumes;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// . Possible values include: 'Always', 'OnFailure', 'Never'
         /// </summary>
         [JsonProperty(PropertyName = "properties.restartPolicy")]
-        public ContainerGroupRestartPolicy RestartPolicy { get; set; }
+        public string RestartPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the IP address type of the container group.
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// in the container group. Possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osType")]
-        public OperatingSystemTypes OsType { get; set; }
+        public string OsType { get; set; }
 
         /// <summary>
         /// Gets or sets the list of volumes that can be mounted by containers

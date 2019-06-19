@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         public bool IsIPAddressPrivate()
         {
-            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type != null && this.Inner.IpAddress.Type == ContainerGroupIpAddressType.Private;
+            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type != null && this.Inner.IpAddress.Type.Equals(ContainerGroupIpAddressType.Private.ToString());
         }
 
         public bool IsIPAddressPublic()
         {
-            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type != null && this.Inner.IpAddress.Type == ContainerGroupIpAddressType.Public;
+            return this.Inner.IpAddress != null && this.Inner.IpAddress.Type != null && this.Inner.IpAddress.Type.Equals(ContainerGroupIpAddressType.Public.ToString());
         }
 
         public bool IsManagedServiceIdentityEnabled()
@@ -181,13 +181,13 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         public OperatingSystemTypes OSType()
         {
-            return this.Inner.OsType;
+            return OperatingSystemTypes.Parse(this.Inner.OsType);
         }
 
         ///GENMHASH:72D8F838766D2FA789A06DBB8ACE4C8C:6688B3D6EDBA6430DBE60C201714B737
         public ContainerGroupRestartPolicy RestartPolicy()
         {
-            return this.Inner.RestartPolicy;
+            return ContainerGroupRestartPolicy.Parse(this.Inner.RestartPolicy);
         }
 
         public void Restart()
@@ -278,6 +278,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         public async override Task<IContainerGroup> CreateResourceAsync(CancellationToken cancellationToken)
         {
+            this.containerGroupMsiHandler.ProcessCreatedExternalIdentities();
+            this.containerGroupMsiHandler.HandleExternalIdentities();
             ContainerGroupImpl self = this;
             if (IsInCreateMode)
             {
@@ -340,7 +342,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:002B9FED6878745A10FBEF2FDB77458A:4C268D270623A9FCE0E849411F7DACB8
         public ContainerGroupImpl WithLinux()
         {
-            this.Inner.OsType = OperatingSystemTypes.Linux;
+            this.Inner.OsType = OperatingSystemTypes.Linux.ToString();
 
             return this;
         }
@@ -348,7 +350,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:21843F6A42DA7655078B0AAA573930DC:1BB4AF60868C4D62F669F7DFFC20EE87
         public ContainerGroupImpl WithWindows()
         {
-            this.Inner.OsType = OperatingSystemTypes.Windows;
+            this.Inner.OsType = OperatingSystemTypes.Windows.ToString();
 
             return this;
         }
@@ -468,7 +470,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:1C73260E17F72F996B485F399B1A7E02:93461D0A597F2906607068C9C6F891F6
         public ContainerGroupImpl WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy)
         {
-            this.Inner.RestartPolicy = restartPolicy;
+            this.Inner.RestartPolicy = restartPolicy.ToString();
 
             return this;
         }
@@ -612,7 +614,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             {
                 this.Inner.IpAddress = new IpAddress();
             }
-            this.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private;
+            this.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private.ToString();
             return this;
         }
 

@@ -76,12 +76,20 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             if (parent.Inner.IpAddress == null)
             {
-                parent.Inner.IpAddress = new IpAddress
-                {
-                    Ip = "Public",
-                    Ports = new List<Port>()
-                };
+                parent.Inner.IpAddress = new IpAddress();
             }
+            if (parent.Inner.IpAddress.Type == null && parent.Inner.IpAddress.DnsNameLabel == null)
+            {
+                parent.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private.ToString();
+            } else
+            {
+                parent.Inner.IpAddress.Type = ContainerGroupIpAddressType.Public.ToString();
+            }
+            if (parent.Inner.IpAddress.Ports == null)
+            {
+                parent.Inner.IpAddress.Ports = new List<Port>();
+            }
+
             return parent.Inner.IpAddress;
         }
 

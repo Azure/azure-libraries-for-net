@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             ContainerGroupUsage = new ContainerGroupUsageOperations(this);
             Container = new ContainerOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-06-01";
+            ApiVersion = "2018-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

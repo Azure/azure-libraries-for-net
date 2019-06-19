@@ -5,6 +5,7 @@ using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Fluent.Tests
     public class ContainerInstanceTest
     {
         [Fact]
-        public void ContainerInstanceCRD()
+        public void ContainerInstanceWithPublicIpAddressWithSystemAssignedMSI()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
@@ -23,6 +24,7 @@ namespace Fluent.Tests
                 var cgName = TestUtilities.GenerateName("aci");
                 var containerInstanceManager = TestHelper.CreateContainerInstanceManager();
                 var resourceManager = TestHelper.CreateResourceManager();
+                string logAnalyticsWorkspaceId = "50d41d82-7b64-4e0b-bc1e-3b3fe38d1012";
                 IContainerGroup containerGroup = null;
 
                 try
@@ -44,7 +46,10 @@ namespace Fluent.Tests
                                 .WithExternalTcpPort(80)
                                 .WithEnvironmentVariableWithSecuredValue("ENV2", "securedValue1")
                                 .Attach()
+                            .WithSystemAssignedManagedServiceIdentity()
+                            .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                             .WithRestartPolicy(ContainerGroupRestartPolicy.Never)
+                            .WithLogAnalytics(logAnalyticsWorkspaceId, "isabellaTest")
                             .WithDnsPrefix(cgName)
                             .WithTag("tag1", "value1")
                             .Create();
@@ -75,7 +80,7 @@ namespace Fluent.Tests
                     Assert.Null(tomcatContainer.VolumeMounts);
                     Assert.Null(tomcatContainer.Command);
                     Assert.NotNull(tomcatContainer.EnvironmentVariables);
-                    Assert.Empty(tomcatContainer.EnvironmentVariables);
+                    Assert.Equal(1, tomcatContainer.EnvironmentVariables.Count);
                     Assert.Equal("nginx", nginxContainer.Name);
                     Assert.Equal("nginx", nginxContainer.Image);
                     Assert.Equal(1.0, nginxContainer.Resources.Requests.Cpu);
@@ -85,10 +90,12 @@ namespace Fluent.Tests
                     Assert.Null(nginxContainer.VolumeMounts);
                     Assert.Null(nginxContainer.Command);
                     Assert.NotNull(nginxContainer.EnvironmentVariables);
-                    Assert.Empty(nginxContainer.EnvironmentVariables);
                     Assert.Equal(cgName, containerGroup.DnsPrefix);
                     Assert.True(containerGroup.Tags.ContainsKey("tag1"));
                     Assert.Equal(ContainerGroupRestartPolicy.Never, containerGroup.RestartPolicy);
+                    Assert.True(containerGroup.IsManagedServiceIdentityEnabled);
+                    Assert.Equal(ResourceIdentityType.SystemAssigned, containerGroup.ManagedServiceIdentityType);
+                    Assert.Equal(logAnalyticsWorkspaceId, containerGroup.LogAnalytics.WorkspaceId);
 
                     IContainerGroup containerGroup2 = containerInstanceManager.ContainerGroups.GetByResourceGroup(rgName, cgName);
 
@@ -99,7 +106,7 @@ namespace Fluent.Tests
                     containerGroup.Refresh();
 
                     var containerOperationsList = containerInstanceManager.ContainerGroups.ListOperations();
-                    Assert.Equal(10, containerOperationsList.Count());
+                    Assert.True(containerOperationsList.Count() > 0);
 
                     containerGroup.Update()
                         .WithoutTag("tag1")
