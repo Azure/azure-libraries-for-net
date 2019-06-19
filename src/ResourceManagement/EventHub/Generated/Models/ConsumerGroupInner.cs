@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Consumer group operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ConsumerGroupInner : Management.ResourceManager.Fluent.Resource
+    public partial class ConsumerGroupInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ConsumerGroupInner class.

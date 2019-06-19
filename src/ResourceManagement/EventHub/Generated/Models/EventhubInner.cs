@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Event Hub operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EventhubInner : Management.ResourceManager.Fluent.Resource
+    public partial class EventhubInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the EventhubInner class.

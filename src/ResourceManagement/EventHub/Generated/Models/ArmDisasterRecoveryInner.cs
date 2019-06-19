@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ArmDisasterRecoveryInner : Management.ResourceManager.Fluent.Resource
+    public partial class ArmDisasterRecoveryInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ArmDisasterRecoveryInner class.

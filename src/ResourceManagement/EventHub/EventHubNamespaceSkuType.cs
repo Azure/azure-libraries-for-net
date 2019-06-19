@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:F756CBB3F13EF6198269C107AED6F9A2:A44011D5F68E86AC617B996D6E97D9B5
         public SkuTier Tier()
         {
-            return SkuTier.Parse(this.sku.Tier);
+            return this.sku.Tier;
         }
 
         public override int GetHashCode()
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:BE2A432E51EEBF22D14FCF34FCC5C687
         public SkuName Name()
         {
-            return SkuName.Parse(this.sku.Name);
+            return this.sku.Name;
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:CDE5022F600459C09E74303AF1358498:DA9435990EB5B4F9D93F540EB6E44B17
         public  EventHubNamespaceSkuType(SkuName name, SkuTier tier) : this(new Sku()
         {
-            Name = name.ToString(),
-            Tier = tier.ToString(),
+            Name = name,
+            Tier = tier,
             Capacity = null
         })
         {

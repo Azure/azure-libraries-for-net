@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in a List or Get AuthorizationRule operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AuthorizationRuleInner : Management.ResourceManager.Fluent.Resource
+    public partial class AuthorizationRuleInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the AuthorizationRuleInner class.

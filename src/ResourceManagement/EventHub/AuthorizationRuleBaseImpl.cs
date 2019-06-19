@@ -40,12 +40,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
                 }
                 else
                 {
-                    List<AccessRights> rights = new List<AccessRights>();
-                    foreach (var r in this.Inner.Rights) 
-                    {
-                        rights.Add(AccessRights.Parse(r));
-                    }
-                    return rights;
+                    return new List<AccessRights>(this.Inner.Rights);
                 }
             }
         }
@@ -55,11 +50,11 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             if (this.Inner.Rights == null)
             {
-                this.Inner.Rights = new List<string>();
+                this.Inner.Rights = new List<AccessRights>();
             }
-            if (!this.Inner.Rights.Contains("Listen"))
+            if (!this.Inner.Rights.Contains(AccessRights.Listen))
             {
-                this.Inner.Rights.Add("Listen");
+                this.Inner.Rights.Add(AccessRights.Listen);
             }
             return (RuleImpl) this;
         }
@@ -69,11 +64,11 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             if (this.Inner.Rights == null)
             {
-                this.Inner.Rights = new List<string>();
+                this.Inner.Rights = new List<AccessRights>();
             }
-            if (!this.Inner.Rights.Contains("Send"))
+            if (!this.Inner.Rights.Contains(AccessRights.Send))
             {
-                this.Inner.Rights.Add("Send");
+                this.Inner.Rights.Add(AccessRights.Send);
             }
             return (RuleImpl) this;
         }
@@ -85,11 +80,11 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             WithSendingEnabled();
             if (this.Inner.Rights == null)
             {
-                this.Inner.Rights = new List<string>();
+                this.Inner.Rights = new List<AccessRights>();
             }
-            if (!this.Inner.Rights.Contains("Manage"))
+            if (!this.Inner.Rights.Contains(AccessRights.Manage))
             {
-                this.Inner.Rights.Add("Manage");
+                this.Inner.Rights.Add(AccessRights.Manage);
             }
             return (RuleImpl) this;
         }
