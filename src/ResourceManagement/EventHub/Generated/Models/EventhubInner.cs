@@ -8,9 +8,9 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Event Hub operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EventhubInner : NestedResourceInner
+    public partial class EventhubInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the EventhubInner class.
