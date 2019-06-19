@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
             {
-                return this.Inner.Identity.UserAssignedIdentities.Keys as ReadOnlyCollection<String>;
+                return new ReadOnlyCollection<string>(new List<string>(this.Inner.Identity.UserAssignedIdentities.Keys));
             }
             return new ReadOnlyCollection<String>(new List<String>());
         }
