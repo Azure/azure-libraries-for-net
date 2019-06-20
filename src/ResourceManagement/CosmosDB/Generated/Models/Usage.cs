@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// usage values.</param>
         /// <param name="limit">Maximum value for this metric</param>
         /// <param name="currentValue">Current value for this metric</param>
-        public Usage(string unit = default(string), MetricName name = default(MetricName), string quotaPeriod = default(string), int? limit = default(int?), int? currentValue = default(int?))
+        public Usage(string unit = default(string), MetricName name = default(MetricName), string quotaPeriod = default(string), long? limit = default(long?), long? currentValue = default(long?))
         {
             Unit = unit;
             Name = name;
@@ -74,13 +74,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets maximum value for this metric
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
-        public int? Limit { get; private set; }
+        public long? Limit { get; private set; }
 
         /// <summary>
         /// Gets current value for this metric
         /// </summary>
         [JsonProperty(PropertyName = "currentValue")]
-        public int? CurrentValue { get; private set; }
+        public long? CurrentValue { get; private set; }
 
     }
 }

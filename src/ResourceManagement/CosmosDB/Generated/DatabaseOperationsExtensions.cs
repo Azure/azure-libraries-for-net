@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
 
             /// <summary>
-            /// Retrieves metric defintions for the given database.
+            /// Retrieves metric definitions for the given database.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
