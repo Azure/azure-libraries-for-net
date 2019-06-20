@@ -86,6 +86,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
 
     }
 
+    /// <summary>
+    /// Fork allowing to go to create or to specify DNS configuration.
+    /// </summary>
     public interface IDnsConfigFork :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithDnsConfig,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate
@@ -545,20 +548,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     }
 
     /// <summary>
-    /// The stage of the container instance definition allowing to specify system assigned managed service identity with specific
-    /// role based access.
-    /// </summary>
-    public interface IWithSystemAssignedIdentityBasedAccessOrCreate :
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate,
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta
-    {
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role);
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role);
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
-    }
-
-    /// <summary>
     /// The stage of the container group definition allowing to specify a private image registry or a volume.
     /// </summary>
     public interface IWithPrivateImageRegistryOrVolume :
@@ -849,6 +838,45 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         /// </summary>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedManagedServiceIdentity();
+    }
+
+    /// <summary>
+    /// The stage of the container instance definition allowing to specify system assigned managed service identity with specific
+    /// role based access.
+    /// </summary>
+    public interface IWithSystemAssignedIdentityBasedAccessOrCreate :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta
+    {
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to a specific resource with a specific role.
+        /// </summary>
+        /// <param name="resourceId">The ID of the resource you are setting up access to</param>
+        /// <param name="role">Access role to be assigned to the identity</param>
+        /// <returns>The next stage of the defintion.</returns>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role);
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to the current resource group and with the specified role.
+        /// </summary>
+        /// <param name="role">Access role to be assigned to the identity.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role);
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to a specific resource with a specified role from the ID.
+        /// </summary>
+        /// <param name="resourceId">The ID of the resource you are setting up access to.</param>
+        /// <param name="roleDefinitionId">ID of the access role to be assigned to the identity.</param>
+        /// <returns>The next stage of the defintion.</returns>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to the current resource group and with the specified role from the ID.
+        /// </summary>
+        /// <param name="roleDefinitionId">The ID of the access role to be assigned to the identity.</param>
+        /// <returns>The next stage of the defintion.</returns>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
     }
 
     /// <summary>
