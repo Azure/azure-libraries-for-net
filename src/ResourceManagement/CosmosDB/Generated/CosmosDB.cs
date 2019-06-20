@@ -138,11 +138,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// Gets the IPartitionKeyRangeIdRegionOperations.
         /// </summary>
         public virtual IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; private set; }
-        
+
         /// <summary>
         /// Initializes a new instance of the CosmosDB class.
         /// </summary>
-        /// <param name="restClient">RestClient parameter to initialize a CosmosDB account.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
         public CosmosDB(RestClient restClient)
             : base(restClient)
         {

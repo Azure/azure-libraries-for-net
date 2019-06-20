@@ -60,6 +60,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     }
 
     /// <summary>
+    /// The stage of the cosmos db definition allowing to specify whether multiple write locations will be enabled.
+    /// </summary>
+    public interface IWithMultipleLocations
+    {
+        /// <summary>
+        /// Specifies whether multiple write locations are enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether multiple write locations are enabled or not.</param>
+        /// <returns>The next stage.</returns>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithMultipleWriteLocationsEnabled(bool enabled);
+    }
+
+    /// <summary>
     /// The stage of the cosmos db definition allowing to set the database account kind.
     /// </summary>
     public interface IWithKindBeta  :
@@ -115,6 +128,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithReadReplication,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithIpRangeFilter,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithVirtualNetworkRule,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithMultipleLocations,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
     }

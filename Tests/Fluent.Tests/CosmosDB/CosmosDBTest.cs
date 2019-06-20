@@ -36,6 +36,7 @@ namespace Fluent.Tests
                             .WithWriteReplication(Region.USWest)
                             .WithReadReplication(Region.USCentral)
                             .WithIpRangeFilter("")
+                            .WithMultipleWriteLocationsEnabled(true)
                             .Create();
 
                     Assert.Equal(databaseAccount.Name, dbName.ToLower());
@@ -43,6 +44,7 @@ namespace Fluent.Tests
                     Assert.Equal(1, databaseAccount.WritableReplications.Count);
                     Assert.Equal(2, databaseAccount.ReadableReplications.Count);
                     Assert.Equal(DefaultConsistencyLevel.Session, databaseAccount.DefaultConsistencyLevel);
+                    Assert.True(databaseAccount.MultipleWriteLocationsEnabled);
 
                     databaseAccount = databaseAccount.Update()
                             .WithReadReplication(Region.AsiaSouthEast)
