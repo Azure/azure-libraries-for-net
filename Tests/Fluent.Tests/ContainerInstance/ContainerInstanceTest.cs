@@ -225,7 +225,6 @@ namespace Fluent.Tests
                     Assert.True(containerGroup.IsManagedServiceIdentityEnabled);
                     Assert.Null(containerGroup.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.Equal(ResourceIdentityType.UserAssigned, containerGroup.ManagedServiceIdentityType);
-
                     // Ensure the "User Assigned (External) MSI" id can be retrieved from the virtual machine
                     IReadOnlyCollection<string> emsiIds = containerGroup.UserAssignedManagedServiceIdentityIds;
                     Assert.NotNull(emsiIds);
