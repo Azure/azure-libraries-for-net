@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.Capabilities = inner.Capabilities;
             createUpdateParametersInner.Tags = inner.Tags;
             createUpdateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
+            createUpdateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();

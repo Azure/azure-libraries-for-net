@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
-
-        /// <summary>
         /// Azure subscription ID.
         /// </summary>
         public string SubscriptionId { get; set; }
