@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         string Kind { get; }
 
         /// <summary>
+        /// Gets whether write is enabled for multiple locations or not
+        /// </summary>
+        bool? MultipleWriteLocationsEnabled { get; }
+
+        /// <summary>
         /// Gets a list that contains the Cosmos DB capabilities.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<Models.Capability> Capabilities { get; }

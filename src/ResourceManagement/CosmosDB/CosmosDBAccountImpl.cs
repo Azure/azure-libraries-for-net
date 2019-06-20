@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.Capabilities = inner.Capabilities;
             createUpdateParametersInner.Tags = inner.Tags;
             createUpdateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
+            createUpdateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
@@ -158,6 +159,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public string Kind()
         {
             return this.Inner.Kind;
+        }
+        public bool? MultipleWriteLocationsEnabled()
+        {
+            return this.Inner.EnableMultipleWriteLocations;
         }
 
         private void EnsureFailoverIsInitialized()
@@ -515,6 +520,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public CosmosDBAccountImpl WithMultipleWriteLocationsEnabled(bool enabled)
+        {
+            this.Inner.EnableMultipleWriteLocations = enabled;
+            return this;
+        }
+
         ///GENMHASH:ED2CFE8848802E73EC1E094FD7531ECC:49712209F38177A621F85B96C0B5A1BD
         public IReadOnlyList<Models.VirtualNetworkRule> VirtualNetworkRules()
         {
@@ -566,6 +577,5 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             await this.Manager.Inner.DatabaseAccounts.OnlineRegionAsync(this.ResourceGroupName, this.Name, region.Name, cancellationToken);
         }
-
     }
 }

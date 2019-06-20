@@ -58,7 +58,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// account</param>
         /// <param name="virtualNetworkRules">List of Virtual Network ACL rules
         /// configured for the Cosmos DB account.</param>
-        public DatabaseAccountCreateUpdateParametersInner(IList<Location> locations, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kind = default(string), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), IList<Capability> capabilities = default(IList<Capability>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>))
+        /// <param name="enableMultipleWriteLocations">Enables the account to
+        /// write in multiple locations</param>
+        public DatabaseAccountCreateUpdateParametersInner(IList<Location> locations, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kind = default(string), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), IList<Capability> capabilities = default(IList<Capability>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?))
             : base(location, id, name, type, tags)
         {
             Kind = kind;
@@ -69,6 +71,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
             EnableAutomaticFailover = enableAutomaticFailover;
             Capabilities = capabilities;
             VirtualNetworkRules = virtualNetworkRules;
+            EnableMultipleWriteLocations = enableMultipleWriteLocations;
             CustomInit();
         }
         /// <summary>
@@ -147,6 +150,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public IList<VirtualNetworkRule> VirtualNetworkRules { get; set; }
 
         /// <summary>
+        /// Gets or sets enables the account to write in multiple locations
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableMultipleWriteLocations")]
+        public bool? EnableMultipleWriteLocations { get; set; }
+
+        /// <summary>
+        /// The offer type for the database
         /// </summary>
         [JsonProperty(PropertyName = "properties.databaseAccountOfferType")]
         public static string DatabaseAccountOfferType { get; private set; }
@@ -157,7 +167,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
             if (Locations == null)
             {

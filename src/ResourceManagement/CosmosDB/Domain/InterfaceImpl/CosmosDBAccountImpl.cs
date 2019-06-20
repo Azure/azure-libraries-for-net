@@ -341,6 +341,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
+        /// Gets whether multiple write locations are enabled or not.
+        /// </summary>
+        bool? Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.MultipleWriteLocationsEnabled
+        {
+            get
+            {
+                return this.MultipleWriteLocationsEnabled();
+            }
+        }
+
+        /// <summary>
         /// Gets a list that contains the Cosmos DB capabilities.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<Models.Capability> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.Capabilities
@@ -462,6 +473,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName)
         {
             return this.WithVirtualNetwork(virtualNetworkId, subnetName);
+        }
+
+        /// <summary>
+        /// Specifies whether mutliple write locations are enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether mutliple write locations are enabled or not</param>
+        /// <returns>The next stage.</returns>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithMultipleLocations.WithMultipleWriteLocationsEnabled(bool enabled)
+        {
+            return this.WithMultipleWriteLocationsEnabled(enabled);
+        }
+
+        /// <summary>
+        /// Specifies whether multiple write locations are enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether multiple write locations are enabled or not,</param>
+        /// <returns>The next stage of the update definition.</returns>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithMultipleLocations.WithMultipleWriteLocationsEnabled(bool enabled)
+        {
+            return this.WithMultipleWriteLocationsEnabled(enabled);
         }
 
         /// <summary>

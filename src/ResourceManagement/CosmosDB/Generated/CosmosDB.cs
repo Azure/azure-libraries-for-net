@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     public partial class CosmosDB : FluentServiceClientBase<CosmosDB>, ICosmosDB, IAzureClient
     {
         /// <summary>
+        /// The base URI of the service.
+        /// </summary>
+        public System.Uri BaseUri { get; set; }
+
+        /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
         public JsonSerializerSettings SerializationSettings { get; private set; }
@@ -34,7 +39,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// Azure subscription ID.
         /// </summary>
@@ -47,19 +52,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -134,7 +140,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public CosmosDB(RestClient restClient) 
+        public CosmosDB(RestClient restClient)
             : base(restClient)
         {
         }

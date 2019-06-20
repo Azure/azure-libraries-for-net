@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<Usage>>> ListUsagesWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Retrieves metric defintions for the given collection.
+        /// Retrieves metric definitions for the given collection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure resource group.

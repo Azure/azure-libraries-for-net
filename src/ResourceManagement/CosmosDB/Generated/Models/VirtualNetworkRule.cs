@@ -29,9 +29,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         /// <param name="id">Resource ID of a subnet, for example:
         /// /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.</param>
-        public VirtualNetworkRule(string id = default(string))
+        /// <param name="ignoreMissingVNetServiceEndpoint">Create firewall rule
+        /// before the virtual network has vnet service endpoint
+        /// enabled.</param>
+        public VirtualNetworkRule(string id = default(string), bool? ignoreMissingVNetServiceEndpoint = default(bool?))
         {
             Id = id;
+            IgnoreMissingVNetServiceEndpoint = ignoreMissingVNetServiceEndpoint;
             CustomInit();
         }
 
@@ -46,6 +50,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets create firewall rule before the virtual network has
+        /// vnet service endpoint enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "ignoreMissingVNetServiceEndpoint")]
+        public bool? IgnoreMissingVNetServiceEndpoint { get; set; }
 
     }
 }
