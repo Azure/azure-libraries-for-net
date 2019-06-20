@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Error reponse indicates EventHub service is not able to process the
+    /// Error response indicates EventHub service is not able to process the
     /// incoming request. The reason is provided in the error message.
     /// </summary>
     public partial class ErrorResponse

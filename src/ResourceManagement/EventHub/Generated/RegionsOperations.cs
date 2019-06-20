@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operations operations.
+    /// RegionsOperations operations.
     /// </summary>
-    internal partial class Operations : IServiceOperations<EventHubManagementClient>, IOperations
+    internal partial class RegionsOperations : IServiceOperations<EventHubManagementClient>, IRegionsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the Operations class.
+        /// Initializes a new instance of the RegionsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal Operations(EventHubManagementClient client)
+        internal RegionsOperations(EventHubManagementClient client)
         {
             if (client == null)
             {
@@ -49,8 +49,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         public EventHubManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available Event Hub REST API operations.
+        /// Gets the available Regions for a given sku
         /// </summary>
+        /// <param name='sku'>
+        /// The sku type.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -72,11 +75,30 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<OperationInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<MessagingRegions>>> ListBySkuWithHttpMessagesAsync(string sku, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (sku == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "sku");
+            }
+            if (sku != null)
+            {
+                if (sku.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "sku", 50);
+                }
+                if (sku.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "sku", 1);
+                }
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -85,12 +107,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("sku", sku);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListBySku", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.EventHub/operations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.EventHub/sku/{sku}/regions").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{sku}", System.Uri.EscapeDataString(sku));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -184,7 +209,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<OperationInner>>();
+            var _result = new AzureOperationResponse<IPage<MessagingRegions>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -197,7 +222,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<OperationInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MessagingRegions>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -217,7 +242,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         }
 
         /// <summary>
-        /// Lists all of the available Event Hub REST API operations.
+        /// Gets the available Regions for a given sku
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -243,7 +268,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<OperationInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<MessagingRegions>>> ListBySkuNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -258,7 +283,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListBySkuNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";
@@ -352,7 +377,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<OperationInner>>();
+            var _result = new AzureOperationResponse<IPage<MessagingRegions>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -365,7 +390,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<OperationInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MessagingRegions>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

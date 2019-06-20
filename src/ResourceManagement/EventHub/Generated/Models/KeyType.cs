@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         [EnumMember(Value = "SecondaryKey")]
         SecondaryKey
     }
-
     internal static class KeyTypeEnumExtension
     {
         internal static string ToSerializedValue(this KeyType? value)

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// The consumer group name
         /// </param>
         /// <param name='userMetadata'>
-        /// Usermetadata is a placeholder to store user-defined string data
+        /// User Metadata is a placeholder to store user-defined string data
         /// with maximum length 1024. e.g. it can be used to store descriptive
         /// data, such as list of teams and their contact information also
         /// user-defined configuration settings can be stored.
@@ -132,6 +132,16 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='eventHubName'>
         /// The Event Hub name
         /// </param>
+        /// <param name='skip'>
+        /// Skip is only used if a previous operation returned a partial
+        /// result. If a previous response contains a nextLink element, the
+        /// value of the nextLink element will include a skip parameter that
+        /// specifies a starting point to use for subsequent calls.
+        /// </param>
+        /// <param name='top'>
+        /// May be used to limit the number of results to the most recent N
+        /// usageDetails.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -147,7 +157,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ConsumerGroupInner>>> ListByEventHubWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ConsumerGroupInner>>> ListByEventHubWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, int? skip = default(int?), int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the consumer groups in a Namespace. An empty feed is
         /// returned if no consumer group exists in the Namespace.

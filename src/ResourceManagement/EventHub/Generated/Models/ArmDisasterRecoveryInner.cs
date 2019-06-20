@@ -8,13 +8,11 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -22,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ArmDisasterRecoveryInner : NestedResourceInner
+    public partial class ArmDisasterRecoveryInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ArmDisasterRecoveryInner class.
@@ -40,20 +38,23 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// or 'Succeeded' or 'Failed'. Possible values include: 'Accepted',
         /// 'Succeeded', 'Failed'</param>
         /// <param name="partnerNamespace">ARM Id of the Primary/Secondary
-        /// eventhub namespace name, which is part of GEO DR pairning</param>
+        /// eventhub namespace name, which is part of GEO DR pairing</param>
         /// <param name="alternateName">Alternate name specified when alias and
         /// namespace names are same.</param>
         /// <param name="role">role of namespace in GEO DR - possible values
         /// 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible
         /// values include: 'Primary', 'PrimaryNotReplicating',
         /// 'Secondary'</param>
-        public ArmDisasterRecoveryInner(string id = default(string), string name = default(string), string type = default(string), ProvisioningStateDR? provisioningState = default(ProvisioningStateDR?), string partnerNamespace = default(string), string alternateName = default(string), RoleDisasterRecovery? role = default(RoleDisasterRecovery?))
+        /// <param name="pendingReplicationOperationsCount">Number of entities
+        /// pending to be replicated.</param>
+        public ArmDisasterRecoveryInner(string id = default(string), string name = default(string), string type = default(string), ProvisioningStateDR? provisioningState = default(ProvisioningStateDR?), string partnerNamespace = default(string), string alternateName = default(string), RoleDisasterRecovery? role = default(RoleDisasterRecovery?), long? pendingReplicationOperationsCount = default(long?))
             : base(id, name, type)
         {
             ProvisioningState = provisioningState;
             PartnerNamespace = partnerNamespace;
             AlternateName = alternateName;
             Role = role;
+            PendingReplicationOperationsCount = pendingReplicationOperationsCount;
             CustomInit();
         }
 
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 
         /// <summary>
         /// Gets or sets ARM Id of the Primary/Secondary eventhub namespace
-        /// name, which is part of GEO DR pairning
+        /// name, which is part of GEO DR pairing
         /// </summary>
         [JsonProperty(PropertyName = "properties.partnerNamespace")]
         public string PartnerNamespace { get; set; }
@@ -92,6 +93,12 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.role")]
         public RoleDisasterRecovery? Role { get; private set; }
+
+        /// <summary>
+        /// Gets number of entities pending to be replicated.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.pendingReplicationOperationsCount")]
+        public long? PendingReplicationOperationsCount { get; private set; }
 
     }
 }
