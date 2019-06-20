@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:2A78999F239DA090C8DF19A6D1F08331:8F91E65E832D3679B5CB708B68F15EFC
         protected override async Task<AccessKeysInner> RegenerateKeysInnerAsync(KeyType keyType, CancellationToken cancellationToken = default(CancellationToken))
         {
-            RegenerateAccessKeyParametersInner regenKeyInner = new RegenerateAccessKeyParametersInner
+            RegenerateAccessKeyParameters regenKeyInner = new RegenerateAccessKeyParameters
             {
                 KeyType = keyType
             };

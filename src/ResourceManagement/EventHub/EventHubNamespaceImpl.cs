@@ -273,16 +273,16 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             Sku newSkuInner = new Sku
             {
-                Name = namespaceSku.Name().ToString(),
-                Tier = namespaceSku.Tier().ToString(),
+                Name = namespaceSku.Name(),
+                Tier = namespaceSku.Tier(),
                 Capacity = null
             };
             Sku currentSkuInner = this.Inner.Sku;
-            bool isDifferent = currentSkuInner == null || !currentSkuInner.Name.Equals(newSkuInner.Name, StringComparison.OrdinalIgnoreCase);
+            bool isDifferent = currentSkuInner == null || !currentSkuInner.Name.Equals(newSkuInner.Name);
             if (isDifferent)
             {
                 this.Inner.Sku = newSkuInner;
-                if (newSkuInner.Name.Equals(SkuName.Standard.ToString(), StringComparison.OrdinalIgnoreCase))
+                if (newSkuInner.Name.Equals(SkuName.Standard))
                 {
                     newSkuInner.Capacity = 1;
                 }

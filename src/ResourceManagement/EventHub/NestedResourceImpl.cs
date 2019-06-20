@@ -3,6 +3,7 @@
 namespace Microsoft.Azure.Management.Eventhub.Fluent
 {
     using Microsoft.Azure.Management.EventHub.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ResourceActions;
 
@@ -19,7 +20,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         IHasInner<InnerModelT>,
         IHasManager<IEventHubManager>,
         INestedResource
-        where InnerModelT : NestedResourceInner
+        where InnerModelT : Resource
         where IFluentModelT : class, IHasId
         where FluentModelImplT : class
         where IUpdateEntryPoint : class
