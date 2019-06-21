@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <summary>
         /// Gets the base level OS type required by the containers in the group.
         /// </summary>
-        OperatingSystemTypes Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.OSType
+        Fluent.OSTypeName Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.OSType
         {
             get
             {

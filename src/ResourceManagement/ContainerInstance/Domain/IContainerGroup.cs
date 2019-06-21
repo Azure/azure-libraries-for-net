@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <summary>
         /// Gets the base level OS type required by the containers in the group.
         /// </summary>
-        OperatingSystemTypes OSType { get; }
+        Fluent.OSTypeName OSType { get; }
 
         /// <summary>
         /// Gets the provisioningState of the container group.

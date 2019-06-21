@@ -179,9 +179,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this.Inner.ProvisioningState;
         }
 
-        public OperatingSystemTypes OSType()
+        public Fluent.OSTypeName OSType()
         {
-            return OperatingSystemTypes.Parse(this.Inner.OsType);
+            return Fluent.OSTypeName.Parse(this.Inner.OsType);
         }
 
         ///GENMHASH:72D8F838766D2FA789A06DBB8ACE4C8C:6688B3D6EDBA6430DBE60C201714B737
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:002B9FED6878745A10FBEF2FDB77458A:4C268D270623A9FCE0E849411F7DACB8
         public ContainerGroupImpl WithLinux()
         {
-            this.Inner.OsType = OperatingSystemTypes.Linux.ToString();
+            this.Inner.OsType = Fluent.OSTypeName.Linux.ToString();
 
             return this;
         }
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:21843F6A42DA7655078B0AAA573930DC:1BB4AF60868C4D62F669F7DFFC20EE87
         public ContainerGroupImpl WithWindows()
         {
-            this.Inner.OsType = OperatingSystemTypes.Windows.ToString();
+            this.Inner.OsType = Fluent.OSTypeName.Windows.ToString();
 
             return this;
         }
