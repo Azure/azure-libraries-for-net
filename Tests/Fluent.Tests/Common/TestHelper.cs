@@ -36,6 +36,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Rest;
 using Xunit.Abstractions;
+using Microsoft.Azure.Management.Msi.Fluent;
 
 namespace Fluent.Tests.Common
 {
@@ -241,6 +242,15 @@ namespace Fluent.Tests.Common
         public static IContainerInstanceManager CreateContainerInstanceManager()
         {
             return CreateMockedManager(c => ContainerInstanceManager
+                .Configure()
+                .WithDelegatingHandlers(GetHandlers())
+                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
+                .Authenticate(c, c.DefaultSubscriptionId));
+        }
+
+        public static IMsiManager CreateMsiManager()
+        {
+            return CreateMockedManager(c => MsiManager
                 .Configure()
                 .WithDelegatingHandlers(GetHandlers())
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)

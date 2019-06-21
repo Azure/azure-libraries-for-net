@@ -5,8 +5,10 @@
 
 using System;
 using System.Linq;
+using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent;
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent
@@ -16,6 +18,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         #region Fluent private collections
         private IContainerGroups containerGroups;
         private IStorageManager storageManager;
+        private IGraphRbacManager rbacManager;
         #endregion
 
         #region ctrs
@@ -26,6 +29,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             })
         {
             this.storageManager = StorageManager.Authenticate(restClient, subscriptionId);
+            this.rbacManager = GraphRbacManager.Authenticate(restClient, subscriptionId);
         }
         #endregion
         #region ContainerInstanceManager builder
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             {
                 if (containerGroups == null)
                 {
-                    containerGroups = new ContainerGroupsImpl(this, this.storageManager);
+                    containerGroups = new ContainerGroupsImpl(this, this.storageManager, this.rbacManager);
                 }
 
                 return containerGroups;

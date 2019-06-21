@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
         /// subscription. The subscription ID forms part of the URI for every service
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ContainerInstanceManagementClient(RestClient restClient) 
+        public ContainerInstanceManagementClient(RestClient restClient)
             : base(restClient)
         {
         }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             ContainerGroupUsage = new ContainerGroupUsageOperations(this);
             Container = new ContainerOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-06-01";
+            ApiVersion = "2018-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

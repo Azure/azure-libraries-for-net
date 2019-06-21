@@ -10,6 +10,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -32,10 +34,15 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// analytics</param>
         /// <param name="workspaceKey">The workspace key for log
         /// analytics</param>
-        public LogAnalytics(string workspaceId, string workspaceKey)
+        /// <param name="logType">The log type to be used. Possible values
+        /// include: 'ContainerInsights', 'ContainerInstanceLogs'</param>
+        /// <param name="metadata">Metadata for log analytics.</param>
+        public LogAnalytics(string workspaceId, string workspaceKey, LogAnalyticsLogType logType = default(LogAnalyticsLogType), IDictionary<string, string> metadata = default(IDictionary<string, string>))
         {
             WorkspaceId = workspaceId;
             WorkspaceKey = workspaceKey;
+            LogType = logType;
+            Metadata = metadata;
             CustomInit();
         }
 
@@ -55,6 +62,19 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "workspaceKey")]
         public string WorkspaceKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the log type to be used. Possible values include:
+        /// 'ContainerInsights', 'ContainerInstanceLogs'
+        /// </summary>
+        [JsonProperty(PropertyName = "logType")]
+        public LogAnalyticsLogType LogType { get; set; }
+
+        /// <summary>
+        /// Gets or sets metadata for log analytics.
+        /// </summary>
+        [JsonProperty(PropertyName = "metadata")]
+        public IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Validate the object.

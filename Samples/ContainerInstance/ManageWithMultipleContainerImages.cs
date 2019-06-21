@@ -54,6 +54,7 @@ namespace ManageWithMultipleContainerImages
                         .WithMemorySizeInGB(1)
                         .Attach()
                     .WithRestartPolicy(ContainerGroupRestartPolicy.Never)
+                    .WithDnsPrefix(aciName)
                     .Create();
 
                 Utilities.Print(containerGroup);
