@@ -384,5 +384,212 @@ namespace Fluent.Tests
 
             }
         }
+
+        [Fact]
+        public void ContainerInstanceMSIUpdate()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rgName = TestUtilities.GenerateName("rgaci");
+                var cgName = TestUtilities.GenerateName("aci");
+                var msiManager = TestHelper.CreateMsiManager();
+                var containerInstanceManager = TestHelper.CreateContainerInstanceManager();
+                var resourceManager = TestHelper.CreateResourceManager();
+                string identityName1 = TestUtilities.GenerateName("msi-id");
+                string identityName2 = TestUtilities.GenerateName("msi-id");
+                IList<string> dnsServers = new List<string>();
+                dnsServers.Add("dnsServer1");
+                IContainerGroup containerGroup = null;
+
+                IIdentity createdIdentity = msiManager.Identities
+                    .Define(identityName1)
+                    .WithRegion(Region.USWest)
+                    .WithNewResourceGroup(rgName)
+                    .WithAccessToCurrentResourceGroup(BuiltInRole.Reader)
+                    .Create();
+
+                Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithCreate creatableIdentity = msiManager.Identities
+                     .Define(identityName2)
+                     .WithRegion(Region.USWest)
+                     .WithExistingResourceGroup(rgName)
+                     .WithAccessToCurrentResourceGroup(BuiltInRole.Contributor);
+
+                try
+                {
+                    containerGroup = containerInstanceManager.ContainerGroups.Define(cgName)
+                            .WithRegion(Region.USEast)
+                            .WithExistingResourceGroup(rgName)
+                            .WithLinux()
+                            .WithPublicImageRegistryOnly()
+                            .WithEmptyDirectoryVolume("emptydir1")
+                            .DefineContainerInstance("tomcat")
+                                .WithImage("tomcat")
+                                .WithExternalTcpPort(8080)
+                                .WithCpuCoreCount(1)
+                                .WithEnvironmentVariable("ENV1", "value1")
+                                .Attach()
+                            .DefineContainerInstance("nginx")
+                                .WithImage("nginx")
+                                .WithExternalTcpPort(80)
+                                .WithEnvironmentVariableWithSecuredValue("ENV2", "securedValue1")
+                                .Attach()
+                            .WithExistingUserAssignedManagedServiceIdentity(createdIdentity)
+                            .WithNewUserAssignedManagedServiceIdentity(creatableIdentity)
+                            .Create();
+
+                    Assert.Equal(cgName, containerGroup.Name);
+                    Assert.Equal("Linux", containerGroup.OSType.Value);
+                    Assert.Equal(0, containerGroup.ImageRegistryServers.Count);
+                    Assert.Equal(1, containerGroup.Volumes.Count);
+                    Assert.NotNull(containerGroup.Volumes["emptydir1"]);
+                    Assert.NotNull(containerGroup.IPAddress);
+                    Assert.True(containerGroup.IsIPAddressPublic);
+                    Assert.Equal(2, containerGroup.ExternalTcpPorts.Length);
+                    Assert.Equal(2, containerGroup.ExternalPorts.Count);
+                    Assert.Empty(containerGroup.ExternalUdpPorts);
+                    Assert.Equal(8080, containerGroup.ExternalTcpPorts[0]);
+                    Assert.Equal(80, containerGroup.ExternalTcpPorts[1]);
+                    Assert.Equal(2, containerGroup.Containers.Count);
+                    Container tomcatContainer = containerGroup.Containers["tomcat"];
+                    Assert.NotNull(tomcatContainer);
+                    Container nginxContainer = containerGroup.Containers["nginx"];
+                    Assert.NotNull(nginxContainer);
+                    Assert.Equal("tomcat", tomcatContainer.Name);
+                    Assert.Equal("tomcat", tomcatContainer.Image);
+                    Assert.Equal(1.0, tomcatContainer.Resources.Requests.Cpu);
+                    Assert.Equal(1.5, tomcatContainer.Resources.Requests.MemoryInGB);
+                    Assert.Equal(1, tomcatContainer.Ports.Count);
+                    Assert.Equal(8080, tomcatContainer.Ports[0].Port);
+                    Assert.Null(tomcatContainer.VolumeMounts);
+                    Assert.Null(tomcatContainer.Command);
+                    Assert.NotNull(tomcatContainer.EnvironmentVariables);
+                    Assert.Equal(1, tomcatContainer.EnvironmentVariables.Count);
+                    Assert.Equal("nginx", nginxContainer.Name);
+                    Assert.Equal("nginx", nginxContainer.Image);
+                    Assert.Equal(1.0, nginxContainer.Resources.Requests.Cpu);
+                    Assert.Equal(1.5, nginxContainer.Resources.Requests.MemoryInGB);
+                    Assert.Equal(1, nginxContainer.Ports.Count);
+                    Assert.Equal(80, nginxContainer.Ports[0].Port);
+                    Assert.Null(nginxContainer.VolumeMounts);
+                    Assert.Null(nginxContainer.Command);
+                    Assert.NotNull(nginxContainer.EnvironmentVariables);
+                    Assert.True(containerGroup.IsManagedServiceIdentityEnabled);
+                    Assert.Null(containerGroup.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.Equal(ResourceIdentityType.UserAssigned, containerGroup.ManagedServiceIdentityType);
+                    // Ensure the "User Assigned (External) MSI" id can be retrieved from the virtual machine
+                    IReadOnlyCollection<string> emsiIds = containerGroup.UserAssignedManagedServiceIdentityIds;
+                    Assert.NotNull(emsiIds);
+                    Assert.Equal(2, emsiIds.Count);
+
+                    IContainerGroup containerGroup2 = containerInstanceManager.ContainerGroups.GetByResourceGroup(rgName, cgName);
+
+                    var containerGroupList = containerInstanceManager.ContainerGroups.ListByResourceGroup(rgName);
+                    Assert.True(containerGroupList.Count() > 0);
+                    Assert.NotNull(containerGroupList.First().State);
+
+                    containerGroup.Refresh();
+
+                    var containerOperationsList = containerInstanceManager.ContainerGroups.ListOperations();
+                    Assert.True(containerOperationsList.Count() > 0);
+
+                    var emsiIdsEnumerator = emsiIds.GetEnumerator();
+                    emsiIdsEnumerator.MoveNext();
+                    var firstEmsiId = emsiIdsEnumerator.Current;
+                    emsiIdsEnumerator.MoveNext();
+                    var secondEmsiId = emsiIdsEnumerator.Current;
+
+                    containerGroup.Update()
+                        .WithoutTag("tag1")
+                        .WithTag("tag2", "value2")
+                        .WithoutUserAssignedManagedServiceIdentity(firstEmsiId)
+                        .WithoutUserAssignedManagedServiceIdentity(secondEmsiId)
+                        .Apply();
+                    Assert.False(containerGroup.Tags.ContainsKey("tag1"));
+                    Assert.True(containerGroup.Tags.ContainsKey("tag2"));
+                    Assert.Equal(0, containerGroup.UserAssignedManagedServiceIdentityIds.Count);
+                    if (containerGroup.ManagedServiceIdentityType != null)
+                    {
+                        Assert.True(containerGroup.ManagedServiceIdentityType.Equals(ResourceIdentityType.None));
+                    }
+
+                    //fetch container group again and validate
+                    containerGroup.Refresh();
+
+                    Assert.Equal(0, containerGroup.UserAssignedManagedServiceIdentityIds.Count);
+                    if (containerGroup.ManagedServiceIdentityType != null)
+                    {
+                        Assert.True(containerGroup.ManagedServiceIdentityType.Equals(ResourceIdentityType.None));
+                    }
+
+                    emsiIdsEnumerator = emsiIds.GetEnumerator();
+                    emsiIdsEnumerator.MoveNext();
+                    firstEmsiId = emsiIdsEnumerator.Current;
+                    emsiIdsEnumerator.MoveNext();
+                    secondEmsiId = emsiIdsEnumerator.Current;
+                    IIdentity identity1 = msiManager.Identities.GetById(firstEmsiId);
+                    IIdentity identity2 = msiManager.Identities.GetById(secondEmsiId);
+
+                    // Update container group by enabling system MSI and adding two identities
+                    containerGroup.Update()
+                        .WithSystemAssignedManagedServiceIdentity()
+                        .WithExistingUserAssignedManagedServiceIdentity(identity1)
+                        .WithExistingUserAssignedManagedServiceIdentity(identity2)
+                        .Apply();
+
+                    Assert.NotNull(containerGroup.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(2, containerGroup.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(containerGroup.ManagedServiceIdentityType);
+                    Assert.True(containerGroup.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
+
+                    Assert.NotNull(containerGroup.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(containerGroup.SystemAssignedManagedServiceIdentityTenantId);
+
+                    containerGroup.Refresh();
+                    Assert.NotNull(containerGroup.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(2, containerGroup.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(containerGroup.ManagedServiceIdentityType);
+                    Assert.True(containerGroup.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
+
+                    Assert.NotNull(containerGroup.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(containerGroup.SystemAssignedManagedServiceIdentityTenantId);
+
+                    emsiIdsEnumerator = emsiIds.GetEnumerator();
+                    emsiIdsEnumerator.MoveNext();
+                    firstEmsiId = emsiIdsEnumerator.Current;
+                    // Remove identities one by one (first one)
+                    containerGroup.Update()
+                        .WithoutUserAssignedManagedServiceIdentity(firstEmsiId)
+                        .Apply();
+
+                    Assert.NotNull(containerGroup.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(1, containerGroup.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(containerGroup.ManagedServiceIdentityType);
+                    Assert.True(containerGroup.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
+                    Assert.NotNull(containerGroup.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(containerGroup.SystemAssignedManagedServiceIdentityTenantId);
+
+                    emsiIdsEnumerator.MoveNext();
+                    secondEmsiId = emsiIdsEnumerator.Current;
+                    //Remove identities one by one (second one)
+                    containerGroup.Update()
+                        .WithoutUserAssignedManagedServiceIdentity(secondEmsiId)
+                        .Apply();
+
+                    Assert.Equal(0, containerGroup.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(containerGroup.ManagedServiceIdentityType);
+                    Assert.True(containerGroup.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssigned));
+                    containerInstanceManager.ContainerGroups.DeleteById(containerGroup.Id);
+                }
+                finally
+                {
+                    try
+                    {
+                        resourceManager.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+
+            }
+        }
     }
 }

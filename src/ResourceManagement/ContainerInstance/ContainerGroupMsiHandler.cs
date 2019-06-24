@@ -39,9 +39,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         internal void HandleExternalIdentities()
         {
-            if (this.userAssignedIdentities.Any())
+            this.containerGroup.Inner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
+            if (this.containerGroup.Inner.Identity.UserAssignedIdentities == null || this.containerGroup.Inner.Identity.UserAssignedIdentities.Count == 0)
             {
-                this.containerGroup.Inner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
+                if (this.containerGroup.Inner.Identity.Type == ResourceIdentityType.SystemAssignedUserAssigned)
+                {
+                    this.containerGroup.Inner.Identity.Type = ResourceIdentityType.SystemAssigned;
+                }
+                if (this.containerGroup.Inner.Identity.Type == ResourceIdentityType.UserAssigned)
+                {
+                    this.containerGroup.Inner.Identity.Type = ResourceIdentityType.None;
+                }
             }
         }
 
@@ -56,7 +64,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
-        /// Specifies that Local Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies that Local Managed Service Identity needs to be enabled in the container group.
         /// MSI extension is not already installed then it will be installed with access token
         /// port as 50342.
         /// </summary>
@@ -69,9 +77,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         /// <summary>
         /// Specifies that given identity should be set as one of the External Managed Service Identity
-        /// of the virtual machine.
+        /// of the container group.
         /// </summary>
-        /// <param name="creatableIdentity">Yet-to-be-created identity to be associated with the virtual machine.</param>
+        /// <param name="creatableIdentity">Yet-to-be-created identity to be associated with the container group.</param>
         /// <return>ContainerGroupMsiHandler</return>
         internal ContainerGroupMsiHandler WithNewExternalManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
         {
@@ -86,7 +94,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         /// <summary>
         /// Specifies that given identity should be set as one of the External Managed Service Identity
-        /// of the virtual machine.
+        /// of the container group.
         /// </summary>
         /// <param name="identity">An identity to associate.</param>
         /// <return>ContainerGroupMsiHandler.</return>
@@ -94,6 +102,42 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             this.InitContainerGroupIdentity(ResourceIdentityType.UserAssigned);
             this.userAssignedIdentities[identity.Id] = new ContainerGroupIdentityUserAssignedIdentitiesValue();
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that given identity should be removed from the list of External Managed Service Identity
+        /// associated with the container group machine.
+        /// </summary>
+        /// <param name="identityId">Resource id of the identity.</param>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal ContainerGroupMsiHandler WithoutExternalManagedServiceIdentity(string identityId)
+        {
+            this.userAssignedIdentities.Remove(identityId);
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that Local Managed Service Identity needs to be disabled in the container group.
+        /// </summary>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal ContainerGroupMsiHandler WithoutLocalManagedServiceIdentity()
+        {
+            if (this.containerGroup.Inner.Identity == null ||
+                this.containerGroup.Inner.Identity.Type == null ||
+                this.containerGroup.Inner.Identity.Type == Models.ResourceIdentityType.None ||
+                this.containerGroup.Inner.Identity.Type == Models.ResourceIdentityType.UserAssigned)
+            {
+                return this;
+            }
+            else if (this.containerGroup.Inner.Identity.Type == Models.ResourceIdentityType.SystemAssigned)
+            {
+                this.containerGroup.Inner.Identity.Type = Models.ResourceIdentityType.None;
+            }
+            else if (this.containerGroup.Inner.Identity.Type.Value == Models.ResourceIdentityType.SystemAssignedUserAssigned)
+            {
+                this.containerGroup.Inner.Identity.Type = Models.ResourceIdentityType.UserAssigned;
+            }
             return this;
         }
 
