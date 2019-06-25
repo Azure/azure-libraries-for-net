@@ -248,6 +248,17 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             return this.WithRetentionPeriodInDays(period);
         }
 
+
+        /// <summary>
+        /// Set a value that indicates whether to Skip Empty Archives.
+        /// </summary>
+        /// <param name="skipEmptyArchives">The skipEmptyArchives value to set.</param>
+        /// <return>Next stage of the event hub definition.</return>
+        EventHub.Definition.IWithCaptureOptionalSettingsOrCreate EventHub.Definition.IWithCaptureOptionalSettingsOrCreate.WithDataCaptureSkipEmptyArchives(bool skipEmptyArchives)
+        {
+            return this.WithDataCaptureSkipEmptyArchives(skipEmptyArchives);
+        }
+
         /// <summary>
         /// Specifies the capture window size in MB.
         /// </summary>
@@ -318,6 +329,16 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureDisabled()
         {
             return this.WithDataCaptureDisabled();
+        }
+
+        /// <summary>
+        ///  Specified the capture whether to Skip Empty Archives.
+        /// </summary>
+        /// <param name="skipEmptyArchives">The skipEmptyArchives value to set.</param>
+        /// <return>Next stage of the event hub update.</return>
+        EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureSkipEmptyArchives(bool skipEmptyArchives)
+        {
+            return this.WithDataCaptureSkipEmptyArchives(skipEmptyArchives);
         }
 
         /// <summary>
@@ -429,6 +450,17 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             get
             {
                 return this.DataCaptureWindowSizeInMB();
+            }
+        }
+
+        /// <summary>
+        /// Gets whether to skip empty archives when capturing is enabled
+        /// </summary>
+        bool Microsoft.Azure.Management.Eventhub.Fluent.IEventHub.DataCaptureSkipEmptyArchives
+        {
+            get
+            {
+                return this.DataCaptureSkipEmptyArchives();
             }
         }
 
