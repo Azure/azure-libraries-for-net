@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// </summary>
         int DataCaptureWindowSizeInMB { get; }
 
+
+        /// <summary>
+        /// Gets whether to skip empty archives when capturing is enabled
+        /// </summary>
+        bool DataCaptureSkipEmptyArchives { get; }
+
         /// <summary>
         /// Gets description of the destination where captured data will be stored.
         /// </summary>

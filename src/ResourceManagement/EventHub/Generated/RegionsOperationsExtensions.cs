@@ -15,29 +15,32 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Operations.
+    /// Extension methods for RegionsOperations.
     /// </summary>
-    public static partial class OperationsExtensions
+    public static partial class RegionsOperationsExtensions
     {
             /// <summary>
-            /// Lists all of the available Event Hub REST API operations.
+            /// Gets the available Regions for a given sku
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='sku'>
+            /// The sku type.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<OperationInner>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<MessagingRegions>> ListBySkuAsync(this IRegionsOperations operations, string sku, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySkuWithHttpMessagesAsync(sku, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Lists all of the available Event Hub REST API operations.
+            /// Gets the available Regions for a given sku
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -48,9 +51,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<OperationInner>> ListNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<MessagingRegions>> ListBySkuNextAsync(this IRegionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySkuNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

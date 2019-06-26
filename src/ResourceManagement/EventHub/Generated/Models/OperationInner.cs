@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// <summary>
     /// A Event Hub REST API operation
     /// </summary>
-    public partial class Operation
+    public partial class OperationInner
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
-        public Operation()
+        public OperationInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
         /// <param name="name">Operation name:
         /// {provider}/{resource}/{operation}</param>
         /// <param name="display">The object that represents the
         /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        public OperationInner(string name = default(string), OperationDisplay display = default(OperationDisplay))
         {
             Name = name;
             Display = display;

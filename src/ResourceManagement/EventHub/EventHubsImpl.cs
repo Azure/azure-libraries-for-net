@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:6EDC0210EC32BAF3169D04C5071B3BA4:C0F3C750FC7EB704999286CDE900CACE
-        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>> ListByNamespaceAsync(string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>> ListByNamespaceAsync(string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken), int? skip = default(int?), int? top = default(int?))
         {
-            return await PagedCollection<IEventHub, EventhubInner>.LoadPage(cancel => this.Inner.ListByNamespaceAsync(resourceGroupName, namespaceName, cancel),
+            return await PagedCollection<IEventHub, EventhubInner>.LoadPage(cancel => this.Inner.ListByNamespaceAsync(resourceGroupName, namespaceName, skip, top, cancel),
               (nextLink, cancel) => this.Inner.ListByNamespaceNextAsync(nextLink),
               WrapModel, 
               true, 

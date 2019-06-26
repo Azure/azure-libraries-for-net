@@ -8,34 +8,33 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Definition of Resource
+    /// Messaging Region
     /// </summary>
-    public partial class TrackedResourceInner : Management.ResourceManager.Fluent.Resource
+    public partial class MessagingRegions : TrackedResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the TrackedResourceInner class.
+        /// Initializes a new instance of the MessagingRegions class.
         /// </summary>
-        public TrackedResourceInner()
+        public MessagingRegions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TrackedResourceInner class.
+        /// Initializes a new instance of the MessagingRegions class.
         /// </summary>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        public TrackedResourceInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        public MessagingRegions(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), MessagingRegionsProperties properties = default(MessagingRegionsProperties))
+            : base(id, name, type, location, tags)
         {
+            Properties = properties;
             CustomInit();
         }
 
@@ -43,6 +42,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public MessagingRegionsProperties Properties { get; set; }
 
     }
 }

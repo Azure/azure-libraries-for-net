@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
 
             /// <summary>
-            /// envokes GEO DR failover and reconfigure the alias to point to the secondary
+            /// Invokes GEO DR failover and reconfigure the alias to point to the secondary
             /// namespace
             /// </summary>
             /// <param name='operations'>

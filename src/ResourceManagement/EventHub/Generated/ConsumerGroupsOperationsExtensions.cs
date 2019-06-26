@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// The consumer group name
             /// </param>
             /// <param name='userMetadata'>
-            /// Usermetadata is a placeholder to store user-defined string data with
+            /// User Metadata is a placeholder to store user-defined string data with
             /// maximum length 1024. e.g. it can be used to store descriptive data, such as
             /// list of teams and their contact information also user-defined configuration
             /// settings can be stored.
@@ -126,12 +126,22 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='eventHubName'>
             /// The Event Hub name
             /// </param>
+            /// <param name='skip'>
+            /// Skip is only used if a previous operation returned a partial result. If a
+            /// previous response contains a nextLink element, the value of the nextLink
+            /// element will include a skip parameter that specifies a starting point to
+            /// use for subsequent calls.
+            /// </param>
+            /// <param name='top'>
+            /// May be used to limit the number of results to the most recent N
+            /// usageDetails.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ConsumerGroupInner>> ListByEventHubAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ConsumerGroupInner>> ListByEventHubAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, int? skip = default(int?), int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByEventHubWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByEventHubWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, skip, top, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

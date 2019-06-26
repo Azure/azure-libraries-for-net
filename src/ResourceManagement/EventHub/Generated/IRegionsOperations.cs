@@ -17,13 +17,16 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operations operations.
+    /// RegionsOperations operations.
     /// </summary>
-    public partial interface IOperations
+    public partial interface IRegionsOperations
     {
         /// <summary>
-        /// Lists all of the available Event Hub REST API operations.
+        /// Gets the available Regions for a given sku
         /// </summary>
+        /// <param name='sku'>
+        /// The sku type.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -39,9 +42,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<OperationInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<MessagingRegions>>> ListBySkuWithHttpMessagesAsync(string sku, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all of the available Event Hub REST API operations.
+        /// Gets the available Regions for a given sku
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -61,6 +64,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<OperationInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<MessagingRegions>>> ListBySkuNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

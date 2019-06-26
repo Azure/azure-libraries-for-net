@@ -42,12 +42,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             }
             else
             {
-                List<AccessRights> rights = new List<AccessRights>();
-                foreach (var r in this.Inner.Rights)
-                {
-                    rights.Add(AccessRights.Parse(r));
-                }
-                return rights;
+                return new List<AccessRights>(this.Inner.Rights);
             }
         }
 
