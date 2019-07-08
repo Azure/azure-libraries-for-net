@@ -113,8 +113,7 @@ namespace Fluent.Tests.Storage
                     var storageAccount = storageManager.StorageAccounts.Define(stgName)
                         .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(rgName)
-
-                        .WithBlobStorageAccountKind()     // Override the default which is GeneralPursposeKind
+                        .WithBlobStorageAccountKind()     // Override the default which is GeneralPurposeKind
                         .WithSku(StorageAccountSkuType.Standard_RAGRS)   // Override the default which is StandardGRS
                         .WithHnsEnabled(true)
                         .WithAzureFilesAadIntegrationEnabled(false)
