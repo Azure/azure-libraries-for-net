@@ -49,7 +49,7 @@ namespace ServiceBusPublishSubscribeAdvanceFeatures
                         .Define(namespaceName)
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(rgName)
-                        .WithSku(NamespaceSku.PremiumCapacity1)
+                        .WithSku(NamespaceSku.Standard)
                         .WithNewTopic(topic1Name, 1024)
                         .Create();
 

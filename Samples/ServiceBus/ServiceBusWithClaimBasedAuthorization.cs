@@ -49,7 +49,7 @@ namespace ServiceBusWithClaimBasedAuthorization
                         .Define(namespaceName)
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(rgName)
-                        .WithSku(NamespaceSku.PremiumCapacity1)
+                        .WithSku(NamespaceSku.Standard)
                         .WithNewQueue(queueName, 1024)
                         .WithNewTopic(topicName, 1024)
                         .Create();
