@@ -22,7 +22,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("fluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -33,12 +33,12 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     var nspace = serviceBusManager.Namespaces
                             .Define(namespaceDNSLabel)
                             .WithRegion(region)
                             .WithNewResourceGroup(rgCreatable)
-                            .WithSku(NamespaceSku.PremiumCapacity1)
+                            .WithSku(NamespaceSku.Basic)
                             .Create();
 
                     var namespaces = serviceBusManager.Namespaces.ListByResourceGroup(rgName);
@@ -52,7 +52,7 @@ namespace Fluent.Tests
                     Assert.NotNull(nspace.Fqdn);
                     Assert.Contains(namespaceDNSLabel, nspace.Fqdn);
                     Assert.NotNull(nspace.Sku);
-                    Assert.True(nspace.Sku.Equals(NamespaceSku.PremiumCapacity1));
+                    Assert.True(nspace.Sku.Name.Equals(NamespaceSku.Basic.Name));
                     Assert.NotNull(nspace.Region);
                     Assert.True(nspace.Region.Equals(region));
                     Assert.NotNull(nspace.ResourceGroupName);
@@ -72,9 +72,9 @@ namespace Fluent.Tests
                     Assert.NotNull(defaultNsRule.ResourceGroupName);
                     Assert.Equal(defaultNsRule.ResourceGroupName, rgName, ignoreCase: true);
                     nspace.Update()
-                        .WithSku(NamespaceSku.PremiumCapacity2)
+                        .WithSku(NamespaceSku.Standard)
                         .Apply();
-                    Assert.True(nspace.Sku.Equals(NamespaceSku.PremiumCapacity2));
+                    Assert.True(nspace.Sku.Name.Equals(NamespaceSku.Standard.Name));
                     // TODO: There is a bug in LRO implementation of ServiceBusNamespace DELETE operation (Last poll returns 404, reported this to RP]
                     //
                     // serviceBusManager.Namespaces.DeleteByGroup(rgName, nspace.Name);
@@ -97,7 +97,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("sluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -108,12 +108,12 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     var nspace = serviceBusManager.Namespaces
                         .Define(namespaceDNSLabel)
                             .WithRegion(region)
                             .WithNewResourceGroup(rgCreatable)
-                            .WithSku(NamespaceSku.PremiumCapacity1)
+                            .WithSku(NamespaceSku.Standard)
                         .Create();
                     Assert.NotNull(nspace);
                     Assert.NotNull(nspace.Inner);
@@ -194,7 +194,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("fluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -205,7 +205,7 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     var queueName = TestUtilities.GenerateName("queue1-");
                     // Create NS with Queue
                     //
@@ -213,7 +213,7 @@ namespace Fluent.Tests
                             .Define(namespaceDNSLabel)
                             .WithRegion(region)
                             .WithNewResourceGroup(rgCreatable)
-                            .WithSku(NamespaceSku.PremiumCapacity1)
+                            .WithSku(NamespaceSku.Standard)
                             .WithNewQueue(queueName, 1024)
                             .Create();
 
@@ -253,7 +253,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("fluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -264,7 +264,7 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     var queueName = TestUtilities.GenerateName("queue1-");
                     // Create NS with Queue
                     //
@@ -340,7 +340,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("fluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -351,7 +351,7 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     var topicName = TestUtilities.GenerateName("topic1-");
                     // Create NS with Queue
                     //
@@ -399,7 +399,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("fluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -410,7 +410,7 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     var queueName = TestUtilities.GenerateName("queue1-");
                     var topicName = TestUtilities.GenerateName("topic1-");
                     var nsRuleName = TestUtilities.GenerateName("nsrule1-");
@@ -420,7 +420,7 @@ namespace Fluent.Tests
                             .Define(namespaceDNSLabel)
                             .WithRegion(region)
                             .WithNewResourceGroup(rgCreatable)
-                            .WithSku(NamespaceSku.PremiumCapacity1)
+                            .WithSku(NamespaceSku.Standard)
                             .WithNewQueue(queueName, 1024)
                             .WithNewTopic(topicName, 1024)
                             .WithNewManageRule(nsRuleName)
@@ -526,7 +526,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                var namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                 var serviceBusManager = TestHelper.CreateServiceBusManager();
                 var availabilityResult = serviceBusManager
                         .Namespaces
@@ -545,7 +545,7 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
-                var rgName = TestUtilities.GenerateName("javasbmrg");
+                var rgName = TestUtilities.GenerateName("fluentnetsbmrg");
                 try
                 {
                     var resourceManager = TestHelper.CreateResourceManager();
@@ -556,7 +556,7 @@ namespace Fluent.Tests
                         .Define(rgName)
                         .WithRegion(region);
 
-                    String namespaceDNSLabel = TestUtilities.GenerateName("jvsbns");
+                    String namespaceDNSLabel = TestUtilities.GenerateName("netsbns");
                     String topicName = TestUtilities.GenerateName("topic1-");
                     String subscriptionName = TestUtilities.GenerateName("sub1-");
                     // Create NS with Topic
@@ -565,7 +565,7 @@ namespace Fluent.Tests
                             .Define(namespaceDNSLabel)
                             .WithRegion(region)
                             .WithNewResourceGroup(rgCreatable)
-                            .WithSku(NamespaceSku.PremiumCapacity1)
+                            .WithSku(NamespaceSku.Standard)
                             .WithNewTopic(topicName, 1024)
                             .Create();
 
