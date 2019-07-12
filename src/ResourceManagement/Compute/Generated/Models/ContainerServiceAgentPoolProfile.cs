@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="dnsPrefix">DNS prefix to be used to create the FQDN
         /// for the agent pool.</param>
         /// <param name="fqdn">FQDN for the agent pool.</param>
-        public ContainerServiceAgentPoolProfile(string name, int count, string vmSize, string dnsPrefix, string fqdn = default(string))
+        public ContainerServiceAgentPoolProfile(string name, int count, ContainerServiceVMSizeTypes vmSize, string dnsPrefix, string fqdn = default(string))
         {
             Name = name;
             Count = count;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Standard_GS4', 'Standard_GS5'
         /// </summary>
         [JsonProperty(PropertyName = "vmSize")]
-        public string VmSize { get; set; }
+        public ContainerServiceVMSizeTypes VmSize { get; set; }
 
         /// <summary>
         /// Gets or sets DNS prefix to be used to create the FQDN for the agent

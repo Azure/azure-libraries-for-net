@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
@@ -71,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public OSDisk(DiskCreateOptionTypes createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
+        public OSDisk(DiskCreateOptionTypes createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource))
         {
             OsType = osType;
             EncryptionSettings = encryptionSettings;
@@ -187,7 +189,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the managed disk parameters.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public ManagedDiskParametersInner ManagedDisk { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
 
         /// <summary>
         /// Validate the object.
