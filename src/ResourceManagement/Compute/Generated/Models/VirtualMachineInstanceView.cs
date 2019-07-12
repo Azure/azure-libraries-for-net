@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machine.</param>
         /// <param name="osVersion">The version of Operating System running on
         /// the virtual machine.</param>
+        /// <param name="hyperVGeneration">Specifies the HyperVGeneration Type
+        /// associated with a resource. Possible values include: 'V1',
+        /// 'V2'</param>
         /// <param name="rdpThumbPrint">The Remote desktop certificate
         /// thumbprint.</param>
         /// <param name="vmAgent">The VM Agent running on the virtual
@@ -49,19 +52,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="extensions">The extensions information.</param>
         /// <param name="bootDiagnostics">Boot Diagnostics is a debugging
         /// feature which allows you to view Console Output and Screenshot to
-        /// diagnose VM status. &lt;br&gt;&lt;br&gt; For Linux Virtual
-        /// Machines, you can easily view the output of your console log.
-        /// &lt;br&gt;&lt;br&gt; For both Windows and Linux virtual machines,
-        /// Azure also enables you to see a screenshot of the VM from the
-        /// hypervisor.</param>
+        /// diagnose VM status. &lt;br&gt;&lt;br&gt; You can easily view the
+        /// output of your console log. &lt;br&gt;&lt;br&gt; Azure also enables
+        /// you to see a screenshot of the VM from the hypervisor.</param>
         /// <param name="statuses">The resource status information.</param>
-        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
+        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), HyperVGenerationType hyperVGeneration = default(HyperVGenerationType), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             PlatformUpdateDomain = platformUpdateDomain;
             PlatformFaultDomain = platformFaultDomain;
             ComputerName = computerName;
             OsName = osName;
             OsVersion = osVersion;
+            HyperVGeneration = hyperVGeneration;
             RdpThumbPrint = rdpThumbPrint;
             VmAgent = vmAgent;
             MaintenanceRedeployStatus = maintenanceRedeployStatus;
@@ -109,6 +111,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string OsVersion { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the HyperVGeneration Type associated with a
+        /// resource. Possible values include: 'V1', 'V2'
+        /// </summary>
+        [JsonProperty(PropertyName = "hyperVGeneration")]
+        public HyperVGenerationType HyperVGeneration { get; set; }
+
+        /// <summary>
         /// Gets or sets the Remote desktop certificate thumbprint.
         /// </summary>
         [JsonProperty(PropertyName = "rdpThumbPrint")]
@@ -142,11 +151,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Gets or sets boot Diagnostics is a debugging feature which allows
         /// you to view Console Output and Screenshot to diagnose VM status.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For Linux Virtual Machines,
-        /// you can easily view the output of your console log.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For both Windows and Linux
-        /// virtual machines, Azure also enables you to see a screenshot of the
-        /// VM from the hypervisor.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; You can easily view the output
+        /// of your console log. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Azure
+        /// also enables you to see a screenshot of the VM from the hypervisor.
         /// </summary>
         [JsonProperty(PropertyName = "bootDiagnostics")]
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }

@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
@@ -61,7 +63,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public DataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
+        /// <param name="toBeDetached">Specifies whether the data disk is in
+        /// process of detachment from the
+        /// VirtualMachine/VirtualMachineScaleset</param>
+        public DataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), bool? toBeDetached = default(bool?))
         {
             Lun = lun;
             Name = name;
@@ -72,6 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             CreateOption = createOption;
             DiskSizeGB = diskSizeGB;
             ManagedDisk = managedDisk;
+            ToBeDetached = toBeDetached;
             CustomInit();
         }
 
@@ -157,7 +163,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the managed disk parameters.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public ManagedDiskParametersInner ManagedDisk { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the data disk is in process of
+        /// detachment from the VirtualMachine/VirtualMachineScaleset
+        /// </summary>
+        [JsonProperty(PropertyName = "toBeDetached")]
+        public bool? ToBeDetached { get; set; }
 
         /// <summary>
         /// Validate the object.

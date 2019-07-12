@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     {
         public static readonly AccessLevel None = Parse("None");
         public static readonly AccessLevel Read = Parse("Read");
+        public static readonly AccessLevel Write = Parse("Write");
     }
 }

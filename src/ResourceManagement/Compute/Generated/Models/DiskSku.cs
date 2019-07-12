@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
         /// 'UltraSSD_LRS'</param>
         /// <param name="tier">The sku tier.</param>
-        public DiskSku(StorageAccountTypes name = default(StorageAccountTypes), string tier = default(string))
+        public DiskSku(DiskStorageAccountTypes name = default(DiskStorageAccountTypes), string tier = default(string))
         {
             Name = name;
             Tier = tier;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public StorageAccountTypes Name { get; set; }
+        public DiskStorageAccountTypes Name { get; set; }
 
         /// <summary>
         /// Gets the sku tier.
