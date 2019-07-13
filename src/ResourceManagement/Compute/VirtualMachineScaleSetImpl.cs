@@ -124,7 +124,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 SinglePlacementGroup = this.Inner.SinglePlacementGroup,
                 Sku = this.Inner.Sku,
                 Tags = this.Inner.Tags,
-                UpgradePolicy = this.Inner.UpgradePolicy
+                UpgradePolicy = this.Inner.UpgradePolicy,
+                AdditionalCapabilities = this.Inner.AdditionalCapabilities
             };
 
             if (this.Inner.VirtualMachineProfile != null)
@@ -2862,9 +2863,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
-        public VirtualMachineScaleSetImpl WithProximityPlacementGroup(string promixityPlacementGroupId)
+        public VirtualMachineScaleSetImpl WithProximityPlacementGroup(string proximityPlacementGroupId)
         {
-            this.Inner.ProximityPlacementGroup = new SubResource() { Id = promixityPlacementGroupId };
+            this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
             return this;
         }
 

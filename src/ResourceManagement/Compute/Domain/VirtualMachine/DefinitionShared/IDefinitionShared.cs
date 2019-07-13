@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.DefinitionSha
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPublicIPAddress,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPrimaryNetworkInterface,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate
     {
 
