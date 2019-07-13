@@ -65,6 +65,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     }
 
     /// <summary>
+    /// The stage of a virtual machine definition allowing to
+    /// set information about the proximity placement group that the virtual machine scale set should
+    /// be assigned to.
+    /// </summary>
+    public interface IWithProximityPlacementGroup : IWithOS
+    {
+        /// <summary> 
+        /// Set information about the proximity placement group that the virtual machine scale set should
+        /// be assigned to.
+        /// </summary>
+        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
+        /// <returns>the next stage of the definition.</returns>
+        IWithOS WithProximityPlacementGroup(string promixityPlacementGroupId);
+    }
+
+    /// <summary>
     /// The stage of a virtual machine definition allowing to specify the operating system image.
     /// </summary>
     public interface IWithOS :
@@ -209,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// </summary>
         /// <param name="networkInterface">An existing network interface.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS WithExistingPrimaryNetworkInterface(INetworkInterface networkInterface);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup WithExistingPrimaryNetworkInterface(INetworkInterface networkInterface);
 
         /// <summary>
         /// Creates a new network interface to associate with the virtual machine as its primary network interface,
@@ -217,7 +233,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// </summary>
         /// <param name="creatable">A creatable definition for a new network interface.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS WithNewPrimaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup WithNewPrimaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable);
     }
 
     /// <summary>
@@ -594,14 +610,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// </summary>
         /// <param name="publicIPAddress">An existing public IP address.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress);
 
         /// <summary>
         /// Creates a new public IP address to associate with the VM's primary network interface.
         /// </summary>
         /// <param name="creatable">A creatable definition for a new public IP.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable);
 
         /// <summary>
         /// Creates a new public IP address in the same region and resource group as the resource, with the specified DNS label
@@ -610,13 +626,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// </summary>
         /// <param name="leafDnsLabel">A leaf domain label.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS WithNewPrimaryPublicIPAddress(string leafDnsLabel);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup WithNewPrimaryPublicIPAddress(string leafDnsLabel);
 
         /// <summary>
         /// Specifies that the VM should not have a public IP address.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS WithoutPrimaryPublicIPAddress();
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithProximityPlacementGroup WithoutPrimaryPublicIPAddress();
     }
 
     /// <summary>

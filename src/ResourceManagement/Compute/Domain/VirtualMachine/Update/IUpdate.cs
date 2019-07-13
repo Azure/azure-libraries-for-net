@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate>,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithProximityPlacementGroup,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithUnmanagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithManagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSecondaryNetworkInterface,
@@ -223,6 +224,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// </summary>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutBootDiagnostics();
+    }
+
+    /// <summary>
+    /// The stage of a virtual machine update allowing to
+    /// set/remove information about the proximity placement group that the virtual machine scale set should
+    /// be assigned to.
+    /// </summary>
+    public interface IWithProximityPlacementGroup
+    {
+        /// <summary>
+        /// Set information about the proximity placement group that the virtual machineshould
+        /// be assigned to.
+        /// </summary>
+        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
+        /// <returns>the next stage of the definition.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithProximityPlacementGroup(String promixityPlacementGroupId);
+
+        /// <summary>
+        /// Removes the Proximity placement group from the VM
+        /// </summary>
+        /// <returns>the next stage of the definition.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutProximityPlacementGroup();
     }
 
     /// <summary>
