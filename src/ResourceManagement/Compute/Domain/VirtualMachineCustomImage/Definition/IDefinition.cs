@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     public interface IDefinition :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithGroup,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithHyperVGeneration,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSource,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithSourceVirtualMachine,
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// The stage of the image definition allowing to specify the resource group.
     /// </summary>
     public interface IWithGroup :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithHyperVGeneration>
     {
 
     }
@@ -46,7 +47,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSource,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithSourceVirtualMachine
     {
+    }
 
+    /// <summary>
+    /// The stage of the image definition that allows us to choose a hyper V generation.
+    /// Default, if this stage is not added will be hyperV gen 1.
+    /// </summary>
+    public interface IWithHyperVGeneration : IWithOSDiskImageSourceAltVirtualMachineSource
+    {
+        /// <summary>
+        /// Specifies the Hyper-V image generation.
+        /// </summary>
+        /// <param name="hyperVGeneration">Hyper-V image generation</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource WithHyperVGeneration(HyperVGenerationTypes hyperVGeneration);
     }
 
     /// <summary>
