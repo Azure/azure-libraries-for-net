@@ -33,6 +33,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         System.Collections.Generic.IReadOnlyList<string> ApplicationSecurityGroupIds { get; }
 
+
+        /// <summary> 
+        /// When Overprovision is enabled, extensions are launched only on the
+        /// requested number of VMs which are finally kept. This property will hence
+        /// ensure that the extensions do not run on the extra overprovisioned VMs.
+        /// </summary>
+        bool? DoNotRunExtensionsOnOverprovisionedVMs { get; }
+
+        /// <summary>
+        /// Get specifies information about the proximity placement group that the virtual machine scale set should be assigned to.
+        /// </summary>
+        string ProximityPlacementGroupId { get; }
+
+        /// <summary>
+        /// Get specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale
+        /// Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with
+        /// UltraSSD_LRS storage account type.
+        /// </summary>
+        AdditionalCapabilities AdditionalCapabilities { get; }
+
+
         /// <summary>
         /// Gets the number of virtual machine instances in the scale set.
         /// </summary>
