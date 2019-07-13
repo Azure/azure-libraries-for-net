@@ -218,7 +218,7 @@ namespace Fluent.Tests
                         .Create();
 
                     IBatchAIFileServer fileServer = workspace.FileServers.Define(fsName)
-                        .WithDataDisks(10, 2, StorageAccountType.StandardLRS, CachingType.Readwrite)
+                        .WithDataDisks(10, 2, Microsoft.Azure.Management.BatchAI.Fluent.Models.StorageAccountType.StandardLRS, CachingType.Readwrite)
                         .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)
                         .WithPassword("MyPassword!")

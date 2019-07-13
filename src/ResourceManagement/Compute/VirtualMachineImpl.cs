@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 cancellationToken);
             this.virtualMachineInstanceView = new VirtualMachineInstanceView(
                 virtualMachineInner.InstanceView.PlatformFaultDomain, virtualMachineInner.InstanceView.PlatformUpdateDomain, virtualMachineInner.InstanceView.ComputerName,
-                virtualMachineInner.InstanceView.OsName, virtualMachineInner.InstanceView.OsVersion, virtualMachineInner.InstanceView.RdpThumbPrint,
+                virtualMachineInner.InstanceView.OsName, virtualMachineInner.InstanceView.OsVersion, virtualMachineInner.InstanceView.HyperVGeneration, virtualMachineInner.InstanceView.RdpThumbPrint,
                 virtualMachineInner.InstanceView.VmAgent, virtualMachineInner.InstanceView.MaintenanceRedeployStatus, virtualMachineInner.InstanceView.Disks,
                 virtualMachineInner.InstanceView.Extensions, virtualMachineInner.InstanceView.BootDiagnostics, virtualMachineInner.InstanceView.Statuses);
 
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task PowerOffAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            await Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, false, cancellationToken);
         }
 
         ///GENMHASH:08CFC096AC6388D1C0E041ECDF099E3D:4479808A1E2B2A23538E662AD3F721EE
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C345130B595C0FF585A57651EFDC3A0F:E97CAC99D13041F7FEAACC7E4508DC7B
         public async Task<string> CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
+            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
@@ -1158,11 +1158,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             ICreatable<IAvailabilitySet> creatable;
             if (IsManagedDiskEnabled())
             {
-                creatable = definitionWithSku.WithSku(AvailabilitySetSkuTypes.Managed);
+                creatable = definitionWithSku.WithSku(AvailabilitySetSkuTypes.Aligned);
             }
             else
             {
-                creatable = definitionWithSku.WithSku(AvailabilitySetSkuTypes.Unmanaged);
+                creatable = definitionWithSku.WithSku(AvailabilitySetSkuTypes.Classic);
             }
             return this.WithNewAvailabilitySet(creatable);
         }
@@ -1807,8 +1807,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
 
                 //
-                VirtualMachineUpdateInner updateParameter = new VirtualMachineUpdateInner
-                    {
+                VirtualMachineUpdate updateParameter = new VirtualMachineUpdate
+                {
                         Plan = this.Inner.Plan,
                         HardwareProfile = this.Inner.HardwareProfile,
                         StorageProfile = this.Inner.StorageProfile,

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVTaXplc0ltcGw=
     internal partial class VirtualMachineSizesImpl :
-        ReadableWrappers<IVirtualMachineSize, VirtualMachineSizeImpl, VirtualMachineSize>,
+        ReadableWrappers<IVirtualMachineSize, VirtualMachineSizeImpl, VirtualMachineSizeInner>,
         IVirtualMachineSizes
     {
         private IVirtualMachineSizesOperations innerCollection;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:D12A67B4E55209FF4EABF023E6785823:111A3D57982318A0A8F8170E3417353A
-        protected override IVirtualMachineSize WrapModel(VirtualMachineSize inner)
+        protected override IVirtualMachineSize WrapModel(VirtualMachineSizeInner inner)
         {
             return new VirtualMachineSizeImpl(inner);
         }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:2ED29FF482F2137640A1CA66925828A8:23E6C183E53FB66FB963B8D1F7962C4F
         public async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>> ListByRegionAsync(string regionName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IVirtualMachineSize, VirtualMachineSize>.LoadPage(
+            return await PagedCollection<IVirtualMachineSize, VirtualMachineSizeInner>.LoadPage(
                  async (cancellation) => await innerCollection.ListAsync(regionName, cancellation),
                  WrapModel,
                  cancellationToken);

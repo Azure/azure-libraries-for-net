@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
-        internal void HandleExternalIdentities(VirtualMachineScaleSetUpdateInner vmssUpdate)
+        internal void HandleExternalIdentities(VirtualMachineScaleSetUpdate vmssUpdate)
         {
             if (this.HandleRemoveAllExternalIdentitiesCase(vmssUpdate))
             {
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="vmssUpdate">The vm update payload model.</param>
         /// <return>True if user indented to remove all the identities.</return>
-        private bool HandleRemoveAllExternalIdentitiesCase(VirtualMachineScaleSetUpdateInner vmssUpdate)
+        private bool HandleRemoveAllExternalIdentitiesCase(VirtualMachineScaleSetUpdate vmssUpdate)
         {
             if (this.userAssignedIdentities.Any())
             {

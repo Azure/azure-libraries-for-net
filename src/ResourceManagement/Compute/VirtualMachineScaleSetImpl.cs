@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.bootDiagnosticsHandler = new BootDiagnosticsHandler(this);
         }
 
-        private  VirtualMachineScaleSetUpdateInner PreparePatchPayload()
+        private  VirtualMachineScaleSetUpdate PreparePatchPayload()
         {
-            var updateParameter = new VirtualMachineScaleSetUpdateInner
+            var updateParameter = new VirtualMachineScaleSetUpdate
                 {
                     Identity = this.Inner.Identity,
                     Overprovision = this.Inner.Overprovision,
@@ -2607,7 +2607,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
                 virtualMachineScaleSetMsiHelper.ProcessCreatedExternalIdentities();
 
-                VirtualMachineScaleSetUpdateInner updateParameter = this.PreparePatchPayload();
+                VirtualMachineScaleSetUpdate updateParameter = this.PreparePatchPayload();
                 virtualMachineScaleSetMsiHelper.HandleExternalIdentities(updateParameter);
 
 

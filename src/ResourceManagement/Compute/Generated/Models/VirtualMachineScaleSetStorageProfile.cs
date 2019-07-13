@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// &lt;br&gt;&lt;br&gt; For more information about disks, see [About
         /// disks and VHDs for Azure virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</param>
-        public VirtualMachineScaleSetStorageProfile(Management.ResourceManager.Fluent.SubResource imageReference = default(Management.ResourceManager.Fluent.SubResource), VirtualMachineScaleSetOSDisk osDisk = default(VirtualMachineScaleSetOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>))
+        public VirtualMachineScaleSetStorageProfile(ImageReferenceInner imageReference = default(ImageReferenceInner), VirtualMachineScaleSetOSDisk osDisk = default(VirtualMachineScaleSetOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>))
         {
             ImageReference = imageReference;
             OsDisk = osDisk;
@@ -70,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// but is not used in other creation operations.
         /// </summary>
         [JsonProperty(PropertyName = "imageReference")]
-        public Management.ResourceManager.Fluent.SubResource ImageReference { get; set; }
+        public ImageReferenceInner ImageReference { get; set; }
 
         /// <summary>
         /// Gets or sets specifies information about the operating system disk

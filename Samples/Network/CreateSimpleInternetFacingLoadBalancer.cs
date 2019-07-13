@@ -62,7 +62,7 @@ namespace CreateSimpleInternetFacingLoadBalancer
                 ICreatable<IAvailabilitySet> availabilitySetDefinition = azure.AvailabilitySets.Define(availSetName)
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
-                    .WithSku(AvailabilitySetSkuTypes.Managed);
+                    .WithSku(AvailabilitySetSkuTypes.Aligned);
 
 
                 //=============================================================
