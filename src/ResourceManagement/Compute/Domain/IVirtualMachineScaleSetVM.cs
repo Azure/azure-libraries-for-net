@@ -199,6 +199,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk> UnmanagedDataDisks { get; }
 
         /// <summary>
+        /// Get specifies whether the model applied to the virtual machine is the model of the virtual machine scale set or the customized model for the virtual machine.
+        /// </summary>
+        string ModelDefinitionApplied { get; }
+
+        /// <summary> 
+        /// The specific protection policy for the vm.
+        /// </summary>
+        VirtualMachineScaleSetVMProtectionPolicy ProtectionPolicy { get; }
+
+        /// <summary>
+        /// The network profile config for the vm.
+        /// </summary>
+        VirtualMachineScaleSetVMNetworkProfileConfiguration NetworkProfileConfiguration { get; }
+
+        /// <summary>
         /// Gets the time zone of the Windows virtual machine.
         /// </summary>
         string WindowsTimeZone { get; }
