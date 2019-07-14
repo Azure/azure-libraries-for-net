@@ -41,6 +41,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return (Inner.PlatformFaultDomainCount.HasValue) ? Inner.PlatformFaultDomainCount.Value : 0;
         }
 
+        public IProximityPlacementGroup ProximityPlacementGroup()
+        {
+            ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
+
+            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, this.Name));
+            if (plgInner == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new ProximityPlacementGroupImpl(plgInner);
+            }
+        }
+
         ///GENMHASH:2BD1C2DEE2E7FBB6D90AB920FAD6E9EE:EA53AD3391D9207B84DE8253439698A9
         public IReadOnlyList<InstanceViewStatus> Statuses()
         {
@@ -133,11 +148,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public AvailabilitySetImpl WithProximityPlacementGroup(String proximityPlacementGroupId)
+        {
+            this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
+            return this;
+        }
+
+
+        public AvailabilitySetImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
+        {
+            ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner();
+            plgInner.ProximityPlacementGroupType = type;
+            plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, proximityPlacementGroupName, plgInner));
+
+            this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+
+            return this;
+        }
+
+        public AvailabilitySetImpl WithoutProximityPlacementGroup()
+        {
+            this.Inner.ProximityPlacementGroup = null;
+            return this;
+        }
+
         ///GENMHASH:8FCDE9292B4D0AE6B0FA60BC84DD60E5:0ADB8EF84E7C5EBD42CD3DED6C7CDC38
         public IEnumerable<IVirtualMachineSize> ListVirtualMachineSizes()
         {
             return Extensions.Synchronize(() => this.Manager.Inner.AvailabilitySets.ListAvailableSizesAsync(this.ResourceGroupName, this.Name))
                 .Select(inner => new VirtualMachineSizeImpl(inner));
         }
+
     }
 }
