@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         ProximityPlacementGroupInner ResourceManager.Fluent.Core.IHasInner<ProximityPlacementGroupInner>.Inner => this.Inner();
 
-
         public ProximityPlacementGroupImpl(ProximityPlacementGroupInner inner)
         {
             this.inner = inner;
@@ -40,6 +39,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public IList<string> AvailabilitySetIds()
         {
             return this.inner.AvailabilitySets.Select(availSet => availSet.Id).ToList();
+        }
+
+        public string Location()
+        {
+            return this.inner.Location;
+        }
+
+        public string ResourceGroupName()
+        {
+            return ResourceManager.Fluent.Core.ResourceId.FromString(this.Id()).ResourceGroupName;
+        }
+
+        public string Id()
+        {
+            return this.inner.Id;
         }
     }
 }
