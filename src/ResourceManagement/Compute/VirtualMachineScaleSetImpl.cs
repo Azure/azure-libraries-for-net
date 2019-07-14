@@ -95,6 +95,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private VirtualMachineScaleSetMsiHelper virtualMachineScaleSetMsiHelper;
         // To manage boot diagnostics specific operations
         private BootDiagnosticsHandler bootDiagnosticsHandler;
+        // Name of the new proximity placement group
+        private String newProximityPlacementGroupName;
+        // Type fo the new proximity placement group
+        private ProximityPlacementGroupType newProximityPlacementGroupType;
 
         ///GENMHASH:F0C80BE7722CB6620CCF10F060FE486B:C5CB976F0B76FD0A094017AD226F4439
         internal VirtualMachineScaleSetImpl(
@@ -112,6 +116,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.managedDataDisks = new ManagedDataDiskCollection(this);
             this.virtualMachineScaleSetMsiHelper = new VirtualMachineScaleSetMsiHelper(rbacManager, this);
             this.bootDiagnosticsHandler = new BootDiagnosticsHandler(this);
+            this.newProximityPlacementGroupName = null;
+            this.newProximityPlacementGroupType = null;
         }
 
         private VirtualMachineScaleSetUpdate PreparePatchPayload()
@@ -276,7 +282,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
 
-            ProximityPlacementGroupInner plgInner = Microsoft.Azure.Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, this.Name));
+            ProximityPlacementGroupInner plgInner = Microsoft.Azure.Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, id.Name));
             if (plgInner == null)
             {
                 return null;
@@ -2598,6 +2604,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
                 virtualMachineScaleSetMsiHelper.ProcessCreatedExternalIdentities();
                 virtualMachineScaleSetMsiHelper.HandleExternalIdentities();
+                CreateNewProximityPlacementGroup();
 
                 var scalesetInner = await Manager.Inner.VirtualMachineScaleSets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
                 this.SetInner(scalesetInner);
@@ -2648,6 +2655,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.virtualMachineScaleSetMsiHelper.Clear();
 
                 return scalesetInner;
+            }
+        }
+
+        private void CreateNewProximityPlacementGroup()
+        {
+            if (IsInCreateMode)
+            {
+                if (!String.IsNullOrWhiteSpace(this.newProximityPlacementGroupName))
+                {
+                    ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner()
+                    {
+                        ProximityPlacementGroupType = this.newProximityPlacementGroupType,
+                        Location = this.Inner.Location
+                    };
+                    plgInner = Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, newProximityPlacementGroupName, plgInner));
+                    this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+                }
             }
         }
 
@@ -2875,17 +2899,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public VirtualMachineScaleSetImpl WithProximityPlacementGroup(string proximityPlacementGroupId)
         {
+            this.newProximityPlacementGroupName = null;
+            this.newProximityPlacementGroupType = null;
             this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
             return this;
         }
 
         public VirtualMachineScaleSetImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
         {
-            ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner();
-            plgInner.ProximityPlacementGroupType = type;
-            plgInner = Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, proximityPlacementGroupName, plgInner));
+            this.newProximityPlacementGroupName = proximityPlacementGroupName;
+            this.newProximityPlacementGroupType = type;
 
-            this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+            this.Inner.ProximityPlacementGroup = null;
 
             return this;
         }

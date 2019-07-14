@@ -45,5 +45,29 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return this.AvailabilitySetIds();
             }
         }
+
+        string IProximityPlacementGroup.Location
+        {
+            get
+            {
+                return this.Location();
+            }
+        }
+
+        string IProximityPlacementGroup.ResourceGroupName
+        {
+            get
+            {
+                return this.ResourceGroupName();
+            }
+        }
+
+        string IProximityPlacementGroup.Id
+        {
+            get
+            {
+                return this.Id();
+            }
+        }
     }
 }

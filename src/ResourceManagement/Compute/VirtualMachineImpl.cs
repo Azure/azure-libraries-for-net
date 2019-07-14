@@ -89,6 +89,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private VirtualMachineMsiHelper virtualMachineMsiHelper;
         // Reference to the PublicIp creatable that is implicitly created
         private Network.Fluent.PublicIPAddress.Definition.IWithCreate implicitPipCreatable;
+        // Name of the new proximity placement group
+        private String newProximityPlacementGroupName;
+        // Type fo the new proximity placement group
+        private ProximityPlacementGroupType newProximityPlacementGroupType;
 
         ///GENMHASH:0A331C2401291DF824493E64F2798884:D3B04C536032C2BDC056A8F85225875E
         internal VirtualMachineImpl(
@@ -111,6 +115,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.managedDataDisks = new ManagedDataDiskCollection(this);
             InitializeDataDisks();
             this.virtualMachineMsiHelper = new VirtualMachineMsiHelper(rbacManager, this);
+            newProximityPlacementGroupName = null;
+            newProximityPlacementGroupType = null;
         }
 
         public VirtualMachineImpl WithLicenseType(string licenseType)
@@ -1176,6 +1182,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public VirtualMachineImpl WithProximityPlacementGroup(String proximityPlacementGroupId)
         {
+            this.newProximityPlacementGroupType = null;
+            this.newProximityPlacementGroupName = null;
             this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
             return this;
         }
@@ -1183,17 +1191,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public VirtualMachineImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
         {
-            ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner();
-            plgInner.ProximityPlacementGroupType = type;
-            plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, proximityPlacementGroupName, plgInner));
+            this.newProximityPlacementGroupName = proximityPlacementGroupName;
+            this.newProximityPlacementGroupType = type;
 
-            this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+            this.Inner.ProximityPlacementGroup = null;
 
             return this;
         }
 
         public VirtualMachineImpl WithoutProximityPlacementGroup()
         {
+            this.newProximityPlacementGroupName = null;
+            this.newProximityPlacementGroupType = null;
             this.Inner.ProximityPlacementGroup = null;
             return this;
         }
@@ -1595,7 +1604,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
 
-            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, this.Name));
+            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, id.Name));
             if (plgInner == null)
             {
                 return null;
@@ -1813,6 +1822,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 }
                 var diskStorageAccount = await HandleStorageSettingsAsync(cancellationToken);
                 await HandleBootDiagnosticsStorageSettingsAsync(diskStorageAccount, cancellationToken);
+                CreateNewProximityPlacementGroup();
                 HandleNetworkSettings();
                 HandleAvailabilitySettings();
                 this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
@@ -2158,6 +2168,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 }
             }
             return diskStorageAccount;
+        }
+
+        private void CreateNewProximityPlacementGroup()
+        {
+            if (IsInCreateMode)
+            {
+                if (!String.IsNullOrWhiteSpace(this.newProximityPlacementGroupName))
+                {
+                    ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner()
+                    {
+                        ProximityPlacementGroupType = this.newProximityPlacementGroupType,
+                        Location = this.Inner.Location
+                    };
+                    plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, newProximityPlacementGroupName, plgInner));
+                    this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+                }
+            }
         }
 
         ///GENMHASH:D07A07F736607425258AAE80368A516D:168FE2B09726F397B3F197216CE80D80
