@@ -78,6 +78,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
         /// <returns>the next stage of the definition.</returns>
         IWithOS WithProximityPlacementGroup(string promixityPlacementGroupId);
+
+
+        /// <summary>
+        /// Creates a new proximity placement group with the specified name and then adds it to the VM
+        /// </summary>
+        /// <param name="proximityPlacementGroupName">the name of the group to be created.</param>
+        /// <param name="type">the type of the group</param>
+        /// <returns>the next stage of the definition.</returns>
+        IWithOS WithNewProximityPlacementGroup(string proximityPlacementGroupName, ProximityPlacementGroupType type);
+
     }
 
     /// <summary>

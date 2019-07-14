@@ -156,11 +156,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Get specifies information about the proximity placement group that the virtual machine scale set should be assigned to.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ProximityPlacementGroupId
+        IProximityPlacementGroup Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ProximityPlacementGroup
         {
             get
             {
-                return this.ProximityPlacementGroupId();
+                return this.ProximityPlacementGroup();
             }
         }
 
@@ -2071,6 +2071,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithProximityPlacementGroup.WithProximityPlacementGroup(string promixityPlacementGroupId)
         {
             return this.WithProximityPlacementGroup(promixityPlacementGroupId);
+        }
+
+
+        /// <summary>
+        /// Creates a new proximity placement group with the specified name and then adds it to the VM
+        /// </summary>
+        /// <param name="proximityPlacementGroupName">the name of the group to be created.</param>
+        /// <param name="type">the type of the group</param>
+        /// <returns>the next stage of the definition.</returns>
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithProximityPlacementGroup.WithNewProximityPlacementGroup(string proximityPlacementGroupName, ProximityPlacementGroupType type)
+        {
+            return this.WithNewProximityPlacementGroup(proximityPlacementGroupName, type);
         }
 
         /// <summary>

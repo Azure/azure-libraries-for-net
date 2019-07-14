@@ -272,9 +272,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.Inner.DoNotRunExtensionsOnOverprovisionedVMs;
         }
 
-        public string ProximityPlacementGroupId()
+        public IProximityPlacementGroup ProximityPlacementGroup()
         {
-            return this.Inner.ProximityPlacementGroup?.Id;
+            ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
+
+            ProximityPlacementGroupInner plgInner = Microsoft.Azure.Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, this.Name));
+            if (plgInner == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new ProximityPlacementGroupImpl(plgInner);
+            }
         }
 
         public AdditionalCapabilities AdditionalCapabilities()
@@ -2866,6 +2876,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithProximityPlacementGroup(string proximityPlacementGroupId)
         {
             this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
+        {
+            ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner();
+            plgInner.ProximityPlacementGroupType = type;
+            plgInner = Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, proximityPlacementGroupName, plgInner));
+
+            this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+
             return this;
         }
 
