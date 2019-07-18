@@ -37,7 +37,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Regions are not accepting creation of new Windows Azure SQL Database servers at this time")]
         [Trait("Samples", "Sql")]
         public void ManageSqlDatabasesAcrossDifferentDataCentersTest()
         {
