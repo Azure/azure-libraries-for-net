@@ -1869,7 +1869,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     ProximityPlacementGroup = this.Inner.ProximityPlacementGroup,
                     Zones = this.Inner.Zones,
                     Tags = this.Inner.Tags
-
                 };
                 //
                 this.virtualMachineMsiHelper.HandleExternalIdentities(updateParameter);

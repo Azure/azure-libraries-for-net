@@ -681,7 +681,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // NOTE: Comment out since the below code need external tennat.
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
                     // 
                     ////
                     //IServicePrincipal servicePrincipal = authenticatedClient
@@ -784,9 +786,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(virtualMachineScaleSet.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssigned));
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // NOTE: Comment out since the below code need external tennat.
+
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
                     // 
-                    //
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
                     //IServicePrincipal servicePrincipal = authenticatedClient
                     //        .ServicePrincipals
                     //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
