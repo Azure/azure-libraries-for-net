@@ -29,13 +29,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="location">Location of the SKU</param>
         /// <param name="zones">List of availability zones where the SKU is
         /// supported.</param>
-        /// <param name="zoneDetails">Details of capabilities available to a
-        /// SKU in specific zones.</param>
-        public ResourceSkuLocationInfo(string location = default(string), IList<string> zones = default(IList<string>), IList<ResourceSkuZoneDetails> zoneDetails = default(IList<ResourceSkuZoneDetails>))
+        public ResourceSkuLocationInfo(string location = default(string), IList<string> zones = default(IList<string>))
         {
             Location = location;
             Zones = zones;
-            ZoneDetails = zoneDetails;
             CustomInit();
         }
 
@@ -55,12 +52,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; private set; }
-
-        /// <summary>
-        /// Gets details of capabilities available to a SKU in specific zones.
-        /// </summary>
-        [JsonProperty(PropertyName = "zoneDetails")]
-        public IList<ResourceSkuZoneDetails> ZoneDetails { get; private set; }
 
     }
 }

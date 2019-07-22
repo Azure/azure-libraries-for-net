@@ -37,9 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='tempDisk'>
-            /// Specifies whether to reimage temp disk. Default value: false. Note: This
-            /// temp disk reimage parameter is only supported for VM/VMSS with Ephemeral OS
-            /// disk.
+            /// Specifies whether to reimage temp disk. Default value: false.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -196,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSetVMInstanceView> GetInstanceViewAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMInstanceViewInner> GetInstanceViewAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetInstanceViewWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -250,17 +248,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            /// <param name='skipShutdown'>
-            /// The parameter to request non-graceful VM shutdown. True value for this flag
-            /// indicates non-graceful shutdown whereas false indicates otherwise. Default
-            /// value for this flag is false if not specified
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task PowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task PowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -376,7 +369,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RunCommandResultInner> RunCommandAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInput parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RunCommandResultInner> RunCommandAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInputInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.RunCommandWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -401,9 +394,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='tempDisk'>
-            /// Specifies whether to reimage temp disk. Default value: false. Note: This
-            /// temp disk reimage parameter is only supported for VM/VMSS with Ephemeral OS
-            /// disk.
+            /// Specifies whether to reimage temp disk. Default value: false.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -533,17 +524,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            /// <param name='skipShutdown'>
-            /// The parameter to request non-graceful VM shutdown. True value for this flag
-            /// indicates non-graceful shutdown whereas false indicates otherwise. Default
-            /// value for this flag is false if not specified
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginPowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginPowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -659,7 +645,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RunCommandResultInner> BeginRunCommandAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInput parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RunCommandResultInner> BeginRunCommandAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInputInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginRunCommandWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

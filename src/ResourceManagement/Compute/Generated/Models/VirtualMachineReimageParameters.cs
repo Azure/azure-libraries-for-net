@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="tempDisk">Specifies whether to reimage temp disk.
-        /// Default value: false. Note: This temp disk reimage parameter is
-        /// only supported for VM/VMSS with Ephemeral OS disk.</param>
+        /// Default value: false.</param>
         public VirtualMachineReimageParameters(bool? tempDisk = default(bool?))
         {
             TempDisk = tempDisk;
@@ -46,8 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets specifies whether to reimage temp disk. Default value:
-        /// false. Note: This temp disk reimage parameter is only supported for
-        /// VM/VMSS with Ephemeral OS disk.
+        /// false.
         /// </summary>
         [JsonProperty(PropertyName = "tempDisk")]
         public bool? TempDisk { get; set; }

@@ -32,14 +32,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="regionalReplicaCount">The number of replicas of the
         /// Image Version to be created per region. This property is
         /// updatable.</param>
-        /// <param name="storageAccountType">Specifies the storage account type
-        /// to be used to store the image. This property is not updatable.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS'</param>
-        public TargetRegion(string name, int? regionalReplicaCount = default(int?), StorageAccountType storageAccountType = default(StorageAccountType))
+        public TargetRegion(string name, int? regionalReplicaCount = default(int?))
         {
             Name = name;
             RegionalReplicaCount = regionalReplicaCount;
-            StorageAccountType = storageAccountType;
             CustomInit();
         }
 
@@ -60,14 +56,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "regionalReplicaCount")]
         public int? RegionalReplicaCount { get; set; }
-
-        /// <summary>
-        /// Gets or sets specifies the storage account type to be used to store
-        /// the image. This property is not updatable. Possible values include:
-        /// 'Standard_LRS', 'Standard_ZRS'
-        /// </summary>
-        [JsonProperty(PropertyName = "storageAccountType")]
-        public StorageAccountType StorageAccountType { get; set; }
 
         /// <summary>
         /// Validate the object.

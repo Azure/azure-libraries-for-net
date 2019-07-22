@@ -8,9 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Rest;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -50,23 +50,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="platformFaultDomainCount">Fault Domain count.</param>
         /// <param name="virtualMachines">A list of references to all virtual
         /// machines in the availability set.</param>
-        /// <param name="proximityPlacementGroup">Specifies information about
-        /// the proximity placement group that the availability set should be
-        /// assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version:
-        /// 2018-04-01.</param>
         /// <param name="statuses">The resource status information.</param>
         /// <param name="sku">Sku of the availability set, only name is
         /// required to be set. See AvailabilitySetSkuTypes for possible set of
         /// values. Use 'Aligned' for virtual machines with managed disks and
         /// 'Classic' for virtual machines with unmanaged disks. Default value
         /// is 'Classic'.</param>
-        public AvailabilitySetInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
+        public AvailabilitySetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
             : base(location, id, name, type, tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
             PlatformFaultDomainCount = platformFaultDomainCount;
             VirtualMachines = virtualMachines;
-            ProximityPlacementGroup = proximityPlacementGroup;
             Statuses = statuses;
             Sku = sku;
             CustomInit();
@@ -97,15 +92,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public IList<Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies information about the proximity placement
-        /// group that the availability set should be assigned to.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2018-04-01.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.proximityPlacementGroup")]
-        public Management.ResourceManager.Fluent.SubResource ProximityPlacementGroup { get; set; }
-
-        /// <summary>
         /// Gets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "properties.statuses")]
@@ -120,15 +106,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

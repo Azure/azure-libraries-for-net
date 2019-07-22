@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// VirtualMachineScaleSetVMReimageParameters class.
         /// </summary>
         /// <param name="tempDisk">Specifies whether to reimage temp disk.
-        /// Default value: false. Note: This temp disk reimage parameter is
-        /// only supported for VM/VMSS with Ephemeral OS disk.</param>
+        /// Default value: false.</param>
         public VirtualMachineScaleSetVMReimageParameters(bool? tempDisk = default(bool?))
             : base(tempDisk)
         {

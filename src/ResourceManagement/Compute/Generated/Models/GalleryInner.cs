@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gallery resource. This property is updatable.</param>
         /// <param name="provisioningState">The current state of the
         /// gallery.</param>
-        public GalleryInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), ProvisioningState provisioningState = default(ProvisioningState))
+        public GalleryInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), ProvisioningState provisioningState = default(ProvisioningState))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -76,15 +75,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public ProvisioningState ProvisioningState { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -42,31 +40,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// created.</param>
         /// <param name="osType">The Operating System type. Possible values
         /// include: 'Windows', 'Linux'</param>
-        /// <param name="hyperVGeneration">The hypervisor generation of the
-        /// Virtual Machine. Applicable to OS disks only. Possible values
-        /// include: 'V1', 'V2'</param>
         /// <param name="diskSizeGB">If creationData.createOption is Empty,
         /// this field is mandatory and it indicates the size of the VHD to
         /// create. If this field is present for updates or creation with other
         /// options, it indicates a resize. Resizes are only allowed if the
         /// disk is not attached to a running VM, and can only increase the
         /// disk's size.</param>
-        /// <param name="encryptionSettingsCollection">Encryption settings
-        /// collection used be Azure Disk Encryption, can contain multiple
-        /// encryption settings per disk or snapshot.</param>
+        /// <param name="encryptionSettings">Encryption settings for disk or
+        /// snapshot</param>
         /// <param name="provisioningState">The disk provisioning
         /// state.</param>
-        public SnapshotInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), HyperVGeneration hyperVGeneration = default(HyperVGeneration), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string))
+        public SnapshotInner(CreationData creationData, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             ManagedBy = managedBy;
             Sku = sku;
             TimeCreated = timeCreated;
             OsType = osType;
-            HyperVGeneration = hyperVGeneration;
             CreationData = creationData;
             DiskSizeGB = diskSizeGB;
-            EncryptionSettingsCollection = encryptionSettingsCollection;
+            EncryptionSettings = encryptionSettings;
             ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -101,13 +94,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public OperatingSystemTypes? OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets the hypervisor generation of the Virtual Machine.
-        /// Applicable to OS disks only. Possible values include: 'V1', 'V2'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.hyperVGeneration")]
-        public HyperVGeneration HyperVGeneration { get; set; }
-
-        /// <summary>
         /// Gets or sets disk source information. CreationData information
         /// cannot be changed after the disk has been created.
         /// </summary>
@@ -125,12 +111,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public int? DiskSizeGB { get; set; }
 
         /// <summary>
-        /// Gets or sets encryption settings collection used be Azure Disk
-        /// Encryption, can contain multiple encryption settings per disk or
-        /// snapshot.
+        /// Gets or sets encryption settings for disk or snapshot
         /// </summary>
-        [JsonProperty(PropertyName = "properties.encryptionSettingsCollection")]
-        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
+        [JsonProperty(PropertyName = "properties.encryptionSettings")]
+        public EncryptionSettings EncryptionSettings { get; set; }
 
         /// <summary>
         /// Gets the disk provisioning state.
@@ -144,9 +128,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (CreationData == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CreationData");
@@ -155,9 +138,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             {
                 CreationData.Validate();
             }
-            if (EncryptionSettingsCollection != null)
+            if (EncryptionSettings != null)
             {
-                EncryptionSettingsCollection.Validate();
+                EncryptionSettings.Validate();
             }
         }
     }

@@ -8,21 +8,12 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Management.ResourceManager;
-    using Management.ResourceManager.Fluent;
-    using Management.ResourceManager.Fluent.Core;
 
-    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for DiffDiskOptions.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<DiffDiskOptions>))]
-    public class DiffDiskOptions : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DiffDiskOptions>
+    public static class DiffDiskOptions
     {
-        public static readonly DiffDiskOptions Local = Parse("Local");
+        public const string Local = "Local";
     }
 }

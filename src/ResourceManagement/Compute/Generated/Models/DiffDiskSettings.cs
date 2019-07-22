@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         /// <param name="option">Specifies the ephemeral disk settings for
         /// operating system disk. Possible values include: 'Local'</param>
-        public DiffDiskSettings(DiffDiskOptions option = default(DiffDiskOptions))
+        public DiffDiskSettings(string option = default(string))
         {
             Option = option;
             CustomInit();
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// system disk. Possible values include: 'Local'
         /// </summary>
         [JsonProperty(PropertyName = "option")]
-        public DiffDiskOptions Option { get; set; }
+        public string Option { get; set; }
 
     }
 }

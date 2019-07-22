@@ -8,9 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -67,13 +66,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to
         /// availability set at creation time. An existing VM cannot be added
         /// to an availability set.</param>
-        /// <param name="proximityPlacementGroup">Specifies information about
-        /// the proximity placement group that the virtual machine should be
-        /// assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version:
-        /// 2018-04-01.</param>
-        /// <param name="host">Specifies information about the dedicated host
-        /// that the virtual machine resides in. &lt;br&gt;&lt;br&gt;Minimum
-        /// api-version: 2018-10-01.</param>
         /// <param name="provisioningState">The provisioning state, which only
         /// appears in the response.</param>
         /// <param name="instanceView">The virtual machine instance
@@ -97,7 +89,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="identity">The identity of the virtual machine, if
         /// configured.</param>
         /// <param name="zones">The virtual machine zones.</param>
-        public VirtualMachineInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource host = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>))
+        public VirtualMachineInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), VirtualMachineInstanceViewInner instanceView = default(VirtualMachineInstanceViewInner), string licenseType = default(string), string vmId = default(string), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             Plan = plan;
@@ -108,8 +100,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             NetworkProfile = networkProfile;
             DiagnosticsProfile = diagnosticsProfile;
             AvailabilitySet = availabilitySet;
-            ProximityPlacementGroup = proximityPlacementGroup;
-            Host = host;
             ProvisioningState = provisioningState;
             InstanceView = instanceView;
             LicenseType = licenseType;
@@ -199,24 +189,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies information about the proximity placement
-        /// group that the virtual machine should be assigned to.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2018-04-01.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.proximityPlacementGroup")]
-        public Management.ResourceManager.Fluent.SubResource ProximityPlacementGroup { get; set; }
-
-        /// <summary>
-        /// Gets or sets specifies information about the dedicated host that
-        /// the virtual machine resides in.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2018-10-01.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.host")]
-        public Management.ResourceManager.Fluent.SubResource Host { get; set; }
-
-        /// <summary>
         /// Gets the provisioning state, which only appears in the response.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
@@ -226,7 +198,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets the virtual machine instance view.
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
-        public VirtualMachineInstanceView InstanceView { get; private set; }
+        public VirtualMachineInstanceViewInner InstanceView { get; private set; }
 
         /// <summary>
         /// Gets or sets specifies that the image or disk that is being used
@@ -278,22 +250,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();
-            }
-            if (Resources != null)
-            {
-                foreach (var element in Resources)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }

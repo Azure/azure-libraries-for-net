@@ -11,17 +11,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using Management.ResourceManager;
     using Management.ResourceManager.Fluent;
     using Management.ResourceManager.Fluent.Core;
-
-    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for DiskStorageAccountTypes.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<DiskStorageAccountTypes>))]
-    public class DiskStorageAccountTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DiskStorageAccountTypes>
+	public class DiskStorageAccountTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DiskStorageAccountTypes>
     {
         public static readonly DiskStorageAccountTypes StandardLRS = Parse("Standard_LRS");
         public static readonly DiskStorageAccountTypes PremiumLRS = Parse("Premium_LRS");

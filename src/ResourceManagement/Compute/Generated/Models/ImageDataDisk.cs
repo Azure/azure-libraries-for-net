@@ -8,8 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -47,10 +47,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-        /// disks, it cannot be used with OS Disk. Possible values include:
-        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
-        /// 'UltraSSD_LRS'</param>
+        /// for the managed disk. Possible values are: Standard_LRS,
+        /// Premium_LRS, and StandardSSD_LRS. Possible values include:
+        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
         public ImageDataDisk(int lun, Management.ResourceManager.Fluent.SubResource snapshot = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), StorageAccountTypes storageAccountType = default(StorageAccountTypes))
         {
             Lun = lun;
@@ -128,7 +127,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()

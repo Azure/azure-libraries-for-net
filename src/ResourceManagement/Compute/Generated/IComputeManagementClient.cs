@@ -75,21 +75,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IAvailabilitySetsOperations AvailabilitySets { get; }
 
         /// <summary>
-        /// Gets the IProximityPlacementGroupsOperations.
-        /// </summary>
-        IProximityPlacementGroupsOperations ProximityPlacementGroups { get; }
-
-        /// <summary>
-        /// Gets the IDedicatedHostGroupsOperations.
-        /// </summary>
-        IDedicatedHostGroupsOperations DedicatedHostGroups { get; }
-
-        /// <summary>
-        /// Gets the IDedicatedHostsOperations.
-        /// </summary>
-        IDedicatedHostsOperations DedicatedHosts { get; }
-
-        /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
         /// </summary>
         IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImages { get; }
@@ -183,16 +168,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IGalleryImageVersionsOperations.
         /// </summary>
         IGalleryImageVersionsOperations GalleryImageVersions { get; }
-
-        /// <summary>
-        /// Gets the IGalleryApplicationsOperations.
-        /// </summary>
-        IGalleryApplicationsOperations GalleryApplications { get; }
-
-        /// <summary>
-        /// Gets the IGalleryApplicationVersionsOperations.
-        /// </summary>
-        IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; }
 
         /// <summary>
         /// Gets the IContainerServicesOperations.

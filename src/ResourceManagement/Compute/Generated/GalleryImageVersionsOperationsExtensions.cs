@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GalleryImageVersionInner> GetAsync(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, ReplicationStatusTypes expand = default(ReplicationStatusTypes), CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<GalleryImageVersionInner> GetAsync(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, ReplicationStatusTypes expand = default(ReplicationStatusTypes), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, expand, null, cancellationToken).ConfigureAwait(false))
                 {

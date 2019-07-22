@@ -36,9 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The instance ID of the virtual machine.
         /// </param>
         /// <param name='tempDisk'>
-        /// Specifies whether to reimage temp disk. Default value: false. Note:
-        /// This temp disk reimage parameter is only supported for VM/VMSS with
-        /// Ephemeral OS disk.
+        /// Specifies whether to reimage temp disk. Default value: false.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -221,7 +219,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMInstanceView>> GetInstanceViewWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMInstanceViewInner>> GetInstanceViewWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of all virtual machines in a VM scale sets.
         /// </summary>
@@ -268,11 +266,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
         /// </param>
-        /// <param name='skipShutdown'>
-        /// The parameter to request non-graceful VM shutdown. True value for
-        /// this flag indicates non-graceful shutdown whereas false indicates
-        /// otherwise. Default value for this flag is false if not specified
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -285,7 +278,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> PowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> PowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restarts a virtual machine in a VM scale set.
         /// </summary>
@@ -416,7 +409,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RunCommandResultInner>> RunCommandWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RunCommandResultInner>> RunCommandWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInputInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Reimages (upgrade the operating system) a specific virtual machine
         /// in a VM scale set.
@@ -431,9 +424,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The instance ID of the virtual machine.
         /// </param>
         /// <param name='tempDisk'>
-        /// Specifies whether to reimage temp disk. Default value: false. Note:
-        /// This temp disk reimage parameter is only supported for VM/VMSS with
-        /// Ephemeral OS disk.
+        /// Specifies whether to reimage temp disk. Default value: false.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -576,11 +567,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
         /// </param>
-        /// <param name='skipShutdown'>
-        /// The parameter to request non-graceful VM shutdown. True value for
-        /// this flag indicates non-graceful shutdown whereas false indicates
-        /// otherwise. Default value for this flag is false if not specified
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -593,7 +579,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginPowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginPowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restarts a virtual machine in a VM scale set.
         /// </summary>
@@ -724,7 +710,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RunCommandResultInner>> BeginRunCommandWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RunCommandResultInner>> BeginRunCommandWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInputInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of all virtual machines in a VM scale sets.
         /// </summary>
