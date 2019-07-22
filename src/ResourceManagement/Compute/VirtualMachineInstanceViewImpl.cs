@@ -11,10 +11,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uRG9tYWluTGVnYWxBZ3JlZW1lbnRJbXBs
     internal sealed partial class VirtualMachineInstanceViewImpl :
-        Wrapper<VirtualMachineInstanceViewInner>,
+        Wrapper<VirtualMachineInstanceView>,
         IVirtualMachineInstanceView
     {
-        internal VirtualMachineInstanceViewImpl(VirtualMachineInstanceViewInner inner)
+        internal VirtualMachineInstanceViewImpl(VirtualMachineInstanceView inner)
             : base(inner)
         {
         }

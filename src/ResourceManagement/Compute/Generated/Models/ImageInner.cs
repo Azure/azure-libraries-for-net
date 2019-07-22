@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -40,12 +41,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
         /// <param name="provisioningState">The provisioning state.</param>
-        public ImageInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string))
+        /// <param name="hyperVGeneration">Gets the HyperVGenerationType of the
+        /// VirtualMachine created from the image. Possible values include:
+        /// 'V1', 'V2'</param>
+        public ImageInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string), HyperVGenerationTypes hyperVGeneration = default(HyperVGenerationTypes))
             : base(location, id, name, type, tags)
         {
             SourceVirtualMachine = sourceVirtualMachine;
             StorageProfile = storageProfile;
             ProvisioningState = provisioningState;
+            HyperVGeneration = hyperVGeneration;
             CustomInit();
         }
 
@@ -75,13 +80,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets the HyperVGenerationType of the VirtualMachine created from
+        /// the image. Possible values include: 'V1', 'V2'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hyperVGeneration")]
+        public HyperVGenerationTypes HyperVGeneration { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();

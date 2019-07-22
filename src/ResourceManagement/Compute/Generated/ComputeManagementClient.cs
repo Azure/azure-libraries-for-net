@@ -9,6 +9,7 @@
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -26,6 +27,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public partial class ComputeManagementClient : FluentServiceClientBase<ComputeManagementClient>, IComputeManagementClient, IAzureClient
     {
         /// <summary>
+        /// The base URI of the service.
+        /// </summary>
+        //public System.Uri BaseUri { get; set; }
+
+        /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
         public JsonSerializerSettings SerializationSettings { get; private set; }
@@ -34,6 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
+
+        /// <summary>
+        /// Credentials needed for the client to connect to Azure.
+        /// </summary>
+        //public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
@@ -69,6 +80,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IAvailabilitySetsOperations.
         /// </summary>
         public virtual IAvailabilitySetsOperations AvailabilitySets { get; private set; }
+
+        /// <summary>
+        /// Gets the IProximityPlacementGroupsOperations.
+        /// </summary>
+        public virtual IProximityPlacementGroupsOperations ProximityPlacementGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IDedicatedHostGroupsOperations.
+        /// </summary>
+        public virtual IDedicatedHostGroupsOperations DedicatedHostGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IDedicatedHostsOperations.
+        /// </summary>
+        public virtual IDedicatedHostsOperations DedicatedHosts { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
@@ -166,16 +192,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual IGalleryImageVersionsOperations GalleryImageVersions { get; private set; }
 
         /// <summary>
+        /// Gets the IGalleryApplicationsOperations.
+        /// </summary>
+        public virtual IGalleryApplicationsOperations GalleryApplications { get; private set; }
+
+        /// <summary>
+        /// Gets the IGalleryApplicationVersionsOperations.
+        /// </summary>
+        public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
+
+        /// <summary>
         /// Gets the IContainerServicesOperations.
         /// </summary>
         public virtual IContainerServicesOperations ContainerServices { get; private set; }
 
-
-        /// <summary>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ComputeManagementClient(RestClient restClient) 
+        public ComputeManagementClient(RestClient restClient)
             : base(restClient)
         {
         }
@@ -187,6 +218,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Operations = new Operations(this);
             AvailabilitySets = new AvailabilitySetsOperations(this);
+            ProximityPlacementGroups = new ProximityPlacementGroupsOperations(this);
+            DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
+            DedicatedHosts = new DedicatedHostsOperations(this);
             VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             VirtualMachineImages = new VirtualMachineImagesOperations(this);
@@ -206,6 +240,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
+            GalleryApplications = new GalleryApplicationsOperations(this);
+            GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
             ContainerServices = new ContainerServicesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
@@ -237,7 +273,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         new Iso8601TimeSpanConverter()
                     }
             };
-            
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }

@@ -27,10 +27,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the AutomaticOSUpgradePolicy class.
         /// </summary>
-        /// <param name="enableAutomaticOSUpgrade">Whether OS upgrades should
-        /// automatically be applied to scale set instances in a rolling
-        /// fashion when a newer version of the image becomes available.
-        /// Default value is false.</param>
+        /// <param name="enableAutomaticOSUpgrade">Indicates whether OS
+        /// upgrades should automatically be applied to scale set instances in
+        /// a rolling fashion when a newer version of the OS image becomes
+        /// available. Default value is false. &lt;br&gt;&lt;br&gt; If this is
+        /// set to true for Windows based scale sets,
+        /// [enableAutomaticUpdates](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.windowsconfiguration.enableautomaticupdates?view=azure-dotnet)
+        /// is automatically set to false and cannot be set to true.</param>
         /// <param name="disableAutomaticRollback">Whether OS image rollback
         /// feature should be disabled. Default value is false.</param>
         public AutomaticOSUpgradePolicy(bool? enableAutomaticOSUpgrade = default(bool?), bool? disableAutomaticRollback = default(bool?))
@@ -46,9 +49,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets whether OS upgrades should automatically be applied to
-        /// scale set instances in a rolling fashion when a newer version of
-        /// the image becomes available. Default value is false.
+        /// Gets or sets indicates whether OS upgrades should automatically be
+        /// applied to scale set instances in a rolling fashion when a newer
+        /// version of the OS image becomes available. Default value is false.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; If this is set to true for
+        /// Windows based scale sets,
+        /// [enableAutomaticUpdates](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.windowsconfiguration.enableautomaticupdates?view=azure-dotnet)
+        /// is automatically set to false and cannot be set to true.
         /// </summary>
         [JsonProperty(PropertyName = "enableAutomaticOSUpgrade")]
         public bool? EnableAutomaticOSUpgrade { get; set; }

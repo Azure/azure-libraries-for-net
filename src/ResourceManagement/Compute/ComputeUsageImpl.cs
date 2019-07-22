@@ -10,18 +10,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uQ29tcHV0ZVVzYWdlSW1wbA==
     internal partial class ComputeUsageImpl :
-        Wrapper<Usage>,
+        Wrapper<UsageInner>,
         IComputeUsage
     {
 
         ///GENMHASH:98D67B93923AC46ECFE338C62748BCCB:AE70F51B2F784C2A02F858F867A2AA34
         public ComputeUsageUnit Unit()
         {
-            return ComputeUsageUnit.Parse(Usage.Unit);
+            return ComputeUsageUnit.Parse(UsageInner.Unit);
         }
 
         ///GENMHASH:A5E7AF81C3FDCACFFFE1D6B50B56161F:C0C35E00AF4E17F141675A2C05C7067B
-        internal ComputeUsageImpl(Usage innerObject) : base(innerObject)
+        internal ComputeUsageImpl(UsageInner innerObject) : base(innerObject)
         {
         }
 

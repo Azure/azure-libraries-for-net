@@ -36,6 +36,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Get Hyper-V image generation.
+        /// </summary>
+        HyperVGenerationTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage.HyperVGeneration {
+            get
+            {
+                return this.Inner.HyperVGeneration;
+            }
+        }
+
+        /// <summary>
         /// Gets operating system disk image in this image.
         /// </summary>
         Models.ImageOSDisk Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage.OSDiskImage
@@ -86,6 +96,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineCustomImage.Definition.IWithCreate VirtualMachineCustomImage.Definition.IWithSourceVirtualMachine.FromVirtualMachine(IVirtualMachine virtualMachine)
         {
             return this.FromVirtualMachine(virtualMachine);
+        }
+
+
+        /// <summary>
+        /// Specifies the Hyper-V image generation.
+        /// </summary>
+        /// <param name="hyperVGeneration">Hyper-V image generation</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithOSDiskImageSourceAltVirtualMachineSource IWithHyperVGeneration.WithHyperVGeneration(HyperVGenerationTypes hyperVGeneration)
+        {
+            return this.WithHyperVGeneration(hyperVGeneration);
         }
 
         /// <summary>

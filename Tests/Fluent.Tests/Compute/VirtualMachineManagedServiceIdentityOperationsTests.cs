@@ -148,14 +148,17 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // Validate service created service principal
-                    //
-                    IServicePrincipal servicePrincipal = authenticatedClient
-                            .ServicePrincipals
-                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
+                    //IServicePrincipal servicePrincipal = authenticatedClient
+                    //        .ServicePrincipals
+                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    Assert.NotNull(servicePrincipal);
-                    Assert.NotNull(servicePrincipal.Inner);
+                    //Assert.NotNull(servicePrincipal);
+                    //Assert.NotNull(servicePrincipal.Inner);
 
                     // Ensure role assigned
                     //
@@ -227,15 +230,18 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // Validate service created service principal
-                    //
-                    IServicePrincipal servicePrincipal = authenticatedClient
-                            .ServicePrincipals
-                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
+                    //IServicePrincipal servicePrincipal = authenticatedClient
+                    //        .ServicePrincipals
+                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    Assert.NotNull(servicePrincipal);
-                    Assert.NotNull(servicePrincipal.Inner);
-                    
+                    //Assert.NotNull(servicePrincipal);
+                    //Assert.NotNull(servicePrincipal.Inner);
+
                     // Ensure role assigned for resource group
                     //
 

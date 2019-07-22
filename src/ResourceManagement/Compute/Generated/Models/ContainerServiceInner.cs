@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="windowsProfile">Properties of Windows VMs.</param>
         /// <param name="diagnosticsProfile">Properties of the diagnostic
         /// agent.</param>
-        public ContainerServiceInner(ContainerServiceMasterProfile masterProfile, IList<ContainerServiceAgentPoolProfile> agentPoolProfiles, ContainerServiceLinuxProfile linuxProfile, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), ContainerServiceOrchestratorProfile orchestratorProfile = default(ContainerServiceOrchestratorProfile), ContainerServiceCustomProfile customProfile = default(ContainerServiceCustomProfile), ContainerServiceServicePrincipalProfile servicePrincipalProfile = default(ContainerServiceServicePrincipalProfile), ContainerServiceWindowsProfile windowsProfile = default(ContainerServiceWindowsProfile), ContainerServiceDiagnosticsProfile diagnosticsProfile = default(ContainerServiceDiagnosticsProfile))
+        public ContainerServiceInner(string location, ContainerServiceMasterProfile masterProfile, IList<ContainerServiceAgentPoolProfile> agentPoolProfiles, ContainerServiceLinuxProfile linuxProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), ContainerServiceOrchestratorProfile orchestratorProfile = default(ContainerServiceOrchestratorProfile), ContainerServiceCustomProfile customProfile = default(ContainerServiceCustomProfile), ContainerServiceServicePrincipalProfile servicePrincipalProfile = default(ContainerServiceServicePrincipalProfile), ContainerServiceWindowsProfile windowsProfile = default(ContainerServiceWindowsProfile), ContainerServiceDiagnosticsProfile diagnosticsProfile = default(ContainerServiceDiagnosticsProfile))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -128,8 +129,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (MasterProfile == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "MasterProfile");

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> ExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LogAnalyticsOperationResultInner> ExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> ExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LogAnalyticsOperationResultInner> ExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ExportThrottledRequestsWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> BeginExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LogAnalyticsOperationResultInner> BeginExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> BeginExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LogAnalyticsOperationResultInner> BeginExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginExportThrottledRequestsWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
                 {

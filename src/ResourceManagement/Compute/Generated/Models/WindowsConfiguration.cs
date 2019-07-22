@@ -35,8 +35,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// request body, default behavior is to set it to true.  This will
         /// ensure that VM Agent is installed on the VM so that extensions can
         /// be added to the VM later.</param>
-        /// <param name="enableAutomaticUpdates">Indicates whether virtual
-        /// machine is enabled for automatic updates.</param>
+        /// <param name="enableAutomaticUpdates">Indicates whether Automatic
+        /// Updates is enabled for the Windows virtual machine. Default value
+        /// is true. &lt;br&gt;&lt;br&gt; For virtual machine scale sets, this
+        /// property can be updated and updates will take effect on OS
+        /// reprovisioning.</param>
         /// <param name="timeZone">Specifies the time zone of the virtual
         /// machine. e.g. "Pacific Standard Time"</param>
         /// <param name="additionalUnattendContent">Specifies additional
@@ -71,8 +74,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public bool? ProvisionVMAgent { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates whether virtual machine is enabled for
-        /// automatic updates.
+        /// Gets or sets indicates whether Automatic Updates is enabled for the
+        /// Windows virtual machine. Default value is true.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For virtual machine scale
+        /// sets, this property can be updated and updates will take effect on
+        /// OS reprovisioning.
         /// </summary>
         [JsonProperty(PropertyName = "enableAutomaticUpdates")]
         public bool? EnableAutomaticUpdates { get; set; }

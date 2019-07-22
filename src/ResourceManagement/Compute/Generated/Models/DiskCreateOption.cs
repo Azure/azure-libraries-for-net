@@ -29,5 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public static readonly DiskCreateOption Import = Parse("Import");
         public static readonly DiskCreateOption Copy = Parse("Copy");
         public static readonly DiskCreateOption Restore = Parse("Restore");
+        public static readonly DiskCreateOption Upload = Parse("Upload");
     }
 }

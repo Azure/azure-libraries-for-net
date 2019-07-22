@@ -25,6 +25,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string rgName = TestUtilities.GenerateName("rgzoned");
+                string proxyGroupName = TestUtilities.GenerateName("plg1Test");
                 try
                 {
                     var region = Region.USEast2;
@@ -39,6 +40,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                         .WithNewPrimaryNetwork("10.0.0.0/28")
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithNewPrimaryPublicIPAddress(pipDnsLabel)
+                        .WithNewProximityPlacementGroup(proxyGroupName, ProximityPlacementGroupType.Standard)
                         .WithPopularLinuxImage(Microsoft.Azure.Management.Compute.Fluent.KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("Foo12")
                         .WithRootPassword("abc!@#F0orL")
@@ -53,6 +55,13 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     Assert.NotNull(virtualMachine.AvailabilityZones);
                     Assert.False(virtualMachine.AvailabilityZones.Count == 0);
                     Assert.True(virtualMachine.AvailabilityZones.Contains(AvailabilityZoneId.Zone_1));
+
+                    //Check the proximity placement group information
+                    Assert.NotNull(virtualMachine.ProximityPlacementGroup);
+                    Assert.Equal(ProximityPlacementGroupType.Standard, virtualMachine.ProximityPlacementGroup.ProximityPlacementGroupType);
+                    Assert.NotNull(virtualMachine.ProximityPlacementGroup.VirtualMachineIds);
+                    Assert.Equal(virtualMachine.Id, virtualMachine.ProximityPlacementGroup.VirtualMachineIds[0], true);
+
                     // Check the zone assigned to the implcitly created publicip addres
                     // Impliclity created public ip with BASIC sku
                     IPublicIPAddress publicIPAddress = virtualMachine.GetPrimaryPublicIPAddress();
@@ -408,7 +417,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                 }
             }
         }
-        
+
         [Fact(Skip = "Cannot be run because of NRP bug.")]
         // This test put multiple zonal virtual machine's NIC into backend pool of a zone-redundant load balancer.
         // There is a bug in the service, where such an attempt will fail with error

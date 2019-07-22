@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class VirtualMachineScaleSetImpl 
+    internal partial class VirtualMachineScaleSetImpl
     {
         /// <summary>
         /// Gets the list of application gateway backend pool associated with the virtual machine scale set.
@@ -35,6 +35,44 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.ApplicationSecurityGroupIds();
+            }
+        }
+
+        /// <summary> 
+        /// When Overprovision is enabled, extensions are launched only on the
+        /// requested number of VMs which are finally kept. This property will hence
+        /// ensure that the extensions do not run on the extra overprovisioned VMs.
+        /// </summary>
+        bool? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.DoNotRunExtensionsOnOverprovisionedVMs
+        {
+            get
+            {
+                return this.DoNotRunExtensionsOnOverprovisionedVMs();
+            }
+        }
+
+        /// <summary>
+        /// Get specifies information about the proximity placement group that the virtual machine scale set should be assigned to.
+        /// </summary>
+        IProximityPlacementGroup Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ProximityPlacementGroup
+        {
+            get
+            {
+                return this.ProximityPlacementGroup();
+            }
+        }
+
+
+        /// <summary>
+        /// Get specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale
+        /// Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with
+        /// UltraSSD_LRS storage account type.
+        /// </summary>
+        AdditionalCapabilities Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.AdditionalCapabilities
+        {
+            get
+            {
+                return this.AdditionalCapabilities();
             }
         }
 
@@ -85,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the extensions attached to the virtual machines in the scale set.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetExtension> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Extensions
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetExtension> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Extensions
         {
             get
             {
@@ -391,7 +429,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Deallocate()
         {
- 
+
             this.Deallocate();
         }
 
@@ -401,7 +439,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.DeallocateAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.DeallocateAsync(cancellationToken);
         }
 
@@ -497,7 +535,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends()
         {
             return this.ListPrimaryInternalLoadBalancerBackends();
         }
@@ -507,7 +545,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set, if any.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools()
         {
             return this.ListPrimaryInternalLoadBalancerInboundNatPools();
         }
@@ -517,7 +555,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends()
         {
             return this.ListPrimaryInternetFacingLoadBalancerBackends();
         }
@@ -527,7 +565,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools()
         {
             return this.ListPrimaryInternetFacingLoadBalancerInboundNatPools();
         }
@@ -537,7 +575,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.PowerOff()
         {
- 
+
             this.PowerOff();
         }
 
@@ -547,7 +585,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.PowerOffAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.PowerOffAsync(cancellationToken);
         }
 
@@ -556,7 +594,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Reimage()
         {
- 
+
             this.Reimage();
         }
 
@@ -566,7 +604,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ReimageAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.ReimageAsync(cancellationToken);
         }
 
@@ -575,7 +613,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Restart()
         {
- 
+
             this.Restart();
         }
 
@@ -585,7 +623,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.RestartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.RestartAsync(cancellationToken);
         }
 
@@ -664,7 +702,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Start()
         {
- 
+
             this.Start();
         }
 
@@ -674,7 +712,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.StartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StartAsync(cancellationToken);
         }
 
@@ -1507,6 +1545,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine
+        /// Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed
+        /// data disks with UltraSSD_LRS storage account type.
+        /// </summary>
+        /// <param name="additionalCapabilities">the additionalCapabilities value to set</param>
+        /// <returns>the next stage of the definition.</returns>
+        VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithAdditionalCapabilities.WithAdditionalCapabilities(AdditionalCapabilities additionalCapabilities)
+        {
+            return this.WithAdditionalCapabilities(additionalCapabilities);
+        }
+
+
+        /// <summary>
         /// Specifies that network security group association should be removed if exists.
         /// </summary>
         /// <return>The next stage of the update.</return>
@@ -1898,7 +1949,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="skuType">The SKU type.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachineScaleSet.Definition.IWithNetworkSubnet VirtualMachineScaleSet.Definition.IWithSku.WithSku(VirtualMachineScaleSetSkuTypes skuType)
+        VirtualMachineScaleSet.Definition.IWithProximityPlacementGroup VirtualMachineScaleSet.Definition.IWithSku.WithSku(VirtualMachineScaleSetSkuTypes skuType)
         {
             return this.WithSku(skuType);
         }
@@ -1908,9 +1959,54 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="sku">A SKU from the list of available sizes for the virtual machines in this scale set.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachineScaleSet.Definition.IWithNetworkSubnet VirtualMachineScaleSet.Definition.IWithSku.WithSku(IVirtualMachineScaleSetSku sku)
+        VirtualMachineScaleSet.Definition.IWithProximityPlacementGroup VirtualMachineScaleSet.Definition.IWithSku.WithSku(IVirtualMachineScaleSetSku sku)
         {
             return this.WithSku(sku);
+        }
+
+        /// <summary>
+        /// Set information about the proximity placement group that the virtual machine scale set should
+        /// be assigned to.
+        /// </summary>
+        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
+        /// <returns>the next stage of the definition.</returns>
+        VirtualMachineScaleSet.Definition.IWithDoNotRunExtensionsOnOverprovisionedVms VirtualMachineScaleSet.Definition.IWithProximityPlacementGroup.WithProximityPlacementGroup(string promixityPlacementGroupId)
+        {
+            return this.WithProximityPlacementGroup(promixityPlacementGroupId);
+        }
+
+        /// <summary>
+        /// Creates a new proximity placement group with the specified name and then adds it to the VM scale set.
+        /// </summary>
+        /// <param name="proximityPlacementGroupName">the name of the group to be created.</param>
+        /// <param name="type">the type of the group</param>
+        /// <returns>the next stage of the definition.</returns>
+        VirtualMachineScaleSet.Definition.IWithDoNotRunExtensionsOnOverprovisionedVms VirtualMachineScaleSet.Definition.IWithProximityPlacementGroup.WithNewProximityPlacementGroup(string proximityPlacementGroupName, ProximityPlacementGroupType type)
+        {
+            return this.WithNewProximityPlacementGroup(proximityPlacementGroupName, type);
+        }
+
+        /// <summary>
+        /// Set when Overprovision is enabled, extensions are launched only on the requested number of VMs which are
+        /// finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMS.
+        /// </summary>
+        /// <param name="doNotRunExtensionsOnOverprovisionedVMs">the doNotRunExtensionsOnOverprovisionedVMs value to set</param>
+        /// <returns>the next stage of the definition.</returns>
+        VirtualMachineScaleSet.Definition.IWithAdditionalCapabilities VirtualMachineScaleSet.Definition.IWithDoNotRunExtensionsOnOverprovisionedVms.WithDoNotRunExtensionsOnOverprovisionedVMs(bool doNotRunExtensionsOnOverprovisionedVMs)
+        {
+            return this.WithDoNotRunExtensionsOnOverprovisionedVMs(doNotRunExtensionsOnOverprovisionedVMs);
+        }
+
+        /// <summary> 
+        /// Set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine
+        /// Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed
+        /// data disks with UltraSSD_LRS storage account type.
+        /// </summary>
+        /// <param name="additionalCapabilities">the additionalCapabilities value to set</param>
+        /// <returns>the next stage of the definition</returns>
+        VirtualMachineScaleSet.Definition.IWithNetworkSubnet VirtualMachineScaleSet.Definition.IWithAdditionalCapabilities.WithAdditionalCapabilities(AdditionalCapabilities additionalCapabilities)
+        {
+            return this.WithAdditionalCapabilities(additionalCapabilities);
         }
 
         /// <summary>

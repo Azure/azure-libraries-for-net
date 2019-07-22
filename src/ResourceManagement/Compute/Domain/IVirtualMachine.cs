@@ -78,6 +78,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         string LicenseType { get; }
 
+
+        /// <summary> 
+        /// Get specifies information about the proximity placement group that the virtual machine scale set should be assigned to.
+        /// </summary>
+        IProximityPlacementGroup ProximityPlacementGroup { get; }
+
         /// <summary>
         /// Gets the operating system disk caching type.
         /// </summary>

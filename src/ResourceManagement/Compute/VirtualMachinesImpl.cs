@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
-            RunCommandInputInner innerInput = new RunCommandInputInner(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
+            RunCommandInput innerInput = new RunCommandInput(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
             return await this.Inner.RunCommandAsync(groupName, name, innerInput, cancellationToken);
         }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9F1310A4445A183902C9AF672DA34354:F32BEF843CE33ABB858763CFD92B9A36
         public async Task PowerOffAsync(string groupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.PowerOffAsync(groupName, name, cancellationToken);
+            await Inner.PowerOffAsync(groupName, name, false, cancellationToken);
         }
 
         ///GENMHASH:9F1310A4445A183902C9AF672DA34354:83A472D7E09E0673F32CBA699DC15325
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             bool overwriteVhd,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
+            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
