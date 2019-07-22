@@ -1155,7 +1155,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .Attach()
                             .Create();
 
-                    virtualMachineScaleSet.Deallocate();
                     virtualMachineScaleSet.Update()
                             .WithIpForwarding()
                             .WithAcceleratedNetworking()
