@@ -209,23 +209,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
-    /// The stage of a virtual machine scale set update allowing to
-    /// set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine
-    /// Scale Set.
-    /// </summary>
-    public interface IWithAdditionalCapabilities
-    {
-        /// <summary>
-        /// Set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine
-        /// Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed
-        /// data disks with UltraSSD_LRS storage account type.
-        /// </summary>
-        /// <param name="additionalCapabilities">the additionalCapabilities value to set</param>
-        /// <returns>the next stage of the definition.</returns>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithAdditionalCapabilities(AdditionalCapabilities additionalCapabilities);
-    }
-
-    /// <summary>
     /// The stage of a virtual machine scale set update allowing to change the SKU for the virtual machines
     /// in the scale set.
     /// </summary>
@@ -385,7 +368,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithManagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithUnmanagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSku,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAdditionalCapabilities,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithCapacity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancer,

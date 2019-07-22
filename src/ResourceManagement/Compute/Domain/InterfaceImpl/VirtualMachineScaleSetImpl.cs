@@ -1545,19 +1545,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine
-        /// Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed
-        /// data disks with UltraSSD_LRS storage account type.
-        /// </summary>
-        /// <param name="additionalCapabilities">the additionalCapabilities value to set</param>
-        /// <returns>the next stage of the definition.</returns>
-        VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithAdditionalCapabilities.WithAdditionalCapabilities(AdditionalCapabilities additionalCapabilities)
-        {
-            return this.WithAdditionalCapabilities(additionalCapabilities);
-        }
-
-
-        /// <summary>
         /// Specifies that network security group association should be removed if exists.
         /// </summary>
         /// <return>The next stage of the update.</return>

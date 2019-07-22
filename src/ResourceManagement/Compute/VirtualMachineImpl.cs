@@ -1174,18 +1174,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
-        public VirtualMachineImpl WithProximityPlacementGroup(String proximityPlacementGroupId)
-        {
-            this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
-            return this;
-        }
-
-        public VirtualMachineImpl WithoutProximityPlacementGroup()
-        {
-            this.Inner.ProximityPlacementGroup = null;
-            return this;
-        }
-
         ///GENMHASH:720FC1AD6CE12835DF562FA21CBA22C1:8E210E27AC5BBEFD085A05D8458DC632
         public VirtualMachineImpl WithNewSecondaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable)
         {
@@ -1579,12 +1567,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Inner.LicenseType;
         }
 
-
-        public String ProximityPlacementGroupId()
-        {
-            return Inner.ProximityPlacementGroup.Id;
-        }
-
         ///GENMHASH:283A7CD491ABC476D6646B943D8641A8:BB7251641858D1CBEADD4ABE2AF921D3
         public Plan Plan()
         {
@@ -1827,19 +1809,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 //
                 VirtualMachineUpdate updateParameter = new VirtualMachineUpdate
                 {
-                    Plan = this.Inner.Plan,
-                    HardwareProfile = this.Inner.HardwareProfile,
-                    StorageProfile = this.Inner.StorageProfile,
-                    OsProfile = this.Inner.OsProfile,
-                    NetworkProfile = this.Inner.NetworkProfile,
-                    DiagnosticsProfile = this.Inner.DiagnosticsProfile,
-                    AvailabilitySet = this.Inner.AvailabilitySet,
-                    LicenseType = this.Inner.LicenseType,
-                    ProximityPlacementGroup = this.Inner.ProximityPlacementGroup,
-                    Zones = this.Inner.Zones,
-                    Tags = this.Inner.Tags
-                    
-                };
+                        Plan = this.Inner.Plan,
+                        HardwareProfile = this.Inner.HardwareProfile,
+                        StorageProfile = this.Inner.StorageProfile,
+                        OsProfile = this.Inner.OsProfile,
+                        NetworkProfile = this.Inner.NetworkProfile,
+                        DiagnosticsProfile = this.Inner.DiagnosticsProfile,
+                        AvailabilitySet = this.Inner.AvailabilitySet,
+                        LicenseType = this.Inner.LicenseType,
+                        Zones = this.Inner.Zones,
+                        Tags = this.Inner.Tags
+                    };
                 //
                 this.virtualMachineMsiHelper.HandleExternalIdentities(updateParameter);
                 //
@@ -1849,7 +1829,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     // Another get to fetch vm inner with extensions list reflecting the commited changes to extensions
                     //
-                    response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
+                response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
                 }
                 this.Reset(response);
                 await virtualMachineMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
@@ -2754,5 +2734,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.DiskLunsToRemove = new List<int>();
             }
         }
-    }
+            }
 }

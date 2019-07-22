@@ -152,18 +152,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
-
-        /// <summary>
-        /// Get specifies information about the proximity placement group that the virtual machine scale set should be assigned to.
-        /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ProximityPlacementGroupId
-        {
-            get
-            {
-                return this.ProximityPlacementGroupId();
-            }
-        }
-
         /// <summary>
         /// Gets the type of Managed Service Identity used for the virtual machine.
         /// </summary>
@@ -1070,7 +1058,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="networkInterface">An existing network interface.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithProximityPlacementGroup VirtualMachine.Definition.IWithPrimaryNetworkInterface.WithExistingPrimaryNetworkInterface(INetworkInterface networkInterface)
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPrimaryNetworkInterface.WithExistingPrimaryNetworkInterface(INetworkInterface networkInterface)
         {
             return this.WithExistingPrimaryNetworkInterface(networkInterface);
         }
@@ -1080,7 +1068,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="publicIPAddress">An existing public IP address.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithProximityPlacementGroup VirtualMachine.Definition.IWithPublicIPAddress.WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress)
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
             return this.WithExistingPrimaryPublicIPAddress(publicIPAddress);
         }
@@ -1432,7 +1420,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="creatable">A creatable definition for a new network interface.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithProximityPlacementGroup VirtualMachine.Definition.IWithPrimaryNetworkInterface.WithNewPrimaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable)
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPrimaryNetworkInterface.WithNewPrimaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable)
         {
             return this.WithNewPrimaryNetworkInterface(creatable);
         }
@@ -1442,7 +1430,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="creatable">A creatable definition for a new public IP.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithProximityPlacementGroup VirtualMachine.Definition.IWithPublicIPAddress.WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
             return this.WithNewPrimaryPublicIPAddress(creatable);
         }
@@ -1454,7 +1442,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="leafDnsLabel">A leaf domain label.</param>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithProximityPlacementGroup VirtualMachine.Definition.IWithPublicIPAddress.WithNewPrimaryPublicIPAddress(string leafDnsLabel)
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithNewPrimaryPublicIPAddress(string leafDnsLabel)
         {
             return this.WithNewPrimaryPublicIPAddress(leafDnsLabel);
         }
@@ -1670,27 +1658,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.WithoutBootDiagnostics();
         }
 
-
-        /// <summary>
-        /// Set information about the proximity placement group that the virtual machineshould
-        /// be assigned to.
-        /// </summary>
-        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
-        /// <returns>the next stage of the definition.</returns>
-        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithProximityPlacementGroup.WithProximityPlacementGroup(string promixityPlacementGroupId)
-        {
-            return this.WithProximityPlacementGroup(promixityPlacementGroupId);
-        }
-
-        /// <summary>
-        /// Removes the Proximity placement group from the VM
-        /// </summary>
-        /// <returns>the next stage of the definition.</returns>
-        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithProximityPlacementGroup.WithoutProximityPlacementGroup()
-        {
-            return this.WithoutProximityPlacementGroup();
-        }
-
         /// <summary>
         /// Detaches a managed data disk with the given LUN from the virtual machine.
         /// </summary>
@@ -1715,7 +1682,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Specifies that the VM should not have a public IP address.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        VirtualMachine.Definition.IWithProximityPlacementGroup VirtualMachine.Definition.IWithPublicIPAddress.WithoutPrimaryPublicIPAddress()
+        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithoutPrimaryPublicIPAddress()
         {
             return this.WithoutPrimaryPublicIPAddress();
         }
@@ -2060,17 +2027,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithLinuxCreateManaged VirtualMachine.Definition.IWithLinuxCreateManaged.WithSsh(string publicKey)
         {
             return this.WithSsh(publicKey);
-        }
-
-        /// <summary> 
-        /// Set information about the proximity placement group that the virtual machine scale set should
-        /// be assigned to.
-        /// </summary>
-        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
-        /// <returns>the next stage of the definition.</returns>
-        VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithProximityPlacementGroup.WithProximityPlacementGroup(string promixityPlacementGroupId)
-        {
-            return this.WithProximityPlacementGroup(promixityPlacementGroupId);
         }
 
         /// <summary>
