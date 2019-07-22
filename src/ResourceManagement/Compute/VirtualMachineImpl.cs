@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.virtualMachineMsiHelper.WithoutLocalManagedServiceIdentity();
             return this;
         }
-
+        
         public RunCommandResultInner RunCommand(RunCommandInput inputCommand)
         {
             return Extensions.Synchronize(() => this.RunCommandAsync(inputCommand));
@@ -1180,18 +1180,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
-
-        public VirtualMachineImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
-        {
-            ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner();
-            plgInner.ProximityPlacementGroupType = type;
-            plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, proximityPlacementGroupName, plgInner));
-
-            this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
-
-            return this;
-        }
-
         public VirtualMachineImpl WithoutProximityPlacementGroup()
         {
             this.Inner.ProximityPlacementGroup = null;
@@ -1591,19 +1579,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Inner.LicenseType;
         }
 
-        public IProximityPlacementGroup ProximityPlacementGroup()
-        {
-            ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
 
-            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, this.Name));
-            if (plgInner == null)
-            {
-                return null;
-            }
-            else
-            {
-                return new ProximityPlacementGroupImpl(plgInner);
-            }
+        public String ProximityPlacementGroupId()
+        {
+            return Inner.ProximityPlacementGroup.Id;
         }
 
         ///GENMHASH:283A7CD491ABC476D6646B943D8641A8:BB7251641858D1CBEADD4ABE2AF921D3
@@ -1658,7 +1637,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
             {
                 return new HashSet<string>(this.Inner.Identity.UserAssignedIdentities.Keys);
-            }
+        }
 
             return new HashSet<string>();
         }
@@ -1742,7 +1721,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.virtualMachineMsiHelper.WithLocalManagedServiceIdentity();
             return this;
         }
-
+        
         ///GENMHASH:DEF511724D2CC8CA91F24E084BC9AA22:72F0234D4EBEB820BB2E8EB0ED1665A6
         public VirtualMachineImpl WithSystemAssignedIdentityBasedAccessTo(string scope, string roleDefinitionId)
         {
@@ -1796,37 +1775,37 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async override Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (IsInCreateMode)
-            {
+            {        
                 //
                 // -- set creation-time only properties
                 SetOSDiskDefaults();
                 SetOSProfileDefaults();
                 SetHardwareProfileDefaults();
 
-                if (IsManagedDiskEnabled())
-                {
-                    managedDataDisks.SetDataDisksDefaults();
-                }
-                else
-                {
-                    UnmanagedDataDiskImpl.SetDataDisksDefaults(this.unmanagedDataDisks, this.vmName);
-                }
-                var diskStorageAccount = await HandleStorageSettingsAsync(cancellationToken);
-                await HandleBootDiagnosticsStorageSettingsAsync(diskStorageAccount, cancellationToken);
-                HandleNetworkSettings();
-                HandleAvailabilitySettings();
+            if (IsManagedDiskEnabled())
+            {
+                managedDataDisks.SetDataDisksDefaults();
+            }
+            else
+            {
+                UnmanagedDataDiskImpl.SetDataDisksDefaults(this.unmanagedDataDisks, this.vmName);
+            }
+            var diskStorageAccount = await HandleStorageSettingsAsync(cancellationToken);
+            await HandleBootDiagnosticsStorageSettingsAsync(diskStorageAccount, cancellationToken);
+            HandleNetworkSettings();
+            HandleAvailabilitySettings();
                 this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
                 this.virtualMachineMsiHelper.HandleExternalIdentities();
-
-                var response = await Manager.Inner.VirtualMachines.CreateOrUpdateAsync(ResourceGroupName, vmName, Inner, cancellationToken);
-                var extensionsCommited = await this.virtualMachineExtensions.CommitAndGetAllAsync(cancellationToken);
-                if (extensionsCommited.Any())
-                {
-                    // Another get to fetch vm inner with extensions list reflecting the commited changes to extensions
-                    //
-                    response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
-                }
-                this.Reset(response);
+                
+            var response = await Manager.Inner.VirtualMachines.CreateOrUpdateAsync(ResourceGroupName, vmName, Inner, cancellationToken);
+            var extensionsCommited = await this.virtualMachineExtensions.CommitAndGetAllAsync(cancellationToken);
+            if (extensionsCommited.Any())
+            {
+                // Another get to fetch vm inner with extensions list reflecting the commited changes to extensions
+                //
+                response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
+            }
+            this.Reset(response);
                 await virtualMachineMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
             }
             else
@@ -1859,7 +1838,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     ProximityPlacementGroup = this.Inner.ProximityPlacementGroup,
                     Zones = this.Inner.Zones,
                     Tags = this.Inner.Tags
-
+                    
                 };
                 //
                 this.virtualMachineMsiHelper.HandleExternalIdentities(updateParameter);

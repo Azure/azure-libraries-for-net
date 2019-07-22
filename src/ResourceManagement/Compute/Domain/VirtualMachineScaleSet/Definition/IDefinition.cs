@@ -360,15 +360,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
         /// <returns>the next stage of the definition.</returns>
         IWithDoNotRunExtensionsOnOverprovisionedVms WithProximityPlacementGroup(string promixityPlacementGroupId);
-
-
-        /// <summary>
-        /// Creates a new proximity placement group with the specified name and then adds it to the VM scale set.
-        /// </summary>
-        /// <param name="proximityPlacementGroupName">the name of the group to be created.</param>
-        /// <param name="type">the type of the group</param>
-        /// <returns>the next stage of the definition.</returns>
-        IWithDoNotRunExtensionsOnOverprovisionedVms WithNewProximityPlacementGroup(string proximityPlacementGroupName, ProximityPlacementGroupType type);
     }
 
     /// <summary>

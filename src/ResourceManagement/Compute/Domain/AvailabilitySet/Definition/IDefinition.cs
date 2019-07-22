@@ -63,29 +63,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     }
 
     /// <summary>
-    /// The stage of the availability set definition setting ProximityPlacementGroup.
-    /// </summary>
-    public interface IWithProximityPlacementGroup
-    {
-        /// <summary>
-        /// Set information about the proximity placement group that the availability set should
-        /// be assigned to.
-        /// </summary>
-        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
-        /// <returns>the next stage of the definition</returns>
-        Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate WithProximityPlacementGroup(string promixityPlacementGroupId);
-
-
-        /// <summary>
-        /// Creates a new proximity placement gruup with the specified name and then adds it to the availability set.
-        /// </summary>
-        /// <param name="proximityPlacementGroupName">the name of the group to be created.</param>
-        /// <param name="type">the type of the group</param>
-        /// <returns>the next stage of the definition.</returns>
-        Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate WithNewProximityPlacementGroup(string proximityPlacementGroupName, ProximityPlacementGroupType type);
-    }
-
-    /// <summary>
     /// The stage of the availability set definition allowing to specify the update domain count.
     /// </summary>
     public interface IWithUpdateDomainCount
@@ -109,8 +86,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithUpdateDomainCount,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithFaultDomainCount,
-        Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithSku,
-        Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithProximityPlacementGroup
+        Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithSku
     {
 
     }

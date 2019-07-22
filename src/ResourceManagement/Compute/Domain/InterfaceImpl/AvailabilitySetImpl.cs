@@ -20,14 +20,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
-        IProximityPlacementGroup IAvailabilitySet.ProximityPlacementGroup
-        {
-            get
-            {
-                return this.ProximityPlacementGroup();
-            }
-        }
-
         /// <summary>
         /// Gets the availability set SKU.
         /// </summary>
@@ -125,49 +117,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithUpdateDomainCount.WithUpdateDomainCount(int updateDomainCount)
         {
             return this.WithUpdateDomainCount(updateDomainCount);
-        }
-
-        /// <summary>
-        /// Set information about the proximity placement group that the availability set should
-        /// be assigned to.
-        /// </summary>
-        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
-        /// <returns>the next stage of the definition</returns>
-
-        AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithProximityPlacementGroup.WithProximityPlacementGroup(string promixityPlacementGroupId)
-        {
-            return this.WithProximityPlacementGroup(promixityPlacementGroupId);
-        }
-
-        /// <summary>
-        /// Creates a new proximity placement gruup with the specified name and then adds it to the availability set.
-        /// </summary>
-        /// <param name="proximityPlacementGroupName">the name of the group to be created.</param>
-        /// <param name="type">the type of the group</param>
-        /// <returns>the next stage of the definition.</returns>
-        AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithProximityPlacementGroup.WithNewProximityPlacementGroup(string proximityPlacementGroupName, ProximityPlacementGroupType type)
-        {
-            return this.WithNewProximityPlacementGroup(proximityPlacementGroupName, type);
-        }
-
-        /// <summary>
-        /// Set information about the proximity placement group that the availability set should
-        /// be assigned to.
-        /// </summary>
-        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
-        /// <returns>the next stage of the definition.</returns>
-        AvailabilitySet.Update.IUpdate AvailabilitySet.Update.IWithProximityPlacementGroup.WithProximityPlacementGroup(string promixityPlacementGroupId)
-        {
-            return this.WithProximityPlacementGroup(promixityPlacementGroupId);
-        }
-
-        /// <summary>
-        /// Remove the proximity placement group from the availability set.
-        /// </summary>
-        /// <returns>the next stage of the definition.</returns>
-        AvailabilitySet.Update.IUpdate AvailabilitySet.Update.IWithProximityPlacementGroup.WithoutProximityPlacementGroup()
-        {
-            return this.WithoutProximityPlacementGroup();
         }
     }
 }

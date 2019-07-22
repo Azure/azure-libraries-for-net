@@ -43,13 +43,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         System.Collections.Generic.ISet<string> VirtualMachineIds { get; }
 
-        /// <summary>
-        /// Get specifies information about the proximity placement group that the virtual machine scale set should be
-        /// assigned to.
-        /// </summary>
-        IProximityPlacementGroup ProximityPlacementGroup { get; }
-
-
         /// <return>The virtual machine sizes supported in the availability set.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize> ListVirtualMachineSizes();
     }
