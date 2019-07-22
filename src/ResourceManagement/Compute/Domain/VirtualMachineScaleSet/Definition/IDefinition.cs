@@ -347,54 +347,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     }
 
     /// <summary>
-    /// The stage of a virtual machine scale set definition allowing to
-    /// set information about the proximity placement group that the virtual machine scale set should
-    /// be assigned to.
-    /// </summary>
-    public interface IWithProximityPlacementGroup : IWithDoNotRunExtensionsOnOverprovisionedVms
-    {
-        /// <summary>
-        /// Set information about the proximity placement group that the virtual machine scale set should
-        /// be assigned to.
-        /// </summary>
-        /// <param name="promixityPlacementGroupId">The Id of the proximity placement group subResource.</param>
-        /// <returns>the next stage of the definition.</returns>
-        IWithDoNotRunExtensionsOnOverprovisionedVms WithProximityPlacementGroup(string promixityPlacementGroupId);
-    }
-
-    /// <summary>
-    /// The stage of a virtual machine scale set definition allowing to
-    /// set when Overprovision is enabled, extensions are launched only on the requested number of VMs
-    /// which are finally kept.
-    /// </summary>
-    public interface IWithDoNotRunExtensionsOnOverprovisionedVms : IWithAdditionalCapabilities
-    {
-        /// <summary>
-        /// Set when Overprovision is enabled, extensions are launched only on the requested number of VMs which are
-        /// finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMS.
-        /// </summary>
-        /// <param name="doNotRunExtensionsOnOverprovisionedVMs">the doNotRunExtensionsOnOverprovisionedVMs value to set</param>
-        /// <returns>the next stage of the definition.</returns>
-        IWithAdditionalCapabilities WithDoNotRunExtensionsOnOverprovisionedVMs(bool doNotRunExtensionsOnOverprovisionedVMs);
-    }
-
-    /// <summary>
-    /// The stage of a virtual machine scale set definition allowing to 
-    /// set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set.
-    /// </summary>
-    public interface IWithAdditionalCapabilities : IWithNetworkSubnet
-    {
-        /// <summary> 
-        /// Set specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine
-        /// Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed
-        /// data disks with UltraSSD_LRS storage account type.
-        /// </summary>
-        /// <param name="additionalCapabilities">the additionalCapabilities value to set</param>
-        /// <returns>the next stage of the definition</returns>
-        IWithNetworkSubnet WithAdditionalCapabilities(AdditionalCapabilities additionalCapabilities);
-    }
-
-    /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify the virtual network subnet for the
     /// primary network configuration.
     /// </summary>
@@ -468,14 +420,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// </summary>
         /// <param name="skuType">The SKU type.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithProximityPlacementGroup WithSku(VirtualMachineScaleSetSkuTypes skuType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithNetworkSubnet WithSku(VirtualMachineScaleSetSkuTypes skuType);
 
         /// <summary>
         /// Specifies the SKU for the virtual machines in the scale set.
         /// </summary>
         /// <param name="sku">A SKU from the list of available sizes for the virtual machines in this scale set.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithProximityPlacementGroup WithSku(IVirtualMachineScaleSetSku sku);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithNetworkSubnet WithSku(IVirtualMachineScaleSetSku sku);
     }
 
     /// <summary>

@@ -20,8 +20,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
         private VirtualMachineInstanceView virtualMachineInstanceView;
 
-
-
         public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var instanceViewInner = await Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
@@ -629,31 +627,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.Parent.ListNetworkInterfacesByInstanceId(this.InstanceId());
         }
-
-        public string ModelDefinitionApplied
-        {
-            get
-            {
-                return this.Inner.ModelDefinitionApplied;
-            }
-        }
-
-        public VirtualMachineScaleSetVMProtectionPolicy ProtectionPolicy
-        {
-            get
-            {
-                return this.Inner.ProtectionPolicy;
-            }
-        }
-
-        public VirtualMachineScaleSetVMNetworkProfileConfiguration NetworkProfileConfiguration
-        {
-            get
-            {
-                return this.Inner.NetworkProfileConfiguration;
-            }
-        }
-
 
         ///GENMHASH:C0264E6C83F004DCB85510D507BABF23:343C0BEE1A4B7107E587437CC211D9EC
         public string StoredImageUnmanagedVhdUri()

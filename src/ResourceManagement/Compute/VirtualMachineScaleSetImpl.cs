@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.Msi.Fluent;
     using Models;
@@ -114,48 +113,48 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.bootDiagnosticsHandler = new BootDiagnosticsHandler(this);
         }
 
-        private VirtualMachineScaleSetUpdate PreparePatchPayload()
+        private  VirtualMachineScaleSetUpdate PreparePatchPayload()
         {
             var updateParameter = new VirtualMachineScaleSetUpdate
-            {
-                Identity = this.Inner.Identity,
-                Overprovision = this.Inner.Overprovision,
-                Plan = this.Inner.Plan,
-                SinglePlacementGroup = this.Inner.SinglePlacementGroup,
-                Sku = this.Inner.Sku,
-                Tags = this.Inner.Tags,
-                UpgradePolicy = this.Inner.UpgradePolicy
-            };
+                {
+                    Identity = this.Inner.Identity,
+                    Overprovision = this.Inner.Overprovision,
+                    Plan = this.Inner.Plan,
+                    SinglePlacementGroup = this.Inner.SinglePlacementGroup,
+                    Sku = this.Inner.Sku,
+                    Tags = this.Inner.Tags,
+                    UpgradePolicy = this.Inner.UpgradePolicy
+                };
 
             if (this.Inner.VirtualMachineProfile != null)
             {
                 // --
                 var updateVMProfile = new VirtualMachineScaleSetUpdateVMProfile
-                {
-                    DiagnosticsProfile = this.Inner.VirtualMachineProfile.DiagnosticsProfile,
-                    ExtensionProfile = this.Inner.VirtualMachineProfile.ExtensionProfile,
-                    LicenseType = this.Inner.VirtualMachineProfile.LicenseType
-                };
+                    {
+                        DiagnosticsProfile = this.Inner.VirtualMachineProfile.DiagnosticsProfile,
+                        ExtensionProfile = this.Inner.VirtualMachineProfile.ExtensionProfile,
+                        LicenseType = this.Inner.VirtualMachineProfile.LicenseType
+                    };
                 //
                 if (this.Inner.VirtualMachineProfile.StorageProfile != null)
                 {
                     // -- --
                     var storageProfile = new VirtualMachineScaleSetUpdateStorageProfile
-                    {
-                        DataDisks = this.Inner.VirtualMachineProfile.StorageProfile.DataDisks,
-                        ImageReference = this.Inner.VirtualMachineProfile.StorageProfile.ImageReference
-                    };
+                        {
+                            DataDisks = this.Inner.VirtualMachineProfile.StorageProfile.DataDisks,
+                            ImageReference = this.Inner.VirtualMachineProfile.StorageProfile.ImageReference
+                        };
 
                     if (this.Inner.VirtualMachineProfile.StorageProfile.OsDisk != null)
                     {
                         var osDisk = new VirtualMachineScaleSetUpdateOSDisk
-                        {
-                            Caching = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.Caching,
-                            Image = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.Image,
-                            ManagedDisk = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk,
-                            VhdContainers = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers,
-                            WriteAcceleratorEnabled = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled
-                        };
+                            {
+                                Caching = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.Caching,
+                                Image = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.Image,
+                                ManagedDisk = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk,
+                                VhdContainers = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers,
+                                WriteAcceleratorEnabled = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled
+                            };
                         storageProfile.OsDisk = osDisk;
                     }
                     updateVMProfile.StorageProfile = storageProfile;
@@ -165,12 +164,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     // -- --
                     var osProfile = new VirtualMachineScaleSetUpdateOSProfile
-                    {
-                        CustomData = this.Inner.VirtualMachineProfile.OsProfile.CustomData,
-                        LinuxConfiguration = this.Inner.VirtualMachineProfile.OsProfile.LinuxConfiguration,
-                        Secrets = this.Inner.VirtualMachineProfile.OsProfile.Secrets,
-                        WindowsConfiguration = this.Inner.VirtualMachineProfile.OsProfile.WindowsConfiguration
-                    };
+                        {
+                            CustomData = this.Inner.VirtualMachineProfile.OsProfile.CustomData,
+                            LinuxConfiguration = this.Inner.VirtualMachineProfile.OsProfile.LinuxConfiguration,
+                            Secrets = this.Inner.VirtualMachineProfile.OsProfile.Secrets,
+                            WindowsConfiguration = this.Inner.VirtualMachineProfile.OsProfile.WindowsConfiguration
+                        };
                     updateVMProfile.OsProfile = osProfile;
                     // -- --
                 }
@@ -185,15 +184,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         foreach (var nicConfig in this.Inner.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
                         {
                             var nicPatchConfig = new VirtualMachineScaleSetUpdateNetworkConfigurationInner
-                            {
-                                DnsSettings = nicConfig.DnsSettings,
-                                EnableAcceleratedNetworking = nicConfig.EnableAcceleratedNetworking,
-                                EnableIPForwarding = nicConfig.EnableIPForwarding,
-                                Name = nicConfig.Name,
-                                NetworkSecurityGroup = nicConfig.NetworkSecurityGroup,
-                                Primary = nicConfig.Primary,
-                                Id = nicConfig.Id
-                            };
+                                {
+                                    DnsSettings = nicConfig.DnsSettings,
+                                    EnableAcceleratedNetworking = nicConfig.EnableAcceleratedNetworking,
+                                    EnableIPForwarding = nicConfig.EnableIPForwarding,
+                                    Name = nicConfig.Name,
+                                    NetworkSecurityGroup = nicConfig.NetworkSecurityGroup,
+                                    Primary = nicConfig.Primary,
+                                    Id = nicConfig.Id
+                                };
 
                             if (nicConfig.IpConfigurations != null)
                             {
@@ -201,16 +200,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                                 foreach (var ipConfig in nicConfig.IpConfigurations)
                                 {
                                     var patchIpConfig = new VirtualMachineScaleSetUpdateIPConfigurationInner
-                                    {
-                                        ApplicationGatewayBackendAddressPools = ipConfig.ApplicationGatewayBackendAddressPools,
-                                        LoadBalancerBackendAddressPools = ipConfig.LoadBalancerBackendAddressPools,
-                                        LoadBalancerInboundNatPools = ipConfig.LoadBalancerInboundNatPools,
-                                        Name = ipConfig.Name,
-                                        Primary = ipConfig.Primary,
-                                        PrivateIPAddressVersion = ipConfig.PrivateIPAddressVersion,
-                                        Subnet = ipConfig.Subnet,
-                                        Id = ipConfig.Id
-                                    };
+                                        {
+                                            ApplicationGatewayBackendAddressPools = ipConfig.ApplicationGatewayBackendAddressPools,
+                                            LoadBalancerBackendAddressPools = ipConfig.LoadBalancerBackendAddressPools,
+                                            LoadBalancerInboundNatPools = ipConfig.LoadBalancerInboundNatPools,
+                                            Name = ipConfig.Name,
+                                            Primary = ipConfig.Primary,
+                                            PrivateIPAddressVersion = ipConfig.PrivateIPAddressVersion,
+                                            Subnet = ipConfig.Subnet,
+                                            Id = ipConfig.Id
+                                        };
 
                                     if (ipConfig.PublicIPAddressConfiguration != null)
                                     {
@@ -264,21 +263,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return nicIpConfig.ApplicationSecurityGroups.Select(asg => asg.Id).ToList();
             }
             return new List<string>();
-        }
-
-        public bool? DoNotRunExtensionsOnOverprovisionedVMs()
-        {
-            return this.Inner.DoNotRunExtensionsOnOverprovisionedVMs;
-        }
-
-        public string ProximityPlacementGroupId()
-        {
-            return this.Inner.ProximityPlacementGroup?.Id;
-        }
-
-        public AdditionalCapabilities AdditionalCapabilities()
-        {
-            return this.Inner.AdditionalCapabilities;
         }
 
         public bool IsAcceleratedNetworkingEnabled()
@@ -335,7 +319,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (nicConfig.NetworkSecurityGroup != null)
             {
                 return nicConfig.NetworkSecurityGroup.Id;
-            }
+            } 
             return null;
         }
 
@@ -1220,7 +1204,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.virtualMachineScaleSetMsiHelper.WithLocalManagedServiceIdentity();
             return this;
         }
-
+        
         ///GENMHASH:DEF511724D2CC8CA91F24E084BC9AA22:B156E25B8F4ADB8DA7E762E9B3B26AA3
         public VirtualMachineScaleSetImpl WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
@@ -1269,7 +1253,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.virtualMachineScaleSetMsiHelper.WithExistingExternalManagedServiceIdentity(identity);
             return this;
         }
-
+        
         ///GENMHASH:801A53D3DABA33CC92425D2203FD9242:023B6E0293C3EE52841DA58E9038A4E6
         private static IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> GetInboundNatPoolsAssociatedWithIPConfiguration(ILoadBalancer loadBalancer, VirtualMachineScaleSetIPConfigurationInner ipConfig)
         {
@@ -2859,24 +2843,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return this;
             }
             this.managedDataDisks.diskLunsToRemove.Add(lun);
-            return this;
-        }
-
-        public VirtualMachineScaleSetImpl WithProximityPlacementGroup(string promixityPlacementGroupId)
-        {
-            this.Inner.ProximityPlacementGroup = new SubResource() { Id = promixityPlacementGroupId };
-            return this;
-        }
-
-        public VirtualMachineScaleSetImpl WithDoNotRunExtensionsOnOverprovisionedVMs(bool doNotRunExtensionsOnOverprovisionedVMs)
-        {
-            this.Inner.DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs;
-            return this;
-        }
-
-        public VirtualMachineScaleSetImpl WithAdditionalCapabilities(AdditionalCapabilities additionalCapabilities)
-        {
-            this.Inner.AdditionalCapabilities = additionalCapabilities;
             return this;
         }
 
