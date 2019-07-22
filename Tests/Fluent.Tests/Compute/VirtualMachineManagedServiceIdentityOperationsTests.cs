@@ -148,16 +148,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // NOTE: Comment out since the below code need external tennat.
-                    // 
                     // Validate service created service principal
                     //
-                    //IServicePrincipal servicePrincipal = authenticatedClient
-                    //        .ServicePrincipals
-                    //        .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    IServicePrincipal servicePrincipal = authenticatedClient
+                            .ServicePrincipals
+                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    //Assert.NotNull(servicePrincipal);
-                    //Assert.NotNull(servicePrincipal.Inner);
+                    Assert.NotNull(servicePrincipal);
+                    Assert.NotNull(servicePrincipal.Inner);
 
                     // Ensure role assigned
                     //
@@ -229,17 +227,15 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // NOTE: Comment out since the below code need external tennat.
-                    // 
                     // Validate service created service principal
                     //
-                    //IServicePrincipal servicePrincipal = authenticatedClient
-                    //        .ServicePrincipals
-                    //        .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    IServicePrincipal servicePrincipal = authenticatedClient
+                            .ServicePrincipals
+                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    //Assert.NotNull(servicePrincipal);
-                    //Assert.NotNull(servicePrincipal.Inner);
-
+                    Assert.NotNull(servicePrincipal);
+                    Assert.NotNull(servicePrincipal.Inner);
+                    
                     // Ensure role assigned for resource group
                     //
 
