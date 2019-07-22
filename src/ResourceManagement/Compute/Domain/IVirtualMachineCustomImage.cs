@@ -27,11 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         bool IsCreatedFromVirtualMachine { get; }
 
         /// <summary>
-        /// Get Hyper-V image generation.
-        /// </summary>
-        HyperVGenerationTypes HyperVGeneration { get; }
-
-        /// <summary>
         /// Gets operating system disk image in this image.
         /// </summary>
         Models.ImageOSDisk OSDiskImage { get; }

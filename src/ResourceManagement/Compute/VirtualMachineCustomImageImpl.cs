@@ -7,7 +7,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Models;
     using ResourceManager.Fluent;
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition;
 
     /// <summary>
     /// The implementation for VirtualMachineCustomImage.
@@ -19,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             VirtualMachineCustomImageImpl,
             IComputeManager,
             VirtualMachineCustomImage.Definition.IWithGroup,
-            VirtualMachineCustomImage.Definition.IWithHyperVGeneration,
+            VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource,
             VirtualMachineCustomImage.Definition.IWithCreate,
             object>,
         IVirtualMachineCustomImage,
@@ -60,15 +59,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.SourceVirtualMachineId() != null;
         }
-
-        /// <summary>
-        /// Get Hyper-V image generation.
-        /// </summary>
-        public HyperVGenerationTypes HyperVGeneration() 
-        {
-            return this.Inner.HyperVGeneration;
-        }
-
 
         ///GENMHASH:D1C4946A9D880775BE2352E9E76C9EED:AC7317852CF2F1330BAFC7715BAE78BC
         public VirtualMachineCustomImageImpl WithLinuxFromVhd(string sourceVhdUrl, OperatingSystemStateTypes osState)
@@ -231,14 +221,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Inner.StorageProfile.DataDisks.Add(customImageDataDisk.Inner);
             return this;
         }
-
-
-        public VirtualMachineCustomImageImpl WithHyperVGeneration(HyperVGenerationTypes hyperVGeneration)
-        {
-            this.Inner.HyperVGeneration = hyperVGeneration;
-            return this;
-        }
-
 
         ///GENMHASH:6F1E3BE4AB7D8C34567FE15B20B16EAF:420419EBE6CD60053DC391B80B4294E8
         private void EnsureDefaultLuns()
