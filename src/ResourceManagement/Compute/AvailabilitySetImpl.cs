@@ -181,6 +181,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+
         public AvailabilitySetImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
         {
             this.newProximityPlacementGroupName = proximityPlacementGroupName;

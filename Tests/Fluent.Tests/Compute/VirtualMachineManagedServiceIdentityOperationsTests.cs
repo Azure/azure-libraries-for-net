@@ -148,14 +148,13 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // NOTE: Comment out since the below code need external tennat.
                     // 
-                    //  Comment out since the below code need external tennat.
-                    // 
-                    ////
+                    // Validate service created service principal
+                    //
                     //IServicePrincipal servicePrincipal = authenticatedClient
                     //        .ServicePrincipals
-                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
+                    //        .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
 
                     //Assert.NotNull(servicePrincipal);
                     //Assert.NotNull(servicePrincipal.Inner);
@@ -230,14 +229,13 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // NOTE: Comment out since the below code need external tennat.
                     // 
-                    //  Comment out since the below code need external tennat.
-                    // 
-                    ////
+                    // Validate service created service principal
+                    //
                     //IServicePrincipal servicePrincipal = authenticatedClient
                     //        .ServicePrincipals
-                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
+                    //        .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
 
                     //Assert.NotNull(servicePrincipal);
                     //Assert.NotNull(servicePrincipal.Inner);
