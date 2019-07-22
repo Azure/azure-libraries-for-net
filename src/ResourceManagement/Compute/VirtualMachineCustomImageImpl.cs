@@ -29,8 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineCustomImageImpl(string name, ImageInner innerModel, IComputeManager computeManager) :
             base(name, innerModel, computeManager)
         {
-            //set the default value for the hyper-v generation
-            this.Inner.HyperVGeneration = HyperVGenerationTypes.V1;
         }
 
         ///GENMHASH:D56077CEB6F4BC29067D1495F17A7955:BD98217A776917172DAD36841C524F30
