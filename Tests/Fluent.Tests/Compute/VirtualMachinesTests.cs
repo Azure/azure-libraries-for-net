@@ -41,18 +41,18 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 try
                 {
-                    var nsg = networkManager.NetworkSecurityGroups.Define(NsgName)
-                         .WithRegion(Location)
-                         .WithNewResourceGroup(GroupName)
-                         .DefineRule("rule1")
-                             .AllowInbound()
-                             .FromAnyAddress()
-                             .FromPort(80)
-                             .ToAnyAddress()
-                             .ToPort(80)
-                             .WithProtocol(SecurityRuleProtocol.Tcp)
-                             .Attach()
-                         .Create();
+                   var nsg = networkManager.NetworkSecurityGroups.Define(NsgName)
+                        .WithRegion(Location)
+                        .WithNewResourceGroup(GroupName)
+                        .DefineRule("rule1")
+                            .AllowInbound()
+                            .FromAnyAddress()
+                            .FromPort(80)
+                            .ToAnyAddress()
+                            .ToPort(80)
+                            .WithProtocol(SecurityRuleProtocol.Tcp)
+                            .Attach()
+                        .Create();
 
                     ICreatable<INetwork> networkDefinition = networkManager.Networks.Define(NetworkName)
                         .WithRegion(Location)
@@ -165,262 +165,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    {
+                    { 
                         resourceManager.ResourceGroups.DeleteByName(GroupName);
-                    }
-                    catch { }
-                }
-            }
-        }
-
-        [Fact]
-        public void CannotUpdateProximityPlacementGroupForVirtualMachine()
-        {
-
-            using (var context = FluentMockContext.Start(GetType().FullName))
-            {
-                var GroupName1 = TestUtilities.GenerateName("rgfluentchash-");
-                var GroupName2 = TestUtilities.GenerateName("rgfluentchash-");
-                var AvailName1 = TestUtilities.GenerateName("availset1");
-                var AvailName2 = TestUtilities.GenerateName("availset2");
-                var ProxyGroupName1 = TestUtilities.GenerateName("testproxgroup1");
-                var ProxyGroupName2 = TestUtilities.GenerateName("testproxgroup1");
-
-                var ProxyGroupType = ProximityPlacementGroupType.Standard;
-                var RegionPPG1 = Region.USWestCentral;
-                var RegionPPG2 = Region.USSouthCentral;
-
-                var computeManager = TestHelper.CreateComputeManager();
-                var resourceManager = TestHelper.CreateResourceManager();
-
-                try
-                {
-
-                    var setCreated1 = computeManager.AvailabilitySets
-                    .Define(AvailName1)
-                    .WithRegion(RegionPPG1)
-                    .WithNewResourceGroup(GroupName1)
-                    .WithNewProximityPlacementGroup(ProxyGroupName1, ProxyGroupType)
-                    .Create();
-
-                    Assert.Equal(AvailName1, setCreated1.Name);
-                    Assert.NotNull(setCreated1.ProximityPlacementGroup);
-                    Assert.Equal(ProxyGroupType, setCreated1.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.NotNull(setCreated1.ProximityPlacementGroup.AvailabilitySetIds);
-                    Assert.False(setCreated1.ProximityPlacementGroup.AvailabilitySetIds.Count == 0);
-                    Assert.Equal(setCreated1.Id, setCreated1.ProximityPlacementGroup.AvailabilitySetIds[0], true);
-                    Assert.Equal(setCreated1.RegionName, setCreated1.ProximityPlacementGroup.Location);
-
-
-                    var setCreated2 = computeManager.AvailabilitySets
-                            .Define(AvailName2)
-                            .WithRegion(RegionPPG2)
-                            .WithNewResourceGroup(GroupName2)
-                            .WithNewProximityPlacementGroup(ProxyGroupName2, ProxyGroupType)
-                            .Create();
-
-                    Assert.Equal(AvailName2, setCreated2.Name);
-                    Assert.NotNull(setCreated2.ProximityPlacementGroup);
-                    Assert.Equal(ProxyGroupType, setCreated2.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.Equal(ProxyGroupType, setCreated2.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.NotNull(setCreated2.ProximityPlacementGroup.AvailabilitySetIds);
-                    Assert.False(setCreated2.ProximityPlacementGroup.AvailabilitySetIds.Count == 0);
-                    Assert.Equal(setCreated2.Id, setCreated2.ProximityPlacementGroup.AvailabilitySetIds[0], true);
-                    Assert.Equal(setCreated2.RegionName, setCreated2.ProximityPlacementGroup.Location);
-
-                    // Create
-                    computeManager.VirtualMachines
-                            .Define(VMName)
-                            .WithRegion(RegionPPG1)
-                            .WithExistingResourceGroup(GroupName1)
-                            .WithNewPrimaryNetwork("10.0.0.0/28")
-                            .WithPrimaryPrivateIPAddressDynamic()
-                            .WithoutPrimaryPublicIPAddress()
-                            .WithProximityPlacementGroup(setCreated1.ProximityPlacementGroup.Id)
-                            .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012Datacenter)
-                            .WithAdminUsername("Foo12")
-                            .WithAdminPassword("abc!@#F0orL")
-                            .WithUnmanagedDisks()
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
-                            .WithOSDiskCaching(CachingTypes.ReadWrite)
-                            .WithOSDiskName("javatest")
-                            .WithLicenseType("Windows_Server")
-                            .Create();
-
-                    IVirtualMachine foundVM = null;
-                    var vms = computeManager.VirtualMachines.ListByResourceGroup(GroupName1);
-                    foreach (IVirtualMachine vm1 in vms)
-                    {
-                        if (vm1.Name.Equals(VMName))
-                        {
-                            foundVM = vm1;
-                            break;
-                        }
-                    }
-                    Assert.NotNull(foundVM);
-                    Assert.Equal(RegionPPG1, foundVM.Region);
-                    // Get
-                    foundVM = computeManager.VirtualMachines.GetByResourceGroup(GroupName1, VMName);
-                    Assert.NotNull(foundVM);
-                    Assert.Equal(RegionPPG1, foundVM.Region);
-                    Assert.Equal("Windows_Server", foundVM.LicenseType);
-
-                    // Fetch instance view
-                    PowerState powerState = foundVM.PowerState;
-                    Assert.Equal(powerState, PowerState.Running);
-                    VirtualMachineInstanceView instanceView = foundVM.InstanceView;
-                    Assert.NotNull(instanceView);
-                    Assert.True(instanceView.Statuses.Count > 0);
-
-                    Assert.NotNull(foundVM.ProximityPlacementGroup);
-                    Assert.Equal(ProxyGroupType, foundVM.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.NotNull(foundVM.ProximityPlacementGroup.AvailabilitySetIds);
-                    Assert.True(foundVM.ProximityPlacementGroup.AvailabilitySetIds.Count > 0);
-                    Assert.Equal(setCreated1.Id, foundVM.ProximityPlacementGroup.AvailabilitySetIds[0], true);
-                    Assert.NotNull(foundVM.ProximityPlacementGroup.VirtualMachineIds);
-                    Assert.True(foundVM.ProximityPlacementGroup.VirtualMachineIds.Count > 0);
-                    Assert.Equal(foundVM.Id, setCreated1.ProximityPlacementGroup.VirtualMachineIds[0], true);
-
-                    try
-                    {
-                        //Update Vm to remove it from proximity placement group
-                        IVirtualMachine updatedVm = foundVM.Update()
-                                .WithProximityPlacementGroup(setCreated2.ProximityPlacementGroup.Id)
-                                .Apply();
-                    }
-                    catch (Microsoft.Rest.Azure.CloudException clEx)
-                    {
-                        Assert.Equal("Changing property 'proximityPlacementGroup.id' is not allowed.", clEx.Message, true);
-                    }
-
-                    // Delete resources
-                    computeManager.VirtualMachines.DeleteById(foundVM.Id);
-                    computeManager.AvailabilitySets.DeleteById(setCreated1.Id);
-                    computeManager.AvailabilitySets.DeleteById(setCreated2.Id);
-                }
-                finally
-                {
-                    try
-                    {
-                        resourceManager.ResourceGroups.DeleteByName(GroupName1);
-                        resourceManager.ResourceGroups.DeleteByName(GroupName2);
-                    }
-                    catch { }
-                }
-            }
-        }
-
-
-        [Fact]
-        public void CanCreateVirtualMachinesAndAvailabilitySetInSameProximityPlacementGroup()
-        {
-
-            using (var context = FluentMockContext.Start(GetType().FullName))
-            {
-                var RGName = TestUtilities.GenerateName("rgfluentchash-");
-                var AvailName = TestUtilities.GenerateName("availset1");
-                var ProxyGroupName = TestUtilities.GenerateName("testproxgroup1");
-                var ProxyGroupType = ProximityPlacementGroupType.Standard;
-                var RegionPPG = Region.USWestCentral;
-
-                var computeManager = TestHelper.CreateComputeManager();
-                var resourceManager = TestHelper.CreateResourceManager();
-
-                try
-                {
-
-                    var setCreated = computeManager.AvailabilitySets
-                        .Define(AvailName)
-                        .WithRegion(RegionPPG)
-                        .WithNewResourceGroup(RGName)
-                        .WithNewProximityPlacementGroup(ProxyGroupName, ProxyGroupType)
-                        .Create();
-
-                    Assert.Equal(AvailName, setCreated.Name);
-                    Assert.NotNull(setCreated.ProximityPlacementGroup);
-                    Assert.Equal(ProxyGroupType, setCreated.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.NotNull(setCreated.ProximityPlacementGroup.AvailabilitySetIds);
-                    Assert.True(setCreated.ProximityPlacementGroup.AvailabilitySetIds.Count > 0);
-                    Assert.Equal(setCreated.Id, setCreated.ProximityPlacementGroup.AvailabilitySetIds[0], true);
-                    Assert.Equal(setCreated.RegionName, setCreated.ProximityPlacementGroup.Location);
-
-                    // Create
-                    computeManager.VirtualMachines
-                            .Define(VMName)
-                            .WithRegion(RegionPPG)
-                            .WithExistingResourceGroup(RGName)
-                            .WithNewPrimaryNetwork("10.0.0.0/28")
-                            .WithPrimaryPrivateIPAddressDynamic()
-                            .WithoutPrimaryPublicIPAddress()
-                            .WithProximityPlacementGroup(setCreated.ProximityPlacementGroup.Id)
-                            .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012Datacenter)
-                            .WithAdminUsername("Foo12")
-                            .WithAdminPassword("abc!@#F0orL")
-                            .WithUnmanagedDisks()
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
-                            .WithOSDiskCaching(CachingTypes.ReadWrite)
-                            .WithOSDiskName("javatest")
-                            .WithLicenseType("Windows_Server")
-                            .Create();
-
-                    IVirtualMachine foundVM = null;
-                    var vms = computeManager.VirtualMachines.ListByResourceGroup(RGName);
-                    foreach (IVirtualMachine vm1 in vms)
-                    {
-                        if (vm1.Name.Equals(VMName))
-                        {
-                            foundVM = vm1;
-                            break;
-                        }
-                    }
-                    Assert.NotNull(foundVM);
-                    Assert.Equal(RegionPPG, foundVM.Region);
-                    // Get
-                    foundVM = computeManager.VirtualMachines.GetByResourceGroup(RGName, VMName);
-                    Assert.NotNull(foundVM);
-                    Assert.Equal(RegionPPG, foundVM.Region);
-                    Assert.Equal("Windows_Server", foundVM.LicenseType);
-
-                    // Fetch instance view
-                    PowerState powerState = foundVM.PowerState;
-                    Assert.Equal(powerState, PowerState.Running);
-                    VirtualMachineInstanceView instanceView = foundVM.InstanceView;
-                    Assert.NotNull(instanceView);
-                    Assert.True(instanceView.Statuses.Count > 0);
-
-                    Assert.NotNull(foundVM.ProximityPlacementGroup);
-                    Assert.Equal(ProxyGroupType, foundVM.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.NotNull(foundVM.ProximityPlacementGroup.AvailabilitySetIds);
-                    Assert.True(foundVM.ProximityPlacementGroup.AvailabilitySetIds.Count > 0);
-                    Assert.Equal(setCreated.Id, foundVM.ProximityPlacementGroup.AvailabilitySetIds[0], true);
-                    Assert.NotNull(foundVM.ProximityPlacementGroup.VirtualMachineIds);
-                    Assert.True(foundVM.ProximityPlacementGroup.VirtualMachineIds.Count > 0);
-                    Assert.Equal(foundVM.Id, setCreated.ProximityPlacementGroup.VirtualMachineIds[0], true);
-
-                    //Update Vm to remove it from proximity placement group
-                    IVirtualMachine updatedVm = foundVM.Update()
-                            .WithoutProximityPlacementGroup()
-                            .Apply();
-
-                    Assert.NotNull(updatedVm.ProximityPlacementGroup);
-                    Assert.Equal(ProxyGroupType, updatedVm.ProximityPlacementGroup.ProximityPlacementGroupType);
-                    Assert.NotNull(updatedVm.ProximityPlacementGroup.AvailabilitySetIds);
-                    Assert.True(updatedVm.ProximityPlacementGroup.AvailabilitySetIds.Count > 0);
-                    Assert.Equal(setCreated.Id, updatedVm.ProximityPlacementGroup.AvailabilitySetIds[0], true);
-
-                    //TODO: this does not work... can not remove cvm from the placement group
-                    //Assert.assertNull(foundVM.proximityPlacementGroup().virtualMachineIds());
-
-                    // Delete VM
-                    computeManager.VirtualMachines.DeleteById(foundVM.Id);
-                    computeManager.AvailabilitySets.DeleteById(setCreated.Id);
-
-                }
-                finally
-                {
-                    try
-                    {
-                        resourceManager.ResourceGroups.DeleteByName(RGName);
                     }
                     catch { }
                 }
@@ -529,7 +275,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    {
+                    { 
                         azure.ResourceGroups.DeleteByName(resourceGroupName);
                     }
                     catch { }
@@ -553,7 +299,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string rgName = null;
 
                 try
-                {
+                { 
                     var publicIPAddress = azure.PublicIPAddresses.Define(publicIPDnsLabel)
                         .WithRegion(region)
                         .WithNewResourceGroup()
@@ -722,7 +468,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var storageManager = TestHelper.CreateStorageManager();
 
                 try
-                {
+                { 
                     // Create a premium storage account for virtual machine data disk
                     //
                     var storageAccount = storageManager.StorageAccounts.Define(storageName)

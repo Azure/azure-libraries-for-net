@@ -61,7 +61,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.Equal(OperatingSystemTypes.Linux, customImage.OSDiskImage.OsType);
                     Assert.NotNull(customImage.DataDiskImages);
                     Assert.Equal(customImage.DataDiskImages.Count, linuxVM.UnmanagedDataDisks.Count);
-                    Assert.Equal(customImage.HyperVGeneration, HyperVGenerationTypes.V1);
                     foreach (ImageDataDisk diskImage in customImage.DataDiskImages.Values)
                     {
                         IVirtualMachineUnmanagedDataDisk matchedDisk = null;
@@ -106,38 +105,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     var dataDisks = virtualMachine.DataDisks;
                     Assert.NotNull(dataDisks);
                     Assert.Equal(dataDisks.Count, image.DataDiskImages.Count);
-
-                    //Create a hyperv Gen2 image
-                    var creatableDiskGen2 = computeManager
-                            .VirtualMachineCustomImages
-                            .Define(vhdBasedImageName + "Gen2")
-                            .WithRegion(Location)
-                            .WithNewResourceGroup(rgName)
-                            .WithHyperVGeneration(HyperVGenerationTypes.V2)
-                            .WithLinuxFromVhd(linuxVM.OSUnmanagedDiskVhdUri, OperatingSystemStateTypes.Generalized)
-                            .WithOSDiskCaching(linuxVM.OSDiskCachingType);
-                    foreach (var disk in linuxVM.UnmanagedDataDisks.Values)
-                    {
-                        creatableDisk.DefineDataDiskImage()
-                                .WithLun(disk.Lun)
-                                .FromVhd(disk.VhdUri)
-                                .WithDiskCaching(disk.CachingType)
-                                .WithDiskSizeInGB(disk.Size + 10) // Resize each data disk image by +10GB
-                                .Attach();
-                    }
-                    IVirtualMachineCustomImage customImageGen2 = creatableDiskGen2.Create();
-                    Assert.NotNull(customImageGen2.Id);
-                    Assert.Equal(customImageGen2.Name, vhdBasedImageName + "Gen2");
-                    Assert.False(customImageGen2.IsCreatedFromVirtualMachine);
-                    Assert.Null(customImageGen2.SourceVirtualMachineId);
-                    Assert.NotNull(customImageGen2.OSDiskImage);
-                    Assert.NotNull(customImageGen2.OSDiskImage);
-                    Assert.Equal(CachingTypes.ReadWrite, customImageGen2.OSDiskImage.Caching);
-                    Assert.Equal(OperatingSystemStateTypes.Generalized, customImageGen2.OSDiskImage.OsState);
-                    Assert.Equal(OperatingSystemTypes.Linux, customImageGen2.OSDiskImage.OsType);
-                    Assert.NotNull(customImageGen2.DataDiskImages);
-                    Assert.Equal(0, customImageGen2.DataDiskImages.Count);
-                    Assert.Equal(customImageGen2.HyperVGeneration, HyperVGenerationTypes.V2);
                 }
                 finally
                 {
@@ -169,7 +136,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Define(imageName)
                             .WithRegion(Location)
                             .WithNewResourceGroup(rgName)
-                            .WithHyperVGeneration(HyperVGenerationTypes.V1)
                             .FromVirtualMachine(vm.Id)
                             .Create();
 
@@ -181,7 +147,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.Equal(2, customImage.DataDiskImages.Count);
                     Assert.NotNull(customImage.SourceVirtualMachineId);
                     Assert.Equal(customImage.SourceVirtualMachineId, vm.Id, ignoreCase: true);
-                    Assert.Equal(customImage.HyperVGeneration, HyperVGenerationTypes.V1);
 
                     foreach (var vmDisk in vm.UnmanagedDataDisks.Values)
                     {
@@ -310,7 +275,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.Equal(OperatingSystemTypes.Linux, customImage.OSDiskImage.OsType);
                     Assert.NotNull(customImage.DataDiskImages);
                     Assert.Equal(2, customImage.DataDiskImages.Count);
-                    Assert.Equal(customImage.HyperVGeneration, HyperVGenerationTypes.V1);
                     Assert.Null(customImage.SourceVirtualMachineId);
 
                     Assert.True(customImage.DataDiskImages.ContainsKey(vmNativeDataDisk1.Lun));

@@ -29,17 +29,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
         private ISet<string> idOfVMsInSet;
 
-        // Name of the new proximity placement group
-        private string newProximityPlacementGroupName;
-        // Type fo the new proximity placement group
-        private ProximityPlacementGroupType newProximityPlacementGroupType;
-
         ///GENMHASH:8C96B0BDC54BDF41F3FC5BCCAA028C8D:113A819FAF18DEACEC4BCC60120F8166
         internal AvailabilitySetImpl(string name, AvailabilitySetInner innerModel, IComputeManager computeManager) :
             base(name, innerModel, computeManager)
         {
-            newProximityPlacementGroupName = null;
-            newProximityPlacementGroupType = null;
         }
 
         ///GENMHASH:C260E0C5666F525F67582200AB726081:7DE3282328DE495135BCEDAABABE05D1
@@ -52,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
 
-            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, id.Name));
+            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, this.Name));
             if (plgInner == null)
             {
                 return null;
@@ -100,28 +93,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 Inner.PlatformUpdateDomainCount = 5;
             }
-            this.CreateNewProximityPlacementGroup();
             var availabilitySetInner = await Manager.Inner.AvailabilitySets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(availabilitySetInner);
             idOfVMsInSet = null;
             return this;
-        }
-
-        private void CreateNewProximityPlacementGroup()
-        {
-            if (IsInCreateMode)
-            {
-                if (!String.IsNullOrWhiteSpace(this.newProximityPlacementGroupName))
-                {
-                    ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner()
-                    {
-                        ProximityPlacementGroupType = this.newProximityPlacementGroupType,
-                        Location = this.Inner.Location
-                    };
-                    plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, newProximityPlacementGroupName, plgInner));
-                    this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
-                }
-            }
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:031612B4E8FDCD8F07810CE8D68580BA
@@ -175,8 +150,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public AvailabilitySetImpl WithProximityPlacementGroup(String proximityPlacementGroupId)
         {
-            this.newProximityPlacementGroupType = null;
-            this.newProximityPlacementGroupName = null;
             this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
             return this;
         }
@@ -184,18 +157,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public AvailabilitySetImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
         {
-            this.newProximityPlacementGroupName = proximityPlacementGroupName;
-            this.newProximityPlacementGroupType = type;
+            ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner();
+            plgInner.ProximityPlacementGroupType = type;
+            plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, proximityPlacementGroupName, plgInner));
 
-            this.Inner.ProximityPlacementGroup = null;
+            this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
 
             return this;
         }
 
         public AvailabilitySetImpl WithoutProximityPlacementGroup()
         {
-            this.newProximityPlacementGroupType = null;
-            this.newProximityPlacementGroupName = null;
             this.Inner.ProximityPlacementGroup = null;
             return this;
         }
