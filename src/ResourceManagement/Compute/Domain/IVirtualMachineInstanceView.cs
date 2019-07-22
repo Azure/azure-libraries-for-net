@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// An immutable client-side representation of an Azure Virtual Machine Instance View.
     /// </summary>
     public interface IVirtualMachineInstanceView :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineInstanceView>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineInstanceViewInner>
     {
         /// <summary>
         /// Gets or sets specifies the update domain of the virtual machine.

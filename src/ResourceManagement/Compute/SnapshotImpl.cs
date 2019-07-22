@@ -92,8 +92,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:DAC486F08AF23F259E630032FC20FAF1:3FE53F300A729DFBC3C1F55BBB117CA1
         public async Task<string> GrantAccessAsync(int accessDurationInSeconds, CancellationToken cancellationToken = default(CancellationToken))
         {
-            GrantAccessData grantAccessDataInner = new GrantAccessData();
-            grantAccessDataInner.Access = AccessLevel.Read;
+            GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
+            grantAccessDataInner.Access = AccessLevel.Read.Value;
             grantAccessDataInner.DurationInSeconds = accessDurationInSeconds;
 
             AccessUriInner accessUriInner = await Manager.Inner.Snapshots.GrantAccessAsync(

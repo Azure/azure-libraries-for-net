@@ -192,16 +192,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return zones;
         }
 
-        public EncryptionSettingsCollection EncryptionSettings()
+        public EncryptionSettings EncryptionSettings()
         {
-            return this.Inner.EncryptionSettingsCollection;
+            return this.Inner.EncryptionSettings;
         }
 
         ///GENMHASH:DAC486F08AF23F259E630032FC20FAF1:3FE53F300A729DFBC3C1F55BBB117CA1
         public async Task<string> GrantAccessAsync(int accessDurationInSeconds, CancellationToken cancellationToken = default(CancellationToken))
         {
-            GrantAccessData grantAccessDataInner = new GrantAccessData();
-            grantAccessDataInner.Access = AccessLevel.Read;
+            GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
+            grantAccessDataInner.Access = AccessLevel.Read.Value;
             grantAccessDataInner.DurationInSeconds = accessDurationInSeconds;
 
             AccessUriInner accessUriInner = await Manager.Inner.Disks.GrantAccessAsync(ResourceGroupName, Name, grantAccessDataInner, cancellationToken);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.Sku = new DiskSku
             {
-                Name = sku.AccountType
+                Name = StorageAccountTypes.Parse(sku.AccountType.Value)
             };
             return this;
         }

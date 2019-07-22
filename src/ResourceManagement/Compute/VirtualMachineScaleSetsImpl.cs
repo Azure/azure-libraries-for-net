@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public async Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
         {
-            RunCommandInput innerInput = new RunCommandInput(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
+            RunCommandInputInner innerInput = new RunCommandInputInner(inputCommand.CommandId, inputCommand.Script, inputCommand.Parameters);
             return await this.Manager.Inner.VirtualMachineScaleSetVMs.RunCommandAsync(groupName, scaleSetName, vmId, innerInput, cancellationToken);
         }
 

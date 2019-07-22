@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
         public AvailabilitySetImpl Define(string name)
         {
-            return WrapModel(name).WithSku(AvailabilitySetSkuTypes.Aligned);
+            return WrapModel(name).WithSku(AvailabilitySetSkuTypes.Managed);
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:B9B028D620AC932FDF66D2783E476B0D

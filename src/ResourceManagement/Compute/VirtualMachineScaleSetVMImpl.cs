@@ -495,7 +495,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 Parent.ResourceGroupName,
                 Parent.Name,
                 InstanceId(),
-                false,
                 cancellationToken);
         }
 
@@ -577,7 +576,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 virtualMachineInstanceView = new VirtualMachineInstanceView(
                     Inner.InstanceView.PlatformFaultDomain, Inner.InstanceView.PlatformUpdateDomain, null,
-                    null, null, default(HyperVGenerationType), Inner.InstanceView.RdpThumbPrint,
+                    null, null, Inner.InstanceView.RdpThumbPrint,
                     Inner.InstanceView.VmAgent, Inner.InstanceView.MaintenanceRedeployStatus, Inner.InstanceView.Disks,
                     Inner.InstanceView.Extensions, Inner.InstanceView.BootDiagnostics, Inner.InstanceView.Statuses);
             }

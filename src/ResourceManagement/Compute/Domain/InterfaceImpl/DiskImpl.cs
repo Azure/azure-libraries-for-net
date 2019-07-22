@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the the disk encryption settings.
         /// </summary>
-        EncryptionSettingsCollection Microsoft.Azure.Management.Compute.Fluent.IDiskBeta.EncryptionSettings
+        EncryptionSettings Microsoft.Azure.Management.Compute.Fluent.IDiskBeta.EncryptionSettings
         {
             get
             {

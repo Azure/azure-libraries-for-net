@@ -637,7 +637,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.NotNull(managedVM.AvailabilitySetId);
                     var availabilitySet = computeManager.AvailabilitySets.GetById(managedVM.AvailabilitySetId);
                     Assert.True(availabilitySet.VirtualMachineIds.Count > 0);
-                    Assert.Equal(availabilitySet.Sku, AvailabilitySetSkuTypes.Aligned);
+                    Assert.Equal(availabilitySet.Sku, AvailabilitySetSkuTypes.Managed);
                 }
                 finally
                 {

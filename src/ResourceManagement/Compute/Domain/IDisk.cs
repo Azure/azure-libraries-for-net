@@ -94,6 +94,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the the disk encryption settings.
         /// </summary>
-        EncryptionSettingsCollection EncryptionSettings { get; }
+        EncryptionSettings EncryptionSettings { get; }
     }
 }
