@@ -52,12 +52,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
        [System.Obsolete("Encryption getter is deprecated use StorageAccount.EncryptionKeySource, StorageAccount.encryptionStatuses instead.")]
         Models.Encryption Encryption { get; }
 
-        /// <return>Gets the sku of this storage account.</return>
-        /// <summary>
-        /// Deprecated use StorageAccount.SkuType instead.
-        /// </summary>
-        [System.Obsolete("Sku getter is deprecated use StorageAccount.SkuType instead.")]
-        Models.Sku Sku { get; }
 
         /// <summary>
         /// Regenerates the access keys for this storage account.

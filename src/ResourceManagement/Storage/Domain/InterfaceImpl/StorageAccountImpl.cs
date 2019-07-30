@@ -98,18 +98,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
         }
 
-        /// <return>Gets the sku of this storage account.</return>
-        /// <summary>
-        /// Use StorageAccount.skuType() instead.
-        /// </summary>
-        Models.Sku Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.Sku
-        {
-            get
-            {
-                return this.Sku();
-            }
-        }
-
         /// <return>Gets the encryption settings on the account.</return>
         /// <summary>
         /// Use  StorageAccount.encryptionKeySource(),  StorageAccount.encryptionStatuses() instead.

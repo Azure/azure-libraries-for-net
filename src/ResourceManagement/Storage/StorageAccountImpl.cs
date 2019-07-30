@@ -57,11 +57,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             return new AccountStatuses(Inner.StatusOfPrimary, Inner.StatusOfSecondary);
         }
 
-        ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:5961A2D0C2007F645841A48147A553E6
-        public Sku Sku()
-        {
-            return new Sku(this.Inner.Sku.Name);
-        }
 
         ///GENMHASH:C4C0D4751CA4E1904C31CE6DF0B02AC3:B5986EB96489F714DC052E1136F06A45
         public Kind Kind()
