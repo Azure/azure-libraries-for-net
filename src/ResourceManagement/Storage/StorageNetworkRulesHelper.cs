@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     /// </summary>
     internal class StorageNetworkRulesHelper
     {
-        private static string BYPASS_NONE_STR = Bypass.None.ToLowerInvariant();
+        private static string BYPASS_NONE_STR = Bypass.None.ToString().ToLowerInvariant();
         private bool isInCreateMode;
         private StorageAccountInner inner;
-        private StorageAccountCreateParametersInner createParameters;
-        private StorageAccountUpdateParametersInner updateParameters;
+        private StorageAccountCreateParameters createParameters;
+        private StorageAccountUpdateParameters updateParameters;
 
         /// <summary>
         /// Creates StorageNetworkRulesHelper.
         /// </summary>
         /// <param name="createParameters">the model representing payload for storage account create.</param>
-        internal StorageNetworkRulesHelper(StorageAccountCreateParametersInner createParameters)
+        internal StorageNetworkRulesHelper(StorageAccountCreateParameters createParameters)
         {
             this.isInCreateMode = true;
             this.createParameters = createParameters;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// </summary>
         /// <param name="updateParameters">the model representing payload for storage account update</param>
         /// <param name="inner">the current state of storage account</param>
-        internal StorageNetworkRulesHelper(StorageAccountUpdateParametersInner updateParameters, StorageAccountInner inner)
+        internal StorageNetworkRulesHelper(StorageAccountUpdateParameters updateParameters, StorageAccountInner inner)
         {
             this.isInCreateMode = false;
             this.createParameters = null;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             {
                 return true;
             }
-            return inner.NetworkRuleSet.DefaultAction.Equals("Allow", StringComparison.OrdinalIgnoreCase);
+            return inner.NetworkRuleSet.DefaultAction.Equals(DefaultAction.Allow);
         }
 
         /// <summary>
@@ -128,10 +128,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <returns>true if storage log entries can be read from any network, false otherwise</returns>
         internal static bool CanReadLogEntriesFromAnyNetwork(StorageAccountInner inner)
         {
-            if (inner.NetworkRuleSet != null && inner.NetworkRuleSet.DefaultAction != null && inner.NetworkRuleSet.DefaultAction.Equals("Deny", StringComparison.OrdinalIgnoreCase))
+            if (inner.NetworkRuleSet != null && inner.NetworkRuleSet.DefaultAction != null && inner.NetworkRuleSet.DefaultAction.Equals(DefaultAction.Deny))
             {
                 ISet<String> bypassSet = ParseBypass(inner.NetworkRuleSet.Bypass);
-                return bypassSet.Contains(Bypass.Logging.ToLowerInvariant());
+                return bypassSet.Contains(Bypass.Logging.ToString().ToLowerInvariant());
             }
             return true;
         }
@@ -143,10 +143,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <returns>true if storage metrics can be read from any network, false otherwise</returns>
         internal static bool CanReadMetricsFromAnyNetwork(StorageAccountInner inner)
         {
-            if (inner.NetworkRuleSet != null && inner.NetworkRuleSet.DefaultAction != null && inner.NetworkRuleSet.DefaultAction.Equals("Deny", StringComparison.OrdinalIgnoreCase))
+            if (inner.NetworkRuleSet != null && inner.NetworkRuleSet.DefaultAction != null && inner.NetworkRuleSet.DefaultAction.Equals(DefaultAction.Deny))
             {
                 ISet<String> bypassSet = ParseBypass(inner.NetworkRuleSet.Bypass);
-                return bypassSet.Contains(Bypass.Metrics.ToLowerInvariant());
+                return bypassSet.Contains(Bypass.Metrics.ToString().ToLowerInvariant());
             }
             return true;
         }
@@ -158,10 +158,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <returns>true if storage can be accessed from application running on azure, false otherwise</returns>
         internal static bool CanAccessFromAzureServices(StorageAccountInner inner)
         {
-            if (inner.NetworkRuleSet != null && inner.NetworkRuleSet.DefaultAction != null && inner.NetworkRuleSet.DefaultAction.Equals("Deny", StringComparison.OrdinalIgnoreCase))
+            if (inner.NetworkRuleSet != null && inner.NetworkRuleSet.DefaultAction != null && inner.NetworkRuleSet.DefaultAction.Equals(DefaultAction.Deny))
             {
                 ISet<String> bypassSet = ParseBypass(inner.NetworkRuleSet.Bypass);
-                return bypassSet.Contains(Bypass.AzureServices.ToLowerInvariant());
+                return bypassSet.Contains(Bypass.AzureServices.ToString().ToLowerInvariant());
             }
             return true;
         }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         internal StorageNetworkRulesHelper WithAccessFromAllNetworks()
         {
             NetworkRuleSet networkRuleSet = this.GetNetworkRuleSetConfig(true);
-            networkRuleSet.DefaultAction = DefaultActionEnumExtension.ToSerializedValue(DefaultAction.Allow);
+            networkRuleSet.DefaultAction = DefaultAction.Allow;
             return this;
         }
 
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         internal StorageNetworkRulesHelper WithAccessFromSelectedNetworks()
         {
             NetworkRuleSet networkRuleSet = this.GetNetworkRuleSetConfig(true);
-            networkRuleSet.DefaultAction = DefaultActionEnumExtension.ToSerializedValue(DefaultAction.Deny);
+            networkRuleSet.DefaultAction = DefaultAction.Deny;
             return this;
         }
 
@@ -403,11 +403,11 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Add the given bypass to the list of bypass configured for the storage account.
         /// </summary>
         /// <param name="bypass">access type to which default network access action is not applied.</param>
-        private void AddToBypassList(string bypass)
+        private void AddToBypassList(Bypass bypass)
         {
             var networkRuleSet = this.GetNetworkRuleSetConfig(true);
             ISet<string> bypassSet = ParseBypass(networkRuleSet.Bypass);
-            var bypassLower = bypass.ToLowerInvariant();
+            var bypassLower = bypass.ToString().ToLowerInvariant();
             if (bypassLower.Equals(BYPASS_NONE_STR, StringComparison.OrdinalIgnoreCase))
             {
                 bypassSet.Clear();
@@ -421,14 +421,14 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 }
                 bypassSet.Add(bypassLower);
             }
-            networkRuleSet.Bypass = string.Join(",", bypassSet);
+            networkRuleSet.Bypass = Bypass.Parse(string.Join(",", bypassSet));
         }
 
         /// <summary>
         /// Removes the given bypass from the list of bypass configured for the storage account.
         /// </summary>
         /// <param name="bypass">access type to which default network access action is not applied.</param>
-        private void RemoveFromBypassList(string bypass)
+        private void RemoveFromBypassList(Bypass bypass)
         {
             var networkRuleSet = this.GetNetworkRuleSetConfig(false);
             if (networkRuleSet == null)
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             else
             {
                 ISet<string> bypassSet = ParseBypass(networkRuleSet.Bypass);
-                var bypassLower = bypass.ToLowerInvariant();
+                var bypassLower = bypass.ToString().ToLowerInvariant();
                 if (bypassSet.Contains(bypassLower))
                 {
                     bypassSet.Remove(bypassLower);
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 {
                     bypassSet.Add(BYPASS_NONE_STR);
                 }
-                networkRuleSet.Bypass = string.Join(",", bypassSet);
+                networkRuleSet.Bypass = Bypass.Parse(string.Join(",", bypassSet));
             }
         }
 
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// </summary>
         /// <param name="bypassVal">comma separated traffic sources to bypass.</param>
         /// <returns>the bypass list</returns>
-        private static ISet<string> ParseBypass(string bypassVal)
+        private static ISet<string> ParseBypass(Bypass bypassVal)
         {
             if (bypassVal == null)
             {
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             else
             {
                 ISet<String> bypassSet = new HashSet<string>();
-                foreach (string s in bypassVal.Split(','))
+                foreach (string s in bypassVal.ToString().Split(','))
                 {
                     var sl = s.Trim().ToLowerInvariant();
                     if (!string.IsNullOrEmpty(sl) && !bypassSet.Contains(sl))
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                         // and didn't choose the default access action then "DENY" access from
                         // unknown networks.
                         //
-                        createParameters.NetworkRuleSet.DefaultAction = DefaultActionEnumExtension.ToSerializedValue(DefaultAction.Deny);
+                        createParameters.NetworkRuleSet.DefaultAction = DefaultAction.Deny;
                         if (!anyException)
                         {
                             // If user didn't select any by-pass explicitly then disable "all bypass"
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                             // network rule or exception and didn't choose the default access action for
                             // unknown networks then DENY access from unknown networks.
                             //
-                            updateParameters.NetworkRuleSet.DefaultAction = DefaultActionEnumExtension.ToSerializedValue(DefaultAction.Deny);
+                            updateParameters.NetworkRuleSet.DefaultAction = DefaultAction.Deny;
                             if (!anyExceptionAddedFirstTime)
                             {
                                 // If user didn't select any by-pass explicitly then disable "all bypass"

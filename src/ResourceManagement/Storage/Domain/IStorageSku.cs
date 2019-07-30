@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     /// </summary>
     public interface IStorageSku  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.Sku>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SkuInner>
     {
         /// <summary>
         /// Gets the regions that the sku is available.

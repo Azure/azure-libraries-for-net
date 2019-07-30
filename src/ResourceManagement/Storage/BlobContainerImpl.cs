@@ -114,17 +114,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             return this.Inner.LastModifiedTime;
         }
 
-        public String LeaseDuration()
+        public LeaseDuration LeaseDuration()
         {
             return this.Inner.LeaseDuration;
         }
 
-        public String LeaseState()
+        public LeaseState LeaseState()
         {
             return this.Inner.LeaseState;
         }
 
-        public String LeaseStatus()
+        public LeaseStatus LeaseStatus()
         {
             return this.Inner.LeaseStatus;
         }
