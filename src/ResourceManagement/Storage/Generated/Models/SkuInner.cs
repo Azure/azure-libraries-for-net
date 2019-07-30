@@ -16,18 +16,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// <summary>
     /// The SKU of the storage account.
     /// </summary>
-    public partial class Sku
+    public partial class SkuInner
     {
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the SkuInner class.
         /// </summary>
-        public Sku()
+        public SkuInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the SkuInner class.
         /// </summary>
         /// <param name="name">Gets or sets the SKU name. Required for account
         /// creation; optional for update. Note that in older versions, SKU
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// notification, etc.</param>
         /// <param name="restrictions">The restrictions because of which SKU
         /// cannot be used. This is empty if there are no restrictions.</param>
-        public Sku(SkuName name, SkuTier? tier = default(SkuTier?), string resourceType = default(string), Kind? kind = default(Kind?), IList<string> locations = default(IList<string>), IList<SKUCapability> capabilities = default(IList<SKUCapability>), IList<Restriction> restrictions = default(IList<Restriction>))
+        public SkuInner(SkuName name, SkuTier? tier = default(SkuTier?), string resourceType = default(string), Kind? kind = default(Kind?), IList<string> locations = default(IList<string>), IList<SKUCapability> capabilities = default(IList<SKUCapability>), IList<Restriction> restrictions = default(IList<Restriction>))
         {
             Name = name;
             Tier = tier;

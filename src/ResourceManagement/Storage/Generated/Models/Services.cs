@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for Services.
     /// </summary>
-    public static class Services
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<Services>))]
+    public class Services : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<Services>
     {
-        public const string B = "b";
-        public const string Q = "q";
-        public const string T = "t";
-        public const string F = "f";
+        public static readonly Services B = Parse("b");
+        public static readonly Services Q = Parse("q");
+        public static readonly Services T = Parse("t");
+        public static readonly Services F = Parse("f");
     }
 }

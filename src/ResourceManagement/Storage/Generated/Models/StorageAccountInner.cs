@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// The storage account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageAccountInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class StorageAccountInner : TrackedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the StorageAccountInner class.
@@ -34,12 +34,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// </summary>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
-        /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="sku">Gets the SKU.</param>
         /// <param name="kind">Gets the Kind. Possible values include:
@@ -95,7 +89,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="geoReplicationStats">Geo Replication Stats</param>
         /// <param name="failoverInProgress">If the failover is in progress,
         /// the value will be true, otherwise, it will be null.</param>
-        public StorageAccountInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Kind? kind = default(Kind?), Identity identity = default(Identity), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?))
+        public StorageAccountInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SkuInner sku = default(SkuInner), Kind? kind = default(Kind?), Identity identity = default(Identity), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -131,7 +125,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Gets the SKU.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; private set; }
+        public SkuInner Sku { get; private set; }
 
         /// <summary>
         /// Gets the Kind. Possible values include: 'Storage', 'StorageV2',
@@ -286,6 +280,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (Sku != null)
             {
                 Sku.Validate();

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="virtualNetworkRules">Sets the virtual network
         /// rules</param>
         /// <param name="ipRules">Sets the IP ACL rules</param>
-        public NetworkRuleSet(string defaultAction, string bypass = default(string), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), IList<IPRule> ipRules = default(IList<IPRule>))
+        public NetworkRuleSet(DefaultAction defaultAction, Bypass bypass = default(Bypass), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), IList<IPRule> ipRules = default(IList<IPRule>))
         {
             Bypass = bypass;
             VirtualNetworkRules = virtualNetworkRules;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'None', 'Logging', 'Metrics', 'AzureServices'
         /// </summary>
         [JsonProperty(PropertyName = "bypass")]
-        public string Bypass { get; set; }
+        public Bypass Bypass { get; set; }
 
         /// <summary>
         /// Gets or sets sets the virtual network rules
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// other rules match. Possible values include: 'Allow', 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "defaultAction")]
-        public string DefaultAction { get; set; }
+        public DefaultAction DefaultAction { get; set; }
 
         /// <summary>
         /// Validate the object.

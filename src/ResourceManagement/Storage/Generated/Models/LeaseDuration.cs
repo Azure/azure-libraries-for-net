@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for LeaseDuration.
     /// </summary>
-    public static class LeaseDuration
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<LeaseDuration>))]
+    public class LeaseDuration : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<LeaseDuration>
     {
-        public const string Infinite = "Infinite";
-        public const string Fixed = "Fixed";
+        public static readonly LeaseDuration Infinite = Parse("Infinite");
+        public static readonly LeaseDuration Fixed = Parse("Fixed");
     }
 }

@@ -14,18 +14,19 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
 
     using Newtonsoft.Json;
     /// <summary>
-    /// Defines values for Bypass.
+    /// Defines values for Action1.
     /// </summary>
     /// <summary>
     /// Determine base value for a given allowed value if exists, else return
     /// the value itself
     /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<Bypass>))]
-    public class Bypass : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<Bypass>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<Action1>))]
+    public class Action1 : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<Action1>
     {
-        public static readonly Bypass None = Parse("None");
-        public static readonly Bypass Logging = Parse("Logging");
-        public static readonly Bypass Metrics = Parse("Metrics");
-        public static readonly Bypass AzureServices = Parse("AzureServices");
+        public static readonly Action1 Acquire = Parse("Acquire");
+        public static readonly Action1 Renew = Parse("Renew");
+        public static readonly Action1 Change = Parse("Change");
+        public static readonly Action1 Release = Parse("Release");
+        public static readonly Action1 Break = Parse("Break");
     }
 }

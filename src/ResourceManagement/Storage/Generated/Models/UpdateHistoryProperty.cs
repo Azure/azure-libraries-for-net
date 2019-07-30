@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// for the user who updated the ImmutabilityPolicy.</param>
         /// <param name="upn">Returns the User Principal Name of the user who
         /// updated the ImmutabilityPolicy.</param>
-        public UpdateHistoryProperty(string update = default(string), int? immutabilityPeriodSinceCreationInDays = default(int?), System.DateTime? timestamp = default(System.DateTime?), string objectIdentifier = default(string), string tenantId = default(string), string upn = default(string))
+        public UpdateHistoryProperty(ImmutabilityPolicyUpdateType update = default(ImmutabilityPolicyUpdateType), int? immutabilityPeriodSinceCreationInDays = default(int?), System.DateTime? timestamp = default(System.DateTime?), string objectIdentifier = default(string), string tenantId = default(string), string upn = default(string))
         {
             Update = update;
             ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// include: 'put', 'lock', 'extend'
         /// </summary>
         [JsonProperty(PropertyName = "update")]
-        public string Update { get; private set; }
+        public ImmutabilityPolicyUpdateType Update { get; private set; }
 
         /// <summary>
         /// Gets the immutability period for the blobs in the container since

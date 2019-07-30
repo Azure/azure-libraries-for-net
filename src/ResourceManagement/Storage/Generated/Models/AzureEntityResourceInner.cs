@@ -8,18 +8,16 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The resource model definition for a Azure Resource Manager resource
     /// with an etag.
     /// </summary>
-    public partial class AzureEntityResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AzureEntityResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AzureEntityResourceInner class.
@@ -33,8 +31,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Initializes a new instance of the AzureEntityResourceInner class.
         /// </summary>
         /// <param name="etag">Resource Etag.</param>
-        public AzureEntityResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string))
-            : base(location, id, name, type, tags)
+        public AzureEntityResourceInner(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+            : base(id, name, type)
         {
             Etag = etag;
             CustomInit();

@@ -8,19 +8,18 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The properties of a storage account’s Blob service.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BlobServicePropertiesInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class BlobServicePropertiesInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the BlobServicePropertiesInner class.
@@ -44,8 +43,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// include version 2008-10-27 and all more recent versions.</param>
         /// <param name="deleteRetentionPolicy">The blob service properties for
         /// soft delete.</param>
-        public BlobServicePropertiesInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy))
-            : base(location, id, name, type, tags)
+        public BlobServicePropertiesInner(string id = default(string), string name = default(string), string type = default(string), CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy))
+            : base(id, name, type)
         {
             Cors = cors;
             DefaultServiceVersion = defaultServiceVersion;

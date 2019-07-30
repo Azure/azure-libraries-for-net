@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="allowedHeaders">Required if CorsRule element is
         /// present. A list of headers allowed to be part of the cross-origin
         /// request.</param>
-        public CorsRule(IList<string> allowedOrigins, IList<string> allowedMethods, int maxAgeInSeconds, IList<string> exposedHeaders, IList<string> allowedHeaders)
+        public CorsRule(IList<string> allowedOrigins, IList<AllowedMethods> allowedMethods, int maxAgeInSeconds, IList<string> exposedHeaders, IList<string> allowedHeaders)
         {
             AllowedOrigins = allowedOrigins;
             AllowedMethods = allowedMethods;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// HTTP methods that are allowed to be executed by the origin.
         /// </summary>
         [JsonProperty(PropertyName = "allowedMethods")]
-        public IList<string> AllowedMethods { get; set; }
+        public IList<AllowedMethods> AllowedMethods { get; set; }
 
         /// <summary>
         /// Gets or sets required if CorsRule element is present. The number of

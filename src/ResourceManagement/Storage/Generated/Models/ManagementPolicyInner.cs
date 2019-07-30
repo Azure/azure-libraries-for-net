@@ -8,19 +8,18 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The Get Storage Account ManagementPolicies operation response.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ManagementPolicyInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ManagementPolicyInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ManagementPolicyInner class.
@@ -38,8 +37,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.</param>
         /// <param name="lastModifiedTime">Returns the date and time the
         /// ManagementPolicies was last modified.</param>
-        public ManagementPolicyInner(ManagementPolicySchema policy, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? lastModifiedTime = default(System.DateTime?))
-            : base(location, id, name, type, tags)
+        public ManagementPolicyInner(ManagementPolicySchema policy, string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?))
+            : base(id, name, type)
         {
             LastModifiedTime = lastModifiedTime;
             Policy = policy;

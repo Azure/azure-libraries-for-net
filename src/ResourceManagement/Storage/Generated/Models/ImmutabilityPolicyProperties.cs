@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="etag">ImmutabilityPolicy Etag.</param>
         /// <param name="updateHistory">The ImmutabilityPolicy update history
         /// of the blob container.</param>
-        public ImmutabilityPolicyProperties(int immutabilityPeriodSinceCreationInDays, string state = default(string), string etag = default(string), IList<UpdateHistoryProperty> updateHistory = default(IList<UpdateHistoryProperty>))
+        public ImmutabilityPolicyProperties(int immutabilityPeriodSinceCreationInDays, ImmutabilityPolicyState state = default(ImmutabilityPolicyState), string etag = default(string), IList<UpdateHistoryProperty> updateHistory = default(IList<UpdateHistoryProperty>))
         {
             ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             State = state;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'Locked', 'Unlocked'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
+        public ImmutabilityPolicyState State { get; private set; }
 
         /// <summary>
         /// Gets immutabilityPolicy Etag.

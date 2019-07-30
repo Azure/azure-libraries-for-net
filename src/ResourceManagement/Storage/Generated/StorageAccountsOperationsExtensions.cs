@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<StorageAccountInner> CreateAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountCreateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<StorageAccountInner> CreateAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<StorageAccountInner> UpdateAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<StorageAccountInner> UpdateAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ListAccountSasResponseInner> ListAccountSASAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, AccountSasParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ListAccountSasResponseInner> ListAccountSASAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, AccountSasParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAccountSASWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<StorageAccountInner> BeginCreateAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountCreateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<StorageAccountInner> BeginCreateAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
