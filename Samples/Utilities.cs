@@ -1343,7 +1343,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             Utilities.Log(builder.ToString());
         }
 
-        public static void PrintDatabase(ISqlDatabase database)
+        public static void PrintDatabase(Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase database)
         {
             var builder = new StringBuilder().Append("Sql Database: ").Append(database.Id)
                     .Append("Name: ").Append(database.Name)

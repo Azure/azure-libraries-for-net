@@ -391,6 +391,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return await this.ListReadOnlyKeysAsync(cancellationToken);
         }
 
+        /// <return>The SQL databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ISqlDatabase> ICosmosDBAccount.ListSqlDatabases()
+        {
+            return this.ListSqlDatabases();
+        }
+
+        /// <return>The SQL databases for the specified Azure CosmosDB database account.</return>
+        async Task<IEnumerable<ISqlDatabase>> ICosmosDBAccount.ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.ListSqlDatabasesAsync(cancellationToken);
+        }
+
         /// <summary>
         /// It takes offline the specified region for the current Azure Cosmos DB database account.
         /// </summary>
