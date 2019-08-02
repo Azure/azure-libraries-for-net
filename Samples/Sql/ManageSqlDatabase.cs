@@ -62,7 +62,7 @@ namespace ManageSqlDatabase
                 // Update the edition of database.
                 Utilities.Log("Updating a database");
                 database = database.Update()
-                        .WithEdition(DatabaseEditions.Standard)
+                        .WithEdition(DatabaseEdition.Standard)
                         .WithServiceObjective(ServiceObjectiveName.S1)
                         .Apply();
                 Utilities.PrintDatabase(database);

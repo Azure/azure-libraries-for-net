@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:963770852AF9FA245B7756A9091BA5E1:B07801976DBB925452B1BA38235ED912
-        public ITransparentDataEncryption UpdateStatus(TransparentDataEncryptionStatus transparentDataEncryptionStates)
+        public ITransparentDataEncryption UpdateStatus(TransparentDataEncryptionStatus transparentDataEncryptionStatus)
         {
-            return Extensions.Synchronize(() => this.UpdateStatusAsync(transparentDataEncryptionStates));
+            return Extensions.Synchronize(() => this.UpdateStatusAsync(transparentDataEncryptionStatus));
         }
 
         ///GENMHASH:BBAE2D48EA5C43449DBE61B80641DDF2:C760C066C2E0A08B68FCB68FC9D5E29F

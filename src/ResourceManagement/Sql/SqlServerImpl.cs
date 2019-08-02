@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:7D636B43F636D47A310AB1AF99E3C582:AE9A1BF8CECF2027ED24BE1BBDE1CD93
-        public SqlServerImpl WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
+        public SqlServerImpl WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition, params string[] databaseNames)
         {
             this.WithNewElasticPool(elasticPoolName, elasticPoolEdition);
             foreach (var dbName in databaseNames)

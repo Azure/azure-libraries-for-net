@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Sql.Fluent;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
 
     /// <summary>
     /// The stage of the SQL Server update definition allowing to specify the SQL Firewall rules.
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <param name="databaseNames">Names of the database to be included in the elastic pool.</param>
         /// <return>Next stage of the SQL Server update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IUpdate WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames);
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IUpdate WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition, params string[] databaseNames);
 
         /// <summary>
         /// Create new elastic pool in the SQL Server.
@@ -140,6 +141,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update
         /// <param name="elasticPoolName">Name of the elastic pool to be created.</param>
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <return>Next stage of the SQL Server update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IUpdate WithNewElasticPool(string elasticPoolName, string elasticPoolEdition);
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IUpdate WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition);
     }
 }
