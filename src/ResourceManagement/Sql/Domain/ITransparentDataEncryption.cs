@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="transparentDataEncryptionState">State of the data encryption to set.</param>
         /// <return>The new encryption settings after the update operation.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption UpdateStatus(TransparentDataEncryptionStates transparentDataEncryptionState);
+        Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption UpdateStatus(TransparentDataEncryptionStatus transparentDataEncryptionState);
 
         /// <return>An Azure SQL Database Transparent Data Encryption Activities.</return>
         Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity>> ListActivitiesAsync(CancellationToken cancellationToken = default(CancellationToken));
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="transparentDataEncryptionState">State of the data encryption to set.</param>
         /// <return>A representation of the deferred computation of the new encryption settings after the update operation.</return>
-        Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> UpdateStatusAsync(TransparentDataEncryptionStates transparentDataEncryptionState, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> UpdateStatusAsync(TransparentDataEncryptionStatus transparentDataEncryptionState, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the status of the Azure SQL Database Transparent Data Encryption.
         /// </summary>
-        Models.TransparentDataEncryptionStates Status { get; }
+        Models.TransparentDataEncryptionStatus Status { get; }
     }
 }

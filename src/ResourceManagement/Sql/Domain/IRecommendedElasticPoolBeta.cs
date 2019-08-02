@@ -34,6 +34,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// ElasticPoolEditions enumeration contains all the valid editions.
         /// Possible values include: 'Basic', 'Standard', 'Premium'.
         /// </summary>
-        string DatabaseEdition { get; }
+        ElasticPoolEdition DatabaseEdition { get; }
     }
 }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="createMode">Create mode for the database, should not be default in this flow.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate>.WithMode(string createMode)
+        SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate>.WithMode(CreateMode createMode)
         {
             return this.WithMode(createMode);
         }

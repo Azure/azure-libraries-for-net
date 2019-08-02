@@ -8,19 +8,28 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for CreateMode.
     /// </summary>
-    public static class CreateMode
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<CreateMode>))]
+    public class CreateMode : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<CreateMode>
     {
-        public const string Copy = "Copy";
-        public const string Default = "Default";
-        public const string NonReadableSecondary = "NonReadableSecondary";
-        public const string OnlineSecondary = "OnlineSecondary";
-        public const string PointInTimeRestore = "PointInTimeRestore";
-        public const string Recovery = "Recovery";
-        public const string Restore = "Restore";
-        public const string RestoreLongTermRetentionBackup = "RestoreLongTermRetentionBackup";
+        public static readonly CreateMode Copy = Parse("Copy");
+        public static readonly CreateMode Default = Parse("Default");
+        public static readonly CreateMode NonReadableSecondary = Parse("NonReadableSecondary");
+        public static readonly CreateMode OnlineSecondary = Parse("OnlineSecondary");
+        public static readonly CreateMode PointInTimeRestore = Parse("PointInTimeRestore");
+        public static readonly CreateMode Recovery = Parse("Recovery");
+        public static readonly CreateMode Restore = Parse("Restore");
+        public static readonly CreateMode RestoreLongTermRetentionBackup = Parse("RestoreLongTermRetentionBackup");
     }
 }

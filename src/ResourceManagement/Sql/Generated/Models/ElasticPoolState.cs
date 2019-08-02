@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ElasticPoolState.
     /// </summary>
-    public static class ElasticPoolState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ElasticPoolState>))]
+    public class ElasticPoolState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ElasticPoolState>
     {
-        public const string Creating = "Creating";
-        public const string Ready = "Ready";
-        public const string Disabled = "Disabled";
+        public static readonly ElasticPoolState Creating = Parse("Creating");
+        public static readonly ElasticPoolState Ready = Parse("Ready");
+        public static readonly ElasticPoolState Disabled = Parse("Disabled");
     }
 }

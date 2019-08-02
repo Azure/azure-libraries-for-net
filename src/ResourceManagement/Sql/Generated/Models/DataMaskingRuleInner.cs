@@ -39,9 +39,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="maskingFunction">The masking function that is used for
         /// the data masking rule. Possible values include: 'Default', 'CCN',
         /// 'Email', 'Number', 'SSN', 'Text'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="dataMaskingRuleId">The rule Id.</param>
         /// <param name="aliasName">The alias name. This is a legacy parameter
         /// and is no longer used.</param>

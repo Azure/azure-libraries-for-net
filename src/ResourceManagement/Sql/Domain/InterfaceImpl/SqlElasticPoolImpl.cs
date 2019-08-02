@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for Elastic Pool.</param>
         /// <return>The next stage of the definition.</return>
-        SqlElasticPoolOperations.Definition.IWithCreate SqlElasticPoolOperations.Definition.IWithEditionBeta.WithEdition(string edition)
+        SqlElasticPoolOperations.Definition.IWithCreate SqlElasticPoolOperations.Definition.IWithEditionBeta.WithEdition(ElasticPoolEdition edition)
         {
             return this.WithEdition(edition);
         }
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the edition of Azure SQL Elastic Pool.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool.Edition
+        ElasticPoolEdition Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool.Edition
         {
             get
             {
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the state of the Azure SQL Elastic Pool.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool.State
+        ElasticPoolState Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool.State
         {
             get
             {
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for elastic pool.</param>
         /// <return>The next stage of the definition.</return>
-        SqlElasticPool.Definition.IWithAttach<SqlServer.Definition.IWithCreate> SqlElasticPool.Definition.IWithEditionBeta<SqlServer.Definition.IWithCreate>.WithEdition(string edition)
+        SqlElasticPool.Definition.IWithAttach<SqlServer.Definition.IWithCreate> SqlElasticPool.Definition.IWithEditionBeta<SqlServer.Definition.IWithCreate>.WithEdition(ElasticPoolEdition edition)
         {
             return this.WithEdition(edition);
         }

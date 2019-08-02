@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:C608B2A3A894C122878626FA09D94406:BE33F46EDC996DB65B7F46EC68568C24
         public SqlServerKeyImpl WithAzureKeyVaultKey(string uri)
         {
-            this.Inner.ServerKeyType = Models.ServerKeyType.AzureKeyVault.Value;
+            this.Inner.ServerKeyType = Models.ServerKeyType.AzureKeyVault;
             this.Inner.Uri = uri;
             // If the key URI is "https://YourVaultName.Vault.Azure.Net/keys/YourKeyName/01234567890123456789012345678901",
             // then the Server Key Name should be formatted as: "YourVaultName_YourKeyName_01234567890123456789012345678901"
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6A5C79A9C5D9A772C2F79EEC7408E4A4:13FE8C3F53ABBA3F908A2B33CEEFD2C4
         public Models.ServerKeyType ServerKeyType()
         {
-            return Models.ServerKeyType.Parse(this.Inner.ServerKeyType);
+            return this.Inner.ServerKeyType;
         }
 
         ///GENMHASH:C328A6C57E45D555550A2B8B142E5726:47A589BC17554904E71921D34179D9C3

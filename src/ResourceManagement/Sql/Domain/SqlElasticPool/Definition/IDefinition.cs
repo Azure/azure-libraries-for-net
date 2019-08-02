@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.Sql.Fluent;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
 
     /// <summary>
     /// The first stage of the SQL Server definition.
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition
         /// </summary>
         /// <param name="edition">Edition to be set for elastic pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition.IWithAttach<ParentT> WithEdition(string edition);
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition.IWithAttach<ParentT> WithEdition(ElasticPoolEdition edition);
 
         /// <summary>
         /// Sets the premium edition for the SQL Elastic Pool.

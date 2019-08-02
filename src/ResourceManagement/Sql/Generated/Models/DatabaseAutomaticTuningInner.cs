@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the DatabaseAutomaticTuningInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="desiredState">Automatic tuning desired state. Possible
         /// values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'</param>
         /// <param name="actualState">Automatic tuning actual state. Possible

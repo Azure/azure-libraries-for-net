@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:BC4103A90A606609FAB346997701A4DE:B857B0EEB8AF84B4C965D7D896F13006
-        public string ManagedServiceIdentityType()
+        public IdentityType ManagedServiceIdentityType()
         {
             return this.Inner.Identity?.Type;
         }
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:15C6DE336A70D5E1EDFAC74C3066EED7:9C29DD32907A6122759FBE531E3E19EA
-        public SqlServerImpl WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
+        public SqlServerImpl WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition)
         {
             var elasticPoolItem = new SqlElasticPoolImpl(elasticPoolName, this, new ElasticPoolInner(), this.Manager);
             elasticPoolItem.WithEdition(elasticPoolEdition);

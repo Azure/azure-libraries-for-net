@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// The name of the server.
             /// </param>
             /// <param name='databaseName'>
-            /// The name of the database for which the blob audit policy is defined.
+            /// The name of the database.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task<DatabaseBlobAuditingPolicyInner> GetAsync(this IDatabaseBlobAuditingPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -60,8 +60,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// The name of the server.
             /// </param>
             /// <param name='databaseName'>
-            /// The name of the database for which the blob auditing policy will be
-            /// defined.
+            /// The name of the database.
             /// </param>
             /// <param name='parameters'>
             /// The database blob auditing policy.
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<DatabaseBlobAuditingPolicyInner> CreateOrUpdateAsync(this IDatabaseBlobAuditingPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, DatabaseBlobAuditingPolicyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

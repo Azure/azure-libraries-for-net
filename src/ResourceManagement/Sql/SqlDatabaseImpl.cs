@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private SqlElasticPoolImpl parentSqlElasticPool;
         ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> sqlElasticPoolCreatable;
         private bool isPatchUpdate;
-        private ImportRequestInner importRequestInner;
+        private ImportRequest importRequestInner;
         private IStorageAccount storageAccount;
         private readonly string name;
 
@@ -154,14 +154,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:1B972C3D30942C7A2ABCC1A07A2FEE9C:BDE01F035BE7DAE356DF439B25414644
         public SqlDatabaseImpl WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective, SqlDatabasePremiumStorage maxStorageCapacity)
         {
-            this.Inner.Edition = DatabaseEditions.Premium;
-            this.WithServiceObjective(serviceObjective.Value);
+            this.Inner.Edition = DatabaseEdition.Premium;
+            this.WithServiceObjective(ServiceObjectiveName.Parse(serviceObjective.Value));
             this.Inner.MaxSizeBytes = $"{(long)maxStorageCapacity}";
             return this;
         }
 
         ///GENMHASH:C3E676C1E567606631528A28B60C9771:7EF1FF4D17AF9E55D4E99109A0950D18
-        public SqlDatabaseImpl WithEdition(string edition)
+        public SqlDatabaseImpl WithEdition(DatabaseEdition edition)
         {
             this.Inner.ElasticPoolName = null;
             this.Inner.RequestedServiceObjectiveId = null;
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:DF623B844EDAA9403C7ADB3E4D089ADD:1E1FA9AB1DCE4AD9527CF761EC52F4BC
-        public string RequestedServiceObjectiveName()
+        public ServiceObjectiveName RequestedServiceObjectiveName()
         {
             return this.Inner.RequestedServiceObjectiveName;
         }
@@ -379,8 +379,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:49E7BA88A31F5FA05707D7827931435B:83BE97DAEF89A7A6D0C78658DFEFCDE4
         public SqlDatabaseImpl WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective, SqlDatabaseStandardStorage maxStorageCapacity)
         {
-            this.Inner.Edition = DatabaseEditions.Standard;
-            this.WithServiceObjective(serviceObjective.Value);
+            this.Inner.Edition = DatabaseEdition.Standard;
+            this.WithServiceObjective(ServiceObjectiveName.Parse(serviceObjective.Value));
             this.Inner.MaxSizeBytes = $"{(long)maxStorageCapacity}";
             return this;
         }
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:411E9B7C553E0F8FE64EB33DF4872E6A:A0F10EC124D07E925E3BE6285203F7E0
-        public string ServiceLevelObjective()
+        public ServiceObjectiveName ServiceLevelObjective()
         {
             return this.Inner.ServiceLevelObjective;
         }
@@ -405,10 +405,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6440992F4CBC2FF2069B36419334D933:F5264B18EE7543F8EA9233154894DE3C
         private void InitializeImportRequestInner()
         {
-            this.importRequestInner = new ImportRequestInner();
+            this.importRequestInner = new ImportRequest();
             if (this.ElasticPoolName() != null)
             {
-                this.importRequestInner.Edition = DatabaseEditions.Standard;
+                this.importRequestInner.Edition = DatabaseEdition.Standard;
                 this.importRequestInner.ServiceObjectiveName = ServiceObjectiveName.S0;
                 this.importRequestInner.MaxSizeBytes = $"{(long)SqlDatabaseStandardStorage.Max250Gb}";
             }
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:547C5E4F79BCDF43D68C1D68B8233E56:0417368F07CF88E0DF418E9E5F74D9AE
         public bool IsDataWarehouse()
         {
-            return this.Inner.Edition != null ? this.Inner.Edition.Equals(DatabaseEditions.DataWarehouse, StringComparison.OrdinalIgnoreCase) : false;
+            return this.Inner.Edition != null ? this.Inner.Edition.Equals(DatabaseEdition.DataWarehouse) : false;
         }
 
         ///GENMHASH:8380741288B285433B6443AF2F466E6D:A0411F0E7FF3C97800E30DDE842787ED
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:396EF11BF84C5A5AEDE59746D18EF7FA:DFA427061784001F9E768D7BEB7A5E43
-        public SqlDatabaseImpl WithServiceObjective(string serviceLevelObjective)
+        public SqlDatabaseImpl WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
             this.Inner.ElasticPoolName = null;
             this.Inner.RequestedServiceObjectiveId = null;
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:F5BFC9500AE4C04846BAAD2CC50792B3:DA87C4AB3EEB9D4BA746DF610E8BC39F
-        public string Edition()
+        public DatabaseEdition Edition()
         {
             return this.Inner.Edition;
         }
@@ -600,13 +600,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this;
         }
 
-        ///GENMHASH:2E256CC1ACCA4253233F61C79F9D712E:9790D012FA64E47343F12DB13F0AA212
-        public IUpgradeHintInterface GetUpgradeHint()
-        {
-            // This method was deprecated; service returns null
-            return null;
-        }
-
         ///GENMHASH:A26C8D278B6519B28BA17D3966024017:A4AA33E1BB3D9FE5155733094177C7C2
         public long MaxSizeBytes()
         {
@@ -628,7 +621,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:F7B4B7D42B00968BBE7591CAAB07FB08:D7C7D124B191508D782E83C2EA9D3650
         public SqlDatabaseImpl WithBasicEdition(SqlDatabaseBasicStorage maxStorageCapacity)
         {
-            this.Inner.Edition = DatabaseEditions.Basic;
+            this.Inner.Edition = DatabaseEdition.Basic;
             this.WithServiceObjective(ServiceObjectiveName.Basic);
             this.WithMaxSizeBytes((long)maxStorageCapacity);
             return this;
@@ -734,7 +727,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:A521981B274EF2B3D621C0705EFAA811:5E9BEFBB11C2769CA5132E0CF9CCABB2
-        public SqlDatabaseImpl WithMode(string createMode)
+        public SqlDatabaseImpl WithMode(CreateMode createMode)
         {
             this.Inner.CreateMode = createMode;
             return this;
@@ -756,7 +749,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:E181EA037CDEB6D9DCE12CA92D1526C7:0D2A486B784948E9672C737F8A7624D2
         public SqlDatabaseImpl FromSample(SampleName sampleName)
         {
-            this.Inner.SampleName = sampleName.Value;
+            this.Inner.SampleName = SampleName.Parse(sampleName.Value);
             return this;
         }
 

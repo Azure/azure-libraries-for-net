@@ -868,7 +868,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ServerInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServerInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
             AzureOperationResponse<ServerInner> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -1314,7 +1314,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ServerInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServerInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {

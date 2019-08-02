@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:8442F1C1132907DE46B62B277F4EE9B7:605B8FC69F180AFC7CE18C754024B46C
         public SyncGroupLogType Type()
         {
-            return Models.SyncGroupLogType.Parse(this.Inner.Type);
+            return this.Inner.Type;
         }
 
         ///GENMHASH:45859958AA9C08487DCBDC7C1E9A55FD:8448E68448674491FD1723B68F87EB9D

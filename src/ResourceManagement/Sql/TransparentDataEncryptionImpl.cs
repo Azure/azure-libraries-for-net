@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:963770852AF9FA245B7756A9091BA5E1:B07801976DBB925452B1BA38235ED912
-        public ITransparentDataEncryption UpdateStatus(TransparentDataEncryptionStates transparentDataEncryptionStates)
+        public ITransparentDataEncryption UpdateStatus(TransparentDataEncryptionStatus transparentDataEncryptionStates)
         {
             return Extensions.Synchronize(() => this.UpdateStatusAsync(transparentDataEncryptionStates));
         }
 
         ///GENMHASH:BBAE2D48EA5C43449DBE61B80641DDF2:C760C066C2E0A08B68FCB68FC9D5E29F
-        public async Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> UpdateStatusAsync(TransparentDataEncryptionStates transparentDataEncryptionState, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> UpdateStatusAsync(TransparentDataEncryptionStatus transparentDataEncryptionState, CancellationToken cancellationToken = default(CancellationToken))
         {
             this.SetInner(await this.sqlServerManager.Inner.TransparentDataEncryptions
                 .CreateOrUpdateAsync(this.ResourceGroupName(), this.SqlServerName(), this.DatabaseName(), transparentDataEncryptionState, cancellationToken));
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:06F61EC9451A16F634AEB221D51F2F8C:1ABA34EF946CBD0278FAD778141792B2
-        public TransparentDataEncryptionStates Status()
+        public TransparentDataEncryptionStatus Status()
         {
             return this.Inner.Status.GetValueOrDefault();
         }

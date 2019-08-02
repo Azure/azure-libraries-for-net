@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     /// A failover group.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FailoverGroupInner :  Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class FailoverGroupInner : ProxyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the FailoverGroupInner class.
@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// group instance.</param>
         /// <param name="partnerServers">List of partner server information for
         /// the failover group.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="readOnlyEndpoint">Read-only endpoint of the failover
@@ -50,9 +47,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// group instance.</param>
         /// <param name="databases">List of databases in the failover
         /// group.</param>
-        public FailoverGroupInner(FailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerInfo> partnerServers, string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), IList<string> databases = default(IList<string>))
-            : base(location, id, name, type, tags)
+        public FailoverGroupInner(FailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerInfo> partnerServers, string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), FailoverGroupReplicationRole replicationRole = default(FailoverGroupReplicationRole), string replicationState = default(string), IList<string> databases = default(IList<string>))
+            : base(id, name, type)
         {
+            Location = location;
+            Tags = tags;
             ReadWriteEndpoint = readWriteEndpoint;
             ReadOnlyEndpoint = readOnlyEndpoint;
             ReplicationRole = replicationRole;
@@ -66,6 +65,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets resource location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
+
+        /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets read-write endpoint of the failover group instance.
@@ -84,7 +95,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Possible values include: 'Primary', 'Secondary'
         /// </summary>
         [JsonProperty(PropertyName = "properties.replicationRole")]
-        public string ReplicationRole { get; private set; }
+        public FailoverGroupReplicationRole ReplicationRole { get; private set; }
 
         /// <summary>
         /// Gets replication state of the failover group instance.
@@ -111,9 +122,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (ReadWriteEndpoint == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ReadWriteEndpoint");

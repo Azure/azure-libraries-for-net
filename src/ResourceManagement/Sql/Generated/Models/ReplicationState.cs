@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ReplicationState.
     /// </summary>
-    public static class ReplicationState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ReplicationState>))]
+    public class ReplicationState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ReplicationState>
     {
-        public const string PENDING = "PENDING";
-        public const string SEEDING = "SEEDING";
-        public const string CATCHUP = "CATCH_UP";
-        public const string SUSPENDED = "SUSPENDED";
+        public static readonly ReplicationState PENDING = Parse("PENDING");
+        public static readonly ReplicationState SEEDING = Parse("SEEDING");
+        public static readonly ReplicationState CATCHUP = Parse("CATCH_UP");
+        public static readonly ReplicationState SUSPENDED = Parse("SUSPENDED");
     }
 }

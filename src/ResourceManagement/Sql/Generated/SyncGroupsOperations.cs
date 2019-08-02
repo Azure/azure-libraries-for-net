@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<SyncGroupLogProperties>>> ListLogsWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string startTime, string endTime, string type, string continuationToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<SyncGroupLogProperties>>> ListLogsWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string startTime, string endTime, Type type, string continuationToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
             if (type != null)
             {
-                _queryParameters.Add(string.Format("type={0}", System.Uri.EscapeDataString(type)));
+                _queryParameters.Add(string.Format("type={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(type, Client.SerializationSettings).Trim('"'))));
             }
             if (continuationToken != null)
             {

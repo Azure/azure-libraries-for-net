@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FailoverGroupInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<FailoverGroupInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the failover groups in a server.
         /// </summary>
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FailoverGroupInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<FailoverGroupInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Fails over from the current primary server to this server.
         /// </summary>

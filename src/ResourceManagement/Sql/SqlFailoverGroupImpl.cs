@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 this.Inner.ReadOnlyEndpoint = new FailoverGroupReadOnlyEndpoint();
             }
-            this.Inner.ReadOnlyEndpoint.FailoverPolicy = ReadOnlyEndpointFailoverPolicy.Enabled.Value;
+            this.Inner.ReadOnlyEndpoint.FailoverPolicy = ReadOnlyEndpointFailoverPolicy.Enabled;
 
             return this;
         }
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 this.Inner.ReadWriteEndpoint = new FailoverGroupReadWriteEndpoint();
             }
-            this.Inner.ReadWriteEndpoint.FailoverPolicy = ReadWriteEndpointFailoverPolicy.Automatic.Value;
+            this.Inner.ReadWriteEndpoint.FailoverPolicy = ReadWriteEndpointFailoverPolicy.Automatic;
             this.Inner.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = gracePeriodInMinutes;
             return this;
         }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 this.Inner.ReadWriteEndpoint = new FailoverGroupReadWriteEndpoint();
             }
-            this.Inner.ReadWriteEndpoint.FailoverPolicy = ReadWriteEndpointFailoverPolicy.Manual.Value;
+            this.Inner.ReadWriteEndpoint.FailoverPolicy = ReadWriteEndpointFailoverPolicy.Manual;
             this.Inner.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
             return this;
         }
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:02E62DCF3FCAA41C259D744B0174DC48:396C9E3144E9E77A131581AAEBCF990D
         public FailoverGroupReplicationRole ReplicationRole()
         {
-            return Models.FailoverGroupReplicationRole.Parse(this.Inner.ReplicationRole);
+            return this.Inner.ReplicationRole;
         }
 
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:E462F242E1761228E205CEE8F760EDF9
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 this.Inner.ReadOnlyEndpoint = new FailoverGroupReadOnlyEndpoint();
             }
-            this.Inner.ReadOnlyEndpoint.FailoverPolicy = ReadOnlyEndpointFailoverPolicy.Disabled.Value;
+            this.Inner.ReadOnlyEndpoint.FailoverPolicy = ReadOnlyEndpointFailoverPolicy.Disabled;
             return this;
         }
 
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:24DCA35ADCDF86A8A58340A3C0947F91:C0E448625A6CEF0869254B602F9C3284
         public ReadWriteEndpointFailoverPolicy ReadWriteEndpointPolicy()
         {
-            return this.Inner.ReadWriteEndpoint != null ? ReadWriteEndpointFailoverPolicy.Parse(this.Inner.ReadWriteEndpoint.FailoverPolicy) : null;
+            return this.Inner.ReadWriteEndpoint?.FailoverPolicy;
         }
 
         ///GENMHASH:DF46C62E0E8998CD0340B3F8A136F135:A2E155D6CABB052D1DD1A6832C1DAA75
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:4F39D9594546CC718D25003EDD94C8D2:BA490544FC6653B09C582938721E6C2A
         public ReadOnlyEndpointFailoverPolicy ReadOnlyEndpointPolicy()
         {
-            return this.Inner.ReadOnlyEndpoint != null ? Models.ReadOnlyEndpointFailoverPolicy.Parse(this.Inner.ReadOnlyEndpoint.FailoverPolicy) : null;
+            return this.Inner.ReadOnlyEndpoint?.FailoverPolicy;
         }
 
         ///GENMHASH:E24A9768E91CD60E963E43F00AA1FDFE:72DE68F02B89E29132C1E5F2740CF122

@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SubscriptionUsageInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="displayName">User-readable name of the metric.</param>
         /// <param name="currentValue">Current value of the metric.</param>
         /// <param name="limit">Boundary value of the metric.</param>

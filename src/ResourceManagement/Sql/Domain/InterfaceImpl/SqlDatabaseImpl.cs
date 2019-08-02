@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEdition<SqlServer.Definition.IWithCreate>.WithEdition(string edition)
+        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEdition<SqlServer.Definition.IWithCreate>.WithEdition(DatabaseEdition edition)
         {
             return this.WithEdition(edition);
         }
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the Service Level Objective of the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ServiceLevelObjective
+        ServiceObjectiveName Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ServiceLevelObjective
         {
             get
             {
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// SQL Database, this is the Service Level Objective that is being
         /// applied to the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RequestedServiceObjectiveName
+        ServiceObjectiveName Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RequestedServiceObjectiveName
         {
             get
             {
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the edition of the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Edition
+        DatabaseEdition Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Edition
         {
             get
             {
@@ -715,12 +715,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return this.CreationDate();
             }
-        }
-
-        /// <return>The upgradeHint value.</return>
-        Microsoft.Azure.Management.Sql.Fluent.IUpgradeHintInterface Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetUpgradeHint()
-        {
-            return this.GetUpgradeHint();
         }
 
         /// <return>SqlWarehouse instance for more operations.</return>
@@ -937,7 +931,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="createMode">Create mode for the database, should not be default in this flow.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabaseOperations.Definition.IWithCreateFinal SqlDatabaseOperations.Definition.IWithCreateMode.WithMode(string createMode)
+        SqlDatabaseOperations.Definition.IWithCreateFinal SqlDatabaseOperations.Definition.IWithCreateMode.WithMode(CreateMode createMode)
         {
             return this.WithMode(createMode);
         }
@@ -969,7 +963,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the update.</return>
-        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithServiceObjective.WithServiceObjective(string serviceLevelObjective)
+        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithServiceObjective.WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
             return this.WithServiceObjective(serviceLevelObjective);
         }
@@ -979,7 +973,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithServiceObjective.WithServiceObjective(string serviceLevelObjective)
+        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithServiceObjective.WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
             return this.WithServiceObjective(serviceLevelObjective);
         }
@@ -1070,7 +1064,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithServiceObjective<SqlServer.Definition.IWithCreate>.WithServiceObjective(string serviceLevelObjective)
+        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithServiceObjective<SqlServer.Definition.IWithCreate>.WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
             return this.WithServiceObjective(serviceLevelObjective);
         }
@@ -1246,7 +1240,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="createMode">Create mode for the database, should not be default in this flow.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate>.WithMode(string createMode)
+        SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate>.WithMode(CreateMode createMode)
         {
             return this.WithMode(createMode);
         }
@@ -1278,7 +1272,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the update.</return>
-        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEdition.WithEdition(string edition)
+        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEdition.WithEdition(DatabaseEdition edition)
         {
             return this.WithEdition(edition);
         }
@@ -1348,7 +1342,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithEdition.WithEdition(string edition)
+        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithEdition.WithEdition(DatabaseEdition edition)
         {
             return this.WithEdition(edition);
         }

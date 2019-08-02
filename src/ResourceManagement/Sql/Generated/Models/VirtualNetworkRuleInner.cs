@@ -32,16 +32,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="virtualNetworkSubnetId">The ARM resource id of the
         /// virtual network subnet.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="ignoreMissingVnetServiceEndpoint">Create firewall rule
         /// before the virtual network has vnet service endpoint
         /// enabled.</param>
         /// <param name="state">Virtual Network Rule State. Possible values
         /// include: 'Initializing', 'InProgress', 'Ready', 'Deleting',
         /// 'Unknown'</param>
-        public VirtualNetworkRuleInner(string virtualNetworkSubnetId, string id = default(string), string name = default(string), string type = default(string), bool? ignoreMissingVnetServiceEndpoint = default(bool?), string state = default(string))
+        public VirtualNetworkRuleInner(string virtualNetworkSubnetId, string id = default(string), string name = default(string), string type = default(string), bool? ignoreMissingVnetServiceEndpoint = default(bool?), VirtualNetworkRuleState state = default(VirtualNetworkRuleState))
             : base(id, name, type)
         {
             VirtualNetworkSubnetId = virtualNetworkSubnetId;
@@ -73,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
+        public VirtualNetworkRuleState State { get; private set; }
 
         /// <summary>
         /// Validate the object.

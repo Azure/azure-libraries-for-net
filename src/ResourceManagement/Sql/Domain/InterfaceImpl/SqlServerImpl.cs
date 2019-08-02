@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the type of Managed Service Identity used for the SQL server.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ManagedServiceIdentityType
+        IdentityType Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ManagedServiceIdentityType
         {
             get
             {
