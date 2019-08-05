@@ -160,7 +160,7 @@ namespace Fluent.Tests
                 string syncGroupName = SdkContext.RandomResourceName("groupName", 15);
                 string administratorLogin = "sqladmin";
                 string administratorPassword = "N0t@P@ssw0rd!";
-                Region region = Region.USWest2;
+                Region region = Region.USEast2;
 
                 try
                 {
@@ -226,7 +226,7 @@ namespace Fluent.Tests
                 try
                 {
                     var sqlServer = rollUpClient.SqlServers.Define(SqlServerName)
-                            .WithRegion(Region.USCentral)
+                            .WithRegion(Region.USEast2)
                             .WithNewResourceGroup(GroupName)
                             .WithAdministratorLogin("userName")
                             .WithAdministratorPassword("loepop77ejk~13@@")
@@ -280,14 +280,14 @@ namespace Fluent.Tests
                         .Create();
 
                     var sqlSecondaryServer = rollUpClient.SqlServers.Define(sqlSecondaryServerName)
-                        .WithRegion(Region.USWest)
+                        .WithRegion(Region.USEast)
                         .WithExistingResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
                         .Create();
 
                     var sqlOtherServer = rollUpClient.SqlServers.Define(sqlOtherServerName)
-                        .WithRegion(Region.USCentral)
+                        .WithRegion(Region.USEast2)
                         .WithExistingResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
@@ -695,7 +695,7 @@ namespace Fluent.Tests
                 {
                     // Create
                     var sqlServer = sqlServerManager.SqlServers.Define(SqlServerName)
-                        .WithRegion(Region.USCentral)
+                        .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(GroupName)
                         .WithAdministratorLogin("userName")
                         .WithAdministratorPassword("loepopfuejk~13@@")
@@ -1102,6 +1102,7 @@ namespace Fluent.Tests
                             .Define(SqlDatabaseName)
                             .WithCollation(Collation)
                             .WithEdition(DatabaseEdition.DataWarehouse)
+                            .WithServiceObjective(ServiceObjectiveName.DW1000c)
                             .Create();
 
                     sqlDatabase = sqlServer.Databases.Get(SqlDatabaseName);
@@ -1463,7 +1464,7 @@ namespace Fluent.Tests
         {
             return sqlServerManager.SqlServers
                     .Define(sqlServerName)
-                    .WithRegion(Region.USCentral)
+                    .WithRegion(Region.USEast2)
                     .WithNewResourceGroup(GroupName)
                     .WithAdministratorLogin("userName")
                     .WithAdministratorPassword("loepopfuejk~13@@")
@@ -1484,7 +1485,7 @@ namespace Fluent.Tests
             Assert.Equal(EndIPAddress, sqlFirewallRule.EndIPAddress);
             Assert.Equal(GroupName, sqlFirewallRule.ResourceGroupName);
             Assert.Equal(SqlServerName, sqlFirewallRule.SqlServerName);
-            Assert.Equal(Region.USCentral, sqlFirewallRule.Region);
+            Assert.Equal(Region.USEast2, sqlFirewallRule.Region);
         }
 
         private static void ValidateListSqlElasticPool(IReadOnlyList<ISqlElasticPool> sqlElasticPools)
