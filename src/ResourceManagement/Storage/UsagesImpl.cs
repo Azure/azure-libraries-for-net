@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     /// The implementation of  Usages.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uVXNhZ2VzSW1wbA==
-    internal partial class UsagesImpl  : ReadableWrappers<IStorageUsage, UsageImpl, Usage>, IUsages
+    internal partial class UsagesImpl  : ReadableWrappers<IStorageUsage, UsageImpl, UsageInner>, IUsages
     {
         private readonly IStorageManager manager;
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         ///GENMHASH:438AA0AEE9E5AB3F7FB0CB3404AB0062:36C68AF6A66967842C933E2D8D22EACE
-        protected override IStorageUsage WrapModel(Usage usageInner)
+        protected override IStorageUsage WrapModel(UsageInner usageInner)
         {
             return new UsageImpl(usageInner);
         }

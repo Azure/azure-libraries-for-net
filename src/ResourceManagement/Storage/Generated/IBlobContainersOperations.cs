@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, int immutabilityPeriodSinceCreationInDays, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, int immutabilityPeriodSinceCreationInDays, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the existing immutability policy along with the corresponding
         /// ETag in response headers and body.
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersGetImmutabilityPolicyHeadersInner>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersGetImmutabilityPolicyHeaders>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Aborts an unlocked immutability policy. The response of delete has
         /// immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersDeleteImmutabilityPolicyHeadersInner>> DeleteImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersDeleteImmutabilityPolicyHeaders>> DeleteImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Sets the ImmutabilityPolicy to Locked state. The only action
         /// allowed on a Locked policy is ExtendImmutabilityPolicy action. ETag
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersLockImmutabilityPolicyHeadersInner>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersLockImmutabilityPolicyHeaders>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Extends the immutabilityPeriodSinceCreationInDays of a locked
         /// immutabilityPolicy. The only action allowed on a Locked policy will
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersExtendImmutabilityPolicyHeadersInner>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, int immutabilityPeriodSinceCreationInDays, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersExtendImmutabilityPolicyHeaders>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, int immutabilityPeriodSinceCreationInDays, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The Lease Container operation establishes and manages a lock on a
         /// container for delete operations. The lock duration can be 15 to 60
@@ -552,6 +552,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LeaseContainerResponseInner>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, LeaseContainerRequestInner parameters = default(LeaseContainerRequestInner), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LeaseContainerResponseInner>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, LeaseContainerRequest parameters = default(LeaseContainerRequest), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

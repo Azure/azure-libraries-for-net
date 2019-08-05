@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// encryption.</param>
         /// <param name="keyVaultProperties">Properties provided by key
         /// vault.</param>
-        public Encryption(string keySource, EncryptionServices services = default(EncryptionServices), KeyVaultProperties keyVaultProperties = default(KeyVaultProperties))
+        public Encryption(KeySource keySource, EncryptionServices services = default(EncryptionServices), KeyVaultProperties keyVaultProperties = default(KeyVaultProperties))
         {
             Services = services;
             KeySource = keySource;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
         /// </summary>
         [JsonProperty(PropertyName = "keySource")]
-        public string KeySource { get; set; }
+        public KeySource KeySource { get; set; }
 
         /// <summary>
         /// Gets or sets properties provided by key vault.

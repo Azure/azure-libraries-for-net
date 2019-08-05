@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     public partial class ManagementPolicySchema
     {
         /// <summary>
-        /// Initializes a new instance of the ManagementPolicySchemaInner
-        /// class.
+        /// Initializes a new instance of the ManagementPolicySchema class.
         /// </summary>
         public ManagementPolicySchema()
         {
@@ -30,8 +29,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the ManagementPolicySchemaInner
-        /// class.
+        /// Initializes a new instance of the ManagementPolicySchema class.
         /// </summary>
         /// <param name="rules">The Storage Account ManagementPolicies Rules.
         /// See more details in:

@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -40,8 +38,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="state">The ImmutabilityPolicy state of a blob
         /// container, possible values include: Locked and Unlocked. Possible
         /// values include: 'Locked', 'Unlocked'</param>
-        public ImmutabilityPolicyInner(int immutabilityPeriodSinceCreationInDays, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), string state = default(string))
-            : base(location, id, name, type, tags, etag)
+        public ImmutabilityPolicyInner(int immutabilityPeriodSinceCreationInDays, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), ImmutabilityPolicyState state = default(ImmutabilityPolicyState))
+            : base(id, name, type, etag)
         {
             ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             State = state;
@@ -66,7 +64,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'Locked', 'Unlocked'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
+        public ImmutabilityPolicyState State { get; private set; }
 
         /// <summary>
         /// Validate the object.

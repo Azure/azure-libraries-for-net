@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// The parameters used when creating a storage account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageAccountCreateParametersInner
+    public partial class StorageAccountCreateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// StorageAccountCreateParametersInner class.
+        /// Initializes a new instance of the StorageAccountCreateParameters
+        /// class.
         /// </summary>
-        public StorageAccountCreateParametersInner()
+        public StorageAccountCreateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// StorageAccountCreateParametersInner class.
+        /// Initializes a new instance of the StorageAccountCreateParameters
+        /// class.
         /// </summary>
         /// <param name="sku">Required. Gets or sets the SKU name.</param>
         /// <param name="kind">Required. Indicates the type of storage account.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// storage service if sets to true.</param>
         /// <param name="isHnsEnabled">Account HierarchicalNamespace enabled if
         /// sets to true.</param>
-        public StorageAccountCreateParametersInner(Sku sku, Kind kind, string location, IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), bool? isHnsEnabled = default(bool?))
+        public StorageAccountCreateParameters(SkuInner sku, Kind kind, string location, IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), bool? isHnsEnabled = default(bool?))
         {
             Sku = sku;
             Kind = kind;
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Gets or sets required. Gets or sets the SKU name.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
+        public SkuInner Sku { get; set; }
 
         /// <summary>
         /// Gets or sets required. Indicates the type of storage account.

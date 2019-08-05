@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
@@ -18,7 +19,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// <summary>
     /// The resource model definition for a ARM tracked top level resource
     /// </summary>
-    public partial class TrackedResourceInner : Resource
+    public partial class TrackedResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the TrackedResourceInner class.
@@ -33,12 +34,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// </summary>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
-        /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
         public TrackedResourceInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id, name, type)

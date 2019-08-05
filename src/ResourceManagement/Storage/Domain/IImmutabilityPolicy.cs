@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the state value.
         /// </summary>
-        string State { get; }
+        ImmutabilityPolicyState State { get; }
 
         /// <summary>
         /// Gets the type value.

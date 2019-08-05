@@ -55,17 +55,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the leaseDuration value.
         /// </summary>
-        String LeaseDuration { get; }
+        LeaseDuration LeaseDuration { get; }
 
         /// <summary>
         /// Gets the leaseState value.
         /// </summary>
-        String LeaseState { get; }
+        LeaseState LeaseState { get; }
 
         /// <summary>
         /// Gets the leaseStatus value.
         /// </summary>
-        String LeaseStatus { get; }
+        LeaseStatus LeaseStatus { get; }
 
         /// <summary>
         /// Gets the legalHold value.

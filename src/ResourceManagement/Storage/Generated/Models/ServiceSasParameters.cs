@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// content language.</param>
         /// <param name="contentType">The response header override for content
         /// type.</param>
-        public ServiceSasParameters(string canonicalizedResource, string resource = default(string), string permissions = default(string), string iPAddressOrRange = default(string), HttpProtocol? protocols = default(HttpProtocol?), System.DateTime? sharedAccessStartTime = default(System.DateTime?), System.DateTime? sharedAccessExpiryTime = default(System.DateTime?), string identifier = default(string), string partitionKeyStart = default(string), string partitionKeyEnd = default(string), string rowKeyStart = default(string), string rowKeyEnd = default(string), string keyToSign = default(string), string cacheControl = default(string), string contentDisposition = default(string), string contentEncoding = default(string), string contentLanguage = default(string), string contentType = default(string))
+        public ServiceSasParameters(string canonicalizedResource, SignedResource resource = default(SignedResource), Permissions permissions = default(Permissions), string iPAddressOrRange = default(string), HttpProtocol? protocols = default(HttpProtocol?), System.DateTime? sharedAccessStartTime = default(System.DateTime?), System.DateTime? sharedAccessExpiryTime = default(System.DateTime?), string identifier = default(string), string partitionKeyStart = default(string), string partitionKeyEnd = default(string), string rowKeyStart = default(string), string rowKeyEnd = default(string), string keyToSign = default(string), string cacheControl = default(string), string contentDisposition = default(string), string contentEncoding = default(string), string contentLanguage = default(string), string contentType = default(string))
         {
             CanonicalizedResource = canonicalizedResource;
             Resource = resource;
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// (s). Possible values include: 'b', 'c', 'f', 's'
         /// </summary>
         [JsonProperty(PropertyName = "signedResource")]
-        public string Resource { get; set; }
+        public SignedResource Resource { get; set; }
 
         /// <summary>
         /// Gets or sets the signed permissions for the service SAS. Possible
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'r', 'd', 'w', 'l', 'a', 'c', 'u', 'p'
         /// </summary>
         [JsonProperty(PropertyName = "signedPermission")]
-        public string Permissions { get; set; }
+        public Permissions Permissions { get; set; }
 
         /// <summary>
         /// Gets or sets an IP address or a range of IP addresses from which to

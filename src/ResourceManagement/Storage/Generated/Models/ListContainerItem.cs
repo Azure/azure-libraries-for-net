@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// been created for this container. The hasImmutabilityPolicy public
         /// property is set to false by SRP if ImmutabilityPolicy has not been
         /// created for this container.</param>
-        public ListContainerItem(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), PublicAccess? publicAccess = default(PublicAccess?), System.DateTime? lastModifiedTime = default(System.DateTime?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), IDictionary<string, string> metadata = default(IDictionary<string, string>), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?))
-            : base(location, id, name, type, tags, etag)
+        public ListContainerItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), PublicAccess? publicAccess = default(PublicAccess?), System.DateTime? lastModifiedTime = default(System.DateTime?), LeaseStatus leaseStatus = default(LeaseStatus), LeaseState leaseState = default(LeaseState), LeaseDuration leaseDuration = default(LeaseDuration), IDictionary<string, string> metadata = default(IDictionary<string, string>), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?))
+            : base(id, name, type, etag)
         {
             PublicAccess = publicAccess;
             LastModifiedTime = lastModifiedTime;
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'Locked', 'Unlocked'
         /// </summary>
         [JsonProperty(PropertyName = "properties.leaseStatus")]
-        public string LeaseStatus { get; private set; }
+        public LeaseStatus LeaseStatus { get; private set; }
 
         /// <summary>
         /// Gets lease state of the container. Possible values include:
         /// 'Available', 'Leased', 'Expired', 'Breaking', 'Broken'
         /// </summary>
         [JsonProperty(PropertyName = "properties.leaseState")]
-        public string LeaseState { get; private set; }
+        public LeaseState LeaseState { get; private set; }
 
         /// <summary>
         /// Gets specifies whether the lease on a container is of infinite or
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// include: 'Infinite', 'Fixed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.leaseDuration")]
-        public string LeaseDuration { get; private set; }
+        public LeaseDuration LeaseDuration { get; private set; }
 
         /// <summary>
         /// Gets or sets a name-value pair to associate with the container as

@@ -1995,7 +1995,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, int immutabilityPeriodSinceCreationInDays, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, int immutabilityPeriodSinceCreationInDays, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2208,7 +2208,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner>();
+            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2235,7 +2235,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -2298,7 +2298,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersGetImmutabilityPolicyHeadersInner>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersGetImmutabilityPolicyHeaders>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2501,7 +2501,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersGetImmutabilityPolicyHeadersInner>();
+            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersGetImmutabilityPolicyHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2528,7 +2528,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersGetImmutabilityPolicyHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersGetImmutabilityPolicyHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -2594,7 +2594,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersDeleteImmutabilityPolicyHeadersInner>> DeleteImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersDeleteImmutabilityPolicyHeaders>> DeleteImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2801,7 +2801,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersDeleteImmutabilityPolicyHeadersInner>();
+            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersDeleteImmutabilityPolicyHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2828,7 +2828,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersDeleteImmutabilityPolicyHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersDeleteImmutabilityPolicyHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -2892,7 +2892,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersLockImmutabilityPolicyHeadersInner>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersLockImmutabilityPolicyHeaders>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3096,7 +3096,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersLockImmutabilityPolicyHeadersInner>();
+            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersLockImmutabilityPolicyHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -3123,7 +3123,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersLockImmutabilityPolicyHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersLockImmutabilityPolicyHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -3191,7 +3191,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersExtendImmutabilityPolicyHeadersInner>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, int immutabilityPeriodSinceCreationInDays, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersExtendImmutabilityPolicyHeaders>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, int immutabilityPeriodSinceCreationInDays, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3405,7 +3405,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersExtendImmutabilityPolicyHeadersInner>();
+            var _result = new AzureOperationResponse<ImmutabilityPolicyInner,BlobContainersExtendImmutabilityPolicyHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -3432,7 +3432,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersExtendImmutabilityPolicyHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersExtendImmutabilityPolicyHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -3494,7 +3494,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<LeaseContainerResponseInner>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, LeaseContainerRequestInner parameters = default(LeaseContainerRequestInner), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LeaseContainerResponseInner>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, LeaseContainerRequest parameters = default(LeaseContainerRequest), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {

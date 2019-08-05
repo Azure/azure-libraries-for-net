@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// does not belong to that quota. The "NotAvailableForSubscription" is
         /// related to capacity at DC. Possible values include: 'QuotaId',
         /// 'NotAvailableForSubscription'</param>
-        public Restriction(string type = default(string), IList<string> values = default(IList<string>), string reasonCode = default(string))
+        public Restriction(string type = default(string), IList<string> values = default(IList<string>), ReasonCode reasonCode = default(ReasonCode))
         {
             Type = type;
             Values = values;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'NotAvailableForSubscription'
         /// </summary>
         [JsonProperty(PropertyName = "reasonCode")]
-        public string ReasonCode { get; set; }
+        public ReasonCode ReasonCode { get; set; }
 
     }
 }

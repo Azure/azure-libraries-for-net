@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     {
         private bool isInCreateMode;
         private StorageAccountInner inner;
-        private StorageAccountCreateParametersInner createParameters;
-        private StorageAccountUpdateParametersInner updateParameters;
+        private StorageAccountCreateParameters createParameters;
+        private StorageAccountUpdateParameters updateParameters;
 
         /// <summary>
         /// Creates StorageEncryptionHelper.
         /// </summary>
         /// <param name="createParameters">the model representing payload for storage account create</param>
-        internal StorageEncryptionHelper(StorageAccountCreateParametersInner createParameters)
+        internal StorageEncryptionHelper(StorageAccountCreateParameters createParameters)
         {
             this.isInCreateMode = true;
             this.createParameters = createParameters;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// </summary>
         /// <param name="updateParameters">the model representing the payload for storage account update</param>
         /// <param name="inner">the current state of storage account</param>
-        internal StorageEncryptionHelper(StorageAccountUpdateParametersInner updateParameters, StorageAccountInner inner)
+        internal StorageEncryptionHelper(StorageAccountUpdateParameters updateParameters, StorageAccountInner inner)
         {
             this.isInCreateMode = false;
             this.createParameters = null;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             {
                 return null;
             }
-            return StorageAccountEncryptionKeySource.Parse(inner.Encryption.KeySource);
+            return StorageAccountEncryptionKeySource.Parse(inner.Encryption.KeySource.ToString());
         }
 
         /// <summary>

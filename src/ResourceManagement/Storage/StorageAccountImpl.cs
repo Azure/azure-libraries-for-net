@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         IDefinition,
         IUpdate
     {
-        private StorageAccountCreateParametersInner createParameters;
-        private StorageAccountUpdateParametersInner updateParameters;
+        private StorageAccountCreateParameters createParameters;
+        private StorageAccountUpdateParameters updateParameters;
         private StorageNetworkRulesHelper networkRulesHelper;
         private StorageEncryptionHelper encryptionHelper;
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         ///GENMHASH:9EC86FDAF9C3238B45EB0EE4355F4919:01A8E19E4477D51C1F8BB7C63F151C69
         internal StorageAccountImpl(string name, StorageAccountInner innerModel, IStorageManager storageManager) : base(name, innerModel, storageManager)
         {
-            this.createParameters = new StorageAccountCreateParametersInner();
+            this.createParameters = new StorageAccountCreateParameters();
             this.networkRulesHelper = new StorageNetworkRulesHelper(this.createParameters);
             this.encryptionHelper = new StorageEncryptionHelper(this.createParameters);
         }
@@ -57,14 +57,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             return new AccountStatuses(Inner.StatusOfPrimary, Inner.StatusOfSecondary);
         }
 
-        ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:5961A2D0C2007F645841A48147A553E6
-        public Sku Sku()
-        {
-            return new Sku
-            {
-                Name = this.Inner.Sku.Name
-            };
-        }
 
         ///GENMHASH:C4C0D4751CA4E1904C31CE6DF0B02AC3:B5986EB96489F714DC052E1136F06A45
         public Kind Kind()
@@ -212,7 +204,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         public override IUpdate Update()
         {
             this.createParameters = null;
-            this.updateParameters = new StorageAccountUpdateParametersInner();
+            this.updateParameters = new StorageAccountUpdateParameters();
             this.networkRulesHelper = new StorageNetworkRulesHelper(this.updateParameters, this.Inner);
             this.encryptionHelper = new StorageEncryptionHelper(this.updateParameters, this.Inner);
             return this;
@@ -404,14 +396,14 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             if (IsInCreateMode)
             {
-                createParameters.Sku = new Sku()
+                createParameters.Sku = new SkuInner()
                 {
                     Name = sku.Name
                 };
             }
             else
             {
-                updateParameters.Sku = new Sku()
+                updateParameters.Sku = new SkuInner()
                 {
                     Name = sku.Name
                 };

@@ -12,28 +12,28 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for CreateOrUpdateImmutabilityPolicy operation.
+    /// Defines headers for DeleteImmutabilityPolicy operation.
     /// </summary>
-    public partial class BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner
+    public partial class BlobContainersDeleteImmutabilityPolicyHeaders
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner class.
+        /// BlobContainersDeleteImmutabilityPolicyHeaders class.
         /// </summary>
-        public BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner()
+        public BlobContainersDeleteImmutabilityPolicyHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner class.
+        /// BlobContainersDeleteImmutabilityPolicyHeaders class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public BlobContainersCreateOrUpdateImmutabilityPolicyHeadersInner(string eTag = default(string))
+        public BlobContainersDeleteImmutabilityPolicyHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

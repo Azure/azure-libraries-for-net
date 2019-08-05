@@ -15,18 +15,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// <summary>
     /// Lease Container request schema.
     /// </summary>
-    public partial class LeaseContainerRequestInner
+    public partial class LeaseContainerRequest
     {
         /// <summary>
-        /// Initializes a new instance of the LeaseContainerRequestInner class.
+        /// Initializes a new instance of the LeaseContainerRequest class.
         /// </summary>
-        public LeaseContainerRequestInner()
+        public LeaseContainerRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LeaseContainerRequestInner class.
+        /// Initializes a new instance of the LeaseContainerRequest class.
         /// </summary>
         /// <param name="action">Specifies the lease action. Can be one of the
         /// available actions. Possible values include: 'Acquire', 'Renew',
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// that never expires.</param>
         /// <param name="proposedLeaseId">Optional for acquire, required for
         /// change. Proposed lease ID, in a GUID string format.</param>
-        public LeaseContainerRequestInner(string action, string leaseId = default(string), int? breakPeriod = default(int?), int? leaseDuration = default(int?), string proposedLeaseId = default(string))
+        public LeaseContainerRequest(Action1 action, string leaseId = default(string), int? breakPeriod = default(int?), int? leaseDuration = default(int?), string proposedLeaseId = default(string))
         {
             Action = action;
             LeaseId = leaseId;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'Change', 'Release', 'Break'
         /// </summary>
         [JsonProperty(PropertyName = "action")]
-        public string Action { get; set; }
+        public Action1 Action { get; set; }
 
         /// <summary>
         /// Gets or sets identifies the lease. Can be specified in any valid

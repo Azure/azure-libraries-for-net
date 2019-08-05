@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LeaseContainerResponseInner> LeaseAsync(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, LeaseContainerRequestInner parameters = default(LeaseContainerRequestInner), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LeaseContainerResponseInner> LeaseAsync(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, LeaseContainerRequest parameters = default(LeaseContainerRequest), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.LeaseWithHttpMessagesAsync(resourceGroupName, accountName, containerName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

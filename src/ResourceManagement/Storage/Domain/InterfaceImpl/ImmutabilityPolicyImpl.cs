@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the state value.
         /// </summary>
-        string Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy.State
+        ImmutabilityPolicyState Microsoft.Azure.Management.Storage.Fluent.IImmutabilityPolicy.State
         {
             get
             {

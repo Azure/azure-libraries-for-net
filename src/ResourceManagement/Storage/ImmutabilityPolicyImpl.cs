@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             return this.Inner.Name;
         }
 
-        public string State()
+        public ImmutabilityPolicyState State()
         {
             return this.Inner.State;
         }
