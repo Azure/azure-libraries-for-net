@@ -372,8 +372,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public SqlDatabaseImpl WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective)
         {
             return this.WithStandardEdition(serviceObjective, SqlDatabaseStandardStorage.Max250Gb);
-
-            return this;
         }
 
         ///GENMHASH:49E7BA88A31F5FA05707D7827931435B:83BE97DAEF89A7A6D0C78658DFEFCDE4
@@ -833,7 +831,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             this.Inner.RestorePointInTime = restorePoint.EarliestRestoreDate;
             return this.WithSourceDatabase(restorePoint.DatabaseId)
                 .WithMode(CreateMode.PointInTimeRestore);
-            return this;
         }
 
         ///GENMHASH:65DFD5CF3EED2BB07512CC188E7D8F8A:668E0DBB00202029F024E9733E6C0BD2
