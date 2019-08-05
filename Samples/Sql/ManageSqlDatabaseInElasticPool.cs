@@ -45,7 +45,7 @@ namespace ManageSqlDatabaseInElasticPool
                 // Create a SQL Server, with 2 firewall rules.
 
                 var sqlServer = azure.SqlServers.Define(sqlServerName)
-                        .WithRegion(Region.USCentral)
+                        .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
@@ -132,6 +132,7 @@ namespace ManageSqlDatabaseInElasticPool
                 anotherDatabase = anotherDatabase.Update()
                         .WithoutElasticPool()
                         .WithEdition(DatabaseEdition.Standard)
+                        .WithMaxSizeBytes((long)Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseStandardStorage.Max250Gb)
                         .Apply();
                 Utilities.PrintDatabase(anotherDatabase);
 

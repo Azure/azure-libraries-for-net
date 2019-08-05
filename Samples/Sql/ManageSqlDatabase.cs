@@ -64,6 +64,7 @@ namespace ManageSqlDatabase
                 database = database.Update()
                         .WithEdition(DatabaseEdition.Standard)
                         .WithServiceObjective(ServiceObjectiveName.S1)
+                        .WithMaxSizeBytes((long)Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseStandardStorage.Max250Gb)
                         .Apply();
                 Utilities.PrintDatabase(database);
 
