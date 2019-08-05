@@ -35,10 +35,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
         public TrackedResourceInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(id, name, type)
+            //: base(locationid, name, type)
+            : base(location, id, name, type, tags)
         {
-            Location = location;
-            Tags = tags;
+            //Location = location;
+            //Tags = tags;
             CustomInit();
         }
 
@@ -47,30 +48,30 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         partial void CustomInit();
 
-        /// <summary>
-        /// Gets or sets resource location.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
+        ///// <summary>
+        ///// Gets or sets resource location.
+        ///// </summary>
+        //[JsonProperty(PropertyName = "location")]
+        //public string Location { get; set; }
 
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        ///// <summary>
+        ///// Gets or sets resource tags.
+        ///// </summary>
+        //[JsonProperty(PropertyName = "tags")]
+        //public IDictionary<string, string> Tags { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
-            }
-        }
+        ///// <summary>
+        ///// Validate the object.
+        ///// </summary>
+        ///// <exception cref="ValidationException">
+        ///// Thrown if validation fails
+        ///// </exception>
+        //public virtual void Validate()
+        //{
+        //    if (Location == null)
+        //    {
+        //        throw new ValidationException(ValidationRules.CannotBeNull, "Location");
+        //    }
+        //}
     }
 }

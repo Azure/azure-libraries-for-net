@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Gets resource location.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
-        public string Location { get; private set; }
+        public string Location { get; /*private*/ set; }
 
         /// <summary>
         /// Gets or sets resource tags.
