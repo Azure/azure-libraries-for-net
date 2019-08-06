@@ -403,6 +403,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return result != null ? new DatabaseAccountListReadOnlyKeysResultImpl(result) : null;
         }
 
+        public IEnumerable<ISqlDatabase> ListSqlDatabases()
+        {
+            return Extensions.Synchronize(() => this.ListSqlDatabasesAsync());
+        }
+
+        public async Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var result = await this.Manager.Inner.DatabaseAccounts
+                .ListSqlDatabasesAsync(this.ResourceGroupName, this.Name);
+            return result.Select(inner => new SqlDatabaseImpl(inner));
+        }
 
         ///GENMHASH:6A08D79B3D058AD12B94D8E88D3A66BB:CBB08B5D2F8EBB6B1A4BE51DA2907810
         public CosmosDBAccountImpl WithDataModelGremlin()
