@@ -20,20 +20,20 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// properties.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageAccountUpdateParametersInner
+    public partial class StorageAccountUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// StorageAccountUpdateParametersInner class.
+        /// Initializes a new instance of the StorageAccountUpdateParameters
+        /// class.
         /// </summary>
-        public StorageAccountUpdateParametersInner()
+        public StorageAccountUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// StorageAccountUpdateParametersInner class.
+        /// Initializes a new instance of the StorageAccountUpdateParameters
+        /// class.
         /// </summary>
         /// <param name="sku">Gets or sets the SKU name. Note that the SKU name
         /// cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Currently only StorageV2 value supported by server. Possible values
         /// include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
         /// 'BlockBlobStorage'</param>
-        public StorageAccountUpdateParametersInner(Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
+        public StorageAccountUpdateParameters(SkuInner sku = default(SkuInner), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
         {
             Sku = sku;
             Tags = tags;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// those SKU names be updated to any other value.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
+        public SkuInner Sku { get; set; }
 
         /// <summary>
         /// Gets or sets a list of key value pairs that describe the resource.

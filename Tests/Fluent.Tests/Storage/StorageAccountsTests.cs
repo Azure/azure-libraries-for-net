@@ -53,7 +53,7 @@ namespace Fluent.Tests.Storage
                         {
                             Assert.Empty(storageAccount.Inner.NetworkRuleSet.IpRules);
                         }
-                    bool isDefaultActionAllow = storageAccount.Inner.NetworkRuleSet.DefaultAction.Equals("Allow", StringComparison.OrdinalIgnoreCase);
+                    bool isDefaultActionAllow = storageAccount.Inner.NetworkRuleSet.DefaultAction.Equals(DefaultAction.Allow);
                     Assert.True(isDefaultActionAllow);
                     }
 

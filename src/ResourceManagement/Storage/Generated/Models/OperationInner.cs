@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// Storage REST API operation definition.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Operation
+    public partial class OperationInner
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
-        public Operation()
+        public OperationInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
         /// <param name="name">Operation name:
         /// {provider}/{resource}/{operation}</param>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="origin">The origin of operations.</param>
         /// <param name="serviceSpecification">One property of operation,
         /// include metric specifications.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), ServiceSpecification serviceSpecification = default(ServiceSpecification))
+        public OperationInner(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), ServiceSpecification serviceSpecification = default(ServiceSpecification))
         {
             Name = name;
             Display = display;

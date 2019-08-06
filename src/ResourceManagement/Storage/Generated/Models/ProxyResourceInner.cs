@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Linq;
 
@@ -15,7 +16,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// The resource model definition for a ARM proxy resource. It will have
     /// everything other than required location and tags
     /// </summary>
-    public partial class ProxyResourceInner : Resource
+    public partial class ProxyResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ProxyResourceInner class.
@@ -28,12 +29,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ProxyResourceInner class.
         /// </summary>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
-        /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
         public ProxyResourceInner(string id = default(string), string name = default(string), string type = default(string))
             : base(id, name, type)
         {

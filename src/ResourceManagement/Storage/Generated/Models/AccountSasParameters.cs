@@ -15,18 +15,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// <summary>
     /// The parameters to list SAS credentials of a storage account.
     /// </summary>
-    public partial class AccountSasParametersInner
+    public partial class AccountSasParameters
     {
         /// <summary>
-        /// Initializes a new instance of the AccountSasParametersInner class.
+        /// Initializes a new instance of the AccountSasParameters class.
         /// </summary>
-        public AccountSasParametersInner()
+        public AccountSasParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AccountSasParametersInner class.
+        /// Initializes a new instance of the AccountSasParameters class.
         /// </summary>
         /// <param name="services">The signed services accessible with the
         /// account SAS. Possible values include: Blob (b), Queue (q), Table
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// becomes valid.</param>
         /// <param name="keyToSign">The key to sign the account SAS token
         /// with.</param>
-        public AccountSasParametersInner(string services, string resourceTypes, string permissions, System.DateTime sharedAccessExpiryTime, string iPAddressOrRange = default(string), HttpProtocol? protocols = default(HttpProtocol?), System.DateTime? sharedAccessStartTime = default(System.DateTime?), string keyToSign = default(string))
+        public AccountSasParameters(Services services, SignedResourceTypes resourceTypes, Permissions permissions, System.DateTime sharedAccessExpiryTime, string iPAddressOrRange = default(string), HttpProtocol? protocols = default(HttpProtocol?), System.DateTime? sharedAccessStartTime = default(System.DateTime?), string keyToSign = default(string))
         {
             Services = services;
             ResourceTypes = resourceTypes;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Possible values include: 'b', 'q', 't', 'f'
         /// </summary>
         [JsonProperty(PropertyName = "signedServices")]
-        public string Services { get; set; }
+        public Services Services { get; set; }
 
         /// <summary>
         /// Gets or sets the signed resource types that are accessible with the
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// files. Possible values include: 's', 'c', 'o'
         /// </summary>
         [JsonProperty(PropertyName = "signedResourceTypes")]
-        public string ResourceTypes { get; set; }
+        public SignedResourceTypes ResourceTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the signed permissions for the account SAS. Possible
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// 'r', 'd', 'w', 'l', 'a', 'c', 'u', 'p'
         /// </summary>
         [JsonProperty(PropertyName = "signedPermission")]
-        public string Permissions { get; set; }
+        public Permissions Permissions { get; set; }
 
         /// <summary>
         /// Gets or sets an IP address or a range of IP addresses from which to

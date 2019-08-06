@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ImmutabilityPolicyUpdateType.
     /// </summary>
-    public static class ImmutabilityPolicyUpdateType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ImmutabilityPolicyUpdateType>))]
+    public class ImmutabilityPolicyUpdateType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ImmutabilityPolicyUpdateType>
     {
-        public const string Put = "put";
-        public const string Lock = "lock";
-        public const string Extend = "extend";
+        public static readonly ImmutabilityPolicyUpdateType Put = Parse("put");
+        public static readonly ImmutabilityPolicyUpdateType Lock = Parse("lock");
+        public static readonly ImmutabilityPolicyUpdateType Extend = Parse("extend");
     }
 }

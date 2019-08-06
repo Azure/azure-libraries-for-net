@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for KeySource.
     /// </summary>
-    public static class KeySource
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<KeySource>))]
+    public class KeySource : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<KeySource>
     {
-        public const string MicrosoftStorage = "Microsoft.Storage";
-        public const string MicrosoftKeyvault = "Microsoft.Keyvault";
+        public static readonly KeySource MicrosoftStorage = Parse("Microsoft.Storage");
+        public static readonly KeySource MicrosoftKeyvault = Parse("Microsoft.Keyvault");
     }
 }

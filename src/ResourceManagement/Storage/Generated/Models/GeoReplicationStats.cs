@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// offline or we are in bootstrap.</param>
         /// <param name="canFailover">A boolean flag which indicates whether or
         /// not account failover is supported for the account.</param>
-        public GeoReplicationStats(string status = default(string), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?))
+        public GeoReplicationStats(GeoReplicationStatus status = default(GeoReplicationStatus), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?))
         {
             Status = status;
             LastSyncTime = lastSyncTime;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Possible values include: 'Live', 'Bootstrap', 'Unavailable'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
-        public string Status { get; private set; }
+        public GeoReplicationStatus Status { get; private set; }
 
         /// <summary>
         /// Gets all primary writes preceding this UTC date/time value are

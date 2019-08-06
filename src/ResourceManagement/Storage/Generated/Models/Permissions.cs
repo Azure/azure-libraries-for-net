@@ -8,19 +8,28 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for Permissions.
     /// </summary>
-    public static class Permissions
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<Permissions>))]
+    public class Permissions : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<Permissions>
     {
-        public const string R = "r";
-        public const string D = "d";
-        public const string W = "w";
-        public const string L = "l";
-        public const string A = "a";
-        public const string C = "c";
-        public const string U = "u";
-        public const string P = "p";
+        public static readonly Permissions R = Parse("r");
+        public static readonly Permissions D = Parse("d");
+        public static readonly Permissions W = Parse("w");
+        public static readonly Permissions L = Parse("l");
+        public static readonly Permissions A = Parse("a");
+        public static readonly Permissions C = Parse("c");
+        public static readonly Permissions U = Parse("u");
+        public static readonly Permissions P = Parse("p");
     }
 }

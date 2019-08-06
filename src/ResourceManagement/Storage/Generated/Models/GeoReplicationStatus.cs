@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for GeoReplicationStatus.
     /// </summary>
-    public static class GeoReplicationStatus
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<GeoReplicationStatus>))]
+    public class GeoReplicationStatus : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<GeoReplicationStatus>
     {
-        public const string Live = "Live";
-        public const string Bootstrap = "Bootstrap";
-        public const string Unavailable = "Unavailable";
+        public static readonly GeoReplicationStatus Live = Parse("Live");
+        public static readonly GeoReplicationStatus Bootstrap = Parse("Bootstrap");
+        public static readonly GeoReplicationStatus Unavailable = Parse("Unavailable");
     }
 }

@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for SignedResource.
     /// </summary>
-    public static class SignedResource
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<SignedResource>))]
+    public class SignedResource : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<SignedResource>
     {
-        public const string B = "b";
-        public const string C = "c";
-        public const string F = "f";
-        public const string S = "s";
+        public static readonly SignedResource B = Parse("b");
+        public static readonly SignedResource C = Parse("c");
+        public static readonly SignedResource F = Parse("f");
+        public static readonly SignedResource S = Parse("s");
     }
 }

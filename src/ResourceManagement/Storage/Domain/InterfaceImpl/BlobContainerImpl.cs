@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the leaseDuration value.
         /// </summary>
-        String Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LeaseDuration
+        LeaseDuration Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LeaseDuration
         {
             get
             {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the leaseState value.
         /// </summary>
-        String Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LeaseState
+        LeaseState Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LeaseState
         {
             get
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the leaseStatus value.
         /// </summary>
-        String Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LeaseStatus
+        LeaseStatus Microsoft.Azure.Management.Storage.Fluent.IBlobContainer.LeaseStatus
         {
             get
             {
