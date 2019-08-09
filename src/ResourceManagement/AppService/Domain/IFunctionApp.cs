@@ -6,11 +6,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
     using System.IO;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// An immutable client-side representation of an Azure Function App.

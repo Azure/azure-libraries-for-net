@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.UpdateDefinition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent.Models;
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
     using System;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     internal partial class FunctionAppImpl
     {

@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
     internal partial class FunctionEnvelopeImpl
     {
+        /// <summary>
+        /// Gets the id of the resource
+        /// </summary>
         string IHasId.Id
         {
             get
@@ -15,6 +18,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        /// <summary>
+        /// Gets the name of the resource
+        /// </summary>
         string IHasName.Name
         {
             get
@@ -23,7 +29,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        /// <returns>the type of the resource</returns>
+        /// <summary>
+        /// Gets the type of the resource
+        /// </summary>
         string IFunctionEnvelope.Type
         {
             get
@@ -32,7 +40,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        /// <returns>the region the resource is in</returns>
+        /// <summary>
+        /// Gets the region of the resource
+        /// </summary>
         Region IFunctionEnvelope.Region
         {
             get
@@ -41,7 +51,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        /// <returns>the name of the region the resource is in</returns>
+        /// <summary>
+        /// Gets the name of the region of the resource
+        /// </summary>
         string IFunctionEnvelope.RegionName
         {
             get
@@ -53,7 +65,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets or sets function App ID.
         /// </summary>
-        /// <returns>the type of the resource</returns>
         string IFunctionEnvelope.FunctionAppId
         {
             get

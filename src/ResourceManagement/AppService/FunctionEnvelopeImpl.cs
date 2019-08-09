@@ -14,17 +14,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
         }
 
-        /// <summary>
-        /// An interface representing a model that has an Id.
-        /// </summary>
         public string Id()
         {
             return this.Inner.Id;
         }
 
-        /// <summary>
-        /// Gets the name of the resource
-        /// </summary>
         public string Name()
         {
             return this.Inner.Name;
