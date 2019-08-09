@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets function App ID.
+        /// Gets the function App ID.
         /// </summary>
         string IFunctionEnvelope.FunctionAppId
         {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets script root path URI.
+        /// Gets the script root path URI.
         /// </summary>
         string IFunctionEnvelope.ScriptRootPathHref
         {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets script URI.
+        /// Gets the script URI.
         /// </summary>
         string IFunctionEnvelope.ScriptHref
         {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets config URI.
+        /// Gets the config URI.
         /// </summary>
         string IFunctionEnvelope.ConfigHref
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets secrets file URI.
+        /// Gets the secrets file URI.
         /// </summary>
         string IFunctionEnvelope.SecretsFileHref
         {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets function URI.
+        /// Gets the function URI.
         /// </summary>
         string IFunctionEnvelope.Href
         {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets config information.
+        /// Gets the config information.
         /// </summary>
         object IFunctionEnvelope.Config
         {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets file list.
+        /// Gets the file list.
         /// </summary>
         IDictionary<string, string> IFunctionEnvelope.Files
         {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets or sets test data used when testing via the Azure Portal.
+        /// Gets the test data used when testing via the Azure Portal.
         /// </summary>
         string IFunctionEnvelope.TestData
         {

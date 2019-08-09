@@ -27,47 +27,47 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         string RegionName { get; }
 
         /// <summary>
-        /// Gets or sets function App ID.
+        /// Gets the function App ID.
         /// </summary>
         string FunctionAppId { get; }
 
         /// <summary>
-        /// Gets or sets script root path URI.
+        /// Gets the script root path URI.
         /// </summary>
         string ScriptRootPathHref { get; }
 
         /// <summary>
-        /// Gets or sets script URI.
+        /// Gets the script URI.
         /// </summary>
         string ScriptHref { get; }
 
         /// <summary>
-        /// Gets or sets config URI.
+        /// Gets the config URI.
         /// </summary>
         string ConfigHref { get; }
 
         /// <summary>
-        /// Gets or sets secrets file URI.
+        /// Gets the secrets file URI.
         /// </summary>
         string SecretsFileHref { get; }
 
         /// <summary>
-        /// Gets or sets function URI.
+        /// Gets the function URI.
         /// </summary>
         string Href { get; }
 
         /// <summary>
-        /// Gets or sets config information.
+        /// Gets the config information.
         /// </summary>
         object Config { get; }
 
         /// <summary>
-        /// Gets or sets file list.
+        /// Gets the file list.
         /// </summary>
         IDictionary<string, string> Files { get; }
 
         /// <summary>
-        /// Gets or sets test data used when testing via the Azure Portal.
+        /// Gets the test data used when testing via the Azure Portal.
         /// </summary>
         string TestData { get; }
     }
