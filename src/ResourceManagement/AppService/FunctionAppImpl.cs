@@ -692,6 +692,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        public IPagedCollection<IFunctionEnvelope> ListFunctions()
+        {
+            return Extensions.Synchronize(() => this.ListFunctionsAsync());
+        }
+
+        public async Task<IPagedCollection<IFunctionEnvelope>> ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await PagedCollection<IFunctionEnvelope, FunctionEnvelopeInner>.LoadPage(
+                async (cancellation) => await this.Manager.FunctionApps.Inner.ListFunctionsAsync(this.ResourceGroupName, this.Name, cancellation),
+                this.Manager.FunctionApps.Inner.ListFunctionsNextAsync,
+                inner => new FunctionEnvelopeImpl(inner),
+                loadAllPages,
+                cancellationToken);
+
+        }
+
         public void SyncTriggers()
         {
             Extensions.Synchronize(() => SyncTriggersAsync());

@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
     using System;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     internal partial class FunctionAppImpl
     {
@@ -1653,6 +1654,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return this.DeploymentSlots();
             }
+        }
+
+        IPagedCollection<IFunctionEnvelope> IFunctionApp.ListFunctions()
+        {
+            return this.ListFunctions();
+        }
+
+        Task<IPagedCollection<IFunctionEnvelope>> IFunctionApp.ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListFunctionsAsync(loadAllPages, cancellationToken);
         }
     }
 }

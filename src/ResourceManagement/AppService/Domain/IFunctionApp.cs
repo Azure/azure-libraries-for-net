@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
     using System.IO;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// An immutable client-side representation of an Azure Function App.
@@ -95,5 +96,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="functionName">The name of the function.</param>
         /// <return>The function key.</return>
         Task<System.Collections.Generic.IReadOnlyDictionary<string,string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// List the functions
+        /// </summary>
+        IPagedCollection<IFunctionEnvelope> ListFunctions();
+
+        /// <summary>
+        /// List the functions
+        /// </summary>
+        /// <param name='loadAllPages'>
+        /// Specify true to load all pages, false to get paginated result.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<IPagedCollection<IFunctionEnvelope>> ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
