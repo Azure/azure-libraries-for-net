@@ -705,7 +705,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 inner => new FunctionEnvelopeImpl(inner),
                 loadAllPages,
                 cancellationToken);
-
         }
 
         public void SyncTriggers()
