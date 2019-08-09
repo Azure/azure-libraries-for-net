@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for list BGP peer status API service call
+    /// Response for list BGP peer status API service call.
     /// </summary>
     public partial class BgpPeerStatusListResultInner
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the BgpPeerStatusListResultInner
         /// class.
         /// </summary>
-        /// <param name="value">List of BGP peers</param>
+        /// <param name="value">List of BGP peers.</param>
         public BgpPeerStatusListResultInner(IList<BgpPeerStatus> value = default(IList<BgpPeerStatus>))
         {
             Value = value;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of BGP peers
+        /// Gets or sets list of BGP peers.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<BgpPeerStatus> Value { get; set; }

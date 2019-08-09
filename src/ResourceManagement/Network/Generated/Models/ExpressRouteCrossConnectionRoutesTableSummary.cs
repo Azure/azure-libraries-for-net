@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the
         /// ExpressRouteCrossConnectionRoutesTableSummary class.
         /// </summary>
-        /// <param name="neighbor">IP address of Neighbor router</param>
+        /// <param name="neighbor">IP address of Neighbor router.</param>
         /// <param name="asn">Autonomous system number.</param>
         /// <param name="upDown">The length of time that the BGP session has
         /// been in the Established state, or the current status if not in the
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets IP address of Neighbor router
+        /// Gets or sets IP address of Neighbor router.
         /// </summary>
         [JsonProperty(PropertyName = "neighbor")]
         public string Neighbor { get; set; }

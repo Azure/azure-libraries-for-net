@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// The name of the virtual network.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation
+            /// Parameters supplied to the create or update virtual network operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPAddressAvailabilityResultInner> CheckIPAddressAvailabilityAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPAddressAvailabilityResultInner> CheckIPAddressAvailabilityAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckIPAddressAvailabilityWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, ipAddress, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// The name of the virtual network.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation
+            /// Parameters supplied to the create or update virtual network operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

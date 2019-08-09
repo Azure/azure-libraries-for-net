@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly VpnClientProtocol IkeV2 = Parse("IkeV2");
         public static readonly VpnClientProtocol SSTP = Parse("SSTP");
+        public static readonly VpnClientProtocol OpenVPN = Parse("OpenVPN");
     }
 }

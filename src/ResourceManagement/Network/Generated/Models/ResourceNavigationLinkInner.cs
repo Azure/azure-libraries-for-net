@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="linkedResourceType">Resource type of the linked
         /// resource.</param>
-        /// <param name="link">Link to the external resource</param>
+        /// <param name="link">Link to the external resource.</param>
         /// <param name="provisioningState">Provisioning state of the
         /// ResourceNavigationLink resource.</param>
         /// <param name="name">Name of the resource that is unique within a
@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ResourceNavigationLinkInner(string id = default(string), string linkedResourceType = default(string), string link = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        /// <param name="type">Resource type.</param>
+        public ResourceNavigationLinkInner(string id = default(string), string linkedResourceType = default(string), string link = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             LinkedResourceType = linkedResourceType;
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string LinkedResourceType { get; set; }
 
         /// <summary>
-        /// Gets or sets link to the external resource
+        /// Gets or sets link to the external resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.link")]
         public string Link { get; set; }
@@ -91,6 +93,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets resource type.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

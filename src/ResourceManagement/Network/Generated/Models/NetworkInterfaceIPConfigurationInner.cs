@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the
         /// NetworkInterfaceIPConfigurationInner class.
         /// </summary>
+        /// <param name="virtualNetworkTaps">The reference to Virtual Network
+        /// Taps.</param>
         /// <param name="applicationGatewayBackendAddressPools">The reference
         /// of ApplicationGatewayBackendAddressPool resource.</param>
         /// <param name="loadBalancerBackendAddressPools">The reference of
@@ -44,14 +46,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// LoadBalancerInboundNatRules.</param>
         /// <param name="privateIPAddress">Private IP address of the IP
         /// configuration.</param>
-        /// <param name="privateIPAllocationMethod">Defines how a private IP
-        /// address is assigned. Possible values are: 'Static' and 'Dynamic'.
-        /// Possible values include: 'Static', 'Dynamic'</param>
+        /// <param name="privateIPAllocationMethod">The private IP address
+        /// allocation method. Possible values include: 'Static',
+        /// 'Dynamic'</param>
         /// <param name="privateIPAddressVersion">Available from Api-Version
         /// 2016-03-30 onwards, it represents whether the specific
-        /// ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-        /// Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-        /// 'IPv4', 'IPv6'</param>
+        /// ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+        /// values include: 'IPv4', 'IPv6'</param>
         /// <param name="subnet">Subnet bound to the IP configuration.</param>
         /// <param name="primary">Gets whether this is a primary customer
         /// address on the network interface.</param>
@@ -67,9 +68,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterfaceIPConfigurationInner(string id = default(string), IList<ApplicationGatewayBackendAddressPoolInner> applicationGatewayBackendAddressPools = default(IList<ApplicationGatewayBackendAddressPoolInner>), IList<BackendAddressPoolInner> loadBalancerBackendAddressPools = default(IList<BackendAddressPoolInner>), IList<InboundNatRuleInner> loadBalancerInboundNatRules = default(IList<InboundNatRuleInner>), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), IPVersion privateIPAddressVersion = default(IPVersion), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), bool? primary = default(bool?), Management.ResourceManager.Fluent.SubResource publicIPAddress = default(Management.ResourceManager.Fluent.SubResource), IList<ApplicationSecurityGroupInner> applicationSecurityGroups = default(IList<ApplicationSecurityGroupInner>), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public NetworkInterfaceIPConfigurationInner(string id = default(string), IList<VirtualNetworkTapInner> virtualNetworkTaps = default(IList<VirtualNetworkTapInner>), IList<ApplicationGatewayBackendAddressPoolInner> applicationGatewayBackendAddressPools = default(IList<ApplicationGatewayBackendAddressPoolInner>), IList<BackendAddressPoolInner> loadBalancerBackendAddressPools = default(IList<BackendAddressPoolInner>), IList<InboundNatRuleInner> loadBalancerInboundNatRules = default(IList<InboundNatRuleInner>), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), IPVersion privateIPAddressVersion = default(IPVersion), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), bool? primary = default(bool?), Management.ResourceManager.Fluent.SubResource publicIPAddress = default(Management.ResourceManager.Fluent.SubResource), IList<ApplicationSecurityGroupInner> applicationSecurityGroups = default(IList<ApplicationSecurityGroupInner>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
+            VirtualNetworkTaps = virtualNetworkTaps;
             ApplicationGatewayBackendAddressPools = applicationGatewayBackendAddressPools;
             LoadBalancerBackendAddressPools = loadBalancerBackendAddressPools;
             LoadBalancerInboundNatRules = loadBalancerInboundNatRules;
@@ -90,6 +92,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the reference to Virtual Network Taps.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.virtualNetworkTaps")]
+        public IList<VirtualNetworkTapInner> VirtualNetworkTaps { get; set; }
 
         /// <summary>
         /// Gets or sets the reference of ApplicationGatewayBackendAddressPool
@@ -118,9 +126,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string PrivateIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets defines how a private IP address is assigned. Possible
-        /// values are: 'Static' and 'Dynamic'. Possible values include:
-        /// 'Static', 'Dynamic'
+        /// Gets or sets the private IP address allocation method. Possible
+        /// values include: 'Static', 'Dynamic'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAllocationMethod")]
         public IPAllocationMethod PrivateIPAllocationMethod { get; set; }
@@ -128,8 +135,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Gets or sets available from Api-Version 2016-03-30 onwards, it
         /// represents whether the specific ipconfiguration is IPv4 or IPv6.
-        /// Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-        /// Possible values include: 'IPv4', 'IPv6'
+        /// Default is taken as IPv4. Possible values include: 'IPv4', 'IPv6'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
         public IPVersion PrivateIPAddressVersion { get; set; }

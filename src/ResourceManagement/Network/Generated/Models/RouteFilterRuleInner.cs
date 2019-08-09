@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Route Filter Rule Resource
+    /// Route Filter Rule Resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RouteFilterRuleInner : Management.ResourceManager.Fluent.SubResource
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the RouteFilterRuleInner class.
         /// </summary>
-        /// <param name="access">The access type of the rule. Valid values are:
-        /// 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'</param>
+        /// <param name="access">The access type of the rule. Possible values
+        /// include: 'Allow', 'Deny'</param>
         /// <param name="communities">The collection for bgp community values
-        /// to filter on. e.g. ['12076:5010','12076:5020']</param>
+        /// to filter on. e.g. ['12076:5010','12076:5020'].</param>
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values are: 'Updating', 'Deleting', 'Succeeded'
         /// and 'Failed'.</param>
@@ -72,15 +72,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the access type of the rule. Valid values are:
-        /// 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
+        /// Gets or sets the access type of the rule. Possible values include:
+        /// 'Allow', 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "properties.access")]
         public Access Access { get; set; }
 
         /// <summary>
         /// Gets or sets the collection for bgp community values to filter on.
-        /// e.g. ['12076:5010','12076:5020']
+        /// e.g. ['12076:5010','12076:5020'].
         /// </summary>
         [JsonProperty(PropertyName = "properties.communities")]
         public IList<string> Communities { get; set; }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Etag { get; private set; }
 
         /// <summary>
-        /// The rule type of the rule. Valid value is: 'Community'
+        /// The rule type of the rule.
         /// </summary>
         [JsonProperty(PropertyName = "properties.routeFilterRuleType")]
         public static string RouteFilterRuleType { get; private set; }

@@ -34,12 +34,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="advertisedPublicPrefixes">The reference of
         /// AdvertisedPublicPrefixes.</param>
         /// <param name="advertisedCommunities">The communities of bgp peering.
-        /// Spepcified for microsoft peering</param>
-        /// <param
-        /// name="advertisedPublicPrefixesState">AdvertisedPublicPrefixState of
-        /// the Peering resource. Possible values are 'NotConfigured',
-        /// 'Configuring', 'Configured', and 'ValidationNeeded'. Possible
-        /// values include: 'NotConfigured', 'Configuring', 'Configured',
+        /// Specified for microsoft peering.</param>
+        /// <param name="advertisedPublicPrefixesState">The advertised public
+        /// prefix state of the Peering resource. Possible values include:
+        /// 'NotConfigured', 'Configuring', 'Configured',
         /// 'ValidationNeeded'</param>
         /// <param name="legacyMode">The legacy mode of the peering.</param>
         /// <param name="customerASN">The CustomerASN of the peering.</param>
@@ -68,17 +66,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<string> AdvertisedPublicPrefixes { get; set; }
 
         /// <summary>
-        /// Gets or sets the communities of bgp peering. Spepcified for
-        /// microsoft peering
+        /// Gets or sets the communities of bgp peering. Specified for
+        /// microsoft peering.
         /// </summary>
         [JsonProperty(PropertyName = "advertisedCommunities")]
         public IList<string> AdvertisedCommunities { get; set; }
 
         /// <summary>
-        /// Gets or sets advertisedPublicPrefixState of the Peering resource.
-        /// Possible values are 'NotConfigured', 'Configuring', 'Configured',
-        /// and 'ValidationNeeded'. Possible values include: 'NotConfigured',
-        /// 'Configuring', 'Configured', 'ValidationNeeded'
+        /// Gets or sets the advertised public prefix state of the Peering
+        /// resource. Possible values include: 'NotConfigured', 'Configuring',
+        /// 'Configured', 'ValidationNeeded'
         /// </summary>
         [JsonProperty(PropertyName = "advertisedPublicPrefixesState")]
         public ExpressRouteCircuitPeeringAdvertisedPublicPrefixState AdvertisedPublicPrefixesState { get; set; }

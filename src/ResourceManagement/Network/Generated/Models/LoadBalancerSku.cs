@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU of a load balancer
+    /// SKU of a load balancer.
     /// </summary>
     public partial class LoadBalancerSku
     {

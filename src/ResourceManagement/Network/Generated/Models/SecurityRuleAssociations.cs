@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SecurityRuleAssociations class.
         /// </summary>
+        /// <param name="networkInterfaceAssociation">Network interface and
+        /// it's custom security rules.</param>
+        /// <param name="subnetAssociation">Subnet and it's custom security
+        /// rules.</param>
         /// <param name="defaultSecurityRules">Collection of default security
         /// rules of the network security group.</param>
         /// <param name="effectiveSecurityRules">Collection of effective
@@ -48,11 +52,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets network interface and it's custom security rules.
         /// </summary>
         [JsonProperty(PropertyName = "networkInterfaceAssociation")]
         public NetworkInterfaceAssociation NetworkInterfaceAssociation { get; set; }
 
         /// <summary>
+        /// Gets or sets subnet and it's custom security rules.
         /// </summary>
         [JsonProperty(PropertyName = "subnetAssociation")]
         public SubnetAssociation SubnetAssociation { get; set; }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Vpn Client Parameters for package generation
+    /// Vpn Client Parameters for package generation.
     /// </summary>
     public partial class VpnClientParameters
     {
@@ -30,11 +30,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the VpnClientParameters class.
         /// </summary>
         /// <param name="processorArchitecture">VPN client Processor
-        /// Architecture. Possible values are: 'AMD64' and 'X86'. Possible
-        /// values include: 'Amd64', 'X86'</param>
-        /// <param name="authenticationMethod">VPN client Authentication
-        /// Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible
-        /// values include: 'EAPTLS', 'EAPMSCHAPv2'</param>
+        /// Architecture. Possible values include: 'Amd64', 'X86'</param>
+        /// <param name="authenticationMethod">VPN client authentication
+        /// method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'</param>
         /// <param name="radiusServerAuthCertificate">The public certificate
         /// data for the radius server authentication certificate as a Base-64
         /// encoded string. Required only if external radius authentication has
@@ -59,15 +57,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets VPN client Processor Architecture. Possible values
-        /// are: 'AMD64' and 'X86'. Possible values include: 'Amd64', 'X86'
+        /// include: 'Amd64', 'X86'
         /// </summary>
         [JsonProperty(PropertyName = "processorArchitecture")]
         public ProcessorArchitecture ProcessorArchitecture { get; set; }
 
         /// <summary>
-        /// Gets or sets VPN client Authentication Method. Possible values are:
-        /// 'EAPTLS' and 'EAPMSCHAPv2'. Possible values include: 'EAPTLS',
-        /// 'EAPMSCHAPv2'
+        /// Gets or sets VPN client authentication method. Possible values
+        /// include: 'EAPTLS', 'EAPMSCHAPv2'
         /// </summary>
         [JsonProperty(PropertyName = "authenticationMethod")]
         public AuthenticationMethod AuthenticationMethod { get; set; }

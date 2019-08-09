@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ConnectionMonitorSourceStatus>))]
     public class ConnectionMonitorSourceStatus : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ConnectionMonitorSourceStatus>
     {
-        public static readonly ConnectionMonitorSourceStatus Uknown = Parse("Uknown");
+        public static readonly ConnectionMonitorSourceStatus Unknown = Parse("Unknown");
         public static readonly ConnectionMonitorSourceStatus Active = Parse("Active");
         public static readonly ConnectionMonitorSourceStatus Inactive = Parse("Inactive");
     }

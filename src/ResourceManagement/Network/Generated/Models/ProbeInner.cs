@@ -34,12 +34,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ProbeInner class.
         /// </summary>
-        /// <param name="protocol">The protocol of the end point. Possible
-        /// values are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a
-        /// received ACK is required for the probe to be successful. If 'Http'
-        /// or 'Https' is specified, a 200 OK response from the specifies URI
-        /// is required for the probe to be successful. Possible values
-        /// include: 'Http', 'Tcp', 'Https'</param>
+        /// <param name="protocol">The protocol of the end point. If 'Tcp' is
+        /// specified, a received ACK is required for the probe to be
+        /// successful. If 'Http' or 'Https' is specified, a 200 OK response
+        /// from the specifies URI is required for the probe to be successful.
+        /// Possible values include: 'Http', 'Tcp', 'Https'</param>
         /// <param name="port">The port for communicating the probe. Possible
         /// values range from 1 to 65535, inclusive.</param>
         /// <param name="loadBalancingRules">The load balancer rules that use
@@ -62,11 +61,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// public IP resource. Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
         /// <param name="name">Gets name of the resource that is unique within
-        /// a resource group. This name can be used to access the
-        /// resource.</param>
+        /// the set of probes used by the load balancer. This name can be used
+        /// to access the resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ProbeInner(ProbeProtocol protocol, int port, string id = default(string), IList<Management.ResourceManager.Fluent.SubResource> loadBalancingRules = default(IList<Management.ResourceManager.Fluent.SubResource>), int? intervalInSeconds = default(int?), int? numberOfProbes = default(int?), string requestPath = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        /// <param name="type">Type of the resource.</param>
+        public ProbeInner(ProbeProtocol protocol, int port, string id = default(string), IList<Management.ResourceManager.Fluent.SubResource> loadBalancingRules = default(IList<Management.ResourceManager.Fluent.SubResource>), int? intervalInSeconds = default(int?), int? numberOfProbes = default(int?), string requestPath = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             LoadBalancingRules = loadBalancingRules;
@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -93,12 +94,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<Management.ResourceManager.Fluent.SubResource> LoadBalancingRules { get; private set; }
 
         /// <summary>
-        /// Gets or sets the protocol of the end point. Possible values are:
-        /// 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is
-        /// required for the probe to be successful. If 'Http' or 'Https' is
-        /// specified, a 200 OK response from the specifies URI is required for
-        /// the probe to be successful. Possible values include: 'Http', 'Tcp',
-        /// 'Https'
+        /// Gets or sets the protocol of the end point. If 'Tcp' is specified,
+        /// a received ACK is required for the probe to be successful. If
+        /// 'Http' or 'Https' is specified, a 200 OK response from the
+        /// specifies URI is required for the probe to be successful. Possible
+        /// values include: 'Http', 'Tcp', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public ProbeProtocol Protocol { get; set; }
@@ -145,8 +145,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets name of the resource that is unique within a resource group.
-        /// This name can be used to access the resource.
+        /// Gets name of the resource that is unique within the set of probes
+        /// used by the load balancer. This name can be used to access the
+        /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -157,6 +158,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Validate the object.
