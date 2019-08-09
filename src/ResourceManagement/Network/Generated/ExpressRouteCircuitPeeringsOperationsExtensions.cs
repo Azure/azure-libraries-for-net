@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Gets the specified authorization from the specified express route circuit.
+            /// Gets the specified peering for the express route circuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

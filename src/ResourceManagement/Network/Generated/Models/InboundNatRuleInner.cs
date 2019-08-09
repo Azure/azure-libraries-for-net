@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// address defined on a network interface of a VM. Traffic sent to the
         /// frontend port of each of the frontend IP configurations is
         /// forwarded to the backend IP.</param>
-        /// <param name="protocol">Possible values include: 'Udp', 'Tcp',
+        /// <param name="protocol">The reference to the transport protocol used
+        /// by the load balancing rule. Possible values include: 'Udp', 'Tcp',
         /// 'All'</param>
         /// <param name="frontendPort">The port for the external endpoint. Port
         /// numbers for each rule must be unique within the Load Balancer.
@@ -54,15 +55,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// AlwaysOn Availability Group. This setting is required when using
         /// the SQL AlwaysOn Availability Groups in SQL server. This setting
         /// can't be changed after you create the endpoint.</param>
+        /// <param name="enableTcpReset">Receive bidirectional TCP Reset on TCP
+        /// flow idle timeout or unexpected connection termination. This
+        /// element is only used when the protocol is set to TCP.</param>
         /// <param name="provisioningState">Gets the provisioning state of the
         /// public IP resource. Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
         /// <param name="name">Gets name of the resource that is unique within
-        /// a resource group. This name can be used to access the
-        /// resource.</param>
+        /// the set of inbound NAT rules used by the load balancer. This name
+        /// can be used to access the resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public InboundNatRuleInner(string id = default(string), Management.ResourceManager.Fluent.SubResource frontendIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), NetworkInterfaceIPConfigurationInner backendIPConfiguration = default(NetworkInterfaceIPConfigurationInner), TransportProtocol protocol = default(TransportProtocol), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        /// <param name="type">Type of the resource.</param>
+        public InboundNatRuleInner(string id = default(string), Management.ResourceManager.Fluent.SubResource frontendIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), NetworkInterfaceIPConfigurationInner backendIPConfiguration = default(NetworkInterfaceIPConfigurationInner), TransportProtocol protocol = default(TransportProtocol), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -72,9 +77,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             BackendPort = backendPort;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             EnableFloatingIP = enableFloatingIP;
+            EnableTcpReset = enableTcpReset;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -98,7 +105,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public NetworkInterfaceIPConfigurationInner BackendIPConfiguration { get; private set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Udp', 'Tcp', 'All'
+        /// Gets or sets the reference to the transport protocol used by the
+        /// load balancing rule. Possible values include: 'Udp', 'Tcp', 'All'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public TransportProtocol Protocol { get; set; }
@@ -137,6 +145,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? EnableFloatingIP { get; set; }
 
         /// <summary>
+        /// Gets or sets receive bidirectional TCP Reset on TCP flow idle
+        /// timeout or unexpected connection termination. This element is only
+        /// used when the protocol is set to TCP.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableTcpReset")]
+        public bool? EnableTcpReset { get; set; }
+
+        /// <summary>
         /// Gets the provisioning state of the public IP resource. Possible
         /// values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
@@ -144,8 +160,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets name of the resource that is unique within a resource group.
-        /// This name can be used to access the resource.
+        /// Gets name of the resource that is unique within the set of inbound
+        /// NAT rules used by the load balancer. This name can be used to
+        /// access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -156,6 +173,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

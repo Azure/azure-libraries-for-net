@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="fqdn">Fully qualified domain name (FQDN).</param>
-        /// <param name="ipAddress">IP address</param>
+        /// <param name="ipAddress">IP address.</param>
         public ApplicationGatewayBackendAddress(string fqdn = default(string), string ipAddress = default(string))
         {
             Fqdn = fqdn;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Fqdn { get; set; }
 
         /// <summary>
-        /// Gets or sets IP address
+        /// Gets or sets IP address.
         /// </summary>
         [JsonProperty(PropertyName = "ipAddress")]
         public string IpAddress { get; set; }

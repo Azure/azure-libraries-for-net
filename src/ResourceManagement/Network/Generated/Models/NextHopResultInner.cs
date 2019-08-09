@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="nextHopType">Next hop type. Possible values include:
         /// 'Internet', 'VirtualAppliance', 'VirtualNetworkGateway',
         /// 'VnetLocal', 'HyperNetGateway', 'None'</param>
-        /// <param name="nextHopIpAddress">Next hop IP Address</param>
+        /// <param name="nextHopIpAddress">Next hop IP Address.</param>
         /// <param name="routeTableId">The resource identifier for the route
         /// table associated with the route being returned. If the route being
         /// returned does not correspond to any user created routes then this
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public NextHopType NextHopType { get; set; }
 
         /// <summary>
-        /// Gets or sets next hop IP Address
+        /// Gets or sets next hop IP Address.
         /// </summary>
         [JsonProperty(PropertyName = "nextHopIpAddress")]
         public string NextHopIpAddress { get; set; }

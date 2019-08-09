@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetworkGatewayConnectionListEntityInner> UpdateTagsAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetworkGatewayConnectionInner> UpdateTagsAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -133,15 +133,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='virtualNetworkGatewayConnectionName'>
             /// The virtual network gateway connection name.
             /// </param>
-            /// <param name='value'>
-            /// The virtual network connection shared key value.
+            /// <param name='parameters'>
+            /// Parameters supplied to the Begin Set Virtual Network Gateway connection
+            /// Shared key operation throughNetwork resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ConnectionSharedKeyInner> SetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, string value, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ConnectionSharedKeyInner> SetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKeyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.SetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, value, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.SetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -289,7 +290,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetworkGatewayConnectionListEntityInner> BeginUpdateTagsAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetworkGatewayConnectionInner> BeginUpdateTagsAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -312,15 +313,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='virtualNetworkGatewayConnectionName'>
             /// The virtual network gateway connection name.
             /// </param>
-            /// <param name='value'>
-            /// The virtual network connection shared key value.
+            /// <param name='parameters'>
+            /// Parameters supplied to the Begin Set Virtual Network Gateway connection
+            /// Shared key operation throughNetwork resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ConnectionSharedKeyInner> BeginSetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, string value, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ConnectionSharedKeyInner> BeginSetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKeyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginSetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, value, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginSetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

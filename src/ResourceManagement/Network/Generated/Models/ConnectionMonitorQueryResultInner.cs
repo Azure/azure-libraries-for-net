@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// List of connection states snaphots.
+    /// List of connection states snapshots.
     /// </summary>
     public partial class ConnectionMonitorQueryResultInner
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="sourceStatus">Status of connection monitor source.
-        /// Possible values include: 'Uknown', 'Active', 'Inactive'</param>
+        /// Possible values include: 'Unknown', 'Active', 'Inactive'</param>
         /// <param name="states">Information about connection states.</param>
         public ConnectionMonitorQueryResultInner(ConnectionMonitorSourceStatus sourceStatus = default(ConnectionMonitorSourceStatus), IList<ConnectionStateSnapshot> states = default(IList<ConnectionStateSnapshot>))
         {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets status of connection monitor source. Possible values
-        /// include: 'Uknown', 'Active', 'Inactive'
+        /// include: 'Unknown', 'Active', 'Inactive'
         /// </summary>
         [JsonProperty(PropertyName = "sourceStatus")]
         public ConnectionMonitorSourceStatus SourceStatus { get; set; }

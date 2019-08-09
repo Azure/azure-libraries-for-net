@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -84,6 +86,32 @@ namespace Microsoft.Azure.Management.Network.Fluent
             public static async Task<ApplicationSecurityGroupInner> CreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroupInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates an application security group's tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='applicationSecurityGroupName'>
+            /// The name of the application security group.
+            /// </param>
+            /// <param name='tags'>
+            /// Resource tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ApplicationSecurityGroupInner> UpdateTagsAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -168,6 +196,32 @@ namespace Microsoft.Azure.Management.Network.Fluent
             public static async Task<ApplicationSecurityGroupInner> BeginCreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroupInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates an application security group's tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='applicationSecurityGroupName'>
+            /// The name of the application security group.
+            /// </param>
+            /// <param name='tags'>
+            /// Resource tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ApplicationSecurityGroupInner> BeginUpdateTagsAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

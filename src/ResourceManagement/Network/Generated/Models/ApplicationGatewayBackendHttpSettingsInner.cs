@@ -38,8 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="port">The destination port on the backend.</param>
         /// <param name="protocol">The protocol used to communicate with the
-        /// backend. Possible values are 'Http' and 'Https'. Possible values
-        /// include: 'Http', 'Https'</param>
+        /// backend. Possible values include: 'Http', 'Https'</param>
         /// <param name="cookieBasedAffinity">Cookie based affinity. Possible
         /// values include: 'Enabled', 'Disabled'</param>
         /// <param name="requestTimeout">Request timeout in seconds.
@@ -50,6 +49,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// gateway.</param>
         /// <param name="authenticationCertificates">Array of references to
         /// application gateway authentication certificates.</param>
+        /// <param name="trustedRootCertificates">Array of references to
+        /// application gateway trusted root certificates.</param>
         /// <param name="connectionDraining">Connection draining of the backend
         /// http settings resource.</param>
         /// <param name="hostName">Host header to be sent to the backend
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayBackendHttpSettingsInner(string id = default(string), int? port = default(int?), ApplicationGatewayProtocol protocol = default(ApplicationGatewayProtocol), ApplicationGatewayCookieBasedAffinity cookieBasedAffinity = default(ApplicationGatewayCookieBasedAffinity), int? requestTimeout = default(int?), Management.ResourceManager.Fluent.SubResource probe = default(Management.ResourceManager.Fluent.SubResource), IList<Management.ResourceManager.Fluent.SubResource> authenticationCertificates = default(IList<Management.ResourceManager.Fluent.SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayBackendHttpSettingsInner(string id = default(string), int? port = default(int?), ApplicationGatewayProtocol protocol = default(ApplicationGatewayProtocol), ApplicationGatewayCookieBasedAffinity cookieBasedAffinity = default(ApplicationGatewayCookieBasedAffinity), int? requestTimeout = default(int?), Management.ResourceManager.Fluent.SubResource probe = default(Management.ResourceManager.Fluent.SubResource), IList<Management.ResourceManager.Fluent.SubResource> authenticationCertificates = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> trustedRootCertificates = default(IList<Management.ResourceManager.Fluent.SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             Port = port;
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             RequestTimeout = requestTimeout;
             Probe = probe;
             AuthenticationCertificates = authenticationCertificates;
+            TrustedRootCertificates = trustedRootCertificates;
             ConnectionDraining = connectionDraining;
             HostName = hostName;
             PickHostNameFromBackendAddress = pickHostNameFromBackendAddress;
@@ -107,8 +109,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets the protocol used to communicate with the backend.
-        /// Possible values are 'Http' and 'Https'. Possible values include:
-        /// 'Http', 'Https'
+        /// Possible values include: 'Http', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public ApplicationGatewayProtocol Protocol { get; set; }
@@ -140,6 +141,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.authenticationCertificates")]
         public IList<Management.ResourceManager.Fluent.SubResource> AuthenticationCertificates { get; set; }
+
+        /// <summary>
+        /// Gets or sets array of references to application gateway trusted
+        /// root certificates.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.trustedRootCertificates")]
+        public IList<Management.ResourceManager.Fluent.SubResource> TrustedRootCertificates { get; set; }
 
         /// <summary>
         /// Gets or sets connection draining of the backend http settings

@@ -40,42 +40,50 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// use this frontend IP.</param>
         /// <param name="inboundNatPools">Read only. Inbound pools URIs that
         /// use this frontend IP.</param>
-        /// <param name="outboundNatRules">Read only. Outbound rules URIs that
-        /// use this frontend IP.</param>
+        /// <param name="outboundRules">Read only. Outbound rules URIs that use
+        /// this frontend IP.</param>
         /// <param name="loadBalancingRules">Gets load balancing rules URIs
         /// that use this frontend IP.</param>
         /// <param name="privateIPAddress">The private IP address of the IP
         /// configuration.</param>
         /// <param name="privateIPAllocationMethod">The Private IP allocation
-        /// method. Possible values are: 'Static' and 'Dynamic'. Possible
-        /// values include: 'Static', 'Dynamic'</param>
+        /// method. Possible values include: 'Static', 'Dynamic'</param>
+        /// <param name="privateIPAddressVersion">It represents whether the
+        /// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+        /// Possible values include: 'IPv4', 'IPv6'</param>
         /// <param name="subnet">The reference of the subnet resource.</param>
         /// <param name="publicIPAddress">The reference of the Public IP
+        /// resource.</param>
+        /// <param name="publicIPPrefix">The reference of the Public IP Prefix
         /// resource.</param>
         /// <param name="provisioningState">Gets the provisioning state of the
         /// public IP resource. Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
-        /// <param name="name">The name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">The name of the resource that is unique within
+        /// the set of frontend IP configurations used by the load balancer.
+        /// This name can be used to access the resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
+        /// <param name="type">Type of the resource.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public FrontendIPConfigurationInner(string id = default(string), IList<Management.ResourceManager.Fluent.SubResource> inboundNatRules = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> inboundNatPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> outboundNatRules = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancingRules = default(IList<Management.ResourceManager.Fluent.SubResource>), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource publicIPAddress = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public FrontendIPConfigurationInner(string id = default(string), IList<Management.ResourceManager.Fluent.SubResource> inboundNatRules = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> inboundNatPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> outboundRules = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancingRules = default(IList<Management.ResourceManager.Fluent.SubResource>), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), IPVersion privateIPAddressVersion = default(IPVersion), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource publicIPAddress = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource publicIPPrefix = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string), IList<string> zones = default(IList<string>))
             : base(id)
         {
             InboundNatRules = inboundNatRules;
             InboundNatPools = inboundNatPools;
-            OutboundNatRules = outboundNatRules;
+            OutboundRules = outboundRules;
             LoadBalancingRules = loadBalancingRules;
             PrivateIPAddress = privateIPAddress;
             PrivateIPAllocationMethod = privateIPAllocationMethod;
+            PrivateIPAddressVersion = privateIPAddressVersion;
             Subnet = subnet;
             PublicIPAddress = publicIPAddress;
+            PublicIPPrefix = publicIPPrefix;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
+            Type = type;
             Zones = zones;
             CustomInit();
         }
@@ -100,8 +108,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Gets read only. Outbound rules URIs that use this frontend IP.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.outboundNatRules")]
-        public IList<Management.ResourceManager.Fluent.SubResource> OutboundNatRules { get; private set; }
+        [JsonProperty(PropertyName = "properties.outboundRules")]
+        public IList<Management.ResourceManager.Fluent.SubResource> OutboundRules { get; private set; }
 
         /// <summary>
         /// Gets load balancing rules URIs that use this frontend IP.
@@ -116,12 +124,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string PrivateIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the Private IP allocation method. Possible values are:
-        /// 'Static' and 'Dynamic'. Possible values include: 'Static',
-        /// 'Dynamic'
+        /// Gets or sets the Private IP allocation method. Possible values
+        /// include: 'Static', 'Dynamic'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAllocationMethod")]
         public IPAllocationMethod PrivateIPAllocationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets it represents whether the specific ipconfiguration is
+        /// IPv4 or IPv6. Default is taken as IPv4. Possible values include:
+        /// 'IPv4', 'IPv6'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
+        public IPVersion PrivateIPAddressVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the reference of the subnet resource.
@@ -136,6 +151,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource PublicIPAddress { get; set; }
 
         /// <summary>
+        /// Gets or sets the reference of the Public IP Prefix resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicIPPrefix")]
+        public Management.ResourceManager.Fluent.SubResource PublicIPPrefix { get; set; }
+
+        /// <summary>
         /// Gets the provisioning state of the public IP resource. Possible
         /// values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
@@ -143,8 +164,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a
-        /// resource group. This name can be used to access the resource.
+        /// Gets or sets the name of the resource that is unique within the set
+        /// of frontend IP configurations used by the load balancer. This name
+        /// can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -155,6 +177,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets a list of availability zones denoting the IP allocated

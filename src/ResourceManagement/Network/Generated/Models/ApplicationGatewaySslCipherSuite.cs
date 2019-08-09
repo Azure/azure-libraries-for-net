@@ -48,5 +48,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public static readonly ApplicationGatewaySslCipherSuite TLSDHEDSSWITHAES256CBCSHA = Parse("TLS_DHE_DSS_WITH_AES_256_CBC_SHA");
         public static readonly ApplicationGatewaySslCipherSuite TLSDHEDSSWITHAES128CBCSHA = Parse("TLS_DHE_DSS_WITH_AES_128_CBC_SHA");
         public static readonly ApplicationGatewaySslCipherSuite TLSRSAWITH3DESEDECBCSHA = Parse("TLS_RSA_WITH_3DES_EDE_CBC_SHA");
+        public static readonly ApplicationGatewaySslCipherSuite TLSDHEDSSWITH3DESEDECBCSHA = Parse("TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA");
+        public static readonly ApplicationGatewaySslCipherSuite TLSECDHERSAWITHAES128GCMSHA256 = Parse("TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256");
+        public static readonly ApplicationGatewaySslCipherSuite TLSECDHERSAWITHAES256GCMSHA384 = Parse("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384");
     }
 }

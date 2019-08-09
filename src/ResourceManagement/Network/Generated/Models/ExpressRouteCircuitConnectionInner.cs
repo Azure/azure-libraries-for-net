@@ -45,18 +45,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Customer addresses for tunnels.</param>
         /// <param name="authorizationKey">The authorization key.</param>
         /// <param name="circuitConnectionStatus">Express Route Circuit
-        /// Connection State. Possible values are: 'Connected' and
-        /// 'Disconnected'. Possible values include: 'Connected', 'Connecting',
-        /// 'Disconnected'</param>
+        /// connection state. Possible values include: 'Connected',
+        /// 'Connecting', 'Disconnected'</param>
         /// <param name="provisioningState">Provisioning state of the circuit
-        /// connection resource. Possible values are: 'Succeded', 'Updating',
+        /// connection resource. Possible values are: 'Succeeded', 'Updating',
         /// 'Deleting', and 'Failed'.</param>
         /// <param name="name">Gets name of the resource that is unique within
         /// a resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRouteCircuitConnectionInner(string id = default(string), Management.ResourceManager.Fluent.SubResource expressRouteCircuitPeering = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource peerExpressRouteCircuitPeering = default(Management.ResourceManager.Fluent.SubResource), string addressPrefix = default(string), string authorizationKey = default(string), CircuitConnectionStatus circuitConnectionStatus = default(CircuitConnectionStatus), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        /// <param name="type">Type of the resource.</param>
+        public ExpressRouteCircuitConnectionInner(string id = default(string), Management.ResourceManager.Fluent.SubResource expressRouteCircuitPeering = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource peerExpressRouteCircuitPeering = default(Management.ResourceManager.Fluent.SubResource), string addressPrefix = default(string), string authorizationKey = default(string), CircuitConnectionStatus circuitConnectionStatus = default(CircuitConnectionStatus), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             ExpressRouteCircuitPeering = expressRouteCircuitPeering;
@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -103,16 +104,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string AuthorizationKey { get; set; }
 
         /// <summary>
-        /// Gets express Route Circuit Connection State. Possible values are:
-        /// 'Connected' and 'Disconnected'. Possible values include:
-        /// 'Connected', 'Connecting', 'Disconnected'
+        /// Gets or sets express Route Circuit connection state. Possible
+        /// values include: 'Connected', 'Connecting', 'Disconnected'
         /// </summary>
         [JsonProperty(PropertyName = "properties.circuitConnectionStatus")]
-        public CircuitConnectionStatus CircuitConnectionStatus { get; private set; }
+        public CircuitConnectionStatus CircuitConnectionStatus { get; set; }
 
         /// <summary>
         /// Gets provisioning state of the circuit connection resource.
-        /// Possible values are: 'Succeded', 'Updating', 'Deleting', and
+        /// Possible values are: 'Succeeded', 'Updating', 'Deleting', and
         /// 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
@@ -131,6 +131,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

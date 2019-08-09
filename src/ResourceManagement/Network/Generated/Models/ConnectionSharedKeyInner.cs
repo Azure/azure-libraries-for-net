@@ -8,14 +8,16 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Response for GetConnectionSharedKey API service call
+    /// Response for GetConnectionSharedKey API service call.
     /// </summary>
-    public partial class ConnectionSharedKeyInner
+    public partial class ConnectionSharedKeyInner : Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionSharedKeyInner class.
@@ -30,7 +32,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="value">The virtual network connection shared key
         /// value.</param>
-        public ConnectionSharedKeyInner(string value)
+        public ConnectionSharedKeyInner(string value, string id = default(string))
+            : base(id)
         {
             Value = value;
             CustomInit();
