@@ -187,6 +187,39 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithExistingSubnet(network, subnetName);
         }
 
+
+
+        /// <summary>
+        /// Specifies webApplicationFirewallConfiguration with default values.
+        /// </summary>
+        /// <param name="enabled">enable the firewall when created</param>
+        /// <param name="mode">Web application firewall mode.</param>
+        /// <returns>The next stage of the definition</returns>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithWebApplicationFirewall.WithWebApplicationFirewall(bool enabled, ApplicationGatewayFirewallMode mode)
+        {
+            return this.WithWebApplicationFirewall(enabled, mode);
+        }
+
+        /// <summary>
+        /// Specifies web application firewall configuration.
+        /// </summary>
+        /// <param name="webApplicationFirewallConfiguration">Set web application firewall configuration</param>
+        /// <returns>The next stage of the definition</returns>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithWebApplicationFirewall.WithWebApplicationFirewall(ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration)
+        {
+            return this.WithWebApplicationFirewall(webApplicationFirewallConfiguration);
+        }
+
+        /// <summary>
+        /// Specifies webApplicationFirewallConfiguration
+        /// </summary>
+        /// <param name="config">Web application firewall configuration</param>
+        /// <returns>The next stage of the definition</returns>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithWebApplicationFirewall.WithWebApplicationFirewall(ApplicationGatewayWebApplicationFirewallConfiguration config)
+        {
+            return this.WithWebApplicationFirewall(config);
+        }
+
         /// <summary>
         /// Specifies the capacity (number of instances) for the application gateway.
         /// </summary>
@@ -196,6 +229,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithInstanceCount(instanceCount);
         }
+
 
         /// <summary>
         /// Specifies the capacity (number of instances) for the application gateway.
@@ -813,12 +847,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithExistingPublicIPAddress(resourceId);
         }
 
+
+        /// <summary>
+        /// Set tier of an application gateway. Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'.
+        /// </summary>
+        /// <param name="tier">The tier value to set</param>
+        /// <returns>The next stage of the update</returns>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSku.WithTier(ApplicationGatewayTier tier)
+        {
+            return this.WithTier(tier);
+        }
+
+        /// <summary>
+        /// Set tier of an application gateway. Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'.
+        /// </summary>
+        /// <param name="tier">The tier value to set</param>
+        /// <returns>The next stage of the definition</returns>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithSku.WithTier(ApplicationGatewayTier tier)
+        {
+            return this.WithTier(tier);
+        }
+
         /// <summary>
         /// Specifies the size of the application gateway to use within the context of the selected tier.
         /// </summary>
         /// <param name="size">An application gateway size name.</param>
         /// <return>The next stage of the update.</return>
-        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSize.WithSize(ApplicationGatewaySkuName size)
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSku.WithSize(ApplicationGatewaySkuName size)
         {
             return this.WithSize(size);
         }
@@ -829,7 +884,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="size">An application gateway SKU name.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithSize.WithSize(ApplicationGatewaySkuName size)
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithSku.WithSize(ApplicationGatewaySkuName size)
         {
             return this.WithSize(size);
         }
