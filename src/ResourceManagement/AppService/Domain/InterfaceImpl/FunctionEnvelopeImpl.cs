@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the file list.
         /// </summary>
-        IDictionary<string, string> IFunctionEnvelope.Files
+        IReadOnlyDictionary<string, string> IFunctionEnvelope.Files
         {
             get
             {

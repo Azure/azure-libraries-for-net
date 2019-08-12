@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the file list.
         /// </summary>
-        IDictionary<string, string> Files { get; }
+        IReadOnlyDictionary<string, string> Files { get; }
 
         /// <summary>
         /// Gets the test data used when testing via the Azure Portal.

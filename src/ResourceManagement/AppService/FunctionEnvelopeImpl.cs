@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     internal partial class FunctionEnvelopeImpl :
         Wrapper<Models.FunctionEnvelopeInner>,
@@ -74,9 +75,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.Inner.Config;
         }
 
-        public IDictionary<string, string> Files()
+        public IReadOnlyDictionary<string, string> Files()
         {
-            return this.Inner.Files;
+            return new ReadOnlyDictionary<string, string>(this.Inner.Files == null ? new Dictionary<string, string>() : this.Inner.Files);
         }
 
         public string TestData()
