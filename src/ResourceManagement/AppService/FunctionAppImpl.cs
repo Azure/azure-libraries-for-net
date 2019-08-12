@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private IStorageAccount storageAccountToSet;
         private IStorageAccount currentStorageAccount;
         private FunctionCredentials functionCredentials;
-        
+
         public Fluent.IFunctionDeploymentSlots DeploymentSlots()
         {
             if (deploymentSlots == null)
@@ -137,13 +137,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
             else
             {
+                IAppServicePlan servicePlan = await Manager.AppServicePlans.GetByIdAsync(this.AppServicePlanId());
+                bool isConsumptionPlan = IsConsumptionAppServicePlan(servicePlan.PricingTier);
+
                 var keys = await storageAccountToSet.GetKeysAsync(cancellationToken);
                 var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
                     storageAccountToSet.Name, keys[0].Value);
                 WithAppSetting("AzureWebJobsStorage", connectionString);
                 WithAppSetting("AzureWebJobsDashboard", connectionString);
-                WithAppSetting("WEBSITE_CONTENTAZUREFILECONNECTIONSTRING", connectionString);
-                WithAppSetting("WEBSITE_CONTENTSHARE", SdkContext.RandomResourceName(Name, 32));
+                if (isConsumptionPlan)
+                {
+                    WithAppSetting("WEBSITE_CONTENTAZUREFILECONNECTIONSTRING", connectionString);
+                    WithAppSetting("WEBSITE_CONTENTSHARE", SdkContext.RandomResourceName(Name, 32));
+                }
 
                 // clean up
                 currentStorageAccount = storageAccountToSet;
@@ -154,17 +160,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        private bool IsConsumptionAppServicePlan(PricingTier pricingTier)
+        {
+            SkuDescription description = pricingTier.SkuDescription;
+            return !(description.Tier.Equals("Basic", StringComparison.OrdinalIgnoreCase)
+                || description.Tier.Equals("Standard", StringComparison.OrdinalIgnoreCase)
+                || description.Tier.Equals("Premium", StringComparison.OrdinalIgnoreCase));
+        }
+
         public override async Task<IFunctionApp> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
         {
-            if (Inner.ServerFarmId == null)
+            if (IsInCreateMode)
             {
-                WithNewConsumptionPlan();
-            }
-            if (currentStorageAccount == null && storageAccountToSet == null && storageAccountCreatable == null)
+                if (Inner.ServerFarmId == null)
+                {
+                    WithNewConsumptionPlan();
+                }
+                if (currentStorageAccount == null && storageAccountToSet == null && storageAccountCreatable == null)
+                {
+                    WithNewStorageAccount(SdkContext.RandomResourceName(Name, 20).Replace("-", String.Empty), Storage.Fluent.Models.SkuName.StandardGRS);
+                }
+            } else
             {
-                WithNewStorageAccount(SdkContext.RandomResourceName(Name, 20).Replace("-", String.Empty), Storage.Fluent.Models.SkuName.StandardGRS);
+                // for Update+Apply, skip check null and create new app service plan and storage account, use existing ones if caller does not specify otherwise
             }
-            return await base.CreateAsync(cancellationToken);
+            return await base.CreateAsync(cancellationToken, multiThreaded);
         }
 
         public override FunctionAppImpl WithExistingAppServicePlan(IAppServicePlan appServicePlan)
