@@ -148,6 +148,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         int InstanceCount { get; }
 
+
+        /// <summary>
+        /// Gets the auto scalse configuration value.
+        /// </summary>
+        ApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; }
+
+        /// <summary>
+        /// Gets the WebApplicationFirewallConfiguration value.
+        /// </summary>
+        ApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; }
+
         /// <summary>
         /// Gets frontend IP configurations with a public IP address, indexed by name.
         /// </summary>

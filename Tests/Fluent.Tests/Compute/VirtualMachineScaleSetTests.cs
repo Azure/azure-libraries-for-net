@@ -25,6 +25,8 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent;
 
+using ResourceIdentityType = Microsoft.Azure.Management.Compute.Fluent.Models.ResourceIdentityType;
+
 namespace Fluent.Tests.Compute.VirtualMachine
 {
     public class ScaleSet
