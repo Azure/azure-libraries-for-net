@@ -137,15 +137,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
             else
             {
-                IAppServicePlan servicePlan = await Manager.AppServicePlans.GetByIdAsync(this.AppServicePlanId());
-                bool isConsumptionPlan = IsConsumptionAppServicePlan(servicePlan.PricingTier);
-
+                var servicePlanTask = Manager.AppServicePlans.GetByIdAsync(this.AppServicePlanId());
                 var keys = await storageAccountToSet.GetKeysAsync(cancellationToken);
                 var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
                     storageAccountToSet.Name, keys[0].Value);
                 WithAppSetting("AzureWebJobsStorage", connectionString);
                 WithAppSetting("AzureWebJobsDashboard", connectionString);
-                if (isConsumptionPlan)
+                if (IsConsumptionAppServicePlan((await servicePlanTask)?.PricingTier))
                 {
                     WithAppSetting("WEBSITE_CONTENTAZUREFILECONNECTIONSTRING", connectionString);
                     WithAppSetting("WEBSITE_CONTENTSHARE", SdkContext.RandomResourceName(Name, 32));
@@ -162,6 +160,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         private bool IsConsumptionAppServicePlan(PricingTier pricingTier)
         {
+            if (pricingTier == null || pricingTier.SkuDescription == null)
+            {
+                return true;
+            }
+
             SkuDescription description = pricingTier.SkuDescription;
             return !(description.Tier.Equals("Basic", StringComparison.OrdinalIgnoreCase)
                 || description.Tier.Equals("Standard", StringComparison.OrdinalIgnoreCase)
@@ -180,9 +183,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 {
                     WithNewStorageAccount(SdkContext.RandomResourceName(Name, 20).Replace("-", String.Empty), Storage.Fluent.Models.SkuName.StandardGRS);
                 }
-            } else
-            {
-                // for Update+Apply, skip check null and create new app service plan and storage account, use existing ones if caller does not specify otherwise
             }
             return await base.CreateAsync(cancellationToken, multiThreaded);
         }
