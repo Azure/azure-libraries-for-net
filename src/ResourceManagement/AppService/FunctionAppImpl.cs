@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     WithNewStorageAccount(SdkContext.RandomResourceName(Name, 20).Replace("-", String.Empty), Storage.Fluent.Models.SkuName.StandardGRS);
                 }
             }
-            return await base.CreateAsync(cancellationToken, multiThreaded);
+            return await base.CreateAsync(cancellationToken);
         }
 
         public override FunctionAppImpl WithExistingAppServicePlan(IAppServicePlan appServicePlan)
