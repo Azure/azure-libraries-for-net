@@ -4,9 +4,9 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.AppService.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -48,7 +48,7 @@ namespace Fluent.Tests.WebApp
                     Assert.Equal(new PricingTier("Dynamic", "Y1"), plan1.PricingTier);
 
                     // List functions of App1 before deployement
-                    IPagedCollection<IFunctionEnvelope> envelopes = functionApp1.ListFunctions();
+                    IEnumerable<IFunctionEnvelope> envelopes = functionApp1.ListFunctions();
                     Assert.Empty(envelopes);
 
                     // Deploy function into App1
@@ -60,6 +60,9 @@ namespace Fluent.Tests.WebApp
                     // List functions of App1 after deployement
                     envelopes = functionApp1.ListFunctions();
                     Assert.Single(envelopes);
+
+                    IPagedCollection<IFunctionEnvelope> envelopesFromAsync = Extensions.Synchronize(() => functionApp1.ListFunctionsAsync(true));
+                    Assert.Single(envelopesFromAsync);
 
                     // Verify function envelope
                     IFunctionEnvelope envelope = envelopes.First();

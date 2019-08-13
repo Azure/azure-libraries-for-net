@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// List the functions
         /// </summary>
-        IPagedCollection<IFunctionEnvelope> ListFunctions();
+        IEnumerable<IFunctionEnvelope> ListFunctions();
 
         /// <summary>
         /// List the functions

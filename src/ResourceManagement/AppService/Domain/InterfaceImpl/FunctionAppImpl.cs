@@ -1656,7 +1656,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        IPagedCollection<IFunctionEnvelope> IFunctionApp.ListFunctions()
+        IEnumerable<IFunctionEnvelope> IFunctionApp.ListFunctions()
         {
             return this.ListFunctions();
         }

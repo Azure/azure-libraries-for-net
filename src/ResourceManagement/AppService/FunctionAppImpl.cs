@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Collections.ObjectModel;
     using System.IO;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using System.Collections;
 
     /// <summary>
     /// The implementation for FunctionApp.
@@ -692,19 +693,30 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        public IPagedCollection<IFunctionEnvelope> ListFunctions()
+        public IEnumerable<IFunctionEnvelope> ListFunctions()
         {
-            return Extensions.Synchronize(() => this.ListFunctionsAsync());
+            return WrapListFunctionEnvelope(Extensions.Synchronize(() => Manager.FunctionApps.Inner.ListFunctionsAsync(ResourceGroupName, Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.FunctionApps.Inner.ListFunctionsNextAsync(link))));
         }
 
         public async Task<IPagedCollection<IFunctionEnvelope>> ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IFunctionEnvelope, FunctionEnvelopeInner>.LoadPage(
-                async (cancellation) => await this.Manager.FunctionApps.Inner.ListFunctionsAsync(this.ResourceGroupName, this.Name, cancellation),
-                this.Manager.FunctionApps.Inner.ListFunctionsNextAsync,
-                inner => new FunctionEnvelopeImpl(inner),
+                async (cancellation) => await Manager.FunctionApps.Inner.ListFunctionsAsync(ResourceGroupName, Name, cancellation),
+                Manager.FunctionApps.Inner.ListFunctionsNextAsync,
+                WrapModelFunctionEnvelope,
                 loadAllPages,
                 cancellationToken);
+        }
+
+        protected IFunctionEnvelope WrapModelFunctionEnvelope(FunctionEnvelopeInner inner)
+        {
+            return new FunctionEnvelopeImpl(inner);
+        }
+
+        protected IEnumerable<IFunctionEnvelope> WrapListFunctionEnvelope(IEnumerable<FunctionEnvelopeInner> innerList)
+        {
+            return innerList.Select(inner => WrapModelFunctionEnvelope(inner));
         }
 
         public void SyncTriggers()
