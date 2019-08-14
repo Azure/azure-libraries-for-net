@@ -693,10 +693,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        public IEnumerable<IFunctionEnvelope> ListFunctions()
+        public IReadOnlyList<IFunctionEnvelope> ListFunctions()
         {
             return WrapListFunctionEnvelope(Extensions.Synchronize(() => Manager.FunctionApps.Inner.ListFunctionsAsync(ResourceGroupName, Name))
-                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.FunctionApps.Inner.ListFunctionsNextAsync(link))));
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.FunctionApps.Inner.ListFunctionsNextAsync(link))))
+                .ToList().AsReadOnly();
         }
 
         public async Task<IPagedCollection<IFunctionEnvelope>> ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
