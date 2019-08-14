@@ -32,9 +32,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the RecommendedIndex class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="action">The proposed index action. You can create a
         /// missing index, drop an unused index, or rebuild an existing index
         /// to improve its performance. Possible values include: 'Create',

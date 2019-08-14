@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public static partial class RecommendedElasticPoolsOperationsExtensions
     {
             /// <summary>
-            /// Gets a recommented elastic pool.
+            /// Gets a recommended elastic pool.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<RecommendedElasticPoolInner> GetAsync(this IRecommendedElasticPoolsOperations operations, string resourceGroupName, string serverName, string recommendedElasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, recommendedElasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, recommendedElasticPoolName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -66,14 +66,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<RecommendedElasticPoolInner>> ListByServerAsync(this IRecommendedElasticPoolsOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Returns recommented elastic pool metrics.
+            /// Returns recommended elastic pool metrics.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<RecommendedElasticPoolMetric>> ListMetricsAsync(this IRecommendedElasticPoolsOperations operations, string resourceGroupName, string serverName, string recommendedElasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, serverName, recommendedElasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, serverName, recommendedElasticPoolName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

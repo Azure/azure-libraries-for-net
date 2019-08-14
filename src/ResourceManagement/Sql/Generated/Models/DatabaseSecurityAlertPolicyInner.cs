@@ -35,16 +35,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="state">Specifies the state of the policy. If state is
         /// Enabled, storageEndpoint and storageAccountAccessKey are required.
         /// Possible values include: 'New', 'Enabled', 'Disabled'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
         /// <param name="kind">Resource kind.</param>
         /// <param name="disabledAlerts">Specifies the semicolon-separated list
         /// of alerts that are disabled, or empty string to disable no alerts.
         /// Possible values: Sql_Injection; Sql_Injection_Vulnerability;
-        /// Access_Anomaly; Usage_Anomaly.</param>
+        /// Access_Anomaly; Data_Exfiltration; Unsafe_Action.</param>
         /// <param name="emailAddresses">Specifies the semicolon-separated list
         /// of e-mail addresses to which the alert is sent.</param>
         /// <param name="emailAccountAdmins">Specifies that the alert is sent
@@ -107,7 +104,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Gets or sets specifies the semicolon-separated list of alerts that
         /// are disabled, or empty string to disable no alerts. Possible
         /// values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
-        /// Usage_Anomaly.
+        /// Data_Exfiltration; Unsafe_Action.
         /// </summary>
         [JsonProperty(PropertyName = "properties.disabledAlerts")]
         public string DisabledAlerts { get; set; }

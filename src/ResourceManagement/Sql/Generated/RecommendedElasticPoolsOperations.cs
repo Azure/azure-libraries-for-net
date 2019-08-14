@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public SqlManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a recommented elastic pool.
+        /// Gets a recommended elastic pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Returns recommented elastic pool metrics.
+        /// Returns recommended elastic pool metrics.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain

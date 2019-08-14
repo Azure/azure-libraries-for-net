@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public partial interface IRecommendedElasticPoolsOperations
     {
         /// <summary>
-        /// Gets a recommented elastic pool.
+        /// Gets a recommended elastic pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<RecommendedElasticPoolInner>>> ListByServerWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Returns recommented elastic pool metrics.
+        /// Returns recommended elastic pool metrics.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can

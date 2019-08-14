@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public partial class SqlManagementClient : FluentServiceClientBase<SqlManagementClient>, ISqlManagementClient, IAzureClient
     {
         /// <summary>
+        /// The base URI of the service.
+        /// </summary>
+        //public System.Uri BaseUri { get; set; }
+
+        /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
         public JsonSerializerSettings SerializationSettings { get; private set; }
@@ -39,24 +44,30 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
+        /// Credentials needed for the client to connect to Azure.
+        /// </summary>
+        //public ServiceClientCredentials Credentials { get; private set; }
+
+        /// <summary>
         /// The subscription ID that identifies an Azure subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -131,6 +142,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IGeoBackupPoliciesOperations GeoBackupPolicies { get; private set; }
 
         /// <summary>
+        /// Gets the IRecommendedElasticPoolsOperations.
+        /// </summary>
+        public virtual IRecommendedElasticPoolsOperations RecommendedElasticPools { get; private set; }
+
+        /// <summary>
         /// Gets the IReplicationLinksOperations.
         /// </summary>
         public virtual IReplicationLinksOperations ReplicationLinks { get; private set; }
@@ -161,11 +177,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IElasticPoolDatabaseActivitiesOperations ElasticPoolDatabaseActivities { get; private set; }
 
         /// <summary>
-        /// Gets the IRecommendedElasticPoolsOperations.
-        /// </summary>
-        public virtual IRecommendedElasticPoolsOperations RecommendedElasticPools { get; private set; }
-
-        /// <summary>
         /// Gets the IServiceTierAdvisorsOperations.
         /// </summary>
         public virtual IServiceTierAdvisorsOperations ServiceTierAdvisors { get; private set; }
@@ -189,11 +200,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the IDatabaseUsagesOperations.
         /// </summary>
         public virtual IDatabaseUsagesOperations DatabaseUsages { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IDatabaseBlobAuditingPoliciesOperations DatabaseBlobAuditingPolicies { get; private set; }
 
         /// <summary>
         /// Gets the IDatabaseAutomaticTuningOperations.
@@ -241,9 +247,104 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual ISubscriptionUsagesOperations SubscriptionUsages { get; private set; }
 
         /// <summary>
+        /// Gets the IVirtualClustersOperations.
+        /// </summary>
+        public virtual IVirtualClustersOperations VirtualClusters { get; private set; }
+
+        /// <summary>
         /// Gets the IVirtualNetworkRulesOperations.
         /// </summary>
         public virtual IVirtualNetworkRulesOperations VirtualNetworkRules { get; private set; }
+
+        /// <summary>
+        /// Gets the IExtendedDatabaseBlobAuditingPoliciesOperations.
+        /// </summary>
+        public virtual IExtendedDatabaseBlobAuditingPoliciesOperations ExtendedDatabaseBlobAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IExtendedServerBlobAuditingPoliciesOperations.
+        /// </summary>
+        public virtual IExtendedServerBlobAuditingPoliciesOperations ExtendedServerBlobAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerBlobAuditingPoliciesOperations.
+        /// </summary>
+        public virtual IServerBlobAuditingPoliciesOperations ServerBlobAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseBlobAuditingPoliciesOperations.
+        /// </summary>
+        public virtual IDatabaseBlobAuditingPoliciesOperations DatabaseBlobAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseVulnerabilityAssessmentRuleBaselinesOperations.
+        /// </summary>
+        public virtual IDatabaseVulnerabilityAssessmentRuleBaselinesOperations DatabaseVulnerabilityAssessmentRuleBaselines { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseVulnerabilityAssessmentsOperations.
+        /// </summary>
+        public virtual IDatabaseVulnerabilityAssessmentsOperations DatabaseVulnerabilityAssessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobAgentsOperations.
+        /// </summary>
+        public virtual IJobAgentsOperations JobAgents { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobCredentialsOperations.
+        /// </summary>
+        public virtual IJobCredentialsOperations JobCredentials { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobExecutionsOperations.
+        /// </summary>
+        public virtual IJobExecutionsOperations JobExecutions { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobsOperations.
+        /// </summary>
+        public virtual IJobsOperations Jobs { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobStepExecutionsOperations.
+        /// </summary>
+        public virtual IJobStepExecutionsOperations JobStepExecutions { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobStepsOperations.
+        /// </summary>
+        public virtual IJobStepsOperations JobSteps { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobTargetExecutionsOperations.
+        /// </summary>
+        public virtual IJobTargetExecutionsOperations JobTargetExecutions { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobTargetGroupsOperations.
+        /// </summary>
+        public virtual IJobTargetGroupsOperations JobTargetGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IJobVersionsOperations.
+        /// </summary>
+        public virtual IJobVersionsOperations JobVersions { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedBackupShortTermRetentionPoliciesOperations.
+        /// </summary>
+        public virtual IManagedBackupShortTermRetentionPoliciesOperations ManagedBackupShortTermRetentionPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations.
+        /// </summary>
+        public virtual IManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies { get; private set; }
 
         /// <summary>
         /// Gets the IServerAutomaticTuningOperations.
@@ -256,9 +357,34 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IServerDnsAliasesOperations ServerDnsAliases { get; private set; }
 
         /// <summary>
+        /// Gets the IServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedManagedDatabasesOperations.
+        /// </summary>
+        public virtual IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; private set; }
+
+        /// <summary>
         /// Gets the IRestorePointsOperations.
         /// </summary>
         public virtual IRestorePointsOperations RestorePoints { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseSecurityAlertPoliciesOperations.
+        /// </summary>
+        public virtual IManagedDatabaseSecurityAlertPoliciesOperations ManagedDatabaseSecurityAlertPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        public virtual IManagedServerSecurityAlertPoliciesOperations ManagedServerSecurityAlertPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the ISensitivityLabelsOperations.
+        /// </summary>
+        public virtual ISensitivityLabelsOperations SensitivityLabels { get; private set; }
 
         /// <summary>
         /// Gets the IDatabaseOperations.
@@ -271,12 +397,289 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IElasticPoolOperations ElasticPoolOperations { get; private set; }
 
         /// <summary>
+        /// Gets the IDatabaseVulnerabilityAssessmentScansOperations.
+        /// </summary>
+        public virtual IDatabaseVulnerabilityAssessmentScansOperations DatabaseVulnerabilityAssessmentScans { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseVulnerabilityAssessmentRuleBaselinesOperations.
+        /// </summary>
+        public virtual IManagedDatabaseVulnerabilityAssessmentRuleBaselinesOperations ManagedDatabaseVulnerabilityAssessmentRuleBaselines { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseVulnerabilityAssessmentScansOperations.
+        /// </summary>
+        public virtual IManagedDatabaseVulnerabilityAssessmentScansOperations ManagedDatabaseVulnerabilityAssessmentScans { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseVulnerabilityAssessmentsOperations.
+        /// </summary>
+        public virtual IManagedDatabaseVulnerabilityAssessmentsOperations ManagedDatabaseVulnerabilityAssessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInstanceFailoverGroupsOperations.
+        /// </summary>
+        public virtual IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupShortTermRetentionPoliciesOperations.
+        /// </summary>
+        public virtual IBackupShortTermRetentionPoliciesOperations BackupShortTermRetentionPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the ITdeCertificatesOperations.
+        /// </summary>
+        public virtual ITdeCertificatesOperations TdeCertificates { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstanceTdeCertificatesOperations.
+        /// </summary>
+        public virtual IManagedInstanceTdeCertificatesOperations ManagedInstanceTdeCertificates { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstanceKeysOperations.
+        /// </summary>
+        public virtual IManagedInstanceKeysOperations ManagedInstanceKeys { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstanceEncryptionProtectorsOperations.
+        /// </summary>
+        public virtual IManagedInstanceEncryptionProtectorsOperations ManagedInstanceEncryptionProtectors { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecoverableManagedDatabasesOperations.
+        /// </summary>
+        public virtual IRecoverableManagedDatabasesOperations RecoverableManagedDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstanceVulnerabilityAssessmentsOperations.
+        /// </summary>
+        public virtual IManagedInstanceVulnerabilityAssessmentsOperations ManagedInstanceVulnerabilityAssessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerVulnerabilityAssessmentsOperations.
+        /// </summary>
+        public virtual IServerVulnerabilityAssessmentsOperations ServerVulnerabilityAssessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseSensitivityLabelsOperations.
+        /// </summary>
+        public virtual IManagedDatabaseSensitivityLabelsOperations ManagedDatabaseSensitivityLabels { get; private set; }
+
+        /// <summary>
+        /// Gets the IInstancePoolsOperations.
+        /// </summary>
+        public virtual IInstancePoolsOperations InstancePools { get; private set; }
+
+        /// <summary>
+        /// Gets the IUsagesOperations.
+        /// </summary>
+        public virtual IUsagesOperations Usages { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstancesOperations.
+        /// </summary>
+        public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        //protected SqlManagementClient(params DelegatingHandler[] handlers) : base(handlers)
+        //{
+        //    Initialize();
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='rootHandler'>
+        /// Optional. The http client handler used to handle http transport.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        //protected SqlManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        //{
+        //    Initialize();
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='baseUri'>
+        /// Optional. The base URI of the service.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        //protected SqlManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        //{
+        //    if (baseUri == null)
+        //    {
+        //        throw new System.ArgumentNullException("baseUri");
+        //    }
+        //    BaseUri = baseUri;
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='baseUri'>
+        /// Optional. The base URI of the service.
+        /// </param>
+        /// <param name='rootHandler'>
+        /// Optional. The http client handler used to handle http transport.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        //protected SqlManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        //{
+        //    if (baseUri == null)
+        //    {
+        //        throw new System.ArgumentNullException("baseUri");
+        //    }
+        //    BaseUri = baseUri;
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='credentials'>
+        /// Required. Credentials needed for the client to connect to Azure.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        //public SqlManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        //{
+        //    if (credentials == null)
+        //    {
+        //        throw new System.ArgumentNullException("credentials");
+        //    }
+        //    Credentials = credentials;
+        //    if (Credentials != null)
+        //    {
+        //        Credentials.InitializeServiceClient(this);
+        //    }
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='credentials'>
+        /// Required. Credentials needed for the client to connect to Azure.
+        /// </param>
+        /// <param name='rootHandler'>
+        /// Optional. The http client handler used to handle http transport.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        //public SqlManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        //{
+        //    if (credentials == null)
+        //    {
+        //        throw new System.ArgumentNullException("credentials");
+        //    }
+        //    Credentials = credentials;
+        //    if (Credentials != null)
+        //    {
+        //        Credentials.InitializeServiceClient(this);
+        //    }
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='baseUri'>
+        /// Optional. The base URI of the service.
+        /// </param>
+        /// <param name='credentials'>
+        /// Required. Credentials needed for the client to connect to Azure.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        //public SqlManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        //{
+        //    if (baseUri == null)
+        //    {
+        //        throw new System.ArgumentNullException("baseUri");
+        //    }
+        //    if (credentials == null)
+        //    {
+        //        throw new System.ArgumentNullException("credentials");
+        //    }
+        //    BaseUri = baseUri;
+        //    Credentials = credentials;
+        //    if (Credentials != null)
+        //    {
+        //        Credentials.InitializeServiceClient(this);
+        //    }
+        //}
+
+        /// <summary>
+        /// Initializes a new instance of the SqlManagementClient class.
+        /// </summary>
+        /// <param name='baseUri'>
+        /// Optional. The base URI of the service.
+        /// </param>
+        /// <param name='credentials'>
+        /// Required. Credentials needed for the client to connect to Azure.
+        /// </param>
+        /// <param name='rootHandler'>
+        /// Optional. The http client handler used to handle http transport.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        //public SqlManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        //{
+        //    if (baseUri == null)
+        //    {
+        //        throw new System.ArgumentNullException("baseUri");
+        //    }
+        //    if (credentials == null)
+        //    {
+        //        throw new System.ArgumentNullException("credentials");
+        //    }
+        //    BaseUri = baseUri;
+        //    Credentials = credentials;
+        //    if (Credentials != null)
+        //    {
+        //        Credentials.InitializeServiceClient(this);
+        //    }
+        //}
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SqlManagementClient(RestClient restClient) 
+        public SqlManagementClient(RestClient restClient)
             : base(restClient)
         {
         }
@@ -304,19 +707,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             ElasticPools = new ElasticPoolsOperations(this);
             FirewallRules = new FirewallRulesOperations(this);
             GeoBackupPolicies = new GeoBackupPoliciesOperations(this);
+            RecommendedElasticPools = new RecommendedElasticPoolsOperations(this);
             ReplicationLinks = new ReplicationLinksOperations(this);
             ServerAzureADAdministrators = new ServerAzureADAdministratorsOperations(this);
             ServerCommunicationLinks = new ServerCommunicationLinksOperations(this);
             ServiceObjectives = new ServiceObjectivesOperations(this);
             ElasticPoolActivities = new ElasticPoolActivitiesOperations(this);
             ElasticPoolDatabaseActivities = new ElasticPoolDatabaseActivitiesOperations(this);
-            RecommendedElasticPools = new RecommendedElasticPoolsOperations(this);
             ServiceTierAdvisors = new ServiceTierAdvisorsOperations(this);
             TransparentDataEncryptions = new TransparentDataEncryptionsOperations(this);
             TransparentDataEncryptionActivities = new TransparentDataEncryptionActivitiesOperations(this);
             ServerUsages = new ServerUsagesOperations(this);
             DatabaseUsages = new DatabaseUsagesOperations(this);
-            DatabaseBlobAuditingPolicies = new DatabaseBlobAuditingPoliciesOperations(this);
             DatabaseAutomaticTuning = new DatabaseAutomaticTuningOperations(this);
             EncryptionProtectors = new EncryptionProtectorsOperations(this);
             FailoverGroups = new FailoverGroupsOperations(this);
@@ -326,12 +728,53 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             SyncGroups = new SyncGroupsOperations(this);
             SyncMembers = new SyncMembersOperations(this);
             SubscriptionUsages = new SubscriptionUsagesOperations(this);
+            VirtualClusters = new VirtualClustersOperations(this);
             VirtualNetworkRules = new VirtualNetworkRulesOperations(this);
+            ExtendedDatabaseBlobAuditingPolicies = new ExtendedDatabaseBlobAuditingPoliciesOperations(this);
+            ExtendedServerBlobAuditingPolicies = new ExtendedServerBlobAuditingPoliciesOperations(this);
+            ServerBlobAuditingPolicies = new ServerBlobAuditingPoliciesOperations(this);
+            DatabaseBlobAuditingPolicies = new DatabaseBlobAuditingPoliciesOperations(this);
+            DatabaseVulnerabilityAssessmentRuleBaselines = new DatabaseVulnerabilityAssessmentRuleBaselinesOperations(this);
+            DatabaseVulnerabilityAssessments = new DatabaseVulnerabilityAssessmentsOperations(this);
+            JobAgents = new JobAgentsOperations(this);
+            JobCredentials = new JobCredentialsOperations(this);
+            JobExecutions = new JobExecutionsOperations(this);
+            Jobs = new JobsOperations(this);
+            JobStepExecutions = new JobStepExecutionsOperations(this);
+            JobSteps = new JobStepsOperations(this);
+            JobTargetExecutions = new JobTargetExecutionsOperations(this);
+            JobTargetGroups = new JobTargetGroupsOperations(this);
+            JobVersions = new JobVersionsOperations(this);
+            ManagedBackupShortTermRetentionPolicies = new ManagedBackupShortTermRetentionPoliciesOperations(this);
+            ManagedDatabases = new ManagedDatabasesOperations(this);
+            ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies = new ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations(this);
             ServerAutomaticTuning = new ServerAutomaticTuningOperations(this);
             ServerDnsAliases = new ServerDnsAliasesOperations(this);
+            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
+            RestorableDroppedManagedDatabases = new RestorableDroppedManagedDatabasesOperations(this);
             RestorePoints = new RestorePointsOperations(this);
+            ManagedDatabaseSecurityAlertPolicies = new ManagedDatabaseSecurityAlertPoliciesOperations(this);
+            ManagedServerSecurityAlertPolicies = new ManagedServerSecurityAlertPoliciesOperations(this);
+            SensitivityLabels = new SensitivityLabelsOperations(this);
             DatabaseOperations = new DatabaseOperations(this);
             ElasticPoolOperations = new ElasticPoolOperations(this);
+            DatabaseVulnerabilityAssessmentScans = new DatabaseVulnerabilityAssessmentScansOperations(this);
+            ManagedDatabaseVulnerabilityAssessmentRuleBaselines = new ManagedDatabaseVulnerabilityAssessmentRuleBaselinesOperations(this);
+            ManagedDatabaseVulnerabilityAssessmentScans = new ManagedDatabaseVulnerabilityAssessmentScansOperations(this);
+            ManagedDatabaseVulnerabilityAssessments = new ManagedDatabaseVulnerabilityAssessmentsOperations(this);
+            InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
+            BackupShortTermRetentionPolicies = new BackupShortTermRetentionPoliciesOperations(this);
+            TdeCertificates = new TdeCertificatesOperations(this);
+            ManagedInstanceTdeCertificates = new ManagedInstanceTdeCertificatesOperations(this);
+            ManagedInstanceKeys = new ManagedInstanceKeysOperations(this);
+            ManagedInstanceEncryptionProtectors = new ManagedInstanceEncryptionProtectorsOperations(this);
+            RecoverableManagedDatabases = new RecoverableManagedDatabasesOperations(this);
+            ManagedInstanceVulnerabilityAssessments = new ManagedInstanceVulnerabilityAssessmentsOperations(this);
+            ServerVulnerabilityAssessments = new ServerVulnerabilityAssessmentsOperations(this);
+            ManagedDatabaseSensitivityLabels = new ManagedDatabaseSensitivityLabelsOperations(this);
+            InstancePools = new InstancePoolsOperations(this);
+            Usages = new UsagesOperations(this);
+            ManagedInstances = new ManagedInstancesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -365,14 +808,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
-        }
-
-        internal static Dictionary<string, List<string>> SetJsonAcceptHeader()
-        {
-            Dictionary<string, List<string>> header = new Dictionary<string, List<string>>();
-            header.Add("Accept", new List<string>());
-            header["Accept"].Add("application/json");
-            return header;
         }
     }
 }

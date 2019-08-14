@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
     public interface IServerMetric  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ServerUsage>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ServerUsageInner>
     {
         /// <summary>
         /// Gets the units of the metric.

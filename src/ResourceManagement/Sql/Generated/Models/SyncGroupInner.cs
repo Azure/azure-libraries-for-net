@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SyncGroupInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="interval">Sync interval of the sync group.</param>
         /// <param name="lastSyncTime">Last sync time of the sync
         /// group.</param>
@@ -49,7 +46,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// values include: 'NotReady', 'Error', 'Warning', 'Progressing',
         /// 'Good'</param>
         /// <param name="schema">Sync schema of the sync group.</param>
-        public SyncGroupInner(string id = default(string), string name = default(string), string type = default(string), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema))
+        public SyncGroupInner(string id = default(string), string name = default(string), string type = default(string), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), SyncConflictResolutionPolicy conflictResolutionPolicy = default(SyncConflictResolutionPolicy), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), SyncGroupState syncState = default(SyncGroupState), SyncGroupSchema schema = default(SyncGroupSchema))
             : base(id, name, type)
         {
             Interval = interval;
@@ -85,7 +82,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// values include: 'HubWin', 'MemberWin'
         /// </summary>
         [JsonProperty(PropertyName = "properties.conflictResolutionPolicy")]
-        public string ConflictResolutionPolicy { get; set; }
+        public SyncConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets ARM resource id of the sync database in the sync
@@ -111,7 +108,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'NotReady', 'Error', 'Warning', 'Progressing', 'Good'
         /// </summary>
         [JsonProperty(PropertyName = "properties.syncState")]
-        public string SyncState { get; private set; }
+        public SyncGroupState SyncState { get; private set; }
 
         /// <summary>
         /// Gets or sets sync schema of the sync group.

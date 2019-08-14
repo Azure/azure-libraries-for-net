@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAllOptions<ParentT> WithServiceObjective(string serviceLevelObjective);
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAllOptions<ParentT> WithServiceObjective(ServiceObjectiveName serviceLevelObjective);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAllOptions<ParentT> WithEdition(string edition);
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAllOptions<ParentT> WithEdition(DatabaseEdition edition);
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition
         /// </summary>
         /// <param name="createMode">Create mode for the database, should not be default in this flow.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachFinal<ParentT> WithMode(string createMode);
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachFinal<ParentT> WithMode(CreateMode createMode);
     }
 
     /// <summary>

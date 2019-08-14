@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="elasticPoolName">Name of the elastic pool to be created.</param>
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <return>Next stage of the SQL Server definition.</return>
-        SqlServer.Definition.IWithCreate SqlServer.Definition.IWithElasticPool.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
+        SqlServer.Definition.IWithCreate SqlServer.Definition.IWithElasticPool.WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition)
         {
             return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition);
         }
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <param name="databaseNames">Names of the database to be included in the elastic pool.</param>
         /// <return>Next stage of the SQL Server definition.</return>
-        SqlServer.Definition.IWithCreate SqlServer.Definition.IWithElasticPool.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
+        SqlServer.Definition.IWithCreate SqlServer.Definition.IWithElasticPool.WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition, params string[] databaseNames)
         {
             return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition, databaseNames);
         }
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="elasticPoolName">Name of the elastic pool to be created.</param>
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <return>Next stage of the SQL Server update.</return>
-        SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPoolBeta.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
+        SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPoolBeta.WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition)
         {
             return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition);
         }
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <param name="databaseNames">Names of the database to be included in the elastic pool.</param>
         /// <return>Next stage of the SQL Server update.</return>
-        SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPoolBeta.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
+        SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPoolBeta.WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition, params string[] databaseNames)
         {
             return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition, databaseNames);
         }
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the type of Managed Service Identity used for the SQL server.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ManagedServiceIdentityType
+        IdentityType Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ManagedServiceIdentityType
         {
             get
             {

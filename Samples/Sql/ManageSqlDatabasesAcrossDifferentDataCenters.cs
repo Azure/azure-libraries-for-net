@@ -61,7 +61,7 @@ namespace ManageSqlDatabasesAcrossDifferentDataCenters
                 Utilities.Log("Creating a database");
 
                 var masterDatabase = masterSqlServer.Databases.Define(databaseName)
-                        .WithEdition(DatabaseEditions.Basic)
+                        .WithEdition(DatabaseEdition.Basic)
                         .Create();
                 Utilities.PrintDatabase(masterDatabase);
 

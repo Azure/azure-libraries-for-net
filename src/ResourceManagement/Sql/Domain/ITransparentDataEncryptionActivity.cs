@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// An immutable client-side representation of an Azure SQL database's TransparentDataEncryptionActivity.
     /// </summary>
     public interface ITransparentDataEncryptionActivity  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.TransparentDataEncryptionActivity>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.TransparentDataEncryptionActivityInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId
@@ -33,6 +33,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the status transparent data encryption of the Azure SQL Database.
         /// </summary>
-        string Status { get; }
+        TransparentDataEncryptionActivityStatus Status { get; }
     }
 }

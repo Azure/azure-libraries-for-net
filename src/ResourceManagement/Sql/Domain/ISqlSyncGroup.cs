@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="endTime">Get logs generated before this time.</param>
         /// <param name="type">The types of logs to retrieve.</param>
         /// <return>A representation of the deferred computation of this call returning the group log property objects if successful.</return>
-        Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>> ListLogsAsync(string startTime, string endTime, string type, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>> ListLogsAsync(string startTime, string endTime, Models.Type type, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets conflict resolution policy of the sync group.
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="endTime">Get logs generated before this time.</param>
         /// <param name="type">The types of logs to retrieve.</param>
         /// <return>The paged list containing the group log property objects if successful.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty> ListLogs(string startTime, string endTime, string type);
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty> ListLogs(string startTime, string endTime, Models.Type type);
 
         /// <summary>
         /// Gets name of the SQL Database to which this Sync Group belongs.

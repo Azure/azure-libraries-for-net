@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxEYXRhYmFzZUV4cG9ydFJlcXVlc3RJbXBs
     internal partial class SqlDatabaseExportRequestImpl :
-        IndexableWrapper<ExportRequestInner>,
+        IndexableWrapper<ExportRequest>,
         IExecutable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseImportExportResponse>,
         ISqlDatabaseExportRequest,
         ISqlDatabaseExportRequestDefinition
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 
         ///GENMHASH:4C56A88569DD86D7F8E3FD98F7FACA96:D9D508B5166E6117F73E0D66BB8CCC59
         public SqlDatabaseExportRequestImpl(SqlDatabaseImpl sqlDatabase, ISqlManager sqlServerManager)
-            : base(new ExportRequestInner())
+            : base(new ExportRequest())
         {
             this.sqlDatabase = sqlDatabase;
             this.sqlServerManager = sqlServerManager;

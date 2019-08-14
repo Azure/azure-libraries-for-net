@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 
         /// <summary>
         /// Gets the edition of the Azure SQL Recommended Elastic Pool. The
-        /// ElasticPoolEditions enumeration contains all the valid editions.
+        /// ElasticPoolEdition enumeration contains all the valid editions.
         /// Possible values include: 'Basic', 'Standard', 'Premium'.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.DatabaseEdition
+        ElasticPoolEdition Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.DatabaseEdition
         {
             get
             {

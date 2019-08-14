@@ -142,14 +142,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6A5C79A9C5D9A772C2F79EEC7408E4A4:13FE8C3F53ABBA3F908A2B33CEEFD2C4
         public Models.ServerKeyType ServerKeyType()
         {
-            return Models.ServerKeyType.Parse(this.Inner.ServerKeyType);
+            return this.Inner.ServerKeyType;
         }
 
         ///GENMHASH:2688473C4BAFA54B9FD7ABA11C3C5F8B:D566CA13B0B70C2E92E17CAEA81BBA31
         public SqlEncryptionProtectorImpl WithServiceManagedServerKey()
         {
             this.Inner.ServerKeyName = "ServiceManaged";
-            this.Inner.ServerKeyType = Models.ServerKeyType.ServiceManaged.Value;
+            this.Inner.ServerKeyType = Models.ServerKeyType.ServiceManaged;
             return this;
         }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public SqlEncryptionProtectorImpl WithAzureKeyVaultServerKey(string serverKeyName)
         {
             this.Inner.ServerKeyName = serverKeyName;
-            this.Inner.ServerKeyType = Models.ServerKeyType.AzureKeyVault.Value;
+            this.Inner.ServerKeyType = Models.ServerKeyType.AzureKeyVault;
             return this;
         }
 

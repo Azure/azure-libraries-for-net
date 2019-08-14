@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the edition of Azure SQL Elastic Pool.
         /// </summary>
-        string Edition { get; }
+        ElasticPoolEdition Edition { get; }
 
         /// <summary>
         /// Adds a new SQL Database to the Elastic Pool.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the state of the Azure SQL Elastic Pool.
         /// </summary>
-        string State { get; }
+        ElasticPoolState State { get; }
 
         /// <return>The information about elastic pool database activities.</return>
         Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivity>> ListDatabaseActivitiesAsync(CancellationToken cancellationToken = default(CancellationToken));

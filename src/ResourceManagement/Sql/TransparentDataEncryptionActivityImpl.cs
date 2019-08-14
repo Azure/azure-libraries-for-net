@@ -10,13 +10,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5UcmFuc3BhcmVudERhdGFFbmNyeXB0aW9uQWN0aXZpdHlJbXBs
     internal partial class TransparentDataEncryptionActivityImpl  :
-        Wrapper<Models.TransparentDataEncryptionActivity>,
+        Wrapper<Models.TransparentDataEncryptionActivityInner>,
         ITransparentDataEncryptionActivity
     {
         private ResourceId resourceId;
 
         ///GENMHASH:EBE49FE507369AC7A8F4328AF938B32D:95FDB4476A86D2D89C844159139FF9F4
-        public TransparentDataEncryptionActivityImpl(TransparentDataEncryptionActivity innerObject) : base(innerObject)
+        public TransparentDataEncryptionActivityImpl(TransparentDataEncryptionActivityInner innerObject) : base(innerObject)
         {
             this.resourceId = ResourceId.FromString(this.Inner.Id);
         }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:06F61EC9451A16F634AEB221D51F2F8C:1ABA34EF946CBD0278FAD778141792B2
-        public string Status()
+        public TransparentDataEncryptionActivityStatus Status()
         {
             return this.Inner.Status;
         }

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// An immutable client-side representation of an Azure SQL ElasticPool's Activity.
     /// </summary>
     public interface IElasticPoolActivity  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ElasticPoolActivity>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ElasticPoolActivityInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,

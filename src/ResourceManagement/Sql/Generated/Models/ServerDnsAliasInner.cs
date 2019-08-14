@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ServerDnsAliasInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="azureDnsRecord">The fully qualified DNS record for
         /// alias</param>
         public ServerDnsAliasInner(string id = default(string), string name = default(string), string type = default(string), string azureDnsRecord = default(string))

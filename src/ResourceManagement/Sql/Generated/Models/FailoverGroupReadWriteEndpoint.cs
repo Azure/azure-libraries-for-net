@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// before failover with data loss is attempted for the read-write
         /// endpoint. If failoverPolicy is Automatic then
         /// failoverWithDataLossGracePeriodMinutes is required.</param>
-        public FailoverGroupReadWriteEndpoint(string failoverPolicy, int? failoverWithDataLossGracePeriodMinutes = default(int?))
+        public FailoverGroupReadWriteEndpoint(ReadWriteEndpointFailoverPolicy failoverPolicy, int? failoverWithDataLossGracePeriodMinutes = default(int?))
         {
             FailoverPolicy = failoverPolicy;
             FailoverWithDataLossGracePeriodMinutes = failoverWithDataLossGracePeriodMinutes;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// include: 'Manual', 'Automatic'
         /// </summary>
         [JsonProperty(PropertyName = "failoverPolicy")]
-        public string FailoverPolicy { get; set; }
+        public ReadWriteEndpointFailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets grace period before failover with data loss is

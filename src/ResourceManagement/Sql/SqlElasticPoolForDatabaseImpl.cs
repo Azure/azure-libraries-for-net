@@ -3,6 +3,7 @@
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.SqlElasticPoolDefinition;
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:CE6E5E981686AB8CE8A830CF9AB6387F:77BD6CF7DC386B312A0C3A51EDE36A6B
-        public SqlElasticPoolForDatabaseImpl WithEdition(string edition)
+        public SqlElasticPoolForDatabaseImpl WithEdition(ElasticPoolEdition edition)
         {
             this.sqlElasticPool.WithEdition(edition);
             return this;

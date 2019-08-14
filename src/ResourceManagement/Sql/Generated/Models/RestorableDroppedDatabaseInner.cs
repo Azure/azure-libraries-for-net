@@ -32,9 +32,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the RestorableDroppedDatabaseInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
         /// <param name="databaseName">The name of the database</param>

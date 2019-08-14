@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents a recommented elastic pool.
+    /// Represents a recommended elastic pool.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RecommendedElasticPoolInner : ProxyResourceInner
@@ -34,13 +34,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the RecommendedElasticPoolInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="databaseEdition">The edition of the recommended
         /// elastic pool. The ElasticPoolEdition enumeration contains all the
         /// valid editions. Possible values include: 'Basic', 'Standard',
-        /// 'Premium'</param>
+        /// 'Premium', 'GeneralPurpose', 'BusinessCritical'</param>
         /// <param name="dtu">The DTU for the recommended elastic pool.</param>
         /// <param name="databaseDtuMin">The minimum DTU for the
         /// database.</param>
@@ -58,7 +55,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Expanded property</param>
         /// <param name="metrics">The list of databases housed in the server.
         /// Expanded property</param>
-        public RecommendedElasticPoolInner(string id = default(string), string name = default(string), string type = default(string), string databaseEdition = default(string), double? dtu = default(double?), double? databaseDtuMin = default(double?), double? databaseDtuMax = default(double?), double? storageMB = default(double?), System.DateTime? observationPeriodStart = default(System.DateTime?), System.DateTime? observationPeriodEnd = default(System.DateTime?), double? maxObservedDtu = default(double?), double? maxObservedStorageMB = default(double?), IList<DatabaseInner> databases = default(IList<DatabaseInner>), IList<RecommendedElasticPoolMetric> metrics = default(IList<RecommendedElasticPoolMetric>))
+        public RecommendedElasticPoolInner(string id = default(string), string name = default(string), string type = default(string), ElasticPoolEdition databaseEdition = default(ElasticPoolEdition), double? dtu = default(double?), double? databaseDtuMin = default(double?), double? databaseDtuMax = default(double?), double? storageMB = default(double?), System.DateTime? observationPeriodStart = default(System.DateTime?), System.DateTime? observationPeriodEnd = default(System.DateTime?), double? maxObservedDtu = default(double?), double? maxObservedStorageMB = default(double?), IList<DatabaseInner> databases = default(IList<DatabaseInner>), IList<RecommendedElasticPoolMetric> metrics = default(IList<RecommendedElasticPoolMetric>))
             : base(id, name, type)
         {
             DatabaseEdition = databaseEdition;
@@ -83,10 +80,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Gets the edition of the recommended elastic pool. The
         /// ElasticPoolEdition enumeration contains all the valid editions.
-        /// Possible values include: 'Basic', 'Standard', 'Premium'
+        /// Possible values include: 'Basic', 'Standard', 'Premium',
+        /// 'GeneralPurpose', 'BusinessCritical'
         /// </summary>
         [JsonProperty(PropertyName = "properties.databaseEdition")]
-        public string DatabaseEdition { get; private set; }
+        public ElasticPoolEdition DatabaseEdition { get; private set; }
 
         /// <summary>
         /// Gets or sets the DTU for the recommended elastic pool.

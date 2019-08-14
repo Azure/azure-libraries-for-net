@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SyncAgentInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="syncAgentName">Name of the sync agent.</param>
         /// <param name="syncDatabaseId">ARM resource id of the sync database
         /// in the sync agent.</param>
@@ -45,7 +42,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="expiryTime">Expiration time of the sync agent
         /// version.</param>
         /// <param name="version">Version of the sync agent.</param>
-        public SyncAgentInner(string id = default(string), string name = default(string), string type = default(string), string syncAgentName = default(string), string syncDatabaseId = default(string), System.DateTime? lastAliveTime = default(System.DateTime?), string state = default(string), bool? isUpToDate = default(bool?), System.DateTime? expiryTime = default(System.DateTime?), string version = default(string))
+        public SyncAgentInner(string id = default(string), string name = default(string), string type = default(string), string syncAgentName = default(string), string syncDatabaseId = default(string), System.DateTime? lastAliveTime = default(System.DateTime?), SyncAgentState state = default(SyncAgentState), bool? isUpToDate = default(bool?), System.DateTime? expiryTime = default(System.DateTime?), string version = default(string))
             : base(id, name, type)
         {
             SyncAgentName = syncAgentName;
@@ -87,7 +84,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Offline', 'NeverConnected'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
+        public SyncAgentState State { get; private set; }
 
         /// <summary>
         /// Gets if the sync agent version is up to date.

@@ -32,7 +32,7 @@ namespace ManageSqlDatabaseInElasticPool
         private static readonly string database1Name = "myDatabase1";
         private static readonly string database2Name = "myDatabase2";
         private static readonly string anotherDatabaseName = "myAnotherDatabase";
-        private static readonly string elasticPoolEdition = ElasticPoolEditions.Standard;
+        private static readonly ElasticPoolEdition elasticPoolEdition = ElasticPoolEdition.Standard;
 
         public static void RunSample(IAzure azure)
         {
@@ -45,7 +45,7 @@ namespace ManageSqlDatabaseInElasticPool
                 // Create a SQL Server, with 2 firewall rules.
 
                 var sqlServer = azure.SqlServers.Define(sqlServerName)
-                        .WithRegion(Region.USCentral)
+                        .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
@@ -131,7 +131,8 @@ namespace ManageSqlDatabaseInElasticPool
                 Utilities.Log("Remove the database from the pool.");
                 anotherDatabase = anotherDatabase.Update()
                         .WithoutElasticPool()
-                        .WithEdition(DatabaseEditions.Standard)
+                        .WithEdition(DatabaseEdition.Standard)
+                        .WithMaxSizeBytes((long)Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseStandardStorage.Max250Gb)
                         .Apply();
                 Utilities.PrintDatabase(anotherDatabase);
 
