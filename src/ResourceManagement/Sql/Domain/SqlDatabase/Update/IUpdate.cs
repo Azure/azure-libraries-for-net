@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update
     using Microsoft.Azure.Management.Sql.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
 
     /// <summary>
     /// The SQL Database definition to set the Max Size in Bytes for database.
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithServiceObjective(string serviceLevelObjective);
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithServiceObjective(ServiceObjectiveName serviceLevelObjective);
     }
 
     /// <summary>
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithEdition(string edition);
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithEdition(DatabaseEdition edition);
 
     }
 

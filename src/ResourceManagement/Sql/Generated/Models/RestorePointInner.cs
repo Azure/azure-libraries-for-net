@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the RestorePointInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="restorePointType">The type of restore point. Possible
         /// values include: 'CONTINUOUS', 'DISCRETE'</param>
@@ -42,7 +39,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// taken</param>
         /// <param name="restorePointLabel">The label of restore point for
         /// backup request by user</param>
-        public RestorePointInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), RestorePointTypes? restorePointType = default(RestorePointTypes?), System.DateTime? earliestRestoreDate = default(System.DateTime?), System.DateTime? restorePointCreationDate = default(System.DateTime?), string restorePointLabel = default(string))
+        public RestorePointInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), RestorePointType? restorePointType = default(RestorePointType?), System.DateTime? earliestRestoreDate = default(System.DateTime?), System.DateTime? restorePointCreationDate = default(System.DateTime?), string restorePointLabel = default(string))
             : base(id, name, type)
         {
             Location = location;
@@ -69,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'CONTINUOUS', 'DISCRETE'
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePointType")]
-        public RestorePointTypes? RestorePointType { get; private set; }
+        public RestorePointType? RestorePointType { get; private set; }
 
         /// <summary>
         /// Gets the earliest time to which this database can be restored

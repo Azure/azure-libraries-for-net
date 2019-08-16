@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the replication state for the replication link.
         /// </summary>
-        string ReplicationState { get; }
+        ReplicationState ReplicationState { get; }
 
         /// <summary>
         /// Gets the role of the SQL Database in the replication link.

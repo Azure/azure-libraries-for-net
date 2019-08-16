@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for SyncAgentState.
     /// </summary>
-    public static class SyncAgentState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<SyncAgentState>))]
+    public class SyncAgentState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<SyncAgentState>
     {
-        public const string Online = "Online";
-        public const string Offline = "Offline";
-        public const string NeverConnected = "NeverConnected";
+        public static readonly SyncAgentState Online = Parse("Online");
+        public static readonly SyncAgentState Offline = Parse("Offline");
+        public static readonly SyncAgentState NeverConnected = Parse("NeverConnected");
     }
 }

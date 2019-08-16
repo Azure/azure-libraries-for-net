@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SyncGroupLogProperties>>> ListLogsWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string startTime, string endTime, string type, string continuationToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SyncGroupLogProperties>>> ListLogsWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string startTime, string endTime, Type type, string continuationToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Cancels a sync group synchronization.
         /// </summary>

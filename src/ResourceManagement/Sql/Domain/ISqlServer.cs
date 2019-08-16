@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the type of Managed Service Identity used for the SQL server.
         /// </summary>
-        string ManagedServiceIdentityType { get; }
+        IdentityType ManagedServiceIdentityType { get; }
 
         /// <summary>
         /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID

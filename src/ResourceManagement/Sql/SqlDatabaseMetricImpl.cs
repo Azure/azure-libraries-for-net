@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:98D67B93923AC46ECFE338C62748BCCB:AE6A688E48A33F4836A5CFB695421894
         public Models.UnitType Unit()
         {
-            return Models.UnitType.Parse(this.Inner.Unit);
+            return this.Inner.Unit;
         }
 
         ///GENMHASH:AAEBDC30B078CCB1B834E96A827ED51E:C0C35E00AF4E17F141675A2C05C7067B

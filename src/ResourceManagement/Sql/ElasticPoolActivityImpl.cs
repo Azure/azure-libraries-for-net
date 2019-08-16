@@ -11,13 +11,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5FbGFzdGljUG9vbEFjdGl2aXR5SW1wbA==
     internal partial class ElasticPoolActivityImpl  :
-        Wrapper<Models.ElasticPoolActivity>,
+        Wrapper<Models.ElasticPoolActivityInner>,
         IElasticPoolActivity
     {
         private ResourceId resourceId;
 
         ///GENMHASH:B045F78FBBD13C1DFD9AB3659442B01B:95FDB4476A86D2D89C844159139FF9F4
-        public ElasticPoolActivityImpl(ElasticPoolActivity innerObject) : base(innerObject)
+        public ElasticPoolActivityImpl(ElasticPoolActivityInner innerObject) : base(innerObject)
         {
             this.resourceId = ResourceId.FromString(this.Inner.Id);
         }

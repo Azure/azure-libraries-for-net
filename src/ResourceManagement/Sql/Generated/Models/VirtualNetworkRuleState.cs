@@ -8,16 +8,25 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for VirtualNetworkRuleState.
     /// </summary>
-    public static class VirtualNetworkRuleState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<VirtualNetworkRuleState>))]
+    public class VirtualNetworkRuleState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<VirtualNetworkRuleState>
     {
-        public const string Initializing = "Initializing";
-        public const string InProgress = "InProgress";
-        public const string Ready = "Ready";
-        public const string Deleting = "Deleting";
-        public const string Unknown = "Unknown";
+        public static readonly VirtualNetworkRuleState Initializing = Parse("Initializing");
+        public static readonly VirtualNetworkRuleState InProgress = Parse("InProgress");
+        public static readonly VirtualNetworkRuleState Ready = Parse("Ready");
+        public static readonly VirtualNetworkRuleState Deleting = Parse("Deleting");
+        public static readonly VirtualNetworkRuleState Unknown = Parse("Unknown");
     }
 }

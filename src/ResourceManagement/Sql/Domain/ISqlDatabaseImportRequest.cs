@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
     public interface ISqlDatabaseImportRequest  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ImportExtensionRequestInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ImportExtensionRequest>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseImportExportResponse>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>
     {

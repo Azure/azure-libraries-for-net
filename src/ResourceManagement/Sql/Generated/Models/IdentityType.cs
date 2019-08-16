@@ -8,12 +8,21 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for IdentityType.
     /// </summary>
-    public static class IdentityType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<IdentityType>))]
+    public class IdentityType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<IdentityType>
     {
-        public const string SystemAssigned = "SystemAssigned";
+        public static readonly IdentityType SystemAssigned = Parse("SystemAssigned");
     }
 }

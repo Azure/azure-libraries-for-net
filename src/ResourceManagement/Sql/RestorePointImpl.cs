@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:F2ABE029F6A55328DAF428566FF166D9:AA34FA1E27583C49DDBE6DC99C3A871E
-        public Models.RestorePointTypes RestorePointType()
+        public Models.RestorePointType RestorePointType()
         {
             return this.Inner.RestorePointType.GetValueOrDefault();
         }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the restore point type of the Azure SQL Database restore point.
         /// </summary>
-        Models.RestorePointTypes RestorePointType { get; }
+        Models.RestorePointType RestorePointType { get; }
 
         /// <summary>
         /// Gets earliest restore time (ISO8601 format). Populated when restorePointType

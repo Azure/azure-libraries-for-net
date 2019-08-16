@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SyncMemberInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="databaseType">Database type of the sync member.
         /// Possible values include: 'AzureSqlDatabase',
         /// 'SqlServerDatabase'</param>
@@ -58,7 +55,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'UnProvisioned', 'Provisioning', 'Provisioned', 'ProvisionFailed',
         /// 'DeProvisioning', 'DeProvisioned', 'DeProvisionFailed',
         /// 'Reprovisioning', 'ReprovisionFailed', 'UnReprovisioned'</param>
-        public SyncMemberInner(string id = default(string), string name = default(string), string type = default(string), string databaseType = default(string), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), string syncDirection = default(string), string syncState = default(string))
+        public SyncMemberInner(string id = default(string), string name = default(string), string type = default(string), SyncMemberDbType databaseType = default(SyncMemberDbType), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), SyncDirection syncDirection = default(SyncDirection), SyncMemberState syncState = default(SyncMemberState))
             : base(id, name, type)
         {
             DatabaseType = databaseType;
@@ -83,7 +80,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// include: 'AzureSqlDatabase', 'SqlServerDatabase'
         /// </summary>
         [JsonProperty(PropertyName = "properties.databaseType")]
-        public string DatabaseType { get; set; }
+        public SyncMemberDbType DatabaseType { get; set; }
 
         /// <summary>
         /// Gets or sets ARM resource id of the sync agent in the sync member.
@@ -127,7 +124,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// include: 'Bidirectional', 'OneWayMemberToHub', 'OneWayHubToMember'
         /// </summary>
         [JsonProperty(PropertyName = "properties.syncDirection")]
-        public string SyncDirection { get; set; }
+        public SyncDirection SyncDirection { get; set; }
 
         /// <summary>
         /// Gets sync state of the sync member. Possible values include:
@@ -139,7 +136,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Reprovisioning', 'ReprovisionFailed', 'UnReprovisioned'
         /// </summary>
         [JsonProperty(PropertyName = "properties.syncState")]
-        public string SyncState { get; private set; }
+        public SyncMemberState SyncState { get; private set; }
 
     }
 }

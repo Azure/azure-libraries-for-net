@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<DatabaseInner>>> ListByElasticPoolWithHttpMessagesAsync(string resourceGroupName, string serverName, string elasticPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a database inside of a recommented elastic pool.
+        /// Gets a database inside of a recommended elastic pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </exception>
         Task<AzureOperationResponse<DatabaseInner>> GetByRecommendedElasticPoolWithHttpMessagesAsync(string resourceGroupName, string serverName, string recommendedElasticPoolName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Returns a list of databases inside a recommented elastic pool.
+        /// Returns a list of databases inside a recommended elastic pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImportExportResponseInner>> ImportWithHttpMessagesAsync(string resourceGroupName, string serverName, ImportRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImportExportResponseInner>> ImportWithHttpMessagesAsync(string resourceGroupName, string serverName, ImportRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates an import operation that imports a bacpac into an existing
         /// database. The existing database must be empty.
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImportExportResponseInner>> CreateImportOperationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ImportExtensionRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImportExportResponseInner>> CreateImportOperationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ImportExtensionRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Exports a database to a bacpac.
         /// </summary>
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImportExportResponseInner>> ExportWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ExportRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImportExportResponseInner>> ExportWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ExportRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns database metrics.
         /// </summary>
@@ -556,6 +556,33 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> RenameWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Failovers a database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database to failover.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Pauses a data warehouse.
         /// </summary>
@@ -705,7 +732,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImportExportResponseInner>> BeginImportWithHttpMessagesAsync(string resourceGroupName, string serverName, ImportRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImportExportResponseInner>> BeginImportWithHttpMessagesAsync(string resourceGroupName, string serverName, ImportRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates an import operation that imports a bacpac into an existing
         /// database. The existing database must be empty.
@@ -739,7 +766,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImportExportResponseInner>> BeginCreateImportOperationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ImportExtensionRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImportExportResponseInner>> BeginCreateImportOperationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ImportExtensionRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Exports a database to a bacpac.
         /// </summary>
@@ -772,6 +799,33 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ImportExportResponseInner>> BeginExportWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ExportRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ImportExportResponseInner>> BeginExportWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, ExportRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Failovers a database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database to failover.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

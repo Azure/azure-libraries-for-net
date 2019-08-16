@@ -3,6 +3,7 @@
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.SqlElasticPoolDefinition;
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for elastic pool.</param>
         /// <return>The next stage of the definition.</return>
-        SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithEdition(string edition)
+        SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithEdition(ElasticPoolEdition edition)
         {
             return this.WithEdition(edition);
         }

@@ -11,11 +11,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TZXJ2ZXJNZXRyaWNJbXBs
     internal partial class ServerMetricImpl  :
-        Wrapper<Models.ServerUsage>,
+        Wrapper<Models.ServerUsageInner>,
         IServerMetric
     {
         ///GENMHASH:CEEC4374EFC47ACF991519A7F38AB63A:C0C35E00AF4E17F141675A2C05C7067B
-        public ServerMetricImpl(ServerUsage innerObject) : base(innerObject)
+        public ServerMetricImpl(ServerUsageInner innerObject) : base(innerObject)
         {
         }
 

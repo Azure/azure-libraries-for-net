@@ -33,9 +33,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="serverKeyType">The server key type like
         /// 'ServiceManaged', 'AzureKeyVault'. Possible values include:
         /// 'ServiceManaged', 'AzureKeyVault'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="kind">Kind of encryption protector. This is metadata
         /// used for the Azure portal experience.</param>
         /// <param name="location">Resource location.</param>
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="uri">The URI of the server key.</param>
         /// <param name="thumbprint">Thumbprint of the server key.</param>
         /// <param name="creationDate">The server key creation date.</param>
-        public ServerKeyInner(string serverKeyType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string), string subregion = default(string), string uri = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?))
+        public ServerKeyInner(ServerKeyType serverKeyType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string), string subregion = default(string), string uri = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?))
             : base(id, name, type)
         {
             Kind = kind;
@@ -86,7 +83,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'AzureKeyVault'
         /// </summary>
         [JsonProperty(PropertyName = "properties.serverKeyType")]
-        public string ServerKeyType { get; set; }
+        public ServerKeyType ServerKeyType { get; set; }
 
         /// <summary>
         /// Gets or sets the URI of the server key.

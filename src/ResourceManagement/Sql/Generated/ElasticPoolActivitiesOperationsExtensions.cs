@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<ElasticPoolActivity>> ListByElasticPoolAsync(this IElasticPoolActivitiesOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<ElasticPoolActivityInner>> ListByElasticPoolAsync(this IElasticPoolActivitiesOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByElasticPoolWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByElasticPoolWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

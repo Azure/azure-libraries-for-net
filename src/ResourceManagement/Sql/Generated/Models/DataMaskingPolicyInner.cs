@@ -32,9 +32,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="dataMaskingState">The state of the data masking
         /// policy. Possible values include: 'Disabled', 'Enabled'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="exemptPrincipals">The list of the exempt principals.
         /// Specifies the semicolon-separated list of database users for which
         /// the data masking policy does not apply. The specified users receive

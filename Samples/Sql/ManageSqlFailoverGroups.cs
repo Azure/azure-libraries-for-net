@@ -55,7 +55,7 @@ namespace ManageSqlFailoverGroups
                 Utilities.Log("Creating a secondary SQL Server with a sample database");
 
                 var sqlSecondaryServer = azure.SqlServers.Define(sqlSecondaryServerName)
-                    .WithRegion(Region.USCentral)
+                    .WithRegion(Region.USEast2)
                     .WithExistingResourceGroup(rgName)
                     .WithAdministratorLogin(administratorLogin)
                     .WithAdministratorPassword(administratorPassword)
@@ -68,7 +68,8 @@ namespace ManageSqlFailoverGroups
                 // Create a Failover Group from the primary SQL server to the secondary SQL server.
                 Utilities.Log("Creating a Failover Group from the primary SQL server to the secondary SQL server");
 
-                var failoverGroup = sqlPrimaryServer.FailoverGroups.Define("my-other-failover-group")
+                string failoverGroupName = SdkContext.RandomResourceName("my-other-failover-group", 25);
+                var failoverGroup = sqlPrimaryServer.FailoverGroups.Define(failoverGroupName)
                     .WithManualReadWriteEndpointPolicy()
                     .WithPartnerServerId(sqlSecondaryServer.Id)
                     .WithReadOnlyEndpointPolicyDisabled()

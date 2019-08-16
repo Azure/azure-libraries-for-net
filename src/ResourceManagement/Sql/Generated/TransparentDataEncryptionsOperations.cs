@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<TransparentDataEncryptionInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionStates? status = default(TransparentDataEncryptionStates?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<TransparentDataEncryptionInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionStatus? status = default(TransparentDataEncryptionStatus?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {

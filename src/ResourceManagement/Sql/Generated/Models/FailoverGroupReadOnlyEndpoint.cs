@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="failoverPolicy">Failover policy of the read-only
         /// endpoint for the failover group. Possible values include:
         /// 'Disabled', 'Enabled'</param>
-        public FailoverGroupReadOnlyEndpoint(string failoverPolicy = default(string))
+        public FailoverGroupReadOnlyEndpoint(ReadOnlyEndpointFailoverPolicy failoverPolicy = default(ReadOnlyEndpointFailoverPolicy))
         {
             FailoverPolicy = failoverPolicy;
             CustomInit();
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// failover group. Possible values include: 'Disabled', 'Enabled'
         /// </summary>
         [JsonProperty(PropertyName = "failoverPolicy")]
-        public string FailoverPolicy { get; set; }
+        public ReadOnlyEndpointFailoverPolicy FailoverPolicy { get; set; }
 
     }
 }

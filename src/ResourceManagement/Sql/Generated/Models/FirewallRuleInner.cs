@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -39,9 +37,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Must be IPv4 format. Must be greater than or equal to
         /// startIpAddress. Use value '0.0.0.0' to represent all Azure-internal
         /// IP addresses.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="kind">Kind of server that contains this firewall
         /// rule.</param>
         /// <param name="location">Location of the server that contains this

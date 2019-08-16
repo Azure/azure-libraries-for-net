@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Sql;
-    using Microsoft.Azure.Management.Sql.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -23,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     /// An Azure SQL Database server.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ServerInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ServerInner : TrackedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ServerInner class.
@@ -37,9 +33,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the ServerInner class.
         /// </summary>
         /// <param name="location">Resource location.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="identity">The Azure Active Directory identity of the
         /// server.</param>

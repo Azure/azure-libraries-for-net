@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
 
     /// <summary>
     /// The stage of the SQL Server definition allowing to specify the SQL Virtual Network Rules.
@@ -188,7 +189,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <param name="databaseNames">Names of the database to be included in the elastic pool.</param>
         /// <return>Next stage of the SQL Server definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames);
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition, params string[] databaseNames);
 
         /// <summary>
         /// Creates new elastic pool in the SQL Server.
@@ -196,7 +197,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
         /// <param name="elasticPoolName">Name of the elastic pool to be created.</param>
         /// <param name="elasticPoolEdition">Edition of the elastic pool.</param>
         /// <return>Next stage of the SQL Server definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate WithNewElasticPool(string elasticPoolName, string elasticPoolEdition);
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate WithNewElasticPool(string elasticPoolName, ElasticPoolEdition elasticPoolEdition);
 
     }
 

@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServerInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates a server.
         /// </summary>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServerInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of all servers in the subscription.
         /// </summary>

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public interface ISqlDatabaseUsageMetric  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.DatabaseUsage>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.DatabaseUsageInner>
     {
         /// <summary>
         /// Gets the unit of the metric.
