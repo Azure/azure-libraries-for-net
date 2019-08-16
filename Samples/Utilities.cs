@@ -2648,7 +2648,15 @@ namespace Microsoft.Azure.Management.Samples.Common
                 ProcessStartInfo info = new ProcessStartInfo("powershell", args);
                 string assetPath = Path.Combine(ProjectPath, "Asset");
                 info.WorkingDirectory = assetPath;
-                Process.Start(info).WaitForExit();
+                Process process = Process.Start(info);
+                process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                {
+                    // call "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass" in powershell if you fail here
+
+                    Utilities.Log("powershell createCert.ps1 script failed");
+                }
             }
             else
             {
