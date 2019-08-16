@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.UpdateDefinition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent.Models;
     using Microsoft.Azure.Management.Storage.Fluent;
@@ -1653,6 +1654,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return this.DeploymentSlots();
             }
+        }
+
+        IReadOnlyList<IFunctionEnvelope> IFunctionApp.ListFunctions()
+        {
+            return this.ListFunctions();
+        }
+
+        Task<IPagedCollection<IFunctionEnvelope>> IFunctionApp.ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListFunctionsAsync(loadAllPages, cancellationToken);
         }
     }
 }

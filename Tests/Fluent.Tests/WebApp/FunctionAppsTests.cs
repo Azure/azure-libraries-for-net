@@ -4,9 +4,9 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.AppService.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -46,6 +46,36 @@ namespace Fluent.Tests.WebApp
                     Assert.NotNull(plan1);
                     Assert.Equal(Region.USWest, plan1.Region);
                     Assert.Equal(new PricingTier("Dynamic", "Y1"), plan1.PricingTier);
+
+                    // List functions of App1 before deployement
+                    IEnumerable<IFunctionEnvelope> envelopes = functionApp1.ListFunctions();
+                    Assert.Empty(envelopes);
+
+                    // Deploy function into App1
+                    functionApp1.Deploy()
+                        .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Samples/Asset/square-function-app.zip")
+                        .WithExistingDeploymentsDeleted(true)
+                        .Execute();
+
+                    // List functions of App1 after deployement
+                    envelopes = functionApp1.ListFunctions();
+                    Assert.Single(envelopes);
+
+                    IPagedCollection<IFunctionEnvelope> envelopesFromAsync = Extensions.Synchronize(() => functionApp1.ListFunctionsAsync(true));
+                    Assert.Single(envelopesFromAsync);
+
+                    // Verify function envelope
+                    IFunctionEnvelope envelope = envelopes.First();
+                    Assert.NotEmpty(envelope.Id);
+                    Assert.Equal(WebAppName1 + "/square", envelope.Name);
+                    Assert.Equal("Microsoft.Web/sites/functions", envelope.Type);
+                    Assert.Equal(Region.USWest, envelope.Region);
+                    Assert.NotEmpty(envelope.ScriptRootPathHref);
+                    Assert.NotEmpty(envelope.ScriptHref);
+                    Assert.NotEmpty(envelope.ConfigHref);
+                    Assert.NotEmpty(envelope.SecretsFileHref);
+                    Assert.NotEmpty(envelope.Href);
+                    Assert.NotNull(envelope.Config);
 
                     // Create in a new group with existing consumption plan
                     var functionApp2 = appServiceManager.FunctionApps.Define(WebAppName2)
