@@ -166,6 +166,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         /// <param name="instanceCount">The capacity as a number between 1 and 10 but also based on the limits imposed by the selected application gateway size.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithInstanceCount(int instanceCount);
+
+
+        /// <summary>
+        /// Specifies the min and max auto scale bound.
+        /// </summary>
+        /// <param name="minCapacity">Lower bound on number of Application Gateway capacity.</param>
+        /// <param name="maxCapacity">Upper bound on number of Application Gateway capacity.</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithAutoscale(int minCapacity, int maxCapacity);
     }
 
     /// <summary>

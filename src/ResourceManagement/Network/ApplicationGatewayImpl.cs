@@ -1012,6 +1012,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+
+
+        ///GENMHASH:94ACA3B358939F31F4F3966CDB1B73A4:7D7FC963A56E00888DE266506161CB7C
+        public ApplicationGatewayImpl WithAutoscale(int minCapacity, int maxCapacity)
+        {
+            Inner.Sku.Capacity = null;
+            Inner.AutoscaleConfiguration = new ApplicationGatewayAutoscaleConfiguration()
+            {
+                MinCapacity = minCapacity, 
+                MaxCapacity = maxCapacity
+            };
+            return this;
+        }
+
         public ApplicationGatewayImpl WithWebApplicationFirewall(bool enabled, ApplicationGatewayFirewallMode mode)
         {
             this.Inner.WebApplicationFirewallConfiguration = new ApplicationGatewayWebApplicationFirewallConfiguration()

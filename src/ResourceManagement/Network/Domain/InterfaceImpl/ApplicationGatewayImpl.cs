@@ -232,6 +232,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         /// <summary>
+        /// Specifies the min and max auto scale bound.
+        /// </summary>
+        /// <param name="minCapacity">Lower bound on number of Application Gateway capacity.</param>
+        /// <param name="maxCapacity">Upper bound on number of Application Gateway capacity.</param>
+        /// <returns>The next stage of the update.</returns>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithInstanceCount.WithAutoscale(int minCapacity, int maxCapacity)
+        {
+            return this.WithAutoscale(minCapacity, maxCapacity);
+        }
+
+
+        /// <summary>
         /// Specifies the capacity (number of instances) for the application gateway.
         /// By default, 1 instance is used.
         /// </summary>
@@ -241,6 +253,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithInstanceCount(instanceCount);
         }
+
+        /// <summary>
+        /// Specifies the min and max auto scale bound.
+        /// </summary>
+        /// <param name="minCapacity">Lower bound on number of Application Gateway capacity.</param>
+        /// <param name="maxCapacity">Upper bound on number of Application Gateway capacity.</param>
+        /// <returns>The next stage of the definition</returns>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithInstanceCount.WithAutoscale(int minCapacity, int maxCapacity)
+        {
+            return this.WithAutoscale(minCapacity, maxCapacity);
+        }
+
 
         /// <summary>
         /// Begins the update of a redirect configuration.

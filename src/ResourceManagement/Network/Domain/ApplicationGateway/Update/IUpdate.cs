@@ -306,6 +306,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         /// <param name="instanceCount">The capacity as a number between 1 and 10 but also based on the limits imposed by the selected applicatiob gateway size.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithInstanceCount(int instanceCount);
+
+
+        /// <summary>
+        /// Specifies the min and max auto scale bound.
+        /// </summary>
+        /// <param name="minCapacity">Lower bound on number of Application Gateway capacity.</param>
+        /// <param name="maxCapacity">Upper bound on number of Application Gateway capacity.</param>
+        /// <returns>The next stage of the update.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithAutoscale(int minCapacity, int maxCapacity);
     }
 
     /// <summary>
