@@ -88,7 +88,7 @@ namespace Fluent.Tests
                         .WithAppInsightsComponentId("appinsightsId")
                         .WithInstrumentationKey("appInsightsKey")
                         .Create();
-                    Assert.Equal(AllocationState.Steady, cluster.AllocationState);
+                    Assert.Equal(AllocationState.Resizing, cluster.AllocationState);
                     Assert.Equal(userName, cluster.AdminUserName);
                     Assert.Equal(VmPriority.Lowpriority, cluster.VMPriority);
                     Assert.Equal(1, cluster.NodeSetup.MountVolumes.AzureFileShares.Count);
