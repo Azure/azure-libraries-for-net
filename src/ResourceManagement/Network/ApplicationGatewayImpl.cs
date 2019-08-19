@@ -1044,19 +1044,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        public ApplicationGatewayImpl withAutoScale(int minCapacity, int maxCapacity)
-        {
-            this.Inner.Sku.Capacity = null;
-            this.Inner.AutoscaleConfiguration = new ApplicationGatewayAutoscaleConfiguration()
-            {
-                MinCapacity = minCapacity,
-                MaxCapacity = maxCapacity
-            };
-
-            return this;
-        }
-
-
         public ApplicationGatewayImpl WithEnableHttp2()
         {
             Inner.EnableHttp2 = true;
