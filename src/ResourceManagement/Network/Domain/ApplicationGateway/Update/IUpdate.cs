@@ -157,8 +157,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSize,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSku,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithInstanceCount,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithWebApplicationFirewall,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithBackend,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithBackendHttpConfig,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithIPConfig,
@@ -305,13 +306,30 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         /// <param name="instanceCount">The capacity as a number between 1 and 10 but also based on the limits imposed by the selected applicatiob gateway size.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithInstanceCount(int instanceCount);
+
+
+        /// <summary>
+        /// Specifies the min and max auto scale bound.
+        /// </summary>
+        /// <param name="minCapacity">Lower bound on number of Application Gateway capacity.</param>
+        /// <param name="maxCapacity">Upper bound on number of Application Gateway capacity.</param>
+        /// <returns>The next stage of the update.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithAutoscale(int minCapacity, int maxCapacity);
     }
 
     /// <summary>
-    /// The stage of an application gateway update allowing to specify the size.
+    /// The stage of an application gateway update allowing to specify the sku.
     /// </summary>
-    public interface IWithSize
+    public interface IWithSku
     {
+
+        /// <summary>
+        /// Set tier of an application gateway. Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'.
+        /// </summary>
+        /// <param name="tier">The tier value to set</param>
+        /// <returns>The next stage of the update</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithTier(ApplicationGatewayTier tier);
+
         /// <summary>
         /// Specifies the size of the application gateway to use within the context of the selected tier.
         /// </summary>
@@ -319,6 +337,21 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithSize(ApplicationGatewaySkuName size);
     }
+
+
+    /// <summary>
+    /// The stage of the applicationgateway update allowing to specify WebApplicationFirewallConfiguration.
+    /// </summary>
+    public interface IWithWebApplicationFirewall
+    {
+        /// <summary>
+        /// Specifies webApplicationFirewallConfiguration
+        /// </summary>
+        /// <param name="config">Web application firewall configuration</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithWebApplicationFirewall(ApplicationGatewayWebApplicationFirewallConfiguration config);
+    }
+
 
     /// <summary>
     /// The stage of an application gateway definition allowing to add a redirect configuration.

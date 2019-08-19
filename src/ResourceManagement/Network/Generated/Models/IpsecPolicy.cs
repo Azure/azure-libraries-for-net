@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// An IPSec Policy configuration for a virtual network gateway connection
+    /// An IPSec Policy configuration for a virtual network gateway connection.
     /// </summary>
     public partial class IpsecPolicy
     {
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="ikeIntegrity">The IKE integrity algorithm (IKE phase
         /// 2). Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384',
         /// 'GCMAES256', 'GCMAES128'</param>
-        /// <param name="dhGroup">The DH Groups used in IKE Phase 1 for initial
+        /// <param name="dhGroup">The DH Group used in IKE Phase 1 for initial
         /// SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
         /// 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'</param>
-        /// <param name="pfsGroup">The Pfs Groups used in IKE Phase 2 for new
+        /// <param name="pfsGroup">The Pfs Group used in IKE Phase 2 for new
         /// child SA. Possible values include: 'None', 'PFS1', 'PFS2',
         /// 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'</param>
         public IpsecPolicy(int saLifeTimeSeconds, int saDataSizeKilobytes, IpsecEncryption ipsecEncryption, IpsecIntegrity ipsecIntegrity, IkeEncryption ikeEncryption, IkeIntegrity ikeIntegrity, DhGroup dhGroup, PfsGroup pfsGroup)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IkeIntegrity IkeIntegrity { get; set; }
 
         /// <summary>
-        /// Gets or sets the DH Groups used in IKE Phase 1 for initial SA.
+        /// Gets or sets the DH Group used in IKE Phase 1 for initial SA.
         /// Possible values include: 'None', 'DHGroup1', 'DHGroup2',
         /// 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
         /// </summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public DhGroup DhGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the Pfs Groups used in IKE Phase 2 for new child SA.
+        /// Gets or sets the Pfs Group used in IKE Phase 2 for new child SA.
         /// Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048',
         /// 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
         /// </summary>

@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly ExpressRouteCircuitSkuTier Standard = Parse("Standard");
         public static readonly ExpressRouteCircuitSkuTier Premium = Parse("Premium");
+        public static readonly ExpressRouteCircuitSkuTier Basic = Parse("Basic");
+        public static readonly ExpressRouteCircuitSkuTier Local = Parse("Local");
     }
 }

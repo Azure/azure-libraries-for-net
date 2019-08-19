@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
+using ResourceIdentityType = Microsoft.Azure.Management.Compute.Fluent.Models.ResourceIdentityType;
+
 namespace Fluent.Tests.Compute.VirtualMachineScaleSet
 {
     public class EMSILMSIOperations

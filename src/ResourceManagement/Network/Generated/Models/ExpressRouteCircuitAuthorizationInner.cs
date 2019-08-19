@@ -35,9 +35,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// ExpressRouteCircuitAuthorizationInner class.
         /// </summary>
         /// <param name="authorizationKey">The authorization key.</param>
-        /// <param name="authorizationUseStatus">AuthorizationUseStatus.
-        /// Possible values are: 'Available' and 'InUse'. Possible values
-        /// include: 'Available', 'InUse'</param>
+        /// <param name="authorizationUseStatus">The authorization use status.
+        /// Possible values include: 'Available', 'InUse'</param>
         /// <param name="provisioningState">Gets the provisioning state of the
         /// public IP resource. Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
@@ -46,7 +45,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRouteCircuitAuthorizationInner(string id = default(string), string authorizationKey = default(string), AuthorizationUseStatus authorizationUseStatus = default(AuthorizationUseStatus), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        /// <param name="type">Type of the resource.</param>
+        public ExpressRouteCircuitAuthorizationInner(string id = default(string), string authorizationKey = default(string), AuthorizationUseStatus authorizationUseStatus = default(AuthorizationUseStatus), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             AuthorizationKey = authorizationKey;
@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -69,9 +70,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string AuthorizationKey { get; set; }
 
         /// <summary>
-        /// Gets or sets authorizationUseStatus. Possible values are:
-        /// 'Available' and 'InUse'. Possible values include: 'Available',
-        /// 'InUse'
+        /// Gets or sets the authorization use status. Possible values include:
+        /// 'Available', 'InUse'
         /// </summary>
         [JsonProperty(PropertyName = "properties.authorizationUseStatus")]
         public AuthorizationUseStatus AuthorizationUseStatus { get; set; }
@@ -96,6 +96,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

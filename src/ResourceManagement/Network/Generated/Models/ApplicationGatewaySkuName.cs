@@ -28,5 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public static readonly ApplicationGatewaySkuName StandardLarge = Parse("Standard_Large");
         public static readonly ApplicationGatewaySkuName WAFMedium = Parse("WAF_Medium");
         public static readonly ApplicationGatewaySkuName WAFLarge = Parse("WAF_Large");
+        public static readonly ApplicationGatewaySkuName StandardV2 = Parse("Standard_v2");
+        public static readonly ApplicationGatewaySkuName WAFV2 = Parse("WAF_v2");
     }
 }

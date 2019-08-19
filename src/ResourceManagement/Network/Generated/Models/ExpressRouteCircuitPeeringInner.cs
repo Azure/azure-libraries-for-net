@@ -64,14 +64,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="ipv6PeeringConfig">The IPv6 peering
         /// configuration.</param>
+        /// <param name="expressRouteConnection">The ExpressRoute
+        /// connection.</param>
         /// <param name="connections">The list of circuit connections
         /// associated with Azure Private Peering for this circuit.</param>
+        /// <param name="peeredConnections">The list of peered circuit
+        /// connections associated with Azure Private Peering for this
+        /// circuit.</param>
         /// <param name="name">Gets name of the resource that is unique within
         /// a resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRouteCircuitPeeringInner(string id = default(string), ExpressRoutePeeringType peeringType = default(ExpressRoutePeeringType), ExpressRoutePeeringState state = default(ExpressRoutePeeringState), int? azureASN = default(int?), long? peerASN = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStatsInner stats = default(ExpressRouteCircuitStatsInner), string provisioningState = default(string), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), Management.ResourceManager.Fluent.SubResource routeFilter = default(Management.ResourceManager.Fluent.SubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), IList<ExpressRouteCircuitConnectionInner> connections = default(IList<ExpressRouteCircuitConnectionInner>), string name = default(string), string etag = default(string))
+        /// <param name="type">Type of the resource.</param>
+        public ExpressRouteCircuitPeeringInner(string id = default(string), ExpressRoutePeeringType peeringType = default(ExpressRoutePeeringType), ExpressRoutePeeringState state = default(ExpressRoutePeeringState), int? azureASN = default(int?), long? peerASN = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStatsInner stats = default(ExpressRouteCircuitStatsInner), string provisioningState = default(string), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), Management.ResourceManager.Fluent.SubResource routeFilter = default(Management.ResourceManager.Fluent.SubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), ExpressRouteConnectionId expressRouteConnection = default(ExpressRouteConnectionId), IList<ExpressRouteCircuitConnectionInner> connections = default(IList<ExpressRouteCircuitConnectionInner>), IList<PeerExpressRouteCircuitConnectionInner> peeredConnections = default(IList<PeerExpressRouteCircuitConnectionInner>), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             PeeringType = peeringType;
@@ -91,9 +97,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             LastModifiedBy = lastModifiedBy;
             RouteFilter = routeFilter;
             Ipv6PeeringConfig = ipv6PeeringConfig;
+            ExpressRouteConnection = expressRouteConnection;
             Connections = connections;
+            PeeredConnections = peeredConnections;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -209,11 +218,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Ipv6ExpressRouteCircuitPeeringConfig Ipv6PeeringConfig { get; set; }
 
         /// <summary>
+        /// Gets or sets the ExpressRoute connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.expressRouteConnection")]
+        public ExpressRouteConnectionId ExpressRouteConnection { get; set; }
+
+        /// <summary>
         /// Gets or sets the list of circuit connections associated with Azure
         /// Private Peering for this circuit.
         /// </summary>
         [JsonProperty(PropertyName = "properties.connections")]
         public IList<ExpressRouteCircuitConnectionInner> Connections { get; set; }
+
+        /// <summary>
+        /// Gets the list of peered circuit connections associated with Azure
+        /// Private Peering for this circuit.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.peeredConnections")]
+        public IList<PeerExpressRouteCircuitConnectionInner> PeeredConnections { get; private set; }
 
         /// <summary>
         /// Gets name of the resource that is unique within a resource group.
@@ -228,6 +250,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Validate the object.

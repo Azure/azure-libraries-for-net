@@ -965,36 +965,40 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #endregion
 
+
+        public ApplicationGatewayImpl WithTier(ApplicationGatewayTier skuTier)
+        {
+            if (this.Inner.Sku == null)
+            {
+                this.Inner.Sku = new ApplicationGatewaySku { Capacity = 1 };
+            }
+            this.Inner.Sku.Tier = skuTier;
+            return this;
+        }
+
         ///GENMHASH:0A25F8D30AF64565545B20B215964E6B:7FF7C66C33A802B8668BFAC46B248EE8
         public ApplicationGatewayImpl WithSize(ApplicationGatewaySkuName skuName)
         {
-            int count;
-            // Preserve instance count if already set
-            if (Sku() != null && Sku().Capacity != null)
+            if (this.Inner.Sku == null)
             {
-                count = Sku().Capacity.Value;
+                this.Inner.Sku = new ApplicationGatewaySku { Capacity = 1 };
             }
-            else
+            this.Inner.Sku.Name = skuName;
+            if (this.Inner.Sku.Tier == null)
             {
-                count = 1; // Default instance count
+
+                if (skuName == ApplicationGatewaySkuName.WAFLarge || skuName == ApplicationGatewaySkuName.WAFMedium)
+                {
+                    this.Inner.Sku.Tier = ApplicationGatewayTier.WAF;
+                }
+                else
+                {
+                    this.Inner.Sku.Tier = ApplicationGatewayTier.Standard;
+                }
             }
-
-            ApplicationGatewayTier tier = ApplicationGatewayTier.Standard;
-            if (skuName == ApplicationGatewaySkuName.WAFLarge || skuName == ApplicationGatewaySkuName.WAFMedium)
-            {
-                tier = ApplicationGatewayTier.WAF;
-            }
-
-            var sku = new ApplicationGatewaySku()
-            {
-                Name = skuName,
-                Capacity = count,
-                Tier = tier,
-            };
-
-            Inner.Sku = sku;
             return this;
         }
+
 
         ///GENMHASH:94ACA3B358939F31F4F3966CDB1B73A4:7D7FC963A56E00888DE266506161CB7C
         public ApplicationGatewayImpl WithInstanceCount(int capacity)
@@ -1005,6 +1009,38 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             Inner.Sku.Capacity = capacity;
+            return this;
+        }
+
+
+
+        ///GENMHASH:94ACA3B358939F31F4F3966CDB1B73A4:7D7FC963A56E00888DE266506161CB7C
+        public ApplicationGatewayImpl WithAutoscale(int minCapacity, int maxCapacity)
+        {
+            Inner.Sku.Capacity = null;
+            Inner.AutoscaleConfiguration = new ApplicationGatewayAutoscaleConfiguration()
+            {
+                MinCapacity = minCapacity, 
+                MaxCapacity = maxCapacity
+            };
+            return this;
+        }
+
+        public ApplicationGatewayImpl WithWebApplicationFirewall(bool enabled, ApplicationGatewayFirewallMode mode)
+        {
+            this.Inner.WebApplicationFirewallConfiguration = new ApplicationGatewayWebApplicationFirewallConfiguration()
+            {
+                Enabled = enabled,
+                FirewallMode = mode,
+                RuleSetType = "OWASP",
+                RuleSetVersion = "3.0"
+            };
+            return this;
+        }
+
+        public ApplicationGatewayImpl WithWebApplicationFirewall(ApplicationGatewayWebApplicationFirewallConfiguration config)
+        {
+            this.Inner.WebApplicationFirewallConfiguration = config;
             return this;
         }
 
@@ -1038,6 +1074,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return 1;
             }
         }
+
+        public ApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration
+        {
+            get
+            {
+                return this.Inner.AutoscaleConfiguration;
+            }
+        }
+
+        public ApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration
+        {
+            get
+            {
+                return this.Inner.WebApplicationFirewallConfiguration;
+            }
+        }
+
 
 
         ///GENMHASH:77914F0D4FB485205682C4181EFAACC8:875B0523271DDA40BF052DD20E89DCA7
@@ -1637,12 +1690,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 // If default public frontend requested but no PIP specified, create one
                 //GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:28278DE68BEBBF206C58F1B8AC9DEA79
-                Task pipTask = Task.Run( async ()=>
-                {
-                    var publicIP = await EnsureDefaultPipDefinition().CreateAsync(cancellationToken);
-                    // Attach the created PIP when available
-                    defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
-                });
+                Task pipTask = Task.Run(async () =>
+               {
+                   var publicIP = await EnsureDefaultPipDefinition().CreateAsync(cancellationToken);
+                   // Attach the created PIP when available
+                   defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
+               });
                 tasks.Add(pipTask);
             }
 
@@ -1664,23 +1717,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 // But if default IP config does not have a subnet specified, then create a default VNet
                 //GENMHASH:378C5280A44231F5593B789FF6A1BF16:91307BB6F8D393A842145FECCE969E10
-                Task networkTask = Task.Run( async ()=>
-                {
-                    var network = await EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken);
-                    //... and assign the created VNet to the default IP config
-                    defaultIPConfig.WithExistingSubnet(network, DEFAULT);
-                    if (defaultPrivateFrontend != null)
-                    {
-                        // If a private frontend is also requested, then use the same VNet for the private frontend as for the IP config
-                        /* TODO: Not sure if the assumption of the same subnet for the frontend and the IP config will hold in
-                         * the future, but the existing ARM template for App Gateway for some reason uses the same subnet for the
-                         * IP config and the private frontend. Also, trying to use different subnets results in server error today saying they
-                         * have to be the same. This may need to be revisited in the future however, as this is somewhat inconsistent
-                         * with what the documentation says.
-                         */
-                        UseSubnetFromIPConfigForFrontend(defaultIPConfig, defaultPrivateFrontend);
-                    }
-                });
+                Task networkTask = Task.Run(async () =>
+               {
+                   var network = await EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken);
+                   //... and assign the created VNet to the default IP config
+                   defaultIPConfig.WithExistingSubnet(network, DEFAULT);
+                   if (defaultPrivateFrontend != null)
+                   {
+                       // If a private frontend is also requested, then use the same VNet for the private frontend as for the IP config
+                       /* TODO: Not sure if the assumption of the same subnet for the frontend and the IP config will hold in
+                        * the future, but the existing ARM template for App Gateway for some reason uses the same subnet for the
+                        * IP config and the private frontend. Also, trying to use different subnets results in server error today saying they
+                        * have to be the same. This may need to be revisited in the future however, as this is somewhat inconsistent
+                        * with what the documentation says.
+                        */
+                       UseSubnetFromIPConfigForFrontend(defaultIPConfig, defaultPrivateFrontend);
+                   }
+               });
                 tasks.Add(networkTask);
             }
 

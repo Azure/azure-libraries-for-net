@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// List of virtual network gateway routes
+    /// List of virtual network gateway routes.
     /// </summary>
     public partial class GatewayRouteListResultInner
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the GatewayRouteListResultInner
         /// class.
         /// </summary>
-        /// <param name="value">List of gateway routes</param>
+        /// <param name="value">List of gateway routes.</param>
         public GatewayRouteListResultInner(IList<GatewayRoute> value = default(IList<GatewayRoute>))
         {
             Value = value;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of gateway routes
+        /// Gets or sets list of gateway routes.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<GatewayRoute> Value { get; set; }

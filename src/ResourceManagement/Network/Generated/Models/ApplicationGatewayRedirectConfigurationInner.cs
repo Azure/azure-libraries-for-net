@@ -36,9 +36,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the
         /// ApplicationGatewayRedirectConfigurationInner class.
         /// </summary>
-        /// <param name="redirectType">Supported http redirection types -
-        /// Permanent, Temporary, Found, SeeOther. Possible values include:
-        /// 'Permanent', 'Found', 'SeeOther', 'Temporary'</param>
+        /// <param name="redirectType">HTTP redirection type. Possible values
+        /// include: 'Permanent', 'Found', 'SeeOther', 'Temporary'</param>
         /// <param name="targetListener">Reference to a listener to redirect
         /// the request to.</param>
         /// <param name="targetUrl">Url to redirect the request to.</param>
@@ -80,9 +79,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets supported http redirection types - Permanent,
-        /// Temporary, Found, SeeOther. Possible values include: 'Permanent',
-        /// 'Found', 'SeeOther', 'Temporary'
+        /// Gets or sets HTTP redirection type. Possible values include:
+        /// 'Permanent', 'Found', 'SeeOther', 'Temporary'
         /// </summary>
         [JsonProperty(PropertyName = "properties.redirectType")]
         public ApplicationGatewayRedirectType RedirectType { get; set; }

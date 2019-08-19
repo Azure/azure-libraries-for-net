@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update virtual network
-        /// operation
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPAddressAvailabilityResultInner>> CheckIPAddressAvailabilityWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string ipAddress = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPAddressAvailabilityResultInner>> CheckIPAddressAvailabilityWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string ipAddress, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists usage stats.
         /// </summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update virtual network
-        /// operation
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

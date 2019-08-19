@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="id">ID of the network interface.</param>
+        /// <param name="securityRuleAssociations">All security rules
+        /// associated with the network interface.</param>
         public SecurityGroupNetworkInterface(string id = default(string), SecurityRuleAssociations securityRuleAssociations = default(SecurityRuleAssociations))
         {
             Id = id;
@@ -49,6 +51,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or sets all security rules associated with the network
+        /// interface.
         /// </summary>
         [JsonProperty(PropertyName = "securityRuleAssociations")]
         public SecurityRuleAssociations SecurityRuleAssociations { get; set; }

@@ -43,9 +43,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="disabledRuleGroups">The disabled rule groups.</param>
         /// <param name="requestBodyCheck">Whether allow WAF to check request
         /// Body.</param>
-        /// <param name="maxRequestBodySize">Maxium request body size for
+        /// <param name="maxRequestBodySize">Maximum request body size for
         /// WAF.</param>
-        public ApplicationGatewayWebApplicationFirewallConfiguration(bool enabled, ApplicationGatewayFirewallMode firewallMode, string ruleSetType, string ruleSetVersion, IList<ApplicationGatewayFirewallDisabledRuleGroup> disabledRuleGroups = default(IList<ApplicationGatewayFirewallDisabledRuleGroup>), bool? requestBodyCheck = default(bool?), int? maxRequestBodySize = default(int?))
+        /// <param name="maxRequestBodySizeInKb">Maximum request body size in
+        /// Kb for WAF.</param>
+        /// <param name="fileUploadLimitInMb">Maximum file upload size in Mb
+        /// for WAF.</param>
+        /// <param name="exclusions">The exclusion list.</param>
+        public ApplicationGatewayWebApplicationFirewallConfiguration(bool enabled, ApplicationGatewayFirewallMode firewallMode, string ruleSetType, string ruleSetVersion, IList<ApplicationGatewayFirewallDisabledRuleGroup> disabledRuleGroups = default(IList<ApplicationGatewayFirewallDisabledRuleGroup>), bool? requestBodyCheck = default(bool?), int? maxRequestBodySize = default(int?), int? maxRequestBodySizeInKb = default(int?), int? fileUploadLimitInMb = default(int?), IList<ApplicationGatewayFirewallExclusion> exclusions = default(IList<ApplicationGatewayFirewallExclusion>))
         {
             Enabled = enabled;
             FirewallMode = firewallMode;
@@ -54,6 +59,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             DisabledRuleGroups = disabledRuleGroups;
             RequestBodyCheck = requestBodyCheck;
             MaxRequestBodySize = maxRequestBodySize;
+            MaxRequestBodySizeInKb = maxRequestBodySizeInKb;
+            FileUploadLimitInMb = fileUploadLimitInMb;
+            Exclusions = exclusions;
             CustomInit();
         }
 
@@ -102,10 +110,28 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? RequestBodyCheck { get; set; }
 
         /// <summary>
-        /// Gets or sets maxium request body size for WAF.
+        /// Gets or sets maximum request body size for WAF.
         /// </summary>
         [JsonProperty(PropertyName = "maxRequestBodySize")]
         public int? MaxRequestBodySize { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum request body size in Kb for WAF.
+        /// </summary>
+        [JsonProperty(PropertyName = "maxRequestBodySizeInKb")]
+        public int? MaxRequestBodySizeInKb { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum file upload size in Mb for WAF.
+        /// </summary>
+        [JsonProperty(PropertyName = "fileUploadLimitInMb")]
+        public int? FileUploadLimitInMb { get; set; }
+
+        /// <summary>
+        /// Gets or sets the exclusion list.
+        /// </summary>
+        [JsonProperty(PropertyName = "exclusions")]
+        public IList<ApplicationGatewayFirewallExclusion> Exclusions { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -144,6 +170,28 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             if (MaxRequestBodySize < 8)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "MaxRequestBodySize", 8);
+            }
+            if (MaxRequestBodySizeInKb > 128)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "MaxRequestBodySizeInKb", 128);
+            }
+            if (MaxRequestBodySizeInKb < 8)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "MaxRequestBodySizeInKb", 8);
+            }
+            if (FileUploadLimitInMb < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "FileUploadLimitInMb", 0);
+            }
+            if (Exclusions != null)
+            {
+                foreach (var element1 in Exclusions)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
             }
         }
     }

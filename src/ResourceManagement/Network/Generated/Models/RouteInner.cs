@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Route resource
+    /// Route resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RouteInner : Management.ResourceManager.Fluent.SubResource
@@ -33,10 +33,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the RouteInner class.
         /// </summary>
         /// <param name="nextHopType">The type of Azure hop the packet should
-        /// be sent to. Possible values are: 'VirtualNetworkGateway',
-        /// 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible
-        /// values include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-        /// 'VirtualAppliance', 'None'</param>
+        /// be sent to. Possible values include: 'VirtualNetworkGateway',
+        /// 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'</param>
         /// <param name="addressPrefix">The destination CIDR to which the route
         /// applies.</param>
         /// <param name="nextHopIpAddress">The IP address packets should be
@@ -75,10 +73,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets the type of Azure hop the packet should be sent to.
-        /// Possible values are: 'VirtualNetworkGateway', 'VnetLocal',
-        /// 'Internet', 'VirtualAppliance', and 'None'. Possible values
-        /// include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-        /// 'VirtualAppliance', 'None'
+        /// Possible values include: 'VirtualNetworkGateway', 'VnetLocal',
+        /// 'Internet', 'VirtualAppliance', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "properties.nextHopType")]
         public RouteNextHopType NextHopType { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The virtual network connection reset shared key
+    /// The virtual network connection reset shared key.
     /// </summary>
     public partial class ConnectionResetSharedKeyInner
     {

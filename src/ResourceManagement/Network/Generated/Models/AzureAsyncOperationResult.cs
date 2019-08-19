@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the AzureAsyncOperationResult class.
         /// </summary>
         /// <param name="status">Status of the Azure async operation. Possible
-        /// values are: 'InProgress', 'Succeeded', and 'Failed'. Possible
         /// values include: 'InProgress', 'Succeeded', 'Failed'</param>
+        /// <param name="error">Details of the error occurred during specified
+        /// asynchronous operation.</param>
         public AzureAsyncOperationResult(NetworkOperationStatus status = default(NetworkOperationStatus), Error error = default(Error))
         {
             Status = status;
@@ -51,13 +52,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets status of the Azure async operation. Possible values
-        /// are: 'InProgress', 'Succeeded', and 'Failed'. Possible values
         /// include: 'InProgress', 'Succeeded', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public NetworkOperationStatus Status { get; set; }
 
         /// <summary>
+        /// Gets or sets details of the error occurred during specified
+        /// asynchronous operation.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public Error Error { get; set; }

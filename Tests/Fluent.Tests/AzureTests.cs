@@ -360,6 +360,18 @@ namespace Fluent.Tests.Network
                 new ApplicationGateway.PublicComplex().RunTest(azure.ApplicationGateways, azure.ResourceGroups);
             }
         }
+
+
+        [Fact]
+        public void WebApplicationFirewall()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var azure = TestHelper.CreateRollupClient();
+
+                new ApplicationGateway.WebApplicationFirewall().RunTest(azure.ApplicationGateways, azure.ResourceGroups);
+            }
+        }
     }
 
     public partial class LoadBalancer

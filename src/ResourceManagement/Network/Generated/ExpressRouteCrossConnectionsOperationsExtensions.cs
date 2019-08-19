@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// The name of the peering.
             /// </param>
             /// <param name='devicePath'>
-            /// The path of the device
+            /// The path of the device.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// The name of the peering.
             /// </param>
             /// <param name='devicePath'>
-            /// The path of the device
+            /// The path of the device.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

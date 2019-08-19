@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ProtocolConfiguration class.
         /// </summary>
+        /// <param name="hTTPConfiguration">HTTP configuration of the
+        /// connectivity check.</param>
         public ProtocolConfiguration(HTTPConfiguration hTTPConfiguration = default(HTTPConfiguration))
         {
             HTTPConfiguration = hTTPConfiguration;
@@ -39,6 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets HTTP configuration of the connectivity check.
         /// </summary>
         [JsonProperty(PropertyName = "HTTPConfiguration")]
         public HTTPConfiguration HTTPConfiguration { get; set; }

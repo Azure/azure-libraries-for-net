@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Initiate troubleshooting on a specified resource
+            /// Initiate troubleshooting on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource
+            /// Get the last completed troubleshooting result on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Configures flow log  and traffic analytics (optional) on a specified
+            /// Configures flow log and traffic analytics (optional) on a specified
             /// resource.
             /// </summary>
             /// <param name='operations'>
@@ -448,6 +448,32 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
+            /// Get network configuration diagnostic.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='networkWatcherName'>
+            /// The name of the network watcher.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to get network configuration diagnostic.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<NetworkConfigurationDiagnosticResponseInner> GetNetworkConfigurationDiagnosticAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetNetworkConfigurationDiagnosticWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes the specified network watcher resource.
             /// </summary>
             /// <param name='operations'>
@@ -547,7 +573,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Initiate troubleshooting on a specified resource
+            /// Initiate troubleshooting on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -573,7 +599,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource
+            /// Get the last completed troubleshooting result on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -599,7 +625,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Configures flow log  and traffic analytics (optional) on a specified
+            /// Configures flow log and traffic analytics (optional) on a specified
             /// resource.
             /// </summary>
             /// <param name='operations'>
@@ -730,6 +756,32 @@ namespace Microsoft.Azure.Management.Network.Fluent
             public static async Task<AvailableProvidersListInner> BeginListAvailableProvidersAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginListAvailableProvidersWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get network configuration diagnostic.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='networkWatcherName'>
+            /// The name of the network watcher.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to get network configuration diagnostic.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<NetworkConfigurationDiagnosticResponseInner> BeginGetNetworkConfigurationDiagnosticAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginGetNetworkConfigurationDiagnosticWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

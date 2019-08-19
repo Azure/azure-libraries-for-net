@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="aggregationLevel">The aggregation level of Azure
         /// reachability report. Can be Country, State or City.</param>
+        /// <param name="providerLocation">Parameters that define a geographic
+        /// location.</param>
         /// <param name="reachabilityReport">List of Azure reachability report
         /// items.</param>
         public AzureReachabilityReportInner(string aggregationLevel, AzureReachabilityReportLocation providerLocation, IList<AzureReachabilityReportItem> reachabilityReport)
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string AggregationLevel { get; set; }
 
         /// <summary>
+        /// Gets or sets parameters that define a geographic location.
         /// </summary>
         [JsonProperty(PropertyName = "providerLocation")]
         public AzureReachabilityReportLocation ProviderLocation { get; set; }

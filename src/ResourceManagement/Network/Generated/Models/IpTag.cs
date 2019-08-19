@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains the IpTag associated with the public IP address
+    /// Contains the IpTag associated with the object.
     /// </summary>
     public partial class IpTag
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="ipTagType">Gets or sets the ipTag type: Example
         /// FirstPartyUsage.</param>
         /// <param name="tag">Gets or sets value of the IpTag associated with
-        /// the public IP. Example SQL, Storage etc</param>
+        /// the public IP. Example SQL, Storage etc.</param>
         public IpTag(string ipTagType = default(string), string tag = default(string))
         {
             IpTagType = ipTagType;
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets value of the IpTag associated with the public IP.
-        /// Example SQL, Storage etc
+        /// Example SQL, Storage etc.
         /// </summary>
         [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }

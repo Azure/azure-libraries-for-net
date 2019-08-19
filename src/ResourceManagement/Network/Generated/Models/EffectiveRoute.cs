@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Effective Route
+    /// Effective Route.
     /// </summary>
     public partial class EffectiveRoute
     {
@@ -31,25 +31,25 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="name">The name of the user defined route. This is
         /// optional.</param>
-        /// <param name="source">Who created the route. Possible values are:
-        /// 'Unknown', 'User', 'VirtualNetworkGateway', and 'Default'. Possible
-        /// values include: 'Unknown', 'User', 'VirtualNetworkGateway',
+        /// <param name="disableBgpRoutePropagation">If true, on-premises
+        /// routes are not propagated to the network interfaces in the
+        /// subnet.</param>
+        /// <param name="source">Who created the route. Possible values
+        /// include: 'Unknown', 'User', 'VirtualNetworkGateway',
         /// 'Default'</param>
         /// <param name="state">The value of effective route. Possible values
-        /// are: 'Active' and 'Invalid'. Possible values include: 'Active',
-        /// 'Invalid'</param>
+        /// include: 'Active', 'Invalid'</param>
         /// <param name="addressPrefix">The address prefixes of the effective
         /// routes in CIDR notation.</param>
         /// <param name="nextHopIpAddress">The IP address of the next hop of
         /// the effective route.</param>
         /// <param name="nextHopType">The type of Azure hop the packet should
-        /// be sent to. Possible values are: 'VirtualNetworkGateway',
-        /// 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible
-        /// values include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-        /// 'VirtualAppliance', 'None'</param>
-        public EffectiveRoute(string name = default(string), EffectiveRouteSource source = default(EffectiveRouteSource), EffectiveRouteState state = default(EffectiveRouteState), IList<string> addressPrefix = default(IList<string>), IList<string> nextHopIpAddress = default(IList<string>), RouteNextHopType nextHopType = default(RouteNextHopType))
+        /// be sent to. Possible values include: 'VirtualNetworkGateway',
+        /// 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'</param>
+        public EffectiveRoute(string name = default(string), bool? disableBgpRoutePropagation = default(bool?), EffectiveRouteSource source = default(EffectiveRouteSource), EffectiveRouteState state = default(EffectiveRouteState), IList<string> addressPrefix = default(IList<string>), IList<string> nextHopIpAddress = default(IList<string>), RouteNextHopType nextHopType = default(RouteNextHopType))
         {
             Name = name;
+            DisableBgpRoutePropagation = disableBgpRoutePropagation;
             Source = source;
             State = state;
             AddressPrefix = addressPrefix;
@@ -70,17 +70,22 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets who created the route. Possible values are: 'Unknown',
-        /// 'User', 'VirtualNetworkGateway', and 'Default'. Possible values
-        /// include: 'Unknown', 'User', 'VirtualNetworkGateway', 'Default'
+        /// Gets or sets if true, on-premises routes are not propagated to the
+        /// network interfaces in the subnet.
+        /// </summary>
+        [JsonProperty(PropertyName = "disableBgpRoutePropagation")]
+        public bool? DisableBgpRoutePropagation { get; set; }
+
+        /// <summary>
+        /// Gets or sets who created the route. Possible values include:
+        /// 'Unknown', 'User', 'VirtualNetworkGateway', 'Default'
         /// </summary>
         [JsonProperty(PropertyName = "source")]
         public EffectiveRouteSource Source { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of effective route. Possible values are:
-        /// 'Active' and 'Invalid'. Possible values include: 'Active',
-        /// 'Invalid'
+        /// Gets or sets the value of effective route. Possible values include:
+        /// 'Active', 'Invalid'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public EffectiveRouteState State { get; set; }
@@ -100,10 +105,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets the type of Azure hop the packet should be sent to.
-        /// Possible values are: 'VirtualNetworkGateway', 'VnetLocal',
-        /// 'Internet', 'VirtualAppliance', and 'None'. Possible values
-        /// include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-        /// 'VirtualAppliance', 'None'
+        /// Possible values include: 'VirtualNetworkGateway', 'VnetLocal',
+        /// 'Internet', 'VirtualAppliance', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "nextHopType")]
         public RouteNextHopType NextHopType { get; set; }
