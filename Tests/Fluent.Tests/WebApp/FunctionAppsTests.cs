@@ -48,9 +48,8 @@ namespace Fluent.Tests.WebApp
                     Assert.Equal(Region.USWest, plan1.Region);
                     Assert.Equal(new PricingTier("Dynamic", "Y1"), plan1.PricingTier);
 
-                    IStorageAccount storageAccount1 = getStorageAccount(appServiceManager, functionApp1,
-                        out System.Collections.Generic.IReadOnlyDictionary<string, IAppSetting> appSettings1,
-                        out StorageSettings storageSettings1);
+                    IStorageAccount storageAccount1 = getStorageAccount(appServiceManager.StorageManager, functionApp1,
+                        out IReadOnlyDictionary<string, IAppSetting> appSettings1, out StorageSettings storageSettings1);
                     // consumption plan requires this 2 settings
                     Assert.True(appSettings1.ContainsKey(KeyContentAzureFileConnectionString));
                     Assert.True(appSettings1.ContainsKey(KeyContentShare));
@@ -107,15 +106,13 @@ namespace Fluent.Tests.WebApp
                     Assert.NotNull(functionApp3);
                     Assert.Equal(Region.USWest, functionApp3.Region);
 
-                    IStorageAccount storageAccount3 = getStorageAccount(appServiceManager, functionApp3,
-                        out System.Collections.Generic.IReadOnlyDictionary<string, IAppSetting> appSettings3,
-                        out StorageSettings storageSettings3);
+                    IStorageAccount storageAccount3 = getStorageAccount(appServiceManager.StorageManager, functionApp3,
+                        out IReadOnlyDictionary<string, IAppSetting> appSettings3, out StorageSettings storageSettings3);
                     // app service plan does not have this 2 settings
                     // https://github.com/Azure/azure-libraries-for-net/issues/485
                     Assert.False(appSettings3.ContainsKey(KeyContentAzureFileConnectionString));
                     Assert.False(appSettings3.ContainsKey(KeyContentShare));
                     // verify accountKey
-                    System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Storage.Fluent.Models.StorageAccountKey> keys = storageAccount3.GetKeys();
                     Assert.Equal(storageAccount3.GetKeys()[0].Value, storageSettings3.AccountKey);
 
                     // Get
@@ -135,9 +132,8 @@ namespace Fluent.Tests.WebApp
                         .WithNewStorageAccount(StorageName1, Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.StandardGRS)
                         .Apply();
                     Assert.Equal(StorageName1, functionApp2.StorageAccount.Name);
-                    IStorageAccount storageAccount2 = getStorageAccount(appServiceManager, functionApp2,
-                         out System.Collections.Generic.IReadOnlyDictionary<string, IAppSetting> appSettings2,
-                         out StorageSettings storageSettings2);
+                    IStorageAccount storageAccount2 = getStorageAccount(appServiceManager.StorageManager, functionApp2,
+                         out IReadOnlyDictionary<string, IAppSetting> appSettings2, out StorageSettings storageSettings2);
                     Assert.True(appSettings2.ContainsKey(KeyContentAzureFileConnectionString));
                     Assert.True(appSettings2.ContainsKey(KeyContentShare));
                     Assert.Equal(appSettings2[KeyAzureWebJobsStorage].Value, appSettings2[KeyContentAzureFileConnectionString].Value);
@@ -152,8 +148,8 @@ namespace Fluent.Tests.WebApp
                         .Apply();
                     int numStorageAccountAfter = appServiceManager.StorageManager.StorageAccounts.ListByResourceGroup(GroupName1).Count();
                     Assert.Equal(numStorageAccountBefore, numStorageAccountAfter);
-                    IStorageAccount storageAccount1Updated = getStorageAccount(appServiceManager, functionApp1, 
-                        out System.Collections.Generic.IReadOnlyDictionary<string, IAppSetting> appSettings1Updated, out _);
+                    IStorageAccount storageAccount1Updated = getStorageAccount(appServiceManager.StorageManager, functionApp1, 
+                        out IReadOnlyDictionary<string, IAppSetting> appSettings1Updated, out _);
                     Assert.True(appSettings1Updated.ContainsKey("newKey"));
                     Assert.Equal(appSettings1[KeyAzureWebJobsStorage].Value, appSettings1Updated[KeyAzureWebJobsStorage].Value);
                     Assert.Equal(appSettings1[KeyContentAzureFileConnectionString].Value, appSettings1Updated[KeyContentAzureFileConnectionString].Value);
@@ -239,12 +235,12 @@ namespace Fluent.Tests.WebApp
             }
         }
 
-        private readonly string KeyAzureWebJobsStorage = "AzureWebJobsStorage";
-        private readonly string KeyContentAzureFileConnectionString = "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING";
-        private readonly string KeyContentShare = "WEBSITE_CONTENTSHARE";
+        private static readonly string KeyAzureWebJobsStorage = "AzureWebJobsStorage";
+        private static readonly string KeyContentAzureFileConnectionString = "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING";
+        private static readonly string KeyContentShare = "WEBSITE_CONTENTSHARE";
 
-        private readonly string AccountNameSegment = "AccountName=";
-        private readonly string AccountKeySegment = "AccountKey=";
+        private static readonly string AccountNameSegment = "AccountName=";
+        private static readonly string AccountKeySegment = "AccountKey=";
 
         private class StorageSettings
         {
@@ -252,9 +248,8 @@ namespace Fluent.Tests.WebApp
             internal string AccountKey { get; set; }
         }
 
-        private IStorageAccount getStorageAccount(IAppServiceManager serviceManager, IFunctionApp functionApp,
-            out System.Collections.Generic.IReadOnlyDictionary<string, IAppSetting> appSettings,
-            out StorageSettings storageSettings)
+        private static IStorageAccount getStorageAccount(IStorageManager storageManager, IFunctionApp functionApp,
+            out IReadOnlyDictionary<string, IAppSetting> appSettings, out StorageSettings storageSettings)
         {
             appSettings = functionApp.GetAppSettings();
             storageSettings = new StorageSettings();
@@ -274,7 +269,7 @@ namespace Fluent.Tests.WebApp
             }
             if (storageSettings.AccountName != null)
             {
-                System.Collections.Generic.IEnumerable<IStorageAccount> storageAccounts = serviceManager.StorageManager.StorageAccounts.List();
+                IEnumerable<IStorageAccount> storageAccounts = storageManager.StorageAccounts.List();
                 foreach (IStorageAccount storageAccount in storageAccounts)
                 {
                     if (storageAccount.Name == storageSettings.AccountName)
