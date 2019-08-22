@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public System.Uri BaseUri { get; set; }
+        //public System.Uri BaseUri { get; set; }
 
         /// <summary>
         /// Gets or sets json serialization settings.
