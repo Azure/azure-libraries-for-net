@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return ResourceManager.Fluent.Core.Extensions.Synchronize(() => ApplyAsync());
         }
 
-        public async Task<IVirtualMachineScaleSetVM> ApplyAsync(CancellationToken cancellationToken = default, bool multiThreaded = true)
+        public async Task<IVirtualMachineScaleSetVM> ApplyAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
         {
             managedDataDisks.SyncToVMDataDisks(Inner.StorageProfile);
             SetInner(await Parent.VirtualMachines().Inner.UpdateAsync(Parent.ResourceGroupName, Parent.Name, InstanceId(), Inner, cancellationToken));
