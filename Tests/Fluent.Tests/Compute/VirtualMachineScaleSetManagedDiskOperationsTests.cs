@@ -89,6 +89,61 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         Assert.NotNull(vm.DataDisks);
                         Assert.Equal(3, vm.DataDisks.Count);
                     }
+
+                    // test attach/detach data disk to single instance
+                    string diskName = SdkContext.RandomResourceName("disk", 10);
+                    IDisk disk0 = computeManager.Disks
+                        .Define(diskName)
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(rgName)
+                        .WithData()
+                        .WithSizeInGB(32)
+                        .Create();
+
+                    var vmEnumerator = virtualMachines.GetEnumerator();
+                    vmEnumerator.MoveNext();
+                    IVirtualMachineScaleSetVM vm0 = vmEnumerator.Current;
+                    vmEnumerator.MoveNext();
+                    IVirtualMachineScaleSetVM vm1 = vmEnumerator.Current;
+                    int existDiskLun = 2;
+                    int newDiskLun = 10;
+                    // cannot detach non-exist disk
+                    Assert.Throws<InvalidOperationException>(
+                        () => vm0.Update().WithoutDataDisk(newDiskLun)
+                    );
+                    // cannot detach disk from VMSS model
+                    Assert.Throws<InvalidOperationException>(
+                        () => vm0.Update().WithoutDataDisk(existDiskLun)
+                    );
+                    // cannot attach disk with same lun
+                    Assert.Throws<InvalidOperationException>(
+                        () => vm0.Update().WithExistingDataDisk(disk0, existDiskLun, CachingTypes.None)
+                    );
+                    // cannot attach disk with same lun
+                    Assert.Throws<InvalidOperationException>(
+                        () => vm0.Update().WithExistingDataDisk(disk0, newDiskLun, CachingTypes.None).WithExistingDataDisk(disk0, newDiskLun, CachingTypes.None)
+                    );
+
+                    // attach disk
+                    int vmssModelDiskCount = vm0.DataDisks.Count;
+                    vm0.Update()
+                        .WithExistingDataDisk(disk0, newDiskLun, CachingTypes.ReadWrite)
+                        .Apply();
+                    Assert.Equal(vmssModelDiskCount + 1, vm0.DataDisks.Count);
+
+                    // cannot attach disk that already attached
+                    disk0.Refresh();
+                    Assert.Throws<InvalidOperationException>(
+                        () => vm1.Update()
+                            .WithExistingDataDisk(disk0, newDiskLun, CachingTypes.None)
+                            .Apply()
+                    );
+
+                    // detach disk
+                    vm0.Update()
+                        .WithoutDataDisk(newDiskLun)
+                        .Apply();
+                    Assert.Equal(vmssModelDiskCount, vm0.DataDisks.Count);
                 }
                 finally
                 {

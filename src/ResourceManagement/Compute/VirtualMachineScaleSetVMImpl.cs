@@ -16,11 +16,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVTY2FsZVNldFZNSW1wbA==
     internal partial class VirtualMachineScaleSetVMImpl :
         ChildResource<VirtualMachineScaleSetVMInner, VirtualMachineScaleSetImpl, IVirtualMachineScaleSet>,
+        VirtualMachineScaleSetVM.Update.IUpdate,
         IVirtualMachineScaleSetVM
     {
         private VirtualMachineInstanceView virtualMachineInstanceView;
 
-
+        private readonly ManagedDataDiskCollection managedDataDisks = new ManagedDataDiskCollection();
 
         public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -550,6 +551,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             SetInner(await GetInnerAsync(cancellationToken));
             ClearCachedRelatedResources();
+            InitializeDataDisks();
             return this;
         }
 
@@ -663,6 +665,155 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return Inner.StorageProfile.OsDisk.Image.Uri;
             }
             return null;
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate WithExistingDataDisk(IDisk disk, int lun, CachingTypes cachingType)
+        {
+            return WithExistingDataDisk(disk, lun, cachingType, StorageAccountTypes.Parse(disk.Sku.AccountType.ToString()));
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate WithExistingDataDisk(IDisk dataDisk, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        {
+            if (!IsManagedDiskEnabled())
+            {
+                throw new System.InvalidOperationException(ManagedUnmanagedDiskErrors.VM_Both_Unmanaged_And_Managed_Disk_Not_Allowed);
+            }
+            if (dataDisk.Inner.DiskState != DiskState.Unattached)
+            {
+                throw new System.InvalidOperationException("Disk need to be in unattached state");
+            }
+
+            DataDisk attachDataDisk = new DataDisk
+            {
+                CreateOption = DiskCreateOptionTypes.Attach,
+                Lun = lun,
+                Caching = cachingType,
+                ManagedDisk = new ManagedDiskParametersInner
+                {
+                    StorageAccountType = storageAccountType,
+                    Id = dataDisk.Id
+                }
+            };
+            WithExistingDataDisk(attachDataDisk, lun);
+            return this;
+        }
+
+        private VirtualMachineScaleSetVM.Update.IUpdate WithExistingDataDisk(DataDisk dataDisk, int lun)
+        {
+            if (TryFindDataDisk(lun, Inner.StorageProfile.DataDisks) != null)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} already attached", lun));
+            }
+            else if (TryFindDataDisk(lun, managedDataDisks.ExistingDisksToAttach) != null)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} already scheduled to be attached", lun));
+            }
+            managedDataDisks.ExistingDisksToAttach.Add(dataDisk);
+            return this;
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate WithoutDataDisk(int lun)
+        {
+            DataDisk dataDisk = TryFindDataDisk(lun, Inner.StorageProfile.DataDisks);
+            if (dataDisk == null)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} not found", lun));
+            }
+            if (dataDisk.CreateOption != DiskCreateOptionTypes.Attach)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} cannot be detached, as it is part of Virtual Machine Scale Set model", lun));
+            }
+            managedDataDisks.DiskLunsToRemove.Add(lun);
+            return this;
+        }
+
+        public IVirtualMachineScaleSetVM Apply()
+        {
+            return ResourceManager.Fluent.Core.Extensions.Synchronize(() => ApplyAsync());
+        }
+
+        public async Task<IVirtualMachineScaleSetVM> ApplyAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
+        {
+            managedDataDisks.SyncToVMDataDisks(Inner.StorageProfile);
+            SetInner(await Parent.VirtualMachines().Inner.UpdateAsync(Parent.ResourceGroupName, Parent.Name, InstanceId(), Inner, cancellationToken));
+            ClearCachedRelatedResources();
+            InitializeDataDisks();
+            return this;
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate Update()
+        {
+            InitializeDataDisks();
+            return this;
+        }
+
+        private void InitializeDataDisks()
+        {
+            managedDataDisks.Clear();
+        }
+
+        private DataDisk TryFindDataDisk(int lun, IList<DataDisk> dataDisks)
+        {
+            DataDisk disk = null;
+            foreach (DataDisk dataDisk in dataDisks)
+            {
+                if (lun == dataDisk.Lun)
+                {
+                    disk = dataDisk;
+                    break;
+                }
+            }
+            return disk;
+        }
+
+        /// <summary>
+        /// Class to manage data disk collection.
+        /// </summary>
+        class ManagedDataDiskCollection
+        {
+            internal readonly IList<DataDisk> ExistingDisksToAttach = new List<DataDisk>();
+            internal readonly IList<int> DiskLunsToRemove = new List<int>();
+
+            internal void SyncToVMDataDisks(StorageProfile storageProfile)
+            {
+                if (storageProfile != null && IsPending())
+                {
+                    // remove disks from VM inner
+                    if (storageProfile.DataDisks != null && DiskLunsToRemove.Any())
+                    {
+                        storageProfile.DataDisks = storageProfile.DataDisks
+                            .Where(disk => !DiskLunsToRemove.Contains(disk.Lun))
+                            .ToList();
+                    }
+
+                    // add disks to VM inner
+                    if (ExistingDisksToAttach.Any())
+                    {
+                        if (storageProfile.DataDisks == null)
+                        {
+                            storageProfile.DataDisks = new List<DataDisk>();
+                        }
+                        foreach (DataDisk disk in ExistingDisksToAttach)
+                        {
+                            storageProfile.DataDisks.Add(disk);
+                        }
+                    }
+
+                    // clear ManagedDataDiskCollection after it is synced into VM inner
+                    Clear();
+                }
+            }
+
+            internal void Clear()
+            {
+                ExistingDisksToAttach.Clear();
+                DiskLunsToRemove.Clear();
+            }
+
+            private bool IsPending()
+            {
+                return ExistingDisksToAttach.Any() || DiskLunsToRemove.Any();
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM>,
+        IUpdatable<VirtualMachineScaleSetVM.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineScaleSetVMInner>
     {
 
