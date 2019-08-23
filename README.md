@@ -2,7 +2,7 @@
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.24.0). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.25.0). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -22,7 +22,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.24.0*
+:triangular_flag_on_post: *as of Version 1.25.0*
 
 <table>
   <tr>
@@ -575,7 +575,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.24.0** release builds are available on NuGet:
+**1.25.0** release builds are available on NuGet:
 
 |Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
@@ -615,7 +615,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.23.x to 1.24.0, you can use these release notes for [preparing your code for 1.24.0 from 1.23.x](./notes/prepare-for-1.24.0.md).
+If you are migrating your code from 1.24.x to 1.25.0, you can use these release notes for [preparing your code for 1.25.0 from 1.24.x](./notes/prepare-for-1.25.0.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -650,8 +650,9 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| 1.24              | [1.24](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.24)        | Tagged release for 1.24 version of Azure management libraries |
-| 1.23              | [1.23](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.23)        | Tagged release for 1.23 version of Azure management libraries |
+| 1.25              | [1.25](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.25.0)      | Tagged release for 1.25 version of Azure management libraries |
+| 1.24              | [1.24](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.24.0)      | Tagged release for 1.24 version of Azure management libraries |
+| 1.23              | [1.23](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.23.0)      | Tagged release for 1.23 version of Azure management libraries |
 | 1.22              | [1.22](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.22)        | Tagged release for 1.22 version of Azure management libraries |
 | 1.21              | [1.21](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.21)        | Tagged release for 1.21 version of Azure management libraries |
 | 1.20              | [1.20](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.20)        | Tagged release for 1.20 version of Azure management libraries |
