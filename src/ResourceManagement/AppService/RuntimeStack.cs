@@ -7,6 +7,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// </summary>
     public partial class RuntimeStack
     {
+        public static readonly RuntimeStack NodeJS_LTS = new RuntimeStack("NODE", "LTS");
+        public static readonly RuntimeStack NodeJS_10_LTS = new RuntimeStack("NODE", "10 LTS");
+        public static readonly RuntimeStack NodeJS_10_14 = new RuntimeStack("NODE", "10.14");
+        public static readonly RuntimeStack NodeJS_10_12 = new RuntimeStack("NODE", "10.12");
+        public static readonly RuntimeStack NodeJS_10_10 = new RuntimeStack("NODE", "10.10");
+        public static readonly RuntimeStack NodeJS_10_1 = new RuntimeStack("NODE", "10.1");
+        public static readonly RuntimeStack NodeJS_9_4 = new RuntimeStack("NODE", "9.4");
+        public static readonly RuntimeStack NodeJS_8_12 = new RuntimeStack("NODE", "8.12");
+        public static readonly RuntimeStack NodeJS_8_11 = new RuntimeStack("NODE", "8.11");
+        public static readonly RuntimeStack NodeJS_8_9 = new RuntimeStack("NODE", "8.9");
+        public static readonly RuntimeStack NodeJS_8_8 = new RuntimeStack("NODE", "8.8");
+        public static readonly RuntimeStack NodeJS_8_2 = new RuntimeStack("NODE", "8.2");
+        public static readonly RuntimeStack NodeJS_8_1 = new RuntimeStack("NODE", "8.1");
+        public static readonly RuntimeStack NodeJS_8_0 = new RuntimeStack("NODE", "8.0");
+        public static readonly RuntimeStack NodeJS_6_11 = new RuntimeStack("NODE", "6.11");
         public static readonly RuntimeStack NodeJS_6_10 = new RuntimeStack("NODE", "6.10");
         public static readonly RuntimeStack NodeJS_6_9 = new RuntimeStack("NODE", "6.9");
         public static readonly RuntimeStack NodeJS_6_6 = new RuntimeStack("NODE", "6.6");
@@ -15,9 +30,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public static readonly RuntimeStack NodeJS_4_4 = new RuntimeStack("NODE", "4.4");
         public static readonly RuntimeStack PHP_5_6 = new RuntimeStack("PHP", "5.6");
         public static readonly RuntimeStack PHP_7_0 = new RuntimeStack("PHP", "7.0");
+        public static readonly RuntimeStack PHP_7_2 = new RuntimeStack("PHP", "7.2");
+        public static readonly RuntimeStack PHP_7_3 = new RuntimeStack("PHP", "7.3");
         public static readonly RuntimeStack NETCore_V1_0 = new RuntimeStack("DOTNETCORE", "1.0");
         public static readonly RuntimeStack NETCore_V1_1 = new RuntimeStack("DOTNETCORE", "1.1");
+        public static readonly RuntimeStack NETCore_V2_0 = new RuntimeStack("DOTNETCORE", "2.0");
+        public static readonly RuntimeStack NETCore_V2_1 = new RuntimeStack("DOTNETCORE", "2.1");
+        public static readonly RuntimeStack NETCore_V2_2 = new RuntimeStack("DOTNETCORE", "2.2");
         public static readonly RuntimeStack Ruby_2_3 = new RuntimeStack("RUBY", "2.3");
+        public static readonly RuntimeStack Ruby_2_4 = new RuntimeStack("RUBY", "2.4");
+        public static readonly RuntimeStack Ruby_2_5 = new RuntimeStack("RUBY", "2.5");
+        public static readonly RuntimeStack Ruby_2_6 = new RuntimeStack("RUBY", "2.6");
         public static readonly RuntimeStack Java_8_Jre8 = new RuntimeStack("JAVA", "8-jre8");
         public static readonly RuntimeStack Java_11_Java11 = new RuntimeStack("JAVA", "11-java11");
         public static readonly RuntimeStack Tomcat_8_5_JRE8 = new RuntimeStack("TOMCAT", "8.5-jre8");
