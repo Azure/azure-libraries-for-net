@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public static readonly RuntimeStack NETCore_V2_0 = new RuntimeStack("DOTNETCORE", "2.0");
         public static readonly RuntimeStack NETCore_V2_1 = new RuntimeStack("DOTNETCORE", "2.1");
         public static readonly RuntimeStack NETCore_V2_2 = new RuntimeStack("DOTNETCORE", "2.2");
-        public static readonly RuntimeStack Ruby_2_3 = new RuntimeStack("RUBY", "2.3.8");
-        public static readonly RuntimeStack Ruby_2_4 = new RuntimeStack("RUBY", "2.4.5");
-        public static readonly RuntimeStack Ruby_2_5 = new RuntimeStack("RUBY", "2.5.5");
-        public static readonly RuntimeStack Ruby_2_6 = new RuntimeStack("RUBY", "2.6.2");
+        public static readonly RuntimeStack Ruby_2_3 = new RuntimeStack("RUBY", "2.3");
+        public static readonly RuntimeStack Ruby_2_4 = new RuntimeStack("RUBY", "2.4");
+        public static readonly RuntimeStack Ruby_2_5 = new RuntimeStack("RUBY", "2.5");
+        public static readonly RuntimeStack Ruby_2_6 = new RuntimeStack("RUBY", "2.6");
         public static readonly RuntimeStack Java_8_Jre8 = new RuntimeStack("JAVA", "8-jre8");
         public static readonly RuntimeStack Java_11_Java11 = new RuntimeStack("JAVA", "11-java11");
         public static readonly RuntimeStack Tomcat_8_5_JRE8 = new RuntimeStack("TOMCAT", "8.5-jre8");
