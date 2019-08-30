@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DedicatedHostGroupUpdate class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
         /// <param name="platformFaultDomainCount">Number of fault domains that
-        /// the host group can span. Supported values 1,2,3.</param>
+        /// the host group can span.</param>
+        /// <param name="tags">Resource tags</param>
         /// <param name="hosts">A list of references to all dedicated hosts in
         /// the dedicated host group.</param>
-        /// <param name="zones">Availability Zone to use for this host group �
-        /// only single zone is supported. The zone can be assigned only during
+        /// <param name="zones">Availability Zone to use for this host group.
+        /// Only single zone is supported. The zone can be assigned only during
         /// creation. If not provided, the group supports all zones in the
-        /// region. If provided, enforce each host in the group is in the same
-        /// zone.</param>
-        public DedicatedHostGroupUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomainCount = default(int?), IList<SubResourceReadOnly> hosts = default(IList<SubResourceReadOnly>), IList<string> zones = default(IList<string>))
+        /// region. If provided, enforces each host in the group to be in the
+        /// same zone.</param>
+        public DedicatedHostGroupUpdate(int platformFaultDomainCount, IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> hosts = default(IList<SubResourceReadOnly>), IList<string> zones = default(IList<string>))
             : base(tags)
         {
             PlatformFaultDomainCount = platformFaultDomainCount;
@@ -59,10 +59,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets number of fault domains that the host group can span.
-        /// Supported values 1,2,3.
         /// </summary>
         [JsonProperty(PropertyName = "properties.platformFaultDomainCount")]
-        public int? PlatformFaultDomainCount { get; set; }
+        public int PlatformFaultDomainCount { get; set; }
 
         /// <summary>
         /// Gets a list of references to all dedicated hosts in the dedicated
@@ -72,14 +71,31 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public IList<SubResourceReadOnly> Hosts { get; private set; }
 
         /// <summary>
-        /// Gets or sets availability Zone to use for this host group � only
+        /// Gets or sets availability Zone to use for this host group. Only
         /// single zone is supported. The zone can be assigned only during
         /// creation. If not provided, the group supports all zones in the
-        /// region. If provided, enforce each host in the group is in the same
-        /// zone.
+        /// region. If provided, enforces each host in the group to be in the
+        /// same zone.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (PlatformFaultDomainCount > 3)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "PlatformFaultDomainCount", 3);
+            }
+            if (PlatformFaultDomainCount < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomainCount", 1);
+            }
+        }
     }
 }

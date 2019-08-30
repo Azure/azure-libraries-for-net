@@ -39,13 +39,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// virtual machine. For more information about using tags, see [Using
         /// tags to organize your Azure
         /// resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).</param>
-        public VirtualMachineImageInner(string name, string location, string id = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PurchasePlan plan = default(PurchasePlan), OSDiskImage osDiskImage = default(OSDiskImage), IList<DataDiskImage> dataDiskImages = default(IList<DataDiskImage>), AutomaticOSUpgradeProperties automaticOSUpgradeProperties = default(AutomaticOSUpgradeProperties))
+        /// <param name="hyperVGeneration">Possible values include: 'V1',
+        /// 'V2'</param>
+        public VirtualMachineImageInner(string name, string location, string id = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PurchasePlan plan = default(PurchasePlan), OSDiskImage osDiskImage = default(OSDiskImage), IList<DataDiskImage> dataDiskImages = default(IList<DataDiskImage>), AutomaticOSUpgradeProperties automaticOSUpgradeProperties = default(AutomaticOSUpgradeProperties), HyperVGenerationTypes hyperVGeneration = default(HyperVGenerationTypes))
             : base(name, location, id, tags)
         {
             Plan = plan;
             OsDiskImage = osDiskImage;
             DataDiskImages = dataDiskImages;
             AutomaticOSUpgradeProperties = automaticOSUpgradeProperties;
+            HyperVGeneration = hyperVGeneration;
             CustomInit();
         }
 
@@ -73,6 +76,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.automaticOSUpgradeProperties")]
         public AutomaticOSUpgradeProperties AutomaticOSUpgradeProperties { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'V1', 'V2'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hyperVGeneration")]
+        public HyperVGenerationTypes HyperVGeneration { get; set; }
 
         /// <summary>
         /// Validate the object.

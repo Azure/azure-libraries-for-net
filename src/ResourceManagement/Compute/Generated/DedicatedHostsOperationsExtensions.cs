@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// The name of the dedicated host .
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Create Dedicated Host .
+            /// Parameters supplied to the Create Dedicated Host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// The name of the dedicated host .
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Create Dedicated Host .
+            /// Parameters supplied to the Create Dedicated Host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

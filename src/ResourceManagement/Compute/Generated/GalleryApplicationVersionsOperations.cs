@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             List<string> _queryParameters = new List<string>();
             if (expand != null)
             {
-                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand.ToString())));
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (apiVersion != null)
             {

@@ -40,9 +40,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// managed image. &lt;br&gt;&lt;br&gt; Possible values are:
         /// &lt;br&gt;&lt;br&gt; **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
         /// Possible values include: 'Windows', 'Linux'</param>
-        /// <param name="osState">The allowed values for OS State are
-        /// 'Generalized'. Possible values include: 'Generalized',
-        /// 'Specialized'</param>
+        /// <param name="osState">This property allows the user to specify
+        /// whether the virtual machines created under this image are
+        /// 'Generalized' or 'Specialized'. Possible values include:
+        /// 'Generalized', 'Specialized'</param>
         /// <param name="description">The description of this gallery Image
         /// Definition resource. This property is updatable.</param>
         /// <param name="eula">The Eula agreement for the gallery Image
@@ -115,8 +116,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public OperatingSystemTypes OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets the allowed values for OS State are 'Generalized'.
-        /// Possible values include: 'Generalized', 'Specialized'
+        /// Gets or sets this property allows the user to specify whether the
+        /// virtual machines created under this image are 'Generalized' or
+        /// 'Specialized'. Possible values include: 'Generalized',
+        /// 'Specialized'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osState")]
         public OperatingSystemStateTypes OsState { get; set; }
