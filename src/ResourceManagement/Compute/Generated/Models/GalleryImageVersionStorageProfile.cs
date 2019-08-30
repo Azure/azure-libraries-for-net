@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// This is the storage profile of a gallery Image Version.
+    /// This is the storage profile of a Gallery Image Version.
     /// </summary>
     public partial class GalleryImageVersionStorageProfile
     {

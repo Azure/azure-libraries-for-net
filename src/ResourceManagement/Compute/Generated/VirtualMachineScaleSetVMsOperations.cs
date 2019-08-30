@@ -200,6 +200,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Possible values include:
+        /// 'instanceView'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -221,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualMachineScaleSetVMInner>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualMachineScaleSetVMInner>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, InstanceViewTypes? expand = default(InstanceViewTypes?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -250,6 +254,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("vmScaleSetName", vmScaleSetName);
                 tracingParameters.Add("instanceId", instanceId);
+                tracingParameters.Add("expand", expand);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
@@ -262,6 +267,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             _url = _url.Replace("{instanceId}", System.Uri.EscapeDataString(instanceId));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(expand, Client.SerializationSettings).Trim('"'))));
+            }
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
