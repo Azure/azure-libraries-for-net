@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <returns>The virtual machine scale set instance.</returns>
         public async Task<IVirtualMachineScaleSetVM> GetInstanceAsync(string instanceId, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.WrapModel(await this.Inner.GetAsync(this.scaleSet.ResourceGroupName, this.scaleSet.Name, instanceId, cancellationToken));
+            return this.WrapModel(await this.Inner.GetAsync(this.scaleSet.ResourceGroupName, this.scaleSet.Name, instanceId, InstanceViewTypes.InstanceView, cancellationToken));
         }
 
         ///GENMHASH:8614677E9F33F649DA97FEA11832F507:F1FA4FC3202537ADF1E8F7F846D49B62
