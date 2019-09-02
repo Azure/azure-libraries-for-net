@@ -73,6 +73,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     }
 
     /// <summary>
+    /// The stage of the managed disk definition allowing to create disk from upload.
+    /// </summary>
+    public interface IWithDataDiskFromUpload
+    {
+        /// <summary>
+        /// Gets or sets if createOption is Upload, this is the size of the
+        /// contents of the upload including the VHD footer. This value should
+        /// be between 20 (20 MiB) and 33554432 bytes (32 TiB).
+        /// </summary>
+        /// <param name="uploadSizeInMB">The size of the contents of the upload</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate WithUploadSizeInMB(long? uploadSizeInMB);
+    }
+
+    /// <summary>
     /// The stage of a managed disk definition allowing to choose a Windows OS source.
     /// </summary>
     public interface IWithWindowsDiskSource
@@ -224,6 +239,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithDataDiskSource :
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromVhd,
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromUpload,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromSnapshot
     {
@@ -301,6 +317,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithData,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskSource,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromVhd,
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromUpload,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromSnapshot,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize,

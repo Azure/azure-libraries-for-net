@@ -82,6 +82,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the size of the disk in bytes.
+        /// </summary>
+        long Microsoft.Azure.Management.Compute.Fluent.IDisk.SizeInByte
+        {
+            get
+            {
+                return this.SizeInByte();
+            }
+        }
+
+        /// <summary>
         /// Gets the disk SKU.
         /// </summary>
         Models.DiskSkuTypes Microsoft.Azure.Management.Compute.Fluent.IDisk.Sku
@@ -163,6 +174,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromVhd.FromVhd(string vhdUrl)
         {
             return this.FromVhd(vhdUrl);
+        }
+
+        /// <summary>
+        /// Gets or sets if createOption is Upload, this is the size of the
+        /// contents of the upload including the VHD footer. This value should
+        /// be between 20 (20 MiB) and 33554432 bytes (32 TiB).
+        /// </summary>
+        /// <param name="uploadSizeInMB">The size of the contents of the upload</param>
+        /// <return>The next stage of the definition.</return>
+        Disk.Definition.IWithCreate Disk.Definition.IWithDataDiskFromUpload.WithUploadSizeInMB(long? uploadSizeInMB)
+        {
+            return this.WithUploadSizeInMB(uploadSizeInMB);
         }
 
         /// <summary>
