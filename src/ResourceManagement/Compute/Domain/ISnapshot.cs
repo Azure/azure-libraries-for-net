@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.DiskSkuTypes Sku { get; }
 
         /// <summary>
+        /// Gets or sets whether a snapshot is incremental. Incremental
+        /// snapshots on the same disk occupy less space than full snapshots
+        /// and can be diffed.
+        /// </summary>
+        bool? Incremental { get; }
+
+        /// <summary>
         /// Gets the snapshot SKU type.
         /// </summary>
         Microsoft.Azure.Management.Compute.Fluent.SnapshotSkuType SkuType { get; }

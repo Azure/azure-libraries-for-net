@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.ISnapshot>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSize,
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithIncremental,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSku
     {
 
@@ -165,6 +166,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         /// <param name="sizeInGB">The disk size in GB.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithSizeInGB(int sizeInGB);
+    }
+
+
+    /// <summary>
+    /// The stage of the managed snapshot allowing to specify incremental snapshot.
+    /// </summary>
+    public interface IWithIncremental
+    {
+        /// <summary>
+        /// Specifies whether a snapshot is incremental.
+        /// </summary>
+        /// <param name="enabled">Whether to enable incremental snapshot</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithIncremental(bool enabled);
     }
 
     /// <summary>

@@ -169,6 +169,63 @@ namespace Fluent.Tests.Compute
             }
         }
 
+
+        [Fact]
+        public void CanOperateOnManagedDiskFromUpload()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var diskName1 = SdkContext.RandomResourceName("md-1", 20);
+                var diskName2 = SdkContext.RandomResourceName("md-2", 20);
+                var resourceManager = TestHelper.CreateRollupClient();
+                var computeManager = TestHelper.CreateComputeManager();
+                var rgName = TestUtilities.GenerateName("rgfluentchash-");
+
+                try
+                {
+                    var resourceGroup = resourceManager
+                            .ResourceGroups
+                            .Define(rgName)
+                            .WithRegion(Location)
+                            .Create();
+
+
+                    // Create a managed disk from existing managed disk
+                    //
+                    var disk = computeManager.Disks
+                            .Define(diskName2)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup.Name)
+                            .WithData()
+                            .WithUploadSizeInMB(1024)
+                            // Start Option
+                            .WithSku(DiskSkuTypes.StandardLRS)
+                            // End Option
+                            .Create();
+
+                    disk = computeManager.Disks.GetById(disk.Id);
+
+                    Assert.NotNull(disk.Id);
+                    Assert.Equal(disk.Name, diskName2, ignoreCase: true);
+                    Assert.True(disk.Sku == DiskSkuTypes.StandardLRS);
+                    Assert.Equal(DiskCreateOption.Upload, disk.CreationMethod);
+                    Assert.False(disk.IsAttachedToVirtualMachine);
+                    Assert.Equal(0, disk.SizeInByte);
+                    Assert.Null(disk.OSType);
+                    Assert.Equal(CreationSourceType.Unknown, disk.Source.Type);
+                    computeManager.Disks.DeleteById(disk.Id);
+                }
+                finally
+                {
+                    try
+                    {
+                        resourceManager.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
         [Fact]
         public void CanOperateOnManagedDiskFromSnapshot()
         {
@@ -206,11 +263,15 @@ namespace Fluent.Tests.Compute
                             .WithSku(DiskSkuTypes.StandardLRS)
                             .Create();
 
+
+
                     Assert.NotNull(snapshot.Id);
                     Assert.Equal(snapshotName, snapshot.Name, true);
                     Assert.Equal(DiskSkuTypes.StandardLRS, snapshot.Sku);
                     Assert.Equal(DiskCreateOption.Copy, snapshot.CreationMethod);
                     Assert.Equal(200, snapshot.SizeInGB);
+                    // TODO: Test incremental when it is true
+                    Assert.Equal(false, snapshot.Incremental);
                     Assert.Null(snapshot.OSType);
                     Assert.NotNull(snapshot.Source);
                     Assert.Equal(CreationSourceType.CopiedFromDisk, snapshot.Source.Type);

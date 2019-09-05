@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public SnapshotImpl WithIncremental(bool enabled)
+        {
+            Inner.Incremental = enabled;
+            return this;
+        }
 
         ///GENMHASH:AAD8E592A024E583CCB079E40FA35511:86D949645392B88CC8EBDF08E3E0EDF8
         public SnapshotImpl WithLinuxFromVhd(string vhdUrl)
@@ -236,6 +241,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return SnapshotSkuType.FromSnapshotSku(this.Inner.Sku);
             }
+        }
+
+
+        public bool? Incremental()
+        {
+            return this.Inner.Incremental;
         }
 
         ///GENMHASH:27B8AD5B496821160B763BEE4B6DAB47:A99E5BCABB2F6C6A293C01FAEA00D27B

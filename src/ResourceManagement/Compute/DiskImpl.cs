@@ -125,6 +125,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public DiskImpl WithUploadSizeInMB(long? uploadSizeInMB)
+        {
+            Inner.CreationData = new CreationData();
+            Inner.CreationData.CreateOption = DiskCreateOption.Upload;
+            // Size in bytes + VHD footer size.
+            Inner.CreationData.UploadSizeBytes = uploadSizeInMB * 1024 * 1024 + 512;
+            return this;
+        }
+
         ///GENMHASH:C14080365CC6F93E30BB51B78DED7084:769384CE5F12D8DA31D146E04DAD108F
         public async Task RevokeAccessAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -143,6 +152,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (Inner.DiskSizeGB != null && Inner.DiskSizeGB.HasValue)
             {
                 return Inner.DiskSizeGB.Value;
+            }
+            return 0;
+        }
+
+
+        public long SizeInByte()
+        {
+            if (Inner.DiskSizeBytes != null && Inner.DiskSizeBytes.HasValue)
+            {
+                return Inner.DiskSizeBytes.Value;
             }
             return 0;
         }
