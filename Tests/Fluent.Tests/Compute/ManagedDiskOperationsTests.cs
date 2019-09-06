@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Azure.Tests;
@@ -233,7 +233,8 @@ namespace Fluent.Tests.Compute
             {
                 var emptyDiskName = SdkContext.RandomResourceName("md-empty-", 20);
                 var snapshotBasedDiskName = SdkContext.RandomResourceName("md-snp-", 20);
-                var snapshotName = SdkContext.RandomResourceName("snp-", 20);
+                var snapshotName1 = SdkContext.RandomResourceName("snp-", 20);
+                var snapshotName2 = SdkContext.RandomResourceName("snp-", 20);
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
                 var rgName = TestUtilities.GenerateName("rgfluentchash-");
@@ -255,7 +256,7 @@ namespace Fluent.Tests.Compute
                             .Create();
 
                     var snapshot = computeManager.Snapshots
-                            .Define(snapshotName)
+                            .Define(snapshotName1)
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
                             .WithDataFromDisk(emptyDisk)
@@ -266,17 +267,15 @@ namespace Fluent.Tests.Compute
 
 
                     Assert.NotNull(snapshot.Id);
-                    Assert.Equal(snapshotName, snapshot.Name, true);
+                    Assert.Equal(snapshotName1, snapshot.Name, true);
                     Assert.Equal(DiskSkuTypes.StandardLRS, snapshot.Sku);
                     Assert.Equal(DiskCreateOption.Copy, snapshot.CreationMethod);
                     Assert.Equal(200, snapshot.SizeInGB);
-                    // TODO: Test incremental when it is true
                     Assert.Equal(false, snapshot.Incremental);
                     Assert.Null(snapshot.OSType);
                     Assert.NotNull(snapshot.Source);
                     Assert.Equal(CreationSourceType.CopiedFromDisk, snapshot.Source.Type);
                     Assert.Equal(emptyDisk.Id, snapshot.Source.SourceId(), true);
-
                     var fromSnapshotDisk = computeManager.Disks
                             .Define(snapshotBasedDiskName)
                             .WithRegion(Location)
@@ -295,6 +294,26 @@ namespace Fluent.Tests.Compute
                     Assert.NotNull(fromSnapshotDisk.Source);
                     Assert.Equal(CreationSourceType.CopiedFromSnapshot, fromSnapshotDisk.Source.Type);
                     Assert.Equal(snapshot.Id, fromSnapshotDisk.Source.SourceId(), true);
+
+                    snapshot = computeManager.Snapshots
+                         .Define(snapshotName2)
+                         .WithRegion(Location)
+                         .WithExistingResourceGroup(resourceGroup)
+                         .WithDataFromDisk(emptyDisk)
+                         .WithSizeInGB(100)
+                         .WithIncremental(true)
+                         .Create();
+
+                    Assert.NotNull(snapshot.Id);
+                    Assert.Equal(snapshotName2, snapshot.Name, true);
+                    Assert.Equal(DiskSkuTypes.StandardLRS, snapshot.Sku);
+                    Assert.Equal(DiskCreateOption.Copy, snapshot.CreationMethod);
+                    Assert.Equal(100, snapshot.SizeInGB);
+                    Assert.Equal(true, snapshot.Incremental);
+                    Assert.Null(snapshot.OSType);
+                    Assert.NotNull(snapshot.Source);
+                    Assert.Equal(CreationSourceType.CopiedFromDisk, snapshot.Source.Type);
+                    Assert.Equal(emptyDisk.Id, snapshot.Source.SourceId(), true);
                 }
                 finally
                 {
