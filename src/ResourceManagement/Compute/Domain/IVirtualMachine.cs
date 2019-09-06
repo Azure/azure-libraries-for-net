@@ -127,6 +127,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the power state of the virtual machine.
         /// </summary>
+        /// <remarks>
+        /// The power state of virtual machine instance, or null if cannot be determined. <see cref="RefreshInstanceView()"/> refreshes the power state.
+        /// </remarks>
         Microsoft.Azure.Management.Compute.Fluent.PowerState PowerState { get; }
 
         /// <summary>
