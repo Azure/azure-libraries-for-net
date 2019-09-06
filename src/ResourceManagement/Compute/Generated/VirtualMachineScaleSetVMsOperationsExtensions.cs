@@ -167,12 +167,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. Possible values include:
+            /// 'instanceView'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSetVMInner> GetAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMInner> GetAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, InstanceViewTypes? expand = default(InstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

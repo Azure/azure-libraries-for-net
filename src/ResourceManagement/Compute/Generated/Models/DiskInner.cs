@@ -48,11 +48,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Virtual Machine. Applicable to OS disks only. Possible values
         /// include: 'V1', 'V2'</param>
         /// <param name="diskSizeGB">If creationData.createOption is Empty,
-        /// this field is mandatory and it indicates the size of the VHD to
+        /// this field is mandatory and it indicates the size of the disk to
         /// create. If this field is present for updates or creation with other
         /// options, it indicates a resize. Resizes are only allowed if the
         /// disk is not attached to a running VM, and can only increase the
         /// disk's size.</param>
+        /// <param name="diskSizeBytes">The size of the disk in bytes. This
+        /// field is read only.</param>
+        /// <param name="uniqueId">Unique Guid identifying the
+        /// resource.</param>
         /// <param name="encryptionSettingsCollection">Encryption settings
         /// collection used for Azure Disk Encryption, can contain multiple
         /// encryption settings per disk or snapshot.</param>
@@ -68,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="diskState">The state of the disk. Possible values
         /// include: 'Unattached', 'Attached', 'Reserved', 'ActiveSAS',
         /// 'ReadyToUpload', 'ActiveUpload'</param>
-        public DiskInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), HyperVGeneration hyperVGeneration = default(HyperVGeneration), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), int? diskMBpsReadWrite = default(int?), DiskState diskState = default(DiskState))
+        public DiskInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), HyperVGeneration hyperVGeneration = default(HyperVGeneration), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), int? diskMBpsReadWrite = default(int?), DiskState diskState = default(DiskState))
             : base(location, id, name, type, tags)
         {
             ManagedBy = managedBy;
@@ -79,6 +83,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             HyperVGeneration = hyperVGeneration;
             CreationData = creationData;
             DiskSizeGB = diskSizeGB;
+            DiskSizeBytes = diskSizeBytes;
+            UniqueId = uniqueId;
             EncryptionSettingsCollection = encryptionSettingsCollection;
             ProvisioningState = provisioningState;
             DiskIOPSReadWrite = diskIOPSReadWrite;
@@ -139,13 +145,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets if creationData.createOption is Empty, this field is
-        /// mandatory and it indicates the size of the VHD to create. If this
+        /// mandatory and it indicates the size of the disk to create. If this
         /// field is present for updates or creation with other options, it
         /// indicates a resize. Resizes are only allowed if the disk is not
         /// attached to a running VM, and can only increase the disk's size.
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskSizeGB")]
         public int? DiskSizeGB { get; set; }
+
+        /// <summary>
+        /// Gets the size of the disk in bytes. This field is read only.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskSizeBytes")]
+        public long? DiskSizeBytes { get; private set; }
+
+        /// <summary>
+        /// Gets unique Guid identifying the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueId")]
+        public string UniqueId { get; private set; }
 
         /// <summary>
         /// Gets or sets encryption settings collection used for Azure Disk

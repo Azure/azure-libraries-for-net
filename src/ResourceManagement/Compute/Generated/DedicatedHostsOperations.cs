@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the dedicated host .
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Create Dedicated Host .
+        /// Parameters supplied to the Create Dedicated Host.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the dedicated host .
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Create Dedicated Host .
+        /// Parameters supplied to the Create Dedicated Host.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

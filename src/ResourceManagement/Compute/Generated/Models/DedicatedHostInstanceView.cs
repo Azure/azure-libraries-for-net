@@ -29,17 +29,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DedicatedHostInstanceView class.
         /// </summary>
-        /// <param name="assetId">Specifies the unique of the dedicated
+        /// <param name="assetId">Specifies the unique id of the dedicated
         /// physical machine on which the dedicated host resides.</param>
-        /// <param name="capacity">The total capacity of the dedicated
-        /// host.</param>
         /// <param name="availableCapacity">Unutilized capacity of the
         /// dedicated host.</param>
         /// <param name="statuses">The resource status information.</param>
-        public DedicatedHostInstanceView(string assetId = default(string), DedicatedHostCapacity capacity = default(DedicatedHostCapacity), DedicatedHostAvailableCapacity availableCapacity = default(DedicatedHostAvailableCapacity), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
+        public DedicatedHostInstanceView(string assetId = default(string), DedicatedHostAvailableCapacity availableCapacity = default(DedicatedHostAvailableCapacity), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             AssetId = assetId;
-            Capacity = capacity;
             AvailableCapacity = availableCapacity;
             Statuses = statuses;
             CustomInit();
@@ -51,17 +48,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the unique of the dedicated physical machine on
+        /// Gets specifies the unique id of the dedicated physical machine on
         /// which the dedicated host resides.
         /// </summary>
         [JsonProperty(PropertyName = "assetId")]
         public string AssetId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the total capacity of the dedicated host.
-        /// </summary>
-        [JsonProperty(PropertyName = "capacity")]
-        public DedicatedHostCapacity Capacity { get; set; }
 
         /// <summary>
         /// Gets or sets unutilized capacity of the dedicated host.

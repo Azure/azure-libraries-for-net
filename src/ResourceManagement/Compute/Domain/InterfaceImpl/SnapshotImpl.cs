@@ -66,6 +66,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets whether a snapshot is incremental.
+        /// </summary>
+        bool?  Microsoft.Azure.Management.Compute.Fluent.ISnapshot.Incremental
+        {
+            get
+            {
+                return this.Incremental();
+            }
+        }
+
+        /// <summary>
         /// Gets the details of the source from which snapshot is created.
         /// </summary>
         Models.CreationSource Microsoft.Azure.Management.Compute.Fluent.ISnapshot.Source
@@ -233,6 +244,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithSize.WithSizeInGB(int sizeInGB)
         {
             return this.WithSizeInGB(sizeInGB);
+        }
+
+        /// <summary>
+        /// Specifies whether a snapshot is incremental.
+        /// </summary>
+        /// <param name="enabled">Whether to enable incremental snapshot</param>
+        /// <return>The next stage of the definition.</return>
+        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithIncremental.WithIncremental(bool enabled)
+        {
+            return this.WithIncremental(enabled);
         }
 
         /// <summary>

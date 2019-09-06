@@ -31,13 +31,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the DedicatedHostAvailableCapacity
         /// class.
         /// </summary>
-        /// <param name="availableVCpus">The total number of CPUs.</param>
         /// <param name="allocatableVMs">The unutilized capacity of the
         /// dedicated host represented in terms of each VM size that is allowed
         /// to be deployed to the dedicated host.</param>
-        public DedicatedHostAvailableCapacity(double? availableVCpus = default(double?), IList<DedicatedHostAllocatableVM> allocatableVMs = default(IList<DedicatedHostAllocatableVM>))
+        public DedicatedHostAvailableCapacity(IList<DedicatedHostAllocatableVM> allocatableVMs = default(IList<DedicatedHostAllocatableVM>))
         {
-            AvailableVCpus = availableVCpus;
             AllocatableVMs = allocatableVMs;
             CustomInit();
         }
@@ -46,12 +44,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets the total number of CPUs.
-        /// </summary>
-        [JsonProperty(PropertyName = "availableVCpus")]
-        public double? AvailableVCpus { get; set; }
 
         /// <summary>
         /// Gets or sets the unutilized capacity of the dedicated host

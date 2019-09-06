@@ -34,13 +34,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the DedicatedHostUpdate class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
-        /// <param name="platformFaultDomain">Fault domain of the host within a
-        /// group. Supported values 0,1,2.</param>
-        /// <param name="autoReplaceOnFailure">Whether the host should be
-        /// replaced automatically in case of a failure. The value is defaulted
-        /// to true when not provided.</param>
+        /// <param name="platformFaultDomain">Fault domain of the dedicated
+        /// host within a dedicated host group.</param>
+        /// <param name="autoReplaceOnFailure">Specifies whether the dedicated
+        /// host should be replaced automatically in case of a failure. The
+        /// value is defaulted to 'true' when not provided.</param>
         /// <param name="hostId">A unique id generated and assigned to the
-        /// dedicated host by the platform.</param>
+        /// dedicated host by the platform. &lt;br&gt;&lt;br&gt; Does not
+        /// change throughout the lifetime of the host.</param>
         /// <param name="virtualMachines">A list of references to all virtual
         /// machines in the Dedicated Host.</param>
         /// <param name="licenseType">Specifies the software license type that
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// &lt;br&gt;&lt;br&gt; Default: **None**. Possible values include:
         /// 'None', 'Windows_Server_Hybrid', 'Windows_Server_Perpetual'</param>
         /// <param name="provisioningTime">The date when the host was first
-        /// created.</param>
+        /// provisioned.</param>
         /// <param name="provisioningState">The provisioning state, which only
         /// appears in the response.</param>
         /// <param name="instanceView">The dedicated host instance
@@ -76,23 +77,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets fault domain of the host within a group. Supported
-        /// values 0,1,2.
+        /// Gets or sets fault domain of the dedicated host within a dedicated
+        /// host group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.platformFaultDomain")]
         public int? PlatformFaultDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the host should be replaced automatically in
-        /// case of a failure. The value is defaulted to true when not
-        /// provided.
+        /// Gets or sets specifies whether the dedicated host should be
+        /// replaced automatically in case of a failure. The value is defaulted
+        /// to 'true' when not provided.
         /// </summary>
         [JsonProperty(PropertyName = "properties.autoReplaceOnFailure")]
         public bool? AutoReplaceOnFailure { get; set; }
 
         /// <summary>
         /// Gets a unique id generated and assigned to the dedicated host by
-        /// the platform.
+        /// the platform. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Does not change
+        /// throughout the lifetime of the host.
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostId")]
         public string HostId { get; private set; }
@@ -119,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public DedicatedHostLicenseTypes? LicenseType { get; set; }
 
         /// <summary>
-        /// Gets the date when the host was first created.
+        /// Gets the date when the host was first provisioned.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningTime")]
         public System.DateTime? ProvisioningTime { get; private set; }
@@ -136,5 +138,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "properties.instanceView")]
         public DedicatedHostInstanceView InstanceView { get; private set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (PlatformFaultDomain > 2)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "PlatformFaultDomain", 2);
+            }
+            if (PlatformFaultDomain < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomain", 0);
+            }
+        }
     }
 }

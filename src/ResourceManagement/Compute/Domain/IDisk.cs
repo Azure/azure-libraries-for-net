@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         int SizeInGB { get; }
 
         /// <summary>
+        /// Gets the size of the disk in bytes.
+        /// </summary>
+        long SizeInByte { get; }
+
+        /// <summary>
         /// Gets the disk SKU.
         /// </summary>
         Models.DiskSkuTypes Sku { get; }

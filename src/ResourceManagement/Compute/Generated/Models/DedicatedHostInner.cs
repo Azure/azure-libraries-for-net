@@ -34,13 +34,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DedicatedHostInner class.
         /// </summary>
-        /// <param name="platformFaultDomain">Fault domain of the host within a
-        /// group. Supported values 0,1,2.</param>
-        /// <param name="autoReplaceOnFailure">Whether the host should be
-        /// replaced automatically in case of a failure. The value is defaulted
-        /// to true when not provided.</param>
+        /// <param name="sku">SKU of the dedicated host for Hardware Generation
+        /// and VM family. Only name is required to be set. List
+        /// Microsoft.Compute SKUs for a list of possible values.</param>
+        /// <param name="platformFaultDomain">Fault domain of the dedicated
+        /// host within a dedicated host group.</param>
+        /// <param name="autoReplaceOnFailure">Specifies whether the dedicated
+        /// host should be replaced automatically in case of a failure. The
+        /// value is defaulted to 'true' when not provided.</param>
         /// <param name="hostId">A unique id generated and assigned to the
-        /// dedicated host by the platform.</param>
+        /// dedicated host by the platform. &lt;br&gt;&lt;br&gt; Does not
+        /// change throughout the lifetime of the host.</param>
         /// <param name="virtualMachines">A list of references to all virtual
         /// machines in the Dedicated Host.</param>
         /// <param name="licenseType">Specifies the software license type that
@@ -51,15 +55,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// &lt;br&gt;&lt;br&gt; Default: **None**. Possible values include:
         /// 'None', 'Windows_Server_Hybrid', 'Windows_Server_Perpetual'</param>
         /// <param name="provisioningTime">The date when the host was first
-        /// created.</param>
+        /// provisioned.</param>
         /// <param name="provisioningState">The provisioning state, which only
         /// appears in the response.</param>
         /// <param name="instanceView">The dedicated host instance
         /// view.</param>
-        /// <param name="sku">Sku of the dedicated host for Hardware Generation
-        /// and VM family, The only name is required to be set. See
-        /// DedicatedHostSkuTypes for possible set of values.</param>
-        public DedicatedHostInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomain = default(int?), bool? autoReplaceOnFailure = default(bool?), string hostId = default(string), IList<SubResourceReadOnly> virtualMachines = default(IList<SubResourceReadOnly>), DedicatedHostLicenseTypes? licenseType = default(DedicatedHostLicenseTypes?), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), DedicatedHostInstanceView instanceView = default(DedicatedHostInstanceView), Sku sku = default(Sku))
+        public DedicatedHostInner(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomain = default(int?), bool? autoReplaceOnFailure = default(bool?), string hostId = default(string), IList<SubResourceReadOnly> virtualMachines = default(IList<SubResourceReadOnly>), DedicatedHostLicenseTypes? licenseType = default(DedicatedHostLicenseTypes?), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), DedicatedHostInstanceView instanceView = default(DedicatedHostInstanceView))
             : base(location, id, name, type, tags)
         {
             PlatformFaultDomain = platformFaultDomain;
@@ -80,23 +81,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets fault domain of the host within a group. Supported
-        /// values 0,1,2.
+        /// Gets or sets fault domain of the dedicated host within a dedicated
+        /// host group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.platformFaultDomain")]
         public int? PlatformFaultDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the host should be replaced automatically in
-        /// case of a failure. The value is defaulted to true when not
-        /// provided.
+        /// Gets or sets specifies whether the dedicated host should be
+        /// replaced automatically in case of a failure. The value is defaulted
+        /// to 'true' when not provided.
         /// </summary>
         [JsonProperty(PropertyName = "properties.autoReplaceOnFailure")]
         public bool? AutoReplaceOnFailure { get; set; }
 
         /// <summary>
         /// Gets a unique id generated and assigned to the dedicated host by
-        /// the platform.
+        /// the platform. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Does not change
+        /// throughout the lifetime of the host.
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostId")]
         public string HostId { get; private set; }
@@ -123,7 +125,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public DedicatedHostLicenseTypes? LicenseType { get; set; }
 
         /// <summary>
-        /// Gets the date when the host was first created.
+        /// Gets the date when the host was first provisioned.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningTime")]
         public System.DateTime? ProvisioningTime { get; private set; }
@@ -141,9 +143,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public DedicatedHostInstanceView InstanceView { get; private set; }
 
         /// <summary>
-        /// Gets or sets sku of the dedicated host for Hardware Generation and
-        /// VM family, The only name is required to be set. See
-        /// DedicatedHostSkuTypes for possible set of values.
+        /// Gets or sets SKU of the dedicated host for Hardware Generation and
+        /// VM family. Only name is required to be set. List Microsoft.Compute
+        /// SKUs for a list of possible values.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
@@ -157,6 +159,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public override void Validate()
         {
             base.Validate();
+            if (Sku == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
+            }
+            if (PlatformFaultDomain > 2)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "PlatformFaultDomain", 2);
+            }
+            if (PlatformFaultDomain < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomain", 0);
+            }
         }
     }
 }
