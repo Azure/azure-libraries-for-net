@@ -77,6 +77,17 @@ namespace Fluent.Tests.WebApp
                     Assert.NotEqual(plan1.Id, plan2.Id);
                     Assert.Equal(Region.USWest, plan2.Region);
                     Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+
+                    // Delete
+                    string planId = webApp2.AppServicePlanId;
+                    Assert.NotNull(appServiceManager.AppServicePlans.GetById(planId));
+                    appServiceManager.WebApps.DeleteById(webApp2.Id, new AppDeleteOption { deleteEmptyServerFarm = false });
+                    Assert.NotNull(appServiceManager.AppServicePlans.GetById(planId));
+
+                    planId = webApp1.AppServicePlanId;
+                    Assert.NotNull(appServiceManager.AppServicePlans.GetById(planId));
+                    appServiceManager.WebApps.DeleteById(webApp1.Id, new AppDeleteOption { deleteEmptyServerFarm = true });
+                    Assert.Null(appServiceManager.AppServicePlans.GetById(planId)); // empty plan been deleted
                 }
                 finally
                 {
