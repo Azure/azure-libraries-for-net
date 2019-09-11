@@ -81,12 +81,12 @@ namespace Fluent.Tests.WebApp
                     // Delete
                     string planId = webApp2.AppServicePlanId;
                     Assert.NotNull(appServiceManager.AppServicePlans.GetById(planId));
-                    appServiceManager.WebApps.DeleteById(webApp2.Id, new AppDeleteOption { deleteEmptyServerFarm = false });
+                    appServiceManager.WebApps.DeleteById(webApp2.Id, new WebAppDeleteOption { deleteEmptyServerFarm = false });
                     Assert.NotNull(appServiceManager.AppServicePlans.GetById(planId));
 
                     planId = webApp1.AppServicePlanId;
                     Assert.NotNull(appServiceManager.AppServicePlans.GetById(planId));
-                    appServiceManager.WebApps.DeleteById(webApp1.Id, new AppDeleteOption { deleteEmptyServerFarm = true });
+                    appServiceManager.WebApps.DeleteById(webApp1.Id, new WebAppDeleteOption { deleteEmptyServerFarm = true });
                     Assert.Null(appServiceManager.AppServicePlans.GetById(planId)); // empty plan been deleted
                 }
                 finally

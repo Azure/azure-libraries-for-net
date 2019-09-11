@@ -147,22 +147,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return WrapModel(name);
         }
 
-        public void DeleteById(string id, AppDeleteOption option)
+        public void DeleteById(string id, WebAppDeleteOption option)
         {
             Extensions.Synchronize(() => DeleteByIdAsync(id, option));
         }
 
-        public async Task DeleteByIdAsync(string id, AppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteByIdAsync(string id, WebAppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken))
         {
             await DeleteByResourceGroupAsync(ResourceUtils.GroupFromResourceId(id), ResourceUtils.NameFromResourceId(id), option, cancellationToken);
         }
 
-        public void DeleteByResourceGroup(string resourceGroupName, string name, AppDeleteOption option)
+        public void DeleteByResourceGroup(string resourceGroupName, string name, WebAppDeleteOption option)
         {
             Extensions.Synchronize(() => DeleteByResourceGroupAsync(resourceGroupName, name, option));
         }
 
-        public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, AppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, WebAppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken))
         {
             await Inner.DeleteAsync(resourceGroupName, name, option.deleteMetrics, option.deleteEmptyServerFarm, cancellationToken);
         }

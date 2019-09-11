@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Defines options for WebApp deletion.
     /// </summary>
-    public class AppDeleteOption
+    public class WebAppDeleteOption
     {
         /// <summary>
         /// If true, web app metrics are also deleted.

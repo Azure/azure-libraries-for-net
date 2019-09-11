@@ -9,14 +9,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Provides access to deleting a resource from Azure, with additional option.
     /// </summary>
-    public interface ISupportAppDeleteOption
+    public interface ISupportWebAppDeleteOption
     {
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its resource ID.
         /// </summary>
         /// <param name="id">the resource ID of the resource to delete</param>
         /// <param name="option">the option for deletion</param>
-        void DeleteById(string id, AppDeleteOption option);
+        void DeleteById(string id, WebAppDeleteOption option);
 
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its resource ID.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="id">the resource ID of the resource to delete</param>
         /// <param name="option">the option for deletion</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
-        Task DeleteByIdAsync(string id, AppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken));
+        Task DeleteByIdAsync(string id, WebAppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its name and its resource group.
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="resourceGroupName">the group the resource is part of</param>
         /// <param name="name">the name of the resource</param>
         /// <param name="option">the option for deletion</param>
-        void DeleteByResourceGroup(string resourceGroupName, string name, AppDeleteOption option);
+        void DeleteByResourceGroup(string resourceGroupName, string name, WebAppDeleteOption option);
 
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its name and its resource group.
@@ -41,6 +41,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="name">the name of the resource</param>
         /// <param name="option">the option for deletion</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
-        Task DeleteByResourceGroupAsync(string resourceGroupName, string name, AppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken));
+        Task DeleteByResourceGroupAsync(string resourceGroupName, string name, WebAppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

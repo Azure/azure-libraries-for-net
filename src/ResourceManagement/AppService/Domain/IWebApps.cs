@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.AppService.Fluent.IWebAppsOperations>,
-        ISupportAppDeleteOption
+        ISupportWebAppDeleteOption
     {
     }
 }
