@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, WebAppDeleteOption option, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.DeleteAsync(resourceGroupName, name, option.deleteMetrics, option.deleteEmptyServerFarm, cancellationToken);
+            await Inner.DeleteAsync(resourceGroupName, name, option.DeleteMetrics, option.DeleteEmptyServerFarm, cancellationToken);
         }
     }
 }

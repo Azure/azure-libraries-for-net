@@ -3,13 +3,14 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
     /// Provides access to deleting a resource from Azure, with additional option.
     /// </summary>
-    public interface ISupportWebAppDeleteOption
+    public interface ISupportWebAppDeleteOption : IBeta
     {
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its resource ID.
