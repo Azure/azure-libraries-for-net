@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
         public ContainerServiceStorageProfileTypes StorageProfile()
         {
-            return ContainerServiceStorageProfileTypes.Parse(this.Inner.StorageProfile);
+            return this.Inner.StorageProfile;
         }
 
         ///GENMHASH:1BAF4F1B601F89251ABCFE6CC4867026:F71645491B82E137E4D1786750E7ADF0
         public OSType OSType()
         {
-            return OSType.Parse(this.Inner.OsType);
+            return this.Inner.OsType;
         }
 
         ///GENMHASH:59348A25FD515049ECD26A6290F76B85:99DA2F06545702040B219110889AFC52
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:A7BB228682D91D0BE3771990EB9A8B24:A767CA83A1AD0D08917EABEC893AD28A
         public ContainerServiceAgentPoolImpl WithStorageProfile(ContainerServiceStorageProfileTypes storageProfile)
         {
-            this.Inner.StorageProfile = storageProfile.Value;
+            this.Inner.StorageProfile = storageProfile;
 
             return this;
         }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:29F824FFD1866F35F3898F9D3ECE5F1B:E7F1DA78794C44C2AC55569F4DDCBD11
         public ContainerServiceAgentPoolImpl WithOSType(OSType osType)
         {
-            this.Inner.OsType = osType.Value;
+            this.Inner.OsType = osType;
 
             return this;
         }
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:C622FBAAB8FD0DD09A538E695C688BFC:BD0EF4C17E803CA04B5D85ACE1E77A7D
         public ContainerServiceAgentPoolImpl WithVirtualMachineSize(ContainerServiceVMSizeTypes param0)
         {
-            this.Inner.VmSize = param0.Value;
+            this.Inner.VmSize = param0;
 
             return this;
         }

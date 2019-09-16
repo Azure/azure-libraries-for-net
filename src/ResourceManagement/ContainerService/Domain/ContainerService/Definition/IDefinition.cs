@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.De
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ContainerService.Fluent.Models;
 
     /// <summary>
     /// The stage of the container service definition allowing to specific the Linux root username.
