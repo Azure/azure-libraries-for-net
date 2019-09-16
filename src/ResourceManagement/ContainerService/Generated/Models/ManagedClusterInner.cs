@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
     /// Managed cluster.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ManagedClusterInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ManagedClusterInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedClusterInner class.
@@ -35,15 +36,19 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response.</param>
+        /// <param name="maxAgentPools">The max number of agent pools for the
+        /// managed cluster.</param>
         /// <param name="kubernetesVersion">Version of Kubernetes specified
         /// when creating the managed cluster.</param>
         /// <param name="dnsPrefix">DNS prefix specified when creating the
         /// managed cluster.</param>
-        /// <param name="fqdn">FDQN for the master pool.</param>
+        /// <param name="fqdn">FQDN for the master pool.</param>
         /// <param name="agentPoolProfiles">Properties of the agent
         /// pool.</param>
         /// <param name="linuxProfile">Profile for Linux VMs in the container
         /// service cluster.</param>
+        /// <param name="windowsProfile">Profile for Windows VMs in the
+        /// container service cluster.</param>
         /// <param name="servicePrincipalProfile">Information about a service
         /// principal identity for the cluster to use for manipulating Azure
         /// APIs.</param>
@@ -53,25 +58,36 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// containing agent pool nodes.</param>
         /// <param name="enableRBAC">Whether to enable Kubernetes Role-Based
         /// Access Control.</param>
+        /// <param name="enablePodSecurityPolicy">(PREVIEW) Whether to enable
+        /// Kubernetes Pod security policy.</param>
         /// <param name="networkProfile">Profile of network
         /// configuration.</param>
         /// <param name="aadProfile">Profile of Azure Active Directory
         /// configuration.</param>
-        public ManagedClusterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string kubernetesVersion = default(string), string dnsPrefix = default(string), string fqdn = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile))
+        /// <param name="apiServerAccessProfile">Access profile for managed
+        /// cluster API server.</param>
+        /// <param name="identity">The identity of the managed cluster, if
+        /// configured.</param>
+        public ManagedClusterInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string dnsPrefix = default(string), string fqdn = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), ManagedClusterIdentity identity = default(ManagedClusterIdentity))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
+            MaxAgentPools = maxAgentPools;
             KubernetesVersion = kubernetesVersion;
             DnsPrefix = dnsPrefix;
             Fqdn = fqdn;
             AgentPoolProfiles = agentPoolProfiles;
             LinuxProfile = linuxProfile;
+            WindowsProfile = windowsProfile;
             ServicePrincipalProfile = servicePrincipalProfile;
             AddonProfiles = addonProfiles;
             NodeResourceGroup = nodeResourceGroup;
             EnableRBAC = enableRBAC;
+            EnablePodSecurityPolicy = enablePodSecurityPolicy;
             NetworkProfile = networkProfile;
             AadProfile = aadProfile;
+            ApiServerAccessProfile = apiServerAccessProfile;
+            Identity = identity;
             CustomInit();
         }
 
@@ -88,6 +104,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets the max number of agent pools for the managed cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.maxAgentPools")]
+        public int? MaxAgentPools { get; private set; }
+
+        /// <summary>
         /// Gets or sets version of Kubernetes specified when creating the
         /// managed cluster.
         /// </summary>
@@ -102,7 +124,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string DnsPrefix { get; set; }
 
         /// <summary>
-        /// Gets FDQN for the master pool.
+        /// Gets FQDN for the master pool.
         /// </summary>
         [JsonProperty(PropertyName = "properties.fqdn")]
         public string Fqdn { get; private set; }
@@ -121,6 +143,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public ContainerServiceLinuxProfile LinuxProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets profile for Windows VMs in the container service
+        /// cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.windowsProfile")]
+        public ManagedClusterWindowsProfile WindowsProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets information about a service principal identity for the
         /// cluster to use for manipulating Azure APIs.
         /// </summary>
@@ -134,10 +163,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public IDictionary<string, ManagedClusterAddonProfile> AddonProfiles { get; set; }
 
         /// <summary>
-        /// Gets name of the resource group containing agent pool nodes.
+        /// Gets or sets name of the resource group containing agent pool
+        /// nodes.
         /// </summary>
         [JsonProperty(PropertyName = "properties.nodeResourceGroup")]
-        public string NodeResourceGroup { get; private set; }
+        public string NodeResourceGroup { get; set; }
 
         /// <summary>
         /// Gets or sets whether to enable Kubernetes Role-Based Access
@@ -145,6 +175,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableRBAC")]
         public bool? EnableRBAC { get; set; }
+
+        /// <summary>
+        /// Gets or sets (PREVIEW) Whether to enable Kubernetes Pod security
+        /// policy.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enablePodSecurityPolicy")]
+        public bool? EnablePodSecurityPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets profile of network configuration.
@@ -159,6 +196,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public ManagedClusterAADProfile AadProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets access profile for managed cluster API server.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.apiServerAccessProfile")]
+        public ManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the managed cluster, if configured.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedClusterIdentity Identity { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -166,6 +215,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (AgentPoolProfiles != null)
             {
                 foreach (var element in AgentPoolProfiles)
@@ -179,6 +229,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
             if (LinuxProfile != null)
             {
                 LinuxProfile.Validate();
+            }
+            if (WindowsProfile != null)
+            {
+                WindowsProfile.Validate();
             }
             if (ServicePrincipalProfile != null)
             {

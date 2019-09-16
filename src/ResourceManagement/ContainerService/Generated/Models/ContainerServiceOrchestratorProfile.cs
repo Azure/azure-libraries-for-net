@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="orchestratorVersion">The version of the orchestrator
         /// to use. You can specify the major.minor.patch part of the actual
         /// version.For example, you can specify version as "1.6.11".</param>
-        public ContainerServiceOrchestratorProfile(string orchestratorType, string orchestratorVersion = default(string))
+        public ContainerServiceOrchestratorProfile(ContainerServiceOrchestratorTypes orchestratorType, string orchestratorVersion = default(string))
         {
             OrchestratorType = orchestratorType;
             OrchestratorVersion = orchestratorVersion;
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// 'Swarm', 'DCOS', 'DockerCE', 'Custom'
         /// </summary>
         [JsonProperty(PropertyName = "orchestratorType")]
-        public string OrchestratorType { get; set; }
+        public ContainerServiceOrchestratorTypes OrchestratorType { get; set; }
 
         /// <summary>
         /// Gets or sets the version of the orchestrator to use. You can

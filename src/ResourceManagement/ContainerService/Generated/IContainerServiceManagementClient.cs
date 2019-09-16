@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
 
         /// <summary>
+        /// Gets the IOpenShiftManagedClustersOperations.
+        /// </summary>
+        IOpenShiftManagedClustersOperations OpenShiftManagedClusters { get; }
+
+        /// <summary>
         /// Gets the IContainerServicesOperations.
         /// </summary>
         IContainerServicesOperations ContainerServices { get; }
@@ -78,6 +83,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// Gets the IManagedClustersOperations.
         /// </summary>
         IManagedClustersOperations ManagedClusters { get; }
+
+        /// <summary>
+        /// Gets the IAgentPoolsOperations.
+        /// </summary>
+        IAgentPoolsOperations AgentPools { get; }
 
     }
 }

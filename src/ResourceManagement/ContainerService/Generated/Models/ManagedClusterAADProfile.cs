@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="tenantID">The AAD tenant ID to use for authentication.
         /// If not specified, will use the tenant of the deployment
         /// subscription.</param>
-        public ManagedClusterAADProfile(string clientAppID, string serverAppID, string serverAppSecret, string tenantID = default(string))
+        public ManagedClusterAADProfile(string clientAppID, string serverAppID, string serverAppSecret = default(string), string tenantID = default(string))
         {
             ClientAppID = clientAppID;
             ServerAppID = serverAppID;
@@ -89,10 +89,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
             if (ServerAppID == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ServerAppID");
-            }
-            if (ServerAppSecret == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ServerAppSecret");
             }
         }
     }

@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<IPage<ContainerServiceInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
@@ -253,6 +254,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<ContainerServiceInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string containerServiceName, ContainerServiceInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
@@ -297,6 +299,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<ContainerServiceInner>> GetWithHttpMessagesAsync(string resourceGroupName, string containerServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
@@ -485,6 +488,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string containerServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
@@ -525,6 +529,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<IPage<ContainerServiceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
@@ -688,8 +693,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <remarks>
         /// Gets a list of supported orchestrators in the specified subscription. The
-        /// operation returns properties of each orchestrator including verison and
-        /// available upgrades.
+        /// operation returns properties of each orchestrator including version,
+        /// available upgrades and whether that version or upgrades are in preview.
         /// </remarks>
         /// <param name='location'>
         /// The name of a supported Azure region.
@@ -728,7 +733,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
-            string apiVersion = "2017-09-30";
+            string apiVersion = "2019-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -919,6 +924,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<ContainerServiceInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string containerServiceName, ContainerServiceInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
@@ -1170,6 +1176,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string containerServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
@@ -1349,6 +1356,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<IPage<ContainerServiceInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
@@ -1528,6 +1536,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
+        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         public async Task<AzureOperationResponse<IPage<ContainerServiceInner>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
