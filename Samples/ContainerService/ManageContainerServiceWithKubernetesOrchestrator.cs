@@ -73,7 +73,7 @@ namespace ManageContainerServiceWithKubernetesOrchestrator
                     .WithMasterNodeCount(ContainerServiceMasterProfileCount.MIN)
                     .DefineAgentPool("agentpool")
                         .WithVirtualMachineCount(1)
-                        .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
+                        .WithVirtualMachineSize(ContainerServiceVMSizeTypes.StandardD1V2)
                         .WithDnsPrefix("dns-ap-" + acsName)
                         .Attach()
                     .WithMasterDnsPrefix("dns-" + acsName)

@@ -48,6 +48,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
          /// <summary>
         /// Gets size of each agent virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceVirtualMachineSizeTypes VMSize { get; }
+        ContainerServiceVMSizeTypes VMSize { get; }
     }
 }

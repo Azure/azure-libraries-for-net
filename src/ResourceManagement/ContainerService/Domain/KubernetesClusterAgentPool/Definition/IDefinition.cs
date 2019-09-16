@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         /// </summary>
         /// <param name="vmSize">The size of each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize);
     }
 
     /// <summary>

@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:11AAAD09C9684B6889E64AC8F924E50D:D461B25035B458150766C6D27E33A746
-        public ContainerServiceVirtualMachineSizeTypes VMSize()
+        public ContainerServiceVMSizeTypes VMSize()
         {
-            return ContainerServiceVirtualMachineSizeTypes.Parse(this.Inner.VmSize);
+            return this.Inner.VmSize;
         }
 
         ///GENMHASH:577F8437932AEC6E08E1A137969BDB4A:A1945CF277DF5AE74D653481F44D96CE
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:C622FBAAB8FD0DD09A538E695C688BFC:BD0EF4C17E803CA04B5D85ACE1E77A7D
-        public ContainerServiceAgentPoolImpl WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes param0)
+        public ContainerServiceAgentPoolImpl WithVirtualMachineSize(ContainerServiceVMSizeTypes param0)
         {
             this.Inner.VmSize = param0.Value;
 

@@ -52,7 +52,7 @@ namespace Fluent.Tests.ContainerService
                         .WithServicePrincipalClientId(servicePrincipalClientId)
                         .WithServicePrincipalSecret(servicePrincipalSecret)
                         .DefineAgentPool(agentPoolName)
-                            .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
+                            .WithVirtualMachineSize(ContainerServiceVMSizeTypes.StandardD1V2)
                             .WithAgentPoolVirtualMachineCount(1)
                             .Attach()
                         .WithDnsPrefix("mp1" + dnsPrefix)
@@ -65,7 +65,7 @@ namespace Fluent.Tests.ContainerService
                     Assert.Equal(1, kubernetesCluster.AgentPools.Count);
                     Assert.NotNull(kubernetesCluster.AgentPools[agentPoolName]);
                     Assert.Equal(1, kubernetesCluster.AgentPools[agentPoolName].Count);
-                    Assert.Equal(ContainerServiceVirtualMachineSizeTypes.StandardD1V2, kubernetesCluster.AgentPools[agentPoolName].VMSize);
+                    Assert.Equal(ContainerServiceVMSizeTypes.StandardD1V2, kubernetesCluster.AgentPools[agentPoolName].VMSize);
                     Assert.NotNull(kubernetesCluster.Tags["tag1"]);
 
                     kubernetesCluster = containerServiceManager.KubernetesClusters.GetByResourceGroup(rgName, aksName);

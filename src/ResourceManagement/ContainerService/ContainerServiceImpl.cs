@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             ContainerServiceMasterProfile masterProfile = new ContainerServiceMasterProfile()
             {
-                VmSize = ContainerServiceVirtualMachineSizeTypes.StandardD2V2.Value,
+                VmSize = ContainerServiceVMSizeTypes.StandardD2V2.Value,
                 Count = (int)profileCount
             };
 
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:07B654E40DC0819D64AEE0796D299D75:CEB6A3210E226335B25EDDBDD6A8CAFA
-        public ContainerServiceImpl WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        public ContainerServiceImpl WithMasterVMSize(ContainerServiceVMSizeTypes vmSize)
         {
             this.Inner.MasterProfile.VmSize = vmSize.Value;
 

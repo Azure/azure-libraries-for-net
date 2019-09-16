@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
         /// </summary>
         /// <param name="vmSize">The size of the virtual machine.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ParentT> WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ParentT> WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize);
     }
 
     /// <summary>

@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the size of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.VMSize
+        ContainerServiceVMSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.VMSize
         {
             get
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="vmSize">The size of the virtual machine.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize)
         {
             return this.WithVirtualMachineSize(vmSize);
         }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.De
         /// </summary>
         /// <param name="vmSize">The size of the VM.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterVMSize(ContainerServiceVMSizeTypes vmSize);
     }
 
     /// <summary>
