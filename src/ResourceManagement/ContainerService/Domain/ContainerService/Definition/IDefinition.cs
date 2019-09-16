@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.De
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for every machine in the master pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterStorageProfile(StorageProfileTypes storageProfile);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterStorageProfile(ContainerServiceStorageProfileTypes storageProfile);
     }
 
     /// <summary>

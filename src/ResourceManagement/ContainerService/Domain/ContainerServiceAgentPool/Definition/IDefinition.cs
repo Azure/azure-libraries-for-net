@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithStorageProfile(StorageProfileTypes storageProfile);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithStorageProfile(ContainerServiceStorageProfileTypes storageProfile);
     }
 
     /// <summary>

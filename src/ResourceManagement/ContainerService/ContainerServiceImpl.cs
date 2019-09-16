@@ -185,14 +185,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:73ADFE18CF139D326FFC1685C2840F1E:6191B9BE10C5AB3BDFA7CAF4F4FCAA3C
-        public StorageProfileTypes MasterStorageProfile()
+        public ContainerServiceStorageProfileTypes MasterStorageProfile()
         {
             if (this.Inner.MasterProfile == null)
             {
                 return null;
             }
 
-            return StorageProfileTypes.Parse(this.Inner.MasterProfile.StorageProfile);
+            return ContainerServiceStorageProfileTypes.Parse(this.Inner.MasterProfile.StorageProfile);
         }
 
         ///GENMHASH:49C218D29240434FDEA348294DA3B2E7:6F1FDC8F313247013F4C5F380E23A5F8
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:471813C8A7A79400855C3DE35D356C78:9EF17E64DA70F46F3B3EC162AB9FD2A5
-        public ContainerServiceImpl WithMasterStorageProfile(StorageProfileTypes storageProfile)
+        public ContainerServiceImpl WithMasterStorageProfile(ContainerServiceStorageProfileTypes storageProfile)
         {
             this.Inner.MasterProfile.StorageProfile = storageProfile.Value;
 

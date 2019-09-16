@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
         /// </summary>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.StorageProfile
+        ContainerServiceStorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.StorageProfile
         {
             get
             {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithStorageProfile<ContainerService.Definition.IWithCreate>.WithStorageProfile(StorageProfileTypes storageProfile)
+        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithStorageProfile<ContainerService.Definition.IWithCreate>.WithStorageProfile(ContainerServiceStorageProfileTypes storageProfile)
         {
             return this.WithStorageProfile(storageProfile);
         }

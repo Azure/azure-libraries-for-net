@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
        /// <summary>
         /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
         /// </summary>
-        StorageProfileTypes StorageProfile { get; }
+        ContainerServiceStorageProfileTypes StorageProfile { get; }
 
         /// <summary>
         /// Gets the name of the subnet used by each virtual machine in the agent pool.

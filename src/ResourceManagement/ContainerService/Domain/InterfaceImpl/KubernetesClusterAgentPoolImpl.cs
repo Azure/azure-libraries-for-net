@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
         /// </summary>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.StorageProfile
+        ContainerServiceStorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.StorageProfile
         {
             get
             {

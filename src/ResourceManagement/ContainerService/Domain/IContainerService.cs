@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the storage kind set for every machine in the master pool.
         /// </summary>
-        StorageProfileTypes MasterStorageProfile { get; }
+        ContainerServiceStorageProfileTypes MasterStorageProfile { get; }
 
         /// <summary>
         /// Gets the name of the subnet used by every machine in the master pool.

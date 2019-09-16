@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
-        public StorageProfileTypes StorageProfile()
+        public ContainerServiceStorageProfileTypes StorageProfile()
         {
-            return StorageProfileTypes.Parse(this.Inner.StorageProfile);
+            return ContainerServiceStorageProfileTypes.Parse(this.Inner.StorageProfile);
         }
 
         ///GENMHASH:B84BFB9102C12A7625CB9CF2E3B5E7CF:BDFE6561FEC5EBDFF96600CDB5E62997
