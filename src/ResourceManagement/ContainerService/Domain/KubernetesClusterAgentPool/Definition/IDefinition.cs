@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         /// </summary>
         /// <param name="osType">OS type to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithOSType(ContainerServiceOSTypes osType);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithOSType(OSType osType);
     }
 
     /// <summary>

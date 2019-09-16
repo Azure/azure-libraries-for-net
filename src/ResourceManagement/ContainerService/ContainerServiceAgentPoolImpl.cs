@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:1BAF4F1B601F89251ABCFE6CC4867026:F71645491B82E137E4D1786750E7ADF0
-        public ContainerServiceOSTypes OSType()
+        public OSType OSType()
         {
-            return ContainerServiceOSTypes.Parse(this.Inner.OsType);
+            return OSType.Parse(this.Inner.OsType);
         }
 
         ///GENMHASH:59348A25FD515049ECD26A6290F76B85:99DA2F06545702040B219110889AFC52
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:29F824FFD1866F35F3898F9D3ECE5F1B:E7F1DA78794C44C2AC55569F4DDCBD11
-        public ContainerServiceAgentPoolImpl WithOSType(ContainerServiceOSTypes osType)
+        public ContainerServiceAgentPoolImpl WithOSType(OSType osType)
         {
             this.Inner.OsType = osType.Value;
 

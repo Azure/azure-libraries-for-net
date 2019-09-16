@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSType
+        OSType Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSType
         {
             get
             {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="osType">OS type to be used for every machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithOSType<ContainerService.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
+        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithOSType<ContainerService.Definition.IWithCreate>.WithOSType(OSType osType)
         {
             return this.WithOSType(osType);
         }

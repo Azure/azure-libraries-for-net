@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
+        OSType Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
         {
             get
             {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="osType">OS type to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(OSType osType)
         {
             return this.WithOSType(osType);
         }
