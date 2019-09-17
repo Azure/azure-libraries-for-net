@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:A23A5AD98E49E9D4A4BAC8CDF90348B5:CF7E6FD75374C6C3BB067E6689120AFF
         public IReadOnlyList<string> DestinationAddressPrefixes()
         {
-            return Inner.DestinationAddressPrefixes == null ? null : new List<string>(Inner.SourceAddressPrefixes);
+            return Inner.DestinationAddressPrefixes == null ? null : new List<string>(Inner.DestinationAddressPrefixes);
         }
 
 
