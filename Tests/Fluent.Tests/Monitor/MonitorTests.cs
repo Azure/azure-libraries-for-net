@@ -780,7 +780,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
@@ -874,7 +874,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
@@ -1007,7 +1007,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
@@ -1107,7 +1107,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
