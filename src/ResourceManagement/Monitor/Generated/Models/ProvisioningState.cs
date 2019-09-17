@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ProvisioningState.
     /// </summary>
-    public static class ProvisioningState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ProvisioningState>))]
+    public class ProvisioningState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ProvisioningState>
     {
-        public const string Succeeded = "Succeeded";
-        public const string Deploying = "Deploying";
-        public const string Canceled = "Canceled";
-        public const string Failed = "Failed";
+        public static readonly ProvisioningState Succeeded = Parse("Succeeded");
+        public static readonly ProvisioningState Deploying = Parse("Deploying");
+        public static readonly ProvisioningState Canceled = Parse("Canceled");
+        public static readonly ProvisioningState Failed = Parse("Failed");
     }
 }

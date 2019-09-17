@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="timeAggregation">time aggregation type. How the data
         /// that is collected should be combined over time. The default value
         /// is Average. Possible values include: 'Average', 'Minimum',
-        /// 'Maximum', 'Total', 'Count'</param>
+        /// 'Maximum', 'Total', 'Count', 'Last'</param>
         /// <param name="operatorProperty">the operator that is used to compare
         /// the metric data and the threshold. Possible values include:
         /// 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual',
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets time aggregation type. How the data that is collected
         /// should be combined over time. The default value is Average.
         /// Possible values include: 'Average', 'Minimum', 'Maximum', 'Total',
-        /// 'Count'
+        /// 'Count', 'Last'
         /// </summary>
         [JsonProperty(PropertyName = "timeAggregation")]
         public TimeAggregationType TimeAggregation { get; set; }

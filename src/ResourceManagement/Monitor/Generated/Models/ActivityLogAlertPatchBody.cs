@@ -16,29 +16,27 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The log search rule resource for patch operations.
+    /// An activity log alert object for the body of patch operations.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class LogSearchRuleResourcePatchInner
+    public partial class ActivityLogAlertPatchBody
     {
         /// <summary>
-        /// Initializes a new instance of the LogSearchRuleResourcePatchInner
-        /// class.
+        /// Initializes a new instance of the ActivityLogAlertPatchBody class.
         /// </summary>
-        public LogSearchRuleResourcePatchInner()
+        public ActivityLogAlertPatchBody()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LogSearchRuleResourcePatchInner
-        /// class.
+        /// Initializes a new instance of the ActivityLogAlertPatchBody class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
-        /// <param name="enabled">The flag which indicates whether the Log
-        /// Search rule is enabled. Value should be true or false. Possible
-        /// values include: 'true', 'false'</param>
-        public LogSearchRuleResourcePatchInner(IDictionary<string, string> tags = default(IDictionary<string, string>), string enabled = default(string))
+        /// <param name="enabled">Indicates whether this activity log alert is
+        /// enabled. If an activity log alert is not enabled, then none of its
+        /// actions will be activated.</param>
+        public ActivityLogAlertPatchBody(IDictionary<string, string> tags = default(IDictionary<string, string>), bool? enabled = default(bool?))
         {
             Tags = tags;
             Enabled = enabled;
@@ -57,12 +55,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the flag which indicates whether the Log Search rule
-        /// is enabled. Value should be true or false. Possible values include:
-        /// 'true', 'false'
+        /// Gets or sets indicates whether this activity log alert is enabled.
+        /// If an activity log alert is not enabled, then none of its actions
+        /// will be activated.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabled")]
-        public string Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
     }
 }

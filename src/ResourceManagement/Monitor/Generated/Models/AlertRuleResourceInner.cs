@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The alert rule resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AlertRuleResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AlertRuleResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AlertRuleResourceInner class.
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// resolved.</param>
         /// <param name="lastUpdatedTime">Last time the rule was updated in
         /// ISO8601 format.</param>
-        public AlertRuleResourceInner(string alertRuleResourceName, bool isEnabled, RuleCondition condition, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), IList<RuleAction> actions = default(IList<RuleAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
+        public AlertRuleResourceInner(string location, string alertRuleResourceName, bool isEnabled, RuleCondition condition, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), IList<RuleAction> actions = default(IList<RuleAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
             : base(location, id, name, type, tags)
         {
             AlertRuleResourceName = alertRuleResourceName;
@@ -111,6 +112,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (AlertRuleResourceName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "AlertRuleResourceName");

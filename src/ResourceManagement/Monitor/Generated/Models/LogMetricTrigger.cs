@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// or 'Total'. Possible values include: 'Consecutive', 'Total'</param>
         /// <param name="metricColumn">Evaluation of metric on a particular
         /// column</param>
-        public LogMetricTrigger(string thresholdOperator = default(string), double? threshold = default(double?), string metricTriggerType = default(string), string metricColumn = default(string))
+        public LogMetricTrigger(ConditionalOperator thresholdOperator = default(ConditionalOperator), double? threshold = default(double?), MetricTriggerType metricTriggerType = default(MetricTriggerType), string metricColumn = default(string))
         {
             ThresholdOperator = thresholdOperator;
             Threshold = threshold;
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'LessThan', 'Equal'
         /// </summary>
         [JsonProperty(PropertyName = "thresholdOperator")]
-        public string ThresholdOperator { get; set; }
+        public ConditionalOperator ThresholdOperator { get; set; }
 
         /// <summary>
         /// Gets or sets the threshold of the metric trigger.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Possible values include: 'Consecutive', 'Total'
         /// </summary>
         [JsonProperty(PropertyName = "metricTriggerType")]
-        public string MetricTriggerType { get; set; }
+        public MetricTriggerType MetricTriggerType { get; set; }
 
         /// <summary>
         /// Gets or sets evaluation of metric on a particular column

@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The result data of a query.
     /// </summary>
-    public partial class Metric
+    public partial class MetricInner
     {
         /// <summary>
-        /// Initializes a new instance of the Metric class.
+        /// Initializes a new instance of the MetricInner class.
         /// </summary>
-        public Metric()
+        public MetricInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Metric class.
+        /// Initializes a new instance of the MetricInner class.
         /// </summary>
         /// <param name="id">the metric Id.</param>
         /// <param name="type">the resource type of the metric
@@ -37,10 +37,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// i.e. it is localizable string.</param>
         /// <param name="unit">the unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
-        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'</param>
+        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
+        /// 'MilliCores', 'NanoCores', 'BitsPerSecond'</param>
         /// <param name="timeseries">the time series returned when a data query
         /// is performed.</param>
-        public Metric(string id, string type, LocalizableString name, Unit unit, IList<TimeSeriesElement> timeseries)
+        public MetricInner(string id, string type, LocalizableString name, Unit unit, IList<TimeSeriesElement> timeseries)
         {
             Id = id;
             Type = type;
@@ -77,7 +78,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets or sets the unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
-        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'
+        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
+        /// 'MilliCores', 'NanoCores', 'BitsPerSecond'
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public Unit Unit { get; set; }

@@ -138,6 +138,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IMetricBaselineOperations MetricBaseline { get; }
 
         /// <summary>
+        /// Gets the IBaselinesOperations.
+        /// </summary>
+        IBaselinesOperations Baselines { get; }
+
+        /// <summary>
         /// Gets the IMetricAlertsOperations.
         /// </summary>
         IMetricAlertsOperations MetricAlerts { get; }
@@ -151,6 +156,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the IScheduledQueryRulesOperations.
         /// </summary>
         IScheduledQueryRulesOperations ScheduledQueryRules { get; }
+
+        /// <summary>
+        /// Gets the IMetricNamespacesOperations.
+        /// </summary>
+        IMetricNamespacesOperations MetricNamespaces { get; }
+
+        /// <summary>
+        /// Gets the IVMInsightsOperations.
+        /// </summary>
+        IVMInsightsOperations VMInsights { get; }
 
     }
 }

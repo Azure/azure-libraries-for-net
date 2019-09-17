@@ -36,7 +36,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         [EnumMember(Value = "ByteSeconds")]
         ByteSeconds,
         [EnumMember(Value = "Unspecified")]
-        Unspecified
+        Unspecified,
+        [EnumMember(Value = "Cores")]
+        Cores,
+        [EnumMember(Value = "MilliCores")]
+        MilliCores,
+        [EnumMember(Value = "NanoCores")]
+        NanoCores,
+        [EnumMember(Value = "BitsPerSecond")]
+        BitsPerSecond
     }
     internal static class UnitEnumExtension
     {
@@ -47,7 +55,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this Unit value)
         {
-            switch (value)
+            switch( value )
             {
                 case Unit.Count:
                     return "Count";
@@ -67,13 +75,21 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                     return "ByteSeconds";
                 case Unit.Unspecified:
                     return "Unspecified";
+                case Unit.Cores:
+                    return "Cores";
+                case Unit.MilliCores:
+                    return "MilliCores";
+                case Unit.NanoCores:
+                    return "NanoCores";
+                case Unit.BitsPerSecond:
+                    return "BitsPerSecond";
             }
             return null;
         }
 
         internal static Unit? ParseUnit(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "Count":
                     return Unit.Count;
@@ -93,6 +109,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                     return Unit.ByteSeconds;
                 case "Unspecified":
                     return Unit.Unspecified;
+                case "Cores":
+                    return Unit.Cores;
+                case "MilliCores":
+                    return Unit.MilliCores;
+                case "NanoCores":
+                    return Unit.NanoCores;
+                case "BitsPerSecond":
+                    return Unit.BitsPerSecond;
             }
             return null;
         }

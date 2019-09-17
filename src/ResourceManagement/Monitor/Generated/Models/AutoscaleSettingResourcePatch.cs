@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The autoscale setting object for patch operations.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AutoscaleSettingResourcePatchInner
+    public partial class AutoscaleSettingResourcePatch
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// AutoscaleSettingResourcePatchInner class.
+        /// Initializes a new instance of the AutoscaleSettingResourcePatch
+        /// class.
         /// </summary>
-        public AutoscaleSettingResourcePatchInner()
+        public AutoscaleSettingResourcePatch()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// AutoscaleSettingResourcePatchInner class.
+        /// Initializes a new instance of the AutoscaleSettingResourcePatch
+        /// class.
         /// </summary>
         /// <param name="profiles">the collection of automatic scaling profiles
         /// that specify different scaling parameters for different time
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="name">the name of the autoscale setting.</param>
         /// <param name="targetResourceUri">the resource identifier of the
         /// resource that the autoscale setting should be added to.</param>
-        public AutoscaleSettingResourcePatchInner(IList<AutoscaleProfileInner> profiles, IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AutoscaleNotification> notifications = default(IList<AutoscaleNotification>), bool? enabled = default(bool?), string name = default(string), string targetResourceUri = default(string))
+        public AutoscaleSettingResourcePatch(IList<AutoscaleProfileInner> profiles, IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AutoscaleNotification> notifications = default(IList<AutoscaleNotification>), bool? enabled = default(bool?), string name = default(string), string targetResourceUri = default(string))
         {
             Tags = tags;
             Profiles = profiles;

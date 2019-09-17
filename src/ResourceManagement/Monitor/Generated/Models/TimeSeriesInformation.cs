@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The time series info needed for calculating the baseline.
     /// </summary>
-    public partial class TimeSeriesInformationInner
+    public partial class TimeSeriesInformation
     {
         /// <summary>
-        /// Initializes a new instance of the TimeSeriesInformationInner class.
+        /// Initializes a new instance of the TimeSeriesInformation class.
         /// </summary>
-        public TimeSeriesInformationInner()
+        public TimeSeriesInformation()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TimeSeriesInformationInner class.
+        /// Initializes a new instance of the TimeSeriesInformation class.
         /// </summary>
         /// <param name="sensitivities">the list of sensitivities for
         /// calculating the baseline.</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// baseline.</param>
         /// <param name="timestamps">the array of timestamps of the
         /// baselines.</param>
-        public TimeSeriesInformationInner(IList<string> sensitivities, IList<double?> values, IList<System.DateTime?> timestamps = default(IList<System.DateTime?>))
+        public TimeSeriesInformation(IList<string> sensitivities, IList<double?> values, IList<System.DateTime?> timestamps = default(IList<System.DateTime?>))
         {
             Sensitivities = sensitivities;
             Values = values;

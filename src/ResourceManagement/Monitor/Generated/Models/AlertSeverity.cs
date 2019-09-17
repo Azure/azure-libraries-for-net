@@ -8,16 +8,25 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for AlertSeverity.
     /// </summary>
-    public static class AlertSeverity
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<AlertSeverity>))]
+    public class AlertSeverity : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<AlertSeverity>
     {
-        public const string Zero = "0";
-        public const string One = "1";
-        public const string Two = "2";
-        public const string Three = "3";
-        public const string Four = "4";
+        public static readonly AlertSeverity Zero = Parse("0");
+        public static readonly AlertSeverity One = Parse("1");
+        public static readonly AlertSeverity Two = Parse("2");
+        public static readonly AlertSeverity Three = Parse("3");
+        public static readonly AlertSeverity Four = Parse("4");
     }
 }

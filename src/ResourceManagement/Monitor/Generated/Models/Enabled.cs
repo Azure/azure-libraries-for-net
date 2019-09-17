@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for Enabled.
     /// </summary>
-    public static class Enabled
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<Enabled>))]
+    public class Enabled : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<Enabled>
     {
-        public const string True = "true";
-        public const string False = "false";
+        public static readonly Enabled True = Parse("true");
+        public static readonly Enabled False = Parse("false");
     }
 }

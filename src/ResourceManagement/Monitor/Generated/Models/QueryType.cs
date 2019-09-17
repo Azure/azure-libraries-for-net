@@ -8,12 +8,21 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for QueryType.
     /// </summary>
-    public static class QueryType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<QueryType>))]
+    public class QueryType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<QueryType>
     {
-        public const string ResultCount = "ResultCount";
+        public static readonly QueryType ResultCount = Parse("ResultCount");
     }
 }

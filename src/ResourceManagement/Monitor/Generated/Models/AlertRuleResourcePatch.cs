@@ -19,20 +19,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The alert rule object for patch operations.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AlertRuleResourcePatchInner
+    public partial class AlertRuleResourcePatch
     {
         /// <summary>
-        /// Initializes a new instance of the AlertRuleResourcePatchInner
-        /// class.
+        /// Initializes a new instance of the AlertRuleResourcePatch class.
         /// </summary>
-        public AlertRuleResourcePatchInner()
+        public AlertRuleResourcePatch()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AlertRuleResourcePatchInner
-        /// class.
+        /// Initializes a new instance of the AlertRuleResourcePatch class.
         /// </summary>
         /// <param name="name">the name of the alert rule.</param>
         /// <param name="isEnabled">the flag that indicates whether the alert
@@ -47,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// resolved.</param>
         /// <param name="lastUpdatedTime">Last time the rule was updated in
         /// ISO8601 format.</param>
-        public AlertRuleResourcePatchInner(string name, bool isEnabled, RuleCondition condition, IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), IList<RuleAction> actions = default(IList<RuleAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
+        public AlertRuleResourcePatch(string name, bool isEnabled, RuleCondition condition, IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), IList<RuleAction> actions = default(IList<RuleAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
         {
             Tags = tags;
             Name = name;

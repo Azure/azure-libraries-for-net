@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// rule should be triggered.</param>
         /// <param name="metricTrigger">Trigger condition for metric query
         /// rule</param>
-        public TriggerCondition(string thresholdOperator, double threshold, LogMetricTrigger metricTrigger = default(LogMetricTrigger))
+        public TriggerCondition(ConditionalOperator thresholdOperator, double threshold, LogMetricTrigger metricTrigger = default(LogMetricTrigger))
         {
             ThresholdOperator = thresholdOperator;
             Threshold = threshold;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'Equal'
         /// </summary>
         [JsonProperty(PropertyName = "thresholdOperator")]
-        public string ThresholdOperator { get; set; }
+        public ConditionalOperator ThresholdOperator { get; set; }
 
         /// <summary>
         /// Gets or sets result or count threshold based on which rule should

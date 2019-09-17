@@ -19,20 +19,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The log profile resource for patch operations.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class LogProfileResourcePatchInner
+    public partial class LogProfileResourcePatch
     {
         /// <summary>
-        /// Initializes a new instance of the LogProfileResourcePatchInner
-        /// class.
+        /// Initializes a new instance of the LogProfileResourcePatch class.
         /// </summary>
-        public LogProfileResourcePatchInner()
+        public LogProfileResourcePatch()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LogProfileResourcePatchInner
-        /// class.
+        /// Initializes a new instance of the LogProfileResourcePatch class.
         /// </summary>
         /// <param name="locations">List of regions for which Activity Log
         /// events should be stored or streamed. It is a comma separated list
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// created for streaming the Activity Log. The rule ID is of the
         /// format: '{service bus resource ID}/authorizationrules/{key
         /// name}'.</param>
-        public LogProfileResourcePatchInner(IList<string> locations, IList<string> categories, RetentionPolicy retentionPolicy, IDictionary<string, string> tags = default(IDictionary<string, string>), string storageAccountId = default(string), string serviceBusRuleId = default(string))
+        public LogProfileResourcePatch(IList<string> locations, IList<string> categories, RetentionPolicy retentionPolicy, IDictionary<string, string> tags = default(IDictionary<string, string>), string storageAccountId = default(string), string serviceBusRuleId = default(string))
         {
             Tags = tags;
             StorageAccountId = storageAccountId;

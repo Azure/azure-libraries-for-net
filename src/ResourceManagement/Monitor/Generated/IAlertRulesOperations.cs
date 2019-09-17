@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AlertRuleResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string ruleName, AlertRuleResourcePatchInner alertRulesResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AlertRuleResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string ruleName, AlertRuleResourcePatch alertRulesResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List the alert rules within a resource group.
         /// </summary>
