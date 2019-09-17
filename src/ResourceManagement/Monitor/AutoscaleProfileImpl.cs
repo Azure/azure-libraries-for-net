@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
 
             this.Inner.Recurrence = new Recurrence();
-            this.Inner.Recurrence.Frequency = RecurrenceFrequency.Week.ToString();
+            this.Inner.Recurrence.Frequency = RecurrenceFrequency.Week;
             this.Inner.Recurrence.Schedule = new RecurrentSchedule();
             this.Inner.Recurrence.Schedule.TimeZone = scheduleTimeZone;
             this.Inner.Recurrence.Schedule.Hours = new List<int?>();

@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljSW1wbA==
     internal partial class MetricImpl :
-        Wrapper<Models.Metric>,
+        Wrapper<Models.MetricInner>,
         IMetric
     {
         private ILocalizableString metricName;
 
         ///GENMHASH:D5C6A215765AA9CB79343C504C3C3446:84C0C3C28D1475257EE342DAB8514869
-        internal MetricImpl(Metric innerObject)
+        internal MetricImpl(MetricInner innerObject)
             : base(innerObject)
         {
             this.metricName = (Inner.Name == null) ? null : new LocalizableStringImpl(Inner.Name);
