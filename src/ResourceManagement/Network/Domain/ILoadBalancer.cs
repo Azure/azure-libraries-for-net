@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerHttpProbe> HttpProbes { get; }
 
         /// <summary>
+        /// Gets HTTPS probes of this load balancer, indexed by the name.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerHttpProbe> HttpsProbes { get; }
+
+        /// <summary>
         /// Gets resource IDs of the public IP addresses assigned to the frontends of this load balancer.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<string> PublicIPAddressIds { get; }

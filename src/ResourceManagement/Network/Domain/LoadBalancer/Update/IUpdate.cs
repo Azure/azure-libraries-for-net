@@ -107,6 +107,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update.IUpdate UpdateHttpProbe(string name);
 
         /// <summary>
+        /// Begins the description of an update to an existing HTTPS probe on this load balancer.
+        /// </summary>
+        /// <param name="name">The name of the probe to update.</param>
+        /// <return>The first stage of the probe update.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update.IUpdate UpdateHttpsProbe(string name);
+
+        /// <summary>
         /// Begins the description of an update to an existing TCP probe on this load balancer.
         /// </summary>
         /// <param name="name">The name of the probe to update.</param>
@@ -128,6 +135,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
         /// <param name="name">The name of the new probe.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate> DefineHttpProbe(string name);
+
+        /// <summary>
+        /// Begins the definition of a new HTTPS probe to add to the load balancer.
+        /// The definition must be completed with a call to  LoadBalancerHttpProbe.DefinitionStages.WithAttach.attach().
+        /// </summary>
+        /// <param name="name">The name of the new probe.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate> DefineHttpsProbe(string name);
 
         /// <summary>
         /// Removes the specified probe from the load balancer, if present.
