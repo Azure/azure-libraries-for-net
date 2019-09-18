@@ -46,7 +46,7 @@ namespace Fluent.Tests.Network
                     ILoadBalancer loadBalancer = CreateLoadBalancer(azure, resourceGroup, network, lbName);
 
                     // verify created probes
-                    loadBalancer = azure.LoadBalancers.GetByResourceGroup(rgName, lbName);
+                    loadBalancer.Refresh();
                     Assert.Equal(2, loadBalancer.LoadBalancingRules.Count);
                     Assert.Empty(loadBalancer.TcpProbes);
                     Assert.Single(loadBalancer.HttpProbes);
@@ -70,7 +70,7 @@ namespace Fluent.Tests.Network
                         .Parent().Apply();
 
                     // verify probe updated
-                    loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, lbName);
+                    loadBalancer.Refresh();
                     Assert.True(loadBalancer.HttpProbes.TryGetValue(probeName1, out httpProbe));
                     Assert.True(loadBalancer.HttpsProbes.TryGetValue(probeName2, out httpsProbe));
                     Assert.Single(httpsProbe.LoadBalancingRules);
@@ -85,7 +85,7 @@ namespace Fluent.Tests.Network
                         .Apply();
 
                     // verify probe deleted (and deref from rule)
-                    loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, lbName);
+                    loadBalancer.Refresh();
                     Assert.True(loadBalancer.HttpProbes.TryGetValue(probeName1, out httpProbe));
                     Assert.False(loadBalancer.HttpsProbes.TryGetValue(probeName2, out httpsProbe));
                     Assert.Null(loadBalancer.LoadBalancingRules[ruleName2].Probe);
@@ -98,7 +98,7 @@ namespace Fluent.Tests.Network
                         .Apply();
 
                     // verify probe added
-                    loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, lbName);
+                    loadBalancer.Refresh();
                     Assert.True(loadBalancer.HttpProbes.TryGetValue(probeName1, out httpProbe));
                     Assert.True(loadBalancer.HttpsProbes.TryGetValue(probeName2, out httpsProbe));
                     Assert.Empty(httpsProbe.LoadBalancingRules);
