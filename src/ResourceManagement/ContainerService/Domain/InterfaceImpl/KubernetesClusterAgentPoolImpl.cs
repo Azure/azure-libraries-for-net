@@ -77,6 +77,17 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
+        /// Gets agent pool type.
+        /// </summary>
+        AgentPoolType Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.Type
+        {
+            get
+            {
+                return this.Type();
+            }
+        }
+
+        /// <summary>
         /// Gets size of each agent virtual machine in the agent pool.
         /// </summary>
         ContainerServiceVMSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize
@@ -94,6 +105,26 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         KubernetesCluster.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<KubernetesCluster.Definition.IWithCreate>.Attach()
         {
             return this.Attach();
+        }
+
+        /// <summary>
+        /// Set agent pool type to every virtual machine in the agent pool.
+        /// </summary>
+        /// <param name="agentPoolType">The agent pool type for every machine in the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolType<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolType(AgentPoolType agentPoolType)
+        {
+            return this.WithAgentPoolType(agentPoolType);
+        }
+
+        /// <summary>
+        /// Set agent pool type by type name.
+        /// </summary>
+        /// <param name="agentPoolTypeName">The agent pool type name in string format.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolType<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolTypeName(string agentPoolTypeName)
+        {
+            return this.WithAgentPoolTypeName(agentPoolTypeName);
         }
 
         /// <summary>

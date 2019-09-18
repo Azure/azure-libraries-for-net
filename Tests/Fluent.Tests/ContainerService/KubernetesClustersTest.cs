@@ -18,7 +18,7 @@ namespace Fluent.Tests.ContainerService
     {
         private static readonly string SshKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfSPC2K7LZcFKEO+/t3dzmQYtrJFZNxOsbVgOVKietqHyvmYGHEC0J2wPdAqQ/63g/hhAEFRoyehM+rbeDri4txB3YFfnOK58jqdkyXzupWqXzOrlKY4Wz9SKjjN765+dqUITjKRIaAip1Ri137szRg71WnrmdP3SphTRlCx1Bk2nXqWPsclbRDCiZeF8QOTi4JqbmJyK5+0UqhqYRduun8ylAwKKQJ1NJt85sYIHn9f1Rfr6Tq2zS0wZ7DHbZL+zB5rSlAr8QyUdg/GQD+cmSs6LvPJKL78d6hMGk84ARtFo4A79ovwX/Fj01znDQkU6nJildfkaolH2rWFG/qttD azjava@javalib.Com";
 
-        [Fact]
+        [Fact(Skip = "The deployment will record client id and secret")]
         public void KubernetesClusterCRUDTest()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
@@ -54,6 +54,7 @@ namespace Fluent.Tests.ContainerService
                         .DefineAgentPool(agentPoolName)
                             .WithVirtualMachineSize(ContainerServiceVMSizeTypes.StandardD1V2)
                             .WithAgentPoolVirtualMachineCount(1)
+                            .WithAgentPoolType(AgentPoolType.VirtualMachineScaleSets)
                             .Attach()
                         .WithDnsPrefix("mp1" + dnsPrefix)
                         .WithTag("tag1", "value1")
@@ -66,6 +67,7 @@ namespace Fluent.Tests.ContainerService
                     Assert.NotNull(kubernetesCluster.AgentPools[agentPoolName]);
                     Assert.Equal(1, kubernetesCluster.AgentPools[agentPoolName].Count);
                     Assert.Equal(ContainerServiceVMSizeTypes.StandardD1V2, kubernetesCluster.AgentPools[agentPoolName].VMSize);
+                    Assert.Equal(AgentPoolType.VirtualMachineScaleSets, kubernetesCluster.AgentPools[agentPoolName].Type);
                     Assert.NotNull(kubernetesCluster.Tags["tag1"]);
 
                     kubernetesCluster = containerServiceManager.KubernetesClusters.GetByResourceGroup(rgName, aksName);

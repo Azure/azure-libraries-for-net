@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Inner.Name;
         }
 
+        public AgentPoolType Type()
+        {
+            return this.Inner.Type;
+        }
+
         ///GENMHASH:1C444C90348D7064AB23705C542DDF18:CC1F09230C48EC2C015059C28C3F6ABE
         public string NetworkId()
         {
@@ -143,6 +148,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             string vnetSubnetId = virtualNetworkId + "/subnets/" + subnetName;
             this.subnetName = subnetName;
             this.Inner.VnetSubnetID = vnetSubnetId;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolType(AgentPoolType agentPoolType)
+        {
+            this.Inner.Type = agentPoolType;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolTypeName(string agentPoolTypeName)
+        {
+            this.Inner.Type = AgentPoolType.Parse(agentPoolTypeName);
             return this;
         }
     }

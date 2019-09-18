@@ -40,6 +40,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         string SubnetName { get; }
 
+        /// <summary>
+        /// Gets agent pool type.
+        /// </summary>
+        AgentPoolType Type { get; }
+
          /// <summary>
         /// Gets size of each agent virtual machine in the agent pool.
         /// </summary>
