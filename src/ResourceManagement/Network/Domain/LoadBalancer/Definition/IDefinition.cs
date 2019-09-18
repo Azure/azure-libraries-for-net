@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
         /// <param name="name">The name of the probe.</param>
         /// <return>The first stage of the new probe definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Definition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithCreate> DefineHttpProbe(string name);
+
+        /// <summary>
+        /// Begins the definition of a new HTTPS probe to add to the load balancer.
+        /// </summary>
+        /// <param name="name">The name of the probe.</param>
+        /// <return>The first stage of the new probe definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Definition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithCreate> DefineHttpsProbe(string name);
     }
 
     /// <summary>

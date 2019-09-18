@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private Dictionary<string, ILoadBalancerBackend> backends;
         private Dictionary<string, ILoadBalancerTcpProbe> tcpProbes;
         private Dictionary<string, ILoadBalancerHttpProbe> httpProbes;
+        private Dictionary<string, ILoadBalancerHttpProbe> httpsProbes;
         private Dictionary<string, ILoadBalancingRule> loadBalancingRules;
         private Dictionary<string, ILoadBalancerFrontend> frontends;
         private Dictionary<string, ILoadBalancerInboundNatRule> inboundNatRules;
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             // Reset and update probes
             var innerProbes = InnersFromWrappers<ProbeInner, ILoadBalancerHttpProbe>(httpProbes.Values);
+            innerProbes = InnersFromWrappers(httpsProbes.Values, innerProbes);
             Inner.Probes = InnersFromWrappers(tcpProbes.Values, innerProbes) ?? new List<ProbeInner>();
 
             // Reset and update backends
@@ -157,6 +159,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 var probeRef = lbRule.Inner.Probe;
                 if (probeRef != null
                     && !HttpProbes().ContainsKey(ResourceUtils.NameFromResourceId(probeRef.Id))
+                    && !HttpsProbes().ContainsKey(ResourceUtils.NameFromResourceId(probeRef.Id))
                     && !TcpProbes().ContainsKey(ResourceUtils.NameFromResourceId(probeRef.Id)))
                 {
                     lbRule.Inner.Probe = null;
@@ -265,6 +268,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private void InitializeProbesFromInner()
         {
             httpProbes = new Dictionary<string, ILoadBalancerHttpProbe>();
+            httpsProbes = new Dictionary<string, ILoadBalancerHttpProbe>();
             tcpProbes = new Dictionary<string, ILoadBalancerTcpProbe>();
             if (Inner.Probes != null)
             {
@@ -278,6 +282,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     else if (ProbeProtocol.Http.Equals(probeInner.Protocol))
                     {
                         httpProbes.Add(probeInner.Name, probe);
+                    }
+                    else if (ProbeProtocol.Https.Equals(probeInner.Protocol))
+                    {
+                        httpsProbes.Add(probeInner.Name, probe);
                     }
                 }
             }
@@ -345,6 +353,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             else if (ProbeProtocol.Http.Equals(probe.Protocol()))
             {
                 httpProbes[probe.Name()] = probe;
+            }
+            else if (ProbeProtocol.Https.Equals(probe.Protocol()))
+            {
+                httpsProbes[probe.Name()] = probe;
             }
             else if (ProbeProtocol.Tcp.Equals(probe.Protocol()))
             {
@@ -457,6 +469,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             else
             {
                 return (LoadBalancerProbeImpl)httpProbe;
+            }
+        }
+
+
+        internal LoadBalancerProbeImpl DefineHttpsProbe(string name)
+        {
+            ILoadBalancerHttpProbe httpsProbe;
+            if (!httpsProbes.TryGetValue(name, out httpsProbe))
+            {
+                ProbeInner inner = new ProbeInner()
+                {
+                    Name = name,
+                    Protocol = ProbeProtocol.Https,
+                    Port = 443
+                };
+
+                return new LoadBalancerProbeImpl(inner, this);
+            }
+            else
+            {
+                return (LoadBalancerProbeImpl)httpsProbe;
             }
         }
 
@@ -621,6 +654,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal LoadBalancerImpl WithoutProbe(string name)
         {
             httpProbes.Remove(name);
+            httpsProbes.Remove(name);
             tcpProbes.Remove(name);
             return this;
         }
@@ -680,6 +714,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
 
+        internal LoadBalancerProbeImpl UpdateHttpsProbe(string name)
+        {
+            return TryGetValue<LoadBalancerProbeImpl, ILoadBalancerHttpProbe>(name, httpsProbes);
+        }
+
+
         ///GENMHASH:F1659EC136C19880BCD775129C7E0971:B68C705837B8D6B33C62F1CCD529C86D
         internal LoadBalancingRuleImpl UpdateLoadBalancingRule(string name)
         {
@@ -726,6 +766,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal IReadOnlyDictionary<string, ILoadBalancerHttpProbe> HttpProbes()
         {
             return httpProbes;
+        }
+
+
+        internal IReadOnlyDictionary<string, ILoadBalancerHttpProbe> HttpsProbes()
+        {
+            return httpsProbes;
         }
 
 
