@@ -997,6 +997,26 @@ namespace Microsoft.Azure.Management.Samples.Common
                 }
             }
 
+            // Show HTTPS probes
+            info.Append("\n\tHTTPS probes: ")
+                    .Append(loadBalancer.HttpsProbes.Count);
+            foreach (var probe in loadBalancer.HttpsProbes.Values)
+            {
+                info.Append("\n\t\tProbe name: ").Append(probe.Name)
+                        .Append("\n\t\t\tPort: ").Append(probe.Port)
+                        .Append("\n\t\t\tInterval in seconds: ").Append(probe.IntervalInSeconds)
+                        .Append("\n\t\t\tRetries before unhealthy: ").Append(probe.NumberOfProbes)
+                        .Append("\n\t\t\tHTTPS request path: ").Append(probe.RequestPath);
+
+                // Show associated load balancing rules
+                info.Append("\n\t\t\tReferenced from load balancing rules: ")
+                        .Append(probe.LoadBalancingRules.Count);
+                foreach (var rule in probe.LoadBalancingRules.Values)
+                {
+                    info.Append("\n\t\t\t\tName: ").Append(rule.Name);
+                }
+            }
+
             // Show load balancing rules
             info.Append("\n\tLoad balancing rules: ")
                     .Append(loadBalancer.LoadBalancingRules.Count);
