@@ -77,10 +77,10 @@ namespace Fluent.Tests
                         if (policy.ObjectId.Equals(servicePrincipal.Id))
                         {
                             Assert.Equal(1, policy.Permissions.Keys.Count);
-                            Assert.Equal(KeyPermissions.List.Value, policy.Permissions.Keys[0]);
+                            Assert.Equal(KeyPermissions.List, policy.Permissions.Keys[0]);
                             Assert.Equal(8, policy.Permissions.Secrets.Count);
                             Assert.Equal(1, policy.Permissions.Certificates.Count);
-                            Assert.Equal(CertificatePermissions.Get.Value, policy.Permissions.Certificates[0]);
+                            Assert.Equal(CertificatePermissions.Get, policy.Permissions.Certificates[0]);
                         }
                         if (policy.ObjectId.Equals(user.Id))
                         {
