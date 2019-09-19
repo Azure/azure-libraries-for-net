@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static string ToSerializedValue(this CreateMode value)
         {
-            switch (value)
+            switch( value )
             {
                 case CreateMode.Recover:
                     return "recover";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static CreateMode? ParseCreateMode(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "recover":
                     return CreateMode.Recover;

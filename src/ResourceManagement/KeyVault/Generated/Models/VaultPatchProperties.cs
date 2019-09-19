@@ -45,17 +45,22 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// <param name="enabledForTemplateDeployment">Property to specify
         /// whether Azure Resource Manager is permitted to retrieve secrets
         /// from the key vault.</param>
-        /// <param name="enableSoftDelete">Property specifying whether
-        /// recoverable deletion ('soft' delete) is enabled for this key vault.
-        /// The property may not be set to false.</param>
+        /// <param name="enableSoftDelete">Property to specify whether the
+        /// 'soft delete' functionality is enabled for this key vault. It does
+        /// not accept false value.</param>
         /// <param name="createMode">The vault's create mode to indicate
         /// whether the vault need to be recovered or not. Possible values
         /// include: 'recover', 'default'</param>
         /// <param name="enablePurgeProtection">Property specifying whether
-        /// protection against purge is enabled for this vault; it is only
-        /// effective if soft delete is also enabled. Once activated, the
-        /// property may no longer be reset to false.</param>
-        public VaultPatchProperties(System.Guid? tenantId = default(System.Guid?), Sku sku = default(Sku), IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?))
+        /// protection against purge is enabled for this vault. Setting this
+        /// property to true activates protection against purge for this vault
+        /// and its content - only the Key Vault service may initiate a hard,
+        /// irrecoverable deletion. The setting is effective only if soft
+        /// delete is also enabled. Enabling this functionality is irreversible
+        /// - that is, the property does not accept false as its value.</param>
+        /// <param name="networkAcls">A collection of rules governing the
+        /// accessibility of the vault from specific network locations.</param>
+        public VaultPatchProperties(System.Guid? tenantId = default(System.Guid?), Sku sku = default(Sku), IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?), NetworkRuleSet networkAcls = default(NetworkRuleSet))
         {
             TenantId = tenantId;
             Sku = sku;
@@ -66,6 +71,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
             EnableSoftDelete = enableSoftDelete;
             CreateMode = createMode;
             EnablePurgeProtection = enablePurgeProtection;
+            NetworkAcls = networkAcls;
             CustomInit();
         }
 
@@ -118,9 +124,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public bool? EnabledForTemplateDeployment { get; set; }
 
         /// <summary>
-        /// Gets or sets property specifying whether recoverable deletion
-        /// ('soft' delete) is enabled for this key vault. The property may not
-        /// be set to false.
+        /// Gets or sets property to specify whether the 'soft delete'
+        /// functionality is enabled for this key vault. It does not accept
+        /// false value.
         /// </summary>
         [JsonProperty(PropertyName = "enableSoftDelete")]
         public bool? EnableSoftDelete { get; set; }
@@ -135,12 +141,22 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         /// <summary>
         /// Gets or sets property specifying whether protection against purge
-        /// is enabled for this vault; it is only effective if soft delete is
-        /// also enabled. Once activated, the property may no longer be reset
-        /// to false.
+        /// is enabled for this vault. Setting this property to true activates
+        /// protection against purge for this vault and its content - only the
+        /// Key Vault service may initiate a hard, irrecoverable deletion. The
+        /// setting is effective only if soft delete is also enabled. Enabling
+        /// this functionality is irreversible - that is, the property does not
+        /// accept false as its value.
         /// </summary>
         [JsonProperty(PropertyName = "enablePurgeProtection")]
         public bool? EnablePurgeProtection { get; set; }
+
+        /// <summary>
+        /// Gets or sets a collection of rules governing the accessibility of
+        /// the vault from specific network locations.
+        /// </summary>
+        [JsonProperty(PropertyName = "networkAcls")]
+        public NetworkRuleSet NetworkAcls { get; set; }
 
         /// <summary>
         /// Validate the object.

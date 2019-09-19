@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static string ToSerializedValue(this SkuName value)
         {
-            switch (value)
+            switch( value )
             {
                 case SkuName.Standard:
                     return "standard";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static SkuName? ParseSkuName(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "standard":
                     return SkuName.Standard;

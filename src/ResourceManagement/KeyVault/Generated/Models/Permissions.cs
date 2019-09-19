@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// <param name="secrets">Permissions to secrets</param>
         /// <param name="certificates">Permissions to certificates</param>
         /// <param name="storage">Permissions to storage accounts</param>
-        public Permissions(IList<string> keys = default(IList<string>), IList<string> secrets = default(IList<string>), IList<string> certificates = default(IList<string>), IList<string> storage = default(IList<string>))
+        public Permissions(IList<KeyPermissions> keys = default(IList<KeyPermissions>), IList<SecretPermissions> secrets = default(IList<SecretPermissions>), IList<CertificatePermissions> certificates = default(IList<CertificatePermissions>), IList<StoragePermissions> storage = default(IList<StoragePermissions>))
         {
             Keys = keys;
             Secrets = secrets;
@@ -52,25 +52,25 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// Gets or sets permissions to keys
         /// </summary>
         [JsonProperty(PropertyName = "keys")]
-        public IList<string> Keys { get; set; }
+        public IList<KeyPermissions> Keys { get; set; }
 
         /// <summary>
         /// Gets or sets permissions to secrets
         /// </summary>
         [JsonProperty(PropertyName = "secrets")]
-        public IList<string> Secrets { get; set; }
+        public IList<SecretPermissions> Secrets { get; set; }
 
         /// <summary>
         /// Gets or sets permissions to certificates
         /// </summary>
         [JsonProperty(PropertyName = "certificates")]
-        public IList<string> Certificates { get; set; }
+        public IList<CertificatePermissions> Certificates { get; set; }
 
         /// <summary>
         /// Gets or sets permissions to storage accounts
         /// </summary>
         [JsonProperty(PropertyName = "storage")]
-        public IList<string> Storage { get; set; }
+        public IList<StoragePermissions> Storage { get; set; }
 
     }
 }
