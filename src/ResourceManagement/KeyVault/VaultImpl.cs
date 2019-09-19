@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         public async override Task<Microsoft.Azure.Management.KeyVault.Fluent.IVault> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await PopulateAccessPolicies(cancellationToken);
-            VaultCreateOrUpdateParametersInner parameters = new VaultCreateOrUpdateParametersInner()
+            VaultCreateOrUpdateParameters parameters = new VaultCreateOrUpdateParameters()
             {
                 Location = RegionName,
                 Properties = Inner.Properties,
