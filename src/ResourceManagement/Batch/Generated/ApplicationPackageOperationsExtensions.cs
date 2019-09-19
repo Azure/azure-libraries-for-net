@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     public static partial class ApplicationPackageOperationsExtensions
     {
             /// <summary>
-            /// Activates the specified application package.
+            /// Activates the specified application package. This should be done after the
+            /// `ApplicationPackage` was created and uploaded. This needs to be done before
+            /// an `ApplicationPackage` can be used on Pools or Tasks
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -31,11 +33,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='accountName'>
             /// The name of the Batch account.
             /// </param>
-            /// <param name='applicationId'>
-            /// The ID of the application.
+            /// <param name='applicationName'>
+            /// The name of the application. This must be unique within the account.
             /// </param>
-            /// <param name='version'>
-            /// The version of the application to activate.
+            /// <param name='versionName'>
+            /// The version of the application.
             /// </param>
             /// <param name='format'>
             /// The format of the application package binary file.
@@ -43,13 +45,19 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ActivateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationId, string version, string format, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ApplicationPackageInner> ActivateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, string format, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ActivateWithHttpMessagesAsync(resourceGroupName, accountName, applicationId, version, format, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.ActivateWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, format, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
-            /// Creates an application package record.
+            /// Creates an application package record. The record contains the SAS where
+            /// the package should be uploaded to.  Once it is uploaded the
+            /// `ApplicationPackage` needs to be activated using `ApplicationPackageActive`
+            /// before it can be used.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -60,18 +68,18 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='accountName'>
             /// The name of the Batch account.
             /// </param>
-            /// <param name='applicationId'>
-            /// The ID of the application.
+            /// <param name='applicationName'>
+            /// The name of the application. This must be unique within the account.
             /// </param>
-            /// <param name='version'>
+            /// <param name='versionName'>
             /// The version of the application.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ApplicationPackageInner> CreateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationId, string version, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ApplicationPackageInner> CreateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, applicationId, version, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -89,18 +97,18 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='accountName'>
             /// The name of the Batch account.
             /// </param>
-            /// <param name='applicationId'>
-            /// The ID of the application.
+            /// <param name='applicationName'>
+            /// The name of the application. This must be unique within the account.
             /// </param>
-            /// <param name='version'>
-            /// The version of the application to delete.
+            /// <param name='versionName'>
+            /// The version of the application.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationId, string version, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, applicationId, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -115,18 +123,67 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='accountName'>
             /// The name of the Batch account.
             /// </param>
-            /// <param name='applicationId'>
-            /// The ID of the application.
+            /// <param name='applicationName'>
+            /// The name of the application. This must be unique within the account.
             /// </param>
-            /// <param name='version'>
+            /// <param name='versionName'>
             /// The version of the application.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ApplicationPackageInner> GetAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationId, string version, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ApplicationPackageInner> GetAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, applicationId, version, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists all of the application packages in the specified application.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the Batch account.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the Batch account.
+            /// </param>
+            /// <param name='applicationName'>
+            /// The name of the application. This must be unique within the account.
+            /// </param>
+            /// <param name='maxresults'>
+            /// The maximum number of items to return in the response.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ApplicationPackageInner>> ListAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, int? maxresults = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, maxresults, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists all of the application packages in the specified application.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ApplicationPackageInner>> ListNextAsync(this IApplicationPackageOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

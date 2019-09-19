@@ -12,28 +12,26 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Create operation.
+    /// Defines headers for Get operation.
     /// </summary>
-    public partial class CertificateCreateHeadersInner
+    public partial class CertificateGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the CertificateCreateHeadersInner
-        /// class.
+        /// Initializes a new instance of the CertificateGetHeaders class.
         /// </summary>
-        public CertificateCreateHeadersInner()
+        public CertificateGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CertificateCreateHeadersInner
-        /// class.
+        /// Initializes a new instance of the CertificateGetHeaders class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public CertificateCreateHeadersInner(string eTag = default(string))
+        public CertificateGetHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

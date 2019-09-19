@@ -19,26 +19,26 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// Parameters for updating an Azure Batch account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BatchAccountUpdateParametersInner
+    public partial class BatchAccountUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParametersInner
+        /// Initializes a new instance of the BatchAccountUpdateParameters
         /// class.
         /// </summary>
-        public BatchAccountUpdateParametersInner()
+        public BatchAccountUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParametersInner
+        /// Initializes a new instance of the BatchAccountUpdateParameters
         /// class.
         /// </summary>
         /// <param name="tags">The user-specified tags associated with the
         /// account.</param>
         /// <param name="autoStorage">The properties related to the
         /// auto-storage account.</param>
-        public BatchAccountUpdateParametersInner(IDictionary<string, string> tags = default(IDictionary<string, string>), AutoStorageBaseProperties autoStorage = default(AutoStorageBaseProperties))
+        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AutoStorageBaseProperties autoStorage = default(AutoStorageBaseProperties))
         {
             Tags = tags;
             AutoStorage = autoStorage;

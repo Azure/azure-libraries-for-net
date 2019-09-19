@@ -12,26 +12,26 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for StopResize operation.
+    /// Defines headers for Get operation.
     /// </summary>
-    public partial class PoolStopResizeHeadersInner
+    public partial class PoolGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PoolStopResizeHeadersInner class.
+        /// Initializes a new instance of the PoolGetHeaders class.
         /// </summary>
-        public PoolStopResizeHeadersInner()
+        public PoolGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PoolStopResizeHeadersInner class.
+        /// Initializes a new instance of the PoolGetHeaders class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public PoolStopResizeHeadersInner(string eTag = default(string))
+        public PoolGetHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

@@ -31,15 +31,12 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         /// <param name="osFamily">The Azure Guest OS family to be installed on
         /// the virtual machines in the pool.</param>
-        /// <param name="targetOSVersion">The Azure Guest OS version to be
-        /// installed on the virtual machines in the pool.</param>
-        /// <param name="currentOSVersion">The Azure Guest OS Version currently
-        /// installed on the virtual machines in the pool.</param>
-        public CloudServiceConfiguration(string osFamily, string targetOSVersion = default(string), string currentOSVersion = default(string))
+        /// <param name="osVersion">The Azure Guest OS version to be installed
+        /// on the virtual machines in the pool.</param>
+        public CloudServiceConfiguration(string osFamily, string osVersion = default(string))
         {
             OsFamily = osFamily;
-            TargetOSVersion = targetOSVersion;
-            CurrentOSVersion = currentOSVersion;
+            OsVersion = osVersion;
             CustomInit();
         }
 
@@ -56,8 +53,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Possible values are: 2 - OS Family 2, equivalent to Windows Server
         /// 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4
         /// - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family
-        /// 5, equivalent to Windows Server 2016. For more information, see
-        /// Azure Guest OS Releases
+        /// 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent
+        /// to Windows Server 2019. For more information, see Azure Guest OS
+        /// Releases
         /// (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
         /// </remarks>
         [JsonProperty(PropertyName = "osFamily")]
@@ -71,22 +69,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// The default value is * which specifies the latest operating system
         /// version for the specified OS family.
         /// </remarks>
-        [JsonProperty(PropertyName = "targetOSVersion")]
-        public string TargetOSVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Azure Guest OS Version currently installed on the
-        /// virtual machines in the pool.
-        /// </summary>
-        /// <remarks>
-        /// This may differ from targetOSVersion if the pool state is
-        /// Upgrading. In this case some virtual machines may be on the
-        /// targetOSVersion and some may be on the currentOSVersion during the
-        /// upgrade process. Once all virtual machines have upgraded,
-        /// currentOSVersion is updated to be the same as targetOSVersion.
-        /// </remarks>
-        [JsonProperty(PropertyName = "currentOSVersion")]
-        public string CurrentOSVersion { get; set; }
+        [JsonProperty(PropertyName = "osVersion")]
+        public string OsVersion { get; set; }
 
         /// <summary>
         /// Validate the object.

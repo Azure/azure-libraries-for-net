@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CertificateInner,CertificateCreateHeadersInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateInner,CertificateCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the properties of an existing certificate.
         /// </summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CertificateInner,CertificateUpdateHeadersInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateInner,CertificateUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified certificate.
         /// </summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationHeaderResponse<CertificateDeleteHeadersInner>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<CertificateDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets information about the specified certificate.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CertificateInner,CertificateGetHeadersInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateInner,CertificateGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Cancels a failed deletion of a certificate from the specified
         /// account.
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CertificateInner,CertificateCancelDeletionHeadersInner>> CancelDeletionWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateInner,CertificateCancelDeletionHeaders>> CancelDeletionWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new certificate inside the specified account.
         /// </summary>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CertificateInner,CertificateCreateHeadersInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateInner,CertificateCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified certificate.
         /// </summary>
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationHeaderResponse<CertificateDeleteHeadersInner>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<CertificateDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all of the certificates in the specified account.
         /// </summary>

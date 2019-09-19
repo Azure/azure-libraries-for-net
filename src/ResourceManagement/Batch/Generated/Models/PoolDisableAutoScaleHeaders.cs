@@ -12,26 +12,28 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Get operation.
+    /// Defines headers for DisableAutoScale operation.
     /// </summary>
-    public partial class CertificateGetHeadersInner
+    public partial class PoolDisableAutoScaleHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the CertificateGetHeadersInner class.
+        /// Initializes a new instance of the PoolDisableAutoScaleHeaders
+        /// class.
         /// </summary>
-        public CertificateGetHeadersInner()
+        public PoolDisableAutoScaleHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CertificateGetHeadersInner class.
+        /// Initializes a new instance of the PoolDisableAutoScaleHeaders
+        /// class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public CertificateGetHeadersInner(string eTag = default(string))
+        public PoolDisableAutoScaleHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Batch.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -17,7 +19,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// Contains information about a certificate.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CertificateCreateOrUpdateParametersInner : ProxyResource
+    public partial class CertificateCreateOrUpdateParametersInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -34,11 +36,6 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         /// <param name="data">The base64-encoded contents of the
         /// certificate.</param>
-        /// <param name="id">The ID of the resource.</param>
-        /// <param name="name">The name of the resource.</param>
-        /// <param name="type">The type of the resource.</param>
-        /// <param name="etag">The ETag of the resource, used for concurrency
-        /// statements.</param>
         /// <param name="thumbprintAlgorithm">The algorithm of the certificate
         /// thumbprint</param>
         /// <param name="thumbprint">The thumbprint of the certificate</param>
@@ -47,14 +44,17 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// 'Pfx', 'Cer'</param>
         /// <param name="password">The password to access the certificate's
         /// private key.</param>
-        public CertificateCreateOrUpdateParametersInner(string data, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), string password = default(string))
-            : base(id, name, type, etag)
+        /// <param name="etag">The ETag of the resource, used for concurrency
+        /// statements.</param>
+        public CertificateCreateOrUpdateParametersInner(string data, string id = default(string), string name = default(string), string type = default(string), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), string password = default(string), string etag = default(string))
+            : base(id, name, type)
         {
             ThumbprintAlgorithm = thumbprintAlgorithm;
             Thumbprint = thumbprint;
             Format = format;
             Data = data;
             Password = password;
+            Etag = etag;
             CustomInit();
         }
 
@@ -107,6 +107,12 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </remarks>
         [JsonProperty(PropertyName = "properties.password")]
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

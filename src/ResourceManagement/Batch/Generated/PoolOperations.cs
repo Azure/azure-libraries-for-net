@@ -327,10 +327,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PoolInner,PoolCreateHeadersInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, PoolInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PoolInner,PoolCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, PoolInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<PoolInner,PoolCreateHeadersInner> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, poolName, parameters, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<PoolInner,PoolCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, poolName, parameters, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PoolInner,PoolUpdateHeadersInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, PoolInner parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PoolInner,PoolUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, PoolInner parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PoolInner,PoolUpdateHeadersInner>();
+            var _result = new AzureOperationResponse<PoolInner,PoolUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolUpdateHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolUpdateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -628,10 +628,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationHeaderResponse<PoolDeleteHeadersInner>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<PoolDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationHeaderResponse<PoolDeleteHeadersInner> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationHeaderResponse<PoolDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PoolInner,PoolGetHeadersInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PoolInner,PoolGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PoolInner,PoolGetHeadersInner>();
+            var _result = new AzureOperationResponse<PoolInner,PoolGetHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolGetHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolGetHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -916,7 +916,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PoolInner,PoolDisableAutoScaleHeadersInner>> DisableAutoScaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PoolInner,PoolDisableAutoScaleHeaders>> DisableAutoScaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1086,7 +1086,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PoolInner,PoolDisableAutoScaleHeadersInner>();
+            var _result = new AzureOperationResponse<PoolInner,PoolDisableAutoScaleHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolDisableAutoScaleHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolDisableAutoScaleHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PoolInner,PoolStopResizeHeadersInner>> StopResizeWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PoolInner,PoolStopResizeHeaders>> StopResizeWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1344,7 +1344,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PoolInner,PoolStopResizeHeadersInner>();
+            var _result = new AzureOperationResponse<PoolInner,PoolStopResizeHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1371,7 +1371,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolStopResizeHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolStopResizeHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PoolInner,PoolCreateHeadersInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, PoolInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PoolInner,PoolCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, PoolInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1637,7 +1637,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PoolInner,PoolCreateHeadersInner>();
+            var _result = new AzureOperationResponse<PoolInner,PoolCreateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1664,7 +1664,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolCreateHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolCreateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1712,7 +1712,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationHeaderResponse<PoolDeleteHeadersInner>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<PoolDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1882,7 +1882,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationHeaderResponse<PoolDeleteHeadersInner>();
+            var _result = new AzureOperationHeaderResponse<PoolDeleteHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1891,7 +1891,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolDeleteHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PoolDeleteHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {

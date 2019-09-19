@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Batch.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -19,7 +21,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// Contains information about a pool.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PoolInner : ProxyResource
+    public partial class PoolInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the PoolInner class.
@@ -32,11 +34,6 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the PoolInner class.
         /// </summary>
-        /// <param name="id">The ID of the resource.</param>
-        /// <param name="name">The name of the resource.</param>
-        /// <param name="type">The type of the resource.</param>
-        /// <param name="etag">The ETag of the resource, used for concurrency
-        /// statements.</param>
         /// <param name="displayName">The display name for the pool.</param>
         /// <param name="lastModified">The last modified time of the
         /// pool.</param>
@@ -84,8 +81,12 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// pool.</param>
         /// <param name="resizeOperationStatus">Contains details about the
         /// current or last completed resize operation.</param>
-        public PoolInner(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), AllocationState? allocationState = default(AllocationState?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), ScaleSettings scaleSettings = default(ScaleSettings), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), int? maxTasksPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), IList<UserAccount> userAccounts = default(IList<UserAccount>), IList<MetadataItem> metadata = default(IList<MetadataItem>), StartTask startTask = default(StartTask), IList<CertificateReference> certificates = default(IList<CertificateReference>), IList<ApplicationPackageReference> applicationPackages = default(IList<ApplicationPackageReference>), IList<string> applicationLicenses = default(IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus))
-            : base(id, name, type, etag)
+        /// <param name="mountConfiguration">A list of file systems to mount on
+        /// each node in the pool.</param>
+        /// <param name="etag">The ETag of the resource, used for concurrency
+        /// statements.</param>
+        public PoolInner(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), AllocationState? allocationState = default(AllocationState?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), ScaleSettings scaleSettings = default(ScaleSettings), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), int? maxTasksPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), IList<UserAccount> userAccounts = default(IList<UserAccount>), IList<MetadataItem> metadata = default(IList<MetadataItem>), StartTask startTask = default(StartTask), IList<CertificateReference> certificates = default(IList<CertificateReference>), IList<ApplicationPackageReference> applicationPackages = default(IList<ApplicationPackageReference>), IList<string> applicationLicenses = default(IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), IList<MountConfiguration> mountConfiguration = default(IList<MountConfiguration>), string etag = default(string))
+            : base(id, name, type)
         {
             DisplayName = displayName;
             LastModified = lastModified;
@@ -111,6 +112,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
             ApplicationPackages = applicationPackages;
             ApplicationLicenses = applicationLicenses;
             ResizeOperationStatus = resizeOperationStatus;
+            MountConfiguration = mountConfiguration;
+            Etag = etag;
             CustomInit();
         }
 
@@ -150,13 +153,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Gets the current state of the pool.
         /// </summary>
         /// <remarks>
-        /// Values are:
-        ///
-        /// Succeeded - The pool is available to run tasks subject to the
-        /// availability of compute nodes.
-        /// Deleting - The user has requested that the pool be deleted, but the
-        /// delete operation has not yet completed. Possible values include:
-        /// 'Succeeded', 'Deleting'
+        /// Possible values include: 'Succeeded', 'Deleting'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public PoolProvisioningState? ProvisioningState { get; private set; }
@@ -171,18 +168,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Gets whether the pool is resizing.
         /// </summary>
         /// <remarks>
-        /// Values are:
-        ///
-        /// Steady - The pool is not resizing. There are no changes to the
-        /// number of nodes in the pool in progress. A pool enters this state
-        /// when it is created and when no operations are being performed on
-        /// the pool to change the number of dedicated nodes.
-        /// Resizing - The pool is resizing; that is, compute nodes are being
-        /// added to or removed from the pool.
-        /// Stopping - The pool was resizing, but the user has requested that
-        /// the resize be stopped, but the stop request has not yet been
-        /// completed. Possible values include: 'Steady', 'Resizing',
-        /// 'Stopping'
+        /// Possible values include: 'Steady', 'Resizing', 'Stopping'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.allocationState")]
         public AllocationState? AllocationState { get; private set; }
@@ -284,6 +270,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Gets or sets the maximum number of tasks that can run concurrently
         /// on a single compute node in the pool.
         /// </summary>
+        /// <remarks>
+        /// The default value is 1. The maximum value is the smaller of 4 times
+        /// the number of cores of the vmSize of the pool or 256.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.maxTasksPerNode")]
         public int? MaxTasksPerNode { get; set; }
 
@@ -291,6 +281,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Gets or sets how tasks are distributed across compute nodes in a
         /// pool.
         /// </summary>
+        /// <remarks>
+        /// If not specified, the default is spread.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.taskSchedulingPolicy")]
         public TaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
@@ -346,9 +339,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// each compute node in the pool.
         /// </summary>
         /// <remarks>
-        /// Changes to application packages affect all new compute nodes
-        /// joining the pool, but do not affect compute nodes that are already
-        /// in the pool until they are rebooted or reimaged.
+        /// Changes to application package references affect all new compute
+        /// nodes joining the pool, but do not affect compute nodes that are
+        /// already in the pool until they are rebooted or reimaged. There is a
+        /// maximum of 10 application package references on any given pool.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.applicationPackages")]
         public IList<ApplicationPackageReference> ApplicationPackages { get; set; }
@@ -371,6 +365,22 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.resizeOperationStatus")]
         public ResizeOperationStatus ResizeOperationStatus { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a list of file systems to mount on each node in the
+        /// pool.
+        /// </summary>
+        /// <remarks>
+        /// This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.mountConfiguration")]
+        public IList<MountConfiguration> MountConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -420,6 +430,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
                     }
                 }
             }
+            if (StartTask != null)
+            {
+                StartTask.Validate();
+            }
             if (Certificates != null)
             {
                 foreach (var element2 in Certificates)
@@ -437,6 +451,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
                     if (element3 != null)
                     {
                         element3.Validate();
+                    }
+                }
+            }
+            if (MountConfiguration != null)
+            {
+                foreach (var element4 in MountConfiguration)
+                {
+                    if (element4 != null)
+                    {
+                        element4.Validate();
                     }
                 }
             }

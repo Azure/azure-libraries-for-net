@@ -12,26 +12,26 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Update operation.
+    /// Defines headers for Create operation.
     /// </summary>
-    public partial class PoolUpdateHeadersInner
+    public partial class PoolCreateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PoolUpdateHeadersInner class.
+        /// Initializes a new instance of the PoolCreateHeaders class.
         /// </summary>
-        public PoolUpdateHeadersInner()
+        public PoolCreateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PoolUpdateHeadersInner class.
+        /// Initializes a new instance of the PoolCreateHeaders class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public PoolUpdateHeadersInner(string eTag = default(string))
+        public PoolCreateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

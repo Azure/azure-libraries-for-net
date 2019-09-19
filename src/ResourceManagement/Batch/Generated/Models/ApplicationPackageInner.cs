@@ -8,6 +8,10 @@
 
 namespace Microsoft.Azure.Management.Batch.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -15,7 +19,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// An application package which represents a particular version of an
     /// application.
     /// </summary>
-    public partial class ApplicationPackageInner
+    [Rest.Serialization.JsonTransformation]
+    public partial class ApplicationPackageInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationPackageInner class.
@@ -28,11 +33,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ApplicationPackageInner class.
         /// </summary>
-        /// <param name="id">The ID of the application.</param>
-        /// <param name="version">The version of the application
-        /// package.</param>
         /// <param name="state">The current state of the application package.
-        /// Possible values include: 'Pending', 'Active', 'Unmapped'</param>
+        /// Possible values include: 'Pending', 'Active'</param>
         /// <param name="format">The format of the application package, if the
         /// package is active.</param>
         /// <param name="storageUrl">The URL for the application package in
@@ -41,15 +43,17 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Storage URL will expire.</param>
         /// <param name="lastActivationTime">The time at which the package was
         /// last activated, if the package is active.</param>
-        public ApplicationPackageInner(string id = default(string), string version = default(string), PackageState? state = default(PackageState?), string format = default(string), string storageUrl = default(string), System.DateTime? storageUrlExpiry = default(System.DateTime?), System.DateTime? lastActivationTime = default(System.DateTime?))
+        /// <param name="etag">The ETag of the resource, used for concurrency
+        /// statements.</param>
+        public ApplicationPackageInner(string id = default(string), string name = default(string), string type = default(string), PackageState? state = default(PackageState?), string format = default(string), string storageUrl = default(string), System.DateTime? storageUrlExpiry = default(System.DateTime?), System.DateTime? lastActivationTime = default(System.DateTime?), string etag = default(string))
+            : base(id, name, type)
         {
-            Id = id;
-            Version = version;
             State = state;
             Format = format;
             StorageUrl = storageUrl;
             StorageUrlExpiry = storageUrlExpiry;
             LastActivationTime = lastActivationTime;
+            Etag = etag;
             CustomInit();
         }
 
@@ -59,49 +63,43 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ID of the application.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets the version of the application package.
-        /// </summary>
-        [JsonProperty(PropertyName = "version")]
-        public string Version { get; private set; }
-
-        /// <summary>
         /// Gets the current state of the application package. Possible values
-        /// include: 'Pending', 'Active', 'Unmapped'
+        /// include: 'Pending', 'Active'
         /// </summary>
-        [JsonProperty(PropertyName = "state")]
+        [JsonProperty(PropertyName = "properties.state")]
         public PackageState? State { get; private set; }
 
         /// <summary>
         /// Gets the format of the application package, if the package is
         /// active.
         /// </summary>
-        [JsonProperty(PropertyName = "format")]
+        [JsonProperty(PropertyName = "properties.format")]
         public string Format { get; private set; }
 
         /// <summary>
         /// Gets the URL for the application package in Azure Storage.
         /// </summary>
-        [JsonProperty(PropertyName = "storageUrl")]
+        [JsonProperty(PropertyName = "properties.storageUrl")]
         public string StorageUrl { get; private set; }
 
         /// <summary>
         /// Gets the UTC time at which the Azure Storage URL will expire.
         /// </summary>
-        [JsonProperty(PropertyName = "storageUrlExpiry")]
+        [JsonProperty(PropertyName = "properties.storageUrlExpiry")]
         public System.DateTime? StorageUrlExpiry { get; private set; }
 
         /// <summary>
         /// Gets the time at which the package was last activated, if the
         /// package is active.
         /// </summary>
-        [JsonProperty(PropertyName = "lastActivationTime")]
+        [JsonProperty(PropertyName = "properties.lastActivationTime")]
         public System.DateTime? LastActivationTime { get; private set; }
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
     }
 }

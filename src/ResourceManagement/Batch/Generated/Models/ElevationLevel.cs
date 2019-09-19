@@ -19,8 +19,15 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ElevationLevel
     {
+        /// <summary>
+        /// The user is a standard user without elevated access.
+        /// </summary>
         [EnumMember(Value = "NonAdmin")]
         NonAdmin,
+        /// <summary>
+        /// The user is a user with elevated access and operates with full
+        /// Administrator permissions.
+        /// </summary>
         [EnumMember(Value = "Admin")]
         Admin
     }

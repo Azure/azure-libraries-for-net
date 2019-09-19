@@ -19,19 +19,19 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// Parameters supplied to the Create operation.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BatchAccountCreateParametersInner
+    public partial class BatchAccountCreateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountCreateParametersInner
+        /// Initializes a new instance of the BatchAccountCreateParameters
         /// class.
         /// </summary>
-        public BatchAccountCreateParametersInner()
+        public BatchAccountCreateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountCreateParametersInner
+        /// Initializes a new instance of the BatchAccountCreateParameters
         /// class.
         /// </summary>
         /// <param name="location">The region in which to create the
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// creating pools in the Batch account.</param>
         /// <param name="keyVaultReference">A reference to the Azure key vault
         /// associated with the Batch account.</param>
-        public BatchAccountCreateParametersInner(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), AutoStorageBaseProperties autoStorage = default(AutoStorageBaseProperties), PoolAllocationMode? poolAllocationMode = default(PoolAllocationMode?), KeyVaultReference keyVaultReference = default(KeyVaultReference))
+        public BatchAccountCreateParameters(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), AutoStorageBaseProperties autoStorage = default(AutoStorageBaseProperties), PoolAllocationMode? poolAllocationMode = default(PoolAllocationMode?), KeyVaultReference keyVaultReference = default(KeyVaultReference))
         {
             Location = location;
             Tags = tags;

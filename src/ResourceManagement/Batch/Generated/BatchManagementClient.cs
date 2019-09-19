@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Batch.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,12 +19,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
-    public partial class BatchManagementClient : FluentServiceClientBase<BatchManagementClient>, IBatchManagementClient, IAzureClient
+    public partial class BatchManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<BatchManagementClient>, IBatchManagementClient, IAzureClient
     {
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -45,19 +44,20 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -95,15 +95,14 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// Gets the IPoolOperations.
         /// </summary>
         public virtual IPoolOperations Pool { get; private set; }
-        
+
         /// <summary>
         /// Initializes a new instance of the BatchManagementClient class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public BatchManagementClient(RestClient restClient) 
-            : base(restClient)
+        public BatchManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -123,8 +122,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             Operations = new Operations(this);
             Certificate = new CertificateOperations(this);
             Pool = new PoolOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2017-09-01";
+            this.BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2019-08-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

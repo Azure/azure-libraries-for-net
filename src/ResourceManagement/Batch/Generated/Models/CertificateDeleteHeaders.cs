@@ -12,29 +12,27 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Create operation.
+    /// Defines headers for Delete operation.
     /// </summary>
-    public partial class BatchAccountCreateHeadersInner
+    public partial class CertificateDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountCreateHeadersInner
-        /// class.
+        /// Initializes a new instance of the CertificateDeleteHeaders class.
         /// </summary>
-        public BatchAccountCreateHeadersInner()
+        public CertificateDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountCreateHeadersInner
-        /// class.
+        /// Initializes a new instance of the CertificateDeleteHeaders class.
         /// </summary>
         /// <param name="location">The URL of the resource used to check the
         /// status of the asynchronous operation.</param>
         /// <param name="retryAfter">Suggested delay to check the status of the
-        /// asynchronous operation. The value is an integer that specifies the
-        /// delay in seconds.</param>
-        public BatchAccountCreateHeadersInner(string location = default(string), int? retryAfter = default(int?))
+        /// asynchronous operation. The value is an integer that represents the
+        /// seconds.</param>
+        public CertificateDeleteHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;
@@ -55,8 +53,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
 
         /// <summary>
         /// Gets or sets suggested delay to check the status of the
-        /// asynchronous operation. The value is an integer that specifies the
-        /// delay in seconds.
+        /// asynchronous operation. The value is an integer that represents the
+        /// seconds.
         /// </summary>
         [JsonProperty(PropertyName = "Retry-After")]
         public int? RetryAfter { get; set; }

@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PoolDeleteHeadersInner> DeleteAsync(this IPoolOperations operations, string resourceGroupName, string accountName, string poolName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PoolDeleteHeaders> DeleteAsync(this IPoolOperations operations, string resourceGroupName, string accountName, string poolName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PoolDeleteHeadersInner> BeginDeleteAsync(this IPoolOperations operations, string resourceGroupName, string accountName, string poolName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PoolDeleteHeaders> BeginDeleteAsync(this IPoolOperations operations, string resourceGroupName, string accountName, string poolName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, null, cancellationToken).ConfigureAwait(false))
                 {

@@ -14,27 +14,25 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// <summary>
     /// Defines headers for Delete operation.
     /// </summary>
-    public partial class BatchAccountDeleteHeadersInner
+    public partial class BatchAccountDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountDeleteHeadersInner
-        /// class.
+        /// Initializes a new instance of the BatchAccountDeleteHeaders class.
         /// </summary>
-        public BatchAccountDeleteHeadersInner()
+        public BatchAccountDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountDeleteHeadersInner
-        /// class.
+        /// Initializes a new instance of the BatchAccountDeleteHeaders class.
         /// </summary>
         /// <param name="location">The URL of the resource used to check the
         /// status of the asynchronous operation.</param>
         /// <param name="retryAfter">Suggested delay to check the status of the
         /// asynchronous operation. The value is an integer that specifies the
         /// delay in seconds.</param>
-        public BatchAccountDeleteHeadersInner(string location = default(string), int? retryAfter = default(int?))
+        public BatchAccountDeleteHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;

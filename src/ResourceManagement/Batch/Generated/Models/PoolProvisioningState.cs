@@ -19,8 +19,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PoolProvisioningState
     {
+        /// <summary>
+        /// The pool is available to run tasks subject to the availability of
+        /// compute nodes.
+        /// </summary>
         [EnumMember(Value = "Succeeded")]
         Succeeded,
+        /// <summary>
+        /// The user has requested that the pool be deleted, but the delete
+        /// operation has not yet completed.
+        /// </summary>
         [EnumMember(Value = "Deleting")]
         Deleting
     }

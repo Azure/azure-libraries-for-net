@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     public partial interface IApplicationPackageOperations
     {
         /// <summary>
-        /// Activates the specified application package.
+        /// Activates the specified application package. This should be done
+        /// after the `ApplicationPackage` was created and uploaded. This needs
+        /// to be done before an `ApplicationPackage` can be used on Pools or
+        /// Tasks
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the Batch account.
@@ -30,11 +33,12 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
-        /// <param name='version'>
-        /// The version of the application to activate.
+        /// <param name='versionName'>
+        /// The version of the application.
         /// </param>
         /// <param name='format'>
         /// The format of the application package binary file.
@@ -48,12 +52,18 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> ActivateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, string version, string format, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationPackageInner>> ActivateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, string format, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates an application package record.
+        /// Creates an application package record. The record contains the SAS
+        /// where the package should be uploaded to.  Once it is uploaded the
+        /// `ApplicationPackage` needs to be activated using
+        /// `ApplicationPackageActive` before it can be used.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the Batch account.
@@ -61,10 +71,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
-        /// <param name='version'>
+        /// <param name='versionName'>
         /// The version of the application.
         /// </param>
         /// <param name='customHeaders'>
@@ -82,7 +93,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ApplicationPackageInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, string version, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationPackageInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an application package record and its associated binary
         /// file.
@@ -93,11 +104,12 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
-        /// <param name='version'>
-        /// The version of the application to delete.
+        /// <param name='versionName'>
+        /// The version of the application.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -111,7 +123,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, string version, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets information about the specified application package.
         /// </summary>
@@ -121,10 +133,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
-        /// <param name='version'>
+        /// <param name='versionName'>
         /// The version of the application.
         /// </param>
         /// <param name='customHeaders'>
@@ -142,6 +155,60 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ApplicationPackageInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, string version, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationPackageInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists all of the application packages in the specified application.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the Batch account.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the Batch account.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
+        /// </param>
+        /// <param name='maxresults'>
+        /// The maximum number of items to return in the response.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ApplicationPackageInner>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, int? maxresults = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists all of the application packages in the specified application.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ApplicationPackageInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

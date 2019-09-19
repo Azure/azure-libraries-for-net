@@ -14,25 +14,25 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// <summary>
     /// Defines headers for Delete operation.
     /// </summary>
-    public partial class PoolDeleteHeadersInner
+    public partial class PoolDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PoolDeleteHeadersInner class.
+        /// Initializes a new instance of the PoolDeleteHeaders class.
         /// </summary>
-        public PoolDeleteHeadersInner()
+        public PoolDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PoolDeleteHeadersInner class.
+        /// Initializes a new instance of the PoolDeleteHeaders class.
         /// </summary>
         /// <param name="location">The URL of the resource used to check the
         /// status of the asynchronous operation.</param>
         /// <param name="retryAfter">Suggested delay to check the status of the
         /// asynchronous operation. The value is an integer that represents the
         /// seconds.</param>
-        public PoolDeleteHeadersInner(string location = default(string), int? retryAfter = default(int?))
+        public PoolDeleteHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;
