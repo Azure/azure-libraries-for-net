@@ -4,6 +4,7 @@
 namespace Microsoft.Azure.Management.Batch.Fluent
 {
     using Management.Batch;
+    using Microsoft.Rest.Azure;
     using ResourceManager.Fluent.Core;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -49,16 +50,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         {
             var childResources = new List<ApplicationPackageImpl>();
 
-            if (parent.Inner.Packages == null || !parent.Inner.Packages.Any())
+            try
             {
-                return childResources;
-            }
+                var applicationPackageList = Extensions.Synchronize(() => parent.Parent.Manager.Inner.ApplicationPackage.ListAsync(parent.Parent.ResourceGroupName, parent.Parent.Name, parent.Name()));
 
-            var applicationPackageList = parent.Inner.Packages;
+                foreach (var applicationPackage in applicationPackageList)
+                {
+                    childResources.Add(new ApplicationPackageImpl(applicationPackage.Name, parent, applicationPackage, client));
+                }
+            } catch (CloudException) {
 
-            foreach (var applicationPackage in applicationPackageList)
-            {
-                childResources.Add(new ApplicationPackageImpl(applicationPackage.Version, parent, applicationPackage, client));
             }
 
             return childResources;

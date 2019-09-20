@@ -64,26 +64,26 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         public async override Task<IBatchAccount> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             HandleStorageSettings();
-            var batchAccountCreateParametersInner = new BatchAccountCreateParametersInner();
+            var batchAccountCreateParameters = new BatchAccountCreateParameters();
             if (autoStorage != null)
             {
-                batchAccountCreateParametersInner.AutoStorage = new AutoStorageBaseProperties
+                batchAccountCreateParameters.AutoStorage = new AutoStorageBaseProperties
                 {
                     StorageAccountId = autoStorage.StorageAccountId
                 };
             }
             else
             {
-                batchAccountCreateParametersInner.AutoStorage = null;
+                batchAccountCreateParameters.AutoStorage = null;
             }
 
-            batchAccountCreateParametersInner.Location = Inner.Location;
-            batchAccountCreateParametersInner.Tags = Inner.Tags;
+            batchAccountCreateParameters.Location = Inner.Location;
+            batchAccountCreateParameters.Tags = Inner.Tags;
 
             var batchAccountInner = await Manager.Inner.BatchAccount.CreateAsync(
                 ResourceGroupName,
                 Name,
-                batchAccountCreateParametersInner,
+                batchAccountCreateParameters,
                 cancellationToken);
             creatableStorageAccountKey = null;
             SetInner(batchAccountInner);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         }
 
         ///GENMHASH:B9408D6B67E96EFD3D03881CF8649A9C:954939482CB158B1E2B509B48B09585C
-        internal int CoreQuota()
+        internal int? CoreQuota()
         {
             return Inner.DedicatedCoreQuota;
         }

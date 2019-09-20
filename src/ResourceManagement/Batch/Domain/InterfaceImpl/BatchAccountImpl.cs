@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets the core quota for this Batch account.
         /// </summary>
-        int Microsoft.Azure.Management.Batch.Fluent.IBatchAccount.CoreQuota
+        int? Microsoft.Azure.Management.Batch.Fluent.IBatchAccount.CoreQuota
         {
             get
             {

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets the core quota for this Batch account.
         /// </summary>
-        int CoreQuota { get; }
+        int? CoreQuota { get; }
 
         /// <summary>
         /// Gets the provisioned state of the resource.

@@ -72,17 +72,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         ///GENMHASH:32A8B56FE180FA4429482D706189DEA2:02EEC4EFE8B735CE832BF91D77CEE31E
         public async override Task<IApplication> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var createParameter = new ApplicationCreateParametersInner
-            {
-                DisplayName = Inner.DisplayName,
-                AllowUpdates = Inner.AllowUpdates
-            };
-
             var inner = await Parent.Manager.Inner.Application.CreateAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 Name(),
-                createParameter,
+                Inner,
                 cancellationToken);
 
             SetInner(inner);
@@ -93,13 +87,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         ///GENMHASH:F08598A17ADD014E223DFD77272641FF:E166AAF3CE55ADF2533B6CBBEC6343E8
         public async override Task<IApplication> UpdateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var updateParameter = new ApplicationUpdateParametersInner
-            {
-                DisplayName = Inner.DisplayName,
-                AllowUpdates = Inner.AllowUpdates
-            };
-
-            await Parent.Manager.Inner.Application.UpdateAsync(Parent.ResourceGroupName, Parent.Name, Name(), updateParameter, cancellationToken);
+            await Parent.Manager.Inner.Application.UpdateAsync(Parent.ResourceGroupName, Parent.Name, Name(), Inner, cancellationToken);
             await applicationPackages.CommitAndGetAllAsync(cancellationToken);
 
             return this;
@@ -123,7 +111,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
 
         protected override async Task<ApplicationInner> GetInnerAsync(CancellationToken cancellationToken)
         {
-            return await Parent.Manager.Inner.Application.GetAsync(Parent.ResourceGroupName, Parent.Name, Inner.Id, cancellationToken);
+            return await Parent.Manager.Inner.Application.GetAsync(Parent.ResourceGroupName, Parent.Name, Inner.Name, cancellationToken);
         }
 
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:F50FC9984285FA3EFE81DE58B2255BD1
@@ -150,7 +138,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         internal static ApplicationImpl NewApplication(string name, BatchAccountImpl parent)
         {
             var inner = new ApplicationInner();
-            inner.Id = name;
+            inner.DisplayName = name;
             var applicationImpl = new ApplicationImpl(name, parent, inner);
 
             return applicationImpl;
