@@ -104,7 +104,7 @@ namespace Fluent.Tests
                         {
                             Assert.Equal(16, policy.Permissions.Keys.Count);
                             Assert.Equal(0, policy.Permissions.Secrets.Count);
-                            Assert.Equal(14, policy.Permissions.Certificates.Count);
+                            Assert.Equal(16, policy.Permissions.Certificates.Count);
                         }
                     }
                 }
@@ -113,6 +113,10 @@ namespace Fluent.Tests
                     try
                     {
                         TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                        if (servicePrincipal.Id != null)
+                            TestHelper.CreateGraphRbacManager().ServicePrincipals.DeleteById(servicePrincipal.Id);
+                        if (user.Id != null)
+                            TestHelper.CreateGraphRbacManager().Users.DeleteById(user.Id);
                     }
                     catch { }
                 }
