@@ -2,13 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Storage.Fluent;
-    using Microsoft.Azure.Management.Batch.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.Batch.Fluent.Application.Update;
-    using Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition;
-
     /// <summary>
     /// The stage of a Batch account update allowing to specify a storage account.
     /// </summary>
@@ -18,38 +11,38 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
         /// Removes the associated storage account.
         /// </summary>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate WithoutStorageAccount();
+        IUpdate WithoutStorageAccount();
 
         /// <summary>
         /// Specifies a new storage account to create and associate with the Batch account.
         /// </summary>
         /// <param name="storageAccountCreatable">The definition of the storage account.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate WithNewStorageAccount(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable);
+        IUpdate WithNewStorageAccount(ResourceManager.Fluent.Core.ResourceActions.ICreatable<Storage.Fluent.IStorageAccount> storageAccountCreatable);
 
         /// <summary>
         /// Specifies a new storage account to create and associate with the Batch account.
         /// </summary>
         /// <param name="storageAccountName">The name of a new storage account.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate WithNewStorageAccount(string storageAccountName);
+        IUpdate WithNewStorageAccount(string storageAccountName);
 
         /// <summary>
         /// Specifies an existing storage account to associate with the Batch account.
         /// </summary>
         /// <param name="storageAccount">An existing storage account.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate WithExistingStorageAccount(IStorageAccount storageAccount);
+        IUpdate WithExistingStorageAccount(Storage.Fluent.IStorageAccount storageAccount);
     }
 
     /// <summary>
     /// The template for a Batch account update operation, containing all the settings that can be modified.
     /// </summary>
     public interface IUpdate :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate>,
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IWithStorageAccount,
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IWithApplication
+        ResourceManager.Fluent.Core.ResourceActions.IAppliable<IBatchAccount>,
+        ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<IUpdate>,
+        IWithStorageAccount,
+        IWithApplication
     {
     }
 
@@ -63,20 +56,47 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
         /// </summary>
         /// <param name="applicationId">The reference name for the application.</param>
         /// <return>The first stage of a Batch application definition.</return>
-        Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition.IBlank<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate> DefineNewApplication(string applicationId);
+        Application.UpdateDefinition.IBlank<IUpdate> DefineNewApplication(string applicationId);
 
         /// <summary>
         /// Removes the specified application from the Batch account.
         /// </summary>
         /// <param name="applicationId">The reference name for the application to be removed.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate WithoutApplication(string applicationId);
+        IUpdate WithoutApplication(string applicationId);
 
         /// <summary>
         /// Begins the description of an update of an existing Batch application in this Batch account.
         /// </summary>
         /// <param name="applicationId">The reference name of the application to be updated.</param>
         /// <return>The first stage of a Batch application update.</return>
-        Microsoft.Azure.Management.Batch.Fluent.Application.Update.IUpdate UpdateApplication(string applicationId);
+        Application.Update.IUpdate UpdateApplication(string applicationId);
+    }
+
+    /// <summary>
+    /// The stage of a Batch account definition allowing the creation of a Batch pool.
+    /// </summary>
+    public interface IWithPool
+    {
+        /// <summary>
+        /// Starts a definition of a pool to be created in the Batch account.
+        /// </summary>
+        /// <param name="poolId">The reference name for the pool.</param>
+        /// <return>The first stage of a Batch pool definition.</return>
+        Pool.UpdateDefinition.IBlank<IUpdate> DefineNewPool(string poolId);
+
+        /// <summary>
+        /// Begins the description of an update of an existing Batch pool in this Batch account.
+        /// </summary>
+        /// <param name="poolId">The reference name of the pool to be updated.</param>
+        /// <return>The first stage of a Batch pool update.</return>
+        Pool.Update.IUpdate UpdatePool(string poolId);
+
+        /// <summary>
+        /// Removes the specified pool from the Batch account.
+        /// </summary>
+        /// <param name="poolId">The reference name for the pool to be removed.</param>
+        /// <return>The next stage of the update.</return>
+        IUpdate WithoutPool(string poolId);
     }
 }

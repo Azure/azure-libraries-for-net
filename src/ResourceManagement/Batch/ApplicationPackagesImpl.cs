@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                     childResources.Add(new ApplicationPackageImpl(applicationPackage.Name, parent, applicationPackage, client));
                 }
             } catch (CloudException) {
-
+                //ignore the exception when creating application package during application definition stage
             }
 
             return childResources;
