@@ -114,11 +114,11 @@ namespace Fluent.Tests.Network
             }
         }
 
-        private string subnetName = "subnet1";
-        private string ruleName1 = "httpRule";
-        private string ruleName2 = "httpsRule";
-        private string probeName1 = "httpProbe";
-        private string probeName2 = "httpsProbe";
+        static private string subnetName = "subnet1";
+        static private string ruleName1 = "httpRule";
+        static private string ruleName2 = "httpsRule";
+        static private string probeName1 = "httpProbe";
+        static private string probeName2 = "httpsProbe";
 
         private static ILoadBalancer CreateLoadBalancer(
             IAzure azure,
