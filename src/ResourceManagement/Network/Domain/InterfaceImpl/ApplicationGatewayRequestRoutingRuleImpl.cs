@@ -532,15 +532,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Specifies the PFX file to import the SSL certificate from to associated with this resource.
-        /// The certificate will be named using an auto-generated name.
+        /// Specifies an SSL certificate to associate with this resource.
+        /// If the certificate does not exist yet, it must be defined in the parent resource update.
         /// </summary>
-        /// <param name="pfxFile">An existing PFX file.</param>
-        /// <throws>IOException when there are issues with the provided file.</throws>
-        /// <return>The next stage of the definition.</return>
-        HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
+        /// <param name="name">The name of an existing SSL certificate associated with this application gateway.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayRequestRoutingRule.Update.IUpdate HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Update.IUpdate>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile);
+            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -552,6 +551,71 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
         {
             return this.WithSslCertificate(name);
+        }
+
+        /// <summary>
+        /// Specifies an SSL certificate to associate with this resource.
+        /// If the certificate does not exist yet, it must be defined in the optional part of the parent resource definition.
+        /// </summary>
+        /// <param name="name">The name of an existing SSL certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificate(string name)
+        {
+            return this.WithSslCertificate(name);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayRequestRoutingRule.Update.IUpdate HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Update.IUpdate>.WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+        }
+
+        /// <summary>
+        /// Specifies the PFX file to import the SSL certificate from to associate with this resource.
+        /// The certificate will be named using an auto-generated name.
+        /// </summary>
+        /// <param name="pfxFile">An existing PFX file.</param>
+        /// <throws>IOException when there are issues with the provided file.</throws>
+        /// <return>The next stage of the definition.</return>
+        HasSslCertificate.Update.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Update.IUpdate> HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Update.IUpdate>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
+        {
+            return this.WithSslCertificateFromPfxFile(pfxFile);
+        }
+
+        /// <summary>
+        /// Specifies the PFX file to import the SSL certificate from to associated with this resource.
+        /// The certificate will be named using an auto-generated name.
+        /// </summary>
+        /// <param name="pfxFile">An existing PFX file.</param>
+        /// <throws>IOException when there are issues with the provided file.</throws>
+        /// <return>The next stage of the definition.</return>
+        HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
+        {
+            return this.WithSslCertificateFromPfxFile(pfxFile);
         }
 
         /// <summary>
@@ -567,14 +631,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Specifies an SSL certificate to associate with this resource.
-        /// If the certificate does not exist yet, it must be defined in the optional part of the parent resource definition.
+        /// Specifies the password for the specified PFX file containing the private key of the imported SSL certificate.
         /// </summary>
-        /// <param name="name">The name of an existing SSL certificate.</param>
+        /// <param name="password">The password of the imported PFX file.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificate(string name)
+        ApplicationGatewayRequestRoutingRule.Update.IUpdate HasSslCertificate.Update.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Update.IUpdate>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificate(name);
+            return this.WithSslCertificatePassword(password);
+        }
+
+        /// <summary>
+        /// Specifies the password for the specified PFX file containing the private key of the imported SSL certificate.
+        /// </summary>
+        /// <param name="password">The password of the imported PFX file.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificatePassword(string password)
+        {
+            return this.WithSslCertificatePassword(password);
+        }
+
+        /// <summary>
+        /// Specifies the password for the specified PFX file containing the private key of the imported SSL certificate.
+        /// </summary>
+        /// <param name="password">The password of the imported PFX file.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificatePassword(string password)
+        {
+            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>
@@ -623,26 +706,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendOrAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendHttpPort(int portNumber)
         {
             return this.ToBackendHttpPort(portNumber);
-        }
-
-        /// <summary>
-        /// Specifies the password for the specified PFX file containing the private key of the imported SSL certificate.
-        /// </summary>
-        /// <param name="password">The password of the imported PFX file.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificatePassword(string password)
-        {
-            return this.WithSslCertificatePassword(password);
-        }
-
-        /// <summary>
-        /// Specifies the password for the specified PFX file containing the private key of the imported SSL certificate.
-        /// </summary>
-        /// <param name="password">The password of the imported PFX file.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificatePassword(string password)
-        {
-            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>

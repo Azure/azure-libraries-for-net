@@ -109,6 +109,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     }
 
     /// <summary>
+    /// The stage of an application gateway definition allowing to specify Managed Service Identities.
+    /// </summary>
+    public interface IWithManagedServiceIdentity 
+    {
+        /// <summary>
+        /// Specifies an identity to be associated with the application gateway.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithIdentity(ManagedServiceIdentity identity);
+    }
+
+    /// <summary>
     /// The stage of an application gateway definition allowing to add a backend.
     /// </summary>
     public interface IWithBackend
@@ -305,6 +318,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithDisabledSslProtocol,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAuthenticationCertificate,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRedirectConfiguration,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithManagedServiceIdentity,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAvailabilityZone
     {
         /// <summary>

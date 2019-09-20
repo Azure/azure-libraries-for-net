@@ -26,6 +26,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Definition
         /// <param name="name">The name of an existing SSL certificate.</param>
         /// <return>The next stage of the definition.</return>
         ReturnT WithSslCertificate(string name);
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ReturnT WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId);
     }
 
     /// <summary>

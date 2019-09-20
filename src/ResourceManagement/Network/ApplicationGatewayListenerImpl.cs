@@ -161,6 +161,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithSslCertificate(name);
         }
 
+        public ApplicationGatewayListenerImpl WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId, null);
+        }
+
+        private ApplicationGatewayListenerImpl WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId, string name)
+        {
+            if (name == null)
+            {
+                name = SdkContext.RandomResourceName("cert", 10);
+            }
+            Parent.DefineSslCertificate(name)
+                .WithKeyVaultSecretId(keyVaultSecretId)
+                .Attach();
+            return WithSslCertificate(name);
+        }
+
 
         ///GENMHASH:382D2BF4EBC04F5E7DF95B5EF5A97146:C01DAB0F887720B1B1F54C7664754686
         public ApplicationGatewayListenerImpl WithSslCertificatePassword(string password)

@@ -13,7 +13,25 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithListener,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithBackend,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithBackendHttpConfiguration,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithSslCertificate,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithSslPassword,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithRedirectConfig
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway request routing rule allowing to specify an SSL certificate.
+    /// </summary>
+    public interface IWithSslCertificate :
+        Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Update.IWithSslCertificate<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IUpdate>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway request routing rule allowing to specify password of the SSL certificate pfx file.
+    /// </summary>
+    public interface IWithSslPassword :
+        Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Update.IWithSslPassword<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IUpdate>
     {
     }
 

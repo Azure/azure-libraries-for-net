@@ -64,6 +64,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (content != null) ? WithPfxFromBytes(content) : null;
         }
 
+        public ApplicationGatewaySslCertificateImpl WithKeyVaultSecretId(string keyVaultSecretId)
+        {
+            Inner.KeyVaultSecretId = keyVaultSecretId;
+            return this;
+        }
+
+
         #endregion
 
         #region Accessors
@@ -85,6 +92,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public override string Name()
         {
             return Inner.Name;
+        }
+
+        public string KeyVaultSecretId()
+        {
+            return Inner.KeyVaultSecretId;
         }
 
         #endregion

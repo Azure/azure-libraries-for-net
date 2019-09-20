@@ -173,6 +173,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithProbe,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithDisabledSslProtocol,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithAuthenticationCertificate,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithManagedServiceIdentity,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRedirectConfiguration
     {
         /// <summary>
@@ -194,6 +195,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     public interface IWithPublicIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddressNoDnsLabel<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
     {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to specify Managed Service Identities.
+    /// </summary>
+    public interface IWithManagedServiceIdentity 
+    {
+        /// <summary>
+        /// Specifies an identity to be associated with the application gateway.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithIdentity(ManagedServiceIdentity identity);
     }
 
     /// <summary>
