@@ -30,5 +30,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public static readonly WebContainer Jetty9_3Newest = Parse("Jetty 9.3");
         public static readonly WebContainer Jetty9_3V20161014 = Parse("jetty 9.3.13.20161014");
         public static readonly WebContainer Java8 = Parse("java 8");
+        public static readonly WebContainer Java11 = Parse("java 11");
     }
 }

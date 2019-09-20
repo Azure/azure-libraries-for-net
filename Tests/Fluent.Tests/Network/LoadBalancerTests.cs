@@ -120,7 +120,7 @@ namespace Fluent.Tests.Network
         private string probeName1 = "httpProbe";
         private string probeName2 = "httpsProbe";
 
-        private ILoadBalancer CreateLoadBalancer(
+        private static ILoadBalancer CreateLoadBalancer(
             IAzure azure,
             IResourceGroup resourceGroup,
             INetwork network,
