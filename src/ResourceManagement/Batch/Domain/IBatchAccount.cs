@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         IList<VirtualMachineFamilyCoreQuota> DedicatedCoreQuotaPerVMFamily { get; }
 
         /// <summary>
+        /// Gets pools in this Batch account, indexed by name.
+        /// </summary>
+        IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IPool> Pools { get; }
+
+        /// <summary>
         /// Synchronizes the storage account keys for this Batch account.
         /// </summary>
         void SynchronizeAutoStorageKeys();

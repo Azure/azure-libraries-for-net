@@ -292,5 +292,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         {
             return this.WithoutPool(poolId);
         }
+
+        /// <summary>
+        /// Gets pool in this Batch account, indexed by name.
+        /// </summary>
+        IReadOnlyDictionary<string, Fluent.IPool> IBatchAccount.Pools
+        {
+            get
+            {
+                return this.Pools();
+            }
+        }
     }
 }

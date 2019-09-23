@@ -298,5 +298,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             poolsImpl.AddPool(pool);
             return this;
         }
+
+        internal IReadOnlyDictionary<string, IPool> Pools()
+        {
+            return poolsImpl.AsMap();
+        }
     }
 }
