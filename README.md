@@ -650,7 +650,7 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| 1.26.1              | [1.26.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.26.1.0)      | Tagged release for 1.26.1 version of Azure management libraries |
+| 1.26.1              | [1.26.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.26.1)      | Tagged release for 1.26.1 version of Azure management libraries |
 | 1.26              | [1.26](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.26.0)      | Tagged release for 1.26 version of Azure management libraries |
 | 1.25              | [1.25](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.25.0)      | Tagged release for 1.25 version of Azure management libraries |
 | 1.24              | [1.24](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.24.0)      | Tagged release for 1.24 version of Azure management libraries |
