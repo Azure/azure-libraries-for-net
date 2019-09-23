@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using ResourceManager.Fluent.Core;
-    using System;
 
     /// <summary>
     /// Implementation for BatchAccount and its parent interfaces.
@@ -35,6 +34,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         private string creatableStorageAccountKey;
         private IStorageAccount existingStorageAccountToAssociate;
         private ApplicationsImpl applicationsImpl;
+        private PoolsImpl poolsImpl;
         internal AutoStorageProperties autoStorage;
 
         ///GENMHASH:4A1C1CE1A5FD21C2D77E9D249E53B0FC:2CAC092B38BC608EA9EE02AF770A8C0D
@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         {
             this.storageManager = storageManager;
             applicationsImpl = new ApplicationsImpl(this);
+            poolsImpl = new PoolsImpl(this);
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:7CF0E4D2E689061F164F4E8CBEEE0032
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
 
             SetInner(inner);
             applicationsImpl.Refresh();
+            poolsImpl.Refresh();
 
             return this;
         }
@@ -88,6 +90,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             creatableStorageAccountKey = null;
             SetInner(batchAccountInner);
             await applicationsImpl.CommitAndGetAllAsync(cancellationToken);
+            await poolsImpl.CommitAndGetAllAsync(cancellationToken);
             return this;
         }
 
@@ -125,6 +128,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         internal int ActiveJobAndJobScheduleQuota()
         {
             return Inner.ActiveJobAndJobScheduleQuota;
+        }
+
+        internal bool DedicatedCoreQuotaPerVMFamilyEnforced()
+        {
+            return Inner.DedicatedCoreQuotaPerVMFamilyEnforced;
+        }
+
+        internal IList<VirtualMachineFamilyCoreQuota> DedicatedCoreQuotaPerVMFamily()
+        {
+            return Inner.DedicatedCoreQuotaPerVMFamily;
         }
 
         ///GENMHASH:E4DFA7EA15F8324FB60C810D0C96D2FF:2C24EC1143CD8F8542845A9D3A0F116A
@@ -262,6 +275,28 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         protected override async Task<BatchAccountInner> GetInnerAsync(CancellationToken cancellationToken)
         {
             return await Manager.Inner.BatchAccount.GetAsync(ResourceGroupName, Name, cancellationToken: cancellationToken);
+        }
+
+        internal PoolImpl DefineNewPool(string poolId)
+        {
+            return poolsImpl.Define(poolId);
+        }
+
+        internal PoolImpl UpdatePool(string poolId)
+        {
+            return poolsImpl.Update(poolId);
+        }
+
+        internal BatchAccountImpl WithoutPool(string poolId)
+        {
+            poolsImpl.Remove(poolId);
+            return this;
+        }
+
+        internal BatchAccountImpl WithPool(PoolImpl pool)
+        {
+            poolsImpl.AddPool(pool);
+            return this;
         }
     }
 }

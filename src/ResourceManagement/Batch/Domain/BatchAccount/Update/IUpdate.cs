@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
         ResourceManager.Fluent.Core.ResourceActions.IAppliable<IBatchAccount>,
         ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<IUpdate>,
         IWithStorageAccount,
-        IWithApplication
+        IWithApplication,
+        IWithPool
     {
     }
 

@@ -62,6 +62,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         ProvisioningState ProvisioningState { get; }
 
         /// <summary>
+        ///Gets a value indicating whether the core quota for the Batch Account is enforced per Virtual Machine family or not.
+        /// </summary>
+        bool DedicatedCoreQuotaPerVMFamilyEnforced { get; }
+
+        /// <summary>
+        /// Gets a list of the dedicated core quota per Virtual Machine family for the Batch account.
+        /// </summary>
+        IList<VirtualMachineFamilyCoreQuota> DedicatedCoreQuotaPerVMFamily { get; }
+
+        /// <summary>
         /// Synchronizes the storage account keys for this Batch account.
         /// </summary>
         void SynchronizeAutoStorageKeys();

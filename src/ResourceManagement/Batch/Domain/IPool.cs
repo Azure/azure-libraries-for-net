@@ -3,8 +3,8 @@
 
 namespace Microsoft.Azure.Management.Batch.Fluent
 {
-    using Microsoft.Azure.Management.Batch.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Models;
+    using ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
     /// <summary>

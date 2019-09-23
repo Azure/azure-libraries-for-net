@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Pool.UpdateDefinition
         /// </summary>
         /// <param name="mountConfiguration">The mount configuration value.</param>
         /// <return>The next stage of the definition.</return>
-        IWithAttach<ParentT> WithMountConfiguration(MountConfiguration mountConfiguration);
+        IWithAttach<ParentT> WithMountConfiguration(IList<MountConfiguration> mountConfiguration);
 
         /// <summary>
         /// Specifies the scale settings for the pool.
