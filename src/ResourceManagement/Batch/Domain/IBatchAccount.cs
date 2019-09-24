@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         ProvisioningState ProvisioningState { get; }
 
         /// <summary>
-        ///Gets a value indicating whether the core quota for the Batch Account is enforced per Virtual Machine family or not.
+        /// Gets a value indicating whether the core quota for the Batch Account is enforced per Virtual Machine family or not.
         /// </summary>
         bool DedicatedCoreQuotaPerVMFamilyEnforced { get; }
 

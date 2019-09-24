@@ -16,9 +16,6 @@ namespace Fluent.Tests
 {
     public partial class Batch
     {
-        private string rgName = "rgstg158";
-        private string batchAccountName = "batchaccount733";
-        private string storageAccountName = "sa733";
 
         [Fact]
         public async Task CanCRUDBatchAccounts()
@@ -72,9 +69,9 @@ namespace Fluent.Tests
                     Assert.NotEqual(lastSync, batchAccount.AutoStorage.LastKeySync);
 
                     // Test applications.
-                    var applicationId = "myApplication";
-                    var applicationDisplayName = "displayName";
-                    var applicationPackageName = "applicationPackage";
+                    var applicationId = TestUtilities.GenerateName("myApplication");
+                    var applicationDisplayName = TestUtilities.GenerateName("displayName");
+                    var applicationPackageName = TestUtilities.GenerateName("applicationPackage");
 
                     var updatesAllowed = true;
 
@@ -108,8 +105,8 @@ namespace Fluent.Tests
                     batchAccount.Refresh();
                     Assert.False(batchAccount.Applications.ContainsKey(applicationId));
 
-                    var applicationPackage1Name = "applicationPackage1";
-                    var applicationPackage2Name = "applicationPackage2";
+                    var applicationPackage1Name = TestUtilities.GenerateName("applicationPackage1");
+                    var applicationPackage2Name = TestUtilities.GenerateName("applicationPackage2");
                     batchAccount.Update()
                             .DefineNewApplication(applicationId)
                                 .DefineNewApplicationPackage(applicationPackage1Name)
@@ -182,10 +179,13 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
+                var rgName = TestUtilities.GenerateName("rgstg");
+                var batchAccountName = TestUtilities.GenerateName("batchaccount");
+                var storageAccountName = TestUtilities.GenerateName("sa");
                 try
                 {
-                    var applicationId = "myApplication";
-                    var applicationDisplayName = "displayName";
+                    var applicationId = TestUtilities.GenerateName("myApplication");
+                    var applicationDisplayName = TestUtilities.GenerateName("displayName");
                     var allowUpdates = true;
 
                     var batchManager = TestHelper.CreateBatchManager();
@@ -248,10 +248,13 @@ namespace Fluent.Tests
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
+                var rgName = TestUtilities.GenerateName("rgstg");
+                var batchAccountName = TestUtilities.GenerateName("batchaccount");
+                var storageAccountName = TestUtilities.GenerateName("sa");
                 try
                 {
-                    var poolId = "testPool";
-                    var poolDisplayName = "my-pool-name";
+                    var poolId = TestUtilities.GenerateName("testPool");
+                    var poolDisplayName = TestUtilities.GenerateName("my-pool-name");
                     var vmSize = "STANDARD_D4";
                     var maxTasksPerNode = 13;
                     
