@@ -1,19 +1,16 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Azure.Tests;
 using Fluent.Tests.Common;
-using Microsoft.Azure.Management.Batch.Fluent.Models;
 using Microsoft.Azure.Management.Batch.Fluent;
+using Microsoft.Azure.Management.Batch.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Azure.Tests;
-using Microsoft.Azure.Management.BatchAI.Fluent.Models;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Fluent.Tests
 {
