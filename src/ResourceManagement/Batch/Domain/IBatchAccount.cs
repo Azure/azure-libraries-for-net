@@ -54,12 +54,27 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets the core quota for this Batch account.
         /// </summary>
-        int CoreQuota { get; }
+        int? CoreQuota { get; }
 
         /// <summary>
         /// Gets the provisioned state of the resource.
         /// </summary>
         ProvisioningState ProvisioningState { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether the core quota for the Batch Account is enforced per Virtual Machine family or not.
+        /// </summary>
+        bool DedicatedCoreQuotaPerVMFamilyEnforced { get; }
+
+        /// <summary>
+        /// Gets a list of the dedicated core quota per Virtual Machine family for the Batch account.
+        /// </summary>
+        IList<VirtualMachineFamilyCoreQuota> DedicatedCoreQuotaPerVMFamily { get; }
+
+        /// <summary>
+        /// Gets pools in this Batch account, indexed by name.
+        /// </summary>
+        IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IPool> Pools { get; }
 
         /// <summary>
         /// Synchronizes the storage account keys for this Batch account.

@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeadersInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeadersInner> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BatchAccountInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountUpdateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BatchAccountInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -320,10 +320,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationHeaderResponse<BatchAccountDeleteHeadersInner>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<BatchAccountDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationHeaderResponse<BatchAccountDeleteHeadersInner> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationHeaderResponse<BatchAccountDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1577,7 +1577,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeadersInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1741,7 +1741,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeadersInner>();
+            var _result = new AzureOperationResponse<BatchAccountInner,BatchAccountCreateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1768,7 +1768,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BatchAccountCreateHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BatchAccountCreateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1813,7 +1813,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationHeaderResponse<BatchAccountDeleteHeadersInner>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<BatchAccountDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1962,7 +1962,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationHeaderResponse<BatchAccountDeleteHeadersInner>();
+            var _result = new AzureOperationHeaderResponse<BatchAccountDeleteHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1971,7 +1971,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BatchAccountDeleteHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BatchAccountDeleteHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {

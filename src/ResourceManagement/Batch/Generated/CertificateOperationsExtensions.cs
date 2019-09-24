@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CertificateDeleteHeadersInner> DeleteAsync(this ICertificateOperations operations, string resourceGroupName, string accountName, string certificateName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CertificateDeleteHeaders> DeleteAsync(this ICertificateOperations operations, string resourceGroupName, string accountName, string certificateName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, certificateName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CertificateDeleteHeadersInner> BeginDeleteAsync(this ICertificateOperations operations, string resourceGroupName, string accountName, string certificateName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CertificateDeleteHeaders> BeginDeleteAsync(this ICertificateOperations operations, string resourceGroupName, string accountName, string certificateName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, certificateName, null, cancellationToken).ConfigureAwait(false))
                 {

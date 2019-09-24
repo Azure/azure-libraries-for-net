@@ -4,17 +4,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Batch.Fluent.Application.Definition;
-    using Microsoft.Azure.Management.Batch.Fluent.Application.Update;
-    using Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition;
-    using Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition;
-    using Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
-    using System.Collections.Generic;
     using Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     internal partial class BatchAccountImpl
     {
@@ -77,7 +71,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets the core quota for this Batch account.
         /// </summary>
-        int Microsoft.Azure.Management.Batch.Fluent.IBatchAccount.CoreQuota
+        int? Microsoft.Azure.Management.Batch.Fluent.IBatchAccount.CoreQuota
         {
             get
             {
@@ -126,6 +120,28 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             get
             {
                 return this.ActiveJobAndJobScheduleQuota();
+            }
+        }
+
+        /// <summary>
+        ///Gets a value indicating whether the core quota for the Batch Account is enforced per Virtual Machine family or not.
+        /// </summary>
+        bool IBatchAccount.DedicatedCoreQuotaPerVMFamilyEnforced
+        {
+            get
+            {
+                return this.DedicatedCoreQuotaPerVMFamilyEnforced();
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of the dedicated core quota per Virtual Machine family for the Batch account.
+        /// </summary>
+        IList<VirtualMachineFamilyCoreQuota> IBatchAccount.DedicatedCoreQuotaPerVMFamily
+        {
+            get
+            {
+                return this.DedicatedCoreQuotaPerVMFamily();
             }
         }
 
@@ -235,6 +251,57 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         Application.Definition.IBlank<BatchAccount.Definition.IWithApplicationAndStorage> BatchAccount.Definition.IWithApplication.DefineNewApplication(string applicationId)
         {
             return this.DefineNewApplication(applicationId);
+        }
+
+        /// <summary>
+        /// The stage of a Batch account definition allowing to add a Batch pool.
+        /// </summary>
+        /// <param name="poolId">The id of the pool to create.</param>
+        /// <return>The next stage of the definition.</return>
+        Pool.Definition.IBlank<BatchAccount.Definition.IWithPool> BatchAccount.Definition.IWithPool.DefineNewPool(string poolId)
+        {
+            return this.DefineNewPool(poolId);
+        }
+
+        /// <summary>
+        /// Starts a definition of a pool to be created in the Batch account.
+        /// </summary>
+        /// <param name="poolId">The reference name for the pool.</param>
+        /// <return>The first stage of a Batch pool definition.</return>
+        Pool.UpdateDefinition.IBlank<BatchAccount.Update.IUpdate> BatchAccount.Update.IWithPool.DefineNewPool(string poolId)
+        {
+            return this.DefineNewPool(poolId);
+        }
+
+        /// <summary>
+        /// Begins the description of an update of an existing Batch pool in this Batch account.
+        /// </summary>
+        /// <param name="poolId">The reference name of the pool to be updated.</param>
+        /// <return>The first stage of a Batch pool update.</return>
+        Pool.Update.IUpdate BatchAccount.Update.IWithPool.UpdatePool(string poolId)
+        {
+            return this.UpdatePool(poolId);
+        }
+
+        /// <summary>
+        /// Removes the specified pool from the Batch account.
+        /// </summary>
+        /// <param name="poolId">The reference name for the pool to be removed.</param>
+        /// <return>The next stage of the update.</return>
+        BatchAccount.Update.IUpdate BatchAccount.Update.IWithPool.WithoutPool(string poolId)
+        {
+            return this.WithoutPool(poolId);
+        }
+
+        /// <summary>
+        /// Gets pool in this Batch account, indexed by name.
+        /// </summary>
+        IReadOnlyDictionary<string, Fluent.IPool> IBatchAccount.Pools
+        {
+            get
+            {
+                return this.Pools();
+            }
         }
     }
 }

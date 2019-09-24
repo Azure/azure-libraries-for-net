@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
         /// <param name='parameters'>
         /// The parameters for the request.
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ApplicationInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, ApplicationCreateParametersInner parameters = default(ApplicationCreateParametersInner), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, ApplicationInner parameters = default(ApplicationInner), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an application.
         /// </summary>
@@ -61,8 +62,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets information about the specified application.
         /// </summary>
@@ -86,8 +88,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,7 +107,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ApplicationInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates settings for the specified application.
         /// </summary>
@@ -114,8 +117,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='accountName'>
         /// The name of the Batch account.
         /// </param>
-        /// <param name='applicationId'>
-        /// The ID of the application.
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the
+        /// account.
         /// </param>
         /// <param name='parameters'>
         /// The parameters for the request.
@@ -129,10 +133,13 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationId, ApplicationUpdateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, ApplicationInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all of the applications in the specified account.
         /// </summary>

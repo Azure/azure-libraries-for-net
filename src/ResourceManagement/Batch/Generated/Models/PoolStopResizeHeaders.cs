@@ -12,28 +12,26 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for CancelDeletion operation.
+    /// Defines headers for StopResize operation.
     /// </summary>
-    public partial class CertificateCancelDeletionHeadersInner
+    public partial class PoolStopResizeHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CertificateCancelDeletionHeadersInner class.
+        /// Initializes a new instance of the PoolStopResizeHeaders class.
         /// </summary>
-        public CertificateCancelDeletionHeadersInner()
+        public PoolStopResizeHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CertificateCancelDeletionHeadersInner class.
+        /// Initializes a new instance of the PoolStopResizeHeaders class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public CertificateCancelDeletionHeadersInner(string eTag = default(string))
+        public PoolStopResizeHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

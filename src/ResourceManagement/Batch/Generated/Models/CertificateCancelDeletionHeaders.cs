@@ -12,26 +12,28 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Get operation.
+    /// Defines headers for CancelDeletion operation.
     /// </summary>
-    public partial class PoolGetHeadersInner
+    public partial class CertificateCancelDeletionHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PoolGetHeadersInner class.
+        /// Initializes a new instance of the CertificateCancelDeletionHeaders
+        /// class.
         /// </summary>
-        public PoolGetHeadersInner()
+        public CertificateCancelDeletionHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PoolGetHeadersInner class.
+        /// Initializes a new instance of the CertificateCancelDeletionHeaders
+        /// class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public PoolGetHeadersInner(string eTag = default(string))
+        public CertificateCancelDeletionHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

@@ -17,6 +17,15 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// A task which is run when a compute node joins a pool in the Azure Batch
     /// service, or when the compute node is rebooted or reimaged.
     /// </summary>
+    /// <remarks>
+    /// In some cases the start task may be re-run even though the node was not
+    /// rebooted. Due to this, start tasks should be idempotent and exit
+    /// gracefully if the setup they're performing has already been done.
+    /// Special care should be taken to avoid start tasks which create
+    /// breakaway process or install/launch services from the start task
+    /// working directory, as this will block Batch from being able to re-run
+    /// the start task.
+    /// </remarks>
     public partial class StartTask
     {
         /// <summary>
@@ -45,7 +54,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// for the start task to complete successfully (that is, to exit with
         /// exit code 0) before scheduling any tasks on the compute
         /// node.</param>
-        public StartTask(string commandLine = default(string), IList<ResourceFile> resourceFiles = default(IList<ResourceFile>), IList<EnvironmentSetting> environmentSettings = default(IList<EnvironmentSetting>), UserIdentity userIdentity = default(UserIdentity), int? maxTaskRetryCount = default(int?), bool? waitForSuccess = default(bool?))
+        /// <param name="containerSettings">The settings for the container
+        /// under which the start task runs.</param>
+        public StartTask(string commandLine = default(string), IList<ResourceFile> resourceFiles = default(IList<ResourceFile>), IList<EnvironmentSetting> environmentSettings = default(IList<EnvironmentSetting>), UserIdentity userIdentity = default(UserIdentity), int? maxTaskRetryCount = default(int?), bool? waitForSuccess = default(bool?), TaskContainerSettings containerSettings = default(TaskContainerSettings))
         {
             CommandLine = commandLine;
             ResourceFiles = resourceFiles;
@@ -53,6 +64,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
             UserIdentity = userIdentity;
             MaxTaskRetryCount = maxTaskRetryCount;
             WaitForSuccess = waitForSuccess;
+            ContainerSettings = containerSettings;
             CustomInit();
         }
 
@@ -131,10 +143,47 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// task to complete. In this case, other tasks can start executing on
         /// the compute node while the start task is still running; and even if
         /// the start task fails, new tasks will continue to be scheduled on
-        /// the node. The default is false.
+        /// the node. The default is true.
         /// </remarks>
         [JsonProperty(PropertyName = "waitForSuccess")]
         public bool? WaitForSuccess { get; set; }
 
+        /// <summary>
+        /// Gets or sets the settings for the container under which the start
+        /// task runs.
+        /// </summary>
+        /// <remarks>
+        /// When this is specified, all directories recursively below the
+        /// AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the
+        /// node) are mapped into the container, all task environment variables
+        /// are mapped into the container, and the task command line is
+        /// executed in the container.
+        /// </remarks>
+        [JsonProperty(PropertyName = "containerSettings")]
+        public TaskContainerSettings ContainerSettings { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (EnvironmentSettings != null)
+            {
+                foreach (var element in EnvironmentSettings)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (ContainerSettings != null)
+            {
+                ContainerSettings.Validate();
+            }
+        }
     }
 }

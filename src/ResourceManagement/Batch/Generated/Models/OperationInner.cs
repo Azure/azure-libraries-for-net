@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// <summary>
     /// A REST API operation
     /// </summary>
-    public partial class Operation
+    public partial class OperationInner
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
-        public Operation()
+        public OperationInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
         /// <param name="name">The operation name.</param>
         /// <param name="display">The object that describes the
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// <param name="origin">The intended executor of the
         /// operation.</param>
         /// <param name="properties">Properties of the operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), object properties = default(object))
+        public OperationInner(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), object properties = default(object))
         {
             Name = name;
             Display = display;

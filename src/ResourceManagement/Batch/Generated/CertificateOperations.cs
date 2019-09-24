@@ -319,10 +319,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<CertificateInner,CertificateCreateHeadersInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CertificateInner,CertificateCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<CertificateInner,CertificateCreateHeadersInner> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, certificateName, parameters, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<CertificateInner,CertificateCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, certificateName, parameters, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CertificateInner,CertificateUpdateHeadersInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CertificateInner,CertificateUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<CertificateInner,CertificateUpdateHeadersInner>();
+            var _result = new AzureOperationResponse<CertificateInner,CertificateUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateUpdateHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateUpdateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -623,10 +623,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationHeaderResponse<CertificateDeleteHeadersInner>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<CertificateDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationHeaderResponse<CertificateDeleteHeadersInner> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, certificateName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationHeaderResponse<CertificateDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, certificateName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CertificateInner,CertificateGetHeadersInner>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CertificateInner,CertificateGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<CertificateInner,CertificateGetHeadersInner>();
+            var _result = new AzureOperationResponse<CertificateInner,CertificateGetHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateGetHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateGetHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CertificateInner,CertificateCancelDeletionHeadersInner>> CancelDeletionWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CertificateInner,CertificateCancelDeletionHeaders>> CancelDeletionWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1094,7 +1094,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<CertificateInner,CertificateCancelDeletionHeadersInner>();
+            var _result = new AzureOperationResponse<CertificateInner,CertificateCancelDeletionHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateCancelDeletionHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateCancelDeletionHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1186,7 +1186,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CertificateInner,CertificateCreateHeadersInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CertificateInner,CertificateCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, CertificateCreateOrUpdateParametersInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1389,7 +1389,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<CertificateInner,CertificateCreateHeadersInner>();
+            var _result = new AzureOperationResponse<CertificateInner,CertificateCreateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1416,7 +1416,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateCreateHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateCreateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationHeaderResponse<CertificateDeleteHeadersInner>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<CertificateDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationHeaderResponse<CertificateDeleteHeadersInner>();
+            var _result = new AzureOperationHeaderResponse<CertificateDeleteHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1645,7 +1645,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateDeleteHeadersInner>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<CertificateDeleteHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {

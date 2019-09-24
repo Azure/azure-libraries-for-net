@@ -14,26 +14,24 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// <summary>
     /// Defines headers for Update operation.
     /// </summary>
-    public partial class CertificateUpdateHeadersInner
+    public partial class CertificateUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the CertificateUpdateHeadersInner
-        /// class.
+        /// Initializes a new instance of the CertificateUpdateHeaders class.
         /// </summary>
-        public CertificateUpdateHeadersInner()
+        public CertificateUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CertificateUpdateHeadersInner
-        /// class.
+        /// Initializes a new instance of the CertificateUpdateHeaders class.
         /// </summary>
         /// <param name="eTag">The ETag HTTP response header. This is an opaque
         /// string. You can use it to detect whether the resource has changed
         /// between requests. In particular, you can pass the ETag to one of
         /// the If-Match or If-None-Match headers.</param>
-        public CertificateUpdateHeadersInner(string eTag = default(string))
+        public CertificateUpdateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

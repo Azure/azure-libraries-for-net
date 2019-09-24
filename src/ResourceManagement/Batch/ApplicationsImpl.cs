@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
             foreach (var application in applicationList)
             {
                 childResources.Add(new ApplicationImpl(
-                    application.Id,
+                    application.Name,
                     parent,
                     application));
             }

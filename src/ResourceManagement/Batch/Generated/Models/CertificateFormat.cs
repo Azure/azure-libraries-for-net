@@ -19,8 +19,15 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum CertificateFormat
     {
+        /// <summary>
+        /// The certificate is a PFX (PKCS#12) formatted certificate or
+        /// certificate chain.
+        /// </summary>
         [EnumMember(Value = "Pfx")]
         Pfx,
+        /// <summary>
+        /// The certificate is a base64-encoded X.509 certificate.
+        /// </summary>
         [EnumMember(Value = "Cer")]
         Cer
     }

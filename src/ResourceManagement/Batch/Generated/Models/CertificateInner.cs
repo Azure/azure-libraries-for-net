@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Batch.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -17,7 +19,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
     /// Contains information about a certificate.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CertificateInner : ProxyResource
+    public partial class CertificateInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the CertificateInner class.
@@ -30,11 +32,6 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the CertificateInner class.
         /// </summary>
-        /// <param name="id">The ID of the resource.</param>
-        /// <param name="name">The name of the resource.</param>
-        /// <param name="type">The type of the resource.</param>
-        /// <param name="etag">The ETag of the resource, used for concurrency
-        /// statements.</param>
         /// <param name="thumbprintAlgorithm">The algorithm of the certificate
         /// thumbprint</param>
         /// <param name="thumbprint">The thumbprint of the certificate</param>
@@ -53,8 +50,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// <param name="publicData">The public key of the certificate.</param>
         /// <param name="deleteCertificateError">The error which occurred while
         /// deleting the certificate</param>
-        public CertificateInner(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), CertificateProvisioningState provisioningState = default(CertificateProvisioningState), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), CertificateProvisioningState previousProvisioningState = default(CertificateProvisioningState), System.DateTime? previousProvisioningStateTransitionTime = default(System.DateTime?), string publicData = default(string), DeleteCertificateError deleteCertificateError = default(DeleteCertificateError))
-            : base(id, name, type, etag)
+        /// <param name="etag">The ETag of the resource, used for concurrency
+        /// statements.</param>
+        public CertificateInner(string id = default(string), string name = default(string), string type = default(string), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), CertificateProvisioningState provisioningState = default(CertificateProvisioningState), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), CertificateProvisioningState previousProvisioningState = default(CertificateProvisioningState), System.DateTime? previousProvisioningStateTransitionTime = default(System.DateTime?), string publicData = default(string), DeleteCertificateError deleteCertificateError = default(DeleteCertificateError), string etag = default(string))
+            : base(id, name, type)
         {
             ThumbprintAlgorithm = thumbprintAlgorithm;
             Thumbprint = thumbprint;
@@ -65,6 +64,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
             PreviousProvisioningStateTransitionTime = previousProvisioningStateTransitionTime;
             PublicData = publicData;
             DeleteCertificateError = deleteCertificateError;
+            Etag = etag;
             CustomInit();
         }
 
@@ -103,21 +103,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// Gets the provisioned state of the resource
         /// </summary>
         /// <remarks>
-        /// Values are:
-        ///
-        /// Succeeded - The certificate is available for use in pools.
-        /// Deleting - The user has requested that the certificate be deleted,
-        /// but the delete operation has not yet completed. You may not
-        /// reference the certificate when creating or updating pools.
-        /// Failed - The user requested that the certificate be deleted, but
-        /// there are pools that still have references to the certificate, or
-        /// it is still installed on one or more compute nodes. (The latter can
-        /// occur if the certificate has been removed from the pool, but the
-        /// node has not yet restarted. Nodes refresh their certificates only
-        /// when they restart.) You may use the cancel certificate delete
-        /// operation to cancel the delete, or the delete certificate operation
-        /// to retry the delete. Possible values include: 'Succeeded',
-        /// 'Deleting', 'Failed'
+        /// Possible values include: 'Succeeded', 'Deleting', 'Failed'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public CertificateProvisioningState ProvisioningState { get; private set; }
@@ -156,6 +142,12 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </remarks>
         [JsonProperty(PropertyName = "properties.deleteCertificateError")]
         public DeleteCertificateError DeleteCertificateError { get; private set; }
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
