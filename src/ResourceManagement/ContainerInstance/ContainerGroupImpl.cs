@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     /// Implementation for ContainerGroup and its create interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcmluc3RhbmNlLmltcGxlbWVudGF0aW9uLkNvbnRhaW5lckdyb3VwSW1wbA==
-    internal partial class ContainerGroupImpl  :
+    internal partial class ContainerGroupImpl :
         GroupableResource<
             IContainerGroup,
             ContainerGroupInner,
@@ -82,7 +82,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             ResourceIdentityType? type = this.ManagedServiceIdentityType();
             return type != null && type != ResourceIdentityType.None;
         }
-        public LogAnalytics LogAnalytics() {
+        public LogAnalytics LogAnalytics()
+        {
             return this.Inner.Diagnostics.LogAnalytics;
         }
 
@@ -95,7 +96,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return null;
         }
 
-        public string NetworkProfileId() {
+        public string NetworkProfileId()
+        {
             return this.Inner.NetworkProfile.Id;
         }
 
@@ -322,12 +324,19 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             }
             else
             {
+                var resourceInner = new ResourceInner();
+                resourceInner.Location = this.RegionName;
+                resourceInner.Tags = this.Inner.Tags;
+                // TODO: this will go away after service fixes the update bug
+                // Tags could only be updated by PATCH request
+                var updatedInner = await this.Manager.Inner.ContainerGroups.UpdateAsync(this.ResourceGroupName, this.Name, resourceInner, cancellationToken: cancellationToken);
+                // Container Env Could not be updated due to service problem
                 foreach (var container in this.Inner.Containers)
                 {
                     container.EnvironmentVariables = null;
                 }
 
-                var updatedInner = await this.Manager.Inner.ContainerGroups.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken: cancellationToken);
+                updatedInner = await this.Manager.Inner.ContainerGroups.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken: cancellationToken);
 
                 updatedInner = await GetInnerAsync(cancellationToken);
                 SetInner(updatedInner);

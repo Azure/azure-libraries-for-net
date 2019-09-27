@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         internal void HandleExternalIdentities()
         {
-            this.containerGroup.Inner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
-            if (this.containerGroup.Inner.Identity.UserAssignedIdentities == null || this.containerGroup.Inner.Identity.UserAssignedIdentities.Count == 0)
+            if (this.userAssignedIdentities == null || this.userAssignedIdentities.Count == 0)
             {
                 if (this.containerGroup.Inner.Identity.Type == ResourceIdentityType.SystemAssignedUserAssigned)
                 {
@@ -50,12 +49,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 {
                     this.containerGroup.Inner.Identity.Type = ResourceIdentityType.None;
                 }
+                this.containerGroup.Inner.Identity.UserAssignedIdentities = null;
+            }
+            else
+            {
+                this.containerGroup.Inner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
             }
         }
 
         internal void ProcessCreatedExternalIdentities()
         {
-            foreach(var key in this.creatableIdentityKeys)
+            foreach (var key in this.creatableIdentityKeys)
             {
                 var identity = (IIdentity)this.containerGroup.CreatorTaskGroup.CreatedResource(key);
                 this.userAssignedIdentities[identity.Id] = new ContainerGroupIdentityUserAssignedIdentitiesValue();
