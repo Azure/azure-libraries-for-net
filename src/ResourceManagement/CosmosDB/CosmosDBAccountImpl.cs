@@ -107,6 +107,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.Tags = inner.Tags;
             createUpdateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
             createUpdateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
+            createUpdateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
+            createUpdateParametersInner.ConnectorOffer = inner.ConnectorOffer;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
@@ -587,6 +589,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public async Task OnlineRegionAsync(Region region, CancellationToken cancellationToken = default(CancellationToken))
         {
             await this.Manager.Inner.DatabaseAccounts.OnlineRegionAsync(this.ResourceGroupName, this.Name, region.Name, cancellationToken);
+        }
+
+        public bool CassandraConnectorEnabled()
+        {
+            return this.Inner.EnableCassandraConnector ?? false;
+        }
+
+        public ConnectorOffer CassandraConnectorOffer()
+        {
+            return this.Inner.ConnectorOffer;
+        }
+
+        public CosmosDBAccountImpl WithCassandraConnector(ConnectorOffer connectorOffer)
+        {
+            this.Inner.EnableCassandraConnector = true;
+            this.Inner.ConnectorOffer = connectorOffer;
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithoutCassandraConnector()
+        {
+            this.Inner.EnableCassandraConnector = false;
+            this.Inner.ConnectorOffer = null;
+            return this;
         }
     }
 }
