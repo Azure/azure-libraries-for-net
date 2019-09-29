@@ -595,6 +595,7 @@ namespace Fluent.Tests
                     Assert.True(subscription.IsSessionEnabled);
 
                     subscription.Update().WithoutSession().Apply();
+                    subscription.Refresh();
                     Assert.False(subscription.IsSessionEnabled);
                 }
                 finally
