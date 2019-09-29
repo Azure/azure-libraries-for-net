@@ -306,6 +306,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        /// <summary>
+        /// Gets whether cassandra connector is enabled or not.
+        /// </summary>
+        bool Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.CassandraConnectorEnabled
+        {
+            get
+            {
+                return this.CassandraConnectorEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Gets the current cassandra connector offer.
+        /// </summary>
+        Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConnectorOffer Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.CassandraConnectorOffer
+        {
+            get
+            {
+                return this.CassandraConnectorOffer();
+            }
+        }
+
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
@@ -409,7 +431,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="region">Cosmos DB region.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OfflineRegion(Region region)
         {
- 
+
             this.OfflineRegion(region);
         }
 
@@ -420,7 +442,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OfflineRegionAsync(Region region, CancellationToken cancellationToken)
         {
- 
+
             await this.OfflineRegionAsync(region, cancellationToken);
         }
 
@@ -430,7 +452,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="region">Cosmos DB region.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OnlineRegion(Region region)
         {
- 
+
             this.OnlineRegion(region);
         }
 
@@ -441,7 +463,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OnlineRegionAsync(Region region, CancellationToken cancellationToken)
         {
- 
+
             await this.OnlineRegionAsync(region, cancellationToken);
         }
 
@@ -530,5 +552,33 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithVirtualNetworkRules(virtualNetworkRules);
         }
 
+        /// <summary>
+        /// Specifies a connector offer for cassandra connector.
+        /// </summary>
+        /// <param name="connectorOffer">Connector offer to specify.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithConnector.WithCassandraConnector(ConnectorOffer connectorOffer)
+        {
+            return this.WithCassandraConnector(connectorOffer);
+        }
+
+        /// <summary>
+        /// Specifies a connector offer for cassandra connector.
+        /// </summary>
+        /// <param name="connectorOffer">Connector offer to specify.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConnector.WithCassandraConnector(ConnectorOffer connectorOffer)
+        {
+            return this.WithCassandraConnector(connectorOffer);
+        }
+
+        /// <summary>
+        /// Remove the connector offer.
+        /// </summary>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConnector.WithoutCassandraConnector()
+        {
+            return this.WithoutCassandraConnector();
+        }
     }
 }
