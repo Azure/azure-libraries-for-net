@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
                                 {
                                     taskCompletionSource.SetException(task.Exception.InnerExceptions);
                                 }
+                                else if (task.IsCanceled)
+                                {
+                                    taskCompletionSource.SetCanceled();
+                                }
                                 else
                                 {
                                     IFluentResourceT thisResource = this as IFluentResourceT;
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
                                     }
                                 }
                             },
-                    cancellationToken,
+                    CancellationToken.None,
                     TaskContinuationOptions.ExecuteSynchronously,
                     TaskScheduler.Default);
             }
