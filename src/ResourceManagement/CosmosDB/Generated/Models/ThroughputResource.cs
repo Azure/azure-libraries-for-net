@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// <summary>
     /// Cosmos DB resource throughput object
     /// </summary>
-    public partial class ThroughputResourceInner
+    public partial class ThroughputResource
     {
         /// <summary>
-        /// Initializes a new instance of the ThroughputResourceInner class.
+        /// Initializes a new instance of the ThroughputResource class.
         /// </summary>
-        public ThroughputResourceInner()
+        public ThroughputResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ThroughputResourceInner class.
+        /// Initializes a new instance of the ThroughputResource class.
         /// </summary>
         /// <param name="throughput">Value of the Cosmos DB resource
         /// throughput</param>
-        public ThroughputResourceInner(int throughput)
+        public ThroughputResource(int throughput)
         {
             Throughput = throughput;
             CustomInit();

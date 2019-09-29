@@ -8,18 +8,27 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for UnitType.
     /// </summary>
-    public static class UnitType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<UnitType>))]
+    public class UnitType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<UnitType>
     {
-        public const string Count = "Count";
-        public const string Bytes = "Bytes";
-        public const string Seconds = "Seconds";
-        public const string Percent = "Percent";
-        public const string CountPerSecond = "CountPerSecond";
-        public const string BytesPerSecond = "BytesPerSecond";
-        public const string Milliseconds = "Milliseconds";
+        public static readonly UnitType Count = Parse("Count");
+        public static readonly UnitType Bytes = Parse("Bytes");
+        public static readonly UnitType Seconds = Parse("Seconds");
+        public static readonly UnitType Percent = Parse("Percent");
+        public static readonly UnitType CountPerSecond = Parse("CountPerSecond");
+        public static readonly UnitType BytesPerSecond = Parse("BytesPerSecond");
+        public static readonly UnitType Milliseconds = Parse("Milliseconds");
     }
 }

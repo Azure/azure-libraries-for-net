@@ -19,27 +19,27 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// Parameters to create and update Cosmos DB container.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SqlContainerCreateUpdateParametersInner
+    public partial class SqlContainerCreateUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// SqlContainerCreateUpdateParametersInner class.
+        /// SqlContainerCreateUpdateParameters class.
         /// </summary>
-        public SqlContainerCreateUpdateParametersInner()
+        public SqlContainerCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// SqlContainerCreateUpdateParametersInner class.
+        /// SqlContainerCreateUpdateParameters class.
         /// </summary>
         /// <param name="resource">The standard JSON format of a
         /// container</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public SqlContainerCreateUpdateParametersInner(SqlContainerResource resource, IDictionary<string, string> options)
+        public SqlContainerCreateUpdateParameters(SqlContainerResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;

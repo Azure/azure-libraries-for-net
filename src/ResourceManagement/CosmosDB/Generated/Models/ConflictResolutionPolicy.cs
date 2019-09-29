@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// in the case of LastWriterWins mode.</param>
         /// <param name="conflictResolutionProcedure">The procedure to resolve
         /// conflicts in the case of custom mode.</param>
-        public ConflictResolutionPolicy(string mode = default(string), string conflictResolutionPath = default(string), string conflictResolutionProcedure = default(string))
+        public ConflictResolutionPolicy(ConflictResolutionMode mode = default(ConflictResolutionMode), string conflictResolutionPath = default(string), string conflictResolutionProcedure = default(string))
         {
             Mode = mode;
             ConflictResolutionPath = conflictResolutionPath;
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// values include: 'LastWriterWins', 'Custom'
         /// </summary>
         [JsonProperty(PropertyName = "mode")]
-        public string Mode { get; set; }
+        public ConflictResolutionMode Mode { get; set; }
 
         /// <summary>
         /// Gets or sets the conflict resolution path in the case of

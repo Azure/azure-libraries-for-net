@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="keyKind">The access key to regenerate. Possible values
         /// include: 'primary', 'secondary', 'primaryReadonly',
         /// 'secondaryReadonly'</param>
-        public DatabaseAccountRegenerateKeyParameters(string keyKind)
+        public DatabaseAccountRegenerateKeyParameters(KeyKind keyKind)
         {
             KeyKind = keyKind;
             CustomInit();
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'primary', 'secondary', 'primaryReadonly', 'secondaryReadonly'
         /// </summary>
         [JsonProperty(PropertyName = "keyKind")]
-        public string KeyKind { get; set; }
+        public KeyKind KeyKind { get; set; }
 
         /// <summary>
         /// Validate the object.

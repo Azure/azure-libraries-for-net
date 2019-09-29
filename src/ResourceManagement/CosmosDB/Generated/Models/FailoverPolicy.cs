@@ -15,18 +15,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// <summary>
     /// The failover policy for a given region of a database account.
     /// </summary>
-    public partial class FailoverPolicyInner
+    public partial class FailoverPolicy
     {
         /// <summary>
-        /// Initializes a new instance of the FailoverPolicyInner class.
+        /// Initializes a new instance of the FailoverPolicy class.
         /// </summary>
-        public FailoverPolicyInner()
+        public FailoverPolicy()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FailoverPolicyInner class.
+        /// Initializes a new instance of the FailoverPolicy class.
         /// </summary>
         /// <param name="id">The unique identifier of the region in which the
         /// database account replicates to. Example:
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// value for a failover priority = (total number of regions - 1).
         /// Failover priority values must be unique for each of the regions in
         /// which the database account exists.</param>
-        public FailoverPolicyInner(string id = default(string), string locationName = default(string), int? failoverPriority = default(int?))
+        public FailoverPolicy(string id = default(string), string locationName = default(string), int? failoverPriority = default(int?))
         {
             Id = id;
             LocationName = locationName;

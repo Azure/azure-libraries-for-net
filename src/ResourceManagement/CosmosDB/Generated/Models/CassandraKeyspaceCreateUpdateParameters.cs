@@ -16,30 +16,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters to create and update Cosmos DB Cassandra table.
+    /// Parameters to create and update Cosmos DB Cassandra keyspace.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CassandraTableCreateUpdateParametersInner
+    public partial class CassandraKeyspaceCreateUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// CassandraTableCreateUpdateParametersInner class.
+        /// CassandraKeyspaceCreateUpdateParameters class.
         /// </summary>
-        public CassandraTableCreateUpdateParametersInner()
+        public CassandraKeyspaceCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// CassandraTableCreateUpdateParametersInner class.
+        /// CassandraKeyspaceCreateUpdateParameters class.
         /// </summary>
         /// <param name="resource">The standard JSON format of a Cassandra
-        /// table</param>
+        /// keyspace</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public CassandraTableCreateUpdateParametersInner(CassandraTableResource resource, IDictionary<string, string> options)
+        public CassandraKeyspaceCreateUpdateParameters(CassandraKeyspaceResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the standard JSON format of a Cassandra table
+        /// Gets or sets the standard JSON format of a Cassandra keyspace
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public CassandraTableResource Resource { get; set; }
+        public CassandraKeyspaceResource Resource { get; set; }
 
         /// <summary>
         /// Gets or sets a key-value pair of options to be applied for the

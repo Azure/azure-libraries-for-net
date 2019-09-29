@@ -8,17 +8,26 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for PrimaryAggregationType.
     /// </summary>
-    public static class PrimaryAggregationType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<PrimaryAggregationType>))]
+    public class PrimaryAggregationType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<PrimaryAggregationType>
     {
-        public const string None = "None";
-        public const string Average = "Average";
-        public const string Total = "Total";
-        public const string Minimimum = "Minimimum";
-        public const string Maximum = "Maximum";
-        public const string Last = "Last";
+        public static readonly PrimaryAggregationType None = Parse("None");
+        public static readonly PrimaryAggregationType Average = Parse("Average");
+        public static readonly PrimaryAggregationType Total = Parse("Total");
+        public static readonly PrimaryAggregationType Minimum = Parse("Minimum");
+        public static readonly PrimaryAggregationType Maximum = Parse("Maximum");
+        public static readonly PrimaryAggregationType Last = Parse("Last");
     }
 }

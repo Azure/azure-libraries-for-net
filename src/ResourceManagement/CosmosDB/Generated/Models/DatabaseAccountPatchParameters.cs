@@ -19,24 +19,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// Parameters for patching Azure Cosmos DB database account properties.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DatabaseAccountPatchParametersInner
+    public partial class DatabaseAccountPatchParameters
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// DatabaseAccountPatchParametersInner class.
+        /// Initializes a new instance of the DatabaseAccountPatchParameters
+        /// class.
         /// </summary>
-        public DatabaseAccountPatchParametersInner()
+        public DatabaseAccountPatchParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// DatabaseAccountPatchParametersInner class.
+        /// Initializes a new instance of the DatabaseAccountPatchParameters
+        /// class.
         /// </summary>
         /// <param name="capabilities">List of Cosmos DB capabilities for the
         /// account</param>
-        public DatabaseAccountPatchParametersInner(IDictionary<string, string> tags = default(IDictionary<string, string>), IList<Capability> capabilities = default(IList<Capability>))
+        public DatabaseAccountPatchParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), IList<Capability> capabilities = default(IList<Capability>))
         {
             Tags = tags;
             Capabilities = capabilities;

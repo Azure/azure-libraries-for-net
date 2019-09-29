@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="name">The name information for the metric.</param>
         /// <param name="metricValues">The metric values for the specified time
         /// window and timestep.</param>
-        public Metric(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), string unit = default(string), MetricName name = default(MetricName), IList<MetricValue> metricValues = default(IList<MetricValue>))
+        public Metric(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), UnitType unit = default(UnitType), MetricName name = default(MetricName), IList<MetricValue> metricValues = default(IList<MetricValue>))
         {
             StartTime = startTime;
             EndTime = endTime;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'BytesPerSecond', 'Milliseconds'
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
-        public string Unit { get; set; }
+        public UnitType Unit { get; set; }
 
         /// <summary>
         /// Gets the name information for the metric.

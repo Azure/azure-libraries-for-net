@@ -19,26 +19,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// Parameters to create and update Cosmos DB Table.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TableCreateUpdateParametersInner
+    public partial class TableCreateUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the TableCreateUpdateParametersInner
+        /// Initializes a new instance of the TableCreateUpdateParameters
         /// class.
         /// </summary>
-        public TableCreateUpdateParametersInner()
+        public TableCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TableCreateUpdateParametersInner
+        /// Initializes a new instance of the TableCreateUpdateParameters
         /// class.
         /// </summary>
         /// <param name="resource">The standard JSON format of a Table</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public TableCreateUpdateParametersInner(TableResource resource, IDictionary<string, string> options)
+        public TableCreateUpdateParameters(TableResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;

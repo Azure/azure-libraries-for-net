@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// An Azure Cosmos DB MongoDB collection.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class MongoDBCollectionInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class MongoDBCollectionInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the MongoDBCollectionInner class.

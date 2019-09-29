@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DatabaseAccountInner> PatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParametersInner updateParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DatabaseAccountInner> PatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParameters updateParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task FailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task FailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicy> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.FailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverPoliciesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyKind, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, KeyKind keyKind, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.RegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyKind, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlDatabaseInner> CreateUpdateSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParametersInner createUpdateSqlDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SqlDatabaseInner> CreateUpdateSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParameters createUpdateSqlDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateSqlDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlContainerInner> CreateUpdateSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParametersInner createUpdateSqlContainerParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SqlContainerInner> CreateUpdateSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParameters createUpdateSqlContainerParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, createUpdateSqlContainerParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateSqlContainerThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBDatabaseInner> CreateUpdateMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParametersInner createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MongoDBDatabaseInner> CreateUpdateMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1026,7 +1026,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBCollectionInner> CreateUpdateMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParametersInner createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MongoDBCollectionInner> CreateUpdateMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateMongoDBCollectionThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TableInner> CreateUpdateTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, TableCreateUpdateParametersInner createUpdateTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TableInner> CreateUpdateTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, TableCreateUpdateParameters createUpdateTableParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, createUpdateTableParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1352,7 +1352,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CassandraKeyspaceInner> CreateUpdateCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParametersInner createUpdateCassandraKeyspaceParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CassandraKeyspaceInner> CreateUpdateCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParameters createUpdateCassandraKeyspaceParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, createUpdateCassandraKeyspaceParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1431,7 +1431,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1520,7 +1520,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CassandraTableInner> CreateUpdateCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParametersInner createUpdateCassandraTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CassandraTableInner> CreateUpdateCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParameters createUpdateCassandraTableParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, createUpdateCassandraTableParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateCassandraTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1688,7 +1688,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinDatabaseInner> CreateUpdateGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParametersInner createUpdateGremlinDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GremlinDatabaseInner> CreateUpdateGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParameters createUpdateGremlinDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateGremlinDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1767,7 +1767,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1854,7 +1854,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinGraphInner> CreateUpdateGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParametersInner createUpdateGremlinGraphParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GremlinGraphInner> CreateUpdateGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParameters createUpdateGremlinGraphParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateUpdateGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, createUpdateGremlinGraphParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1942,7 +1942,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> UpdateGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> UpdateGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateGremlinGraphThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1968,7 +1968,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DatabaseAccountInner> BeginPatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParametersInner updateParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DatabaseAccountInner> BeginPatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParameters updateParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginPatchWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2044,7 +2044,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginFailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginFailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicy> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginFailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverPoliciesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -2117,7 +2117,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyKind, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, KeyKind keyKind, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyKind, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -2143,7 +2143,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlDatabaseInner> BeginCreateUpdateSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParametersInner createUpdateSqlDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SqlDatabaseInner> BeginCreateUpdateSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParameters createUpdateSqlDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateSqlDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2195,7 +2195,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2227,7 +2227,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlContainerInner> BeginCreateUpdateSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParametersInner createUpdateSqlContainerParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SqlContainerInner> BeginCreateUpdateSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParameters createUpdateSqlContainerParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, createUpdateSqlContainerParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2285,7 +2285,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateSqlContainerThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2314,7 +2314,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBDatabaseInner> BeginCreateUpdateMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParametersInner createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MongoDBDatabaseInner> BeginCreateUpdateMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2366,7 +2366,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2398,7 +2398,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBCollectionInner> BeginCreateUpdateMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParametersInner createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MongoDBCollectionInner> BeginCreateUpdateMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2456,7 +2456,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateMongoDBCollectionThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TableInner> BeginCreateUpdateTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, TableCreateUpdateParametersInner createUpdateTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TableInner> BeginCreateUpdateTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, TableCreateUpdateParameters createUpdateTableParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, createUpdateTableParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2537,7 +2537,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2566,7 +2566,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CassandraKeyspaceInner> BeginCreateUpdateCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParametersInner createUpdateCassandraKeyspaceParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CassandraKeyspaceInner> BeginCreateUpdateCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParameters createUpdateCassandraKeyspaceParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, createUpdateCassandraKeyspaceParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2618,7 +2618,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2650,7 +2650,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CassandraTableInner> BeginCreateUpdateCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParametersInner createUpdateCassandraTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CassandraTableInner> BeginCreateUpdateCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParameters createUpdateCassandraTableParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, createUpdateCassandraTableParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2708,7 +2708,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateCassandraTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2737,7 +2737,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinDatabaseInner> BeginCreateUpdateGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParametersInner createUpdateGremlinDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GremlinDatabaseInner> BeginCreateUpdateGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParameters createUpdateGremlinDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateGremlinDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2789,7 +2789,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2821,7 +2821,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinGraphInner> BeginCreateUpdateGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParametersInner createUpdateGremlinGraphParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GremlinGraphInner> BeginCreateUpdateGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParameters createUpdateGremlinGraphParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateUpdateGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, createUpdateGremlinGraphParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2879,7 +2879,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ThroughputInner> BeginUpdateGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResourceInner resource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ThroughputInner> BeginUpdateGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateGremlinGraphThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, resource, null, cancellationToken).ConfigureAwait(false))
                 {

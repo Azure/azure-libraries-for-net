@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for IndexKind.
     /// </summary>
-    public static class IndexKind
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<IndexKind>))]
+    public class IndexKind : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<IndexKind>
     {
-        public const string Hash = "Hash";
-        public const string Range = "Range";
-        public const string Spatial = "Spatial";
+        public static readonly IndexKind Hash = Parse("Hash");
+        public static readonly IndexKind Range = Parse("Range");
+        public static readonly IndexKind Spatial = Parse("Spatial");
     }
 }

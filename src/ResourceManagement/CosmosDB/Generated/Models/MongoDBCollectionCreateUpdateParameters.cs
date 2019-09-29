@@ -16,30 +16,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters to create and update Cosmos DB Gremlin database.
+    /// Parameters to create and update Cosmos DB MongoDB collection.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GremlinDatabaseCreateUpdateParametersInner
+    public partial class MongoDBCollectionCreateUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// GremlinDatabaseCreateUpdateParametersInner class.
+        /// MongoDBCollectionCreateUpdateParameters class.
         /// </summary>
-        public GremlinDatabaseCreateUpdateParametersInner()
+        public MongoDBCollectionCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// GremlinDatabaseCreateUpdateParametersInner class.
+        /// MongoDBCollectionCreateUpdateParameters class.
         /// </summary>
-        /// <param name="resource">The standard JSON format of a Gremlin
-        /// database</param>
+        /// <param name="resource">The standard JSON format of a MongoDB
+        /// collection</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public GremlinDatabaseCreateUpdateParametersInner(GremlinDatabaseResource resource, IDictionary<string, string> options)
+        public MongoDBCollectionCreateUpdateParameters(MongoDBCollectionResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the standard JSON format of a Gremlin database
+        /// Gets or sets the standard JSON format of a MongoDB collection
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public GremlinDatabaseResource Resource { get; set; }
+        public MongoDBCollectionResource Resource { get; set; }
 
         /// <summary>
         /// Gets or sets a key-value pair of options to be applied for the

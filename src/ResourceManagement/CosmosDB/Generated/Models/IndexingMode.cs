@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for IndexingMode.
     /// </summary>
-    public static class IndexingMode
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<IndexingMode>))]
+    public class IndexingMode : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<IndexingMode>
     {
-        public const string Consistent = "Consistent";
-        public const string Lazy = "Lazy";
-        public const string None = "None";
+        public static readonly IndexingMode Consistent = Parse("Consistent");
+        public static readonly IndexingMode Lazy = Parse("Lazy");
+        public static readonly IndexingMode None = Parse("None");
     }
 }
