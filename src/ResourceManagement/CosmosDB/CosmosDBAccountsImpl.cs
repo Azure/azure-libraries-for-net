@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Linq;
     using Rest.Azure;
     using System;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
     /// <summary>
     /// Implementation for Registries.
@@ -101,11 +102,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task FailoverPriorityChangeAsync(string groupName, string accountName, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverLocations, CancellationToken cancellationToken = default(CancellationToken))
         {
-            List<Models.FailoverPolicyInner> policyInners = new List<Models.FailoverPolicyInner>();
+            List<Models.FailoverPolicy> policyInners = new List<Models.FailoverPolicy>();
             for (int i = 0; i < failoverLocations.Count(); i++)
             {
                 Models.Location location = failoverLocations[i];
-                Models.FailoverPolicyInner policyInner = new Models.FailoverPolicyInner();
+                Models.FailoverPolicy policyInner = new Models.FailoverPolicy();
                 policyInner.LocationName = location.LocationName;
                 policyInner.FailoverPriority = i;
                 policyInners.Add(policyInner);
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task RegenerateKeyAsync(string groupName, string accountName, string keyKind, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.Manager.Inner.DatabaseAccounts.RegenerateKeyAsync(groupName, accountName, keyKind);
+            await this.Manager.Inner.DatabaseAccounts.RegenerateKeyAsync(groupName, accountName, KeyKind.Parse(keyKind));
         }
 
         public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
