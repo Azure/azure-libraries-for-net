@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         internal void HandleExternalIdentities()
         {
+            if (this.containerGroup.Inner.Identity == null)
+            {
+                return;
+            }
+
             if (this.userAssignedIdentities == null || this.userAssignedIdentities.Count == 0)
             {
                 if (this.containerGroup.Inner.Identity.Type == ResourceIdentityType.SystemAssignedUserAssigned)
