@@ -71,7 +71,7 @@ namespace ManageKubernetesCluster
                     .WithServicePrincipalClientId(servicePrincipalClientId)
                     .WithServicePrincipalSecret(servicePrincipalSecret)
                     .DefineAgentPool("ap")
-                        .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
+                        .WithVirtualMachineSize(ContainerServiceVMSizeTypes.StandardD1V2)
                         .WithAgentPoolVirtualMachineCount(1)
                         .Attach()
                     .WithDnsPrefix("dns-" + aksName)

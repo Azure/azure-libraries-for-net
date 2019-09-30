@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:11AAAD09C9684B6889E64AC8F924E50D:D461B25035B458150766C6D27E33A746
-        public ContainerServiceVirtualMachineSizeTypes VMSize()
+        public ContainerServiceVMSizeTypes VMSize()
         {
-            return ContainerServiceVirtualMachineSizeTypes.Parse(this.Inner.VmSize);
+            return this.Inner.VmSize;
         }
 
         ///GENMHASH:84A1C38F299C7713046CF6F1527D8F63:475A4C956E8066CDFDFB6FD41618AFA1
@@ -47,27 +47,26 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Inner.OsDiskSizeGB.Value;
         }
 
-        ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
-        public StorageProfileTypes StorageProfile()
-        {
-            return StorageProfileTypes.Parse(this.Inner.StorageProfile);
-        }
-
         ///GENMHASH:B84BFB9102C12A7625CB9CF2E3B5E7CF:BDFE6561FEC5EBDFF96600CDB5E62997
         public int Count()
         {
-            if (this.Inner.Count == null || !this.Inner.Count.HasValue)
+            if (this.Inner.Count <= 0)
             {
                 return 0;
             }
 
-            return this.Inner.Count.Value;
+            return this.Inner.Count;
         }
 
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
         public override string Name()
         {
             return this.Inner.Name;
+        }
+
+        public AgentPoolType Type()
+        {
+            return this.Inner.Type;
         }
 
         ///GENMHASH:1C444C90348D7064AB23705C542DDF18:CC1F09230C48EC2C015059C28C3F6ABE
@@ -78,16 +77,16 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:1BAF4F1B601F89251ABCFE6CC4867026:F71645491B82E137E4D1786750E7ADF0
-        public ContainerServiceOSTypes OSType()
+        public OSType OSType()
         {
-            return ContainerServiceOSTypes.Parse(this.Inner.OsType);
+            return this.Inner.OsType;
         }
 
 
         ///GENMHASH:29F824FFD1866F35F3898F9D3ECE5F1B:E7F1DA78794C44C2AC55569F4DDCBD11
-        public KubernetesClusterAgentPoolImpl WithOSType(ContainerServiceOSTypes osType)
+        public KubernetesClusterAgentPoolImpl WithOSType(OSType osType)
         {
-            this.Inner.OsType = osType.Value;
+            this.Inner.OsType = osType;
 
             return this;
         }
@@ -115,9 +114,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:C622FBAAB8FD0DD09A538E695C688BFC:70CBAB5746AAB14DF4C92F27CD513EE6
-        public KubernetesClusterAgentPoolImpl WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes param0)
+        public KubernetesClusterAgentPoolImpl WithVirtualMachineSize(ContainerServiceVMSizeTypes param0)
         {
-            this.Inner.VmSize = param0.Value;
+            this.Inner.VmSize = param0;
 
             return this;
         }
@@ -149,6 +148,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             string vnetSubnetId = virtualNetworkId + "/subnets/" + subnetName;
             this.subnetName = subnetName;
             this.Inner.VnetSubnetID = vnetSubnetId;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolType(AgentPoolType agentPoolType)
+        {
+            this.Inner.Type = agentPoolType;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolTypeName(string agentPoolTypeName)
+        {
+            this.Inner.Type = AgentPoolType.Parse(agentPoolTypeName);
             return this;
         }
     }

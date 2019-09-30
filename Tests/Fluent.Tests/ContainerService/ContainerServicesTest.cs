@@ -41,7 +41,7 @@ namespace Fluent.Tests.ContainerService
                         .WithMasterNodeCount(ContainerServiceMasterProfileCount.MIN)
                         .DefineAgentPool(agentPoolName)
                             .WithVirtualMachineCount(1)
-                            .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardA1)
+                            .WithVirtualMachineSize(ContainerServiceVMSizeTypes.StandardA1)
                             .WithDnsPrefix("ap0" + dnsPrefix)
                             .Attach()
                         .WithMasterDnsPrefix("mp0" + dnsPrefix)
@@ -57,7 +57,7 @@ namespace Fluent.Tests.ContainerService
                     Assert.NotNull(containerService.AgentPools[agentPoolName]);
                     Assert.Equal(1, containerService.AgentPools[agentPoolName].Count);
                     Assert.Equal("ap0" + dnsPrefix, containerService.AgentPools[agentPoolName].DnsPrefix);
-                    Assert.Equal(ContainerServiceVirtualMachineSizeTypes.StandardA1, containerService.AgentPools[agentPoolName].VMSize);
+                    Assert.Equal(ContainerServiceVMSizeTypes.StandardA1, containerService.AgentPools[agentPoolName].VMSize);
                     Assert.Equal(ContainerServiceOrchestratorTypes.DCOS, containerService.OrchestratorType);
                     Assert.True(containerService.IsDiagnosticsEnabled);
                     Assert.NotNull(containerService.Tags["tag1"]);

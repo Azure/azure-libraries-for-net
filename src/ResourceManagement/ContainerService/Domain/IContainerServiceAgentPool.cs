@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceOSTypes OSType { get; }
+        OSType OSType { get; }
 
         /// <summary>
         /// Gets array of ports opened on this agent pool.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
         /// </summary>
-        StorageProfileTypes StorageProfile { get; }
+        ContainerServiceStorageProfileTypes StorageProfile { get; }
 
         /// <summary>
         /// Gets the name of the subnet used by each virtual machine in the agent pool.
@@ -61,6 +61,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the size of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceVirtualMachineSizeTypes VMSize { get; }
+        ContainerServiceVMSizeTypes VMSize { get; }
     }
 }

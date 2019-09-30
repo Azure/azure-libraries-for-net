@@ -57,22 +57,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
+        OSType Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
         {
             get
             {
                 return this.OSType();
-            }
-        }
-
-        /// <summary>
-        /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
-        /// </summary>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.StorageProfile
-        {
-            get
-            {
-                return this.StorageProfile();
             }
         }
 
@@ -88,9 +77,20 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
+        /// Gets agent pool type.
+        /// </summary>
+        AgentPoolType Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.Type
+        {
+            get
+            {
+                return this.Type();
+            }
+        }
+
+        /// <summary>
         /// Gets size of each agent virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize
+        ContainerServiceVMSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize
         {
             get
             {
@@ -105,6 +105,26 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         KubernetesCluster.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<KubernetesCluster.Definition.IWithCreate>.Attach()
         {
             return this.Attach();
+        }
+
+        /// <summary>
+        /// Set agent pool type to every virtual machine in the agent pool.
+        /// </summary>
+        /// <param name="agentPoolType">The agent pool type for every machine in the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolType<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolType(AgentPoolType agentPoolType)
+        {
+            return this.WithAgentPoolType(agentPoolType);
+        }
+
+        /// <summary>
+        /// Set agent pool type by type name.
+        /// </summary>
+        /// <param name="agentPoolTypeName">The agent pool type name in string format.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolType<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolTypeName(string agentPoolTypeName)
+        {
+            return this.WithAgentPoolTypeName(agentPoolTypeName);
         }
 
         /// <summary>
@@ -146,7 +166,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="osType">OS type to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(OSType osType)
         {
             return this.WithOSType(osType);
         }
@@ -156,7 +176,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="vmSize">The size of each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize)
         {
             return this.WithVirtualMachineSize(vmSize);
         }

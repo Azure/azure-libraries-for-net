@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
         /// vmSize specified.</param>
-        /// <param name="vnetSubnetID">VNet SubnetID specifies the vnet's
+        /// <param name="vnetSubnetID">VNet SubnetID specifies the VNet's
         /// subnet identifier.</param>
         /// <param name="firstConsecutiveStaticIP">FirstConsecutiveStaticIP
         /// used to specify the first static ip of masters.</param>
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// storage used. Choose from StorageAccount and ManagedDisks. Leave it
         /// empty, we will choose for you based on the orchestrator choice.
         /// Possible values include: 'StorageAccount', 'ManagedDisks'</param>
-        /// <param name="fqdn">FDQN for the master pool.</param>
-        public ContainerServiceMasterProfile(string dnsPrefix, string vmSize, int? count = default(int?), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), string firstConsecutiveStaticIP = default(string), string storageProfile = default(string), string fqdn = default(string))
+        /// <param name="fqdn">FQDN for the master pool.</param>
+        public ContainerServiceMasterProfile(string dnsPrefix, ContainerServiceVMSizeTypes vmSize, int? count = default(int?), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), string firstConsecutiveStaticIP = default(string), ContainerServiceStorageProfileTypes storageProfile = default(ContainerServiceStorageProfileTypes), string fqdn = default(string))
         {
             Count = count;
             DnsPrefix = dnsPrefix;
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'
         /// </summary>
         [JsonProperty(PropertyName = "vmSize")]
-        public string VmSize { get; set; }
+        public ContainerServiceVMSizeTypes VmSize { get; set; }
 
         /// <summary>
         /// Gets or sets OS Disk Size in GB to be used to specify the disk size
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public int? OsDiskSizeGB { get; set; }
 
         /// <summary>
-        /// Gets or sets vNet SubnetID specifies the vnet's subnet identifier.
+        /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier.
         /// </summary>
         [JsonProperty(PropertyName = "vnetSubnetID")]
         public string VnetSubnetID { get; set; }
@@ -224,10 +224,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// values include: 'StorageAccount', 'ManagedDisks'
         /// </summary>
         [JsonProperty(PropertyName = "storageProfile")]
-        public string StorageProfile { get; set; }
+        public ContainerServiceStorageProfileTypes StorageProfile { get; set; }
 
         /// <summary>
-        /// Gets FDQN for the master pool.
+        /// Gets FQDN for the master pool.
         /// </summary>
         [JsonProperty(PropertyName = "fqdn")]
         public string Fqdn { get; private set; }

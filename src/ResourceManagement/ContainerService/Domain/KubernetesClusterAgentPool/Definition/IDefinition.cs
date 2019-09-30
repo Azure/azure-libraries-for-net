@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition
 {
+    using Microsoft.Azure.Management.ContainerService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
@@ -13,6 +14,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSDiskSize<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<ParentT>,
@@ -30,6 +32,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSDiskSize<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<ParentT>,
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         /// </summary>
         /// <param name="osType">OS type to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithOSType(ContainerServiceOSTypes osType);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithOSType(OSType osType);
     }
 
     /// <summary>
@@ -124,7 +127,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         /// </summary>
         /// <param name="vmSize">The size of each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize);
     }
 
     /// <summary>
@@ -140,5 +143,28 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         /// <param name="osDiskSizeInGB">OS Disk Size in GB to be used for every machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithOSDiskSizeInGB(int osDiskSizeInGB);
+    }
+
+    /// <summary>
+    /// The stage of a container service agent pool definition allowing to specify the type of agent pool.
+    /// Allowed values could be seen in AgentPoolType Class.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
+    public interface IWithAgentPoolType<ParentT> 
+    {
+
+        /// <summary>
+        /// Set agent pool type to every virtual machine in the agent pool.
+        /// </summary>
+        /// <param name="agentPoolType">The agent pool type for every machine in the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithAgentPoolType(AgentPoolType agentPoolType);
+
+        /// <summary>
+        /// Set agent pool type by type name.
+        /// </summary>
+        /// <param name="agentPoolTypeName">The agent pool type name in string format.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithAgentPoolTypeName(string agentPoolTypeName);
     }
 }

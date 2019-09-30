@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the storage kind set for every machine in the master pool.
         /// </summary>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterStorageProfile
+        ContainerServiceStorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterStorageProfile
         {
             get
             {
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for every machine in the master pool.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterStorageProfile.WithMasterStorageProfile(StorageProfileTypes storageProfile)
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterStorageProfile.WithMasterStorageProfile(ContainerServiceStorageProfileTypes storageProfile)
         {
             return this.WithMasterStorageProfile(storageProfile);
         }
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="vmSize">The size of the VM.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterVMSize.WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterVMSize.WithMasterVMSize(ContainerServiceVMSizeTypes vmSize)
         {
             return this.WithMasterVMSize(vmSize);
         }

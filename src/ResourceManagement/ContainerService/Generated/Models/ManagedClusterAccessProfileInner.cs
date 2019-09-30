@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
     /// Managed cluster Access Profile.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ManagedClusterAccessProfileInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ManagedClusterAccessProfileInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedClusterAccessProfileInner
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         /// <param name="kubeConfig">Base64-encoded Kubernetes configuration
         /// file.</param>
-        public ManagedClusterAccessProfileInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), byte[] kubeConfig = default(byte[]))
+        public ManagedClusterAccessProfileInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), byte[] kubeConfig = default(byte[]))
             : base(location, id, name, type, tags)
         {
             KubeConfig = kubeConfig;
@@ -55,5 +56,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         [JsonProperty(PropertyName = "properties.kubeConfig")]
         public byte[] KubeConfig { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

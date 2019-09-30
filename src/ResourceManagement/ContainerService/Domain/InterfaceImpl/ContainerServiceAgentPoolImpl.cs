@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSType
+        OSType Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSType
         {
             get
             {
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
         /// </summary>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.StorageProfile
+        ContainerServiceStorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.StorageProfile
         {
             get
             {
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the size of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.VMSize
+        ContainerServiceVMSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.VMSize
         {
             get
             {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="osType">OS type to be used for every machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithOSType<ContainerService.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
+        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithOSType<ContainerService.Definition.IWithCreate>.WithOSType(OSType osType)
         {
             return this.WithOSType(osType);
         }
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithStorageProfile<ContainerService.Definition.IWithCreate>.WithStorageProfile(StorageProfileTypes storageProfile)
+        ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithStorageProfile<ContainerService.Definition.IWithCreate>.WithStorageProfile(ContainerServiceStorageProfileTypes storageProfile)
         {
             return this.WithStorageProfile(storageProfile);
         }
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="vmSize">The size of the virtual machine.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize)
         {
             return this.WithVirtualMachineSize(vmSize);
         }

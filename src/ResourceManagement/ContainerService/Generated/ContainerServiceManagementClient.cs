@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     public partial class ContainerServiceManagementClient : FluentServiceClientBase<ContainerServiceManagementClient>, IContainerServiceManagementClient, IAzureClient
     {
         /// <summary>
+        /// The base URI of the service.
+        /// </summary>
+        /// public System.Uri BaseUri { get; set; }
+
+        /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
         public JsonSerializerSettings SerializationSettings { get; private set; }
@@ -34,7 +39,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
+        /// <summary>
+        /// Credentials needed for the client to connect to Azure.
+        /// </summary>
+        /// public ServiceClientCredentials Credentials { get; private set; }
+
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
         /// subscription. The subscription ID forms part of the URI for every service
@@ -61,6 +71,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IOpenShiftManagedClustersOperations.
+        /// </summary>
+        public virtual IOpenShiftManagedClustersOperations OpenShiftManagedClusters { get; private set; }
+
+        /// <summary>
         /// Gets the IContainerServicesOperations.
         /// </summary>
         public virtual IContainerServicesOperations ContainerServices { get; private set; }
@@ -76,12 +91,17 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public virtual IManagedClustersOperations ManagedClusters { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ContainerServiceManagementClient class.
+        /// Gets the IAgentPoolsOperations.
         /// </summary>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ContainerServiceManagementClient(RestClient restClient) 
+        public virtual IAgentPoolsOperations AgentPools { get; private set; }
+
+        /// <summary> 
+        /// Initializes a new instance of the ContainerServiceManagementClient class. 
+        /// </summary> 
+        /// <exception cref="System.ArgumentNullException"> 
+        /// Thrown when a required parameter is null 
+        /// </exception> 
+        public ContainerServiceManagementClient(RestClient restClient)
             : base(restClient)
         {
         }
@@ -95,9 +115,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         protected override void Initialize()
         {
+            OpenShiftManagedClusters = new OpenShiftManagedClustersOperations(this);
             ContainerServices = new ContainerServicesOperations(this);
             Operations = new Operations(this);
             ManagedClusters = new ManagedClustersOperations(this);
+            AgentPools = new AgentPoolsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -128,6 +150,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<OpenShiftManagedClusterBaseIdentityProvider>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<OpenShiftManagedClusterBaseIdentityProvider>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

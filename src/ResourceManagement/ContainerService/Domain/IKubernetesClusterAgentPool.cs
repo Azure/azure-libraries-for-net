@@ -33,21 +33,21 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceOSTypes OSType { get; }
-
-       /// <summary>
-        /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
-        /// </summary>
-        StorageProfileTypes StorageProfile { get; }
+        OSType OSType { get; }
 
         /// <summary>
         /// Gets the name of the subnet used by each virtual machine in the agent pool.
         /// </summary>
         string SubnetName { get; }
 
+        /// <summary>
+        /// Gets agent pool type.
+        /// </summary>
+        AgentPoolType Type { get; }
+
          /// <summary>
         /// Gets size of each agent virtual machine in the agent pool.
         /// </summary>
-        ContainerServiceVirtualMachineSizeTypes VMSize { get; }
+        ContainerServiceVMSizeTypes VMSize { get; }
     }
 }

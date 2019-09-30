@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Kubernetes network. Possible values include: 'azure',
         /// 'kubenet'</param>
         /// <param name="networkPolicy">Network policy used for building
-        /// Kubernetes network. Possible values include: 'calico'</param>
+        /// Kubernetes network. Possible values include: 'calico',
+        /// 'azure'</param>
         /// <param name="podCidr">A CIDR notation IP range from which to assign
         /// pod IPs when kubenet is used.</param>
         /// <param name="serviceCidr">A CIDR notation IP range from which to
@@ -46,7 +47,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="dockerBridgeCidr">A CIDR notation IP range assigned to
         /// the Docker bridge network. It must not overlap with any Subnet IP
         /// ranges or the Kubernetes service address range.</param>
-        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPolicy = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string))
+        /// <param name="loadBalancerSku">The load balancer sku for the managed
+        /// cluster. Possible values include: 'standard', 'basic'</param>
+        /// <param name="loadBalancerProfile">Profile of the cluster load
+        /// balancer.</param>
+        public ContainerServiceNetworkProfile(NetworkPlugin networkPlugin = default(NetworkPlugin), NetworkPolicy networkPolicy = default(NetworkPolicy), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), LoadBalancerSku loadBalancerSku = default(LoadBalancerSku), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile))
         {
             NetworkPlugin = networkPlugin;
             NetworkPolicy = networkPolicy;
@@ -54,6 +59,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
             ServiceCidr = serviceCidr;
             DnsServiceIP = dnsServiceIP;
             DockerBridgeCidr = dockerBridgeCidr;
+            LoadBalancerSku = loadBalancerSku;
+            LoadBalancerProfile = loadBalancerProfile;
             CustomInit();
         }
 
@@ -67,14 +74,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Possible values include: 'azure', 'kubenet'
         /// </summary>
         [JsonProperty(PropertyName = "networkPlugin")]
-        public string NetworkPlugin { get; set; }
+        public NetworkPlugin NetworkPlugin { get; set; }
 
         /// <summary>
         /// Gets or sets network policy used for building Kubernetes network.
-        /// Possible values include: 'calico'
+        /// Possible values include: 'calico', 'azure'
         /// </summary>
         [JsonProperty(PropertyName = "networkPolicy")]
-        public string NetworkPolicy { get; set; }
+        public NetworkPolicy NetworkPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets a CIDR notation IP range from which to assign pod IPs
@@ -105,6 +112,19 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "dockerBridgeCidr")]
         public string DockerBridgeCidr { get; set; }
+
+        /// <summary>
+        /// Gets or sets the load balancer sku for the managed cluster.
+        /// Possible values include: 'standard', 'basic'
+        /// </summary>
+        [JsonProperty(PropertyName = "loadBalancerSku")]
+        public LoadBalancerSku LoadBalancerSku { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of the cluster load balancer.
+        /// </summary>
+        [JsonProperty(PropertyName = "loadBalancerProfile")]
+        public ManagedClusterLoadBalancerProfile LoadBalancerProfile { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -141,6 +161,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
                 {
                     throw new ValidationException(ValidationRules.Pattern, "DockerBridgeCidr", "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$");
                 }
+            }
+            if (LoadBalancerProfile != null)
+            {
+                LoadBalancerProfile.Validate();
             }
         }
     }

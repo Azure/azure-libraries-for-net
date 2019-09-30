@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the CredentialResultsInner class.
         /// </summary>
+        /// <param name="kubeconfigs">Base64-encoded Kubernetes configuration
+        /// file.</param>
         public CredentialResultsInner(IList<CredentialResult> kubeconfigs = default(IList<CredentialResult>))
         {
             Kubeconfigs = kubeconfigs;
@@ -41,6 +43,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets base64-encoded Kubernetes configuration file.
         /// </summary>
         [JsonProperty(PropertyName = "kubeconfigs")]
         public IList<CredentialResult> Kubeconfigs { get; private set; }

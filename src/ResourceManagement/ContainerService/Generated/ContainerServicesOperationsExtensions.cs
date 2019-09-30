@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<IPage<ContainerServiceInner>> ListAsync(this IContainerServicesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<ContainerServiceInner> CreateOrUpdateAsync(this IContainerServicesOperations operations, string resourceGroupName, string containerServiceName, ContainerServiceInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, containerServiceName, parameters, null, cancellationToken).ConfigureAwait(false))
@@ -95,6 +97,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<ContainerServiceInner> GetAsync(this IContainerServicesOperations operations, string resourceGroupName, string containerServiceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, containerServiceName, null, cancellationToken).ConfigureAwait(false))
@@ -127,6 +130,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task DeleteAsync(this IContainerServicesOperations operations, string resourceGroupName, string containerServiceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, containerServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
@@ -150,6 +154,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<IPage<ContainerServiceInner>> ListByResourceGroupAsync(this IContainerServicesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
@@ -163,8 +168,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// </summary>
             /// <remarks>
             /// Gets a list of supported orchestrators in the specified subscription. The
-            /// operation returns properties of each orchestrator including verison and
-            /// available upgrades.
+            /// operation returns properties of each orchestrator including version,
+            /// available upgrades and whether that version or upgrades are in preview.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -209,6 +214,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<ContainerServiceInner> BeginCreateOrUpdateAsync(this IContainerServicesOperations operations, string resourceGroupName, string containerServiceName, ContainerServiceInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, containerServiceName, parameters, null, cancellationToken).ConfigureAwait(false))
@@ -241,6 +247,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task BeginDeleteAsync(this IContainerServicesOperations operations, string resourceGroupName, string containerServiceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, containerServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
@@ -264,6 +271,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<IPage<ContainerServiceInner>> ListNextAsync(this IContainerServicesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
@@ -290,6 +298,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<IPage<ContainerServiceInner>> ListByResourceGroupNextAsync(this IContainerServicesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))

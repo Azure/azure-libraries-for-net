@@ -55,14 +55,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:C0DA13E58FA4E2F8A3C3295799D02961:FC96BA989471A87E3EF4B25DD25DA242
         public KubernetesClusterNetworkProfileImpl WithNetworkPlugin(NetworkPlugin networkPlugin)
         {
-            this.EnsureNetworkProfile().NetworkPlugin = networkPlugin.Value;
+            this.EnsureNetworkProfile().NetworkPlugin = networkPlugin;
             return this;
         }
 
         ///GENMHASH:81FCB1F625D160C21630C458F9A6CA2B:A60126C45B1D069840148CF0F6141110
         public KubernetesClusterNetworkProfileImpl WithNetworkPolicy(NetworkPolicy networkPolicy)
         {
-            this.EnsureNetworkProfile().NetworkPolicy = networkPolicy.Value;
+            this.EnsureNetworkProfile().NetworkPolicy = networkPolicy;
             return this;
         }
 

@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition
 {
+    using Microsoft.Azure.Management.ContainerService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
         /// </summary>
         /// <param name="osType">OS type to be used for every machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithOSType(ContainerServiceOSTypes osType);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithOSType(OSType osType);
     }
 
     /// <summary>
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
         /// </summary>
         /// <param name="vmSize">The size of the virtual machine.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ParentT> WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ParentT> WithVirtualMachineSize(ContainerServiceVMSizeTypes vmSize);
     }
 
     /// <summary>
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithStorageProfile(StorageProfileTypes storageProfile);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithStorageProfile(ContainerServiceStorageProfileTypes storageProfile);
     }
 
     /// <summary>
