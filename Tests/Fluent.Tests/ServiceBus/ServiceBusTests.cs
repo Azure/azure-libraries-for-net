@@ -576,6 +576,7 @@ namespace Fluent.Tests
                     var topic = nspace.Topics.GetByName(topicName);
                      var subscription = topic.Subscriptions
                          .Define(subscriptionName)
+                         .WithSession()
                          .WithDefaultMessageTTL(new TimeSpan(0, 20, 0))
                          .Create();
                     Assert.NotNull(subscription);
@@ -591,6 +592,11 @@ namespace Fluent.Tests
                     topic.Subscriptions.DeleteByName(subscriptionName);
                     subscriptionsInTopic = topic.Subscriptions.List();
                     Assert.True(subscriptionsInTopic.Count() == 0);
+                    Assert.True(subscription.IsSessionEnabled);
+
+                    subscription.Update().WithoutSession().Apply();
+                    subscription.Refresh();
+                    Assert.False(subscription.IsSessionEnabled);
                 }
                 finally
                 {
