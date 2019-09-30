@@ -146,5 +146,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             return WrapModel(name);
         }
+
+        public void DeleteById(string id, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?))
+        {
+            Extensions.Synchronize(() => DeleteByIdAsync(id, deleteMetrics, deleteEmptyServerFarm));
+        }
+
+        public async Task DeleteByIdAsync(string id, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await DeleteByResourceGroupAsync(ResourceUtils.GroupFromResourceId(id), ResourceUtils.NameFromResourceId(id), deleteMetrics, deleteEmptyServerFarm, cancellationToken);
+        }
+
+        public void DeleteByResourceGroup(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?))
+        {
+            Extensions.Synchronize(() => DeleteByResourceGroupAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm));
+        }
+
+        public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Inner.DeleteAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm, cancellationToken);
+        }
     }
 }
