@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// precision.</param>
         /// <param name="kind">Indicates the type of index. Possible values
         /// include: 'Hash', 'Range', 'Spatial'</param>
-        public Indexes(string dataType = default(string), int? precision = default(int?), string kind = default(string))
+        public Indexes(DataType dataType = default(DataType), int? precision = default(int?), IndexKind kind = default(IndexKind))
         {
             DataType = dataType;
             Precision = precision;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'Polygon', 'LineString', 'MultiPolygon'
         /// </summary>
         [JsonProperty(PropertyName = "dataType")]
-        public string DataType { get; set; }
+        public DataType DataType { get; set; }
 
         /// <summary>
         /// Gets or sets the precision of the index. -1 is maximum precision.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'Hash', 'Range', 'Spatial'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        public IndexKind Kind { get; set; }
 
     }
 }

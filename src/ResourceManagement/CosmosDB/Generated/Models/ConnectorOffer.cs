@@ -14,20 +14,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 
     using Newtonsoft.Json;
     /// <summary>
-    /// Defines values for DataType.
+    /// Defines values for ConnectorOffer.
     /// </summary>
     /// <summary>
     /// Determine base value for a given allowed value if exists, else return
     /// the value itself
     /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<DataType>))]
-    public class DataType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DataType>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ConnectorOffer>))]
+    public class ConnectorOffer : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ConnectorOffer>
     {
-        public static readonly DataType String = Parse("String");
-        public static readonly DataType Number = Parse("Number");
-        public static readonly DataType Point = Parse("Point");
-        public static readonly DataType Polygon = Parse("Polygon");
-        public static readonly DataType LineString = Parse("LineString");
-        public static readonly DataType MultiPolygon = Parse("MultiPolygon");
+        public static readonly ConnectorOffer Small = Parse("Small");
     }
 }

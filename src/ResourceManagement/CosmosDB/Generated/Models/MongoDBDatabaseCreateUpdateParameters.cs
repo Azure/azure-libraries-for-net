@@ -16,30 +16,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters to create and update Cosmos DB Cassandra keyspace.
+    /// Parameters to create and update Cosmos DB MongoDB database.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CassandraKeyspaceCreateUpdateParametersInner
+    public partial class MongoDBDatabaseCreateUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// CassandraKeyspaceCreateUpdateParametersInner class.
+        /// MongoDBDatabaseCreateUpdateParameters class.
         /// </summary>
-        public CassandraKeyspaceCreateUpdateParametersInner()
+        public MongoDBDatabaseCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// CassandraKeyspaceCreateUpdateParametersInner class.
+        /// MongoDBDatabaseCreateUpdateParameters class.
         /// </summary>
-        /// <param name="resource">The standard JSON format of a Cassandra
-        /// keyspace</param>
+        /// <param name="resource">The standard JSON format of a MongoDB
+        /// database</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public CassandraKeyspaceCreateUpdateParametersInner(CassandraKeyspaceResource resource, IDictionary<string, string> options)
+        public MongoDBDatabaseCreateUpdateParameters(MongoDBDatabaseResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the standard JSON format of a Cassandra keyspace
+        /// Gets or sets the standard JSON format of a MongoDB database
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public CassandraKeyspaceResource Resource { get; set; }
+        public MongoDBDatabaseResource Resource { get; set; }
 
         /// <summary>
         /// Gets or sets a key-value pair of options to be applied for the

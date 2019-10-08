@@ -16,30 +16,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters to create and update Cosmos DB MongoDB collection.
+    /// Parameters to create and update Cosmos DB Gremlin graph.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class MongoDBCollectionCreateUpdateParametersInner
+    public partial class GremlinGraphCreateUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// MongoDBCollectionCreateUpdateParametersInner class.
+        /// GremlinGraphCreateUpdateParameters class.
         /// </summary>
-        public MongoDBCollectionCreateUpdateParametersInner()
+        public GremlinGraphCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// MongoDBCollectionCreateUpdateParametersInner class.
+        /// GremlinGraphCreateUpdateParameters class.
         /// </summary>
-        /// <param name="resource">The standard JSON format of a MongoDB
-        /// collection</param>
+        /// <param name="resource">The standard JSON format of a Gremlin
+        /// graph</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public MongoDBCollectionCreateUpdateParametersInner(MongoDBCollectionResource resource, IDictionary<string, string> options)
+        public GremlinGraphCreateUpdateParameters(GremlinGraphResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the standard JSON format of a MongoDB collection
+        /// Gets or sets the standard JSON format of a Gremlin graph
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public MongoDBCollectionResource Resource { get; set; }
+        public GremlinGraphResource Resource { get; set; }
 
         /// <summary>
         /// Gets or sets a key-value pair of options to be applied for the

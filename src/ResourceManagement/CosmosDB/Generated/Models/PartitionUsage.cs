@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// usages.</param>
         /// <param name="partitionKeyRangeId">The partition key range id
         /// (integer identifier) of the usages.</param>
-        public PartitionUsage(string unit = default(string), MetricName name = default(MetricName), string quotaPeriod = default(string), long? limit = default(long?), long? currentValue = default(long?), string partitionId = default(string), string partitionKeyRangeId = default(string))
+        public PartitionUsage(UnitType unit = default(UnitType), MetricName name = default(MetricName), string quotaPeriod = default(string), long? limit = default(long?), long? currentValue = default(long?), string partitionId = default(string), string partitionKeyRangeId = default(string))
             : base(unit, name, quotaPeriod, limit, currentValue)
         {
             PartitionId = partitionId;

@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// An Azure Cosmos DB database account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DatabaseAccountInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class DatabaseAccountInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the DatabaseAccountInner class.
@@ -67,7 +68,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// configured for the Cosmos DB account.</param>
         /// <param name="enableMultipleWriteLocations">Enables the account to
         /// write in multiple locations</param>
-        public DatabaseAccountInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kind = default(string), string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Capability> capabilities = default(IList<Capability>), IList<Location> writeLocations = default(IList<Location>), IList<Location> readLocations = default(IList<Location>), IList<FailoverPolicyInner> failoverPolicies = default(IList<FailoverPolicyInner>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?))
+        /// <param name="enableCassandraConnector">Enables the cassandra
+        /// connector on the Cosmos DB C* account</param>
+        /// <param name="connectorOffer">The cassandra connector offer type for
+        /// the Cosmos DB database C* account. Possible values include:
+        /// 'Small'</param>
+        public DatabaseAccountInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DatabaseAccountKind kind = default(DatabaseAccountKind), string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Capability> capabilities = default(IList<Capability>), IList<Location> writeLocations = default(IList<Location>), IList<Location> readLocations = default(IList<Location>), IList<FailoverPolicy> failoverPolicies = default(IList<FailoverPolicy>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), ConnectorOffer connectorOffer = default(ConnectorOffer))
             : base(location, id, name, type, tags)
         {
             Kind = kind;
@@ -84,6 +90,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
             FailoverPolicies = failoverPolicies;
             VirtualNetworkRules = virtualNetworkRules;
             EnableMultipleWriteLocations = enableMultipleWriteLocations;
+            EnableCassandraConnector = enableCassandraConnector;
+            ConnectorOffer = connectorOffer;
             CustomInit();
         }
 
@@ -98,7 +106,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'GlobalDocumentDB', 'MongoDB', 'Parse'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        public DatabaseAccountKind Kind { get; set; }
 
         /// <summary>
         /// </summary>
@@ -177,7 +185,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// priorities.
         /// </summary>
         [JsonProperty(PropertyName = "properties.failoverPolicies")]
-        public IList<FailoverPolicyInner> FailoverPolicies { get; private set; }
+        public IList<FailoverPolicy> FailoverPolicies { get; private set; }
 
         /// <summary>
         /// Gets or sets list of Virtual Network ACL rules configured for the
@@ -191,6 +199,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableMultipleWriteLocations")]
         public bool? EnableMultipleWriteLocations { get; set; }
+
+        /// <summary>
+        /// Gets or sets enables the cassandra connector on the Cosmos DB C*
+        /// account
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableCassandraConnector")]
+        public bool? EnableCassandraConnector { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cassandra connector offer type for the Cosmos DB
+        /// database C* account. Possible values include: 'Small'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.connectorOffer")]
+        public ConnectorOffer ConnectorOffer { get; set; }
 
         /// <summary>
         /// Validate the object.

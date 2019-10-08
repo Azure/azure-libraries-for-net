@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         IDefinition,
         IUpdate
     {
-        private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicyInner> failoverPolicies;
+        private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies;
         private bool hasFailoverPolicyChanges;
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
-        private Dictionary<string,List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
+        private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
         {
             this.EnsureFailoverIsInitialized();
-            Models.FailoverPolicyInner failoverPolicyInner = new Models.FailoverPolicyInner();
-            failoverPolicyInner.LocationName = region.Name;
-            failoverPolicyInner.FailoverPriority = this.failoverPolicies.Count;
+            Models.FailoverPolicy FailoverPolicy = new Models.FailoverPolicy();
+            FailoverPolicy.LocationName = region.Name;
+            FailoverPolicy.FailoverPriority = this.failoverPolicies.Count;
             this.hasFailoverPolicyChanges = true;
-            this.failoverPolicies.Add(failoverPolicyInner);
+            this.failoverPolicies.Add(FailoverPolicy);
             return this;
         }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public string Kind()
         {
-            return this.Inner.Kind;
+            return this.Inner.Kind.Value;
         }
         public bool? MultipleWriteLocationsEnabled()
         {
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private void initializeFailover()
         {
             this.failoverPolicies.Clear();
-            Models.FailoverPolicyInner[] policyInners = new Models.FailoverPolicyInner[this.Inner.FailoverPolicies.Count];
+            Models.FailoverPolicy[] policyInners = new Models.FailoverPolicy[this.Inner.FailoverPolicies.Count];
             for (var i = 0; i < policyInners.Length; i++)
             {
                 policyInners[i] = this.Inner.FailoverPolicies[i];
@@ -228,12 +228,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task RegenerateKeyAsync(string keyKind, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.Manager.Inner.DatabaseAccounts.RegenerateKeyAsync(this.ResourceGroupName, this.Name, keyKind);
+            await this.Manager.Inner.DatabaseAccounts.RegenerateKeyAsync(this.ResourceGroupName, this.Name, KeyKind.Parse(keyKind));
         }
 
         public CosmosDBAccountImpl WithKind(string kind)
         {
-            this.Inner.Kind = kind;
+            this.Inner.Kind = DatabaseAccountKind.Parse(kind);
             return this;
         }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
         {
-            this.failoverPolicies = new List<Models.FailoverPolicyInner>();
+            this.failoverPolicies = new List<Models.FailoverPolicy>();
         }
 
         public Models.ConsistencyPolicy ConsistencyPolicy()
@@ -301,14 +301,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicyInner> failoverPolicies)
+        private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
             if (failoverPolicies.Count > 0)
             {
                 for (int i = 0; i < failoverPolicies.Count; i++)
                 {
-                    Models.FailoverPolicyInner policyInner = failoverPolicies[i];
+                    Models.FailoverPolicy policyInner = failoverPolicies[i];
                     Models.Location location = new Models.Location();
                     location.FailoverPriority = i;
                     location.LocationName = policyInner.LocationName;
@@ -334,10 +334,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public CosmosDBAccountImpl WithWriteReplication(Region region)
         {
-            Models.FailoverPolicyInner failoverPolicyInner = new Models.FailoverPolicyInner();
-            failoverPolicyInner.LocationName = region.Name;
+            Models.FailoverPolicy FailoverPolicy = new Models.FailoverPolicy();
+            FailoverPolicy.LocationName = region.Name;
             this.hasFailoverPolicyChanges = true;
-            this.failoverPolicies.Add(failoverPolicyInner);
+            this.failoverPolicies.Add(FailoverPolicy);
             return this;
         }
 
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:6A08D79B3D058AD12B94D8E88D3A66BB:CBB08B5D2F8EBB6B1A4BE51DA2907810
         public CosmosDBAccountImpl WithDataModelGremlin()
         {
-            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB;
             List<Capability> capabilities = new List<Capability>();
             capabilities.Add(new Capability("EnableGremlin"));
             this.Inner.Capabilities = capabilities;
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:34B523C69C7FD510214D27D478D971AA:49F5455D8963DDB2BE21EA8B38B4C7BE
         public CosmosDBAccountImpl WithDataModelCassandra()
         {
-            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB;
             List<Capability> capabilities = new List<Capability>();
             capabilities.Add(new Capability("EnableCassandra"));
             this.Inner.Capabilities = capabilities;
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:FE98547B907685F667775CEF9663148D:443A834D31456201597F04A15B4BD4A4
         public CosmosDBAccountImpl WithDataModelMongoDB()
         {
-            this.Inner.Kind = DatabaseAccountKind.MongoDB.Value;
+            this.Inner.Kind = DatabaseAccountKind.MongoDB;
 
             return this;
         }
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:D21A1256B8AE75B30461590AB84F759B:5B9CF5267A2EC5C6DB95D90298E3ADB2
         public CosmosDBAccountImpl WithDataModelSql()
         {
-            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB;
 
             return this;
         }
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:CA81479D1B8439CD804916091691404E:3032A4A8923DA7CE6CCD1FF98076F538
         public CosmosDBAccountImpl WithDataModelAzureTable()
         {
-            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB;
             List<Capability> capabilities = new List<Capability>();
             capabilities.Add(new Capability("EnableTable"));
             this.Inner.Capabilities = capabilities;
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:A86A41D6B877011AC6B43DCB0D23965B:1E42DEC842C982C7303E6EE753676F51
         public CosmosDBAccountImpl WithKind(DatabaseAccountKind kind, params Capability[] capabilities)
         {
-            this.Inner.Kind = kind.Value;
+            this.Inner.Kind = kind;
             this.Inner.Capabilities = capabilities;
             return this;
         }
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.Inner.IsVirtualNetworkFilterEnabled = true;
             string vnetId = virtualNetworkId + "/subnets/" + subnetName;
             var internalMap = EnsureVirtualNetworkRules();
-            if(!internalMap.ContainsKey(vnetId))
+            if (!internalMap.ContainsKey(vnetId))
             {
                 internalMap.Add(vnetId, new List<VirtualNetworkRule>());
             }
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 this.Inner.IsVirtualNetworkFilterEnabled = true;
                 foreach (var vnetRule in virtualNetworkRules)
                 {
-                    if(!this.virtualNetworkRulesMap.ContainsKey(vnetRule.Id))
+                    if (!this.virtualNetworkRulesMap.ContainsKey(vnetRule.Id))
                     {
                         this.virtualNetworkRulesMap.Add(vnetRule.Id, new List<VirtualNetworkRule>());
                     }
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     foreach (var item in this.Inner.VirtualNetworkRules)
                     {
-                        if(!this.virtualNetworkRulesMap.ContainsKey(item.Id))
+                        if (!this.virtualNetworkRulesMap.ContainsKey(item.Id))
                         {
                             this.virtualNetworkRulesMap.Add(item.Id, new List<VirtualNetworkRule>());
                         }

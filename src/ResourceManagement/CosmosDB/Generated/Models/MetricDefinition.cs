@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// availabilities for the account.</param>
         /// <param name="primaryAggregationType">The primary aggregation type
         /// of the metric. Possible values include: 'None', 'Average', 'Total',
-        /// 'Minimimum', 'Maximum', 'Last'</param>
+        /// 'Minimum', 'Maximum', 'Last'</param>
         /// <param name="unit">The unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond',
         /// 'BytesPerSecond', 'Milliseconds'</param>
         /// <param name="resourceUri">The resource uri of the database.</param>
         /// <param name="name">The name information for the metric.</param>
-        public MetricDefinition(IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>), string primaryAggregationType = default(string), string unit = default(string), string resourceUri = default(string), MetricName name = default(MetricName))
+        public MetricDefinition(IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>), PrimaryAggregationType primaryAggregationType = default(PrimaryAggregationType), UnitType unit = default(UnitType), string resourceUri = default(string), MetricName name = default(MetricName))
         {
             MetricAvailabilities = metricAvailabilities;
             PrimaryAggregationType = primaryAggregationType;
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 
         /// <summary>
         /// Gets the primary aggregation type of the metric. Possible values
-        /// include: 'None', 'Average', 'Total', 'Minimimum', 'Maximum', 'Last'
+        /// include: 'None', 'Average', 'Total', 'Minimum', 'Maximum', 'Last'
         /// </summary>
         [JsonProperty(PropertyName = "primaryAggregationType")]
-        public string PrimaryAggregationType { get; private set; }
+        public PrimaryAggregationType PrimaryAggregationType { get; private set; }
 
         /// <summary>
         /// Gets or sets the unit of the metric. Possible values include:
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'BytesPerSecond', 'Milliseconds'
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
-        public string Unit { get; set; }
+        public UnitType Unit { get; set; }
 
         /// <summary>
         /// Gets the resource uri of the database.

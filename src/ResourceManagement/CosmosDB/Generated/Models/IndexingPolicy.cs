@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// indexing</param>
         /// <param name="excludedPaths">List of paths to exclude from
         /// indexing</param>
-        public IndexingPolicy(bool? automatic = default(bool?), string indexingMode = default(string), IList<IncludedPath> includedPaths = default(IList<IncludedPath>), IList<ExcludedPath> excludedPaths = default(IList<ExcludedPath>))
+        public IndexingPolicy(bool? automatic = default(bool?), IndexingMode indexingMode = default(IndexingMode), IList<IncludedPath> includedPaths = default(IList<IncludedPath>), IList<ExcludedPath> excludedPaths = default(IList<ExcludedPath>))
         {
             Automatic = automatic;
             IndexingMode = indexingMode;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// 'Consistent', 'Lazy', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "indexingMode")]
-        public string IndexingMode { get; set; }
+        public IndexingMode IndexingMode { get; set; }
 
         /// <summary>
         /// Gets or sets list of paths to include in the indexing

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         /// <param name="resource">The standard JSON format of a resource
         /// throughput</param>
-        public ThroughputUpdateParameters(ThroughputResourceInner resource)
+        public ThroughputUpdateParameters(ThroughputResource resource)
         {
             Resource = resource;
             CustomInit();
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets the standard JSON format of a resource throughput
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public ThroughputResourceInner Resource { get; set; }
+        public ThroughputResource Resource { get; set; }
 
         /// <summary>
         /// Validate the object.

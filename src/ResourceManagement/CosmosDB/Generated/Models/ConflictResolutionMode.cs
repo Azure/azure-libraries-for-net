@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ConflictResolutionMode.
     /// </summary>
-    public static class ConflictResolutionMode
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ConflictResolutionMode>))]
+    public class ConflictResolutionMode : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ConflictResolutionMode>
     {
-        public const string LastWriterWins = "LastWriterWins";
-        public const string Custom = "Custom";
+        public static readonly ConflictResolutionMode LastWriterWins = Parse("LastWriterWins");
+        public static readonly ConflictResolutionMode Custom = Parse("Custom");
     }
 }

@@ -16,30 +16,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters to create and update Cosmos DB SQL database.
+    /// Parameters to create and update Cosmos DB Cassandra table.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SqlDatabaseCreateUpdateParametersInner
+    public partial class CassandraTableCreateUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// SqlDatabaseCreateUpdateParametersInner class.
+        /// CassandraTableCreateUpdateParameters class.
         /// </summary>
-        public SqlDatabaseCreateUpdateParametersInner()
+        public CassandraTableCreateUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// SqlDatabaseCreateUpdateParametersInner class.
+        /// CassandraTableCreateUpdateParameters class.
         /// </summary>
-        /// <param name="resource">The standard JSON format of a SQL
-        /// database</param>
+        /// <param name="resource">The standard JSON format of a Cassandra
+        /// table</param>
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public SqlDatabaseCreateUpdateParametersInner(SqlDatabaseResource resource, IDictionary<string, string> options)
+        public CassandraTableCreateUpdateParameters(CassandraTableResource resource, IDictionary<string, string> options)
         {
             Resource = resource;
             Options = options;
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the standard JSON format of a SQL database
+        /// Gets or sets the standard JSON format of a Cassandra table
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public SqlDatabaseResource Resource { get; set; }
+        public CassandraTableResource Resource { get; set; }
 
         /// <summary>
         /// Gets or sets a key-value pair of options to be applied for the

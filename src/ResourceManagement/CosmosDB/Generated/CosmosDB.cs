@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,19 +19,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// Azure Cosmos DB Database Service Resource Provider REST API
     /// </summary>
-    public partial class CosmosDB : FluentServiceClientBase<CosmosDB>, ICosmosDB, IAzureClient
+    public partial class CosmosDB : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<CosmosDB>, ICosmosDB, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        //public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -140,8 +135,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public CosmosDB(RestClient restClient)
-            : base(restClient)
+        public CosmosDB(RestClient restClient) : base(restClient)
         {
         }
 
@@ -167,7 +161,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             CollectionPartition = new CollectionPartitionOperations(this);
             PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
             PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            this.BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2015-04-08";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

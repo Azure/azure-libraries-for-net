@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// container can be partitioned</param>
         /// <param name="kind">Indicates the kind of algorithm used for
         /// partitioning. Possible values include: 'Hash', 'Range'</param>
-        public ContainerPartitionKey(IList<string> paths = default(IList<string>), string kind = default(string))
+        public ContainerPartitionKey(IList<string> paths = default(IList<string>), PartitionKind kind = default(PartitionKind))
         {
             Paths = paths;
             Kind = kind;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Possible values include: 'Hash', 'Range'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        public PartitionKind Kind { get; set; }
 
     }
 }
