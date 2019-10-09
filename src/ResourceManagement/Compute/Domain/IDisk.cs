@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the hypervisor generation of the Virtual Machine.
         /// </summary>
         HyperVGeneration HyperVGeneration { get; }
+
         /// <summary>
         /// Gets disk size in GB.
         /// </summary>

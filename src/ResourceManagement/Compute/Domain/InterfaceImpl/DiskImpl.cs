@@ -317,6 +317,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.WithOSType(osType);
         }
 
+        /// <summary>
+        /// Specifies the hypervisor generation of the Virtual Machine.
+        /// </summary>
+        /// <param name="hyperVGeneration">The hypervisor generation.</param>
+        /// <return>The next stage of the update.</return>
         IUpdate IWithHyperVGeneration.WithHyperVGeneration(HyperVGeneration hyperVGeneration)
         {
             return this.WithHyperVGeneration(hyperVGeneration);
