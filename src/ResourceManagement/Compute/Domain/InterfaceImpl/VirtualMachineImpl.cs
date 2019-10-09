@@ -728,6 +728,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Reimages the virtual machine.
+        /// </summary>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.Reimage()
+        {
+
+            this.Reimage();
+        }
+
+        /// <summary>
+        /// Reimages the virtual machine asynchronously.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ReimageAsync(CancellationToken cancellationToken)
+        {
+
+            await this.ReiamgeAsync(cancellationToken);
+        }
+
+        /// <summary>
         /// Begins the description of an update of an existing extension of this virtual machine.
         /// </summary>
         /// <param name="name">The reference name of an existing extension.</param>

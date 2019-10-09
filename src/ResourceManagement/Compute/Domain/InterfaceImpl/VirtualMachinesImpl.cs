@@ -305,5 +305,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             await this.StartAsync(groupName, name, cancellationToken);
         }
+
+        /// <summary>
+        /// Reimages a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Reimage(string groupName, string name)
+        {
+
+            this.Reimage(groupName, name);
+        }
+
+        /// <summary>
+        /// Reimages the virtual machine asynchronously.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.ReimageAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+
+            await this.ReimageAsync(groupName, name, cancellationToken);
+        }
     }
 }

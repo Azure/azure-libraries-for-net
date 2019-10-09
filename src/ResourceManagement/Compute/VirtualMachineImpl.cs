@@ -268,6 +268,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             await Manager.Inner.VirtualMachines.StartAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
 
+        public void Reimage()
+        {
+            Extensions.Synchronize(() => Manager.Inner.VirtualMachines.ReimageAsync(this.ResourceGroupName, this.Name));
+        }
+
+        public async Task ReiamgeAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Manager.Inner.VirtualMachines.ReimageAsync(this.ResourceGroupName, this.Name, cancellationToken);
+        }
+
         ///GENMHASH:D9EB75AF88B1A07EDC0965B26A7F7C04:E30F1E083D68AA7A68C7128405BA3741
         public void Redeploy()
         {
@@ -2533,6 +2543,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal AzureEnvironment Environment()
         {
             return this.Manager.RestClient.Environment;
+        }
+
+        public Task ReimageAsync(CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
 
         ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVJbXBsLk1hbmFnZWREYXRhRGlza0NvbGxlY3Rpb24=
