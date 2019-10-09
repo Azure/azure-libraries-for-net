@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             TenantId = tenantId;
             Environment = environment;
-            credentialsCache = new Dictionary<Uri, ServiceClientCredentials>();
+            credentialsCache = new ConcurrentDictionary<Uri, ServiceClientCredentials>();
         }
 
         public AzureCredentials WithDefaultSubscription(string subscriptionId)
