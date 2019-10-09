@@ -2545,11 +2545,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.Manager.RestClient.Environment;
         }
 
-        public Task ReimageAsync(CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
         ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVJbXBsLk1hbmFnZWREYXRhRGlza0NvbGxlY3Rpb24=
         partial class ManagedDataDiskCollection
         {
