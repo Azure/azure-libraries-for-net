@@ -30,22 +30,56 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             MetricAlert.Update.IUpdate>,
         IMetricAlert,
         IDefinition,
+        IDefinitionMultipleResource,
         IUpdate,
         IWithMetricUpdate
     {
+        // 2019/09 at present service support 2 static criteria, or 1 dynamic criteria
         private Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> conditions;
+        private Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricDynamicAlertCondition> dynamicConditions;
+
+        private bool multipleResource = false;
 
         ///GENMHASH:93FFF181B400DDE81DA77A82752C1C48:F98AC2175A8CD73451AD6F369CD5E05F
         internal MetricAlertImpl(string name, MetricAlertResourceInner innerModel, MonitorManager monitorManager)
             : base(name, innerModel, monitorManager)
         {
             this.conditions = new Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition>();
-            var crits = (MetricAlertSingleResourceMultipleMetricCriteria)innerModel.Criteria;
-            if (crits != null)
+            this.dynamicConditions = new Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricDynamicAlertCondition>();
+
+            if (innerModel.Criteria != null)
             {
-                foreach (var crit in crits.AllOf)
+                if (innerModel.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
                 {
-                    this.conditions[crit.Name] = new MetricAlertConditionImpl(crit.Name, crit, this);
+                    multipleResource = false;
+                    var crits = (innerModel.Criteria as MetricAlertSingleResourceMultipleMetricCriteria).AllOf;
+                    if (crits != null)
+                    {
+                        foreach (var crit in crits)
+                        {
+                            this.conditions[crit.Name] = new MetricAlertConditionImpl(crit.Name, crit, this);
+                        }
+                    }
+                }
+                else if (innerModel.Criteria is MetricAlertMultipleResourceMultipleMetricCriteria)
+                {
+                    multipleResource = true;
+                    // multiple resource with either multiple static criteria, or (currently single) dynamic criteria
+                    var crits = (innerModel.Criteria as MetricAlertMultipleResourceMultipleMetricCriteria).AllOf;
+                    if (crits != null)
+                    {
+                        foreach (var crit in crits)
+                        {
+                            if (crit is MetricCriteria)
+                            {
+                                this.conditions[crit.Name] = new MetricAlertConditionImpl(crit.Name, crit as MetricCriteria, this);
+                            }
+                            else if (crit is DynamicMetricCriteria)
+                            {
+                                this.dynamicConditions[crit.Name] = new MetricDynamicAlertConditionImpl(crit.Name, crit as DynamicMetricCriteria, this);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -55,6 +89,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             this.WithoutAlertCriteria(criteria.Name());
             this.conditions[criteria.Name()] = criteria;
+            return this;
+        }
+
+        internal MetricAlertImpl WithDynamicAlertCriteria(MetricDynamicAlertConditionImpl criteria)
+        {
+            this.WithoutAlertCriteria(criteria.Name());
+            this.dynamicConditions[criteria.Name()] = criteria;
             return this;
         }
 
@@ -85,6 +126,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this.conditions;
         }
 
+        public IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricDynamicAlertCondition> DynamicAlertCriterias()
+        {
+            return this.dynamicConditions;
+        }
+
         ///GENMHASH:BD4E8EEC1F995C84FF18BAE3CCFD22A6:F72671A23D283F9DD9B5C804037ECE33
         public bool AutoMitigate()
         {
@@ -94,14 +140,49 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:3D3357BF7A9E06A99BB65E3E9DAF00FD
         public override async Task<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            this.Inner.Location = "global";
-            var crit = new MetricAlertSingleResourceMultipleMetricCriteria();
-            crit.AllOf = new List<MetricCriteria>();
-            foreach (var mc in conditions.Values)
+            if (!this.conditions.Any() && !this.dynamicConditions.Any())
             {
-                crit.AllOf.Add(mc.Inner);
+                throw new ArgumentException("Condition cannot be empty");
             }
-            this.Inner.Criteria = crit;
+            else if (this.conditions.Any() && this.dynamicConditions.Any())
+            {
+                throw new ArgumentException("Static condition and dynamic condition cannot co-exist");
+            }
+
+            this.Inner.Location = "global";
+            if (this.conditions.Any())
+            {
+                if (!multipleResource)
+                {
+                    var crit = new MetricAlertSingleResourceMultipleMetricCriteria();
+                    crit.AllOf = new List<MetricCriteria>();
+                    foreach (var mc in conditions.Values)
+                    {
+                        crit.AllOf.Add(mc.Inner);
+                    }
+                    this.Inner.Criteria = crit;
+                }
+                else
+                {
+                    var crit = new MetricAlertMultipleResourceMultipleMetricCriteria();
+                    crit.AllOf = new List<MultiMetricCriteria>();
+                    foreach (var mc in conditions.Values)
+                    {
+                        crit.AllOf.Add(mc.Inner);
+                    }
+                    this.Inner.Criteria = crit;
+                }
+            }
+            else if (this.dynamicConditions.Any())
+            {
+                var crit = new MetricAlertMultipleResourceMultipleMetricCriteria();
+                crit.AllOf = new List<MultiMetricCriteria>();
+                foreach (var mc in dynamicConditions.Values)
+                {
+                    crit.AllOf.Add(mc.Inner);
+                }
+                this.Inner.Criteria = crit;
+            }
             SetInner(await this.Manager.Inner.MetricAlerts.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken));
             return this;
         }
@@ -110,6 +191,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public MetricAlertConditionImpl DefineAlertCriteria(string name)
         {
             return new MetricAlertConditionImpl(name, new MetricCriteria(), this);
+        }
+
+        public MetricDynamicAlertConditionImpl DefineDynamicAlertCriteria(string name)
+        {
+            return new MetricDynamicAlertConditionImpl(name, new DynamicMetricCriteria(), this);
         }
 
         ///GENMHASH:7B3CA3D467253D93C6FF7587C3C0D0B7:F5293CC540B22E551BB92F6FCE17DE2C
@@ -151,7 +237,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:A61C25AD4B6930EB03CA48C25CDEF795:79090E4718A09FDF5299FE081DD6B337
         public MetricAlertConditionImpl UpdateAlertCriteria(string name)
         {
-            return (MetricAlertConditionImpl)this.conditions[name];
+            return this.conditions[name] as MetricAlertConditionImpl;
+        }
+
+        public MetricDynamicAlertConditionImpl UpdateDynamicAlertCriteria(string name)
+        {
+            return this.dynamicConditions[name] as MetricDynamicAlertConditionImpl;
         }
 
         ///GENMHASH:AE926B5FF5A4B01D584D38C07E21A243:15DB234CEC0D38C1E33EB2ECEB2CC038
@@ -234,6 +325,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 this.conditions.Remove(name);
             }
+            if (this.dynamicConditions.ContainsKey(name))
+            {
+                this.dynamicConditions.Remove(name);
+            }
             return this;
         }
 
@@ -275,6 +370,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:21C5E913CC99F20E7CFF02057B43ED9D:252983E9D051F9EAAC0EB5276C560315
         public MetricAlertImpl WithTargetResource(string resourceId)
         {
+            multipleResource = false;
+
             this.Inner.Scopes = new List<string>();
             this.Inner.Scopes.Add(resourceId);
             return this;
@@ -283,9 +380,44 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:FF34A220CBD022BF5822C4584DEEE94E:A6098866C47E7A7E582B09209AD5C53E
         public MetricAlertImpl WithTargetResource(IHasId resource)
         {
-            return this.WithTargetResource(resource.Id);
+            multipleResource = false;
 
+            return this.WithTargetResource(resource.Id);
+        }
+
+        public MetricAlertImpl WithMultipleTargetResources(IEnumerable<string> resourceIds, string type, string regionName)
+        {
+            multipleResource = true;
+
+            List<string> scopes = new List<string>();
+            scopes.AddRange(resourceIds);
+            this.Inner.Scopes = scopes;
+            this.Inner.TargetResourceType = type;
+            this.Inner.TargetResourceRegion = regionName;
             return this;
+        }
+
+        public MetricAlertImpl WithMultipleTargetResources(IEnumerable<IResource> resources)
+        {
+            if (resources == null || !resources.Any())
+            {
+                throw new ArgumentException("Target resource cannot be empty");
+            }
+
+            multipleResource = true;
+
+            List<string> resourceIds = new List<string>();
+            string type = resources.First().Type;
+            string regionName = resources.First().RegionName;
+            foreach (IResource resource in resources)
+            {
+                if (!type.Equals(resource.Type, StringComparison.OrdinalIgnoreCase) || !regionName.Equals(resource.RegionName, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("Target resource must be of the same resource type and in the same region");
+                }
+                resourceIds.Add(resource.Id);
+            }
+            return this.WithMultipleTargetResources(resourceIds, type, regionName);
         }
     }
 }

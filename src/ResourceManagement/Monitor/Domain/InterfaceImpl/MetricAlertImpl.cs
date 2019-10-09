@@ -3,8 +3,11 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
+    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition;
+    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
+    using System.Collections.Generic;
 
     internal partial class MetricAlertImpl
     {
@@ -30,6 +33,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             get
             {
                 return this.AlertCriterias();
+            }
+        }
+
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricDynamicAlertCondition> Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert.DynamicAlertCriterias
+        {
+            get
+            {
+                return this.DynamicAlertCriterias();
             }
         }
 
@@ -358,6 +369,76 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         MetricAlert.Definition.IWithWindowSize MetricAlert.Definition.IWithScopes.WithTargetResource(IHasId resource)
         {
             return this.WithTargetResource(resource);
+        }
+
+        IWithWindowSizeMultipleResource IWithScopes.WithMultipleTargetResources(IEnumerable<string> resourceIds, string type, string regionName)
+        {
+            return this.WithMultipleTargetResources(resourceIds, type, regionName);
+        }
+
+        IWithWindowSizeMultipleResource IWithScopes.WithMultipleTargetResources(IEnumerable<IResource> resources)
+        {
+            return this.WithMultipleTargetResources(resources);
+        }
+
+        IWithEvaluationFrequency IWithWindowSizeMultipleResource.WithPeriod(TimeSpan size)
+        {
+            return this.WithPeriod(size);
+        }
+
+        IWithSeverity IWithEvaluationFrequencyMultipleResource.WithFrequency(TimeSpan frequency)
+        {
+            return this.WithFrequency(frequency);
+        }
+
+        IWithActionGroup IWithSeverityMultipleResource.WithAlertDetails(int severity, string description)
+        {
+            return this.WithAlertDetails(severity, description);
+        }
+
+        IWithCriteriaDefinition IWithActionGroupMultipleResource.WithActionGroups(params string[] actionGroupId)
+        {
+            return this.WithActionGroups(actionGroupId);
+        }
+
+        MetricAlertCondition.Definition.Blank.MetricName.IMetricName<IWithCreate> IWithDynamicCriteriaDefinition.DefineAlertCriteria(string name)
+        {
+            return this.DefineAlertCriteria(name);
+        }
+
+        MetricDynamicAlertCondition.Definition.IMetricName<IWithCreateDynamicCondition> IWithDynamicCriteriaDefinition.DefineDynamicAlertCriteria(string name)
+        {
+            return this.DefineDynamicAlertCriteria(name);
+        }
+
+        MetricDynamicAlertCondition.Definition.IMetricName<IUpdate> IWithMetricUpdate.DefineDynamicAlertCriteria(string name)
+        {
+            return this.DefineDynamicAlertCriteria(name);
+        }
+
+        MetricDynamicAlertCondition.Update.IUpdateStages IWithMetricUpdate.UpdateDynamicAlertCriteria(string name)
+        {
+            return this.DefineDynamicAlertCriteria(name);
+        }
+
+        IWithCreate IWithCreateDynamicCondition.WithoutAutoMitigation()
+        {
+            return this.WithoutAutoMitigation();
+        }
+
+        IWithActionGroup IWithCreateDynamicCondition.WithRuleDisabled()
+        {
+            return this.WithRuleDisabled();
+        }
+
+        IWithCreateDynamicCondition ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<IWithCreateDynamicCondition>.WithTags(IDictionary<string, string> tags)
+        {
+            return this.WithTags(tags);
+        }
+
+        IWithCreateDynamicCondition ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<IWithCreateDynamicCondition>.WithTag(string key, string value)
+        {
+            return this.WithTag(key, value);
         }
     }
 }

@@ -19,11 +19,25 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateDefinition.Blank.MetricName.IMetricName<Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate> DefineAlertCriteria(string name);
 
         /// <summary>
+        /// Starts definition of the metric dynamic alert condition.
+        /// </summary>
+        /// <param name="name">Sets the name of the dynamic condition.</param>
+        /// <return>The next stage of the metric alert update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.MetricDynamicAlertCondition.Definition.IMetricName<Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate> DefineDynamicAlertCriteria(string name);
+
+        /// <summary>
         /// Starts update of the previously defined metric alert condition.
         /// </summary>
         /// <param name="name">Name of the condition that should be updated.</param>
         /// <return>The next stage of the metric alert update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Update.IUpdateStages UpdateAlertCriteria(string name);
+
+        /// <summary>
+        /// Starts update of the previously defined metric dynamic alert condition.
+        /// </summary>
+        /// <param name="name">Name of the dynamic condition that should be updated.</param>
+        /// <return>The next stage of the metric alert update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.MetricDynamicAlertCondition.Update.IUpdateStages UpdateDynamicAlertCriteria(string name);
 
         /// <summary>
         /// Sets the actions that will activate when the condition is met.
