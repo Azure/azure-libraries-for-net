@@ -268,14 +268,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             await Manager.Inner.VirtualMachines.StartAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
 
-        public void Reimage()
+        public void Reimage(bool? tempDisk = default(bool?))
         {
-            Extensions.Synchronize(() => Manager.Inner.VirtualMachines.ReimageAsync(this.ResourceGroupName, this.Name));
+            Extensions.Synchronize(() => Manager.Inner.VirtualMachines.ReimageAsync(this.ResourceGroupName, this.Name, tempDisk));
         }
 
-        public async Task ReiamgeAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task ReimageAsync(bool? tempDisk = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.VirtualMachines.ReimageAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            await Manager.Inner.VirtualMachines.ReimageAsync(this.ResourceGroupName, this.Name, tempDisk, cancellationToken);
         }
 
         ///GENMHASH:D9EB75AF88B1A07EDC0965B26A7F7C04:E30F1E083D68AA7A68C7128405BA3741

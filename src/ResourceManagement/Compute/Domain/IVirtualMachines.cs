@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
-        void Reimage(string groupName, string name);
+        void Reimage(string groupName, string name, bool? tempDisk = default(bool?));
 
         /// <summary>
         /// Reimages the virtual machine asynchronously.
@@ -176,6 +176,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        Task ReimageAsync(string groupName, string name, CancellationToken cancellationToken = default(CancellationToken));
+        Task ReimageAsync(string groupName, string name, bool? tempDisk = default(bool?), CancellationToken cancellationToken = default(CancellationToken));
     }
 }

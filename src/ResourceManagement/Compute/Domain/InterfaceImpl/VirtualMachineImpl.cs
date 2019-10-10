@@ -730,20 +730,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Reimages the virtual machine.
         /// </summary>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.Reimage()
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.Reimage(bool? tempDisk)
         {
 
-            this.Reimage();
+            this.Reimage(tempDisk);
         }
 
         /// <summary>
         /// Reimages the virtual machine asynchronously.
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ReimageAsync(CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ReimageAsync(bool? tempDisk, CancellationToken cancellationToken)
         {
 
-            await this.ReiamgeAsync(cancellationToken);
+            await this.ReimageAsync(tempDisk, cancellationToken);
         }
 
         /// <summary>
