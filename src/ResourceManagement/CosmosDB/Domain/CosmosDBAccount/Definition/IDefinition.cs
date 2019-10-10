@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the database account kind.
     /// </summary>
-    public interface IWithKind  :
+    public interface IWithKind :
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKindBeta
     {
         /// <summary>
@@ -34,9 +34,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     }
 
     /// <summary>
+    /// The stage of the cosmos db definition allowing to specify cassandra connector offer.
+    /// </summary>
+    public interface IWithConnector
+    {
+        /// <summary>
+        /// Specifies a connector offer for cassandra connector.
+        /// </summary>
+        /// <param name="connectorOffer">Connector offer to specify.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithCassandraConnector(ConnectorOffer connectorOffer);
+    }
+
+    /// <summary>
     /// The stage of the cosmos db definition allowing the definition of a Virtual Network ACL Rule.
     /// </summary>
-    public interface IWithVirtualNetworkRule  :
+    public interface IWithVirtualNetworkRule :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -75,7 +88,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the database account kind.
     /// </summary>
-    public interface IWithKindBeta  :
+    public interface IWithKindBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -129,6 +142,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithIpRangeFilter,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithVirtualNetworkRule,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithMultipleLocations,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConnector,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
     }

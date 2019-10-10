@@ -54,6 +54,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy ConsistencyPolicy { get; }
 
         /// <summary>
+        /// Gets whether cassandra connector is enabled or not.
+        /// </summary>
+        bool CassandraConnectorEnabled { get; }
+
+        /// <summary>
+        /// Gets the current cassandra connector offer.
+        /// </summary>
+        Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConnectorOffer CassandraConnectorOffer { get; }
+
+        /// <summary>
         /// Gets indicates the type of database account.
         /// </summary>
         string Kind { get; }

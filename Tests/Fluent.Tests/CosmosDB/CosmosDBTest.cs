@@ -131,5 +131,48 @@ namespace Fluent.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanCreateCassandraCosmosDB()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = TestUtilities.GenerateName("db");
+                var rgName = TestUtilities.GenerateName("dbRg");
+                var manager = TestHelper.CreateCosmosDB();
+                var resourceManager = TestHelper.CreateResourceManager();
+                ICosmosDBAccount databaseAccount = null;
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    databaseAccount = manager.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(rgName)
+                        .WithDataModelCassandra()
+                        .WithStrongConsistency()
+                        .WithCassandraConnector(ConnectorOffer.Small)
+                        .Create();
+
+                    Assert.True(databaseAccount.CassandraConnectorEnabled);
+                    Assert.Equal(ConnectorOffer.Small, databaseAccount.CassandraConnectorOffer);
+
+                    databaseAccount = databaseAccount.Update()
+                        .WithoutCassandraConnector()
+                        .Apply();
+
+                    Assert.False(databaseAccount.CassandraConnectorEnabled);
+                }
+                finally
+                {
+                    try
+                    {
+                        resourceManager.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+
+        }
     }
 }
