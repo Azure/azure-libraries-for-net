@@ -18,8 +18,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Lists Metric Definitions for a given resource.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
+        /// <param name="metricnamespace">The metric namespace.</param>
         /// <return>List of metric definitions.</return>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> ListByResource(string resourceId);
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> ListByResource(string resourceId, string metricnamespace = default(string));
 
         /// <summary>
         /// Lists Metric Definitions for a given resource.
@@ -27,5 +28,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="resourceId">The resource Id.</param>
         /// <return>A representation of the deferred computation of Metric Definitions list call.</return>
         Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Lists Metric Definitions for a given resource.
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        /// <param name="metricnamespace">The metric namespace.</param>
+        /// <return>A representation of the deferred computation of Metric Definitions list call.</return>
+        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>> ListByResourceAsync(string resourceId, string metricnamespace, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
