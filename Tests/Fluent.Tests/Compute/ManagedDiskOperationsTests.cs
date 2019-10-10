@@ -139,10 +139,12 @@ namespace Fluent.Tests.Compute
                             // Start Option
                             .WithSizeInGB(200)
                             .WithSku(DiskSkuTypes.StandardLRS)
+                            .WithHyperVGeneration(HyperVGeneration.V1)
                             // End Option
                             .Create();
 
                     disk = computeManager.Disks.GetById(disk.Id);
+                    Assert.Equal(HyperVGeneration.V1, disk.HyperVGeneration);
 
                     disk.Update()
                         .WithHyperVGeneration(HyperVGeneration.V2)

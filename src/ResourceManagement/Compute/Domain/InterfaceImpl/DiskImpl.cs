@@ -316,13 +316,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.WithOSType(osType);
         }
-
+        
         /// <summary>
-        /// Specifies the hypervisor generation of the Virtual Machine.
+        /// Specifies the hypervisor generation of the managed disk.
         /// </summary>
         /// <param name="hyperVGeneration">The hypervisor generation.</param>
         /// <return>The next stage of the update.</return>
-        IUpdate IWithHyperVGeneration.WithHyperVGeneration(HyperVGeneration hyperVGeneration)
+        IUpdate Disk.Update.IWithHyperVGeneration.WithHyperVGeneration(HyperVGeneration hyperVGeneration)
+        {
+            return this.WithHyperVGeneration(hyperVGeneration);
+        }
+
+        /// <summary>
+        /// Specifies the hypervisor generation of the managed disk.
+        /// </summary>
+        /// <param name="hyperVGeneration">The hypervisor generation.</param>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate Disk.Definition.IWithHyperVGeneration.WithHyperVGeneration(HyperVGeneration hyperVGeneration)
         {
             return this.WithHyperVGeneration(hyperVGeneration);
         }

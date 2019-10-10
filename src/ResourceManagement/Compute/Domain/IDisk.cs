@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.OperatingSystemTypes? OSType { get; }
 
         /// <summary>
-        /// Gets the hypervisor generation of the Virtual Machine.
+        /// Gets the hypervisor generation of the managed disk.
         /// </summary>
         HyperVGeneration HyperVGeneration { get; }
 
