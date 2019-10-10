@@ -4,8 +4,10 @@
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     using Microsoft.Azure.Management.Monitor.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     public interface IMetricDynamicAlertCondition :
+        IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.DynamicMetricCriteria>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert>
     {
