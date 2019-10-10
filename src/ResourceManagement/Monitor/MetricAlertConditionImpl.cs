@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:8244B442CD575E882C2B85C6AAF1D87B:562AEA9CCCAACFD5DB65DCDEE6471E19
         public MetricAlertRuleCondition Condition()
         {
-            return MetricAlertRuleCondition.Parse(this.Inner.OperatorProperty);
+            return MetricAlertRuleCondition.Parse(System.Convert.ToString(this.Inner.OperatorProperty));
         }
 
         ///GENMHASH:BDA8645F7DCB22FCB0D576272D4D7A80:744A5BC604442DC99431C6BAD8C64B30
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:5636490A40EC03DD34FE49E4DC4B68A3:950C986A6843B6B6B52C4F1945939B08
         public MetricAlertRuleTimeAggregation TimeAggregation()
         {
-            return MetricAlertRuleTimeAggregation.Parse(this.Inner.TimeAggregation);
+            return MetricAlertRuleTimeAggregation.Parse(System.Convert.ToString(this.Inner.TimeAggregation));
         }
 
         ///GENMHASH:16385B0F625BFE1280EAADD4C9A52F83:175426222378DAACFA1C214E2C05A68B

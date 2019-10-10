@@ -4,6 +4,7 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.AppService.Fluent;
+using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -573,6 +574,105 @@ namespace Fluent.Tests
         }
 
         [Fact]
+        public void CanCRUDMultipleResourceMetricAlerts()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string userName = "tirekicker";
+                string password = "12NewPA$$w0rd!";
+
+                var rgName = SdkContext.RandomResourceName("jMonitor_", 18);
+                var alertName = SdkContext.RandomResourceName("jMonitorMA", 18);
+                var vmName1 = SdkContext.RandomResourceName("jMonitorVM1", 18);
+                var vmName2 = SdkContext.RandomResourceName("jMonitorVM2", 18);
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    var vm1 = azure.VirtualMachines.Define(vmName1)
+                        .WithRegion(Region.USEast2)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername(userName)
+                        .WithRootPassword(password)
+                        .Create();
+
+                    var vm2 = azure.VirtualMachines.Define(vmName2)
+                        .WithRegion(Region.USEast2)
+                        .WithExistingResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername(userName)
+                        .WithRootPassword(password)
+                        .Create();
+
+                    var ma = azure.AlertRules.MetricAlerts.Define(alertName)
+                        .WithExistingResourceGroup(rgName)
+                        .WithMultipleTargetResources(new IVirtualMachine[] { vm1, vm2 })
+                        .WithPeriod(TimeSpan.FromMinutes(15))
+                        .WithFrequency(TimeSpan.FromMinutes(15))
+                        .WithAlertDetails(3, "This alert rule is for U3 - Multiple resource, static criteria")
+                        .WithActionGroups()
+                        .DefineAlertCriteria("Metric1")
+                            .WithMetricName("Percentage CPU", vm1.Type)
+                            .WithCondition(MetricAlertRuleTimeAggregation.Average, MetricAlertRuleCondition.GreaterThan, 80)
+                            .Attach()
+                        .Create();
+
+                    ma.Refresh();
+                    Assert.Equal(2, ma.Scopes.Count);
+                    Assert.Equal(vm1.Type, ma.Inner.TargetResourceType);
+                    Assert.Equal(vm1.RegionName, ma.Inner.TargetResourceRegion);
+                    Assert.Single(ma.AlertCriterias);
+                    Assert.Empty(ma.DynamicAlertCriterias);
+                    Assert.Equal("Percentage CPU", ma.AlertCriterias["Metric1"].MetricName);
+
+                    DateTime time30MinBefore = DateTime.Now.AddMinutes(-30);
+                    ma.Update()
+                        .WithDescription("This alert rule is for U3 - Multiple resource, dynamic criteria")
+                        .WithoutAlertCriteria("Metric1")
+                        .DefineDynamicAlertCriteria("Metric2")
+                            .WithMetricName("Percentage CPU", vm1.Type)
+                            .WithCondition(MetricAlertRuleTimeAggregation.Average, DynamicThresholdOperator.GreaterThan, DynamicThresholdSensitivity.High)
+                            .WithFailingPeriods(new DynamicThresholdFailingPeriods() { NumberOfEvaluationPeriods = 4, MinFailingPeriodsToAlert = 2 })
+                            .WithIgnoreDataBefore(time30MinBefore)
+                            .Attach()
+                        .Apply();
+
+                    ma.Refresh();
+                    Assert.Equal(2, ma.Scopes.Count);
+                    Assert.Equal(vm1.Type, ma.Inner.TargetResourceType);
+                    Assert.Equal(vm1.RegionName, ma.Inner.TargetResourceRegion);
+                    Assert.Empty(ma.AlertCriterias);
+                    Assert.Single(ma.DynamicAlertCriterias);
+                    var condition = ma.DynamicAlertCriterias["Metric2"];
+                    Assert.Equal("Percentage CPU", condition.MetricName);
+                    Assert.Equal(MetricAlertRuleTimeAggregation.Average, condition.TimeAggregation);
+                    Assert.Equal(DynamicThresholdOperator.GreaterThan, condition.Condition);
+                    Assert.Equal(DynamicThresholdSensitivity.High, condition.AlertSensitivity);
+                    Assert.Equal(4, (int)condition.FailingPeriods.NumberOfEvaluationPeriods);
+                    Assert.Equal(2, (int)condition.FailingPeriods.MinFailingPeriodsToAlert);
+                    Assert.Equal(time30MinBefore, condition.IgnoreDataBefore);
+
+                    azure.AlertRules.MetricAlerts.DeleteById(ma.Id);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
         public void CanCRUDActivityLogAlerts()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
@@ -780,7 +880,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
@@ -874,7 +974,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
@@ -1007,7 +1107,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
@@ -1107,7 +1207,7 @@ namespace Fluent.Tests
                     Assert.NotNull(tempProfile.Rules);
                     Assert.Equal(0, tempProfile.Rules.Count);
                     Assert.NotNull(tempProfile.RecurrentSchedule);
-                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.Equal(RecurrenceFrequency.Week, tempProfile.RecurrentSchedule.Frequency);
                     Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
                     Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
                     Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));

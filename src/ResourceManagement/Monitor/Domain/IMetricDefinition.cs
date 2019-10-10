@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IMetricDefinition :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.MetricDefinition>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.MetricDefinitionInner>
     {
 
         /// <summary>

@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The autoscale setting resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AutoscaleSettingResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AutoscaleSettingResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AutoscaleSettingResourceInner
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// autoscale setting.</param>
         /// <param name="targetResourceUri">the resource identifier of the
         /// resource that the autoscale setting should be added to.</param>
-        public AutoscaleSettingResourceInner(IList<AutoscaleProfileInner> profiles, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AutoscaleNotification> notifications = default(IList<AutoscaleNotification>), bool? enabled = default(bool?), string autoscaleSettingResourceName = default(string), string targetResourceUri = default(string))
+        public AutoscaleSettingResourceInner(string location, IList<AutoscaleProfileInner> profiles, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AutoscaleNotification> notifications = default(IList<AutoscaleNotification>), bool? enabled = default(bool?), string autoscaleSettingResourceName = default(string), string targetResourceUri = default(string))
             : base(location, id, name, type, tags)
         {
             Profiles = profiles;
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (Profiles == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Profiles");

@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> AlertCriterias { get; }
 
         /// <summary>
+        /// Gets metric dynamic alert criterias, indexed by name.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricDynamicAlertCondition> DynamicAlertCriterias { get; }
+
+        /// <summary>
         /// Gets the flag that indicates whether the alert should be auto resolved or not.
         /// </summary>
         /// <summary>

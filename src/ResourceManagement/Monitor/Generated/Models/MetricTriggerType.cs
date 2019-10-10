@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for MetricTriggerType.
     /// </summary>
-    public static class MetricTriggerType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<MetricTriggerType>))]
+    public class MetricTriggerType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<MetricTriggerType>
     {
-        public const string Consecutive = "Consecutive";
-        public const string Total = "Total";
+        public static readonly MetricTriggerType Consecutive = Parse("Consecutive");
+        public static readonly MetricTriggerType Total = Parse("Total");
     }
 }

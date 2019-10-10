@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogProfileResourceInner>> UpdateWithHttpMessagesAsync(string logProfileName, LogProfileResourcePatchInner logProfilesResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogProfileResourceInner>> UpdateWithHttpMessagesAsync(string logProfileName, LogProfileResourcePatch logProfilesResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List the log profiles.
         /// </summary>

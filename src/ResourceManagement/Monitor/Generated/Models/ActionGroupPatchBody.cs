@@ -19,24 +19,24 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// An action group object for the body of patch operations.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ActionGroupPatchBodyInner
+    public partial class ActionGroupPatchBody
     {
         /// <summary>
-        /// Initializes a new instance of the ActionGroupPatchBodyInner class.
+        /// Initializes a new instance of the ActionGroupPatchBody class.
         /// </summary>
-        public ActionGroupPatchBodyInner()
+        public ActionGroupPatchBody()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ActionGroupPatchBodyInner class.
+        /// Initializes a new instance of the ActionGroupPatchBody class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
         /// <param name="enabled">Indicates whether this action group is
         /// enabled. If an action group is not enabled, then none of its
         /// actions will be activated.</param>
-        public ActionGroupPatchBodyInner(IDictionary<string, string> tags = default(IDictionary<string, string>), bool? enabled = default(bool?))
+        public ActionGroupPatchBody(IDictionary<string, string> tags = default(IDictionary<string, string>), bool? enabled = default(bool?))
         {
             Tags = tags;
             Enabled = enabled;

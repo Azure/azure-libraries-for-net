@@ -16,18 +16,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The Azure event log entries are of type EventData
     /// </summary>
-    public partial class EventDataInner
+    public partial class EventData
     {
         /// <summary>
-        /// Initializes a new instance of the EventDataInner class.
+        /// Initializes a new instance of the EventData class.
         /// </summary>
-        public EventDataInner()
+        public EventData()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the EventDataInner class.
+        /// Initializes a new instance of the EventData class.
         /// </summary>
         /// <param name="authorization">The sender authorization
         /// information.</param>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="subscriptionId">the Azure subscription Id usually a
         /// GUID.</param>
         /// <param name="tenantId">the Azure tenant Id</param>
-        public EventDataInner(SenderAuthorization authorization = default(SenderAuthorization), IDictionary<string, string> claims = default(IDictionary<string, string>), string caller = default(string), string description = default(string), string id = default(string), string eventDataId = default(string), string correlationId = default(string), LocalizableString eventName = default(LocalizableString), LocalizableString category = default(LocalizableString), HttpRequestInfo httpRequest = default(HttpRequestInfo), EventLevel? level = default(EventLevel?), string resourceGroupName = default(string), LocalizableString resourceProviderName = default(LocalizableString), string resourceId = default(string), LocalizableString resourceType = default(LocalizableString), string operationId = default(string), LocalizableString operationName = default(LocalizableString), IDictionary<string, string> properties = default(IDictionary<string, string>), LocalizableString status = default(LocalizableString), LocalizableString subStatus = default(LocalizableString), System.DateTime? eventTimestamp = default(System.DateTime?), System.DateTime? submissionTimestamp = default(System.DateTime?), string subscriptionId = default(string), string tenantId = default(string))
+        public EventData(SenderAuthorization authorization = default(SenderAuthorization), IDictionary<string, string> claims = default(IDictionary<string, string>), string caller = default(string), string description = default(string), string id = default(string), string eventDataId = default(string), string correlationId = default(string), LocalizableString eventName = default(LocalizableString), LocalizableString category = default(LocalizableString), HttpRequestInfo httpRequest = default(HttpRequestInfo), EventLevel? level = default(EventLevel?), string resourceGroupName = default(string), LocalizableString resourceProviderName = default(LocalizableString), string resourceId = default(string), LocalizableString resourceType = default(LocalizableString), string operationId = default(string), LocalizableString operationName = default(LocalizableString), IDictionary<string, string> properties = default(IDictionary<string, string>), LocalizableString status = default(LocalizableString), LocalizableString subStatus = default(LocalizableString), System.DateTime? eventTimestamp = default(System.DateTime?), System.DateTime? submissionTimestamp = default(System.DateTime?), string subscriptionId = default(string), string tenantId = default(string))
         {
             Authorization = authorization;
             Claims = claims;

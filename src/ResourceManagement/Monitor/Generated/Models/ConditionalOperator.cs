@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ConditionalOperator.
     /// </summary>
-    public static class ConditionalOperator
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ConditionalOperator>))]
+    public class ConditionalOperator : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ConditionalOperator>
     {
-        public const string GreaterThan = "GreaterThan";
-        public const string LessThan = "LessThan";
-        public const string Equal = "Equal";
+        public static readonly ConditionalOperator GreaterThan = Parse("GreaterThan");
+        public static readonly ConditionalOperator LessThan = Parse("LessThan");
+        public static readonly ConditionalOperator Equal = Parse("Equal");
     }
 }

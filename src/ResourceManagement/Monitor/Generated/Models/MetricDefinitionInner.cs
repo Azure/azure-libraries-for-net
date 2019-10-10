@@ -16,30 +16,31 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// Metric definition class specifies the metadata for a metric.
     /// </summary>
-    public partial class MetricDefinition
+    public partial class MetricDefinitionInner
     {
         /// <summary>
-        /// Initializes a new instance of the MetricDefinition class.
+        /// Initializes a new instance of the MetricDefinitionInner class.
         /// </summary>
-        public MetricDefinition()
+        public MetricDefinitionInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MetricDefinition class.
+        /// Initializes a new instance of the MetricDefinitionInner class.
         /// </summary>
         /// <param name="isDimensionRequired">Flag to indicate whether the
         /// dimension is required.</param>
         /// <param name="resourceId">the resource identifier of the resource
         /// that emitted the metric.</param>
-        /// <param name="namespaceProperty">the namespace the metric blongs
+        /// <param name="namespaceProperty">the namespace the metric belongs
         /// to.</param>
         /// <param name="name">the name and the display name of the metric,
         /// i.e. it is a localizable string.</param>
         /// <param name="unit">the unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
-        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'</param>
+        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
+        /// 'MilliCores', 'NanoCores', 'BitsPerSecond'</param>
         /// <param name="primaryAggregationType">the primary aggregation type
         /// value defining how to use the values for display. Possible values
         /// include: 'None', 'Average', 'Count', 'Minimum', 'Maximum',
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// definition.</param>
         /// <param name="dimensions">the name and the display name of the
         /// dimension, i.e. it is a localizable string.</param>
-        public MetricDefinition(bool? isDimensionRequired = default(bool?), string resourceId = default(string), string namespaceProperty = default(string), LocalizableString name = default(LocalizableString), Unit? unit = default(Unit?), AggregationType? primaryAggregationType = default(AggregationType?), IList<AggregationType?> supportedAggregationTypes = default(IList<AggregationType?>), IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>), string id = default(string), IList<LocalizableString> dimensions = default(IList<LocalizableString>))
+        public MetricDefinitionInner(bool? isDimensionRequired = default(bool?), string resourceId = default(string), string namespaceProperty = default(string), LocalizableString name = default(LocalizableString), Unit? unit = default(Unit?), AggregationType? primaryAggregationType = default(AggregationType?), IList<AggregationType?> supportedAggregationTypes = default(IList<AggregationType?>), IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>), string id = default(string), IList<LocalizableString> dimensions = default(IList<LocalizableString>))
         {
             IsDimensionRequired = isDimensionRequired;
             ResourceId = resourceId;
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the namespace the metric blongs to.
+        /// Gets or sets the namespace the metric belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty { get; set; }
@@ -101,7 +102,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets or sets the unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
-        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'
+        /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
+        /// 'MilliCores', 'NanoCores', 'BitsPerSecond'
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public Unit? Unit { get; set; }

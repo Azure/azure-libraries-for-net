@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogSearchRuleResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string ruleName, LogSearchRuleResourcePatchInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogSearchRuleResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string ruleName, LogSearchRuleResourcePatch parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a Log Search rule
         /// </summary>

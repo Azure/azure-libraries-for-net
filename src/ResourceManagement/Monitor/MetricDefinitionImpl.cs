@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljRGVmaW5pdGlvbkltcGw=
     internal partial class MetricDefinitionImpl :
-        Wrapper<Models.MetricDefinition>,
+        Wrapper<Models.MetricDefinitionInner>,
         IMetricDefinition,
         IMetricsQueryDefinition
     {
         private string aggreagation;
         private IList<ILocalizableString> dimensions;
-        private MetricDefinition inner;
+        private MetricDefinitionInner inner;
         private TimeSpan? interval;
         private MonitorManager myManager;
         private ILocalizableString name;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         private int? top;
 
         ///GENMHASH:F886A4914B553C095A7AE17389D27E77:E5D5B4A8C36CFED5664896A53A66058D
-        internal MetricDefinitionImpl(MetricDefinition innerModel, MonitorManager monitorManager)
+        internal MetricDefinitionImpl(MetricDefinitionInner innerModel, MonitorManager monitorManager)
             : base(innerModel)
         {
             this.myManager = monitorManager;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             return new MetricCollectionImpl(await this.Manager().Inner.Metrics.ListAsync(
                 resourceUri: this.inner.ResourceId,
-                odataQuery: new ODataQuery<MetadataValueInner>(this.odataFilter),
+                odataQuery: new ODataQuery<MetadataValue>(this.odataFilter),
                 timespan: string.Format("{0}/{1}",
                     this.queryStartTime.ToString("o"),
                     this.queryEndTime.ToString("o")),

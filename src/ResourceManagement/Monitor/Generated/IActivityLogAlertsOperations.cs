@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActivityLogAlertResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string activityLogAlertName, ActivityLogAlertPatchBodyInner activityLogAlertPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActivityLogAlertResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string activityLogAlertName, ActivityLogAlertPatchBody activityLogAlertPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a list of all activity log alerts in a subscription.
         /// </summary>

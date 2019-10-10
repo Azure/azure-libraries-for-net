@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The Log Search Rule resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class LogSearchRuleResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class LogSearchRuleResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the LogSearchRuleResourceInner class.
@@ -35,8 +36,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         /// <param name="source">Data Source against which rule will Query
         /// Data</param>
-        /// <param name="schedule">Schedule (Frequnecy, Time Window) for
-        /// rule.</param>
         /// <param name="action">Action needs to be taken on rule
         /// execution.</param>
         /// <param name="description">The description of the Log Search
@@ -46,10 +45,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// values include: 'true', 'false'</param>
         /// <param name="lastUpdatedTime">Last time the rule was updated in
         /// IS08601 format.</param>
-        /// <param name="provisioningState">Provisioning state of the
-        /// scheduledquery rule. Possible values include: 'Succeeded',
-        /// 'Deploying', 'Canceled', 'Failed'</param>
-        public LogSearchRuleResourceInner(Source source, Schedule schedule, Action action, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string enabled = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), string provisioningState = default(string))
+        /// <param name="provisioningState">Provisioning state of the scheduled
+        /// query rule. Possible values include: 'Succeeded', 'Deploying',
+        /// 'Canceled', 'Failed'</param>
+        /// <param name="schedule">Schedule (Frequency, Time Window) for rule.
+        /// Required for action type - AlertingAction</param>
+        public LogSearchRuleResourceInner(string location, Source source, Action action, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), Enabled enabled = default(Enabled), System.DateTime? lastUpdatedTime = default(System.DateTime?), ProvisioningState provisioningState = default(ProvisioningState), Schedule schedule = default(Schedule))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'true', 'false'
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabled")]
-        public string Enabled { get; set; }
+        public Enabled Enabled { get; set; }
 
         /// <summary>
         /// Gets last time the rule was updated in IS08601 format.
@@ -88,11 +89,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public System.DateTime? LastUpdatedTime { get; private set; }
 
         /// <summary>
-        /// Gets provisioning state of the scheduledquery rule. Possible values
-        /// include: 'Succeeded', 'Deploying', 'Canceled', 'Failed'
+        /// Gets provisioning state of the scheduled query rule. Possible
+        /// values include: 'Succeeded', 'Deploying', 'Canceled', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets data Source against which rule will Query Data
@@ -101,7 +102,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public Source Source { get; set; }
 
         /// <summary>
-        /// Gets or sets schedule (Frequnecy, Time Window) for rule.
+        /// Gets or sets schedule (Frequency, Time Window) for rule. Required
+        /// for action type - AlertingAction
         /// </summary>
         [JsonProperty(PropertyName = "properties.schedule")]
         public Schedule Schedule { get; set; }
@@ -120,13 +122,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (Source == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Source");
-            }
-            if (Schedule == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Schedule");
             }
             if (Action == null)
             {

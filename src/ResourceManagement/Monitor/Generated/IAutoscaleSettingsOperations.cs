@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AutoscaleSettingResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string autoscaleSettingName, AutoscaleSettingResourcePatchInner autoscaleSettingResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AutoscaleSettingResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string autoscaleSettingName, AutoscaleSettingResourcePatch autoscaleSettingResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the autoscale settings for a subscription
         /// </summary>

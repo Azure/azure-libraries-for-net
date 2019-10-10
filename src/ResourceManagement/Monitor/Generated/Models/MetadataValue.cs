@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// Represents a metric metadata value.
     /// </summary>
-    public partial class MetadataValueInner
+    public partial class MetadataValue
     {
         /// <summary>
-        /// Initializes a new instance of the MetadataValueInner class.
+        /// Initializes a new instance of the MetadataValue class.
         /// </summary>
-        public MetadataValueInner()
+        public MetadataValue()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MetadataValueInner class.
+        /// Initializes a new instance of the MetadataValue class.
         /// </summary>
         /// <param name="name">the name of the metadata.</param>
         /// <param name="value">the value of the metadata.</param>
-        public MetadataValueInner(LocalizableString name = default(LocalizableString), string value = default(string))
+        public MetadataValue(LocalizableString name = default(LocalizableString), string value = default(string))
         {
             Name = name;
             Value = value;

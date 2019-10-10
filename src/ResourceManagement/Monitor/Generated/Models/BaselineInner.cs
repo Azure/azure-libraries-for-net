@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The baseline values for a single sensitivity value.
     /// </summary>
-    public partial class Baseline
+    public partial class BaselineInner
     {
         /// <summary>
-        /// Initializes a new instance of the Baseline class.
+        /// Initializes a new instance of the BaselineInner class.
         /// </summary>
-        public Baseline()
+        public BaselineInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Baseline class.
+        /// Initializes a new instance of the BaselineInner class.
         /// </summary>
         /// <param name="sensitivity">the sensitivity of the baseline. Possible
         /// values include: 'Low', 'Medium', 'High'</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// baseline.</param>
         /// <param name="highThresholds">The high thresholds of the
         /// baseline.</param>
-        public Baseline(Sensitivity sensitivity, IList<double?> lowThresholds, IList<double?> highThresholds)
+        public BaselineInner(Sensitivity sensitivity, IList<double?> lowThresholds, IList<double?> highThresholds)
         {
             Sensitivity = sensitivity;
             LowThresholds = lowThresholds;
