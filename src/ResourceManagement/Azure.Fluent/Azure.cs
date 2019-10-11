@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.Azure.Management.AppService.Fluent;
-using Microsoft.Azure.Management.Batch.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Management.Fluent
         private IStorageManager storageManager;
         private IComputeManager computeManager;
         private INetworkManager networkManager;
-        private IBatchManager batchManager;
         private IKeyVaultManager keyVaultManager;
         private ITrafficManager trafficManager;
         private IDnsZoneManager dnsZoneManager;
@@ -274,15 +272,6 @@ namespace Microsoft.Azure.Management.Fluent
             get
             {
                 return computeManager.AvailabilitySets;
-            }
-        }
-
-        /// <returns>entry point to managing Azure Batch accounts</returns>
-        public IBatchAccounts BatchAccounts
-        {
-            get
-            {
-                return batchManager.BatchAccounts;
             }
         }
 
@@ -605,7 +594,6 @@ namespace Microsoft.Azure.Management.Fluent
             storageManager = StorageManager.Authenticate(restClient, subscriptionId);
             computeManager = ComputeManager.Authenticate(restClient, subscriptionId);
             networkManager = NetworkManager.Authenticate(restClient, subscriptionId);
-            batchManager = BatchManager.Authenticate(restClient, subscriptionId);
             keyVaultManager = KeyVaultManager.Authenticate(restClient, subscriptionId, tenantId);
             trafficManager = TrafficManager.Fluent.TrafficManager.Authenticate(restClient, subscriptionId);
             dnsZoneManager = DnsZoneManager.Authenticate(restClient, subscriptionId);
@@ -1118,11 +1106,6 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to availability set management.
         /// </summary>
         IAvailabilitySets AvailabilitySets { get; }
-
-        /// <summary>
-        /// Entry point to batch account management.
-        /// </summary>
-        IBatchAccounts BatchAccounts { get; }
 
         /// <summary>
         /// Entry point to Azure Key Vault management.
