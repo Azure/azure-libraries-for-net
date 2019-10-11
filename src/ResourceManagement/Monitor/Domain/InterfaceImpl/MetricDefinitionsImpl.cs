@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <return>List of metric definitions.</return>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResource(string resourceId)
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResource(string resourceId, string metricnamespace = default(string))
         {
-            return this.ListByResource(resourceId);
+            return this.ListByResource(resourceId, metricnamespace);
         }
 
         /// <summary>
@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResourceAsync(string resourceId, CancellationToken cancellationToken)
         {
             return await this.ListByResourceAsync(resourceId, cancellationToken);
+        }
+
+        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResourceAsync(string resourceId, string metricnamespace, CancellationToken cancellationToken)
+        {
+            return await this.ListByResourceAsync(resourceId, metricnamespace, cancellationToken);
         }
     }
 }
