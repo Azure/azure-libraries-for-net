@@ -28,10 +28,6 @@ namespace Fluent.Tests
                 {
                     Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient).BaseUri.Host);
                 }
-                else if (client is Microsoft.Azure.Management.Batch.Fluent.BatchManagementClient)
-                {
-                    Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.Batch.Fluent.BatchManagementClient).BaseUri.Host);
-                }
                 else if (client is Microsoft.Azure.Management.BatchAI.Fluent.BatchAIManagementClient)
                 {
                     Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.BatchAI.Fluent.BatchAIManagementClient).BaseUri.Host);

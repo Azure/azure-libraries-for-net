@@ -3,7 +3,6 @@
 
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.AppService.Fluent.Models;
-using Microsoft.Azure.Management.Batch.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
@@ -771,55 +770,6 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .Append("\n\tFault domain count: ").Append(resource.FaultDomainCount)
                 .Append("\n\tUpdate domain count: ").Append(resource.UpdateDomainCount)
                 .ToString());
-        }
-
-        public static void PrintBatchAccount(IBatchAccount batchAccount)
-        {
-            var applicationsOutput = new StringBuilder().Append("\n\tapplications: ");
-
-            if (batchAccount.Applications.Count > 0)
-            {
-                foreach (var applicationEntry in batchAccount.Applications)
-                {
-                    var application = applicationEntry.Value;
-                    var applicationPackages = new StringBuilder().Append("\n\t\t\tapplicationPackages : ");
-
-                    foreach (var applicationPackageEntry in application.ApplicationPackages)
-                    {
-                        var applicationPackage = applicationPackageEntry.Value;
-                        var singleApplicationPackage = new StringBuilder().Append("\n\t\t\t\tapplicationPackage : " + applicationPackage.Name);
-                        singleApplicationPackage.Append("\n\t\t\t\tapplicationPackageState : " + applicationPackage.State);
-
-                        applicationPackages.Append(singleApplicationPackage);
-                        singleApplicationPackage.Append("\n");
-                    }
-
-                    var singleApplication = new StringBuilder().Append("\n\t\tapplication: " + application.Name);
-                    singleApplication.Append("\n\t\tdisplayName: " + application.DisplayName);
-                    singleApplication.Append("\n\t\tdefaultVersion: " + application.DefaultVersion);
-                    singleApplication.Append(applicationPackages);
-                    applicationsOutput.Append(singleApplication);
-                    applicationsOutput.Append("\n");
-                }
-            }
-
-            Utilities.Log(new StringBuilder().Append("BatchAccount: ").Append(batchAccount.Id)
-                    .Append("Name: ").Append(batchAccount.Name)
-                    .Append("\n\tResource group: ").Append(batchAccount.ResourceGroupName)
-                    .Append("\n\tRegion: ").Append(batchAccount.Region)
-                    .Append("\n\tTags: ").Append(FormatDictionary(batchAccount.Tags))
-                    .Append("\n\tAccountEndpoint: ").Append(batchAccount.AccountEndpoint)
-                    .Append("\n\tPoolQuota: ").Append(batchAccount.PoolQuota)
-                    .Append("\n\tActiveJobAndJobScheduleQuota: ").Append(batchAccount.ActiveJobAndJobScheduleQuota)
-                    .Append("\n\tStorageAccount: ").Append(batchAccount.AutoStorage == null ? "No storage account attached" : batchAccount.AutoStorage.StorageAccountId)
-                    .Append(applicationsOutput)
-                    .ToString());
-        }
-
-        public static void PrintBatchAccountKey(BatchAccountKeys batchAccountKeys)
-        {
-            Utilities.Log("Primary Key (" + batchAccountKeys.Primary + ") Secondary key = ("
-                    + batchAccountKeys.Secondary + ")");
         }
 
         public static void PrintNetworkSecurityGroup(INetworkSecurityGroup resource)

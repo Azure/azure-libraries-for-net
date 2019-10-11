@@ -72,7 +72,6 @@ dotnet build src/ResourceManagement/Storage/Microsoft.Azure.Management.Storage.F
 dotnet build src/ResourceManagement/Graph.RBAC/Microsoft.Azure.Management.Graph.RBAC.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/Network/Microsoft.Azure.Management.Network.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/AppService/Microsoft.Azure.Management.AppService.Fluent.csproj -f $netstd14
-dotnet build src/ResourceManagement/Batch/Microsoft.Azure.Management.Batch.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/Cdn/Microsoft.Azure.Management.Cdn.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/Compute/Microsoft.Azure.Management.Compute.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/ContainerRegistry/Microsoft.Azure.Management.ContainerRegistry.Fluent.csproj -f $netstd14

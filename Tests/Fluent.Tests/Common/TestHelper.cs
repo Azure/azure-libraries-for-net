@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.Azure.Management.AppService.Fluent;
-using Microsoft.Azure.Management.Batch.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
@@ -155,15 +154,6 @@ namespace Fluent.Tests.Common
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
                 .Authenticate(c)
                 .WithSubscription(c.DefaultSubscriptionId));
-        }
-
-        public static IBatchManager CreateBatchManager()
-        {
-            return CreateMockedManager(c => BatchManager
-                .Configure()
-                .WithDelegatingHandlers(GetHandlers())
-                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
-                .Authenticate(c, c.DefaultSubscriptionId));
         }
 
         public static ISqlManager CreateSqlManager()
