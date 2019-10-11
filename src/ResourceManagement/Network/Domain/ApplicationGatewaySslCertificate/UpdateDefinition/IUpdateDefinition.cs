@@ -63,6 +63,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertifi
         /// <param name="pfxData">The contents of the private key in the PFX format.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ParentT> WithPfxFromBytes(params byte[] pfxData);
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertificate.UpdateDefinition.IWithAttach<ParentT> WithKeyVaultSecretId(string keyVaultSecretId);
+
     }
 
     /// <summary>

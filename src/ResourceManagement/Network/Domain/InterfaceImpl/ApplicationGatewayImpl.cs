@@ -1412,5 +1412,25 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithoutEnableHttp2();
         }
 
+        /// <summary>
+        /// Specifies an identity to be associated with the application gateway.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithManagedServiceIdentity.WithIdentity(ManagedServiceIdentity identity)
+        {
+            return this.WithIdentity(identity);
+        }
+
+        /// <summary>
+        /// Specifies an identity to be associated with the application gateway.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithManagedServiceIdentity.WithIdentity(ManagedServiceIdentity identity)
+        {
+            return this.WithIdentity(identity);
+        }
+
     }
 }

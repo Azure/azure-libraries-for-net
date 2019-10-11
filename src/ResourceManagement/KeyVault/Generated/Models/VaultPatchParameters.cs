@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -17,30 +16,24 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// <summary>
     /// Parameters for creating or updating a vault
     /// </summary>
-    public partial class VaultCreateOrUpdateParametersInner
+    public partial class VaultPatchParameters
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// VaultCreateOrUpdateParametersInner class.
+        /// Initializes a new instance of the VaultPatchParameters class.
         /// </summary>
-        public VaultCreateOrUpdateParametersInner()
+        public VaultPatchParameters()
         {
-            Properties = new VaultProperties();
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// VaultCreateOrUpdateParametersInner class.
+        /// Initializes a new instance of the VaultPatchParameters class.
         /// </summary>
-        /// <param name="location">The supported Azure location where the key
-        /// vault should be created.</param>
+        /// <param name="tags">The tags that will be assigned to the key vault.
+        /// </param>
         /// <param name="properties">Properties of the vault</param>
-        /// <param name="tags">The tags that will be assigned to the key
-        /// vault.</param>
-        public VaultCreateOrUpdateParametersInner(string location, VaultProperties properties, IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public VaultPatchParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), VaultPatchProperties properties = default(VaultPatchProperties))
         {
-            Location = location;
             Tags = tags;
             Properties = properties;
             CustomInit();
@@ -52,13 +45,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the supported Azure location where the key vault
-        /// should be created.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Gets or sets the tags that will be assigned to the key vault.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
@@ -68,24 +54,16 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// Gets or sets properties of the vault
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public VaultProperties Properties { get; set; }
+        public VaultPatchProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
-            }
-            if (Properties == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
-            }
             if (Properties != null)
             {
                 Properties.Validate();

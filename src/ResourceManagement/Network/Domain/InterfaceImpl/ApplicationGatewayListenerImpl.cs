@@ -384,6 +384,69 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Specifies an SSL certificate to associate with this resource.
+        /// If the certificate does not exist yet, it must be defined in the parent resource update.
+        /// </summary>
+        /// <param name="name">The name of an existing SSL certificate associated with this application gateway.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayListener.Update.IUpdate HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificate(string name)
+        {
+            return this.WithSslCertificate(name);
+        }
+
+        /// <summary>
+        /// Specifies an SSL certificate to associate with this resource.
+        /// If the certificate does not exist yet, it must be defined in the optional part of the parent resource definition.
+        /// </summary>
+        /// <param name="name">The name of an existing SSL certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithSslCertificate(string name)
+        {
+            return this.WithSslCertificate(name);
+        }
+
+        /// <summary>
+        /// Specifies an SSL certificate to associate with this resource.
+        /// If the certificate does not exist yet, it must be defined in the optional part of the parent resource definition.
+        /// </summary>
+        /// <param name="name">The name of an existing SSL certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
+        {
+            return this.WithSslCertificate(name);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayListener.Update.IUpdate HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+        }
+
+        /// <summary>
         /// Specifies the PFX file to import the SSL certificate from to associate with this resource.
         /// The certificate will be named using an auto-generated name.
         /// </summary>
@@ -393,17 +456,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         HasSslCertificate.Update.IWithSslPassword<ApplicationGatewayListener.Update.IUpdate> HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
             return this.WithSslCertificateFromPfxFile(pfxFile);
-        }
-
-        /// <summary>
-        /// Specifies an SSL certificate to associate with this resource.
-        /// If the certificate does not exist yet, it must be defined in the parent resource update.
-        /// </summary>
-        /// <param name="name">The name of an existing SSL certificate associated with this application gateway.</param>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayListener.Update.IUpdate HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificate(string name)
-        {
-            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -419,17 +471,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Specifies an SSL certificate to associate with this resource.
-        /// If the certificate does not exist yet, it must be defined in the optional part of the parent resource definition.
-        /// </summary>
-        /// <param name="name">The name of an existing SSL certificate.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithSslCertificate(string name)
-        {
-            return this.WithSslCertificate(name);
-        }
-
-        /// <summary>
         /// Specifies the PFX file to import the SSL certificate from to associated with this resource.
         /// The certificate will be named using an auto-generated name.
         /// </summary>
@@ -439,17 +480,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
             return this.WithSslCertificateFromPfxFile(pfxFile);
-        }
-
-        /// <summary>
-        /// Specifies an SSL certificate to associate with this resource.
-        /// If the certificate does not exist yet, it must be defined in the optional part of the parent resource definition.
-        /// </summary>
-        /// <param name="name">The name of an existing SSL certificate.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
-        {
-            return this.WithSslCertificate(name);
         }
 
         /// <summary>

@@ -1186,8 +1186,8 @@ namespace Microsoft.Azure.Management.Samples.Common
             foreach (var accessPolicy in vault.AccessPolicies)
             {
                 info.Append("\n\t\tIdentity:").Append(accessPolicy.ObjectId)
-                        .Append("\n\t\tKey permissions: ").Append(FormatCollection(accessPolicy.Permissions.Keys))
-                        .Append("\n\t\tSecret permissions: ").Append(FormatCollection(accessPolicy.Permissions.Secrets));
+                        .Append("\n\t\tKey permissions: ").Append(FormatCollection(accessPolicy.Permissions.Keys.Select(key => key.ToString())))
+                        .Append("\n\t\tSecret permissions: ").Append(FormatCollection(accessPolicy.Permissions.Secrets.Select(secret => secret.ToString())));
             }
 
             Utilities.Log(info.ToString());

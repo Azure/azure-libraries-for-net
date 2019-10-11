@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,14 +19,12 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// The Azure management API provides a RESTful set of web services that
     /// interact with Azure Key Vault.
     /// </summary>
-    public partial class KeyVaultManagementClient : FluentServiceClientBase<KeyVaultManagementClient>, IKeyVaultManagementClient, IAzureClient
+    public partial class KeyVaultManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<KeyVaultManagementClient>, IKeyVaultManagementClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -49,19 +49,20 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -81,8 +82,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public KeyVaultManagementClient(RestClient restClient)
-            : base(restClient)
+        public KeyVaultManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             Vaults = new VaultsOperations(this);
             Operations = new Operations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2016-10-01";
+            this.BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2018-02-14";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

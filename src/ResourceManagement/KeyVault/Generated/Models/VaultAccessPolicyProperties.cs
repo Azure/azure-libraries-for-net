@@ -17,25 +17,25 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// <summary>
     /// Properties of the vault access policy
     /// </summary>
-    public partial class VaultAccessPolicyPropertiesInner
+    public partial class VaultAccessPolicyProperties
     {
         /// <summary>
-        /// Initializes a new instance of the VaultAccessPolicyPropertiesInner
+        /// Initializes a new instance of the VaultAccessPolicyProperties
         /// class.
         /// </summary>
-        public VaultAccessPolicyPropertiesInner()
+        public VaultAccessPolicyProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VaultAccessPolicyPropertiesInner
+        /// Initializes a new instance of the VaultAccessPolicyProperties
         /// class.
         /// </summary>
         /// <param name="accessPolicies">An array of 0 to 16 identities that
         /// have access to the key vault. All identities in the array must use
         /// the same tenant ID as the key vault's tenant ID.</param>
-        public VaultAccessPolicyPropertiesInner(IList<AccessPolicyEntry> accessPolicies)
+        public VaultAccessPolicyProperties(IList<AccessPolicyEntry> accessPolicies)
         {
             AccessPolicies = accessPolicies;
             CustomInit();

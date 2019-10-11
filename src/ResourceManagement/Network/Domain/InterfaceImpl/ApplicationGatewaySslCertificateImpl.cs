@@ -27,6 +27,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Gets Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate'
+        /// object stored in KeyVault.
+        /// </summary>
+        /// <summary>
+        /// Gets the secret id.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate.KeyVaultSecretId
+        {
+            get
+            {
+                return this.KeyVaultSecretId();
+            }
+        }
+
+        /// <summary>
         /// Attaches the child definition to the parent resource update.
         /// </summary>
         /// <return>The next stage of the parent definition.</return>
@@ -86,6 +101,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithPfxPassword(password);
         }
 
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewaySslCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewaySslCertificate.Definition.IWithData<ApplicationGateway.Definition.IWithCreate>.WithKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithKeyVaultSecretId(keyVaultSecretId);
+        }
 
         /// <summary>
         /// Specifies the PFX (PKCS#12) file to get the private key content from.
@@ -116,6 +140,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewaySslCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ApplicationGateway.Update.IUpdate>.WithPfxPassword(string password)
         {
             return this.WithPfxPassword(password);
+        }
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewaySslCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewaySslCertificate.UpdateDefinition.IWithData<ApplicationGateway.Update.IUpdate>.WithKeyVaultSecretId(string keyVaultSecretId)
+        {
+            return this.WithKeyVaultSecretId(keyVaultSecretId);
         }
     }
 }

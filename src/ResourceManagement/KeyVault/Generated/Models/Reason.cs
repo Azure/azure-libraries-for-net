@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static string ToSerializedValue(this Reason value)
         {
-            switch (value)
+            switch( value )
             {
                 case Reason.AccountNameInvalid:
                     return "AccountNameInvalid";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 
         internal static Reason? ParseReason(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "AccountNameInvalid":
                     return Reason.AccountNameInvalid;

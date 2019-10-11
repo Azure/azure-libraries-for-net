@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             }
             if (Inner.Permissions.Keys == null)
             {
-                Inner.Permissions.Keys = new List<string>();
+                Inner.Permissions.Keys = new List<KeyPermissions>();
             }
         }
 
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             }
             if (Inner.Permissions.Secrets == null)
             {
-                Inner.Permissions.Secrets = new List<string>();
+                Inner.Permissions.Secrets = new List<SecretPermissions>();
             }
         }
 
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeKeyPermissions();
             foreach (var permission in permissions)
             {
-                if (!Inner.Permissions.Keys.Contains(permission.ToString()))
+                if (!Inner.Permissions.Keys.Contains(permission))
                 {
-                    Inner.Permissions.Keys.Add(permission.ToString());
+                    Inner.Permissions.Keys.Add(permission);
                 }
             }
             return this;
@@ -168,9 +168,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeSecretPermissions();
             foreach (var permission in permissions)
             {
-                if (!Inner.Permissions.Secrets.Contains(permission.ToString()))
+                if (!Inner.Permissions.Secrets.Contains(permission))
                 {
-                    Inner.Permissions.Secrets.Add(permission.ToString());
+                    Inner.Permissions.Secrets.Add(permission);
                 }
             }
             return this;
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeSecretPermissions();
             foreach (var permission in permissions)
             {
-                Inner.Permissions.Keys.Remove(permission.ToString());
+                Inner.Permissions.Keys.Remove(permission);
             }
             return this;
         }
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeSecretPermissions();
             foreach (var permission in permissions)
             {
-                Inner.Permissions.Secrets.Remove(permission.ToString());
+                Inner.Permissions.Secrets.Remove(permission);
             }
             return this;
         }
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             }
             if (Inner.Permissions.Certificates == null)
             {
-                Inner.Permissions.Certificates = new List<string>();
+                Inner.Permissions.Certificates = new List<CertificatePermissions>();
             }
         }
 
@@ -321,9 +321,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeCertificatePermissions();
             foreach (var permission in permissions)
             {
-                if (!Inner.Permissions.Certificates.Contains(permission.ToString()))
+                if (!Inner.Permissions.Certificates.Contains(permission))
                 {
-                    Inner.Permissions.Certificates.Add(permission.ToString());
+                    Inner.Permissions.Certificates.Add(permission);
                 }
             }
             return this;
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeCertificatePermissions();
             foreach (var permission in permissions)
             {
-                Inner.Permissions.Certificates.Remove(permission.ToString());
+                Inner.Permissions.Certificates.Remove(permission);
             }
             return this;
         }

@@ -1044,6 +1044,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        
+        public ApplicationGatewayImpl WithIdentity(ManagedServiceIdentity identity)
+        {
+            this.Inner.Identity = identity;
+            return this;
+        }
+
         public ApplicationGatewayImpl WithEnableHttp2()
         {
             Inner.EnableHttp2 = true;

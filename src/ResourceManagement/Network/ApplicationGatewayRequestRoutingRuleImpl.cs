@@ -216,6 +216,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId)
+        {
+            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificateFromKeyVaultSecretId(keyVaultSecretId);
+            return this;
+        }
+
         #endregion
 
         ///GENMHASH:389A52ADE2A3CD0EC1D4345823ED3438:49DCB9A1FA027B67B2E9041AABC358E5
