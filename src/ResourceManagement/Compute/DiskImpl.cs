@@ -77,6 +77,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public DiskImpl WithHyperVGeneration(HyperVGeneration hyperVGeneration)
+        {
+            Inner.HyperVGeneration =hyperVGeneration;
+            return this;
+        }
+
         ///GENMHASH:E4F5CCFED775B8C1F10A8019B52CC013:AF82C13C6612DFDED62B43750E8734C8
         public DiskImpl WithLinuxFromDisk(string sourceDiskId)
         {
@@ -170,6 +176,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public OperatingSystemTypes? OSType()
         {
             return Inner.OsType;
+        }
+
+        public HyperVGeneration HyperVGeneration()
+        {
+            return Inner.HyperVGeneration;
         }
 
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:A57B8C47BCE45BC6F3DA10CAF14C67BE

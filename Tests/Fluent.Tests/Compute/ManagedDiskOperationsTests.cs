@@ -139,10 +139,18 @@ namespace Fluent.Tests.Compute
                             // Start Option
                             .WithSizeInGB(200)
                             .WithSku(DiskSkuTypes.StandardLRS)
+                            .WithHyperVGeneration(HyperVGeneration.V1)
                             // End Option
                             .Create();
 
                     disk = computeManager.Disks.GetById(disk.Id);
+                    Assert.Equal(HyperVGeneration.V1, disk.HyperVGeneration);
+
+                    disk.Update()
+                        .WithHyperVGeneration(HyperVGeneration.V2)
+                        .Apply();
+
+                    disk.Refresh();
 
                     Assert.NotNull(disk.Id);
                     Assert.Equal(disk.Name, diskName2, ignoreCase: true);
@@ -151,6 +159,7 @@ namespace Fluent.Tests.Compute
                     Assert.False(disk.IsAttachedToVirtualMachine);
                     Assert.Equal(200, disk.SizeInGB);
                     Assert.Null(disk.OSType);
+                    Assert.Equal(HyperVGeneration.V2, disk.HyperVGeneration);
                     Assert.NotNull(disk.Source);
                     Assert.Equal(CreationSourceType.CopiedFromDisk, disk.Source.Type);
                     Assert.Equal(disk.Source.SourceId(), emptyDisk.Id, ignoreCase: true);

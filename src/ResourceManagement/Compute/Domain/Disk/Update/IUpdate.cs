@@ -48,6 +48,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Update
     }
 
     /// <summary>
+    /// The stage of the managed disk update allowing to specify the hypervisor generation.
+    /// </summary>
+    public interface IWithHyperVGeneration
+    {
+
+        /// <summary>
+        /// Specifies the hypervisor generation of the Virtual Machine.
+        /// </summary>
+        /// <param name="hyperVGeneration">The hypervisor generation.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IUpdate WithHyperVGeneration(HyperVGeneration hyperVGeneration);
+    }
+
+    /// <summary>
     /// The template for an update operation, containing all the settings that
     /// can be modified.
     /// </summary>
@@ -56,7 +70,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Update
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IUpdate>,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IWithSku,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IWithSize,
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IWithOSSettings
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IWithOSSettings,
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IWithHyperVGeneration
     {
 
     }

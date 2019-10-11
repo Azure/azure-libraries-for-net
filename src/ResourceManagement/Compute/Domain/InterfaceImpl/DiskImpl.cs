@@ -71,6 +71,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// The stage of the managed disk update allowing to specify the hypervisor generation.
+        /// </summary>
+        HyperVGeneration IDisk.HyperVGeneration
+        {
+            get
+            {
+                return this.HyperVGeneration();
+            }
+        }
+
+        /// <summary>
         /// Gets disk size in GB.
         /// </summary>
         int Microsoft.Azure.Management.Compute.Fluent.IDisk.SizeInGB
@@ -304,6 +315,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Disk.Update.IUpdate Disk.Update.IWithOSSettings.WithOSType(OperatingSystemTypes osType)
         {
             return this.WithOSType(osType);
+        }
+        
+        /// <summary>
+        /// Specifies the hypervisor generation of the managed disk.
+        /// </summary>
+        /// <param name="hyperVGeneration">The hypervisor generation.</param>
+        /// <return>The next stage of the update.</return>
+        IUpdate Disk.Update.IWithHyperVGeneration.WithHyperVGeneration(HyperVGeneration hyperVGeneration)
+        {
+            return this.WithHyperVGeneration(hyperVGeneration);
+        }
+
+        /// <summary>
+        /// Specifies the hypervisor generation of the managed disk.
+        /// </summary>
+        /// <param name="hyperVGeneration">The hypervisor generation.</param>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate Disk.Definition.IWithHyperVGeneration.WithHyperVGeneration(HyperVGeneration hyperVGeneration)
+        {
+            return this.WithHyperVGeneration(hyperVGeneration);
         }
 
         /// <summary>

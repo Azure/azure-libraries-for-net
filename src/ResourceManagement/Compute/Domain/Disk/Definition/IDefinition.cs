@@ -235,6 +235,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     }
 
     /// <summary>
+    /// The stage of the managed disk definition allowing to specify the hypervisor generation.
+    /// </summary>
+    public interface IWithHyperVGeneration
+    {
+
+        /// <summary>
+        /// Specifies the hypervisor generation of the managed disk.
+        /// </summary>
+        /// <param name="hyperVGeneration">The hypervisor generation.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate WithHyperVGeneration(HyperVGeneration hyperVGeneration);
+    }
+
+    /// <summary>
     /// The stage of the managed disk definition allowing to choose data source.
     /// </summary>
     public interface IWithDataDiskSource :
@@ -356,6 +370,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithSku,
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithHyperVGeneration,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithAvailabilityZone
     {
 
