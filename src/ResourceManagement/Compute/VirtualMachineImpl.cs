@@ -767,6 +767,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public VirtualMachineImpl WithEphemeralOSDisk(DiffDiskOptions diffDiskOptions)
+        {
+            Inner.StorageProfile.OsDisk.DiffDiskSettings = new DiffDiskSettings(diffDiskOptions);
+            return this;
+        }
+
         ///GENMHASH:6AD476CF269D3B37CBD6D308C3557D31:16840EEFCED2B5791EEB29EDAE4CB087
         public VirtualMachineImpl WithOSDiskVhdLocation(string containerName, string vhdName)
         {

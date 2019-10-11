@@ -72,6 +72,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithOSDiskCaching(CachingTypes cachingType);
 
         /// <summary>
+        /// Specifies the ephemeral options for the OS disk.
+        /// </summary>
+        /// <param name="diffDiskOptions">Specifies the ephemeral disk options for
+        /// operating system disk. Possible values include: 'Local'</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithEphemeralOSDisk(DiffDiskOptions diffDiskOptions);
+
+        /// <summary>
         /// Specifies the encryption settings for the OS Disk.
         /// </summary>
         /// <param name="settings">The encryption settings.</param>

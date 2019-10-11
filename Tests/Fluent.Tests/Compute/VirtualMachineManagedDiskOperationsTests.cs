@@ -561,21 +561,21 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
                             .WithData()
-                            .WithSizeInGB(150);
+                            .WithSizeInGB(1);
 
                     var creatableEmptyDisk2 = computeManager.Disks
                             .Define(explicitlyCreatedEmptyDiskName2)
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
                             .WithData()
-                            .WithSizeInGB(150);
+                            .WithSizeInGB(1);
 
                     var creatableEmptyDisk3 = computeManager.Disks
                             .Define(explicitlyCreatedEmptyDiskName3)
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
                             .WithData()
-                            .WithSizeInGB(150);
+                            .WithSizeInGB(1);
 
                     var virtualMachine1 = computeManager.VirtualMachines
                             .Define(vmName1)
@@ -588,31 +588,32 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithAdminUsername(uname)
                             .WithAdminPassword(password)
                             // Start: Add bunch of empty managed disks
-                            .WithNewDataDisk(100)                                             // CreateOption: EMPTY
-                            .WithNewDataDisk(100, 1, CachingTypes.ReadWrite)                 // CreateOption: EMPTY
-                            .WithNewDataDisk(creatableEmptyDisk1)                             // CreateOption: ATTACH
-                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.None)       // CreateOption: ATTACH
-                            .WithNewDataDisk(creatableEmptyDisk3, 3, CachingTypes.None)       // CreateOption: ATTACH
-                                                                                              // End : Add bunch of empty managed disks
+                            .WithNewDataDisk(1)
+                            .WithNewDataDisk(1, 1, CachingTypes.ReadOnly)
+                            .WithNewDataDisk(creatableEmptyDisk1) 
+                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)      
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
-                            .WithOSDiskCaching(CachingTypes.ReadWrite)
+                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithOSDiskCaching(CachingTypes.ReadOnly)
+                            .WithEphemeralOSDisk(DiffDiskOptions.Local)
                             .Create();
 
                     virtualMachine1.Update()
                             .WithoutDataDisk(1)
-                            .WithNewDataDisk(100, 6, CachingTypes.ReadWrite)                 // CreateOption: EMPTY
+                            .WithNewDataDisk(1, 6, CachingTypes.ReadOnly)                 // CreateOption: EMPTY
                             .Apply();
 
                     var dataDisks = virtualMachine1.DataDisks;
                     Assert.NotNull(dataDisks);
-                    Assert.Equal(5, dataDisks.Count); // Removed one added another
+                    Assert.Equal(4, dataDisks.Count); // Removed one added another
                     Assert.True(dataDisks.ContainsKey(6));
                     Assert.False(dataDisks.ContainsKey(1));
 
+
                     virtualMachine1.Reimage();
-                    Assert.Null(dataDisks);
+                    virtualMachine1.Refresh();
+
                 }
                 finally
                 {

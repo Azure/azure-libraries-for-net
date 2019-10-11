@@ -1589,6 +1589,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the ephemeral options for the OS disk.
+        /// </summary>
+        /// <param name="diffDiskOptions">Specifies the ephemeral disk options for
+        /// operating system disk. Possible values include: 'Local'</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithOSDiskSettings.WithEphemeralOSDisk(DiffDiskOptions diffDiskOptions)
+        {
+            return this.WithEphemeralOSDisk(diffDiskOptions);
+        }
+
+        /// <summary>
+        /// Specifies the ephemeral options for the OS disk.
+        /// </summary>
+        /// <param name="diffDiskOptions">Specifies the ephemeral disk options for
+        /// operating system disk. Possible values include: 'Local'</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithEphemeralOSDisk(DiffDiskOptions diffDiskOptions)
+        {
+            return this.WithEphemeralOSDisk(diffDiskOptions);
+        }
+
+        /// <summary>
         /// Specifies the encryption settings for the OS Disk.
         /// </summary>
         /// <param name="settings">The encryption settings.</param>
