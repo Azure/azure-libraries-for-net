@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             string accessToken = loginInfo.access_token;
             if (accessToken == null)
             {
-                throw MSILoginException.AcessTokenNotFound(content);
+                throw MSILoginException.AccessTokenNotFound(content);
             }
             return new AuthenticationHeaderValue(tokenType, accessToken);
         }
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             dynamic loginInfo = JsonConvert.DeserializeObject(content);
             if (loginInfo.access_token == null)
             {
-                throw MSILoginException.AcessTokenNotFound(content);
+                throw MSILoginException.AccessTokenNotFound(content);
             }
             if (loginInfo.token_type == null)
             {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                             dynamic loginInfo = JsonConvert.DeserializeObject(content);
                             if (loginInfo.access_token == null)
                             {
-                                throw MSILoginException.AcessTokenNotFound(content);
+                                throw MSILoginException.AccessTokenNotFound(content);
                             }
                             if (loginInfo.token_type == null)
                             {
