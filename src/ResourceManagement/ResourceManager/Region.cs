@@ -1,18 +1,18 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/
     /// </summary>
     public partial class Region
     {
-        private static IDictionary<string, Region> regions = new Dictionary<string, Region>();
+        private static ConcurrentDictionary<string, Region> regions = new ConcurrentDictionary<string, Region>();
 
         #region Americas
         public static readonly Region USWest = new Region("westus");
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         private Region(string name)
         {
             Name = name.ToLowerInvariant();
-            regions.Add(Name, this);
+            regions.AddOrUpdate(Name, this, (k, v) => v);
         }
 
         public static Region Create(string name)
