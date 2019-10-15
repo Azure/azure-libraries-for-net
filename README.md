@@ -58,7 +58,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   </tr>
   <tr>
     <td>More services</td>
-    <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Batch(deprecated)<br>Service bus</td>
+    <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Batch(<i>deprecated</i>)<br>Service bus</td>
     <td valign="top">Web apps<br>Function Apps<br>Graph RBAC<br>Cosmos DB<br>Monitor<br>Batch AI<br>Search<br>Event Hub</td>
     <td valign="top">Data Lake<br>More Monitor features<br>Logic Apps<br>Event Grid</td>
   </tr>
@@ -430,17 +430,17 @@ var database = sqlServer.Databases.Define(databaseName)
   <tr>
     <td>SQL Database</td>
     <td><ul style="list-style-type:circle">
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-db">Manage SQL databases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-dbs-in-elastic-pool">Manage SQL databases in elastic pools</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-firewalls-for-sql-databases">Manage firewalls for SQL databases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions">Manage SQL databases across regions</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-import-export-db">Import and export SQL databases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-recover-or-restore-db">Restore and recover SQL databases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-get-sql-metrics">Get SQL Database metrics</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-failover-groups">Manage SQL Database Failover Groups</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-server-dns-aliases">Manage SQL Server DNL aliases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-secrets-in-key-vault">Manage SQL secrets (Server Keys) in Azure Key Vault</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-virtual-network-rules">Manage SQL Virtual Network Rules</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlDatabase.cs">Manage SQL databases</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlDatabaseInElasticPool.cs">Manage SQL databases in elastic pools</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlFirewallRules.cs">Manage firewalls for SQL databases</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlDatabasesAcrossDifferentDataCenters.cs">Manage SQL databases across regions</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlImportExportDatabase.cs">Import and export SQL databases</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlWithRecoveredOrRestoredDatabase.cs">Restore and recover SQL databases</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/GettingSqlServerMetrics.cs">Get SQL Database metrics</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlFailoverGroups.cs">Manage SQL Database Failover Groups</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlServerDnsAliases.cs">Manage SQL Server DNL aliases</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlServerKeysWithAzureKeyVaultKey.cs">Manage SQL secrets (Server Keys) in Azure Key Vault</a></li>
+<li><a href="https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/Sql/ManageSqlVirtualNetworkRules.cs">Manage SQL Virtual Network Rules</a></li>
 </ul></td>
   </tr>
 <tr>
@@ -542,7 +542,7 @@ var database = sqlServer.Databases.Define(databaseName)
   </tr>
 
   <tr>
-    <td>Batch(deprecated)</td>
+    <td>Batch(<i>deprecated</i>)</td>
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts">Manage batch accounts</a></li>
 </ul></td>
@@ -582,7 +582,7 @@ var database = sqlServer.Databases.Define(databaseName)
 |---------------------------------------------|-----------------------------------------------------|------------------------|
 |Azure Management Client (wrapper package)    | `Microsoft.Azure.Management.Fluent`                 | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) |
 |App Service (Web Apps and Functions)         | `Microsoft.Azure.Management.AppService.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.AppService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.AppService.Fluent/) |
-|Batch(deprecated)                                        | `Microsoft.Azure.Management.Batch.Fluent`           | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Batch.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch.Fluent/) |
+|Batch(<i>deprecated</i>)                                        | `Microsoft.Azure.Management.Batch.Fluent`           | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Batch.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch.Fluent/) |
 |Batch AI                                     | `Microsoft.Azure.Management.BatchAI.Fluent`         | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.BatchAI.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.BatchAI.Fluent/) |
 |CDN                                          | `Microsoft.Azure.Management.Cdn.Fluent`             | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Cdn.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Cdn.Fluent/) |
 |Virtual Machines, Virtual Machine Scale Sets, Azure Container Services| `Microsoft.Azure.Management.Compute.Fluent`         | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Compute.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/) |
