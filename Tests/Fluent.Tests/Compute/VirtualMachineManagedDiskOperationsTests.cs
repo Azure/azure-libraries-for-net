@@ -604,16 +604,18 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(1, 6, CachingTypes.ReadOnly)                 // CreateOption: EMPTY
                             .Apply();
 
-                    var dataDisks = virtualMachine1.DataDisks;
-                    Assert.NotNull(dataDisks);
-                    Assert.Equal(4, dataDisks.Count); // Removed one added another
-                    Assert.True(dataDisks.ContainsKey(6));
-                    Assert.False(dataDisks.ContainsKey(1));
-
+                    Assert.NotNull(virtualMachine1.DataDisks);
+                    Assert.Equal(4, virtualMachine1.DataDisks.Count); // Removed one added another
+                    Assert.True(virtualMachine1.DataDisks.ContainsKey(6));
+                    Assert.False(virtualMachine1.DataDisks.ContainsKey(1));
 
                     virtualMachine1.Reimage();
                     virtualMachine1.Refresh();
 
+                    Assert.NotNull(virtualMachine1.DataDisks);
+                    Assert.Equal(4, virtualMachine1.DataDisks.Count); // Removed one added another
+                    Assert.True(virtualMachine1.DataDisks.ContainsKey(6));
+                    Assert.False(virtualMachine1.DataDisks.ContainsKey(1));
                 }
                 finally
                 {
