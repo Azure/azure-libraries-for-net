@@ -186,6 +186,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Extensions.Synchronize(() => this.Inner.StartAsync(groupName, name));
         }
 
+        public async Task ReimageAsync(string groupName, string name, bool? tempDisk = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Inner.ReimageAsync(groupName, name, tempDisk, cancellationToken);
+        }
+
+        public void Reimage(string groupName, string name, bool? tempDisk = default(bool?))
+        {
+            Extensions.Synchronize(() => this.Inner.ReimageAsync(groupName, name, tempDisk));
+        }
+
         ///GENMHASH:5BA0ADF7CF4FCFD811B372F59A1C376E:0961DB2042C5E898ED8D9586E90E4F33
         public async Task RedeployAsync(string groupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {

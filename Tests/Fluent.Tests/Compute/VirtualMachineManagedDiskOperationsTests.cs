@@ -531,6 +531,104 @@ namespace Fluent.Tests.Compute.VirtualMachine
         }
 
         [Fact]
+        public void CanUpdateVirtualMachineByReimagingDisks()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
+                var uname = "juser";
+                var password = "123tEst!@|ac";
+                // Create with implicit + explicit empty disks, check default and override
+                //
+                var vmName1 = "myvm1";
+                var explicitlyCreatedEmptyDiskName1 = SdkContext.RandomResourceName(vmName1 + "_mdisk_", 25);
+                var explicitlyCreatedEmptyDiskName2 = SdkContext.RandomResourceName(vmName1 + "_mdisk_", 25);
+                var explicitlyCreatedEmptyDiskName3 = SdkContext.RandomResourceName(vmName1 + "_mdisk_", 25);
+                var resourceManager = TestHelper.CreateRollupClient();
+                var computeManager = TestHelper.CreateComputeManager();
+                var rgName = TestUtilities.GenerateName("rgfluentchash-");
+
+                try
+                {
+
+                    var resourceGroup = resourceManager.ResourceGroups
+                            .Define(rgName)
+                            .WithRegion(Location)
+                            .Create();
+
+                    var creatableEmptyDisk1 = computeManager.Disks
+                            .Define(explicitlyCreatedEmptyDiskName1)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithData()
+                            .WithSizeInGB(1);
+
+                    var creatableEmptyDisk2 = computeManager.Disks
+                            .Define(explicitlyCreatedEmptyDiskName2)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithData()
+                            .WithSizeInGB(1);
+
+                    var creatableEmptyDisk3 = computeManager.Disks
+                            .Define(explicitlyCreatedEmptyDiskName3)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithData()
+                            .WithSizeInGB(1);
+
+                    var virtualMachine1 = computeManager.VirtualMachines
+                            .Define(vmName1)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithNewPrimaryNetwork("10.0.0.0/28")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithNewPrimaryPublicIPAddress(publicIPDnsLabel)
+                            .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2008R2_SP1)
+                            .WithAdminUsername(uname)
+                            .WithAdminPassword(password)
+                            // Start: Add bunch of empty managed disks
+                            .WithNewDataDisk(1)
+                            .WithNewDataDisk(1, 1, CachingTypes.ReadOnly)
+                            .WithNewDataDisk(creatableEmptyDisk1) 
+                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)      
+                            .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
+                            .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
+                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithOSDiskCaching(CachingTypes.ReadOnly)
+                            .WithEphemeralOSDisk(DiffDiskOptions.Local)
+                            .Create();
+
+                    virtualMachine1.Update()
+                            .WithoutDataDisk(1)
+                            .WithNewDataDisk(1, 6, CachingTypes.ReadOnly)                 // CreateOption: EMPTY
+                            .Apply();
+
+                    Assert.NotNull(virtualMachine1.DataDisks);
+                    Assert.Equal(4, virtualMachine1.DataDisks.Count); // Removed one added another
+                    Assert.True(virtualMachine1.DataDisks.ContainsKey(6));
+                    Assert.False(virtualMachine1.DataDisks.ContainsKey(1));
+
+                    virtualMachine1.Reimage();
+                    virtualMachine1.Refresh();
+
+                    Assert.NotNull(virtualMachine1.DataDisks);
+                    Assert.Equal(4, virtualMachine1.DataDisks.Count); // Removed one added another
+                    Assert.True(virtualMachine1.DataDisks.ContainsKey(6));
+                    Assert.False(virtualMachine1.DataDisks.ContainsKey(1));
+                }
+                finally
+                {
+                    try
+                    {
+                        resourceManager.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
         public void CanCreateVirtualMachineByAttachingManagedOsDisk()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))

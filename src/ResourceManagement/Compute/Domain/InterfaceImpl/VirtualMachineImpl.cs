@@ -728,6 +728,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Reimages the virtual machine.
+        /// </summary>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.Reimage(bool? tempDisk)
+        {
+
+            this.Reimage(tempDisk);
+        }
+
+        /// <summary>
+        /// Reimages the virtual machine asynchronously.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ReimageAsync(bool? tempDisk, CancellationToken cancellationToken)
+        {
+
+            await this.ReimageAsync(tempDisk, cancellationToken);
+        }
+
+        /// <summary>
         /// Begins the description of an update of an existing extension of this virtual machine.
         /// </summary>
         /// <param name="name">The reference name of an existing extension.</param>
@@ -1567,6 +1586,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithOSDiskCaching(CachingTypes cachingType)
         {
             return this.WithOSDiskCaching(cachingType);
+        }
+
+        /// <summary>
+        /// Specifies the ephemeral options for the OS disk.
+        /// </summary>
+        /// <param name="diffDiskOptions">Specifies the ephemeral disk options for
+        /// operating system disk. Possible values include: 'Local'</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithOSDiskSettings.WithEphemeralOSDisk(DiffDiskOptions diffDiskOptions)
+        {
+            return this.WithEphemeralOSDisk(diffDiskOptions);
+        }
+
+        /// <summary>
+        /// Specifies the ephemeral options for the OS disk.
+        /// </summary>
+        /// <param name="diffDiskOptions">Specifies the ephemeral disk options for
+        /// operating system disk. Possible values include: 'Local'</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithEphemeralOSDisk(DiffDiskOptions diffDiskOptions)
+        {
+            return this.WithEphemeralOSDisk(diffDiskOptions);
         }
 
         /// <summary>

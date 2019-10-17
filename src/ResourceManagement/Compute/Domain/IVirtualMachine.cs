@@ -289,5 +289,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
         Task StartAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Reimages the virtual machine.
+        /// </summary>
+        void Reimage(bool? tempDisk = default(bool?));
+
+        /// <summary>
+        /// Reimages the virtual machine asynchronously.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task ReimageAsync(bool? tempDisk = default(bool?), CancellationToken cancellationToken = default(CancellationToken));
     }
 }
