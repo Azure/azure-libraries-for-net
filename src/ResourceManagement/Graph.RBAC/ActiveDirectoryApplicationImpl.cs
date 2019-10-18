@@ -281,10 +281,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public ActiveDirectoryApplicationImpl WithoutReplyUrl(string replyUrl)
         {
-            if (updateParameters.ReplyUrls != null)
+            if (updateParameters.ReplyUrls == null)
             {
-                updateParameters.ReplyUrls.Remove(replyUrl);
+                updateParameters.ReplyUrls = new List<string>(this.Inner.ReplyUrls);
             }
+            updateParameters.ReplyUrls.Remove(replyUrl);
             return this;
         }
 
