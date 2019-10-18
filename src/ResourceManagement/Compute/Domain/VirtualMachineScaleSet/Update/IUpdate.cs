@@ -62,6 +62,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set update to set the billing related details of the low priority virtual machines in the scale set.
+    /// </summary>
+    public interface IWithBillingProfile
+    {
+        /// <summary>
+        /// Specifies the billing related details of the low priority virtual machines in the scale set.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the update.</return>
+        IUpdate WithMaxPrice(double? maxPrice);
+    }
+
+    /// <summary>
     /// The stage of the virtual machine definition allowing to specify extensions.
     /// </summary>
     public interface IWithExtension
@@ -394,6 +407,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithBootDiagnostics,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithBillingProfile,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAvailabilityZone,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithVirtualMachinePublicIp,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAcceleratedNetworking,

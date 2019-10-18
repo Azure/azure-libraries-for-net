@@ -48,6 +48,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         System.Collections.Generic.ISet<string> UserAssignedManagedServiceIdentityIds { get; }
 
         /// <summary>
+        /// Gets the priority for the virtual machine.
+        /// </summary>
+        VirtualMachinePriorityTypes Priority { get; }
+
+        /// <summary>
+        /// Gets the eviction policy for the virtual machine.
+        /// </summary>
+        VirtualMachineEvictionPolicyTypes EvictionPolicy { get; }
+
+        /// <summary>
+        /// Gets the billing related details of a low priority virtual machine.
+        /// </summary>
+        BillingProfile BillingProfile { get; }
+
+        /// <summary>
         /// Run commands in the virtual machine.
         /// </summary>
         /// <param name="inputCommand">Command input.</param>
