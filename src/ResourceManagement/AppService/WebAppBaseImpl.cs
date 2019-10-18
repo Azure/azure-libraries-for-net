@@ -663,18 +663,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             int retryCount = 1;
-            while (retryCount >= 0)
+            int retryCountBadRequest = 5; // before success, there seems to be a few failure on WebAppsOperations.CreateOrUpdateSourceControlWithHttpMessagesAsync
+            while (retryCount >= 0 && retryCountBadRequest >= 0)
             {
                 try
                 {
                     return await CreateResourceInternalAsync(cancellationToken);
                 }
-                catch (Microsoft.Rest.RestException ex) when (retryCount > 0)
+                catch (Microsoft.Rest.RestException ex) when (retryCount > 0 && retryCountBadRequest > 0)
                 {
                     if (ex is DefaultErrorResponseException derx)
                     {
                         if (derx.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                         {
+                            retryCountBadRequest--;
                             continue;
                         }
                     }
@@ -682,6 +684,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     {
                         if (cex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                         {
+                            retryCountBadRequest--;
                             continue;
                         }
                     }
