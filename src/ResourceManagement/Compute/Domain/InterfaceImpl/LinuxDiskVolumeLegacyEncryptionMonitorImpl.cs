@@ -3,12 +3,10 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class WindowsVolumeEncryptionMonitorImpl
+    internal partial class LinuxDiskVolumeLegacyEncryptionMonitorImpl
     {
         /// <summary>
         /// Gets data disks encryption status.

@@ -37,6 +37,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Enable(string keyVaultId, string aadClientId, string aadSecret);
 
         /// <summary>
+        /// Enable encryption for virtual machine disks.
+        /// </summary>
+        /// <param name="keyVaultId">Resource ID of the key vault to store the disk encryption key.</param>
+        /// <return>Current volume decryption status.</return>
+        Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Enable(string keyVaultId);
+
+
+        /// <summary>
         /// Enable encryption for Windows virtual machine disks.
         /// </summary>
         /// <param name="encryptionSettings">Encryption settings for windows virtual machine.</param>
@@ -58,6 +66,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="aadSecret">Client secret corresponding to the aadClientId.</param>
         /// <return>A representation of the deferred computation of this call, returning the current volume encryption status.</return>
         Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> EnableAsync(string keyVaultId, string aadClientId, string aadSecret, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Enable encryption for virtual machine disks.
+        /// </summary>
+        /// <param name="keyVaultId">Resource ID of the key vault to store the disk encryption key.</param>
+        /// <return>A representation of the deferred computation of this call, returning the current volume encryption status.</return>
+        Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> EnableAsync(string keyVaultId, CancellationToken cancellationToken = default(CancellationToken));
+
 
         /// <summary>
         /// Enable encryption for Windows virtual machine disks.

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// The implementation for DiskVolumeEncryptionStatus for Linux virtual machine.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uTGludXhEaXNrVm9sdW1lRW5jcnlwdGlvbk1vbml0b3JJbXBs
-    internal partial class LinuxDiskVolumeEncryptionMonitorImpl :
+    internal partial class LinuxDiskVolumeLegacyEncryptionMonitorImpl :
         IDiskVolumeEncryptionMonitor
     {
         private string rgName;
@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private IComputeManager computeManager;
         private VirtualMachineExtensionInner encryptionExtension;
         /// <summary>
-        /// Creates LinuxDiskVolumeEncryptionMonitorImpl.
+        /// Creates LinuxDiskVolumeLegacyEncryptionMonitorImpl.
         /// </summary>
         /// <param name="virtualMachineId">Resource id of Linux virtual machine to retrieve encryption status from.</param>
         /// <param name="computeManager">Compute manager.</param>
         ///GENMHASH:A42CB27228CC0FEEF184DFCCC4F8DCB2:0C2BFB2332C823A9307222D73EFBAF83
-        internal LinuxDiskVolumeEncryptionMonitorImpl(string virtualMachineId, IComputeManager computeManager)
+        internal LinuxDiskVolumeLegacyEncryptionMonitorImpl(string virtualMachineId, IComputeManager computeManager)
         {
             this.rgName = ResourceUtils.GroupFromResourceId(virtualMachineId);
             this.vmName = ResourceUtils.NameFromResourceId(virtualMachineId);
@@ -38,23 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public IDiskVolumeEncryptionMonitor Refresh()
         {
             return ResourceManager.Fluent.Core.Extensions.Synchronize(() => RefreshAsync());
-        }
-
-        /// <return>The instance view status collection associated with the encryption extension.</return>
-        ///GENMHASH:DF6D090576A3266E52582EE3F48781B1:FE003BD6635A94757D4D94620D2271C0
-        private IList<Models.InstanceViewStatus> InstanceViewStatuses()
-        {
-            if (!HasEncryptionExtension())
-            {
-                return new List<InstanceViewStatus>();
-            }
-            VirtualMachineExtensionInstanceView instanceView = this.encryptionExtension.InstanceView;
-            if (instanceView == null
-            || instanceView.Statuses == null)
-            {
-                return new List<InstanceViewStatus>();
-            }
-            return instanceView.Statuses;
         }
 
         /// <summary>
@@ -79,46 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return EncryptionStatus.NotEncrypted;
             }
-            string subStatusJson = InstanceViewFirstSubStatus();
-            if (subStatusJson == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
-            if (subStatusJson == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
-            JObject jObject = JObject.Parse(subStatusJson);
-            if (jObject["data"] == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
-            return EncryptionStatus.Parse((string)jObject["data"]);
-        }
-
-        /// <return>
-        /// The first sub-status from instance view sub-status collection associated with the
-        /// encryption extension.
-        /// </return>
-        ///GENMHASH:41E2F45F0E1CC7217B8CEF67918CFBD9:327967FA4D7F005F7016223268CC352F
-        private string InstanceViewFirstSubStatus()
-        {
-            if (!HasEncryptionExtension())
-            {
-                return null;
-            }
-            VirtualMachineExtensionInstanceView instanceView = this.encryptionExtension.InstanceView;
-            if (instanceView == null
-                || instanceView.Substatuses == null)
-            {
-                return null;
-            }
-            IList<InstanceViewStatus> instanceViewSubStatuses = instanceView.Substatuses;
-            if (instanceViewSubStatuses.Count == 0)
-            {
-                return null;
-            }
-            return instanceViewSubStatuses[0].Message;
+            return LinuxEncryptionExtensionUtil.DataDiskStatus(this.encryptionExtension.InstanceView);
         }
 
         ///GENMHASH:1BAF4F1B601F89251ABCFE6CC4867026:14DA61D401D0341BDBDB99994BA6DA1F
@@ -134,21 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return EncryptionStatus.NotEncrypted;
             }
-            if (!HasEncryptionExtension())
-            {
-                return EncryptionStatus.NotEncrypted;
-            }
-            string subStatusJson = InstanceViewFirstSubStatus();
-            if (subStatusJson == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
-            JObject jObject = JObject.Parse(subStatusJson);
-            if (jObject["os"] == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
-            return EncryptionStatus.Parse((string)jObject["os"]);
+            return LinuxEncryptionExtensionUtil.OSDiskStatus(this.encryptionExtension.InstanceView);
         }
 
         ///GENMHASH:5A2D79502EDA81E37A36694062AEDC65:1983032392C8C2C0E86D7F672D2737DF
@@ -224,12 +154,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return null;
             }
-            IList<InstanceViewStatus> statuses = InstanceViewStatuses();
-            if (statuses.Count == 0)
-            {
-                return null;
-            }
-            return statuses[0].Message;
+            return LinuxEncryptionExtensionUtil.ProgressMessage(this.encryptionExtension.InstanceView);
         }
 
         ///GENMHASH:71BDA0CA4CE6BBBC011C764A218FEA88:5B97ED6BFAA87368F39F4CEFC342885A
