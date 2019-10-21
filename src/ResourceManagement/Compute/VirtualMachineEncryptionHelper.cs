@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 virtualMachine = await InstallEncryptionExtensionAsync(encryptConfig, cancellationToken);
             }
 
-            if (encryptConfig.RequestedForLegacyEncryptExtension())
+            if (encryptConfig.RequestedForLegacyEncryptExtension)
             {
                 // Retrieve the encryption key URL after extension install or update
                 //
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 // Gets the encryption status
                 //
             }
-            return await GetDiskVolumeEncryptDecryptStatusAsync(virtualMachine, encryptConfig.RequestedForNoAADEncryptExtension(), cancellationToken);
+            return await GetDiskVolumeEncryptDecryptStatusAsync(virtualMachine, encryptConfig.RequestedForNoAADEncryptExtension, cancellationToken);
         }
 
         /// <summary>

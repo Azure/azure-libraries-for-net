@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 get
                 {
-                    return EncryptionExtensionIdentifier.GetVersion(this.config.OsType(), RequestedForNoAADEncryptExtension());
+                    return EncryptionExtensionIdentifier.GetVersion(this.config.OsType(), RequestedForNoAADEncryptExtension);
                 }
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 get
                 {
-                    if (this.RequestedForLegacyEncryptExtension())
+                    if (this.RequestedForLegacyEncryptExtension)
                     {
                         Dictionary<string, object> protectedSettings = new Dictionary<string, object>();
                         // Legacy-Encrypt-Extension requires AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault.
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     {
                         publicSettings.Add("KeyEncryptionKeyURL", config.KeyEncryptionKeyURL()); // KeyVault to hold Key for encrypting "Disk Encryption Key" (aka kek).
                     }
-                    if (this.RequestedForLegacyEncryptExtension())
+                    if (this.RequestedForLegacyEncryptExtension)
                     {
                         // Legacy-Encrypt-Extension requires AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault.
                         publicSettings.Add("AADClientID", config.AadClientId());
@@ -171,16 +171,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             /// <return>True if user requested for Legacy-Encrypt-Extension.</return>
-            internal bool RequestedForLegacyEncryptExtension()
+            internal bool RequestedForLegacyEncryptExtension
             {
-                return !RequestedForNoAADEncryptExtension();
+                get
+                {
+                    return !RequestedForNoAADEncryptExtension;
+                }
 
             }
 
             /// <return>True if user requested for NoAAD-Encrypt-Extension.</return>
-            internal bool RequestedForNoAADEncryptExtension()
+            internal bool RequestedForNoAADEncryptExtension
             {
-                return this.config.AadClientId() == null && this.config.AadSecret() == null;
+                get
+                {
+                    return this.config.AadClientId() == null && this.config.AadSecret() == null;
+                }
             }
 
             internal override DiskEncryptionSettings StorageProfileEncryptionSettings
