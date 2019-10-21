@@ -22,10 +22,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return EncryptionStatus.Unknown;
             }
-            if (subStatusJson == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
             JObject jObject = JObject.Parse(subStatusJson);
             if (jObject["data"] == null)
             {
