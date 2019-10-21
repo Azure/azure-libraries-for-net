@@ -35,30 +35,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.computeManager = computeManager;
         }
 
-        /// <summary>
-        /// Given disk instance view status code, check whether it is encryption status code if yes map it to EncryptionStatus.
-        /// </summary>
-        /// <param name="code">The encryption status code.</param>
-        /// <return>Mapped EncryptionStatus if given code is encryption status code, null otherwise.</return>
-        private static EncryptionStatus EncryptionStatusFromCode(string code)
-        {
-            if (code != null && code.ToLower().StartsWith("encryptionstate"))
-            {
-                // e.g. "code": "EncryptionState/encrypted"
-                //      "code": "EncryptionState/notEncrypted"
-                string[] parts = code.Split('/');
-                if (parts.Length != 2)
-                {
-                    return EncryptionStatus.Unknown;
-                }
-                else
-                {
-                    return EncryptionStatus.Parse(parts[1]);
-                }
-            }
-            return null;
-        }
-
         private bool HasEncryptionExtensionInstanceView()
         {
             return this.extensionInstanceView != null;
@@ -125,7 +101,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 foreach (var extension in virtualMachine.InstanceView.Extensions)
                 {
-                    if (extension.Type != null && extension.Type.ToLower().StartsWith(EncryptionExtensionIdentifier.PublisherName().ToLower())
+                    if (extension.Type != null && extension.Type.ToLower().StartsWith(EncryptionExtensionIdentifier.GetPublisherName().ToLower())
                         && extension.Name != null && EncryptionExtensionIdentifier.IsEncryptionTypeName(extension.Name, this.OSType()))
                     {
                         this.extensionInstanceView = extension;

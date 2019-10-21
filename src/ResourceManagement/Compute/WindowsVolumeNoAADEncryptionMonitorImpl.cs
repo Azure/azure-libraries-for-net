@@ -29,31 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.rgName = ResourceUtils.GroupFromResourceId(virtualMachineId);
             this.vmName = ResourceUtils.NameFromResourceId(virtualMachineId);
             this.computeManager = computeManager;
-
-        }
-
-        /// <summary>
-        /// Given disk instance view status code, check whether it is encryption status code if yes map it to EncryptionStatus.
-        /// </summary>
-        /// <param name="code">The encryption status code.</param>
-        /// <return>Mapped EncryptionStatus if given code is encryption status code, null otherwise.</return>
-        private static EncryptionStatus EncryptionStatusFromCode(string code)
-        {
-            if (code != null && code.ToLower().StartsWith("encryptionstate"))
-            {
-                // e.g. "code": "EncryptionState/encrypted"
-                //      "code": "EncryptionState/notEncrypted"
-                string[] parts = code.Split('/');
-                if (parts.Length != 2)
-                {
-                    return EncryptionStatus.Unknown;
-                }
-                else
-                {
-                    return EncryptionStatus.Parse(parts[1]);
-                }
-            }
-            return null;
         }
 
         /// <summary>
@@ -89,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 }
                 foreach (InstanceViewStatus status in diskInstanceView.Statuses)
                 {
-                    EncryptionStatus encryptionStatus = EncryptionStatusFromCode(status.Code);
+                    EncryptionStatus encryptionStatus = EncryptionExtensionIdentifier.EncryptionStatusFromCode(status.Code);
                     if (encryptionStatus != null)
                     {
                         encryptStatuses.Add(encryptionStatus);
@@ -149,7 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 foreach (InstanceViewStatus status in diskInstanceView.Statuses)
                 {
-                    if (EncryptionStatusFromCode(status.Code) != null)
+                    if (EncryptionExtensionIdentifier.EncryptionStatusFromCode(status.Code) != null)
                     {
                         div.Add(diskInstanceView.Name, status);
                         break;
@@ -172,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     foreach (InstanceViewStatus status in diskInstanceView.Statuses)
                     {
-                        EncryptionStatus encryptionStatus = EncryptionStatusFromCode(status.Code);
+                        EncryptionStatus encryptionStatus = EncryptionExtensionIdentifier.EncryptionStatusFromCode(status.Code);
                         if (encryptionStatus != null)
                         {
                             return encryptionStatus;

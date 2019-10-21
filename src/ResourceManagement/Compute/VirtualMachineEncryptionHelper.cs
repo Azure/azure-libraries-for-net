@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 .DefineNewExtension(extensionName)
                     .WithPublisher(encryptionExtensionPublisher)
                     .WithType(EncryptionExtensionType())
-                    .WithVersion(encryptConfig.EncryptionExtensionVersion())
-                    .WithPublicSettings(encryptConfig.ExtensionPublicSettings())
-                    .WithProtectedSettings(encryptConfig.ExtensionProtectedSettings())
+                    .WithVersion(encryptConfig.EncryptionExtensionVersion)
+                    .WithPublicSettings(encryptConfig.ExtensionPublicSettings)
+                    .WithProtectedSettings(encryptConfig.ExtensionProtectedSettings)
                     .WithMinorVersionAutoUpgrade()
                     .Attach()
                 .ApplyAsync(cancellationToken);
@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets status object that describes the current status of the volume encryption or decryption process.
         /// </summary>
         /// <param name="virtualMachine">The virtual machine on which encryption or decryption is running.</param>
+        /// <param name="isNoAAD">Whether the extension is No AAD version</param>
         /// <return>An observable that emits current encrypt or decrypt status.</return>
         ///GENMHASH:320925F5DE599EF676589095F72B25CB:2FDB3461FF786FBAE2C4F7E37E373582
         private async Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> GetDiskVolumeEncryptDecryptStatusAsync(IVirtualMachine virtualMachine, bool isNoAAD, CancellationToken cancellationToken = default(CancellationToken))
@@ -154,7 +155,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:67C0461B156AC4E3B99954E3C1D2CBC6:FD88377F886FF359056146DABA972399
         private async Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine> UpdateVMStorageProfileAsync(EncryptionSettings encryptConfig, string encryptionSecretKeyVaultUrl, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var diskEncryptionSettings = encryptConfig.StorageProfileEncryptionSettings();
+            var diskEncryptionSettings = encryptConfig.StorageProfileEncryptionSettings;
             diskEncryptionSettings.DiskEncryptionKey.SecretUrl = encryptionSecretKeyVaultUrl;
             return await virtualMachine.Update()
                 .WithOSDiskEncryptionSettings(diskEncryptionSettings)
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9E912268A5CDF429573A7112EC718690:63BF821D222D03E59BCD43264C3339D8
         private async Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine> UpdateVMStorageProfileAsync(EncryptionSettings encryptConfig, CancellationToken cancellationToken = default(CancellationToken))
         {
-            DiskEncryptionSettings diskEncryptionSettings = encryptConfig.StorageProfileEncryptionSettings();
+            DiskEncryptionSettings diskEncryptionSettings = encryptConfig.StorageProfileEncryptionSettings;
             return await virtualMachine.Update()
                 .WithOSDiskEncryptionSettings(diskEncryptionSettings)
                 .ApplyAsync(cancellationToken);
@@ -240,8 +241,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             return await virtualMachine.Update()
                 .UpdateExtension(extension.Name)
-                    .WithPublicSettings(encryptConfig.ExtensionPublicSettings())
-                    .WithProtectedSettings(encryptConfig.ExtensionProtectedSettings())
+                    .WithPublicSettings(encryptConfig.ExtensionPublicSettings)
+                    .WithProtectedSettings(encryptConfig.ExtensionProtectedSettings)
                     .Parent()
                 .ApplyAsync(cancellationToken);
         }

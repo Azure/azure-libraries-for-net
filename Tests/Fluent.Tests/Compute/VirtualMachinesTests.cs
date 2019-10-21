@@ -6,19 +6,18 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent;
+using Microsoft.Azure.Management.Network.Fluent.Models;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Renci.SshNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Management.Network.Fluent.Models;
 using Xunit;
-using Microsoft.Azure.Management.Storage.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
 
 namespace Fluent.Tests.Compute.VirtualMachine
 {

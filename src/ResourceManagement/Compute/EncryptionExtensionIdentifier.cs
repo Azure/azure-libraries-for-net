@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Return encryption extension publisher name.
         /// </summary>
         /// <returns>encryption extension publisher name</returns>
-        internal static string PublisherName()
+        internal static string GetPublisherName()
         {
             return ENCRYPTION_EXTENSION_PUBLISHER;
         }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         /// <param name="osType">OS Type</param>
         /// <returns>OS specific encryption extension type</returns>
-        internal static string TypeName(OperatingSystemTypes osType)
+        internal static string GetTypeName(OperatingSystemTypes osType)
         {
             if (osType == OperatingSystemTypes.Linux)
             {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="osType">OS Type</param>
         /// <param name="isNoAAD">no aad flag</param>
         /// <returns>the encryption extension version</returns>
-        internal static string Version(OperatingSystemTypes osType, bool isNoAAD)
+        internal static string GetVersion(OperatingSystemTypes osType, bool isNoAAD)
         {
             if (osType == OperatingSystemTypes.Linux)
             {
@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <returns>true if no-aad</returns>
         internal static bool IsNoAADVersion(OperatingSystemTypes osType, string version)
         {
+            if (version == null)
+            {
+                return false;
+            }
             string majorVersion = version.Split('.')[0];
             if (osType == OperatingSystemTypes.Linux)
             {
@@ -90,7 +94,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <returns>true if the given publisher name is encryption publisher name</returns>
         internal static bool IsEncryptionPublisherName(string publisherName)
         {
-            return publisherName.Equals(PublisherName(), System.StringComparison.OrdinalIgnoreCase);
+            if (publisherName == null)
+            {
+                return false;
+            }
+            return publisherName.Equals(GetPublisherName(), System.StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -101,7 +109,35 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <returns>true if the given type name is encryption type name</returns>
         internal static bool IsEncryptionTypeName(string typeName, OperatingSystemTypes osType)
         {
-            return typeName.Equals(TypeName(osType), System.StringComparison.OrdinalIgnoreCase);
+            if (typeName == null)
+            {
+                return false;
+            }
+            return typeName.Equals(GetTypeName(osType), System.StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Given disk instance view status code, check whether it is encryption status code if yes map it to EncryptionStatus.
+        /// </summary>
+        /// <param name="code">The encryption status code.</param>
+        /// <return>Mapped EncryptionStatus if given code is encryption status code, null otherwise.</return>
+        internal static EncryptionStatus EncryptionStatusFromCode(string code)
+        {
+            if (code != null && code.ToLower().StartsWith("encryptionstate"))
+            {
+                // e.g. "code": "EncryptionState/encrypted"
+                //      "code": "EncryptionState/notEncrypted"
+                string[] parts = code.Split('/');
+                if (parts.Length != 2)
+                {
+                    return EncryptionStatus.Unknown;
+                }
+                else
+                {
+                    return EncryptionStatus.Parse(parts[1]);
+                }
+            }
+            return null;
         }
     }
 }

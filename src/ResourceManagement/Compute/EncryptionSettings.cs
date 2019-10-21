@@ -15,13 +15,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
 
         /// <return>Encryption extension protected settings.</return>
-        abstract internal DiskEncryptionSettings StorageProfileEncryptionSettings();
+        abstract internal DiskEncryptionSettings StorageProfileEncryptionSettings { get; }
 
         /// <return>Encryption extension public settings.</return>
-        abstract internal IDictionary<string, object> ExtensionPublicSettings();
+        abstract internal IDictionary<string, object> ExtensionPublicSettings { get; }
 
         /// <return>Encryption specific settings to be set on virtual machine storage profile.</return>
-        abstract internal IDictionary<string, object> ExtensionProtectedSettings();
+        abstract internal IDictionary<string, object> ExtensionProtectedSettings { get; }
 
         /// <summary>
         /// Creates an instance of type representing settings to disable encryption.
@@ -58,25 +58,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.volumeType = volumeType;
             }
 
-            internal override IDictionary<string, object> ExtensionProtectedSettings()
+            internal override IDictionary<string, object> ExtensionProtectedSettings
             {
-                return new Dictionary<string, object>();
+                get
+                {
+                    return new Dictionary<string, object>();
+                }
             }
 
-            internal override IDictionary<string, object> ExtensionPublicSettings()
+            internal override IDictionary<string, object> ExtensionPublicSettings
             {
-                Dictionary<string, object> publicSettings = new Dictionary<string, object>();
-                publicSettings.Add("EncryptionOperation", "DisableEncryption");
-                publicSettings.Add("SequenceVersion", Guid.NewGuid());
-                publicSettings.Add("VolumeType", this.volumeType);
-                return publicSettings;
+                get
+                {
+                    Dictionary<string, object> publicSettings = new Dictionary<string, object>();
+                    publicSettings.Add("EncryptionOperation", "DisableEncryption");
+                    publicSettings.Add("SequenceVersion", Guid.NewGuid());
+                    publicSettings.Add("VolumeType", this.volumeType);
+                    return publicSettings;
+                }
             }
 
-            internal override DiskEncryptionSettings StorageProfileEncryptionSettings()
+            internal override DiskEncryptionSettings StorageProfileEncryptionSettings
             {
-                DiskEncryptionSettings diskEncryptionSettings = new DiskEncryptionSettings();
-                diskEncryptionSettings.Enabled = false;
-                return diskEncryptionSettings;
+                get
+                {
+                    DiskEncryptionSettings diskEncryptionSettings = new DiskEncryptionSettings();
+                    diskEncryptionSettings.Enabled = false;
+                    return diskEncryptionSettings;
+                }
             }
         }
 
@@ -92,65 +101,73 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             internal Enable(VirtualMachineEncryptionConfiguration<T> config)
             {
                 this.config = config;
-
             }
 
             /// <return>The encryption version based on user selected OS and encryption extension.</return>
-            internal string EncryptionExtensionVersion()
+            internal string EncryptionExtensionVersion
             {
-                return EncryptionExtensionIdentifier.Version(this.config.OsType(), RequestedForNoAADEncryptExtension());
-            }
-
-            internal override IDictionary<string, object> ExtensionProtectedSettings()
-            {
-                if (this.RequestedForLegacyEncryptExtension())
+                get
                 {
-                    Dictionary<string, object> protectedSettings = new Dictionary<string, object>();
-                    // Legacy-Encrypt-Extension requires AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault.
-                    protectedSettings.Add("AADClientSecret", config.AadSecret());
-                    if (config.OsType() == OperatingSystemTypes.Linux
-                    && config.LinuxPassPhrase() != null)
-                    {
-                        protectedSettings.Add("Passphrase", config.LinuxPassPhrase());
-                    }
-                    return protectedSettings;
-                }
-                else
-                {
-                    // No protected settings for NoAAD-Encrypt-Extension.
-                    return new Dictionary<string, object>();
+                    return EncryptionExtensionIdentifier.GetVersion(this.config.OsType(), RequestedForNoAADEncryptExtension());
                 }
             }
 
-            internal override IDictionary<string, object> ExtensionPublicSettings()
+            internal override IDictionary<string, object> ExtensionProtectedSettings
             {
-                Dictionary<string, object> publicSettings = new Dictionary<string, object>();
-                publicSettings.Add("EncryptionOperation", "EnableEncryption");
-                publicSettings.Add("KeyEncryptionAlgorithm", config.VolumeEncryptionKeyEncryptAlgorithm());
-                publicSettings.Add("KeyVaultURL", config.KeyVaultUrl()); // KeyVault to hold "Disk Encryption Key".
-                publicSettings.Add("VolumeType", config.VolumeType().ToString());
-                publicSettings.Add("SequenceVersion", Guid.NewGuid());
-                if (config.KeyEncryptionKeyURL() != null)
+                get
                 {
-                    publicSettings.Add("KeyEncryptionKeyURL", config.KeyEncryptionKeyURL()); // KeyVault to hold Key for encrypting "Disk Encryption Key" (aka kek).
-                }
-                if (this.RequestedForLegacyEncryptExtension())
-                {
-                    // Legacy-Encrypt-Extension requires AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault.
-                    publicSettings.Add("AADClientID", config.AadClientId());
-                }
-                else
-                {
-                    // Without AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault,
-                    // ARM resource id of KeyVaults are required.
-                    //
-                    publicSettings.Add("KeyVaultResourceId", config.KeyVaultId());
-                    if (config.KeyEncryptionKeyURL() != null && config.KeyEncryptionKeyVaultId() != null)
+                    if (this.RequestedForLegacyEncryptExtension())
                     {
-                        publicSettings.Add("KekVaultResourceId", config.KeyEncryptionKeyVaultId());
+                        Dictionary<string, object> protectedSettings = new Dictionary<string, object>();
+                        // Legacy-Encrypt-Extension requires AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault.
+                        protectedSettings.Add("AADClientSecret", config.AadSecret());
+                        if (config.OsType() == OperatingSystemTypes.Linux
+                        && config.LinuxPassPhrase() != null)
+                        {
+                            protectedSettings.Add("Passphrase", config.LinuxPassPhrase());
+                        }
+                        return protectedSettings;
+                    }
+                    else
+                    {
+                        // No protected settings for NoAAD-Encrypt-Extension.
+                        return new Dictionary<string, object>();
                     }
                 }
-                return publicSettings;
+            }
+
+            internal override IDictionary<string, object> ExtensionPublicSettings
+            {
+                get
+                {
+                    Dictionary<string, object> publicSettings = new Dictionary<string, object>();
+                    publicSettings.Add("EncryptionOperation", "EnableEncryption");
+                    publicSettings.Add("KeyEncryptionAlgorithm", config.VolumeEncryptionKeyEncryptAlgorithm());
+                    publicSettings.Add("KeyVaultURL", config.KeyVaultUrl()); // KeyVault to hold "Disk Encryption Key".
+                    publicSettings.Add("VolumeType", config.VolumeType().ToString());
+                    publicSettings.Add("SequenceVersion", Guid.NewGuid());
+                    if (config.KeyEncryptionKeyURL() != null)
+                    {
+                        publicSettings.Add("KeyEncryptionKeyURL", config.KeyEncryptionKeyURL()); // KeyVault to hold Key for encrypting "Disk Encryption Key" (aka kek).
+                    }
+                    if (this.RequestedForLegacyEncryptExtension())
+                    {
+                        // Legacy-Encrypt-Extension requires AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault.
+                        publicSettings.Add("AADClientID", config.AadClientId());
+                    }
+                    else
+                    {
+                        // Without AAD credentials (AADClientID in PublicSettings & AADClientSecret in ProtectedSettings) to access KeyVault,
+                        // ARM resource id of KeyVaults are required.
+                        //
+                        publicSettings.Add("KeyVaultResourceId", config.KeyVaultId());
+                        if (config.KeyEncryptionKeyURL() != null && config.KeyEncryptionKeyVaultId() != null)
+                        {
+                            publicSettings.Add("KekVaultResourceId", config.KeyEncryptionKeyVaultId());
+                        }
+                    }
+                    return publicSettings;
+                }
             }
 
             /// <return>True if user requested for Legacy-Encrypt-Extension.</return>
@@ -166,21 +183,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return this.config.AadClientId() == null && this.config.AadSecret() == null;
             }
 
-            internal override DiskEncryptionSettings StorageProfileEncryptionSettings()
+            internal override DiskEncryptionSettings StorageProfileEncryptionSettings
             {
-                KeyVaultKeyReference keyEncryptionKey = null;
-                if (config.KeyEncryptionKeyURL() != null)
+                get
                 {
-                    keyEncryptionKey = new KeyVaultKeyReference();
-                    keyEncryptionKey.KeyUrl = config.KeyEncryptionKeyURL();
-                    if (config.KeyEncryptionKeyVaultId() != null)
+                    KeyVaultKeyReference keyEncryptionKey = null;
+                    if (config.KeyEncryptionKeyURL() != null)
                     {
-                        keyEncryptionKey.SourceVault = new SubResource(config.KeyEncryptionKeyVaultId());
+                        keyEncryptionKey = new KeyVaultKeyReference();
+                        keyEncryptionKey.KeyUrl = config.KeyEncryptionKeyURL();
+                        if (config.KeyEncryptionKeyVaultId() != null)
+                        {
+                            keyEncryptionKey.SourceVault = new SubResource(config.KeyEncryptionKeyVaultId());
+                        }
                     }
+                    DiskEncryptionSettings diskEncryptionSettings =
+                        new DiskEncryptionSettings(new KeyVaultSecretReference(config.KeyVaultUrl(), new SubResource(config.KeyVaultId())), keyEncryptionKey, true);
+                    return diskEncryptionSettings;
                 }
-                DiskEncryptionSettings diskEncryptionSettings =
-                    new DiskEncryptionSettings(new KeyVaultSecretReference(config.KeyVaultUrl(), new SubResource(config.KeyVaultId())), keyEncryptionKey, true);
-                return diskEncryptionSettings;
             }
         }
     }
