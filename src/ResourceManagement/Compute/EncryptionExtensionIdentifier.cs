@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         /// <param name="code">The encryption status code.</param>
         /// <return>Mapped EncryptionStatus if given code is encryption status code, null otherwise.</return>
-        internal static EncryptionStatus EncryptionStatusFromCode(string code)
+        internal static EncryptionStatus GetEncryptionStatusFromCode(string code)
         {
             if (code != null && code.ToLower().StartsWith("encryptionstate"))
             {

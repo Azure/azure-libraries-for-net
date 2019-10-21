@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 }
                 foreach (InstanceViewStatus status in diskInstanceView.Statuses)
                 {
-                    EncryptionStatus encryptionStatus = EncryptionExtensionIdentifier.EncryptionStatusFromCode(status.Code);
+                    EncryptionStatus encryptionStatus = EncryptionExtensionIdentifier.GetEncryptionStatusFromCode(status.Code);
                     if (encryptionStatus != null)
                     {
                         encryptStatuses.Add(encryptionStatus);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 foreach (InstanceViewStatus status in diskInstanceView.Statuses)
                 {
-                    if (EncryptionExtensionIdentifier.EncryptionStatusFromCode(status.Code) != null)
+                    if (EncryptionExtensionIdentifier.GetEncryptionStatusFromCode(status.Code) != null)
                     {
                         div.Add(diskInstanceView.Name, status);
                         break;
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     foreach (InstanceViewStatus status in diskInstanceView.Statuses)
                     {
-                        EncryptionStatus encryptionStatus = EncryptionExtensionIdentifier.EncryptionStatusFromCode(status.Code);
+                        EncryptionStatus encryptionStatus = EncryptionExtensionIdentifier.GetEncryptionStatusFromCode(status.Code);
                         if (encryptionStatus != null)
                         {
                             return encryptionStatus;
