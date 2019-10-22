@@ -406,9 +406,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 await creatableResourceGroup.CreateAsync(cancellationToken);
             }
-            Models.Deployment inner = new Models.Deployment()
+            DeploymentInner inner = new DeploymentInner()
             {
-                Properties = new DeploymentPropertiesInner
+                Properties = new DeploymentProperties
                 {
                     Mode = Mode.Value,
                     Template = Template,
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     ParametersLink = ParametersLink
                 }
             };
-            SetInner(await Manager.Inner.Deployments.BeginCreateOrUpdateAsync(resourceGroupName, Name, inner.Properties, cancellationToken));
+            SetInner(await Manager.Inner.Deployments.BeginCreateOrUpdateAsync(resourceGroupName, Name, inner, cancellationToken));
             return this;
         }
 
@@ -448,9 +448,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async override Task<IDeployment> CreateResourceAsync(CancellationToken cancellationToken)
         {
-            Models.Deployment inner = new Models.Deployment
+            DeploymentInner inner = new DeploymentInner
             {
-                Properties = new DeploymentPropertiesInner
+                Properties = new DeploymentProperties
                 {
                     Mode = Mode.Value,
                     Template = Template,
@@ -459,15 +459,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     ParametersLink = ParametersLink
                 }
             };
-            await Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner.Properties, cancellationToken);
+            await Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner, cancellationToken);
             return this;
         }
 
         public override IDeployment CreateResource()
         {
-            Models.Deployment inner = new Models.Deployment
+            DeploymentInner inner = new DeploymentInner
             {
-                Properties = new DeploymentPropertiesInner
+                Properties = new DeploymentProperties
                 {
                     Mode = Mode.Value,
                     Template = Template,
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     ParametersLink = ParametersLink
                 }
             };
-            SetInner(Extensions.Synchronize(() => Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner.Properties)));
+            SetInner(Extensions.Synchronize(() => Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner))); ;
             return this;
         }
 

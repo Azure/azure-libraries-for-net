@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             IList<string> resources,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            ResourcesMoveInfoInner moveInfo = new ResourcesMoveInfoInner()
+            ResourcesMoveInfo moveInfo = new ResourcesMoveInfo()
             {
                 TargetResourceGroup = targetResourceGroup.Id,
                 Resources = resources,

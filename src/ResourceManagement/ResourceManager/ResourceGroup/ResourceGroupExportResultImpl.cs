@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
-        public ResourceManagementErrorWithDetails Error
+        public ErrorResponse Error
         {
             get
             {

@@ -51,8 +51,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public ResourceGroup.Definition.IBlank Define(string name)
         {
-            ResourceGroupInner inner = new ResourceGroupInner();
-            inner.Name = name;
+            ResourceGroupInner inner = new ResourceGroupInner(default, default, name);
             return new ResourceGroupImpl(inner, Inner);
         }
 
@@ -89,10 +88,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         protected override ResourceGroupImpl WrapModel(string name)
         {
-            return new ResourceGroupImpl(new ResourceGroupInner
-            {
-                Name = name
-            }, Inner);
+            return new ResourceGroupImpl(new ResourceGroupInner(default, default, name), Inner);
         }
 
         protected override IResourceGroup WrapModel(ResourceGroupInner inner)
