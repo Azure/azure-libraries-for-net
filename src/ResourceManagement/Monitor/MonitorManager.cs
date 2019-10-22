@@ -14,13 +14,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private IMetricDefinitions metricDefinitions;
         private IDiagnosticSettings diagnosticSettings;
         private IActionGroups actionGroups;
+        private IAlertRules alertRules;
+        private IAutoscaleSettings autoscaleSettings;
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
         {
-            return new MonitorManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            return new MonitorManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             };
@@ -137,6 +136,30 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 return this.actionGroups;
             }
         }
+
+        public IAlertRules AlertRules
+        {
+            get
+            {
+                if (this.alertRules == null)
+                {
+                    this.alertRules = new AlertRulesImpl(this);
+                }
+                return this.alertRules;
+            }
+        }
+
+        public IAutoscaleSettings AutoscaleSettings
+        {
+            get
+            {
+                if(this.autoscaleSettings == null)
+                {
+                    this.autoscaleSettings = new AutoscaleSettingsImpl(this);
+                }
+                return this.autoscaleSettings;
+            }
+        }
     }
 
     /// <summary>
@@ -163,5 +186,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the Azure Action Groups API entry point
         /// </summary>
         IActionGroups ActionGroups { get; }
+
+        /// <summary>
+        /// Gets the Alert Rules Groups API entry point.
+        /// </summary>
+        IAlertRules AlertRules { get; }
+
+        /// <summary>
+        /// Gets the Autoscale Settings API entry point.
+        /// </summary>
+        IAutoscaleSettings AutoscaleSettings { get; }
     }
 }

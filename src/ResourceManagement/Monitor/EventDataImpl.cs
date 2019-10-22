@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uRXZlbnREYXRhSW1wbA==
     internal partial class EventDataImpl :
-        Wrapper<Microsoft.Azure.Management.Monitor.Fluent.Models.EventDataInner>,
+        Wrapper<Microsoft.Azure.Management.Monitor.Fluent.Models.EventData>,
         IEventData
     {
         private ILocalizableString category;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         private ILocalizableString subStatus;
 
         ///GENMHASH:E7A1E750B60FCE79425B3D6049E0E016:1AB861CF0BBC22AC4D9C061C5ABBB4D0
-        internal EventDataImpl(EventDataInner innerObject)
+        internal EventDataImpl(EventData innerObject)
             : base(innerObject)
         {
             this.eventName = (Inner.EventName == null) ? null : new LocalizableStringImpl(Inner.EventName);

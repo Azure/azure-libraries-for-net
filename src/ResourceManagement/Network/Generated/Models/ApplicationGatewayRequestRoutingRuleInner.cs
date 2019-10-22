@@ -37,25 +37,26 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="ruleType">Rule type. Possible values include: 'Basic',
         /// 'PathBasedRouting'</param>
         /// <param name="backendAddressPool">Backend address pool resource of
-        /// the application gateway. </param>
-        /// <param name="backendHttpSettings">Frontend port resource of the
-        /// application gateway.</param>
+        /// the application gateway.</param>
+        /// <param name="backendHttpSettings">Backend http settings resource of
+        /// the application gateway.</param>
         /// <param name="httpListener">Http listener resource of the
-        /// application gateway. </param>
+        /// application gateway.</param>
         /// <param name="urlPathMap">URL path map resource of the application
         /// gateway.</param>
+        /// <param name="rewriteRuleSet">Rewrite Rule Set resource in Basic
+        /// rule of the application gateway.</param>
         /// <param name="redirectConfiguration">Redirect configuration resource
         /// of the application gateway.</param>
         /// <param name="provisioningState">Provisioning state of the request
         /// routing rule resource. Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the request routing rule that is unique
+        /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayRequestRoutingRuleInner(string id = default(string), ApplicationGatewayRequestRoutingRuleType ruleType = default(ApplicationGatewayRequestRoutingRuleType), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource httpListener = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource urlPathMap = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource redirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayRequestRoutingRuleInner(string id = default(string), ApplicationGatewayRequestRoutingRuleType ruleType = default(ApplicationGatewayRequestRoutingRuleType), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource httpListener = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource urlPathMap = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource rewriteRuleSet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource redirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             RuleType = ruleType;
@@ -63,6 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             BackendHttpSettings = backendHttpSettings;
             HttpListener = httpListener;
             UrlPathMap = urlPathMap;
+            RewriteRuleSet = rewriteRuleSet;
             RedirectConfiguration = redirectConfiguration;
             ProvisioningState = provisioningState;
             Name = name;
@@ -91,7 +93,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource BackendAddressPool { get; set; }
 
         /// <summary>
-        /// Gets or sets frontend port resource of the application gateway.
+        /// Gets or sets backend http settings resource of the application
+        /// gateway.
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendHttpSettings")]
         public Management.ResourceManager.Fluent.SubResource BackendHttpSettings { get; set; }
@@ -109,6 +112,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource UrlPathMap { get; set; }
 
         /// <summary>
+        /// Gets or sets rewrite Rule Set resource in Basic rule of the
+        /// application gateway.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.rewriteRuleSet")]
+        public Management.ResourceManager.Fluent.SubResource RewriteRuleSet { get; set; }
+
+        /// <summary>
         /// Gets or sets redirect configuration resource of the application
         /// gateway.
         /// </summary>
@@ -124,8 +134,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the request routing rule that is unique within
+        /// an Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

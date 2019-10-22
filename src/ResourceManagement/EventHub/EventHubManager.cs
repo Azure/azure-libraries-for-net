@@ -26,10 +26,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         #region ctrs
         private EventHubManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new EventHubManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new EventHubManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })

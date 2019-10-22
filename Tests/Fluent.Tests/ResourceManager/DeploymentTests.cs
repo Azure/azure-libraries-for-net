@@ -94,14 +94,15 @@ namespace Fluent.Tests.ResourceManager
                 IResourceManager resourceManager = TestHelper.CreateResourceManager();
                 try
                 {
-                    resourceManager.Deployments
+                    var createdDeployment = resourceManager.Deployments
                         .Define(deploymentName2)
                         .WithNewResourceGroup(rgName, Region.USEast)
                         .WithTemplateLink(templateUri, contentVersion)
                         .WithParametersLink(parametersUri, contentVersion)
                         .WithMode(DeploymentMode.Complete)
-                        .BeginCreate();
+                        .BeginCreateAsync().Result;
                     var deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
+                    Assert.Equal(createdDeployment.CorrelationId, deployment.CorrelationId);
                     Assert.Equal(deployment.Name, deploymentName2);
                     deployment.Cancel();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);

@@ -4,9 +4,10 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.AppService.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -47,6 +48,45 @@ namespace Fluent.Tests.WebApp
                     Assert.Equal(Region.USWest, plan1.Region);
                     Assert.Equal(new PricingTier("Dynamic", "Y1"), plan1.PricingTier);
 
+                    IStorageAccount storageAccount1 = getStorageAccount(appServiceManager.StorageManager, functionApp1,
+                        out IReadOnlyDictionary<string, IAppSetting> appSettings1, out StorageSettings storageSettings1);
+                    // consumption plan requires this 2 settings
+                    Assert.True(appSettings1.ContainsKey(KeyContentAzureFileConnectionString));
+                    Assert.True(appSettings1.ContainsKey(KeyContentShare));
+                    Assert.Equal(appSettings1[KeyAzureWebJobsStorage].Value, appSettings1[KeyContentAzureFileConnectionString].Value);
+                    // verify accountKey
+                    Assert.Equal(storageAccount1.GetKeys()[0].Value, storageSettings1.AccountKey);
+
+                    // List functions of App1 before deployement
+                    IEnumerable<IFunctionEnvelope> envelopes = functionApp1.ListFunctions();
+                    Assert.Empty(envelopes);
+
+                    // Deploy function into App1
+                    functionApp1.Deploy()
+                        .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Samples/Asset/square-function-app.zip")
+                        .WithExistingDeploymentsDeleted(true)
+                        .Execute();
+
+                    // List functions of App1 after deployement
+                    envelopes = functionApp1.ListFunctions();
+                    Assert.Single(envelopes);
+
+                    IPagedCollection<IFunctionEnvelope> envelopesFromAsync = Extensions.Synchronize(() => functionApp1.ListFunctionsAsync(true));
+                    Assert.Single(envelopesFromAsync);
+
+                    // Verify function envelope
+                    IFunctionEnvelope envelope = envelopes.First();
+                    Assert.NotEmpty(envelope.Id);
+                    Assert.Equal(WebAppName1 + "/square", envelope.Name);
+                    Assert.Equal("Microsoft.Web/sites/functions", envelope.Type);
+                    Assert.Equal(Region.USWest, envelope.Region);
+                    Assert.NotEmpty(envelope.ScriptRootPathHref);
+                    Assert.NotEmpty(envelope.ScriptHref);
+                    Assert.NotEmpty(envelope.ConfigHref);
+                    Assert.NotEmpty(envelope.SecretsFileHref);
+                    Assert.NotEmpty(envelope.Href);
+                    Assert.NotNull(envelope.Config);
+
                     // Create in a new group with existing consumption plan
                     var functionApp2 = appServiceManager.FunctionApps.Define(WebAppName2)
                         .WithExistingAppServicePlan(plan1)
@@ -66,6 +106,15 @@ namespace Fluent.Tests.WebApp
                     Assert.NotNull(functionApp3);
                     Assert.Equal(Region.USWest, functionApp3.Region);
 
+                    IStorageAccount storageAccount3 = getStorageAccount(appServiceManager.StorageManager, functionApp3,
+                        out IReadOnlyDictionary<string, IAppSetting> appSettings3, out StorageSettings storageSettings3);
+                    // app service plan does not have this 2 settings
+                    // https://github.com/Azure/azure-libraries-for-net/issues/485
+                    Assert.False(appSettings3.ContainsKey(KeyContentAzureFileConnectionString));
+                    Assert.False(appSettings3.ContainsKey(KeyContentShare));
+                    // verify accountKey
+                    Assert.Equal(storageAccount3.GetKeys()[0].Value, storageSettings3.AccountKey);
+
                     // Get
                     var functionApp = appServiceManager.FunctionApps.GetByResourceGroup(GroupName1, functionApp1.Name);
                     Assert.Equal(functionApp1.Id, functionApp.Id);
@@ -83,6 +132,29 @@ namespace Fluent.Tests.WebApp
                         .WithNewStorageAccount(StorageName1, Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.StandardGRS)
                         .Apply();
                     Assert.Equal(StorageName1, functionApp2.StorageAccount.Name);
+                    IStorageAccount storageAccount2 = getStorageAccount(appServiceManager.StorageManager, functionApp2,
+                         out IReadOnlyDictionary<string, IAppSetting> appSettings2, out StorageSettings storageSettings2);
+                    Assert.True(appSettings2.ContainsKey(KeyContentAzureFileConnectionString));
+                    Assert.True(appSettings2.ContainsKey(KeyContentShare));
+                    Assert.Equal(appSettings2[KeyAzureWebJobsStorage].Value, appSettings2[KeyContentAzureFileConnectionString].Value);
+                    Assert.Equal(StorageName1, storageAccount2.Name);
+                    Assert.Equal(storageAccount2.GetKeys()[0].Value, storageSettings2.AccountKey);
+
+                    // Update, verify modify AppSetting does not create new storage account
+                    // https://github.com/Azure/azure-libraries-for-net/issues/457
+                    int numStorageAccountBefore = appServiceManager.StorageManager.StorageAccounts.ListByResourceGroup(GroupName1).Count();
+                    functionApp1.Update()
+                        .WithAppSetting("newKey", "newValue")
+                        .Apply();
+                    int numStorageAccountAfter = appServiceManager.StorageManager.StorageAccounts.ListByResourceGroup(GroupName1).Count();
+                    Assert.Equal(numStorageAccountBefore, numStorageAccountAfter);
+                    IStorageAccount storageAccount1Updated = getStorageAccount(appServiceManager.StorageManager, functionApp1, 
+                        out IReadOnlyDictionary<string, IAppSetting> appSettings1Updated, out _);
+                    Assert.True(appSettings1Updated.ContainsKey("newKey"));
+                    Assert.Equal(appSettings1[KeyAzureWebJobsStorage].Value, appSettings1Updated[KeyAzureWebJobsStorage].Value);
+                    Assert.Equal(appSettings1[KeyContentAzureFileConnectionString].Value, appSettings1Updated[KeyContentAzureFileConnectionString].Value);
+                    Assert.Equal(appSettings1[KeyContentShare].Value, appSettings1Updated[KeyContentShare].Value);
+                    Assert.Equal(storageAccount1.Name, storageAccount1Updated.Name);
 
                     // Scale
                     functionApp3.Update()
@@ -98,16 +170,116 @@ namespace Fluent.Tests.WebApp
                 {
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
                     }
                     catch { }
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
                     }
                     catch { }
                 }
             }
+        }
+        
+        [Fact]
+        public void FunctionAppLongNameBug()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                string GroupName1 = TestUtilities.GenerateName("javacsmrg");
+                string WebAppName1 = TestUtilities.GenerateName("IAmAFuncitonNameThatIsLonger");
+                string StorageName1 = TestUtilities.GenerateName("javast");
+                if (StorageName1.Length >= 23)
+                {
+                    StorageName1 = StorageName1.Substring(0, 20);
+                }
+                StorageName1 = StorageName1.Replace("-", string.Empty);
+
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                try
+                {
+                    // Create with consumption plan
+                    var functionApp1 = appServiceManager.FunctionApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithNewStorageAccount(StorageName1, Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.StandardGRS)
+                        .WithNewAppServicePlan(PricingTier.PremiumP1)
+                        .Create();
+
+                    Assert.NotNull(functionApp1);
+                    functionApp1
+                        .Update()
+                        .WithTag("PackageUpdateDate", "07/17/2018")
+                        .Apply();
+
+                    Assert.NotNull(functionApp1.Tags);
+                    Assert.Equal(1, functionApp1.Tags.Count);
+                    Assert.Equal("07/17/2018", functionApp1.Tags["PackageUpdateDate"]);
+
+                    var functionAppFromGet = appServiceManager.FunctionApps.GetById(functionApp1.Id);
+                    Assert.NotNull(functionAppFromGet.Tags);
+                    Assert.Equal(1, functionAppFromGet.Tags.Count);
+                    Assert.Equal("07/17/2018", functionAppFromGet.Tags["PackageUpdateDate"]);
+
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        private static readonly string KeyAzureWebJobsStorage = "AzureWebJobsStorage";
+        private static readonly string KeyContentAzureFileConnectionString = "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING";
+        private static readonly string KeyContentShare = "WEBSITE_CONTENTSHARE";
+
+        private static readonly string AccountNameSegment = "AccountName=";
+        private static readonly string AccountKeySegment = "AccountKey=";
+
+        private class StorageSettings
+        {
+            internal string AccountName { get; set; }
+            internal string AccountKey { get; set; }
+        }
+
+        private static IStorageAccount getStorageAccount(IStorageManager storageManager, IFunctionApp functionApp,
+            out IReadOnlyDictionary<string, IAppSetting> appSettings, out StorageSettings storageSettings)
+        {
+            appSettings = functionApp.GetAppSettings();
+            storageSettings = new StorageSettings();
+
+            string storageAccountConnectionString = appSettings[KeyAzureWebJobsStorage].Value;
+            string[] segments = storageAccountConnectionString.Split(";");
+            foreach (string segment in segments)
+            {
+                if (segment.StartsWith(AccountNameSegment))
+                {
+                    storageSettings.AccountName = segment.Remove(0, AccountNameSegment.Length);
+                }
+                else if (segment.StartsWith(AccountKeySegment))
+                {
+                    storageSettings.AccountKey = segment.Remove(0, AccountKeySegment.Length);
+                }
+            }
+            if (storageSettings.AccountName != null)
+            {
+                IEnumerable<IStorageAccount> storageAccounts = storageManager.StorageAccounts.List();
+                foreach (IStorageAccount storageAccount in storageAccounts)
+                {
+                    if (storageAccount.Name == storageSettings.AccountName)
+                    {
+                        return storageAccount;
+                    }
+                }
+            }
+
+            throw new System.InvalidOperationException("storage account not found for connection string: " + storageAccountConnectionString);
         }
     }
 }

@@ -53,12 +53,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
     /// </summary>
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate>,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithJobPreparation,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithInputDirectory,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithOutputDirectory,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithContainerSettings,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithExperimentName
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithEnvironmentVariable,
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithEnvironmentVariableSecretValue,
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.HasMountVolumes.Definition.IWithMountVolumes<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate>
     {
     }
 
@@ -108,16 +109,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithNodeCount WithExistingClusterId(string clusterId);
     }
 
-    /// <summary>
-    /// Allows tro specify the experiment information of the job.
-    /// </summary>
-    public interface IWithExperimentName 
-    {
-        /// <param name="experimentName">Describes the experiment information of the job.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithExperimentName(string experimentName);
-    }
-
     public interface IWithToolType
     {
         ToolTypeSettings.Chainer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineChainer();
@@ -133,6 +124,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         ToolTypeSettings.Caffe.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCaffe();
 
         ToolTypeSettings.PyTorch.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefinePyTorch();
+
+        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.CustomMpi.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCustomMpi();
+
+        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.CustomToolkit.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCustomToolkit();
+
+        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Horovod.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineHorovod();
     }
 
     /// <summary>

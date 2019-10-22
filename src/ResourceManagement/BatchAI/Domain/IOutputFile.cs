@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// Gets the file size.
         /// </summary>
         long ContentLength { get; }
-
+        /// <summary>
+        /// Gets information about file type.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.FileType FileType { get; }
         /// <summary>
         /// Gets the time at which the file was last modified.
         /// </summary>

@@ -26,7 +26,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         [EnumMember(Value = "Relocation")]
         Relocation,
         [EnumMember(Value = "Snapshot")]
-        Snapshot
+        Snapshot,
+        [EnumMember(Value = "CloudFS")]
+        CloudFS
     }
     internal static class BackupRestoreOperationTypeEnumExtension
     {
@@ -47,6 +49,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
                     return "Relocation";
                 case BackupRestoreOperationType.Snapshot:
                     return "Snapshot";
+                case BackupRestoreOperationType.CloudFS:
+                    return "CloudFS";
             }
             return null;
         }
@@ -63,6 +67,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
                     return BackupRestoreOperationType.Relocation;
                 case "Snapshot":
                     return BackupRestoreOperationType.Snapshot;
+                case "CloudFS":
+                    return BackupRestoreOperationType.CloudFS;
             }
             return null;
         }

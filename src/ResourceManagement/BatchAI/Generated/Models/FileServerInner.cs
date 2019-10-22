@@ -8,19 +8,18 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Contains information about the File Server.
+    /// File Server information.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FileServerInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class FileServerInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the FileServerInner class.
@@ -33,23 +32,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the FileServerInner class.
         /// </summary>
-        /// <param name="vmSize">The size of the virtual machine of the File
-        /// Server.</param>
-        /// <param name="sshConfiguration">SSH settings for the File
-        /// Server.</param>
-        /// <param name="dataDisks">Settings for the data disk which would be
-        /// created for the File Server.</param>
-        /// <param name="subnet">Specifies the identifier of the
-        /// subnet.</param>
-        /// <param name="mountSettings">Details of the File Server.</param>
-        /// <param name="provisioningStateTransitionTime">Time when the status
-        /// was changed.</param>
-        /// <param name="creationTime">Time when the FileServer was
-        /// created.</param>
-        /// <param name="provisioningState">Specifies the provisioning state of
-        /// the File Server.</param>
-        public FileServerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string vmSize = default(string), SshConfiguration sshConfiguration = default(SshConfiguration), DataDisks dataDisks = default(DataDisks), ResourceId subnet = default(ResourceId), MountSettings mountSettings = default(MountSettings), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), FileServerProvisioningState provisioningState = default(FileServerProvisioningState))
-            : base(location, id, name, type, tags)
+        /// <param name="vmSize">VM size.</param>
+        /// <param name="sshConfiguration">SSH configuration.</param>
+        /// <param name="dataDisks">Data disks configuration.</param>
+        /// <param name="subnet">Subnet.</param>
+        /// <param name="mountSettings">Mount settings.</param>
+        /// <param name="provisioningStateTransitionTime">Provisioning State
+        /// Transition time.</param>
+        /// <param name="creationTime">Creation time.</param>
+        /// <param name="provisioningState">Provisioning state.</param>
+        public FileServerInner(string id = default(string), string name = default(string), string type = default(string), string vmSize = default(string), SshConfiguration sshConfiguration = default(SshConfiguration), DataDisks dataDisks = default(DataDisks), ResourceId subnet = default(ResourceId), MountSettings mountSettings = default(MountSettings), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), FileServerProvisioningState provisioningState = default(FileServerProvisioningState))
+            : base(id, name, type)
         {
             VmSize = vmSize;
             SshConfiguration = sshConfiguration;
@@ -68,66 +61,81 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the size of the virtual machine of the File Server.
+        /// Gets or sets VM size.
         /// </summary>
         /// <remarks>
-        /// For information about available VM sizes for File Server from the
-        /// Virtual Machines Marketplace, see Sizes for Virtual Machines
-        /// (Linux).
+        /// VM size of the File Server.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.vmSize")]
         public string VmSize { get; set; }
 
         /// <summary>
-        /// Gets or sets SSH settings for the File Server.
+        /// Gets or sets SSH configuration.
         /// </summary>
+        /// <remarks>
+        /// SSH configuration for accessing the File Server node.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.sshConfiguration")]
         public SshConfiguration SshConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets settings for the data disk which would be created for
-        /// the File Server.
+        /// Gets or sets data disks configuration.
         /// </summary>
+        /// <remarks>
+        /// Information about disks attached to File Server VM.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.dataDisks")]
         public DataDisks DataDisks { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the identifier of the subnet.
+        /// Gets or sets subnet.
         /// </summary>
+        /// <remarks>
+        /// File Server virtual network subnet resource ID.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.subnet")]
         public ResourceId Subnet { get; set; }
 
         /// <summary>
-        /// Gets details of the File Server.
+        /// Gets mount settings.
         /// </summary>
+        /// <remarks>
+        /// File Server mount settings.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.mountSettings")]
         public MountSettings MountSettings { get; private set; }
 
         /// <summary>
-        /// Gets time when the status was changed.
+        /// Gets provisioning State Transition time.
         /// </summary>
+        /// <remarks>
+        /// Time when the provisioning state was changed.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningStateTransitionTime")]
         public System.DateTime? ProvisioningStateTransitionTime { get; private set; }
 
         /// <summary>
-        /// Gets time when the FileServer was created.
+        /// Gets creation time.
         /// </summary>
+        /// <remarks>
+        /// Time when the FileServer was created.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.creationTime")]
         public System.DateTime? CreationTime { get; private set; }
 
         /// <summary>
-        /// Gets specifies the provisioning state of the File Server.
+        /// Gets provisioning state.
         /// </summary>
         /// <remarks>
-        /// Possible values: creating - The File Server is getting created.
-        /// updating - The File Server creation has been accepted and it is
-        /// getting updated. deleting - The user has requested that the File
-        /// Server be deleted, and it is in the process of being deleted.
-        /// failed - The File Server creation has failed with the specified
-        /// errorCode. Details about the error code are specified in the
-        /// message field. succeeded - The File Server creation has succeeded.
-        /// Possible values include: 'creating', 'updating', 'deleting',
-        /// 'succeeded', 'failed'
+        /// Provisioning state of the File Server. Possible values: creating -
+        /// The File Server is getting created; updating - The File Server
+        /// creation has been accepted and it is getting updated; deleting -
+        /// The user has requested that the File Server be deleted, and it is
+        /// in the process of being deleted; failed - The File Server creation
+        /// has failed with the specified error code. Details about the error
+        /// code are specified in the message field; succeeded - The File
+        /// Server creation has succeeded. Possible values include: 'creating',
+        /// 'updating', 'deleting', 'succeeded', 'failed'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public FileServerProvisioningState ProvisioningState { get; private set; }
@@ -138,7 +146,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (SshConfiguration != null)
             {

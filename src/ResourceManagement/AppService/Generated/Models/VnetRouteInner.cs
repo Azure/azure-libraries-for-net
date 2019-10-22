@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Virtual Network.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VnetRouteInner : ProxyOnlyResource
+    public partial class VnetRouteInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VnetRouteInner class.
@@ -31,13 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the VnetRouteInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="vnetRouteName">The name of this route. This is only
-        /// returned by the server and does not need to be set by the
-        /// client.</param>
         /// <param name="startAddress">The starting address for this route.
         /// This may also include a CIDR notation, in which case the end
         /// address must not be specified.</param>
@@ -53,10 +47,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// These values will be used for syncing an app's routes with those
         /// from a Virtual Network. Possible values include: 'DEFAULT',
         /// 'INHERITED', 'STATIC'</param>
-        public VnetRouteInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetRouteName = default(string), string startAddress = default(string), string endAddress = default(string), string routeType = default(string))
-            : base(id, name, kind, type)
+        public VnetRouteInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string startAddress = default(string), string endAddress = default(string), RouteType routeType = default(RouteType))
+            : base(id, name, type, kind)
         {
-            VnetRouteName = vnetRouteName;
             StartAddress = startAddress;
             EndAddress = endAddress;
             RouteType = routeType;
@@ -67,13 +60,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets the name of this route. This is only returned by the
-        /// server and does not need to be set by the client.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string VnetRouteName { get; set; }
 
         /// <summary>
         /// Gets or sets the starting address for this route. This may also
@@ -102,7 +88,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'INHERITED', 'STATIC'
         /// </summary>
         [JsonProperty(PropertyName = "properties.routeType")]
-        public string RouteType { get; set; }
+        public RouteType RouteType { get; set; }
 
     }
 }

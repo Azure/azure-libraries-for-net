@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task CancelAsync(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName, System.Guid operationId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, operationId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ElasticPoolOperation>> ListByElasticPoolAsync(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ElasticPoolOperationInner>> ListByElasticPoolAsync(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByElasticPoolWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByElasticPoolWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ElasticPoolOperation>> ListByElasticPoolNextAsync(this IElasticPoolOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ElasticPoolOperationInner>> ListByElasticPoolNextAsync(this IElasticPoolOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByElasticPoolNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByElasticPoolNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

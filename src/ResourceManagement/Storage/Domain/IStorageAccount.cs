@@ -52,12 +52,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
        [System.Obsolete("Encryption getter is deprecated use StorageAccount.EncryptionKeySource, StorageAccount.encryptionStatuses instead.")]
         Models.Encryption Encryption { get; }
 
-        /// <return>Gets the sku of this storage account.</return>
-        /// <summary>
-        /// Deprecated use StorageAccount.SkuType instead.
-        /// </summary>
-        [System.Obsolete("Sku getter is deprecated use StorageAccount.SkuType instead.")]
-        Models.Sku Sku { get; }
 
         /// <summary>
         /// Regenerates the access keys for this storage account.
@@ -116,5 +110,15 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Gets the source of the key used for encryption.
         /// </summary>
         Microsoft.Azure.Management.Storage.Fluent.StorageAccountEncryptionKeySource EncryptionKeySource { get; }
+
+        /// <summary>
+        /// Gets whether Azure files AAD integration is enabled on the storage account.
+        /// </summary>
+        bool? AzureFilesAadIntegration { get; }
+
+        /// <summary>
+        /// Gets whether Hns is enabled on the storage account.
+        /// </summary>
+        bool? HnsEnabled { get; }
     }
 }

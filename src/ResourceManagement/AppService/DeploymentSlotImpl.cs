@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using DeploymentSlot.Definition;
     using DeploymentSlot.Update;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest.Azure;
     using Models;
@@ -40,8 +41,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     {
         private KuduClient kuduClient;
 
-        public DeploymentSlotImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, WebAppImpl parent, IAppServiceManager manager)
-            : base(name, innerObject, configObject, parent, manager)
+        public DeploymentSlotImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig, WebAppImpl parent, IAppServiceManager manager)
+            : base(name, innerObject, configObject, logConfig, parent, manager)
         {
             kuduClient = new KuduClient(this);
         }

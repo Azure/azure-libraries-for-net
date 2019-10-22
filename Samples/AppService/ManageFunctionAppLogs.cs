@@ -41,6 +41,11 @@ namespace ManageFunctionAppLogs
                 IFunctionApp app = azure.AppServices.FunctionApps.Define(appName)
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(rgName)
+                        .DefineDiagnosticLogsConfiguration()
+                            .WithApplicationLogging()
+                            .WithLogLevel(Microsoft.Azure.Management.AppService.Fluent.Models.LogLevel.Information)
+                            .WithApplicationLogsStoredOnFileSystem()
+                            .Attach()
                         .Create();
 
                 Utilities.Log("Created function app " + app.Name);
@@ -87,7 +92,7 @@ namespace ManageFunctionAppLogs
                         SdkContext.DelayProvider.Delay(10000);
                         Utilities.PostAddress("http://" + appUrl + "/api/square", "825");
                     });
-                    while (line != null && stopWatch.ElapsedMilliseconds < 30000)
+                    while (line != null && stopWatch.ElapsedMilliseconds < 90000)
                     {
                         Utilities.Log(line);
                         line = reader.ReadLine();

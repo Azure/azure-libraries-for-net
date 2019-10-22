@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlFirewallRuleOperations.Definition.IWithSqlServer Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlFirewallRuleOperations.Definition.IWithSqlServer>.Define(string name)
         {
-            return this.Define(name) as SqlFirewallRuleOperations.Definition.IWithSqlServer;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<ISqlFirewallRule>> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as IReadOnlyList<ISqlFirewallRule>;
+            return await this.ListAsync(cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetAsync(name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return await this.GetAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.List()
         {
-            return this.List() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
+            return this.List();
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.Get(string name)
         {
-            return this.Get(name) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return this.Get(name);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetBySqlServer(string resourceGroupName, string sqlServerName, string name)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName, name);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetBySqlServer(ISqlServer sqlServer, string name)
         {
-            return this.GetBySqlServer(sqlServer, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return this.GetBySqlServer(sqlServer, name);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.ListBySqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.ListBySqlServer(resourceGroupName, sqlServerName) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
+            return this.ListBySqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.ListBySqlServer(ISqlServer sqlServer)
         {
-            return this.ListBySqlServer(sqlServer) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
+            return this.ListBySqlServer(sqlServer);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
+            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>.ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(sqlServer, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
+            return await this.ListBySqlServerAsync(sqlServer, cancellationToken);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Firewall rule definition.</return>
         SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition.ISqlFirewallRuleActionsDefinition.Define(string firewallRuleName)
         {
-            return this.Define(firewallRuleName) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+            return this.Define(firewallRuleName);
         }
     }
 }

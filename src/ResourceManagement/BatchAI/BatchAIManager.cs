@@ -5,7 +5,7 @@
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using System;
 using System.Linq;
-using Microsoft.Azure.Management.Batchai.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
@@ -14,18 +14,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     public class BatchAIManager : Manager<IBatchAIManagementClient>, IBatchAIManager
     {
         #region Fluent private collections
-        private IBatchAIClusters batchAIClusters;
-        private IBatchAIFileServers batchAIFileServers;
-        private IBatchAIJobs batchAIJobs;
+        private IBatchAIWorkspaces batchAIWorkspaces;
         private IBatchAIUsages batchAIUsages;
         #endregion
 
         #region ctrs
         private BatchAIManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new BatchAIManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new BatchAIManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })
@@ -91,42 +86,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
         #endregion
 
-        public IBatchAIClusters BatchAIClusters
-        {
-            get
-            {
-                if (batchAIClusters == null)
-                {
-                    batchAIClusters = new BatchAIClustersImpl(this);
-                }
-                return batchAIClusters;
-            }
-        }
-
-        public IBatchAIFileServers BatchAIFileServers
-        {
-            get
-            {
-                if (batchAIFileServers == null)
-                {
-                    batchAIFileServers = new BatchAIFileServersImpl(this);
-                }
-                return batchAIFileServers;
-            }
-        }
-
-        public IBatchAIJobs BatchAIJobs
-        {
-            get
-            {
-                if (batchAIJobs == null)
-                {
-                    batchAIJobs = new BatchAIJobsImpl(this);
-                }
-                return batchAIJobs;
-            }
-        }
-
         public IBatchAIUsages BatchAIUsages
         {
             get
@@ -138,15 +97,25 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 return batchAIUsages;
             }
         }
+
+        public IBatchAIWorkspaces BatchAIWorkspaces
+        {
+            get
+            {
+                if (batchAIWorkspaces == null)
+                {
+                    batchAIWorkspaces = new BatchAIWorkspacesImpl(this);
+                }
+                return batchAIWorkspaces;
+            }
+        }
     }
     /// <summary>
     /// Entry point to Azure BatchAI resource management.
     /// </summary>
     public interface IBatchAIManager : IManager<IBatchAIManagementClient>
     {
-        IBatchAIClusters BatchAIClusters { get; }
-        IBatchAIFileServers BatchAIFileServers { get;  }
-        IBatchAIJobs BatchAIJobs { get; }
+        IBatchAIWorkspaces BatchAIWorkspaces { get; }
         IBatchAIUsages BatchAIUsages { get; }
     }
 }

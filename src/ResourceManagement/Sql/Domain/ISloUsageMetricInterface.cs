@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the serviceLevelObjective for SLO usage metric.
         /// </summary>
-        string ServiceLevelObjective { get; }
+        ServiceObjectiveName ServiceLevelObjective { get; }
 
         /// <summary>
         /// Gets inRangeTimeRatio for SLO usage metric.

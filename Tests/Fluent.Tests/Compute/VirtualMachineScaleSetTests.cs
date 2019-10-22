@@ -25,6 +25,8 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent;
 
+using ResourceIdentityType = Microsoft.Azure.Management.Compute.Fluent.Models.ResourceIdentityType;
+
 namespace Fluent.Tests.Compute.VirtualMachine
 {
     public class ScaleSet
@@ -77,7 +79,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
-                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardDS3v2)
                             .WithExistingPrimaryNetworkSubnet(network, "subnet1")
                             .WithoutPrimaryInternetFacingLoadBalancer()
                             .WithoutPrimaryInternalLoadBalancer()
@@ -199,7 +201,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
-                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardDS3v2)
                             .WithExistingPrimaryNetworkSubnet(network, "subnet1")
                             .WithoutPrimaryInternetFacingLoadBalancer()
                             .WithoutPrimaryInternalLoadBalancer()
@@ -324,7 +326,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string rgName = TestUtilities.GenerateName("javacsmrg");
                 string vmssName = TestUtilities.GenerateName("vmss");
                 string apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh";
-                string installCommand = "bash install_apache.sh";
+                string installCommand = "bash install_apache.sh Abc.123x(";
                 List<string> fileUris = new List<string>();
                 fileUris.Add(apacheInstallScript);
 
@@ -351,7 +353,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Define(vmssName)
                             .WithRegion(Location)
                             .WithExistingResourceGroup(resourceGroup)
-                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardDS3v2)
                             .WithExistingPrimaryNetworkSubnet(network, "subnet1")
                             .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
                             .WithoutPrimaryInternalLoadBalancer()
@@ -360,7 +362,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootPassword("123OData!@#123")
                             .WithUnmanagedDisks()
                             .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
-                            .WithNewStorageAccount(TestUtilities.GenerateName("stg2"))
+                            .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                             .DefineNewExtension("CustomScriptForLinux")
                                 .WithPublisher("Microsoft.OSTCExtensions")
                                 .WithType("CustomScriptForLinux")
@@ -368,7 +370,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .WithMinorVersionAutoUpgrade()
                                 .WithPublicSetting("fileUris", fileUris)
                                 .WithPublicSetting("commandToExecute", installCommand)
-                            .Attach()
+                                .Attach()
+                            .WithUpgradeMode(UpgradeMode.Manual)
                             .Create();
 
                     IReadOnlyList<string> publicIPAddressIds = virtualMachineScaleSet.PrimaryPublicIPAddressIds;
@@ -552,12 +555,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     // Check LB after update 
                     //
                     Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 1);
+                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count());
+                    Assert.Single(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools());
 
                     Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 2);
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 2);
+                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count());
+                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count());
 
                     // Check NIC + IPConfig after update
                     //
@@ -680,28 +683,18 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    //
-                    IServicePrincipal servicePrincipal = authenticatedClient
-                            .ServicePrincipals
-                            .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
+                    //IServicePrincipal servicePrincipal = authenticatedClient
+                    //        .ServicePrincipals
+                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    Assert.NotNull(servicePrincipal);
-                    Assert.NotNull(servicePrincipal.Inner);
+                    //Assert.NotNull(servicePrincipal);
+                    //Assert.NotNull(servicePrincipal.Inner);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachineScaleSet.Extensions;
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
 
                     // Ensure no role assigned for resource group
                     //
@@ -733,7 +726,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
             }
         }
-
 
         [Fact]
         public void CanEnableMSIWithMultipleRoleAssignment()
@@ -796,28 +788,19 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(virtualMachineScaleSet.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssigned));
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    //
-                    IServicePrincipal servicePrincipal = authenticatedClient
-                            .ServicePrincipals
-                            .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    Assert.NotNull(servicePrincipal);
-                    Assert.NotNull(servicePrincipal.Inner);
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
+                    //IServicePrincipal servicePrincipal = authenticatedClient
+                    //        .ServicePrincipals
+                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachineScaleSet.Extensions;
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
+                    //Assert.NotNull(servicePrincipal);
+                    //Assert.NotNull(servicePrincipal.Inner);
+
 
                     // Ensure role assigned for resource group
                     //
@@ -1088,6 +1071,244 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     catch { }
                 }
             }
+        }
+
+        [Fact]
+        public void CanCreateVirtualMachineScaleSetWithOptionalNetworkSettings()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string vmss_name = TestUtilities.GenerateName("vmss");
+                string groupName = TestUtilities.GenerateName("javacsmrg");
+                string asgName = TestUtilities.GenerateName("asg");
+                string nsgName = TestUtilities.GenerateName("nsg");
+                string vmssVmDnsLabel = TestUtilities.GenerateName("pip");
+                Region region = Region.USEast2;
+                IAzure azure = null;
+
+                try
+                {
+                    azure = TestHelper.CreateRollupClient();
+
+                    var resourceGroup = azure.ResourceGroups.Define(groupName)
+                        .WithRegion(region)
+                        .Create();
+
+                    var network = azure.Networks.Define("vmssvnet")
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .Create();
+
+                    var asg = azure.ApplicationSecurityGroups
+                            .Define(asgName)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .Create();
+
+                    // Create VMSS with instance public ip
+                    var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmss_name)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardDS3v2)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithoutPrimaryInternetFacingLoadBalancer()
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("jvuser")
+                            .WithRootPassword("123OData!@#123")
+                            .WithVirtualMachinePublicIp(vmssVmDnsLabel)
+                            .WithExistingApplicationSecurityGroup(asg)
+                            .Create();
+
+                    var currentIpConfig = virtualMachineScaleSet.VirtualMachinePublicIpConfig;
+
+                    Assert.NotNull(currentIpConfig);
+                    Assert.NotNull(currentIpConfig.DnsSettings);
+                    Assert.NotNull(currentIpConfig.DnsSettings.DomainNameLabel);
+
+                    currentIpConfig.IdleTimeoutInMinutes = 20;
+
+                    virtualMachineScaleSet.Update()
+                            .WithVirtualMachinePublicIp(currentIpConfig)
+                            .Apply();
+
+                    currentIpConfig = virtualMachineScaleSet.VirtualMachinePublicIpConfig;
+                    Assert.NotNull(currentIpConfig);
+                    Assert.NotNull(currentIpConfig.IdleTimeoutInMinutes);
+                    Assert.Equal((long)20, (long)currentIpConfig.IdleTimeoutInMinutes);
+
+                    virtualMachineScaleSet.Refresh();
+                    currentIpConfig = virtualMachineScaleSet.VirtualMachinePublicIpConfig;
+                    Assert.NotNull(currentIpConfig);
+                    Assert.NotNull(currentIpConfig.IdleTimeoutInMinutes);
+                    Assert.Equal((long)20, (long)currentIpConfig.IdleTimeoutInMinutes);
+
+                    var asgIds = virtualMachineScaleSet.ApplicationSecurityGroupIds;
+                    Assert.NotNull(asgIds);
+                    Assert.Equal(1, asgIds.Count);
+
+                    var nsg = azure.NetworkSecurityGroups.Define(nsgName)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .DefineRule("rule1")
+                                .AllowOutbound()
+                                .FromAnyAddress()
+                                .FromPort(80)
+                                .ToAnyAddress()
+                                .ToPort(80)
+                                .WithProtocol(SecurityRuleProtocol.Tcp)
+                                .Attach()
+                            .Create();
+
+                    virtualMachineScaleSet.Deallocate();
+                    virtualMachineScaleSet.Update()
+                            .WithIpForwarding()
+                            .WithAcceleratedNetworking()
+                            .WithExistingNetworkSecurityGroup(nsg)
+                            .Apply();
+
+                    Assert.True(virtualMachineScaleSet.IsIpForwardingEnabled);
+                    Assert.True(virtualMachineScaleSet.IsAcceleratedNetworkingEnabled);
+                    Assert.NotNull(virtualMachineScaleSet.NetworkSecurityGroupId);
+                    //
+                    virtualMachineScaleSet.Refresh();
+                    //
+                    Assert.True(virtualMachineScaleSet.IsIpForwardingEnabled);
+                    Assert.True(virtualMachineScaleSet.IsAcceleratedNetworkingEnabled);
+                    Assert.NotNull(virtualMachineScaleSet.NetworkSecurityGroupId);
+
+                    virtualMachineScaleSet.Update()
+                            .WithoutIpForwarding()
+                            .WithoutAcceleratedNetworking()
+                            .WithoutNetworkSecurityGroup()
+                            .Apply();
+
+                    Assert.False(virtualMachineScaleSet.IsIpForwardingEnabled);
+                    Assert.False(virtualMachineScaleSet.IsAcceleratedNetworkingEnabled);
+                    Assert.Null(virtualMachineScaleSet.NetworkSecurityGroupId);
+                }
+                finally
+                {
+                    try
+                    {
+                        if (azure != null)
+                        {
+                            azure.ResourceGroups.BeginDeleteByName(groupName);
+                        }
+                    }
+                    catch { }
+                }
+
+            }
+        }
+
+        [Fact]
+        public void CanGetSingleVMSSInstance()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string vmss_name = TestUtilities.GenerateName("vmss");
+                string rgName = TestUtilities.GenerateName("javacsmrg");
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
+                        .WithRegion(Location)
+                        .Create();
+
+                    INetwork network = azure
+                        .Networks
+                        .Define("vmssvnet")
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithAddressSpace("10.0.0.0/28")
+                        .WithSubnet("subnet1", "10.0.0.0/28")
+                        .Create();
+
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
+                    List<string> backends = new List<string>();
+                    foreach (string backend in publicLoadBalancer.Backends.Keys)
+                    {
+                        backends.Add(backend);
+                    }
+
+                    IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
+                        .Define(vmss_name)
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                        .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                        .WithPrimaryInternetFacingLoadBalancerBackends(backends[0], backends[1])
+                        .WithoutPrimaryInternalLoadBalancer()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("jvuser")
+                        .WithRootPassword("123OData!@#123")
+                        .WithUnmanagedDisks()
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
+                        .WithUpgradeMode(UpgradeMode.Manual)
+                        .Create();
+
+                    virtualMachineScaleSet = azure
+                        .VirtualMachineScaleSets
+                        .GetByResourceGroup(rgName, vmss_name);
+
+                    var virtualMachineScaleSetVMs = virtualMachineScaleSet.VirtualMachines;
+                    var firstVm = virtualMachineScaleSetVMs.List().First();
+                    var fetchedVm = virtualMachineScaleSetVMs.GetInstance(firstVm.InstanceId);
+                    this.CheckVMsEqual(firstVm, fetchedVm);
+                    var fetchedAsyncVm = virtualMachineScaleSetVMs.GetInstanceAsync(firstVm.InstanceId).ConfigureAwait(false).GetAwaiter().GetResult();
+                    this.CheckVMsEqual(firstVm, fetchedAsyncVm);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        private void CheckVMsEqual(IVirtualMachineScaleSetVM original, IVirtualMachineScaleSetVM fetched)
+        {
+            Assert.Equal(original.AdministratorUserName, fetched.AdministratorUserName);
+            Assert.Equal(original.AvailabilitySetId, fetched.AvailabilitySetId);
+            Assert.Equal(original.BootDiagnosticEnabled, fetched.BootDiagnosticEnabled);
+            Assert.Equal(original.BootDiagnosticStorageAccountUri, fetched.BootDiagnosticStorageAccountUri);
+            Assert.Equal(original.ComputerName, fetched.ComputerName);
+            Assert.Equal(original.DataDisks.Count, fetched.DataDisks.Count);
+            Assert.Equal(original.Extensions.Count, fetched.Extensions.Count);
+            Assert.Equal(original.InstanceId, fetched.InstanceId);
+            Assert.Equal(original.IsLatestScaleSetUpdateApplied, fetched.IsLatestScaleSetUpdateApplied);
+            Assert.Equal(original.IsLinuxPasswordAuthenticationEnabled, fetched.IsLinuxPasswordAuthenticationEnabled);
+            Assert.Equal(original.IsManagedDiskEnabled, fetched.IsManagedDiskEnabled);
+            Assert.Equal(original.IsOSBasedOnCustomImage, fetched.IsOSBasedOnCustomImage);
+            Assert.Equal(original.IsOSBasedOnPlatformImage, fetched.IsOSBasedOnPlatformImage);
+            Assert.Equal(original.IsOSBasedOnStoredImage, fetched.IsOSBasedOnStoredImage);
+            Assert.Equal(original.IsWindowsAutoUpdateEnabled, fetched.IsWindowsAutoUpdateEnabled);
+            Assert.Equal(original.IsWindowsVMAgentProvisioned, original.IsWindowsVMAgentProvisioned);
+            Assert.Equal(original.NetworkInterfaceIds.Count, fetched.NetworkInterfaceIds.Count);
+            Assert.Equal(original.OSDiskCachingType, fetched.OSDiskCachingType);
+            Assert.Equal(original.OSDiskId, fetched.OSDiskId);
+            Assert.Equal(original.OSDiskName, fetched.OSDiskName);
+            Assert.Equal(original.OSDiskSizeInGB, fetched.OSDiskSizeInGB);
+            Assert.Equal(original.OSType, fetched.OSType);
+            Assert.Equal(original.OSUnmanagedDiskVhdUri, fetched.OSUnmanagedDiskVhdUri);
+            Assert.Equal(original.PowerState, fetched.PowerState);
+            Assert.Equal(original.PrimaryNetworkInterfaceId, fetched.PrimaryNetworkInterfaceId);
+            Assert.Equal(original.Size, fetched.Size);
+            Assert.Equal(original.Sku.Name, fetched.Sku.Name);
+            Assert.Equal(original.StoredImageUnmanagedVhdUri, fetched.StoredImageUnmanagedVhdUri);
+            Assert.Equal(original.UnmanagedDataDisks.Count, fetched.UnmanagedDataDisks.Count);
+            Assert.Equal(original.WindowsTimeZone, fetched.WindowsTimeZone);
         }
 
         private void CheckVMInstances(IVirtualMachineScaleSet vmScaleSet)
@@ -1377,7 +1598,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             CloudBlockBlob blob = container.GetBlockBlobReference("install_apache.sh");
             using (HttpClient client = new HttpClient())
             {
-                blob.UploadFromStreamAsync(client.GetStreamAsync("https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh").Result).Wait();
+                blob.UploadFromStreamAsync(client.GetStreamAsync("https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh").Result).Wait();
             }
             return blob.Uri.ToString();
         }

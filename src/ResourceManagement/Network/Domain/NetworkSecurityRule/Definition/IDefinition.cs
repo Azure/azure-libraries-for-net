@@ -1,16 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 
 namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-
     /// <summary>
     /// The stage of the network rule definition allowing the source address to be specified.
     /// Note: network security rule must specify a non empty value for exactly one of:
@@ -26,6 +20,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
         /// <param name="cidr">An IP address prefix expressed in the CIDR notation.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithSourcePort<ParentT> FromAddress(string cidr);
+
+        /// <summary>
+        /// Specifies the traffic source address prefixes to which this rule applies.
+        /// </summary>
+        /// <param name="addresses">IP address prefixes in CIDR notation or IP addresses.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithSourcePort<ParentT> FromAddresses(params string[] addresses);
 
         /// <summary>
         /// Specifies that the rule applies to any traffic source address.
@@ -56,6 +57,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
         /// <param name="cidr">An IP address range expressed in the CIDR notation.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDestinationPort<ParentT> ToAddress(string cidr);
+
+        /// <summary>
+        /// Specifies the traffic destination address prefixes to which this rule applies.
+        /// </summary>
+        /// <param name="addresses">IP address prefixes in CIDR notation or IP addresses.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDestinationPort<ParentT> ToAddresses(params string[] addresses);
 
         /// <summary>
         /// Makes the rule apply to any traffic destination address.
@@ -124,6 +132,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
         /// <param name="to">The ending port number.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithProtocol<ParentT> ToPortRange(int from, int to);
+
+        /// <summary>
+        /// Specifies the destination port ranges to which this rule applies.
+        /// </summary>
+        /// <param name="ranges">The destination port ranges.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithProtocol<ParentT> ToPortRanges(params string[] ranges);
     }
 
         /// <summary>
@@ -184,6 +199,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
         /// <param name="to">The ending port number.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDestinationAddressOrSecurityGroup<ParentT> FromPortRange(int from, int to);
+
+        /// <summary>
+        /// Specifies the source port ranges to which this rule applies.
+        /// </summary>
+        /// <param name="ranges">The starting port ranges.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDestinationAddressOrSecurityGroup<ParentT> FromPortRanges(params string[] ranges);
     }
 
     /// <summary>

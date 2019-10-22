@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:109D11A77FA743E7E386E405BD1BAAAF:6CB035BEF3A0E1CC43A51A7924D850CE
         public PrimaryAggregationType PrimaryAggregationType()
         {
-            return Models.PrimaryAggregationType.Parse(this.Inner.PrimaryAggregationType);
+            return this.Inner.PrimaryAggregationType;
         }
 
         ///GENMHASH:98D67B93923AC46ECFE338C62748BCCB:AE6A688E48A33F4836A5CFB695421894
         public UnitDefinitionType Unit()
         {
-            return Models.UnitDefinitionType.Parse(this.Inner.Unit);
+            return this.Inner.Unit;
         }
 
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:04777A24D701F6EEEE9D34EBA4230528

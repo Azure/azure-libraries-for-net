@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Insight/metricAlerts").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Insights/metricAlerts").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Retrieve alert rule defintions in a resource group.
+        /// Retrieve alert rule definitions in a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insight/metricAlerts").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             List<string> _queryParameters = new List<string>();
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Retrieve an alert rule definiton.
+        /// Retrieve an alert rule definition.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insight/metricAlerts/{ruleName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{ruleName}", System.Uri.EscapeDataString(ruleName));
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insight/metricAlerts/{ruleName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{ruleName}", System.Uri.EscapeDataString(ruleName));
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -707,11 +707,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<MetricAlertResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string ruleName, MetricAlertResourcePatchInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MetricAlertResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string ruleName, MetricAlertResourcePatch parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insight/metricAlerts/{ruleName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{ruleName}", System.Uri.EscapeDataString(ruleName));
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -910,11 +910,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Delete an alert rule defitiniton.
+        /// Delete an alert rule definition.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insight/metricAlerts/{ruleName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{ruleName}", System.Uri.EscapeDataString(ruleName));
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);

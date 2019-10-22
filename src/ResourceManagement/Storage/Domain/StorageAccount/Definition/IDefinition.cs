@@ -185,6 +185,40 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition
     }
 
     /// <summary>
+    /// The stage of storage account definition allowing to configure whether Hns is enabled or not.
+    /// </summary>
+    public interface IWithHns :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        
+        /// <summary>
+        /// Specifies whether Hns is enabled or not.
+        /// </summary>
+        /// <param name="enabled">whether Hns is enabled for the storage account or not</param>
+        /// <returns>The next stage of the storage account definition.</returns>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCreate WithHnsEnabled(bool enabled);
+
+    }
+
+    /// <summary>
+    /// The stage of storage account definition allowing to configure network access settings.
+    /// </summary>
+    public interface IWithAzureFilesAadIntegration :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies whether Azure files aad integration is enabled or not.
+        /// </summary>
+        /// <param name="enabled">whether Hns is enabled for the storage account or not</param>
+        /// <returns>The next stage of the storage account definition.</returns>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCreate WithAzureFilesAadIntegrationEnabled(bool enabled);
+
+    }
+
+
+
+    /// <summary>
     /// The first stage of the storage account definition.
     /// </summary>
     public interface IBlank :
@@ -215,6 +249,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithManagedServiceIdentity,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithAccessTraffic,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithNetworkAccess,
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithHns,
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithAzureFilesAadIntegration,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCreate>
     {
     }

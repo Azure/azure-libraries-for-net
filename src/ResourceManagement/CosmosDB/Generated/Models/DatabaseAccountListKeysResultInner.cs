@@ -8,16 +8,13 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The access keys for the given database account.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class DatabaseAccountListKeysResultInner
+    public partial class DatabaseAccountListKeysResultInner : DatabaseAccountListReadOnlyKeysResultInner
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -32,20 +29,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Initializes a new instance of the
         /// DatabaseAccountListKeysResultInner class.
         /// </summary>
-        /// <param name="primaryMasterKey">Base 64 encoded value of the primary
-        /// read-write key.</param>
-        /// <param name="secondaryMasterKey">Base 64 encoded value of the
-        /// secondary read-write key.</param>
         /// <param name="primaryReadonlyMasterKey">Base 64 encoded value of the
         /// primary read-only key.</param>
         /// <param name="secondaryReadonlyMasterKey">Base 64 encoded value of
         /// the secondary read-only key.</param>
-        public DatabaseAccountListKeysResultInner(string primaryMasterKey = default(string), string secondaryMasterKey = default(string), string primaryReadonlyMasterKey = default(string), string secondaryReadonlyMasterKey = default(string))
+        /// <param name="primaryMasterKey">Base 64 encoded value of the primary
+        /// read-write key.</param>
+        /// <param name="secondaryMasterKey">Base 64 encoded value of the
+        /// secondary read-write key.</param>
+        public DatabaseAccountListKeysResultInner(string primaryReadonlyMasterKey = default(string), string secondaryReadonlyMasterKey = default(string), string primaryMasterKey = default(string), string secondaryMasterKey = default(string))
+            : base(primaryReadonlyMasterKey, secondaryReadonlyMasterKey)
         {
             PrimaryMasterKey = primaryMasterKey;
             SecondaryMasterKey = secondaryMasterKey;
-            PrimaryReadonlyMasterKey = primaryReadonlyMasterKey;
-            SecondaryReadonlyMasterKey = secondaryReadonlyMasterKey;
             CustomInit();
         }
 
@@ -65,18 +61,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "secondaryMasterKey")]
         public string SecondaryMasterKey { get; private set; }
-
-        /// <summary>
-        /// Gets base 64 encoded value of the primary read-only key.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.primaryReadonlyMasterKey")]
-        public string PrimaryReadonlyMasterKey { get; private set; }
-
-        /// <summary>
-        /// Gets base 64 encoded value of the secondary read-only key.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.secondaryReadonlyMasterKey")]
-        public string SecondaryReadonlyMasterKey { get; private set; }
 
     }
 }

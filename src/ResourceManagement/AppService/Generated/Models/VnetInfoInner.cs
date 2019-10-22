@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Virtual Network information contract.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VnetInfoInner : ProxyOnlyResource
+    public partial class VnetInfoInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VnetInfoInner class.
@@ -32,10 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the VnetInfoInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="vnetResourceId">The Virtual Network's resource
         /// ID.</param>
         /// <param name="certThumbprint">The client certificate
@@ -51,8 +48,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="dnsServers">DNS servers to be used by this Virtual
         /// Network. This should be a comma-separated list of IP
         /// addresses.</param>
-        public VnetInfoInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), byte[] certBlob = default(byte[]), IList<VnetRouteInner> routes = default(IList<VnetRouteInner>), bool? resyncRequired = default(bool?), string dnsServers = default(string))
-            : base(id, name, kind, type)
+        /// <param name="isSwift">Flag that is used to denote if this is VNET
+        /// injection</param>
+        public VnetInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), byte[] certBlob = default(byte[]), IList<VnetRouteInner> routes = default(IList<VnetRouteInner>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
+            : base(id, name, type, kind)
         {
             VnetResourceId = vnetResourceId;
             CertThumbprint = certThumbprint;
@@ -60,6 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             Routes = routes;
             ResyncRequired = resyncRequired;
             DnsServers = dnsServers;
+            IsSwift = isSwift;
             CustomInit();
         }
 
@@ -108,6 +108,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsServers")]
         public string DnsServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag that is used to denote if this is VNET injection
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isSwift")]
+        public bool? IsSwift { get; set; }
 
     }
 }

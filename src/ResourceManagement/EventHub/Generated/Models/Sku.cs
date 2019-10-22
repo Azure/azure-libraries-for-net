@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// 'Basic', 'Standard'</param>
         /// <param name="tier">The billing tier of this particular SKU.
         /// Possible values include: 'Basic', 'Standard'</param>
-        /// <param name="capacity">The Event Hubs throughput units, vaule
+        /// <param name="capacity">The Event Hubs throughput units, value
         /// should be 0 to 20 throughput units.</param>
-        public Sku(string name, string tier = default(string), int? capacity = default(int?))
+        public Sku(SkuName name, SkuTier tier = default(SkuTier), int? capacity = default(int?))
         {
             Name = name;
             Tier = tier;
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// 'Standard'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public SkuName Name { get; set; }
 
         /// <summary>
         /// Gets or sets the billing tier of this particular SKU. Possible
         /// values include: 'Basic', 'Standard'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
-        public string Tier { get; set; }
+        public SkuTier Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets the Event Hubs throughput units, vaule should be 0 to
+        /// Gets or sets the Event Hubs throughput units, value should be 0 to
         /// 20 throughput units.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]

@@ -41,21 +41,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="publicCertData">Base-64 encoded Public cert data
         /// corresponding to pfx specified in data. Only applicable in GET
         /// request.</param>
+        /// <param name="keyVaultSecretId">Secret Id of (base-64 encoded
+        /// unencrypted pfx) 'Secret' or 'Certificate' object stored in
+        /// KeyVault.</param>
         /// <param name="provisioningState">Provisioning state of the SSL
         /// certificate resource Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the SSL certificate that is unique
+        /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewaySslCertificateInner(string id = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewaySslCertificateInner(string id = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             Data = data;
             Password = password;
             PublicCertData = publicCertData;
+            KeyVaultSecretId = keyVaultSecretId;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -90,6 +93,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string PublicCertData { get; set; }
 
         /// <summary>
+        /// Gets or sets secret Id of (base-64 encoded unencrypted pfx)
+        /// 'Secret' or 'Certificate' object stored in KeyVault.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.keyVaultSecretId")]
+        public string KeyVaultSecretId { get; set; }
+
+        /// <summary>
         /// Gets or sets provisioning state of the SSL certificate resource
         /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
@@ -97,8 +107,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the SSL certificate that is unique within an
+        /// Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

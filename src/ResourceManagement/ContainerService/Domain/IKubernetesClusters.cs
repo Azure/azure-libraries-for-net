@@ -27,20 +27,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>
     {
         /// <summary>
-        /// Returns the list of available Kubernetes versions available for the given Azure region.
-        /// </summary>
-        /// <param name="region">The Azure region to query into.</param>
-        /// <return>A set of Kubernetes versions which can be used when creating a service in this region.</return>
-        System.Collections.Generic.ISet<string> ListKubernetesVersions(Region region);
-
-        /// <summary>
-        /// Returns the list of available Kubernetes versions available for the given Azure region.
-        /// </summary>
-        /// <param name="region">The Azure region to query into.</param>
-        /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
-        Task<System.Collections.Generic.ISet<string>> ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// Returns the admin Kube.config content which can be used with a Kubernetes client.
         /// </summary>
         /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
@@ -71,5 +57,19 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name="kubernetesClusterName">The managed cluster name.</param>
         /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
         Task<byte[]> GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Returns the list of available Kubernetes versions available for the given Azure region.
+        /// </summary>
+        /// <param name="region">The Azure region to query into.</param>
+        /// <return>A set of Kubernetes versions which can be used when creating a service in this region.</return>
+        System.Collections.Generic.ISet<string> ListKubernetesVersions(Region region);
+
+        /// <summary>
+        /// Returns the list of available Kubernetes versions available for the given Azure region.
+        /// </summary>
+        /// <param name="region">The Azure region to query into.</param>
+        /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
+        Task<System.Collections.Generic.ISet<string>> ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

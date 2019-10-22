@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithQueue.WithNewQueue(string name, int maxSizeInMB)
         {
-            return this.WithNewQueue(name, maxSizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithNewQueue(name, maxSizeInMB);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithQueue.WithoutQueue(string name)
         {
-            return this.WithoutQueue(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithoutQueue(name);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithQueue.WithNewQueue(string name, int maxSizeInMB)
         {
-            return this.WithNewQueue(name, maxSizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate;
+            return this.WithNewQueue(name, maxSizeInMB);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithAuthorizationRule.WithoutAuthorizationRule(string name)
         {
-            return this.WithoutAuthorizationRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithoutAuthorizationRule(name);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithTopic.WithNewTopic(string name, int maxSizeInMB)
         {
-            return this.WithNewTopic(name, maxSizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithNewTopic(name, maxSizeInMB);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithTopic.WithoutTopic(string name)
         {
-            return this.WithoutTopic(name) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithoutTopic(name);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithTopic.WithNewTopic(string name, int maxSizeInMB)
         {
-            return this.WithNewTopic(name, maxSizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate;
+            return this.WithNewTopic(name, maxSizeInMB);
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceSku;
+                return this.Sku();
             }
         }
 
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.AuthorizationRules() as Microsoft.Azure.Management.ServiceBus.Fluent.INamespaceAuthorizationRules;
+                return this.AuthorizationRules();
             }
         }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Topics() as Microsoft.Azure.Management.ServiceBus.Fluent.ITopics;
+                return this.Topics();
             }
         }
 
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Queues() as Microsoft.Azure.Management.ServiceBus.Fluent.IQueues;
+                return this.Queues();
             }
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IWithSku.WithSku(NamespaceSku namespaceSku)
         {
-            return this.WithSku(namespaceSku) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Update.IUpdate;
+            return this.WithSku(namespaceSku);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus namespace definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithSku.WithSku(NamespaceSku namespaceSku)
         {
-            return this.WithSku(namespaceSku) as Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespace.Definition.IWithCreate;
+            return this.WithSku(namespaceSku);
         }
     }
 }

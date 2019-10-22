@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
@@ -97,13 +98,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Task<System.Collections.Generic.IReadOnlyDictionary<string,string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Gets a open stream to the application logs.
+        /// List the functions
         /// </summary>
-        Stream StreamApplicationLogs();
+        IReadOnlyList<IFunctionEnvelope> ListFunctions();
 
         /// <summary>
-        /// Gets a open stream to the application logs.
+        /// List the functions
         /// </summary>
-        Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='loadAllPages'>
+        /// Specify true to load all pages, false to get paginated result.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<IPagedCollection<IFunctionEnvelope>> ListFunctionsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

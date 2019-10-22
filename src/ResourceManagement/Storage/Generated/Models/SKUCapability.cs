@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The capability information in the specified sku, including file
-    /// encryption, network acls, change notification, etc.
+    /// The capability information in the specified SKU, including file
+    /// encryption, network ACLs, change notification, etc.
     /// </summary>
     public partial class SKUCapability
     {
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Initializes a new instance of the SKUCapability class.
         /// </summary>
         /// <param name="name">The name of capability, The capability
-        /// information in the specified sku, including file encryption,
-        /// network acls, change notification, etc.</param>
+        /// information in the specified SKU, including file encryption,
+        /// network ACLs, change notification, etc.</param>
         /// <param name="value">A string value to indicate states of given
         /// capability. Possibly 'true' or 'false'.</param>
         public SKUCapability(string name = default(string), string value = default(string))
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
 
         /// <summary>
         /// Gets the name of capability, The capability information in the
-        /// specified sku, including file encryption, network acls, change
+        /// specified SKU, including file encryption, network ACLs, change
         /// notification, etc.
         /// </summary>
         [JsonProperty(PropertyName = "name")]

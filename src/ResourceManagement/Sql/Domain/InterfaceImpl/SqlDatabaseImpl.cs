@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithStorageKeyAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithStorageKeyAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithStorageKey<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithImportFromBeta<SqlServer.Definition.IWithCreate>.ImportFrom(string storageUri)
         {
-            return this.ImportFrom(storageUri) as SqlDatabase.Definition.IWithStorageKey<SqlServer.Definition.IWithCreate>;
+            return this.ImportFrom(storageUri);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAuthentication<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithImportFromBeta<SqlServer.Definition.IWithCreate>.ImportFrom(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportFrom(storageAccount, containerName, fileName) as SqlDatabase.Definition.IWithAuthentication<SqlServer.Definition.IWithCreate>;
+            return this.ImportFrom(storageAccount, containerName, fileName);
         }
 
         /// <summary>
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEdition<SqlServer.Definition.IWithCreate>.WithEdition(string edition)
+        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEdition<SqlServer.Definition.IWithCreate>.WithEdition(DatabaseEdition edition)
         {
-            return this.WithEdition(edition) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithEdition(edition);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithMaxSizeBytesAfterElasticPoolOptions.WithMaxSizeBytes(long maxSizeBytes)
         {
-            return this.WithMaxSizeBytes(maxSizeBytes) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.WithMaxSizeBytes(maxSizeBytes);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithSampleDatabaseAfterElasticPoolBeta.FromSample(SampleName sampleName)
         {
-            return this.FromSample(sampleName) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.FromSample(sampleName);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithElasticPoolName<SqlServer.Definition.IWithCreate>.WithNewElasticPool(ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> sqlElasticPool)
         {
-            return this.WithNewElasticPool(sqlElasticPool) as SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.WithNewElasticPool(sqlElasticPool);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithElasticPoolName<SqlServer.Definition.IWithCreate>.WithExistingElasticPool(string elasticPoolName)
         {
-            return this.WithExistingElasticPool(elasticPoolName) as SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.WithExistingElasticPool(elasticPoolName);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithElasticPoolName<SqlServer.Definition.IWithCreate>.WithExistingElasticPool(ISqlElasticPool sqlElasticPool)
         {
-            return this.WithExistingElasticPool(sqlElasticPool) as SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.WithExistingElasticPool(sqlElasticPool);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateFinal SqlDatabaseOperations.Definition.IWithRestorableDroppedDatabaseBeta.FromRestorableDroppedDatabase(ISqlRestorableDroppedDatabase restorableDroppedDatabase)
         {
-            return this.FromRestorableDroppedDatabase(restorableDroppedDatabase) as SqlDatabaseOperations.Definition.IWithCreateFinal;
+            return this.FromRestorableDroppedDatabase(restorableDroppedDatabase);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithCollationAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>.WithCollation(string collation)
         {
-            return this.WithCollation(collation) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithCollation(collation);
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithAuthenticationAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate>;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The Active Directory administrator login.</param>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithAuthenticationAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate>;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEditionDefaultsBeta<SqlServer.Definition.IWithCreate>.WithBasicEdition()
         {
-            return this.WithBasicEdition() as SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate>;
+            return this.WithBasicEdition();
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEditionDefaultsBeta<SqlServer.Definition.IWithCreate>.WithBasicEdition(SqlDatabaseBasicStorage maxStorageCapacity)
         {
-            return this.WithBasicEdition(maxStorageCapacity) as SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate>;
+            return this.WithBasicEdition(maxStorageCapacity);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEditionDefaultsBeta<SqlServer.Definition.IWithCreate>.WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective)
         {
-            return this.WithPremiumEdition(serviceObjective) as SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate>;
+            return this.WithPremiumEdition(serviceObjective);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEditionDefaultsBeta<SqlServer.Definition.IWithCreate>.WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective, SqlDatabasePremiumStorage maxStorageCapacity)
         {
-            return this.WithPremiumEdition(serviceObjective, maxStorageCapacity) as SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate>;
+            return this.WithPremiumEdition(serviceObjective, maxStorageCapacity);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEditionDefaultsBeta<SqlServer.Definition.IWithCreate>.WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective)
         {
-            return this.WithStandardEdition(serviceObjective) as SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate>;
+            return this.WithStandardEdition(serviceObjective);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithEditionDefaultsBeta<SqlServer.Definition.IWithCreate>.WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective, SqlDatabaseStandardStorage maxStorageCapacity)
         {
-            return this.WithStandardEdition(serviceObjective, maxStorageCapacity) as SqlDatabase.Definition.IWithEditionDefaults<SqlServer.Definition.IWithCreate>;
+            return this.WithStandardEdition(serviceObjective, maxStorageCapacity);
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithAuthenticationBeta.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The Active Directory administrator login.</param>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithAuthenticationBeta.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithStorageKeyAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithImportFromAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.ImportFrom(string storageUri)
         {
-            return this.ImportFrom(storageUri) as SqlDatabase.Definition.IWithStorageKeyAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.ImportFrom(storageUri);
         }
 
         /// <summary>
@@ -260,13 +260,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithImportFromAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.ImportFrom(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportFrom(storageAccount, containerName, fileName) as SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate>;
+            return this.ImportFrom(storageAccount, containerName, fileName);
         }
 
         /// <summary>
         /// Gets the Service Level Objective of the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ServiceLevelObjective
+        ServiceObjectiveName Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ServiceLevelObjective
         {
             get
             {
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of the information about service tier advisors for this database.</return>
         async Task<IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListServiceTierAdvisorsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListServiceTierAdvisorsAsync(cancellationToken) as IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>;
+            return await this.ListServiceTierAdvisorsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SQL database threat detection policy for the current database.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseThreatDetectionPolicy Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetThreatDetectionPolicy()
         {
-            return this.GetThreatDetectionPolicy() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseThreatDetectionPolicy;
+            return this.GetThreatDetectionPolicy();
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// SQL Database, this is the Service Level Objective that is being
         /// applied to the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RequestedServiceObjectiveName
+        ServiceObjectiveName Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RequestedServiceObjectiveName
         {
             get
             {
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of usages (DatabaseMetrics) of this database.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IDatabaseMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListUsages()
         {
-            return this.ListUsages() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IDatabaseMetric>;
+            return this.ListUsages();
         }
 
         /// <summary>
@@ -339,14 +339,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RenameAsync(string newDatabaseName, CancellationToken cancellationToken)
         {
-            return await this.RenameAsync(newDatabaseName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return await this.RenameAsync(newDatabaseName, cancellationToken);
         }
 
         /// <param name="filter">An OData filter expression that describes a subset of metrics to return.</param>
         /// <return>A representation of the deferred computation of the metrics for this database.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListMetricsAsync(string filter, CancellationToken cancellationToken)
         {
-            return await this.ListMetricsAsync(filter, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric>;
+            return await this.ListMetricsAsync(filter, cancellationToken);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncGroups() as SqlSyncGroupOperations.SqlSyncGroupActionsDefinition.ISqlSyncGroupActionsDefinition;
+                return this.SyncGroups();
             }
         }
 
@@ -384,13 +384,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of all restore points on this database.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRestorePoint> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListRestorePoints()
         {
-            return this.ListRestorePoints() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRestorePoint>;
+            return this.ListRestorePoints();
         }
 
         /// <return>All the replication links associated with this database.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IReplicationLink> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListReplicationLinks()
         {
-            return this.ListReplicationLinks() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>;
+            return this.ListReplicationLinks();
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Response object.</return>
         SqlDatabaseExportRequest.Definition.IWithStorageTypeAndKey Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ExportTo(string storageUri)
         {
-            return this.ExportTo(storageUri) as SqlDatabaseExportRequest.Definition.IWithStorageTypeAndKey;
+            return this.ExportTo(storageUri);
         }
 
         /// <summary>
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Response object.</return>
         SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ExportTo(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ExportTo(storageAccount, containerName, fileName) as SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.ExportTo(storageAccount, containerName, fileName);
         }
 
         /// <summary>
@@ -424,13 +424,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Response object.</return>
         SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ExportTo(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable, string containerName, string fileName)
         {
-            return this.ExportTo(storageAccountCreatable, containerName, fileName) as SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.ExportTo(storageAccountCreatable, containerName, fileName);
         }
 
         /// <return>The list of metric definitions for this database.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListMetricDefinitions()
         {
-            return this.ListMetricDefinitions() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition>;
+            return this.ListMetricDefinitions();
         }
 
         /// <summary>
@@ -440,14 +440,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The renamed SQL database.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Rename(string newDatabaseName)
         {
-            return this.Rename(newDatabaseName) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.Rename(newDatabaseName);
         }
 
         /// <param name="filter">An OData filter expression that describes a subset of metrics to return.</param>
         /// <return>The list of metrics for this database.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListMetrics(string filter)
         {
-            return this.ListMetrics(filter) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric>;
+            return this.ListMetrics(filter);
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An Azure SQL Database Transparent Data Encryption for this database.</return>
         Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetTransparentDataEncryption()
         {
-            return this.GetTransparentDataEncryption() as Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption;
+            return this.GetTransparentDataEncryption();
         }
 
         /// <summary>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SQL database automatic tuning state and options.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetDatabaseAutomaticTuning()
         {
-            return this.GetDatabaseAutomaticTuning() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning;
+            return this.GetDatabaseAutomaticTuning();
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Information about service tier advisors for the current database.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListServiceTierAdvisors()
         {
-            return this.ListServiceTierAdvisors() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>;
+            return this.ListServiceTierAdvisors();
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of the metric definitions for this database.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListMetricDefinitionsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListMetricDefinitionsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition>;
+            return await this.ListMetricDefinitionsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the SqlDatabaseThreatDetectionPolicy definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IBlank Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.DefineThreatDetectionPolicy(string policyName)
         {
-            return this.DefineThreatDetectionPolicy(policyName) as SqlDatabaseThreatDetectionPolicy.Definition.IBlank;
+            return this.DefineThreatDetectionPolicy(policyName);
         }
 
         /// <summary>
@@ -578,6 +578,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.Collation();
+            }
+        }
+
+        /// <summary>
+        /// Gets the tags for the current SQL Database
+        /// </summary>
+        IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Tags
+        {
+            get
+            {
+                return this.Tags();
             }
         }
 
@@ -609,13 +620,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of an Azure SQL Database Transparent Data Encryption for this database.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetTransparentDataEncryptionAsync(CancellationToken cancellationToken)
         {
-            return await this.GetTransparentDataEncryptionAsync(cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption;
+            return await this.GetTransparentDataEncryptionAsync(cancellationToken);
         }
 
         /// <return>The list of all restore points on this database.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRestorePoint>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListRestorePointsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListRestorePointsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRestorePoint>;
+            return await this.ListRestorePointsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -625,7 +636,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Response object.</return>
         SqlDatabaseImportRequest.Definition.IWithStorageTypeAndKey Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ImportBacpac(string storageUri)
         {
-            return this.ImportBacpac(storageUri) as SqlDatabaseImportRequest.Definition.IWithStorageTypeAndKey;
+            return this.ImportBacpac(storageUri);
         }
 
         /// <summary>
@@ -637,13 +648,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Response object.</return>
         SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ImportBacpac(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportBacpac(storageAccount, containerName, fileName) as SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.ImportBacpac(storageAccount, containerName, fileName);
         }
 
         /// <return>A representation of the deferred computation of all the replication links associated with this database.</return>
         async Task<IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListReplicationLinksAsync(CancellationToken cancellationToken)
         {
-            return await this.ListReplicationLinksAsync(cancellationToken) as IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>;
+            return await this.ListReplicationLinksAsync(cancellationToken);
         }
 
         /// <summary>
@@ -663,7 +674,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the SQL database usage metrics.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListUsageMetricsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListUsageMetricsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>;
+            return await this.ListUsageMetricsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -678,7 +689,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the edition of the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Edition
+        DatabaseEdition Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Edition
         {
             get
             {
@@ -692,7 +703,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SQL database usage metrics.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListUsageMetrics()
         {
-            return this.ListUsageMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>;
+            return this.ListUsageMetrics();
         }
 
         /// <summary>
@@ -706,16 +717,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
         }
 
-        /// <return>The upgradeHint value.</return>
-        Microsoft.Azure.Management.Sql.Fluent.IUpgradeHintInterface Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetUpgradeHint()
-        {
-            return this.GetUpgradeHint() as Microsoft.Azure.Management.Sql.Fluent.IUpgradeHintInterface;
-        }
-
         /// <return>SqlWarehouse instance for more operations.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlWarehouse Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.AsWarehouse()
         {
-            return this.AsWarehouse() as Microsoft.Azure.Management.Sql.Fluent.ISqlWarehouse;
+            return this.AsWarehouse();
         }
 
         /// <summary>
@@ -733,14 +738,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool SqlDatabaseOperations.Definition.IWithStorageKeyAfterElasticPoolBeta.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool SqlDatabaseOperations.Definition.IWithStorageKeyAfterElasticPoolBeta.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <summary>
@@ -749,7 +754,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the parent definition.</return>
         SqlServer.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<SqlServer.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as SqlServer.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -757,7 +762,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithAuthenticationBeta<SqlServer.Definition.IWithCreate>.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The Active Directory administrator login.</param>
@@ -765,7 +770,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithAuthenticationBeta<SqlServer.Definition.IWithCreate>.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <summary>
@@ -775,7 +780,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithSampleDatabaseBeta<SqlServer.Definition.IWithCreate>.FromSample(SampleName sampleName)
         {
-            return this.FromSample(sampleName) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.FromSample(sampleName);
         }
 
         /// <summary>
@@ -785,7 +790,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithElasticPoolName.WithNewElasticPool(ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> sqlElasticPool)
         {
-            return this.WithNewElasticPool(sqlElasticPool) as SqlDatabase.Update.IUpdate;
+            return this.WithNewElasticPool(sqlElasticPool);
         }
 
         /// <summary>
@@ -794,7 +799,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlDatabase.Update.IWithEdition SqlDatabase.Update.IWithElasticPoolName.WithoutElasticPool()
         {
-            return this.WithoutElasticPool() as SqlDatabase.Update.IWithEdition;
+            return this.WithoutElasticPool();
         }
 
         /// <summary>
@@ -804,7 +809,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithElasticPoolName.WithExistingElasticPool(string elasticPoolName)
         {
-            return this.WithExistingElasticPool(elasticPoolName) as SqlDatabase.Update.IUpdate;
+            return this.WithExistingElasticPool(elasticPoolName);
         }
 
         /// <summary>
@@ -814,7 +819,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithElasticPoolName.WithExistingElasticPool(ISqlElasticPool sqlElasticPool)
         {
-            return this.WithExistingElasticPool(sqlElasticPool) as SqlDatabase.Update.IUpdate;
+            return this.WithExistingElasticPool(sqlElasticPool);
         }
 
         /// <summary>
@@ -824,7 +829,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Elastic Pool definition.</return>
         SqlElasticPool.Definition.IBlank<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlDatabaseOperations.Definition.IWithElasticPoolNameBeta.DefineElasticPool(string elasticPoolName)
         {
-            return this.DefineElasticPool(elasticPoolName) as SqlElasticPool.Definition.IBlank<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.DefineElasticPool(elasticPoolName);
         }
 
         /// <summary>
@@ -834,7 +839,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool SqlDatabaseOperations.Definition.IWithElasticPoolName.WithNewElasticPool(ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> sqlElasticPool)
         {
-            return this.WithNewElasticPool(sqlElasticPool) as SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool;
+            return this.WithNewElasticPool(sqlElasticPool);
         }
 
         /// <summary>
@@ -844,7 +849,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool SqlDatabaseOperations.Definition.IWithElasticPoolName.WithExistingElasticPool(string elasticPoolName)
         {
-            return this.WithExistingElasticPool(elasticPoolName) as SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool;
+            return this.WithExistingElasticPool(elasticPoolName);
         }
 
         /// <summary>
@@ -854,7 +859,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool SqlDatabaseOperations.Definition.IWithElasticPoolName.WithExistingElasticPool(ISqlElasticPool sqlElasticPool)
         {
-            return this.WithExistingElasticPool(sqlElasticPool) as SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool;
+            return this.WithExistingElasticPool(sqlElasticPool);
         }
 
         /// <summary>
@@ -864,7 +869,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseBeta<SqlServer.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint)
         {
-            return this.FromRestorePoint(restorePoint) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.FromRestorePoint(restorePoint);
         }
 
         /// <summary>
@@ -875,7 +880,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseBeta<SqlServer.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
         {
-            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.FromRestorePoint(restorePoint, restorePointDateTime);
         }
 
         /// <summary>
@@ -885,7 +890,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseBeta.FromRestorePoint(IRestorePoint restorePoint)
         {
-            return this.FromRestorePoint(restorePoint) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.FromRestorePoint(restorePoint);
         }
 
         /// <summary>
@@ -896,7 +901,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseBeta.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
         {
-            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.FromRestorePoint(restorePoint, restorePointDateTime);
         }
 
         /// <summary>
@@ -906,7 +911,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithStorageKey SqlDatabaseOperations.Definition.IWithImportFromBeta.ImportFrom(string storageUri)
         {
-            return this.ImportFrom(storageUri) as SqlDatabaseOperations.Definition.IWithStorageKey;
+            return this.ImportFrom(storageUri);
         }
 
         /// <summary>
@@ -918,7 +923,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithAuthentication SqlDatabaseOperations.Definition.IWithImportFromBeta.ImportFrom(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportFrom(storageAccount, containerName, fileName) as SqlDatabaseOperations.Definition.IWithAuthentication;
+            return this.ImportFrom(storageAccount, containerName, fileName);
         }
 
         /// <summary>
@@ -926,9 +931,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="createMode">Create mode for the database, should not be default in this flow.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabaseOperations.Definition.IWithCreateFinal SqlDatabaseOperations.Definition.IWithCreateMode.WithMode(string createMode)
+        SqlDatabaseOperations.Definition.IWithCreateFinal SqlDatabaseOperations.Definition.IWithCreateMode.WithMode(CreateMode createMode)
         {
-            return this.WithMode(createMode) as SqlDatabaseOperations.Definition.IWithCreateFinal;
+            return this.WithMode(createMode);
         }
 
         /// <summary>
@@ -940,7 +945,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorableDroppedDatabaseBeta<SqlServer.Definition.IWithCreate>.FromRestorableDroppedDatabase(ISqlRestorableDroppedDatabase restorableDroppedDatabase)
         {
-            return this.FromRestorableDroppedDatabase(restorableDroppedDatabase) as SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate>;
+            return this.FromRestorableDroppedDatabase(restorableDroppedDatabase);
         }
 
         /// <summary>
@@ -950,7 +955,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithSampleDatabaseAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.FromSample(SampleName sampleName)
         {
-            return this.FromSample(sampleName) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>;
+            return this.FromSample(sampleName);
         }
 
         /// <summary>
@@ -958,9 +963,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the update.</return>
-        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithServiceObjective.WithServiceObjective(string serviceLevelObjective)
+        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithServiceObjective.WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
-            return this.WithServiceObjective(serviceLevelObjective) as SqlDatabase.Update.IUpdate;
+            return this.WithServiceObjective(serviceLevelObjective);
         }
 
         /// <summary>
@@ -968,9 +973,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithServiceObjective.WithServiceObjective(string serviceLevelObjective)
+        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithServiceObjective.WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
-            return this.WithServiceObjective(serviceLevelObjective) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.WithServiceObjective(serviceLevelObjective);
         }
 
         /// <summary>
@@ -979,7 +984,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithEditionDefaultsBeta.WithBasicEdition()
         {
-            return this.WithBasicEdition() as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithBasicEdition();
         }
 
         /// <summary>
@@ -988,7 +993,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithEditionDefaultsBeta.WithBasicEdition(SqlDatabaseBasicStorage maxStorageCapacity)
         {
-            return this.WithBasicEdition(maxStorageCapacity) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithBasicEdition(maxStorageCapacity);
         }
 
         /// <summary>
@@ -998,7 +1003,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithEditionDefaultsBeta.WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective)
         {
-            return this.WithPremiumEdition(serviceObjective) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithPremiumEdition(serviceObjective);
         }
 
         /// <summary>
@@ -1009,7 +1014,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithEditionDefaultsBeta.WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective, SqlDatabasePremiumStorage maxStorageCapacity)
         {
-            return this.WithPremiumEdition(serviceObjective, maxStorageCapacity) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithPremiumEdition(serviceObjective, maxStorageCapacity);
         }
 
         /// <summary>
@@ -1019,7 +1024,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithEditionDefaultsBeta.WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective)
         {
-            return this.WithStandardEdition(serviceObjective) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithStandardEdition(serviceObjective);
         }
 
         /// <summary>
@@ -1030,7 +1035,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithEditionDefaults SqlDatabaseOperations.Definition.IWithEditionDefaultsBeta.WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective, SqlDatabaseStandardStorage maxStorageCapacity)
         {
-            return this.WithStandardEdition(serviceObjective, maxStorageCapacity) as SqlDatabaseOperations.Definition.IWithEditionDefaults;
+            return this.WithStandardEdition(serviceObjective, maxStorageCapacity);
         }
 
         /// <summary>
@@ -1040,7 +1045,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint)
         {
-            return this.FromRestorePoint(restorePoint) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>;
+            return this.FromRestorePoint(restorePoint);
         }
 
         /// <summary>
@@ -1051,7 +1056,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
         {
-            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>;
+            return this.FromRestorePoint(restorePoint, restorePointDateTime);
         }
 
         /// <summary>
@@ -1059,9 +1064,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithServiceObjective<SqlServer.Definition.IWithCreate>.WithServiceObjective(string serviceLevelObjective)
+        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithServiceObjective<SqlServer.Definition.IWithCreate>.WithServiceObjective(ServiceObjectiveName serviceLevelObjective)
         {
-            return this.WithServiceObjective(serviceLevelObjective) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithServiceObjective(serviceLevelObjective);
         }
 
         /// <summary>
@@ -1072,7 +1077,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal;
+            return this.WithTag(key, value);
         }
 
         /// <summary>
@@ -1082,7 +1087,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal;
+            return this.WithTags(tags);
         }
 
         /// <summary>
@@ -1094,7 +1099,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithSourceDatabaseId<SqlServer.Definition.IWithCreate>.WithSourceDatabase(string sourceDatabaseId)
         {
-            return this.WithSourceDatabase(sourceDatabaseId) as SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate>;
+            return this.WithSourceDatabase(sourceDatabaseId);
         }
 
         /// <summary>
@@ -1106,7 +1111,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithSourceDatabaseId<SqlServer.Definition.IWithCreate>.WithSourceDatabase(ISqlDatabase sourceDatabase)
         {
-            return this.WithSourceDatabase(sourceDatabase) as SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate>;
+            return this.WithSourceDatabase(sourceDatabase);
         }
 
         /// <summary>
@@ -1116,7 +1121,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta.FromRestorePoint(IRestorePoint restorePoint)
         {
-            return this.FromRestorePoint(restorePoint) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.FromRestorePoint(restorePoint);
         }
 
         /// <summary>
@@ -1127,7 +1132,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
         {
-            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.FromRestorePoint(restorePoint, restorePointDateTime);
         }
 
         /// <summary>
@@ -1137,21 +1142,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithCollation<SqlServer.Definition.IWithCreate>.WithCollation(string collation)
         {
-            return this.WithCollation(collation) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithCollation(collation);
         }
 
         /// <param name="storageAccessKey">The storage access key to use.</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithAuthentication SqlDatabaseOperations.Definition.IWithStorageKeyBeta.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabaseOperations.Definition.IWithAuthentication;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithAuthentication SqlDatabaseOperations.Definition.IWithStorageKeyBeta.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabaseOperations.Definition.IWithAuthentication;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <summary>
@@ -1166,7 +1171,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithMaxSizeBytes.WithMaxSizeBytes(long maxSizeBytes)
         {
-            return this.WithMaxSizeBytes(maxSizeBytes) as SqlDatabase.Update.IUpdate;
+            return this.WithMaxSizeBytes(maxSizeBytes);
         }
 
         /// <summary>
@@ -1181,7 +1186,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithMaxSizeBytes.WithMaxSizeBytes(long maxSizeBytes)
         {
-            return this.WithMaxSizeBytes(maxSizeBytes) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.WithMaxSizeBytes(maxSizeBytes);
         }
 
         /// <summary>
@@ -1193,7 +1198,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateMode SqlDatabaseOperations.Definition.IWithSourceDatabaseId.WithSourceDatabase(string sourceDatabaseId)
         {
-            return this.WithSourceDatabase(sourceDatabaseId) as SqlDatabaseOperations.Definition.IWithCreateMode;
+            return this.WithSourceDatabase(sourceDatabaseId);
         }
 
         /// <summary>
@@ -1205,7 +1210,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateMode SqlDatabaseOperations.Definition.IWithSourceDatabaseId.WithSourceDatabase(ISqlDatabase sourceDatabase)
         {
-            return this.WithSourceDatabase(sourceDatabase) as SqlDatabaseOperations.Definition.IWithCreateMode;
+            return this.WithSourceDatabase(sourceDatabase);
         }
 
         /// <summary>
@@ -1217,7 +1222,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithAllDifferentOptions SqlDatabaseOperations.Definition.IWithSqlServerBeta.WithExistingSqlServer(string resourceGroupName, string sqlServerName, string location)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName, location) as SqlDatabaseOperations.Definition.IWithAllDifferentOptions;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName, location);
         }
 
         /// <summary>
@@ -1227,7 +1232,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithAllDifferentOptions SqlDatabaseOperations.Definition.IWithSqlServerBeta.WithExistingSqlServer(ISqlServer sqlServer)
         {
-            return this.WithExistingSqlServer(sqlServer) as SqlDatabaseOperations.Definition.IWithAllDifferentOptions;
+            return this.WithExistingSqlServer(sqlServer);
         }
 
         /// <summary>
@@ -1235,9 +1240,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="createMode">Create mode for the database, should not be default in this flow.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate>.WithMode(string createMode)
+        SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlServer.Definition.IWithCreate>.WithMode(CreateMode createMode)
         {
-            return this.WithMode(createMode) as SqlDatabase.Definition.IWithAttachFinal<SqlServer.Definition.IWithCreate>;
+            return this.WithMode(createMode);
         }
 
         /// <summary>
@@ -1249,7 +1254,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlDatabase.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlDatabase.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -1259,7 +1264,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithCollationAfterElasticPoolOptions.WithCollation(string collation)
         {
-            return this.WithCollation(collation) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.WithCollation(collation);
         }
 
         /// <summary>
@@ -1267,9 +1272,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the update.</return>
-        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEdition.WithEdition(string edition)
+        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEdition.WithEdition(DatabaseEdition edition)
         {
-            return this.WithEdition(edition) as SqlDatabase.Update.IUpdate;
+            return this.WithEdition(edition);
         }
 
         /// <summary>
@@ -1278,7 +1283,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEditionBeta.WithBasicEdition()
         {
-            return this.WithBasicEdition() as SqlDatabase.Update.IUpdate;
+            return this.WithBasicEdition();
         }
 
         /// <summary>
@@ -1287,7 +1292,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEditionBeta.WithBasicEdition(SqlDatabaseBasicStorage maxStorageCapacity)
         {
-            return this.WithBasicEdition(maxStorageCapacity) as SqlDatabase.Update.IUpdate;
+            return this.WithBasicEdition(maxStorageCapacity);
         }
 
         /// <summary>
@@ -1297,7 +1302,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEditionBeta.WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective)
         {
-            return this.WithPremiumEdition(serviceObjective) as SqlDatabase.Update.IUpdate;
+            return this.WithPremiumEdition(serviceObjective);
         }
 
         /// <summary>
@@ -1308,7 +1313,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEditionBeta.WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective, SqlDatabasePremiumStorage maxStorageCapacity)
         {
-            return this.WithPremiumEdition(serviceObjective, maxStorageCapacity) as SqlDatabase.Update.IUpdate;
+            return this.WithPremiumEdition(serviceObjective, maxStorageCapacity);
         }
 
         /// <summary>
@@ -1318,7 +1323,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEditionBeta.WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective)
         {
-            return this.WithStandardEdition(serviceObjective) as SqlDatabase.Update.IUpdate;
+            return this.WithStandardEdition(serviceObjective);
         }
 
         /// <summary>
@@ -1329,7 +1334,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithEditionBeta.WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective, SqlDatabaseStandardStorage maxStorageCapacity)
         {
-            return this.WithStandardEdition(serviceObjective, maxStorageCapacity) as SqlDatabase.Update.IUpdate;
+            return this.WithStandardEdition(serviceObjective, maxStorageCapacity);
         }
 
         /// <summary>
@@ -1337,9 +1342,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="edition">Edition to be set for database.</param>
         /// <return>The next stage of the definition.</return>
-        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithEdition.WithEdition(string edition)
+        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithEdition.WithEdition(DatabaseEdition edition)
         {
-            return this.WithEdition(edition) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.WithEdition(edition);
         }
 
         /// <summary>
@@ -1349,7 +1354,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithCollation.WithCollation(string collation)
         {
-            return this.WithCollation(collation) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.WithCollation(collation);
         }
 
         /// <summary>
@@ -1364,7 +1369,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithMaxSizeBytes<SqlServer.Definition.IWithCreate>.WithMaxSizeBytes(long maxSizeBytes)
         {
-            return this.WithMaxSizeBytes(maxSizeBytes) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithMaxSizeBytes(maxSizeBytes);
         }
 
         /// <summary>
@@ -1374,7 +1379,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithStorageKeyAfterElasticPool SqlDatabaseOperations.Definition.IWithImportFromAfterElasticPoolBeta.ImportFrom(string storageUri)
         {
-            return this.ImportFrom(storageUri) as SqlDatabaseOperations.Definition.IWithStorageKeyAfterElasticPool;
+            return this.ImportFrom(storageUri);
         }
 
         /// <summary>
@@ -1386,7 +1391,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool SqlDatabaseOperations.Definition.IWithImportFromAfterElasticPoolBeta.ImportFrom(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportFrom(storageAccount, containerName, fileName) as SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool;
+            return this.ImportFrom(storageAccount, containerName, fileName);
         }
 
         /// <summary>
@@ -1396,7 +1401,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the resource update.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate>.WithoutTag(string key)
         {
-            return this.WithoutTag(key) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate;
+            return this.WithoutTag(key);
         }
 
         /// <summary>
@@ -1407,7 +1412,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the resource update.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate;
+            return this.WithTag(key, value);
         }
 
         /// <summary>
@@ -1417,7 +1422,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the resource update.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate;
+            return this.WithTags(tags);
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -1425,7 +1430,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPoolBeta.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The Active Directory administrator login.</param>
@@ -1433,21 +1438,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPoolBeta.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="storageAccessKey">The storage access key to use.</param>
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAuthentication<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithStorageKeyBeta<SqlServer.Definition.IWithCreate>.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabase.Definition.IWithAuthentication<SqlServer.Definition.IWithCreate>;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAuthentication<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithStorageKeyBeta<SqlServer.Definition.IWithCreate>.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabase.Definition.IWithAuthentication<SqlServer.Definition.IWithCreate>;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <summary>
@@ -1462,7 +1467,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithMaxSizeBytesAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>.WithMaxSizeBytes(long maxSizeBytes)
         {
-            return this.WithMaxSizeBytes(maxSizeBytes) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>;
+            return this.WithMaxSizeBytes(maxSizeBytes);
         }
 
         /// <summary>
@@ -1472,7 +1477,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithSampleDatabaseBeta.FromSample(SampleName sampleName)
         {
-            return this.FromSample(sampleName) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+            return this.FromSample(sampleName);
         }
     }
 }

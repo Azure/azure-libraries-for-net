@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
 {
     using Microsoft.Azure;
     using Microsoft.Azure.Management;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -24,13 +25,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// Azure Service Bus client
     /// </summary>
-    public partial class ServiceBusManagementClient : ServiceClient<ServiceBusManagementClient>, IServiceBusManagementClient, IAzureClient
+    public partial class ServiceBusManagementClient : FluentServiceClientBase<ServiceBusManagementClient>, IServiceBusManagementClient, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -40,12 +36,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
-
+        
         /// <summary>
         /// Subscription credentials that uniquely identify a Microsoft Azure
         /// subscription. The subscription ID forms part of the URI for every service
@@ -103,193 +94,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <summary>
         /// Initializes a new instance of the ServiceBusManagementClient class.
         /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected ServiceBusManagementClient(params DelegatingHandler[] handlers) : base(handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected ServiceBusManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected ServiceBusManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public ServiceBusManagementClient(RestClient restClient) 
+            : base(restClient)
         {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected ServiceBusManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ServiceBusManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ServiceBusManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ServiceBusManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ServiceBusManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ServiceBusManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
         }
 
         /// <summary>
@@ -299,7 +109,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <summary>
         /// Initializes client properties.
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             Operations = new Operations(this);
             Namespaces = new NamespacesOperations(this);

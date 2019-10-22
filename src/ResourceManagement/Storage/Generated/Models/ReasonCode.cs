@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ReasonCode.
     /// </summary>
-    public static class ReasonCode
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ReasonCode>))]
+    public class ReasonCode : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ReasonCode>
     {
-        public const string QuotaId = "QuotaId";
-        public const string NotAvailableForSubscription = "NotAvailableForSubscription";
+        public static readonly ReasonCode QuotaId = Parse("QuotaId");
+        public static readonly ReasonCode NotAvailableForSubscription = Parse("NotAvailableForSubscription");
     }
 }

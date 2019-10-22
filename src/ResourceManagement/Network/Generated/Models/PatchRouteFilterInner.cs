@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// a route filter.</param>
         /// <param name="peerings">A collection of references to express route
         /// circuit peerings.</param>
+        /// <param name="ipv6Peerings">A collection of references to express
+        /// route circuit ipv6 peerings.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values are: 'Updating', 'Deleting', 'Succeeded'
         /// and 'Failed'.</param>
@@ -48,11 +50,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// the resource is updated.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
-        public PatchRouteFilterInner(string id = default(string), IList<RouteFilterRuleInner> rules = default(IList<RouteFilterRuleInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public PatchRouteFilterInner(string id = default(string), IList<RouteFilterRuleInner> rules = default(IList<RouteFilterRuleInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), IList<ExpressRouteCircuitPeeringInner> ipv6Peerings = default(IList<ExpressRouteCircuitPeeringInner>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id)
         {
             Rules = rules;
             Peerings = peerings;
+            Ipv6Peerings = ipv6Peerings;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -79,6 +82,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.peerings")]
         public IList<ExpressRouteCircuitPeeringInner> Peerings { get; set; }
+
+        /// <summary>
+        /// Gets or sets a collection of references to express route circuit
+        /// ipv6 peerings.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ipv6Peerings")]
+        public IList<ExpressRouteCircuitPeeringInner> Ipv6Peerings { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values are:

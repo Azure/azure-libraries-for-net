@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ReplicationLinkInner class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="location">Location of the server that contains this
         /// firewall rule.</param>
         /// <param name="isTerminationAllowed">Legacy value indicating whether
@@ -58,7 +55,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="replicationState">The replication state for the
         /// replication link. Possible values include: 'PENDING', 'SEEDING',
         /// 'CATCH_UP', 'SUSPENDED'</param>
-        public ReplicationLinkInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), bool? isTerminationAllowed = default(bool?), string replicationMode = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), string replicationState = default(string))
+        public ReplicationLinkInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), bool? isTerminationAllowed = default(bool?), string replicationMode = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), ReplicationState replicationState = default(ReplicationState))
             : base(id, name, type)
         {
             Location = location;
@@ -150,7 +147,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// values include: 'PENDING', 'SEEDING', 'CATCH_UP', 'SUSPENDED'
         /// </summary>
         [JsonProperty(PropertyName = "properties.replicationState")]
-        public string ReplicationState { get; private set; }
+        public ReplicationState ReplicationState { get; private set; }
 
     }
 }

@@ -48,7 +48,7 @@ namespace ServiceBusQueueBasic
                         .Define(namespaceName)
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(rgName)
-                        .WithSku(NamespaceSku.PremiumCapacity1)
+                        .WithSku(NamespaceSku.Basic)
                         .WithNewQueue(queue1Name, 1024)
                         .Create();
 
@@ -89,7 +89,7 @@ namespace ServiceBusQueueBasic
 
                 serviceBusNamespace = serviceBusNamespace
                         .Update()
-                        .WithSku(NamespaceSku.PremiumCapacity1)
+                        .WithSku(NamespaceSku.Standard)
                         .Apply();
                 Utilities.Log("Updated sku of namespace " + serviceBusNamespace.Name);
 

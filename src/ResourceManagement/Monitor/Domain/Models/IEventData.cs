@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The Azure event log entries are of type EventData.
     /// </summary>
     public interface IEventData :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.EventDataInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.EventData>
     {
 
         /// <summary>

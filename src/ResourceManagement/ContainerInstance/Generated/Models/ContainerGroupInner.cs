@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
     /// A container group.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ContainerGroupInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ContainerGroupInner : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ContainerGroupInner class.
@@ -38,6 +39,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// <param name="osType">The operating system type required by the
         /// containers in the container group. Possible values include:
         /// 'Windows', 'Linux'</param>
+        /// <param name="identity">The identity of the container group, if
+        /// configured.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// container group. This only appears in the response.</param>
         /// <param name="imageRegistryCredentials">The image registry
@@ -54,9 +57,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// containers in this container group.</param>
         /// <param name="instanceView">The instance view of the container
         /// group. Only valid in response.</param>
-        public ContainerGroupInner(IList<Container> containers, string osType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), IList<ImageRegistryCredential> imageRegistryCredentials = default(IList<ImageRegistryCredential>), string restartPolicy = default(string), IpAddress ipAddress = default(IpAddress), IList<Volume> volumes = default(IList<Volume>), ContainerGroupPropertiesInstanceView instanceView = default(ContainerGroupPropertiesInstanceView))
+        /// <param name="diagnostics">The diagnostic information for a
+        /// container group.</param>
+        /// <param name="networkProfile">The network profile information for a
+        /// container group.</param>
+        /// <param name="dnsConfig">The DNS config information for a container
+        /// group.</param>
+        public ContainerGroupInner(IList<Container> containers, string osType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ContainerGroupIdentity identity = default(ContainerGroupIdentity), string provisioningState = default(string), IList<ImageRegistryCredential> imageRegistryCredentials = default(IList<ImageRegistryCredential>), string restartPolicy = default(string), IpAddress ipAddress = default(IpAddress), IList<Volume> volumes = default(IList<Volume>), ContainerGroupPropertiesInstanceView instanceView = default(ContainerGroupPropertiesInstanceView), ContainerGroupDiagnostics diagnostics = default(ContainerGroupDiagnostics), ContainerGroupNetworkProfile networkProfile = default(ContainerGroupNetworkProfile), DnsConfiguration dnsConfig = default(DnsConfiguration))
             : base(location, id, name, type, tags)
         {
+            Identity = identity;
             ProvisioningState = provisioningState;
             Containers = containers;
             ImageRegistryCredentials = imageRegistryCredentials;
@@ -65,6 +75,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
             OsType = osType;
             Volumes = volumes;
             InstanceView = instanceView;
+            Diagnostics = diagnostics;
+            NetworkProfile = networkProfile;
+            DnsConfig = dnsConfig;
             CustomInit();
         }
 
@@ -72,6 +85,12 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the identity of the container group, if configured.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ContainerGroupIdentity Identity { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the container group. This only
@@ -132,6 +151,24 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public ContainerGroupPropertiesInstanceView InstanceView { get; private set; }
 
         /// <summary>
+        /// Gets or sets the diagnostic information for a container group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diagnostics")]
+        public ContainerGroupDiagnostics Diagnostics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network profile information for a container group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkProfile")]
+        public ContainerGroupNetworkProfile NetworkProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DNS config information for a container group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.dnsConfig")]
+        public DnsConfiguration DnsConfig { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -180,6 +217,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
                         element2.Validate();
                     }
                 }
+            }
+            if (Diagnostics != null)
+            {
+                Diagnostics.Validate();
+            }
+            if (NetworkProfile != null)
+            {
+                NetworkProfile.Validate();
+            }
+            if (DnsConfig != null)
+            {
+                DnsConfig.Validate();
             }
         }
     }

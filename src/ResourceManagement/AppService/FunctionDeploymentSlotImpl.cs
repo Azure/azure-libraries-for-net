@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using FunctionDeploymentSlot.Definition;
     using FunctionDeploymentSlot.Update;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Models;
     using ResourceManager.Fluent.Core;
     using System;
@@ -34,8 +35,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         FunctionDeploymentSlot.Definition.IDefinition,
         FunctionDeploymentSlot.Update.IUpdate
     {
-        public FunctionDeploymentSlotImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, FunctionAppImpl parent, IAppServiceManager manager)
-            : base(name, innerObject, configObject, parent, manager)
+        public FunctionDeploymentSlotImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig, FunctionAppImpl parent, IAppServiceManager manager)
+            : base(name, innerObject, configObject, logConfig, parent, manager)
         {
         }
 

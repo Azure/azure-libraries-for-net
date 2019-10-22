@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// A common class for general resource information
+    /// A common class for general resource information.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class LocalNetworkGatewayInner : Management.ResourceManager.Fluent.Resource

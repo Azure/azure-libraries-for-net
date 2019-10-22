@@ -1,8 +1,9 @@
+[![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/net/azure-libraries-for-net%20-%20fluent-sdk?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=441&branchName=master)
 [![Build Status](https://travis-ci.org/Azure/azure-libraries-for-net.svg?style=flat-square&label=build&branch=master)](https://travis-ci.org/Azure/azure-libraries-for-net)
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.11). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.27.0). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -22,7 +23,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.11*
+:triangular_flag_on_post: *as of Version 1.27.0*
 
 <table>
   <tr>
@@ -52,12 +53,12 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   <tr>
     <td>Networking</td>
     <td>Virtual networks<br>Network interfaces<br>IP addresses<br>Routing table<br>Network security groups<br>Load balancers<br>Application gateways<br>DNS<br>Traffic managers</td>
-    <td valign="top">Network peering<br>Virtual Network Gateway<br>Network watchers<br>Express Route</td>
-    <td valign="top">VPN<br>More application gateway features</td>
+    <td valign="top">Network peering<br>Virtual Network Gateway<br>Network watchers<br>Express Route<br>Application Security Groups</td>
+    <td valign="top">More application gateway features</td>
   </tr>
   <tr>
     <td>More services</td>
-    <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Batch<br>Service bus</td>
+    <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Service bus</td>
     <td valign="top">Web apps<br>Function Apps<br>Graph RBAC<br>Cosmos DB<br>Monitor<br>Batch AI<br>Search<br>Event Hub</td>
     <td valign="top">Data Lake<br>More Monitor features<br>Logic Apps<br>Event Grid</td>
   </tr>
@@ -345,7 +346,7 @@ var webApp = azure.WebApps.Define(appName)
 <li><a href="https://github.com/Azure-Samples/app-service-dotnet-manage-storage-connections-for-web-apps">Manage storage connections for Web apps</a></li>
 <li><a href="https://github.com/Azure-Samples/app-service-dotnet-manage-data-connections-for-web-apps">Manage data connections (such as SQL database and Redis cache) for Web apps</a></li>
 <li><a href="https://github.com/Azure-Samples/app-service-dotnet-manage-authentication-for-web-apps">Manage authentication for Web apps</a></li>
-<li><a href="https://github.com/Azure-Samples/app-service-dotnet-access-key-vault-by-msi-for-web-apps">Safegaurd Web app secrets in Key Vault</a></li>
+<li><a href="https://github.com/Azure-Samples/app-service-dotnet-access-key-vault-by-msi-for-web-apps">Safeguard Web app secrets in Key Vault</a></li>
 </ul></td>
   </tr>
   <tr>
@@ -434,7 +435,7 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-firewalls-for-sql-databases">Manage firewalls for SQL databases</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions">Manage SQL databases across regions</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-import-export-db">Import and export SQL databases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-recover-restore-db">Restore and recover SQL databases</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-recover-or-restore-db">Restore and recover SQL databases</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-get-sql-metrics">Get SQL Database metrics</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-failover-groups">Manage SQL Database Failover Groups</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-server-dns-aliases">Manage SQL Server DNL aliases</a></li>
@@ -464,7 +465,7 @@ var database = sqlServer.Databases.Define(databaseName)
   <tr>
     <td>Active Directory</td>
     <td><ul style="list-style-type:circle">
-<li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-service-principals">Manage service principals using Java</a></li>
+<li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-service-principals">Manage service principals using .NET</a></li>
 <li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-users-groups-and-roles">Manage users and groups and manage their roles</a></li>
 <li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-passwords">Manage passwords</li>
 <li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-resources-from-vm-with-msi-in-aad-group">Manage Azure resources from a managed service identity (MSI) enabled virtual machine that belongs to an Azure Active Directory (AAD) security group</a></li>	
@@ -527,6 +528,9 @@ var database = sqlServer.Databases.Define(databaseName)
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/monitor-dotnet-query-metrics-activitylogs">Get metrics and activity logs for a resource</a></li>
 <li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub-events">Stream Azure Service Logs and Metrics for consumption through Event Hub</a></li>
+<li><a href="https://github.com/Azure-Samples/monitor-dotnet-activitylog-alerts-on-security-breach-or-risk">Configuring activity log alerts to be triggered on potential security breaches or risks.</a></li>
+<li><a href="https://github.com/Azure-Samples/monitor-dotnet-metric-alerts-on-critical-performance">Configuring metric alerts to be triggered on potential performance downgrade.</a></li>
+<li><a href="https://github.com/Azure-Samples/monitor-dotnet-autoscale-based-on-performance">Configuring autoscale settings to scale out based on webapp request count statistic.</a></li>
 </ul></td>
   </tr>
 
@@ -537,12 +541,6 @@ var database = sqlServer.Databases.Define(databaseName)
 </ul></td>
   </tr>
 
-  <tr>
-    <td>Batch</td>
-    <td><ul style="list-style-type:circle">
-<li><a href="https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts">Manage batch accounts</a></li>
-</ul></td>
-  </tr>
   <tr>
     <td>Batch AI</td>
     <td><ul style="list-style-type:circle">
@@ -572,13 +570,12 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.11** release builds are available on NuGet:
+**1.27.0** release builds are available on NuGet:
 
 |Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
 |Azure Management Client (wrapper package)    | `Microsoft.Azure.Management.Fluent`                 | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) |
 |App Service (Web Apps and Functions)         | `Microsoft.Azure.Management.AppService.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.AppService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.AppService.Fluent/) |
-|Batch                                        | `Microsoft.Azure.Management.Batch.Fluent`           | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Batch.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch.Fluent/) |
 |Batch AI                                     | `Microsoft.Azure.Management.BatchAI.Fluent`         | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.BatchAI.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.BatchAI.Fluent/) |
 |CDN                                          | `Microsoft.Azure.Management.Cdn.Fluent`             | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Cdn.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Cdn.Fluent/) |
 |Virtual Machines, Virtual Machine Scale Sets, Azure Container Services| `Microsoft.Azure.Management.Compute.Fluent`         | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Compute.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/) |
@@ -608,10 +605,11 @@ var database = sqlServer.Databases.Define(databaseName)
 
 - [.NET Core](https://www.microsoft.com/net/core) 
 - Azure Service Principal - see [how to create authentication info](./AUTH.md).
+- Configure and build locally - see ["**to build**" section here](https://github.com/Azure/azure-sdk-for-net/#to-build).
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.10.x to 1.11.x, you can use these release notes for [preparing your code for 1.11 from 1.10](./notes/prepare-for-1.11.md).
+If you are migrating your code from 1.26.1 to 1.27.0, you can use these release notes for [preparing your code for 1.27.0 from 1.26.1](./notes/prepare-for-1.27.0.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -646,6 +644,22 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.27              | [1.27](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.27.0)      | Tagged release for 1.27 version of Azure management libraries |
+| 1.26.1              | [1.26.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.26.1)      | Tagged release for 1.26.1 version of Azure management libraries |
+| 1.26              | [1.26](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.26.0)      | Tagged release for 1.26 version of Azure management libraries |
+| 1.25              | [1.25](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.25.0)      | Tagged release for 1.25 version of Azure management libraries |
+| 1.24              | [1.24](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.24.0)      | Tagged release for 1.24 version of Azure management libraries |
+| 1.23              | [1.23](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.23.0)      | Tagged release for 1.23 version of Azure management libraries |
+| 1.22              | [1.22](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.22)        | Tagged release for 1.22 version of Azure management libraries |
+| 1.21              | [1.21](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.21)        | Tagged release for 1.21 version of Azure management libraries |
+| 1.20              | [1.20](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.20)        | Tagged release for 1.20 version of Azure management libraries |
+| 1.19              | [1.19](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.19)        | Tagged release for 1.19 version of Azure management libraries |
+| 1.18              | [1.18](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.18)        | Tagged release for 1.18 version of Azure management libraries |
+| 1.17              | [1.17](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.17)        | Tagged release for 1.17 version of Azure management libraries |
+| 1.16              | [1.16](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.16)        | Tagged release for 1.16 version of Azure management libraries |
+| 1.15              | [1.15](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.15)        | Tagged release for 1.15 version of Azure management libraries |
+| 1.14              | [1.14](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.14)        | Tagged release for 1.14 version of Azure management libraries |
+| 1.13              | [1.13](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.13)        | Tagged release for 1.13 version of Azure management libraries |
 | 1.11              | [1.11](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.11)        | Tagged release for 1.11 version of Azure management libraries |
 | 1.10              | [1.10](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.10)        | Tagged release for 1.10 version of Azure management libraries |
 | 1.9               | [1.9](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.9)          | Tagged release for 1.9 version of Azure management libraries |

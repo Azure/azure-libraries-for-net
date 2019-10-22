@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         /// <param name="failoverPoliciesProperty">List of failover
         /// policies.</param>
-        public FailoverPolicies(IList<FailoverPolicyInner> failoverPoliciesProperty)
+        public FailoverPolicies(IList<FailoverPolicy> failoverPoliciesProperty)
         {
             FailoverPoliciesProperty = failoverPoliciesProperty;
             CustomInit();
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets list of failover policies.
         /// </summary>
         [JsonProperty(PropertyName = "failoverPolicies")]
-        public IList<FailoverPolicyInner> FailoverPoliciesProperty { get; set; }
+        public IList<FailoverPolicy> FailoverPoliciesProperty { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -9,7 +9,6 @@
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -33,9 +32,13 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the StorageAccountInner class.
         /// </summary>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        /// <param name="tags">Resource tags.</param>
         /// <param name="sku">Gets the SKU.</param>
         /// <param name="kind">Gets the Kind. Possible values include:
-        /// 'Storage', 'StorageV2', 'BlobStorage'</param>
+        /// 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+        /// 'BlockBlobStorage'</param>
         /// <param name="identity">The identity of the resource.</param>
         /// <param name="provisioningState">Gets the status of the storage
         /// account at the time the operation was called. Possible values
@@ -76,10 +79,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="accessTier">Required for storage accounts where kind =
         /// BlobStorage. The access tier used for billing. Possible values
         /// include: 'Hot', 'Cool'</param>
+        /// <param name="enableAzureFilesAadIntegration">Enables Azure Files
+        /// AAD Integration for SMB if sets to true.</param>
         /// <param name="enableHttpsTrafficOnly">Allows https traffic only to
         /// storage service if sets to true.</param>
         /// <param name="networkRuleSet">Network rule set</param>
-        public StorageAccountInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SkuInner sku = default(SkuInner), Kind? kind = default(Kind?), Identity identity = default(Identity), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet))
+        /// <param name="isHnsEnabled">Account HierarchicalNamespace enabled if
+        /// sets to true.</param>
+        /// <param name="geoReplicationStats">Geo Replication Stats</param>
+        /// <param name="failoverInProgress">If the failover is in progress,
+        /// the value will be true, otherwise, it will be null.</param>
+        public StorageAccountInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SkuInner sku = default(SkuInner), Kind? kind = default(Kind?), Identity identity = default(Identity), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableAzureFilesAadIntegration = default(bool?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -97,8 +107,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
             SecondaryEndpoints = secondaryEndpoints;
             Encryption = encryption;
             AccessTier = accessTier;
+            EnableAzureFilesAadIntegration = enableAzureFilesAadIntegration;
             EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             NetworkRuleSet = networkRuleSet;
+            IsHnsEnabled = isHnsEnabled;
+            GeoReplicationStats = geoReplicationStats;
+            FailoverInProgress = failoverInProgress;
             CustomInit();
         }
 
@@ -115,7 +129,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
 
         /// <summary>
         /// Gets the Kind. Possible values include: 'Storage', 'StorageV2',
-        /// 'BlobStorage'
+        /// 'BlobStorage', 'FileStorage', 'BlockBlobStorage'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public Kind? Kind { get; private set; }
@@ -220,6 +234,13 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         public AccessTier? AccessTier { get; private set; }
 
         /// <summary>
+        /// Gets or sets enables Azure Files AAD Integration for SMB if sets to
+        /// true.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureFilesAadIntegration")]
+        public bool? EnableAzureFilesAadIntegration { get; set; }
+
+        /// <summary>
         /// Gets or sets allows https traffic only to storage service if sets
         /// to true.
         /// </summary>
@@ -233,12 +254,31 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         public NetworkRuleSet NetworkRuleSet { get; private set; }
 
         /// <summary>
+        /// Gets or sets account HierarchicalNamespace enabled if sets to true.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isHnsEnabled")]
+        public bool? IsHnsEnabled { get; set; }
+
+        /// <summary>
+        /// Gets geo Replication Stats
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.geoReplicationStats")]
+        public GeoReplicationStats GeoReplicationStats { get; private set; }
+
+        /// <summary>
+        /// Gets if the failover is in progress, the value will be true,
+        /// otherwise, it will be null.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.failoverInProgress")]
+        public bool? FailoverInProgress { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (Sku != null)
             {

@@ -29,20 +29,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Gets the azureAppPushReceivers value.
-        /// </summary>
-        /// <summary>
-        /// Gets the azureAppPushReceivers value.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.AzureAppPushReceiver> Microsoft.Azure.Management.Monitor.Fluent.IActionGroup.AzureAppPushReceivers
-        {
-            get
-            {
-                return this.AzureAppPushReceivers();
-            }
-        }
-
-        /// <summary>
         /// Gets the azureFunctionReceivers value.
         /// </summary>
         /// <summary>
@@ -95,6 +81,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             get
             {
                 return this.LogicAppReceivers();
+            }
+        }
+
+        /// <summary>
+        /// Gets the pushNotificationReceivers value.
+        /// </summary>
+        /// <summary>
+        /// Gets the pushNotificationReceivers value.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.AzureAppPushReceiver> Microsoft.Azure.Management.Monitor.Fluent.IActionGroup.PushNotificationReceivers
+        {
+            get
+            {
+                return this.PushNotificationReceivers();
             }
         }
 
@@ -229,26 +229,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Sets the Azure Mobile App Push Notification  receiver.
-        /// </summary>
-        /// <param name="emailAddress">The emailAddress value to set.</param>
-        /// <return>The next stage of the update.</return>
-        ActionGroup.Update.IWithActionUpdateDefinition ActionGroup.Update.IWithActionUpdateDefinition.WithAzureAppPush(string emailAddress)
-        {
-            return this.WithAzureAppPush(emailAddress);
-        }
-
-        /// <summary>
-        /// Sets the Azure Mobile App Push Notification  receiver.
-        /// </summary>
-        /// <param name="emailAddress">The emailAddress value to set.</param>
-        /// <return>The next stage of the definition.</return>
-        ActionGroup.ActionDefinition.IActionDefinition<IWithCreate> ActionGroup.ActionDefinition.IActionDefinition<IWithCreate>.WithAzureAppPush(string emailAddress)
-        {
-            return this.WithAzureAppPush(emailAddress);
-        }
-
-        /// <summary>
         /// Sets the Azure Functions receiver.
         /// </summary>
         /// <param name="functionAppResourceId">The functionAppResourceId value to set.</param>
@@ -341,21 +321,32 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
+        /// Sets the Azure Mobile App Push Notification  receiver.
+        /// </summary>
+        /// <param name="emailAddress">The emailAddress value to set.</param>
+        /// <return>The next stage of the update.</return>
+        ActionGroup.Update.IWithActionUpdateDefinition ActionGroup.Update.IWithActionUpdateDefinition.WithPushNotification(string emailAddress)
+        {
+            return this.WithPushNotification(emailAddress);
+        }
+
+        /// <summary>
+        /// Sets the Azure Mobile App Push Notification  receiver.
+        /// </summary>
+        /// <param name="emailAddress">The emailAddress value to set.</param>
+        /// <return>The next stage of the update.</return>
+        ActionGroup.ActionDefinition.IActionDefinition<IWithCreate> ActionGroup.ActionDefinition.IActionDefinition<IWithCreate>.WithPushNotification(string emailAddress)
+        {
+            return this.WithPushNotification(emailAddress);
+        }
+
+        /// <summary>
         /// Removes Azure Automation Runbook receiver from current receiver's group.
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
         ActionGroup.Update.IWithActionUpdateDefinition ActionGroup.Update.IWithActionUpdateDefinition.WithoutAutomationRunbook()
         {
             return this.WithoutAutomationRunbook();
-        }
-
-        /// <summary>
-        /// Removes Azure mobile App Push notification receiver from current receiver's group.
-        /// </summary>
-        /// <return>The next stage of the receiver group update.</return>
-        ActionGroup.Update.IWithActionUpdateDefinition ActionGroup.Update.IWithActionUpdateDefinition.WithoutAzureAppPush()
-        {
-            return this.WithoutAzureAppPush();
         }
 
         /// <summary>
@@ -392,6 +383,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ActionGroup.Update.IWithActionUpdateDefinition ActionGroup.Update.IWithActionUpdateDefinition.WithoutLogicApp()
         {
             return this.WithoutLogicApp();
+        }
+
+        /// <summary>
+        /// Removes Azure mobile App Push notification receiver from current receiver's group.
+        /// </summary>
+        /// <return>The next stage of the receiver group update.</return>
+        ActionGroup.Update.IWithActionUpdateDefinition ActionGroup.Update.IWithActionUpdateDefinition.WithoutPushNotification()
+        {
+            return this.WithoutPushNotification();
         }
 
         /// <summary>
@@ -526,11 +526,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this.WithAutomationRunbook(automationAccountId, runbookName, webhookResourceId, isGlobalRunbook);
         }
 
-        IActionDefinition<IUpdate> IActionDefinition<IUpdate>.WithAzureAppPush(string emailAddress)
-        {
-            return this.WithAzureAppPush(emailAddress);
-        }
-
         IActionDefinition<IUpdate> IActionDefinition<IUpdate>.WithAzureFunction(string functionAppResourceId, string functionName, string httpTriggerUrl)
         {
             return this.WithAzureFunction(functionAppResourceId, functionName, httpTriggerUrl);
@@ -549,6 +544,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IActionDefinition<IUpdate> IActionDefinition<IUpdate>.WithLogicApp(string logicAppResourceId, string callbackUrl)
         {
             return this.WithLogicApp(logicAppResourceId, callbackUrl);
+        }
+
+        IActionDefinition<IUpdate> IActionDefinition<IUpdate>.WithPushNotification(string emailAddress)
+        {
+            return this.WithPushNotification(emailAddress);
         }
 
         IActionDefinition<IUpdate> IActionDefinition<IUpdate>.WithSms(string countryCode, string phoneNumber)

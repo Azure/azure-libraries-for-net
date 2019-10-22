@@ -177,6 +177,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         string SystemAssignedManagedServiceIdentityPrincipalId { get; }
 
         /// <summary>
+        /// Gets The ids of the user assigned identities.
+        /// </summary>
+        System.Collections.Generic.ISet<string> UserAssignedManagedServiceIdentityIds { get; }
+
+        /// <summary>
         /// Verifies the ownership of the domain for a certificate order by verifying a hostname
         /// of the domain is bound to this web app.
         /// </summary>
@@ -378,5 +383,95 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets which slot this app will swap into.
         /// </summary>
         string TargetSwapSlot { get; }
+
+        /// <summary>
+        /// True if the web app is configured to accept only HTTPS requests. HTTP requests will be redirected.
+        /// </summary>
+        bool HttpsOnly { get; }
+
+        /// <summary>
+        /// Gets the state of FTP / FTPS service.
+        /// </summary>
+        FtpsState FtpsState { get; }
+
+        /// <summary>
+        /// Gets the virtual applications and their virtual directories in this web app.
+        /// </summary>
+        IList<VirtualApplication> VirtualApplications { get; }
+
+        /// <summary>
+        /// Gets whether to allow clients to connect over http2.0.
+        /// </summary>
+        bool Http20Enabled { get; }
+
+        /// <summary>
+        /// Gets whether local MySQL is enabled.
+        /// </summary>
+        bool LocalMySqlEnabled { get; }
+
+        /// <summary>
+        /// Gets the SCM configuration for the web app.
+        /// </summary>
+        ScmType ScmType { get; }
+
+        /// <summary>
+        /// Gets the root directory for the web app.
+        /// </summary>
+        string DocumentRoot { get; }
+
+        /// <summary>
+        /// Gets the diagnostic logs configuration.
+        /// </summary>
+        Microsoft.Azure.Management.AppService.Fluent.IWebAppDiagnosticLogs DiagnosticLogsConfig { get; }
+
+        /// <summary>
+        /// Gets a open stream to the application logs.
+        /// </summary>
+        Stream StreamApplicationLogs();
+
+        /// <summary>
+        /// Gets a open stream to the application logs.
+        /// </summary>
+        Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to the HTTP logs.
+        /// </summary>
+        Stream StreamHttpLogs();
+
+        /// <summary>
+        /// Gets a open stream to the HTTP logs.
+        /// </summary>
+        Task<Stream> StreamHttpLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to the trace logs.
+        /// </summary>
+        Stream StreamTraceLogs();
+
+        /// <summary>
+        /// Gets a open stream to the trace logs.
+        /// </summary>
+        Task<Stream> StreamTraceLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to the deployment logs.
+        /// </summary>
+        Stream StreamDeploymentLogs();
+
+        /// <summary>
+        /// Gets a open stream to the deployment logs.
+        /// </summary>
+        Task<Stream> StreamDeploymentLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a open stream to all logs.
+        /// </summary>
+        Stream StreamAllLogs();
+
+        /// <summary>
+        /// Gets a open stream to all logs.
+        /// </summary>
+        Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

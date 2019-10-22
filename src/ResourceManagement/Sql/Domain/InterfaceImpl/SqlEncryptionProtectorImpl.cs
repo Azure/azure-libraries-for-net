@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlEncryptionProtector.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlEncryptionProtector.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlEncryptionProtector.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ServerKeyType() as Models.ServerKeyType;
+                return this.ServerKeyType();
             }
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlEncryptionProtector.Update.IUpdate SqlEncryptionProtector.Update.IWithServerKeyNameAndType.WithAzureKeyVaultServerKey(string serverKeyName)
         {
-            return this.WithAzureKeyVaultServerKey(serverKeyName) as SqlEncryptionProtector.Update.IUpdate;
+            return this.WithAzureKeyVaultServerKey(serverKeyName);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlEncryptionProtector.Update.IUpdate SqlEncryptionProtector.Update.IWithServerKeyNameAndType.WithServiceManagedServerKey()
         {
-            return this.WithServiceManagedServerKey() as SqlEncryptionProtector.Update.IUpdate;
+            return this.WithServiceManagedServerKey();
         }
     }
 }

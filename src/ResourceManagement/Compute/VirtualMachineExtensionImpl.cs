@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 Inner.Tags = new Dictionary<string, string>();
             }
-            Inner.Tags.Add(key, value);
+            Inner.Tags[key] = value;
             return this;
         }
 

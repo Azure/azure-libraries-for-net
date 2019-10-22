@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
             {
                 Requests.Validate();
             }
+            if (Limits != null)
+            {
+                Limits.Validate();
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Identity.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Identity.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Identity.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

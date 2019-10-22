@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
     /// The implementation for WebApps.
@@ -83,7 +84,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 return null;
             }
             var siteConfig = await Inner.GetConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
-            var webApp = WrapModel(inner, siteConfig);
+            var logConfig = await Inner.GetDiagnosticLogsConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
+            var webApp = WrapModel(inner, siteConfig, logConfig);
             return webApp;
         }
 
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return new WebAppImpl(name, new SiteInner
             {
                 Kind = "app"
-            }, null, Manager);
+            }, null, null, Manager);
         }
 
         ///GENMHASH:64609469010BC4A501B1C3197AE4F243:546B78C6345DE4CB959015B4F5C52E0D
@@ -109,16 +111,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             if (inner == null) {
                 return null;
             }
-            return new WebAppImpl(inner.Name, inner, null, Manager);
+            return new WebAppImpl(inner.Name, inner, null, null, Manager);
         }
 
-        private IWebApp WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner)
+        private IWebApp WrapModel(SiteInner inner, SiteConfigResourceInner siteConfigInner, SiteLogsConfigInner logsConfigInner)
         {
             if (inner == null)
             {
                 return null;
             }
-            return new WebAppImpl(inner.Name, inner, siteConfigInner, Manager);
+            return new WebAppImpl(inner.Name, inner, siteConfigInner, logsConfigInner, Manager);
         }
 
         protected override async Task<IPage<SiteInner>> ListInnerAsync(CancellationToken cancellationToken)
@@ -149,6 +151,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         IBlank ISupportsCreating<IBlank>.Define(string name)
         {
             return WrapModel(name);
+        }
+
+        public void DeleteById(string id, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?))
+        {
+            Extensions.Synchronize(() => DeleteByIdAsync(id, deleteMetrics, deleteEmptyServerFarm));
+        }
+
+        public async Task DeleteByIdAsync(string id, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await DeleteByResourceGroupAsync(ResourceUtils.GroupFromResourceId(id), ResourceUtils.NameFromResourceId(id), deleteMetrics, deleteEmptyServerFarm, cancellationToken);
+        }
+
+        public void DeleteByResourceGroup(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?))
+        {
+            Extensions.Synchronize(() => DeleteByResourceGroupAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm));
+        }
+
+        public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Inner.DeleteAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm, cancellationToken);
         }
     }
 }

@@ -13,9 +13,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Client-side representation of Batch AI Job object, associated with Batch AI Cluster.
     /// </summary>
     public interface IBatchAIJob  :
-        IBeta,
-        IIndependentChildResource<IBatchAIManager,Models.JobInner>,
-        IRefreshable<IBatchAIJob>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.BatchAI.Fluent.Models.JobInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob>
     {
         /// <summary>
         /// Gets the Id of the cluster on which this job will run.
@@ -26,6 +29,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// Gets the creation time of the job.
         /// </summary>
         System.DateTime CreationTime { get; }
+
+        /// <summary>
+        /// Gets the experiment information of the job.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment Experiment { get; }
 
         /// <summary>
         /// Gets the time at which the job entered its current provisioning state.
@@ -145,13 +153,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         Microsoft.Azure.Management.BatchAI.Fluent.Models.ProvisioningState ProvisioningState { get; }
 
         /// <summary>
-        /// Gets priority associated with the job. Priority values can range from -1000
-        /// to 1000, with -1000 being the lowest priority and 1000 being the highest
-        /// priority. The default value is 0.
-        /// </summary>
-        int Priority { get; }
-
-        /// <summary>
         /// Gets The toolkit type of this job.
         /// </summary>
         Microsoft.Azure.Management.BatchAI.Fluent.Models.ToolType ToolType { get; }
@@ -177,6 +178,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// AZ_BATCHAI_WORKER_HOSTS.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariable> EnvironmentVariables { get; }
+
+        /// <summary>
+        /// Gets priority associated with the job. Priority values can range from -1000
+        /// to 1000, with -1000 being the lowest priority and 1000 being the highest
+        /// priority. The default value is 0.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPriority SchedulingPriority { get; }
 
         /// <summary>
         /// Gets environment variables with secret values to set on the job. Only names are reported,
@@ -220,10 +228,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>An observable that emits output file information.</return>
         Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>> ListFilesAsync(string outputDirectoryId, string directory, int linkExpiryMinutes, int maxResults, CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <summary>
+        /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
+        /// </summary>
+        /// <return>List of remote login details.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> ListRemoteLoginInformation();
 
         /// <summary>
-        /// Gets the experiment information of the job.
+        /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
         /// </summary>
-        string ExperimentName { get; }
+        /// <return>An observable that emits remote login information.</return>
+        Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation>> ListRemoteLoginInformationAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+
     }
 }

@@ -18,6 +18,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using System.IO;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The implementation for WebAppBase.
@@ -45,6 +48,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         where DefAfterGroupT : class
         where UpdateT : class, IUpdate<FluentT>
     {
+        private static readonly Dictionary<AzureEnvironment, string> _dnsMap = new Dictionary<AzureEnvironment, string>
+        {
+            { AzureEnvironment.AzureGlobalCloud, "azurewebsites.net" },
+            { AzureEnvironment.AzureChinaCloud, "chinacloudsites.cn" },
+            { AzureEnvironment.AzureGermanCloud, "azurewebsites.de" },
+            { AzureEnvironment.AzureUSGovernment, "azurewebsites.us" }
+        };
+
         private SiteConfigResourceInner _siteConfig;
         private ISet<string> hostNamesSet;
         private ISet<string> enabledHostNamesSet;
@@ -64,8 +75,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private bool sourceControlToDelete;
         private WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> authentication;
         private bool authenticationToUpdate;
-        private SiteLogsConfigInner siteLogsConfig;
+        private WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> diagnosticLogs;
+        private bool diagnosticLogsToUpdate;
         private Func<SiteInner, CancellationToken, Task<IRoleAssignment>> msiRoleHandler;
+        internal KuduClient kuduClient;
+        private WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> msiHandler;
 
         internal SiteConfigResourceInner SiteConfig
         {
@@ -77,6 +91,30 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 _siteConfig = value;
             }
+        }
+
+        public bool HttpsOnly => Inner.HttpsOnly ?? false;
+
+        public FtpsState FtpsState => SiteConfig?.FtpsState;
+
+        public IList<VirtualApplication> VirtualApplications => SiteConfig?.VirtualApplications;
+
+        public bool Http20Enabled => (SiteConfig == null || SiteConfig.Http20Enabled == null) ? false : SiteConfig.Http20Enabled.Value;
+
+        public bool LocalMySqlEnabled => (SiteConfig == null || SiteConfig.LocalMySqlEnabled == null) ? false : SiteConfig.LocalMySqlEnabled.Value;
+
+        public ScmType ScmType => SiteConfig?.ScmType;
+
+        public string DocumentRoot => SiteConfig?.DocumentRoot;
+
+        internal ISet<string> UserAssignedManagedServiceIdentityIds()
+        {
+            if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
+            {
+                return new HashSet<string>(this.Inner.Identity.UserAssignedIdentities.Keys);
+            }
+
+            return new HashSet<string>();
         }
 
         ///GENMHASH:6779D3D3C7AB7AAAE805BA0ABEE95C51:27E486AB74A10242FF421C0798DDC450
@@ -132,6 +170,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             this.sourceControl = null;
             this.sourceControlToDelete = false;
             this.authenticationToUpdate = false;
+            this.diagnosticLogsToUpdate = false;
+            if (this.msiHandler != null)
+            {
+                this.msiHandler.Clear();
+            }
             this.sslBindingsToCreate = new Dictionary<string, HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>>();
             if (Inner.HostNames != null)
             {
@@ -162,7 +205,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     hostNameSslStateMap[hostNameSslState.Name] = hostNameSslState;
                 }
             }
-            siteLogsConfig = null;
             msiRoleHandler = null;
             return this as FluentT;
         }
@@ -205,7 +247,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:C03B1FAF31FB94362C083BAA7332E4A4:8B19C9BFB290F4258B198AA4A8232D84
         public FluentImplT WithoutJava()
         {
-            return WithJavaVersion(Fluent.JavaVersion.Parse("")).WithWebContainer(null);
+            return WithJavaVersion(Fluent.JavaVersion.Parse("")).WithWebContainer(Fluent.WebContainer.Parse(""));
         }
 
         ///GENMHASH:3A0791A760CE20BB60B662E45E1B5A20:4FF1C3A0EBAB86346DAA7BA2FF1129CE
@@ -215,7 +257,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.PythonVersion = version.ToString();
+            this.SiteConfig.PythonVersion = (version == Fluent.PythonVersion.Off) ? "" : version.ToString();
             return (FluentImplT)this;
         }
 
@@ -234,9 +276,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override async Task<FluentT> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            ///GENMHASH:9EC0529BA0D08B75AD65E98A4BA01D5D:27E486AB74A10242FF421C0798DDC450
+            //GENMHASH:9EC0529BA0D08B75AD65E98A4BA01D5D:27E486AB74A10242FF421C0798DDC450
             SiteInner inner = await GetSiteAsync(cancellationToken);
-            ///GENMHASH:256905D5B839C64BFE9830503CB5607B:27E486AB74A10242FF421C0798DDC450
+            //GENMHASH:256905D5B839C64BFE9830503CB5607B:27E486AB74A10242FF421C0798DDC450
             this.SiteConfig = await GetConfigInnerAsync(cancellationToken);
             SetInner(inner);
             return this as FluentT;
@@ -369,7 +411,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.ScmType = "LocalGit";
+            this.SiteConfig.ScmType = ScmType.LocalGit;
             return (FluentImplT)this;
         }
 
@@ -391,82 +433,127 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
-        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:A25AA6BA478E9A0DD581F3FB75601E70
-        public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public FluentImplT WithHttpsOnly(bool httpsOnly)
         {
-            if (hostNameSslStateMap.Count > 0)
+            Inner.HttpsOnly = httpsOnly;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithHttp20Enabled(bool http20Enabled)
+        {
+            if (this.SiteConfig == null)
             {
-                Inner.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.Http20Enabled = http20Enabled;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithFtpsState(FtpsState ftpsState)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.FtpsState = ftpsState;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithVirtualApplications(IList<VirtualApplication> virtualApplications)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.VirtualApplications = virtualApplications;
+            return (FluentImplT)this;
+        }
+
+        internal async Task<FluentT> CreateResourceInternalAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            SiteInner site = null;
+            if (IsInCreateMode)
+            {
+                //We are creating a new resource
+                if (hostNameSslStateMap.Count > 0)
+                {
+                    Inner.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+                }
+
+                msiHandler.ProcessCreatedExternalIdentities();
+                msiHandler.HandleExternalIdentities();
+
+                // Web app creation
+                site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
+            }
+            else
+            {
+                var siteInner1 = (SiteInner)this.Inner;
+
+                msiHandler.ProcessCreatedExternalIdentities();
+
+                //We are updating an existing resource
+                SitePatchResource siteUpdate = new SitePatchResource()
+                {
+                    HostNameSslStates = siteInner1.HostNameSslStates,
+                    Tags = siteInner1.Tags,
+                    Kind = siteInner1.Kind,
+                    Enabled = siteInner1.Enabled,
+                    ServerFarmId = siteInner1.ServerFarmId,
+                    Reserved = siteInner1.Reserved,
+                    IsXenon = siteInner1.IsXenon,
+                    HyperV = siteInner1.HyperV,
+                    ScmSiteAlsoStopped = siteInner1.ScmSiteAlsoStopped,
+                    HostingEnvironmentProfile = siteInner1.HostingEnvironmentProfile,
+                    ClientAffinityEnabled = siteInner1.ClientAffinityEnabled,
+                    ClientCertEnabled = siteInner1.ClientCertEnabled,
+                    ClientCertExclusionPaths = siteInner1.ClientCertExclusionPaths,
+                    HostNamesDisabled = siteInner1.HostNamesDisabled,
+                    ContainerSize = siteInner1.ContainerSize,
+                    DailyMemoryTimeQuota = siteInner1.DailyMemoryTimeQuota,
+                    CloningInfo = siteInner1.CloningInfo,
+                    HttpsOnly = siteInner1.HttpsOnly,
+                    RedundancyMode = siteInner1.RedundancyMode,
+                    GeoDistributions = siteInner1.GeoDistributions,
+                    
+                    SiteConfig = new SiteConfig()
+                };
+
+                msiHandler.HandleExternalIdentities(siteUpdate);
+
+                site = await UpdateInnerAsync(siteUpdate, cancellationToken);
             }
 
-            // Web app creation
-            Inner.SiteConfig = new Models.SiteConfig();
-            var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken)
-            .ContinueWith<SiteInner>(t =>
-                {
-                    var innerSite = t.Result;
-                    Inner.SiteConfig = null;
-                    return innerSite;
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default)
-            .ContinueWith(t =>
-                {
-                    // Submit hostname bindings
-                    var bindingTasks = new List<Task>();
-                    foreach (var binding in hostNameBindingsToCreate.Values)
-                    {
-                        bindingTasks.Add(binding.CreateAsync(cancellationToken));
-                    }
-                    foreach (string binding in hostNameBindingsToDelete)
-                    {
-                        bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
-                    }
-                    return Task.WhenAll(bindingTasks)
-                    .ContinueWith(bindingt =>
-                        {
-                            // Refresh after hostname bindings
-                            return GetSiteAsync(cancellationToken);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default).Unwrap();
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default).Unwrap()
-            .ContinueWith(t =>
-                {
-                    var innerSite = t.Result;
-                    // Submit SSL bindings
-                    var certTasks = new List<Task<IAppServiceCertificate>>();
-                    foreach (var binding in sslBindingsToCreate.Values)
-                    {
-                        binding.Inner.ToUpdate = true;
-                        certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
-                        hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
-                    }
-                    innerSite.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
-                    if (certTasks.Any())
-                    {
-                        return Task.WhenAll(certTasks)
-                        .ContinueWith(cert =>
-                            {
-                                return CreateOrUpdateInnerAsync(innerSite, cancellationToken);
-                            },
-                            cancellationToken,
-                            TaskContinuationOptions.ExecuteSynchronously,
-                            TaskScheduler.Default).Unwrap();
-                    }
-                    else
-                    {
-                        return Task.FromResult(innerSite);
-                    }
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default).Unwrap();
+            // Submit hostname bindings
+            var bindingTasks = new List<Task>();
+            foreach (var binding in hostNameBindingsToCreate.Values)
+            {
+                bindingTasks.Add(binding.CreateAsync(cancellationToken));
+            }
+            foreach (string binding in hostNameBindingsToDelete)
+            {
+                bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
+            }
+            await Task.WhenAll(bindingTasks);
+
+            // Refresh after hostname bindings
+            site = await GetSiteAsync(cancellationToken);
+
+            // Submit SSL bindings
+            var certTasks = new List<Task<IAppServiceCertificate>>();
+            foreach (var binding in sslBindingsToCreate.Values)
+            {
+                binding.Inner.ToUpdate = true;
+                certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
+                hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
+            }
+            site.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+            if (certTasks.Any())
+            {
+                await Task.WhenAll(certTasks);
+
+                site = await CreateOrUpdateInnerAsync(site, cancellationToken);
+            }
 
             // Submit site config
             if (this.SiteConfig != null)
@@ -525,10 +612,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 slotConfigs = await UpdateSlotConfigurationsAsync(slotConfigs, cancellationToken);
             }
 
+
+            // Refresh after hostname bindings
+            var siteInner = await GetSiteAsync(cancellationToken);
+
             // Wait for previous settings to be effective before deployment
             if (sourceControlToDelete || sourceControl != null)
             {
-                await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
+                await SdkContext.DelayProvider.DelayAsync(60 * 1000, cancellationToken);
             }
 
             // Delete source control
@@ -548,31 +639,60 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Authentication
             if (authenticationToUpdate)
             {
-                await UpdateAuthenticationAsync(authentication.Inner, cancellationToken);
+                this.authentication = new WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(
+                    await UpdateAuthenticationAsync(authentication.Inner, cancellationToken), this);
             }
 
             // Log configuration
-            if (siteLogsConfig != null)
+            if (diagnosticLogsToUpdate)
             {
-                await UpdateDiagnosticLogsConfigAsync(siteLogsConfig, cancellationToken);
-                siteLogsConfig = null;
+                this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(
+                    await UpdateDiagnosticLogsConfigAsync(diagnosticLogs.Inner, cancellationToken), this);
             }
 
-            // MSI Roles
-            if (msiRoleHandler != null)
-            {
-                if (site.Identity == null || site.Identity.PrincipalId == null)
-                {
-                    throw new CloudException("A managed service identity was failed to be created for this web app.");
-                }
-                await msiRoleHandler.Invoke(site, cancellationToken);
-            }
 
             // convert from Inner
-            SetInner(site);
+            SetInner(siteInner);
             NormalizeProperties();
+            await msiHandler.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
 
             return this as FluentT;
+        }
+
+        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:A25AA6BA478E9A0DD581F3FB75601E70
+        public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            int retryCount = 1;
+            int retryCountBadRequest = 5; // before success, there seems to be a few failure on WebAppsOperations.CreateOrUpdateSourceControlWithHttpMessagesAsync
+            while (retryCount >= 0 && retryCountBadRequest >= 0)
+            {
+                try
+                {
+                    return await CreateResourceInternalAsync(cancellationToken);
+                }
+                catch (Microsoft.Rest.RestException ex) when (retryCount > 0 && retryCountBadRequest > 0)
+                {
+                    if (ex is DefaultErrorResponseException derx)
+                    {
+                        if (derx.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            retryCountBadRequest--;
+                            continue;
+                        }
+                    }
+                    else if (ex is CloudException cex)
+                    {
+                        if (cex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            retryCountBadRequest--;
+                            continue;
+                        }
+                    }
+                }
+                retryCount--;
+            }
+
+            throw new InvalidOperationException();
         }
 
         internal virtual async Task<SiteInner> SubmitAppSettingsAsync(SiteInner site, CancellationToken cancellationToken)
@@ -708,7 +828,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:16DA81E02BFF9B1983571901E1CA6AB9:D68A946D17769FFBF0FF5DAAE2212551
         public string DefaultHostName()
         {
-            return Inner.DefaultHostName;
+            if (Inner.DefaultHostName != null)
+            {
+                return Inner.DefaultHostName;
+            }
+            else
+            {
+
+                AzureEnvironment environment = ResourceUtils.ExtractAzureEnvironment(Manager.RestClient);
+                string dns = _dnsMap[environment];
+                string leaf = Name;
+                if (this is IDeploymentSlot ds)
+                {
+                    leaf = ds.Parent.Name + "-" + leaf;
+                }
+                else if (this is IFunctionDeploymentSlot fds)
+                {
+                    leaf = fds.Parent.Name + "-" + leaf;
+                }
+                return leaf + "." + dns;
+            }
         }
 
         ///GENMHASH:7A3D1E4A59735B1A92153B49F406A2EA:28A9E89FFAE2C02A8D6559195D5529FC
@@ -745,13 +884,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:23406BAAD05E75776B2C2D57DAD6EC31:1EF21756C66ADE5D95AB8272104B3924
-        public IList<string> DefaultDocuments()
+        public IReadOnlyList<string> DefaultDocuments()
         {
             if (this.SiteConfig == null)
             {
                 return null;
             }
-            return this.SiteConfig.DefaultDocuments;
+            return (IReadOnlyList<string>)this.SiteConfig.DefaultDocuments;
         }
 
         ///GENMHASH:8B6374B8DE9FB105A8A4FE1AC98E0A32:59ABE89788E5ADCDFB7771D2A4549653
@@ -989,7 +1128,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.SiteConfig.NodeVersion;
         }
 
+        public IWebAppDiagnosticLogs DiagnosticLogsConfig()
+        {
+            return this.diagnosticLogs ?? new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(new SiteLogsConfigInner(), this);
+        }
+
         internal abstract Task<SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken));
+
+        internal abstract Task<SiteInner> UpdateInnerAsync(SitePatchResource siteUpdate, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:FA07D0476A4A7B9F0FDA17B8DF0095F1:FC345DE9B0C87952B3DE42BCE0488ECD
         public IReadOnlyDictionary<string, IConnectionString> GetConnectionStrings()
@@ -1037,6 +1183,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string name,
             SiteInner innerObject,
             SiteConfigResourceInner configObject,
+            SiteLogsConfigInner logConfig,
             IAppServiceManager manager)
             : base(name, innerObject, manager)
         {
@@ -1045,7 +1192,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 innerObject.Kind = innerObject.Kind.Replace(";", ",");
             }
             this.SiteConfig = configObject;
+            if (logConfig != null)
+            {
+                this.diagnosticLogs = new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(logConfig, this);
+            }
+
+            msiHandler = new WebAppMsiHandler<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(manager.GraphRbacManager, this);
             NormalizeProperties();
+            kuduClient = new KuduClient(this);
         }
 
         public override void SetInner(SiteInner innerObject)
@@ -1081,7 +1235,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.PhpVersion = version.ToString();
+            this.SiteConfig.PhpVersion = (version == Fluent.PhpVersion.Off) ? "" : version.ToString();
             return (FluentImplT)this;
         }
 
@@ -1184,6 +1338,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig.JavaContainer = null;
                 this.SiteConfig.JavaContainerVersion = null;
+            }
+            else if (webContainer.Value == "")
+            {
+                this.SiteConfig.JavaContainer = "";
+                this.SiteConfig.JavaContainerVersion = "";
             }
             else
             {
@@ -1298,6 +1457,24 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }, this);
         }
 
+        ///GENMHASH:25B2FDBD9EB841C5B5CB51416AA201E2:C7CBF798130499DAE19FEBFB0D01C4CD
+        public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> DefineDiagnosticLogsConfiguration()
+        {
+            if (diagnosticLogs == null)
+            {
+                return new WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(new SiteLogsConfigInner(), this);
+            }
+            else
+            {
+                return diagnosticLogs;
+            }
+        }
+
+        ///GENMHASH:1EEB2486CC5A8E1568AF656BB5DC5647:0AC50F72000A2CCED4A40A32A084B0FC
+        public WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> UpdateDiagnosticLogsConfiguration()
+        {
+            return DefineDiagnosticLogsConfiguration();
+        }
 
         ///GENMHASH:8E71F8927E941B28152FA821CDDF0634:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<Models.SiteAuthSettingsInner> GetAuthenticationAsync(CancellationToken cancellationToken = default(CancellationToken));
@@ -1313,7 +1490,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         ///GENMHASH:21D1748197F7ECC1EFA9660DF579B414:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<Models.SiteAuthSettingsInner> UpdateAuthenticationAsync(SiteAuthSettingsInner inner, CancellationToken cancellationToken = default(CancellationToken));
-        public abstract Task UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken));
+        internal abstract Task<Models.SiteLogsConfigInner> UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:C17839133E66320367CE2F5EF66B54F4:6C685EA1512F1D3FDFEFDFE594F83AA2
         public PlatformArchitecture PlatformArchitecture()
@@ -1336,6 +1513,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
+        ///GENMHASH:4272BDDC79EB4AC6B82FF51C6947035B:17241795E93479E353D960258CAD8BE3
+        internal FluentImplT WithDiagnosticLogs(WebAppDiagnosticLogsImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> diagnosticLogs)
+        {
+            this.diagnosticLogs = diagnosticLogs;
+            diagnosticLogsToUpdate = true;
+            return (FluentImplT)this;
+        }
+
         public abstract Task<IReadOnlyDictionary<string, IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken));
         public abstract Task StartAsync(CancellationToken cancellationToken = default(CancellationToken));
         public abstract Task ApplySlotConfigurationsAsync(string slotName, CancellationToken cancellationToken = default(CancellationToken));
@@ -1347,7 +1532,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public abstract Task<IWebAppSourceControl> GetSourceControlAsync(CancellationToken cancellationToken = default(CancellationToken));
 
 
-        internal abstract Task<MSDeployStatusInner> CreateMSDeploy(MSDeployInner msDeployInner, CancellationToken cancellationToken);
+        internal abstract Task<MSDeployStatusInner> CreateMSDeploy(MSDeploy msDeployInner, CancellationToken cancellationToken);
 
         public WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> Deploy()
         {
@@ -1361,34 +1546,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public FluentImplT WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
         {
-            siteLogsConfig = new SiteLogsConfigInner
-            {
-                HttpLogs = new HttpLogsConfig
-                {
-                    FileSystem = new FileSystemHttpLogsConfig
-                    {
-                        Enabled = true,
-                        RetentionInDays = retentionDays,
-                        RetentionInMb = quotaInMB
-                    }
-                }
-            };
-            return (FluentImplT)this;
+            return UpdateDiagnosticLogsConfiguration()
+                    .WithWebServerLogging()
+                    .WithWebServerLogsStoredOnFileSystem()
+                    .WithWebServerFileSystemQuotaInMB(quotaInMB)
+                    .WithLogRetentionDays(retentionDays)
+                    .Attach();
         }
 
         public FluentImplT WithContainerLoggingDisabled()
         {
-            siteLogsConfig = new SiteLogsConfigInner
-            {
-                HttpLogs = new HttpLogsConfig
-                {
-                    FileSystem = new FileSystemHttpLogsConfig
-                    {
-                        Enabled = false
-                    }
-                }
-            };
-            return (FluentImplT)this;
+            return UpdateDiagnosticLogsConfiguration()
+                    .WithoutWebServerLogging()
+                    .Attach();
         }
 
         public string SystemAssignedManagedServiceIdentityTenantId()
@@ -1409,12 +1579,38 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return Inner.Identity.PrincipalId;
         }
 
+        public FluentImplT WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            this.msiHandler.WithNewExternalManagedServiceIdentity(creatableIdentity);
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            this.msiHandler.WithoutExternalManagedServiceIdentity(identityId);
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithoutSystemAssignedManagedServiceIdentity()
+        {
+            this.msiHandler.WithoutLocalManagedServiceIdentity();
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            this.msiHandler.WithExistingExternalManagedServiceIdentity(identity);
+            return (FluentImplT)this;
+        }
+
         public FluentImplT WithSystemAssignedManagedServiceIdentity()
         {
-            Inner.Identity = new ManagedServiceIdentity
-            {
-                Type = "SystemAssigned"
-            };
+            this.msiHandler.WithLocalManagedServiceIdentity();
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithUserAssignedManagedServiceIdentity()
+        {
             return (FluentImplT)this;
         }
 
@@ -1425,13 +1621,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithBuiltInRole(role)
-                .WithScope(resourceId)
-                .CreateAsync(c);
-
+            this.msiHandler.WithAccessTo(resourceId, role);
             return (FluentImplT)this;
         }
 
@@ -1442,12 +1632,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithBuiltInRole(role)
-                .WithScope(ResourceGroupId(site.Id))
-                .CreateAsync(c);
+            this.msiHandler.WithAccessToCurrentResourceGroup(role);
 
             return (FluentImplT)this;
         }
@@ -1459,12 +1644,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithRoleDefinition(roleDefinitionId)
-                .WithScope(resourceId)
-                .CreateAsync(c);
+            this.msiHandler.WithAccessTo(resourceId, roleDefinitionId);
 
             return (FluentImplT)this;
         }
@@ -1476,12 +1656,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
             }
 
-            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
-                .Define(SdkContext.RandomGuid())
-                .ForObjectId(site.Identity.PrincipalId)
-                .WithRoleDefinition(roleDefinitionId)
-                .WithScope(ResourceGroupId(site.Id))
-                .CreateAsync(c);
+            msiHandler.WithAccessToCurrentResourceGroup(roleDefinitionId);
 
             return (FluentImplT)this;
         }
@@ -1499,5 +1674,55 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public abstract Stream GetContainerLogs();
         public abstract Task<Stream> GetContainerLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
         public abstract Task<Stream> GetContainerLogsZipAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        public virtual Stream StreamApplicationLogs()
+        {
+            return Extensions.Synchronize(() => StreamApplicationLogsAsync());
+        }
+
+        public virtual Stream StreamHttpLogs()
+        {
+            return Extensions.Synchronize(() => StreamHttpLogsAsync());
+        }
+
+        public virtual Stream StreamTraceLogs()
+        {
+            return Extensions.Synchronize(() => StreamTraceLogsAsync());
+        }
+
+        public virtual Stream StreamDeploymentLogs()
+        {
+            return Extensions.Synchronize(() => StreamDeploymentLogsAsync());
+        }
+
+        public virtual Stream StreamAllLogs()
+        {
+            return Extensions.Synchronize(() => StreamAllLogsAsync());
+        }
+
+        public virtual async Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamApplicationLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamHttpLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamHttpLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamTraceLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamTraceLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamDeploymentLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamDeploymentLogsAsync(cancellationToken);
+        }
+
+        public virtual async Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await kuduClient.StreamAllLogsAsync(cancellationToken);
+        }
     }
 }

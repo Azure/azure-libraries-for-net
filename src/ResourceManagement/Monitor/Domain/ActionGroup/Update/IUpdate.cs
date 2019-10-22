@@ -3,17 +3,6 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
 {
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
@@ -46,13 +35,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         /// <param name="isGlobalRunbook">The isGlobalRunbook value to set.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithAutomationRunbook(string automationAccountId, string runbookName, string webhookResourceId, bool isGlobalRunbook);
-
-        /// <summary>
-        /// Sets the Azure Mobile App Push Notification  receiver.
-        /// </summary>
-        /// <param name="emailAddress">The emailAddress value to set.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithAzureAppPush(string emailAddress);
 
         /// <summary>
         /// Sets the Azure Functions receiver.
@@ -95,12 +77,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutAutomationRunbook();
 
         /// <summary>
-        /// Removes Azure mobile App Push notification receiver from current receiver's group.
-        /// </summary>
-        /// <return>The next stage of the receiver group update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutAzureAppPush();
-
-        /// <summary>
         /// Removes Azure Function receiver from current receiver's group.
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
@@ -125,6 +101,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutLogicApp();
 
         /// <summary>
+        /// Removes Azure mobile App Push notification receiver from current receiver's group.
+        /// </summary>
+        /// <return>The next stage of the receiver group update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutPushNotification();
+
+        /// <summary>
         /// Removes SMS receiver from current receiver's group.
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
@@ -141,6 +123,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutWebhook();
+
+        /// <summary>
+        /// Sets the Azure Mobile App Push Notification  receiver.
+        /// </summary>
+        /// <param name="emailAddress">The emailAddress value to set.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithPushNotification(string emailAddress);
 
         /// <summary>
         /// Sets the SMS receiver.

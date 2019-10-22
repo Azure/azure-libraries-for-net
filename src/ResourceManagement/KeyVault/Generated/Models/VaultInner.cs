@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// <summary>
     /// Resource information with extended details.
     /// </summary>
-    public partial class VaultInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class VaultInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VaultInner class.
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// Initializes a new instance of the VaultInner class.
         /// </summary>
         /// <param name="properties">Properties of the vault</param>
-        public VaultInner(VaultProperties properties, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public VaultInner(string location, VaultProperties properties, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(location, id, name, type, tags)
         {
             Properties = properties;
@@ -57,8 +58,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Properties == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Properties");

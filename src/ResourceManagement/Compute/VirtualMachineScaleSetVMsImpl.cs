@@ -73,6 +73,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             await scaleSetInnerManager.DeleteInstancesAsync(this.scaleSet.ResourceGroupName, this.scaleSet.Name, instanceIds, cancellationToken);
         }
 
+        /// <summary>
+        /// Get the specified virtual machine instance from the scale set.
+        /// </summary>
+        /// <param name="instanceId">Instance ID of the virtual machine scale set instance to be fetched.</param>
+        /// <returns>The virtual machine scale set instance.</returns>
+        public async Task<IVirtualMachineScaleSetVM> GetInstanceAsync(string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.WrapModel(await this.Inner.GetAsync(this.scaleSet.ResourceGroupName, this.scaleSet.Name, instanceId, InstanceViewTypes.InstanceView, cancellationToken));
+        }
+
         ///GENMHASH:8614677E9F33F649DA97FEA11832F507:F1FA4FC3202537ADF1E8F7F846D49B62
         public async Task UpdateInstancesAsync(IList<string> instanceIds, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -87,25 +97,35 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:BF0243215BA9143B56ED25983393E69B:E85071D55AA027B278E4E85CA4BC6B0D
         public void DeleteInstances(IList<string> instanceIds)
         {
-            this.DeleteInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.DeleteInstancesAsync(instanceIds));
         }
 
         ///GENMHASH:BF0243215BA9143B56ED25983393E69B:E85071D55AA027B278E4E85CA4BC6B0D
         public void DeleteInstances(params string[] instanceIds)
         {
-            this.DeleteInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.DeleteInstancesAsync(instanceIds));
+        }
+
+        /// <summary>
+        /// Get the specified virtual machine instance from the scale set.
+        /// </summary>
+        /// <param name="instanceId">Instance ID of the virtual machine scale set instance to be fetched.</param>
+        /// <returns>The virtual machine scale set instance.</returns>
+        public IVirtualMachineScaleSetVM GetInstance(string instanceId)
+        {
+            return Extensions.Synchronize(() => this.GetInstanceAsync(instanceId));
         }
 
         ///GENMHASH:192081DA3B0538D0043A32038FB0F341:EAFA9C00FF9BD97500B291BEA8F839D5
         public void UpdateInstances(params string[] instanceIds)
         {
-            this.UpdateInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.UpdateInstancesAsync(instanceIds));
         }
 
         ///GENMHASH:192081DA3B0538D0043A32038FB0F341:EAFA9C00FF9BD97500B291BEA8F839D5
         public void UpdateInstances(IList<string> instanceIds)
         {
-            this.UpdateInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.UpdateInstancesAsync(instanceIds));
         }
     }
 }

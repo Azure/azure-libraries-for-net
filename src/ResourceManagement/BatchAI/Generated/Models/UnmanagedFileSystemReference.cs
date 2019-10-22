@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Details of the file system to mount on the compute cluster nodes.
+    /// Unmananged file system mounting configuration.
     /// </summary>
     public partial class UnmanagedFileSystemReference
     {
@@ -30,10 +30,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// Initializes a new instance of the UnmanagedFileSystemReference
         /// class.
         /// </summary>
-        /// <param name="mountCommand">Command used to mount the unmanaged file
-        /// system.</param>
-        /// <param name="relativeMountPath">Specifies the relative path on the
-        /// compute cluster node where the file system will be mounted.</param>
+        /// <param name="mountCommand">Mount command.</param>
+        /// <param name="relativeMountPath">Relative mount path.</param>
         public UnmanagedFileSystemReference(string mountCommand, string relativeMountPath)
         {
             MountCommand = mountCommand;
@@ -47,19 +45,24 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets command used to mount the unmanaged file system.
+        /// Gets or sets mount command.
         /// </summary>
+        /// <remarks>
+        /// Mount command line. Note, Batch AI will append mount path to the
+        /// command on its own.
+        /// </remarks>
         [JsonProperty(PropertyName = "mountCommand")]
         public string MountCommand { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the relative path on the compute cluster
-        /// node where the file system will be mounted.
+        /// Gets or sets relative mount path.
         /// </summary>
         /// <remarks>
-        /// Note that all cluster level unmanaged file system will be mounted
-        /// under $AZ_BATCHAI_MOUNT_ROOT location and job level unmanaged file
-        /// system will be mounted under $AZ_BATCHAI_JOB_MOUNT_ROOT.
+        /// The relative path on the compute node where the unmanaged file
+        /// system will be mounted. Note that all cluster level unmanaged file
+        /// systems will be mounted under $AZ_BATCHAI_MOUNT_ROOT location and
+        /// all job level unmanaged file systems will be mounted under
+        /// $AZ_BATCHAI_JOB_MOUNT_ROOT.
         /// </remarks>
         [JsonProperty(PropertyName = "relativeMountPath")]
         public string RelativeMountPath { get; set; }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The associated public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress.GetPublicIPAddress()
         {
-            return this.GetPublicIPAddress() as Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress;
+            return this.GetPublicIPAddress();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInUpdateAlt<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The associated subnet.</return>
         Microsoft.Azure.Management.Network.Fluent.ISubnet Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend.GetSubnet()
         {
-            return this.GetSubnet() as Microsoft.Azure.Management.Network.Fluent.ISubnet;
+            return this.GetSubnet();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrivateIPAllocationMethod() as Models.IPAllocationMethod;
+                return this.PrivateIPAllocationMethod();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasPrivateIPAddress.UpdateDefinition.IWithPrivateIPAddress<ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithPrivateIPAddressDynamic()
         {
-            return this.WithPrivateIPAddressDynamic() as ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithPrivateIPAddressDynamic();
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasPrivateIPAddress.UpdateDefinition.IWithPrivateIPAddress<ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithPrivateIPAddressStatic(string ipAddress)
         {
-            return this.WithPrivateIPAddressStatic(ipAddress) as ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithPrivateIPAddressStatic(ipAddress);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener> HasPrivateIPAddress.Definition.IWithPrivateIPAddress<ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>>.WithPrivateIPAddressDynamic()
         {
-            return this.WithPrivateIPAddressDynamic() as ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>;
+            return this.WithPrivateIPAddressDynamic();
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener> HasPrivateIPAddress.Definition.IWithPrivateIPAddress<ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>>.WithPrivateIPAddressStatic(string ipAddress)
         {
-            return this.WithPrivateIPAddressStatic(ipAddress) as ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>;
+            return this.WithPrivateIPAddressStatic(ipAddress);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.UpdateDefinition.IWithSubnet<ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener> Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithListener Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInDefinitionAlt<ApplicationGateway.Definition.IWithListener>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithListener;
+            return this.Attach();
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasPublicIPAddress.UpdateDefinition.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasPublicIPAddress.UpdateDefinition.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayFrontend.Update.IUpdate HasPublicIPAddress.Update.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.Update.IUpdate>.WithoutPublicIPAddress()
         {
-            return this.WithoutPublicIPAddress() as ApplicationGatewayFrontend.Update.IUpdate;
+            return this.WithoutPublicIPAddress();
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayFrontend.Update.IUpdate HasPublicIPAddress.Update.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.Update.IUpdate>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as ApplicationGatewayFrontend.Update.IUpdate;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Update.IUpdate HasPublicIPAddress.Update.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.Update.IUpdate>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as ApplicationGatewayFrontend.Update.IUpdate;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener> HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener> HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayFrontend.UpdateDefinition.IWithSubnet<ApplicationGateway.Update.IUpdate>.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGatewayFrontend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener> ApplicationGatewayFrontend.Definition.IWithSubnet<ApplicationGateway.Definition.IWithListener>.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGatewayFrontend.Definition.IWithAttach<ApplicationGateway.Definition.IWithListener>;
+            return this.WithExistingSubnet(network, subnetName);
         }
     }
 }

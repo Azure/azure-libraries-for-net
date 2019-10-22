@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the certificate order.
             /// </param>
             /// <param name='certificateDistinguishedName'>
-            /// Distinguished name to to use for the certificate order.
+            /// Distinguished name to use for the certificate order.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -178,12 +178,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the certificate order.
             /// </param>
             /// <param name='certificateDistinguishedName'>
-            /// Distinguished name to to use for the certificate order.
+            /// Distinguished name to use for the certificate order.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppServiceCertificateOrderInner> UpdateAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, AppServiceCertificateOrderPatchResourceInner certificateDistinguishedName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppServiceCertificateOrderInner> UpdateAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, AppServiceCertificateOrderPatchResource certificateDistinguishedName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, certificateOrderName, certificateDistinguishedName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppServiceCertificateResourceInner> UpdateCertificateAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, string name, AppServiceCertificatePatchResourceInner keyVaultCertificate, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppServiceCertificateResourceInner> UpdateCertificateAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, string name, AppServiceCertificatePatchResource keyVaultCertificate, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateCertificateWithHttpMessagesAsync(resourceGroupName, certificateOrderName, name, keyVaultCertificate, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ReissueAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, ReissueCertificateOrderRequestInner reissueCertificateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ReissueAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, ReissueCertificateOrderRequest reissueCertificateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.ReissueWithHttpMessagesAsync(resourceGroupName, certificateOrderName, reissueCertificateOrderRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RenewAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, RenewCertificateOrderRequestInner renewCertificateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RenewAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, RenewCertificateOrderRequest renewCertificateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.RenewWithHttpMessagesAsync(resourceGroupName, certificateOrderName, renewCertificateOrderRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SiteSealInner> RetrieveSiteSealAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, SiteSealRequestInner siteSealRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SiteSealInner> RetrieveSiteSealAsync(this IAppServiceCertificateOrdersOperations operations, string resourceGroupName, string certificateOrderName, SiteSealRequest siteSealRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.RetrieveSiteSealWithHttpMessagesAsync(resourceGroupName, certificateOrderName, siteSealRequest, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Name of the certificate order.
             /// </param>
             /// <param name='certificateDistinguishedName'>
-            /// Distinguished name to to use for the certificate order.
+            /// Distinguished name to use for the certificate order.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

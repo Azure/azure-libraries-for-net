@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU of an application gateway
+    /// SKU of an application gateway.
     /// </summary>
     public partial class ApplicationGatewaySku
     {
@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="name">Name of an application gateway SKU. Possible
         /// values include: 'Standard_Small', 'Standard_Medium',
-        /// 'Standard_Large', 'WAF_Medium', 'WAF_Large'</param>
+        /// 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2',
+        /// 'WAF_v2'</param>
         /// <param name="tier">Tier of an application gateway. Possible values
-        /// include: 'Standard', 'WAF'</param>
+        /// include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'</param>
         /// <param name="capacity">Capacity (instance count) of an application
         /// gateway.</param>
         public ApplicationGatewaySku(ApplicationGatewaySkuName name = default(ApplicationGatewaySkuName), ApplicationGatewayTier tier = default(ApplicationGatewayTier), int? capacity = default(int?))
@@ -50,14 +51,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Gets or sets name of an application gateway SKU. Possible values
         /// include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
-        /// 'WAF_Medium', 'WAF_Large'
+        /// 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public ApplicationGatewaySkuName Name { get; set; }
 
         /// <summary>
         /// Gets or sets tier of an application gateway. Possible values
-        /// include: 'Standard', 'WAF'
+        /// include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public ApplicationGatewayTier Tier { get; set; }

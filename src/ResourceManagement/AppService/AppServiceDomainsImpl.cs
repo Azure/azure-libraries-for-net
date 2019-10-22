@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             var topLevelDomains = Manager.Inner.TopLevelDomains;
 
-            return Extensions.Synchronize(() => topLevelDomains.ListAgreementsAsync(topLevelExtension, new TopLevelDomainAgreementOptionInner()))
+            return Extensions.Synchronize(() => topLevelDomains.ListAgreementsAsync(topLevelExtension, new TopLevelDomainAgreementOption()))
                                   .AsContinuousCollection(link => Extensions.Synchronize(() => topLevelDomains.ListAgreementsNextAsync(link)))
                                   .Select(inner => new DomainLegalAgreementImpl(inner));
         }

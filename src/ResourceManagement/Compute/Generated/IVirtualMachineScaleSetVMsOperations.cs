@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
         /// </param>
+        /// <param name='tempDisk'>
+        /// Specifies whether to reimage temp disk. Default value: false. Note:
+        /// This temp disk reimage parameter is only supported for VM/VMSS with
+        /// Ephemeral OS disk.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -44,13 +49,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? tempDisk = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Allows you to re-image all the disks ( including data disks ) in
         /// the a VM scale set instance. This operation is only supported for
@@ -74,13 +76,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> ReimageAllWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ReimageAllWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deallocates a specific virtual machine in a VM scale set. Shuts
         /// down the virtual machine and releases the compute resources it
@@ -105,13 +104,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> DeallocateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates a virtual machine of a VM scale set.
         /// </summary>
@@ -166,13 +162,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a virtual machine from a VM scale set.
         /// </summary>
@@ -184,6 +177,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </param>
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Possible values
+        /// include: 'instanceView'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -200,7 +197,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMInner>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMInner>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, InstanceViewTypes? expand = default(InstanceViewTypes?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the status of a virtual machine from a VM scale set.
         /// </summary>
@@ -228,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMInstanceViewInner>> GetInstanceViewWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMInstanceView>> GetInstanceViewWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of all virtual machines in a VM scale sets.
         /// </summary>
@@ -275,6 +272,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
         /// </param>
+        /// <param name='skipShutdown'>
+        /// The parameter to request non-graceful VM shutdown. True value for
+        /// this flag indicates non-graceful shutdown whereas false indicates
+        /// otherwise. Default value for this flag is false if not specified
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -284,13 +286,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> PowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> PowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restarts a virtual machine in a VM scale set.
         /// </summary>
@@ -312,13 +311,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> RestartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> RestartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Starts a virtual machine in a VM scale set.
         /// </summary>
@@ -340,13 +336,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> StartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Redeploys a virtual machine in a VM scale set.
         /// </summary>
@@ -368,13 +361,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> RedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> RedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Performs maintenance on a virtual machine in a VM scale set.
         /// </summary>
@@ -396,16 +386,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> PerformMaintenanceWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> PerformMaintenanceWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Reimages (upgrade the operating system) a specific virtual machine
-        /// in a VM scale set.
+        /// Run command on a virtual machine in a VM scale set.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -415,6 +401,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </param>
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Run command operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -431,7 +420,38 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RunCommandResultInner>> RunCommandWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Reimages (upgrade the operating system) a specific virtual machine
+        /// in a VM scale set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='instanceId'>
+        /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='tempDisk'>
+        /// Specifies whether to reimage temp disk. Default value: false. Note:
+        /// This temp disk reimage parameter is only supported for VM/VMSS with
+        /// Ephemeral OS disk.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? tempDisk = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Allows you to re-image all the disks ( including data disks ) in
         /// the a VM scale set instance. This operation is only supported for
@@ -455,13 +475,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginReimageAllWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginReimageAllWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deallocates a specific virtual machine in a VM scale set. Shuts
         /// down the virtual machine and releases the compute resources it
@@ -486,13 +503,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates a virtual machine of a VM scale set.
         /// </summary>
@@ -547,13 +561,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Power off (stop) a virtual machine in a VM scale set. Note that
         /// resources are still attached and you are getting charged for the
@@ -569,6 +580,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='instanceId'>
         /// The instance ID of the virtual machine.
         /// </param>
+        /// <param name='skipShutdown'>
+        /// The parameter to request non-graceful VM shutdown. True value for
+        /// this flag indicates non-graceful shutdown whereas false indicates
+        /// otherwise. Default value for this flag is false if not specified
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -578,13 +594,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginPowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginPowerOffWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restarts a virtual machine in a VM scale set.
         /// </summary>
@@ -606,13 +619,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Starts a virtual machine in a VM scale set.
         /// </summary>
@@ -634,13 +644,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginStartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginStartWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Redeploys a virtual machine in a VM scale set.
         /// </summary>
@@ -662,13 +669,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Performs maintenance on a virtual machine in a VM scale set.
         /// </summary>
@@ -690,13 +694,41 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginPerformMaintenanceWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Run command on a virtual machine in a VM scale set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='instanceId'>
+        /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Run command operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatusResponseInner>> BeginPerformMaintenanceWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RunCommandResultInner>> BeginRunCommandWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, RunCommandInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of all virtual machines in a VM scale sets.
         /// </summary>

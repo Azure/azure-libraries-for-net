@@ -1,9 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmanagedDataDisk.Update
 {
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
 
     /// <summary>
@@ -15,6 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskCaching,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate>
     {
+
     }
 
     /// <summary>
@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// </summary>
     public interface IWithDiskLun
     {
+
         /// <summary>
         /// Specifies the new logical unit number for the unmanaged data disk.
         /// </summary>
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// </summary>
     public interface IWithDiskCaching
     {
+
         /// <summary>
         /// Specifies the new caching type for the unmanaged data disk.
         /// </summary>
@@ -48,6 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// </summary>
     public interface IWithDiskSize
     {
+
         /// <summary>
         /// Specifies the new size in GB for data disk.
         /// </summary>

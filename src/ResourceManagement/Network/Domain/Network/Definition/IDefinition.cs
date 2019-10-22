@@ -2,12 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
 {
-    using Microsoft.Azure.Management.Network.Fluent.Subnet.Definition;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
     /// <summary>

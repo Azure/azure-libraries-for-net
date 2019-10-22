@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Tables() as System.Collections.Generic.IReadOnlyList<Models.SyncFullSchemaTable>;
+                return this.Tables();
             }
         }
 

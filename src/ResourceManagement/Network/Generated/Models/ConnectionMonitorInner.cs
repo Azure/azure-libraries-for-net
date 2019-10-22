@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ConnectionMonitorInner class.
         /// </summary>
+        /// <param name="source">Describes the source of connection
+        /// monitor.</param>
+        /// <param name="destination">Describes the destination of connection
+        /// monitor.</param>
         /// <param name="location">Connection monitor location.</param>
         /// <param name="tags">Connection monitor tags.</param>
         /// <param name="autoStart">Determines if the connection monitor will
@@ -67,11 +71,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the source of connection monitor.
         /// </summary>
         [JsonProperty(PropertyName = "properties.source")]
         public ConnectionMonitorSource Source { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the destination of connection monitor.
         /// </summary>
         [JsonProperty(PropertyName = "properties.destination")]
         public ConnectionMonitorDestination Destination { get; set; }

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="name">the name and the display name of the metric,
         /// i.e. it is localizable string.</param>
         /// <param name="timespan">The timespan for which the data was
-        /// retrieved. Its value consists of two datatimes concatenated,
+        /// retrieved. Its value consists of two datetimes concatenated,
         /// separated by '/'.  This may be adjusted in the future and returned
         /// back from what was originally requested.</param>
         /// <param name="interval">The interval (window size) for which the
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="baseline">the baseline values for each
         /// sensitivity.</param>
         /// <param name="metadata">the baseline metadata values.</param>
-        public BaselineResponseInner(string id = default(string), string type = default(string), LocalizableString name = default(LocalizableString), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string aggregation = default(string), IList<System.DateTime?> timestamps = default(IList<System.DateTime?>), IList<Baseline> baseline = default(IList<Baseline>), IList<BaselineMetadataValue> metadata = default(IList<BaselineMetadataValue>))
+        public BaselineResponseInner(string id = default(string), string type = default(string), LocalizableString name = default(LocalizableString), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string aggregation = default(string), IList<System.DateTime?> timestamps = default(IList<System.DateTime?>), IList<BaselineInner> baseline = default(IList<BaselineInner>), IList<BaselineMetadataValue> metadata = default(IList<BaselineMetadataValue>))
         {
             Id = id;
             Type = type;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         /// <summary>
         /// Gets or sets the timespan for which the data was retrieved. Its
-        /// value consists of two datatimes concatenated, separated by '/'.
+        /// value consists of two datetimes concatenated, separated by '/'.
         /// This may be adjusted in the future and returned back from what was
         /// originally requested.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the baseline values for each sensitivity.
         /// </summary>
         [JsonProperty(PropertyName = "properties.baseline")]
-        public IList<Baseline> Baseline { get; set; }
+        public IList<BaselineInner> Baseline { get; set; }
 
         /// <summary>
         /// Gets or sets the baseline metadata values.

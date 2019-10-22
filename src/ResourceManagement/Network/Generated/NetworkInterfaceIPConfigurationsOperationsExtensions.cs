@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     public static partial class NetworkInterfaceIPConfigurationsOperationsExtensions
     {
             /// <summary>
-            /// Get all ip configurations in a network interface
+            /// Get all ip configurations in a network interface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Get all ip configurations in a network interface
+            /// Get all ip configurations in a network interface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

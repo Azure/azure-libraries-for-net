@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Manager as Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager;
+                return this.Manager;
             }
         }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Region as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region;
             }
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Tags;
             }
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithDeleteOnIdle.WithDeleteOnIdleDurationInMinutes(int durationInMinutes)
         {
-            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithDeleteOnIdle.WithDeleteOnIdleDurationInMinutes(int durationInMinutes)
         {
-            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithAuthorizationRule.WithoutAuthorizationRule(string name)
         {
-            return this.WithoutAuthorizationRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithoutAuthorizationRule(name);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithSession.WithSession()
         {
-            return this.WithSession() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithSession();
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithSession.WithoutSession()
         {
-            return this.WithoutSession() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithoutSession();
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithSession.WithSession()
         {
-            return this.WithSession() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithSession();
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithExpressMessage.WithExpressMessage()
         {
-            return this.WithExpressMessage() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithExpressMessage();
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithExpressMessage.WithoutExpressMessage()
         {
-            return this.WithoutExpressMessage() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithoutExpressMessage();
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithExpressMessage.WithExpressMessage()
         {
-            return this.WithExpressMessage() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithExpressMessage();
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithSize.WithSizeInMB(long sizeInMB)
         {
-            return this.WithSizeInMB(sizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithSizeInMB(sizeInMB);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithSize.WithSizeInMB(long sizeInMB)
         {
-            return this.WithSizeInMB(sizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithSizeInMB(sizeInMB);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithPartitioning.WithPartitioning()
         {
-            return this.WithPartitioning() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithPartitioning();
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithPartitioning.WithoutPartitioning()
         {
-            return this.WithoutPartitioning() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithoutPartitioning();
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithMessageLockDuration.WithMessageLockDurationInSeconds(int durationInSeconds)
         {
-            return this.WithMessageLockDurationInSeconds(durationInSeconds) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithMessageLockDurationInSeconds(durationInSeconds);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithMessageLockDuration.WithMessageLockDurationInSeconds(int durationInSeconds)
         {
-            return this.WithMessageLockDurationInSeconds(durationInSeconds) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithMessageLockDurationInSeconds(durationInSeconds);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithDefaultMessageTTL.WithDefaultMessageTTL(TimeSpan ttl)
         {
-            return this.WithDefaultMessageTTL(ttl) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithDefaultMessageTTL(ttl);
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithDefaultMessageTTL.WithDefaultMessageTTL(TimeSpan ttl)
         {
-            return this.WithDefaultMessageTTL(ttl) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithDefaultMessageTTL(ttl);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithDuplicateMessageDetection.WithDuplicateMessageDetection(TimeSpan duplicateDetectionHistoryDuration)
         {
-            return this.WithDuplicateMessageDetection(duplicateDetectionHistoryDuration) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithDuplicateMessageDetection(duplicateDetectionHistoryDuration);
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithDuplicateMessageDetection.WithoutDuplicateMessageDetection()
         {
-            return this.WithoutDuplicateMessageDetection() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithoutDuplicateMessageDetection();
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithDuplicateMessageDetection.WithDuplicateMessageDetectionHistoryDuration(TimeSpan duration)
         {
-            return this.WithDuplicateMessageDetectionHistoryDuration(duration) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithDuplicateMessageDetectionHistoryDuration(duration);
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithMessageMovedToDeadLetterQueueOnMaxDeliveryCount.WithMessageMovedToDeadLetterQueueOnMaxDeliveryCount(int deliveryCount)
         {
-            return this.WithMessageMovedToDeadLetterQueueOnMaxDeliveryCount(deliveryCount) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithMessageMovedToDeadLetterQueueOnMaxDeliveryCount(deliveryCount);
         }
 
         /// <summary>
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithMessageMovedToDeadLetterQueueOnMaxDeliveryCount.WithMessageMovedToDeadLetterQueueOnMaxDeliveryCount(int deliveryCount)
         {
-            return this.WithMessageMovedToDeadLetterQueueOnMaxDeliveryCount(deliveryCount) as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithMessageMovedToDeadLetterQueueOnMaxDeliveryCount(deliveryCount);
         }
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.AuthorizationRules() as Microsoft.Azure.Management.ServiceBus.Fluent.IQueueAuthorizationRules;
+                return this.AuthorizationRules();
             }
         }
 
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithExpiredMessageMovedToDeadLetterQueue.WithExpiredMessageMovedToDeadLetterQueue()
         {
-            return this.WithExpiredMessageMovedToDeadLetterQueue() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithExpiredMessageMovedToDeadLetterQueue();
         }
 
         /// <summary>
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithExpiredMessageMovedToDeadLetterQueue.WithExpiredMessageMovedToDeadLetterQueue()
         {
-            return this.WithExpiredMessageMovedToDeadLetterQueue() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithExpiredMessageMovedToDeadLetterQueue();
         }
 
         /// <summary>
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithExpiredMessageMovedToDeadLetterQueue.WithoutExpiredMessageMovedToDeadLetterQueue()
         {
-            return this.WithoutExpiredMessageMovedToDeadLetterQueue() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithoutExpiredMessageMovedToDeadLetterQueue();
         }
 
         /// <summary>
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithMessageBatching.WithoutMessageBatching()
         {
-            return this.WithoutMessageBatching() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Definition.IWithCreate;
+            return this.WithoutMessageBatching();
         }
 
         /// <summary>
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithMessageBatching.WithoutMessageBatching()
         {
-            return this.WithoutMessageBatching() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithoutMessageBatching();
         }
 
         /// <summary>
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of queue update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IWithMessageBatching.WithMessageBatching()
         {
-            return this.WithMessageBatching() as Microsoft.Azure.Management.ServiceBus.Fluent.Queue.Update.IUpdate;
+            return this.WithMessageBatching();
         }
     }
 }

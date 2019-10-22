@@ -45,6 +45,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<MetricDefinition>>> ListWithHttpMessagesAsync(string resourceUri, string metricnamespace = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<MetricDefinitionInner>>> ListWithHttpMessagesAsync(string resourceUri, string metricnamespace = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

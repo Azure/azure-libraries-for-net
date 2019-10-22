@@ -14,8 +14,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update
     /// </summary>
     public interface IUpdate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update.IWithScaleSettings,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update.IUpdate>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update.IWithScaleSettings
     {
     }
 

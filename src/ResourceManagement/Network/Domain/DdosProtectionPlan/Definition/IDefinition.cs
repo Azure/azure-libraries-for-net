@@ -3,15 +3,6 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.DdosProtectionPlan.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-
     /// <summary>
     /// The entirety of the DDoS protection plan definition.
     /// </summary>

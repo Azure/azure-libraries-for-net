@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VaultInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, VaultCreateOrUpdateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VaultInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a key vault in the specified subscription.
         /// </summary>
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VaultInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, VaultPatchParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VaultInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, VaultPatchParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified Azure key vault.
         /// </summary>
@@ -156,7 +158,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VaultAccessPolicyParametersInner>> UpdateAccessPolicyWithHttpMessagesAsync(string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyPropertiesInner properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VaultAccessPolicyParametersInner>> UpdateAccessPolicyWithHttpMessagesAsync(string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyProperties properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The List operation gets information about the vaults associated
         /// with the subscription and within the specified resource group.
@@ -295,7 +297,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Microsoft.Azure.Management.ResourceManager.Fluent.Resource>>> ListWithHttpMessagesAsync(int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Management.ResourceManager.Fluent.SubResource>>> ListWithHttpMessagesAsync(int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Checks that the vault name is valid and is not already in use.
         /// </summary>
@@ -318,6 +320,34 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CheckNameAvailabilityResultInner>> CheckNameAvailabilityWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create or update a key vault in the specified subscription.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the Resource Group to which the server belongs.
+        /// </param>
+        /// <param name='vaultName'>
+        /// Name of the vault
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to create or update the vault
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VaultInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Permanently deletes the specified vault. aka Purges the deleted
         /// Azure key vault.
@@ -431,6 +461,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Microsoft.Azure.Management.ResourceManager.Fluent.Resource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Management.ResourceManager.Fluent.SubResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

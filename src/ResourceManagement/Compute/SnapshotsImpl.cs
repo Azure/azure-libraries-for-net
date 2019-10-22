@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             int accessDuration,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
-            grantAccessDataInner.Access = accessLevel.ToString();
+            GrantAccessData grantAccessDataInner = new GrantAccessData();
+            grantAccessDataInner.Access = accessLevel;
             grantAccessDataInner.DurationInSeconds = accessDuration;
             AccessUriInner accessUriInner = await Inner.GrantAccessAsync(resourceGroupName,
                 snapshotName,

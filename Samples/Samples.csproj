@@ -28,15 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" /> 
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.19" />
     <PackageReference Include="CoreFTP" Version="1.2.0" />
     <PackageReference Include="Microsoft.Azure.ServiceBus" Version="0.0.2-preview" />
     <PackageReference Include="SSH.NET" Version="2016.0.0" />
     <PackageReference Include="Docker.DotNet" Version="2.124.3" />
     <PackageReference Include="Docker.DotNet.X509" Version="2.124.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.4.3" />
-    <PackageReference Include="WindowsAzure.Storage" Version="8.1.4" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>
   
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
@@ -95,12 +95,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\src\ResourceManagement\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\Azure.Fluent\Microsoft.Azure.Management.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj" />
-    <ProjectReference Include="..\src\ResourceManagement\Batch\Microsoft.Azure.Management.Batch.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\Cdn\Microsoft.Azure.Management.Cdn.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\Compute\Microsoft.Azure.Management.Compute.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\ContainerInstance\Microsoft.Azure.Management.ContainerInstance.Fluent.csproj" />
@@ -299,6 +302,42 @@
     <None Update="Asset\install_apache.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Asset\jsdkdemo-235967961.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-3b4917751.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-4c7816364.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-4da97939e.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-4f9491929.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-4f9491929.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-736264802.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-7eb138944.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-a88628279.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-b9d417872.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-7a831779f.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-e1a326575.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Asset\NetworkTestCertificate1.cer">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -312,6 +351,51 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Asset\SampleTestCertificate.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-0e3007165.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-17446254f.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-1d739426d.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-242574839.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-43497493e.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-5c349620e.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-73f16445c.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-79e54997d.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-81f18755a.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-867817336.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-c15701399.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-d6e449897.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-cc8488223.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-e1064776a.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-f6f843235.com.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Asset\square-function-app-admin-auth\host.json">

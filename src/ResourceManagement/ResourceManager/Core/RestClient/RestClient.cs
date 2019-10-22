@@ -52,10 +52,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         {
             get
             {
-                foreach (var handler in handlers)
-                {
-                    handler.InnerHandler = new HttpClientHandler();
-                }
                 return new ReadOnlyCollection<DelegatingHandler>(handlers);
             }
         }
@@ -127,9 +123,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                 }
                 return "[Unavailable]";
             }
-
-            #region Fluent builder interfaces
-
+            
             public interface IBlank : IWithBaseUri, IWithEnvironment
             {
             }
@@ -160,9 +154,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
                 RestClient Build();
             }
-
-            #endregion Fluent builder interfaces
-
+            
             public IBuildable WithBaseUri(string baseUri)
             {
                 this.baseUri = baseUri;

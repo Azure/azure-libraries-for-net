@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:D917033A76A6F8C9C699B9C317AE8783:3B49D6AEF0B3B5F681FBACE5301592E6
-        public async Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>> ListLogsAsync(string startTime, string endTime, string type, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>> ListLogsAsync(string startTime, string endTime, Models.Type type, CancellationToken cancellationToken = default(CancellationToken))
         {
             List<ISqlSyncGroupLogProperty> syncGroupLogProperties = new List<ISqlSyncGroupLogProperty>();
             var syncGroupLogPropertiesInners = await this.sqlServerManager.Inner.SyncGroups
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:713ABD12F3B57295638CA2A087364DEF:99F15626364EDC7EB6EE2C010E6FFDD0
         public Models.SyncConflictResolutionPolicy ConflictResolutionPolicy()
         {
-            return Models.SyncConflictResolutionPolicy.Parse(this.Inner.ConflictResolutionPolicy);
+            return this.Inner.ConflictResolutionPolicy;
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:5B7B8614011A187532AB15035EAEC8A9
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:1C2712CAC29D68767E649695EEE41D80:1FAF8A2C20129E22A81E69C0A5019C62
         public SqlSyncGroupImpl WithConflictResolutionPolicyMemberWins()
         {
-            this.Inner.ConflictResolutionPolicy = SyncConflictResolutionPolicy.MemberWin.Value;
+            this.Inner.ConflictResolutionPolicy = SyncConflictResolutionPolicy.MemberWin;
             return this;
         }
 
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:31B4643F5F463F208B884A3A5CC24E72:FCD5CB554CA014F6FEB6B98FC5423481
-        public IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty> ListLogs(string startTime, string endTime, string type)
+        public IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty> ListLogs(string startTime, string endTime, Models.Type type)
         {
             return Extensions.Synchronize(() => this.ListLogsAsync(startTime, endTime, type));
         }
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:74CC786A12BD16E99274FDA4312C231B:8CBE6D07DEC2431D8F827589DF59CAAD
         public Models.SyncGroupState SyncState()
         {
-            return Models.SyncGroupState.Parse(this.Inner.SyncState);
+            return this.Inner.SyncState;
         }
 
         ///GENMHASH:FF806DC146C0EFDED16019E747383C54:FA7DFC0883EEEA36FC422EA1F4E41203
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:0BD27749B738152A07CC90C69E2C67EB:0982D9CB434F550FF89770F2FFA23003
         public SqlSyncGroupImpl WithConflictResolutionPolicyHubWins()
         {
-            this.Inner.ConflictResolutionPolicy = SyncConflictResolutionPolicy.HubWin.Value;
+            this.Inner.ConflictResolutionPolicy = SyncConflictResolutionPolicy.HubWin;
             return this;
         }
 

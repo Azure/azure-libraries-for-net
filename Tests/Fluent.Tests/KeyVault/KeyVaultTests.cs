@@ -77,10 +77,10 @@ namespace Fluent.Tests
                         if (policy.ObjectId.Equals(servicePrincipal.Id))
                         {
                             Assert.Equal(1, policy.Permissions.Keys.Count);
-                            Assert.Equal(KeyPermissions.List.Value, policy.Permissions.Keys[0]);
+                            Assert.Equal(KeyPermissions.List, policy.Permissions.Keys[0]);
                             Assert.Equal(8, policy.Permissions.Secrets.Count);
                             Assert.Equal(1, policy.Permissions.Certificates.Count);
-                            Assert.Equal(CertificatePermissions.Get.Value, policy.Permissions.Certificates[0]);
+                            Assert.Equal(CertificatePermissions.Get, policy.Permissions.Certificates[0]);
                         }
                         if (policy.ObjectId.Equals(user.Id))
                         {
@@ -104,7 +104,7 @@ namespace Fluent.Tests
                         {
                             Assert.Equal(16, policy.Permissions.Keys.Count);
                             Assert.Equal(0, policy.Permissions.Secrets.Count);
-                            Assert.Equal(14, policy.Permissions.Certificates.Count);
+                            Assert.Equal(16, policy.Permissions.Certificates.Count);
                         }
                     }
                 }
@@ -113,6 +113,10 @@ namespace Fluent.Tests
                     try
                     {
                         TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                        if (servicePrincipal.Id != null)
+                            TestHelper.CreateGraphRbacManager().ServicePrincipals.DeleteById(servicePrincipal.Id);
+                        if (user.Id != null)
+                            TestHelper.CreateGraphRbacManager().Users.DeleteById(user.Id);
                     }
                     catch { }
                 }

@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly ApplicationGatewayTier Standard = Parse("Standard");
         public static readonly ApplicationGatewayTier WAF = Parse("WAF");
+        public static readonly ApplicationGatewayTier StandardV2 = Parse("Standard_v2");
+        public static readonly ApplicationGatewayTier WAFV2 = Parse("WAF_v2");
     }
 }

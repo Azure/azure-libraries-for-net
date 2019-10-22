@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public ComputeManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all available virtual machine sizes for a subscription in a location.
+        /// This API is deprecated. Use [Resources
+        /// Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
         /// </summary>
         /// <param name='location'>
         /// The location upon which virtual-machine-sizes is queried.
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<VirtualMachineSize>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<VirtualMachineSizeInner>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (location == null)
             {
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-12-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -208,7 +209,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IEnumerable<VirtualMachineSize>>();
+            var _result = new AzureOperationResponse<IEnumerable<VirtualMachineSizeInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -221,7 +222,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<VirtualMachineSize>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<VirtualMachineSizeInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

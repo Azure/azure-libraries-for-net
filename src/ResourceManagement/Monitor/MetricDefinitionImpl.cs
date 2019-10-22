@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljRGVmaW5pdGlvbkltcGw=
     internal partial class MetricDefinitionImpl :
-        Wrapper<Models.MetricDefinition>,
+        Wrapper<Models.MetricDefinitionInner>,
         IMetricDefinition,
         IMetricsQueryDefinition
     {
         private string aggreagation;
         private IList<ILocalizableString> dimensions;
-        private MetricDefinition inner;
+        private MetricDefinitionInner inner;
         private TimeSpan? interval;
         private MonitorManager myManager;
         private ILocalizableString name;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         private int? top;
 
         ///GENMHASH:F886A4914B553C095A7AE17389D27E77:E5D5B4A8C36CFED5664896A53A66058D
-        internal MetricDefinitionImpl(MetricDefinition innerModel, MonitorManager monitorManager)
+        internal MetricDefinitionImpl(MetricDefinitionInner innerModel, MonitorManager monitorManager)
             : base(innerModel)
         {
             this.myManager = monitorManager;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             this.resultType = null;
             this.top = null;
             this.orderBy = null;
-			this.namespaceFilter = null;
+            this.namespaceFilter = null;
             return this;
         }
 
@@ -84,12 +84,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             return Extensions.Synchronize(() => this.ExecuteAsync());
         }
 
-        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:23CFA3CBA04339FB396E7300629893EC
+        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:045C4FC5EA3255F75C64B330997E5F44
         public async Task<IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return new MetricCollectionImpl(await this.Manager().Inner.Metrics.ListAsync(
                 resourceUri: this.inner.ResourceId,
-                odataQuery: new ODataQuery<MetadataValueInner>(this.odataFilter),
+                odataQuery: new ODataQuery<MetadataValue>(this.odataFilter),
                 timespan: string.Format("{0}/{1}",
                     this.queryStartTime.ToString("o"),
                     this.queryEndTime.ToString("o")),
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 metricnamespace: this.namespaceFilter,
                 cancellationToken: cancellationToken));
         }
-				
+
         ///GENMHASH:30DFB33704A983BFEBC6F8D37F219647:18AE7F3EA61B4C339E19BC91FFA86A38
         public IWithMetricsQueryExecute FilterByNamespace(string namespaceName)
         {
-			this.namespaceFilter = namespaceName;
-			return this;
+            this.namespaceFilter = namespaceName;
+            return this;
         }
 
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:9FCCB4B796E8FFF1419FB39498ED40F5

@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using TrafficManagerProfile.Definition;
     using System.Collections.Generic;
     using System.Threading;
+    using System.Linq;
     using System.Threading.Tasks;
     using ResourceManager.Fluent;
     using Models;
@@ -68,6 +69,17 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.Geographic));
         }
+        
+        public TrafficManagerProfileImpl WithMultiValueBasedRouting(int maxReturn = 2)
+        {
+            this.Inner.MaxReturn = maxReturn;
+            return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.MultiValue));
+        }
+
+        public TrafficManagerProfileImpl WithSubnetBasedRouting()
+        {            
+            return this.WithTrafficRoutingMethod((Microsoft.Azure.Management.TrafficManager.Fluent.TrafficRoutingMethod.Subnet));
+        }
 
         ///GENMHASH:B4A36FDF16CFB0AB15EF06C3C41DEAE6:3907B35E8FE4F9DF1790E670E5612AA5
         public TrafficManagerEndpointImpl DefineExternalTargetEndpoint(string name)
@@ -108,7 +120,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             // call one can create endpoints without properties those are not applicable for the profile's current routing
             // method. We cannot update the routing method of the profile until existing endpoints contains the properties
             // required for the new routing method.
-            await endpoints.CommitAndGetAllAsync(cancellationToken);
+            var updatedEndpoints = await endpoints.CommitAndGetAllAsync(cancellationToken);
+            Inner.Endpoints = endpoints.AllEndpointsInners();
             ProfileInner profileInner = await Manager.Inner.Profiles.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(profileInner);
             return this;

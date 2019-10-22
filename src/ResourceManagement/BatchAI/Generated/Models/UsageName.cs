@@ -43,16 +43,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the resource.
+        /// Gets the name of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public string Value { get; set; }
+        public string Value { get; private set; }
 
         /// <summary>
-        /// Gets or sets the localized name of the resource.
+        /// Gets the localized name of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "localizedValue")]
-        public string LocalizedValue { get; set; }
+        public string LocalizedValue { get; private set; }
 
     }
 }

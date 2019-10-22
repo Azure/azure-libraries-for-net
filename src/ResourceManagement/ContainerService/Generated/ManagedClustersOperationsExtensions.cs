@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -122,10 +124,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             /// <summary>
-            /// Gets access profile of a managed cluster.
+            /// Gets cluster admin credential of a managed cluster.
             /// </summary>
             /// <remarks>
-            /// Use ManagedClusters_GetAccessProfile instead.
+            /// Gets cluster admin credential of the managed cluster with a specified
+            /// resource group and name.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -136,16 +139,39 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            /// <param name='roleName'>
-            /// The name of the role for managed cluster accessProfile resource.
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CredentialResultsInner> ListClusterAdminCredentialsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListClusterAdminCredentialsWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets cluster user credential of a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Gets cluster user credential of the managed cluster with a specified
+            /// resource group and name.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            [System.Obsolete()]
-            public static async Task<ManagedClusterAccessProfileInner> GetAccessProfilesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string roleName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CredentialResultsInner> ListClusterUserCredentialsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAccessProfilesWithHttpMessagesAsync(resourceGroupName, resourceName, roleName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListClusterUserCredentialsWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -209,6 +235,35 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             /// <summary>
+            /// Updates tags on a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Updates a managed cluster with the specified tags.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='tags'>
+            /// Resource tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ManagedClusterInner> UpdateTagsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, resourceName, tags, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes a managed cluster.
             /// </summary>
             /// <remarks>
@@ -229,6 +284,60 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             public static async Task DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Reset Service Principal Profile of a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Update the service principal Profile for a managed cluster.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Reset Service Principal Profile operation for a
+            /// Managed Cluster.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ResetServicePrincipalProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ResetServicePrincipalProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Reset AAD Profile of a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Update the AAD Profile for a managed cluster.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Reset AAD Profile operation for a Managed
+            /// Cluster.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ResetAADProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ResetAADProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -262,6 +371,35 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             /// <summary>
+            /// Updates tags on a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Updates a managed cluster with the specified tags.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='tags'>
+            /// Resource tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ManagedClusterInner> BeginUpdateTagsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, resourceName, tags, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes a managed cluster.
             /// </summary>
             /// <remarks>
@@ -282,6 +420,60 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             public static async Task BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Reset Service Principal Profile of a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Update the service principal Profile for a managed cluster.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Reset Service Principal Profile operation for a
+            /// Managed Cluster.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginResetServicePrincipalProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginResetServicePrincipalProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Reset AAD Profile of a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Update the AAD Profile for a managed cluster.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Reset AAD Profile operation for a Managed
+            /// Cluster.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginResetAADProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginResetAADProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

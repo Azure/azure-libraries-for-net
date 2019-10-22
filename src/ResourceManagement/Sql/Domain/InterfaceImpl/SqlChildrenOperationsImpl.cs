@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<FluentModelT> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<FluentModelT>.List()
         {
-            return this.List() as System.Collections.Generic.IReadOnlyList<FluentModelT>;
+            return this.List();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<FluentModelT>> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<FluentModelT>.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as IReadOnlyList<FluentModelT>;
+            return await this.ListAsync(cancellationToken);
         }
 
         /// <summary>

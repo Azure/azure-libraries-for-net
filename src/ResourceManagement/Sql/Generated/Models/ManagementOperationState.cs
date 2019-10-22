@@ -8,17 +8,26 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ManagementOperationState.
     /// </summary>
-    public static class ManagementOperationState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ManagementOperationState>))]
+    public class ManagementOperationState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ManagementOperationState>
     {
-        public const string Pending = "Pending";
-        public const string InProgress = "InProgress";
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string CancelInProgress = "CancelInProgress";
-        public const string Cancelled = "Cancelled";
+        public static readonly ManagementOperationState Pending = Parse("Pending");
+        public static readonly ManagementOperationState InProgress = Parse("InProgress");
+        public static readonly ManagementOperationState Succeeded = Parse("Succeeded");
+        public static readonly ManagementOperationState Failed = Parse("Failed");
+        public static readonly ManagementOperationState CancelInProgress = Parse("CancelInProgress");
+        public static readonly ManagementOperationState Cancelled = Parse("Cancelled");
     }
 }

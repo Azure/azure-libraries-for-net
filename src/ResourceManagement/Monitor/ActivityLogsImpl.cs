@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:917C4A9B611CD52A7033C2682FC82B65:822E0FD9095BE313AADE1B493098C7C0
         private async Task<IPagedCollection<IEventData>> ListEventDataAsync(string filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IEventData, EventDataInner>.LoadPage(
+            return await PagedCollection<IEventData, EventData>.LoadPage(
                 async (cancellation) => await Inner.ListAsync(filter, CreatePropertyFilter(), cancellation),
                 async (nextLink, cancellation) => await Inner.ListNextAsync(nextLink, cancellation),
                 (inner) => new EventDataImpl(inner),
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:8FC9B471C1A78BF1D3EBC410128DE0FA:A581C3311414879F15C3BB031BF1F5A5
         private async Task<IPagedCollection<IEventData>> ListEventDataForTenantAsync(string filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IEventData, EventDataInner>.LoadPage(
+            return await PagedCollection<IEventData, EventData>.LoadPage(
                 async (cancellation) => await this.Manager().Inner.TenantActivityLogs.ListAsync(filter, CreatePropertyFilter(), cancellationToken),
                 async (nextLink, cancellation) => await this.Manager().Inner.TenantActivityLogs.ListNextAsync(nextLink, cancellation),
                 (inner) => new EventDataImpl(inner),

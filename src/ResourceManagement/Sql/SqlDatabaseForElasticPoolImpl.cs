@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:A521981B274EF2B3D621C0705EFAA811:F997282671508A55A64229130D4ED37B
-        public SqlDatabaseForElasticPoolImpl WithMode(string createMode)
+        public SqlDatabaseForElasticPoolImpl WithMode(CreateMode createMode)
         {
             this.sqlDatabase.WithMode(createMode);
             return this;

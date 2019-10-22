@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the
         /// ApplicationGatewayBackendHttpSettingsInner class.
         /// </summary>
-        /// <param name="port">Port</param>
-        /// <param name="protocol">Protocol. Possible values include: 'Http',
-        /// 'Https'</param>
+        /// <param name="port">The destination port on the backend.</param>
+        /// <param name="protocol">The protocol used to communicate with the
+        /// backend. Possible values include: 'Http', 'Https'</param>
         /// <param name="cookieBasedAffinity">Cookie based affinity. Possible
         /// values include: 'Enabled', 'Disabled'</param>
         /// <param name="requestTimeout">Request timeout in seconds.
@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// gateway.</param>
         /// <param name="authenticationCertificates">Array of references to
         /// application gateway authentication certificates.</param>
+        /// <param name="trustedRootCertificates">Array of references to
+        /// application gateway trusted root certificates.</param>
         /// <param name="connectionDraining">Connection draining of the backend
         /// http settings resource.</param>
         /// <param name="hostName">Host header to be sent to the backend
@@ -66,13 +68,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="provisioningState">Provisioning state of the backend
         /// http settings resource. Possible values are: 'Updating',
         /// 'Deleting', and 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the backend http settings that is unique
+        /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayBackendHttpSettingsInner(string id = default(string), int? port = default(int?), ApplicationGatewayProtocol protocol = default(ApplicationGatewayProtocol), ApplicationGatewayCookieBasedAffinity cookieBasedAffinity = default(ApplicationGatewayCookieBasedAffinity), int? requestTimeout = default(int?), Management.ResourceManager.Fluent.SubResource probe = default(Management.ResourceManager.Fluent.SubResource), IList<Management.ResourceManager.Fluent.SubResource> authenticationCertificates = default(IList<Management.ResourceManager.Fluent.SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayBackendHttpSettingsInner(string id = default(string), int? port = default(int?), ApplicationGatewayProtocol protocol = default(ApplicationGatewayProtocol), ApplicationGatewayCookieBasedAffinity cookieBasedAffinity = default(ApplicationGatewayCookieBasedAffinity), int? requestTimeout = default(int?), Management.ResourceManager.Fluent.SubResource probe = default(Management.ResourceManager.Fluent.SubResource), IList<Management.ResourceManager.Fluent.SubResource> authenticationCertificates = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> trustedRootCertificates = default(IList<Management.ResourceManager.Fluent.SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             Port = port;
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             RequestTimeout = requestTimeout;
             Probe = probe;
             AuthenticationCertificates = authenticationCertificates;
+            TrustedRootCertificates = trustedRootCertificates;
             ConnectionDraining = connectionDraining;
             HostName = hostName;
             PickHostNameFromBackendAddress = pickHostNameFromBackendAddress;
@@ -100,13 +102,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets port
+        /// Gets or sets the destination port on the backend.
         /// </summary>
         [JsonProperty(PropertyName = "properties.port")]
         public int? Port { get; set; }
 
         /// <summary>
-        /// Gets or sets protocol. Possible values include: 'Http', 'Https'
+        /// Gets or sets the protocol used to communicate with the backend.
+        /// Possible values include: 'Http', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public ApplicationGatewayProtocol Protocol { get; set; }
@@ -138,6 +141,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.authenticationCertificates")]
         public IList<Management.ResourceManager.Fluent.SubResource> AuthenticationCertificates { get; set; }
+
+        /// <summary>
+        /// Gets or sets array of references to application gateway trusted
+        /// root certificates.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.trustedRootCertificates")]
+        public IList<Management.ResourceManager.Fluent.SubResource> TrustedRootCertificates { get; set; }
 
         /// <summary>
         /// Gets or sets connection draining of the backend http settings
@@ -188,8 +198,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the backend http settings that is unique
+        /// within an Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

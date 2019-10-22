@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DatabaseAccountInner> PatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParametersInner updateParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DatabaseAccountInner> PatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParameters updateParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task FailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task FailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicy> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.FailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverPoliciesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -293,6 +293,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            public static async Task<DatabaseAccountListReadOnlyKeysResultInner> GetReadOnlyKeysAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetReadOnlyKeysWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the read-only access keys for the specified Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
             public static async Task<DatabaseAccountListReadOnlyKeysResultInner> ListReadOnlyKeysAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListReadOnlyKeysWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
@@ -321,7 +345,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyKind, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, KeyKind keyKind, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.RegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyKind, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -407,7 +431,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
 
             /// <summary>
-            /// Retrieves metric defintions for the given database account.
+            /// Retrieves metric definitions for the given database account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -424,6 +448,1503 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             public static async Task<IEnumerable<MetricDefinition>> ListMetricDefinitionsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the SQL databases under an existing Azure Cosmos DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<SqlDatabaseInner>> ListSqlDatabasesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSqlDatabasesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the SQL database under an existing Azure Cosmos DB database account
+            /// with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SqlDatabaseInner> GetSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB SQL database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateSqlDatabaseParameters'>
+            /// The parameters to provide for the current SQL database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SqlDatabaseInner> CreateUpdateSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParameters createUpdateSqlDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateSqlDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB SQL database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+            /// DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB SQL database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the SQL container under an existing Azure Cosmos DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<SqlContainerInner>> ListSqlContainersAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSqlContainersWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the SQL container under an existing Azure Cosmos DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SqlContainerInner> GetSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB SQL container
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='createUpdateSqlContainerParameters'>
+            /// The parameters to provide for the current SQL container.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SqlContainerInner> CreateUpdateSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParameters createUpdateSqlContainerParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, createUpdateSqlContainerParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB SQL container.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the SQL container under an existing Azure Cosmos
+            /// DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSqlContainerThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB SQL container
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateSqlContainerThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<MongoDBDatabaseInner>> ListMongoDBDatabasesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMongoDBDatabasesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+            /// account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBDatabaseInner> GetMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or updates Azure Cosmos DB MongoDB database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateMongoDBDatabaseParameters'>
+            /// The parameters to provide for the current MongoDB database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBDatabaseInner> CreateUpdateMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the MongoDB database under an existing Azure
+            /// Cosmos DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of the an Azure Cosmos DB MongoDB database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<MongoDBCollectionInner>> ListMongoDBCollectionsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMongoDBCollectionsWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBCollectionInner> GetMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='createUpdateMongoDBCollectionParameters'>
+            /// The parameters to provide for the current MongoDB Collection.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBCollectionInner> CreateUpdateMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the MongoDB collection under an existing Azure
+            /// Cosmos DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetMongoDBCollectionThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update the RUs per second of an Azure Cosmos DB MongoDB collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateMongoDBCollectionThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the Tables under an existing Azure Cosmos DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<TableInner>> ListTablesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListTablesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the Tables under an existing Azure Cosmos DB database account with the
+            /// provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TableInner> GetTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='createUpdateTableParameters'>
+            /// The parameters to provide for the current Table.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TableInner> CreateUpdateTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, TableCreateUpdateParameters createUpdateTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, createUpdateTableParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Table.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the Table under an existing Azure Cosmos DB
+            /// database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, tableName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<CassandraKeyspaceInner>> ListCassandraKeyspacesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListCassandraKeyspacesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+            /// account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CassandraKeyspaceInner> GetCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Cassandra keyspace
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='createUpdateCassandraKeyspaceParameters'>
+            /// The parameters to provide for the current Cassandra keyspace.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CassandraKeyspaceInner> CreateUpdateCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParameters createUpdateCassandraKeyspaceParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, createUpdateCassandraKeyspaceParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Cassandra keyspace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+            /// Cosmos DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCassandraKeyspaceThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the Cassandra table under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<CassandraTableInner>> ListCassandraTablesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListCassandraTablesWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the Cassandra table under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CassandraTableInner> GetCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Cassandra Table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='createUpdateCassandraTableParameters'>
+            /// The parameters to provide for the current Cassandra Table.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CassandraTableInner> CreateUpdateCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParameters createUpdateCassandraTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, createUpdateCassandraTableParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Cassandra table.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the Cassandra table under an existing Azure
+            /// Cosmos DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCassandraTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Cassandra table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateCassandraTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the Gremlin databases under an existing Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<GremlinDatabaseInner>> ListGremlinDatabasesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListGremlinDatabasesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the Gremlin databases under an existing Azure Cosmos DB database
+            /// account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GremlinDatabaseInner> GetGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Gremlin database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateGremlinDatabaseParameters'>
+            /// The parameters to provide for the current Gremlin database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GremlinDatabaseInner> CreateUpdateGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParameters createUpdateGremlinDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateGremlinDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Gremlin database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the Gremlin database under an existing Azure
+            /// Cosmos DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Gremlin database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the Gremlin graph under an existing Azure Cosmos DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<GremlinGraphInner>> ListGremlinGraphsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListGremlinGraphsWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the Gremlin graph under an existing Azure Cosmos DB database account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GremlinGraphInner> GetGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Gremlin graph
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='createUpdateGremlinGraphParameters'>
+            /// The parameters to provide for the current Gremlin graph.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GremlinGraphInner> CreateUpdateGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParameters createUpdateGremlinGraphParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateUpdateGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, createUpdateGremlinGraphParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Gremlin graph.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the Gremlin graph throughput under an existing Azure Cosmos DB
+            /// database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> GetGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetGremlinGraphThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Gremlin graph
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> UpdateGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateGremlinGraphThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -447,7 +1968,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DatabaseAccountInner> BeginPatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParametersInner updateParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DatabaseAccountInner> BeginPatchAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountPatchParameters updateParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginPatchWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -523,7 +2044,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginFailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginFailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicy> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginFailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverPoliciesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -596,9 +2117,774 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyKind, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, KeyKind keyKind, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyKind, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB SQL database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateSqlDatabaseParameters'>
+            /// The parameters to provide for the current SQL database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SqlDatabaseInner> BeginCreateUpdateSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParameters createUpdateSqlDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateSqlDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB SQL database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteSqlDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB SQL database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateSqlDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB SQL container
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='createUpdateSqlContainerParameters'>
+            /// The parameters to provide for the current SQL container.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SqlContainerInner> BeginCreateUpdateSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParameters createUpdateSqlContainerParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, createUpdateSqlContainerParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB SQL container.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteSqlContainerAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB SQL container
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='containerName'>
+            /// Cosmos DB container name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateSqlContainerThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateSqlContainerThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or updates Azure Cosmos DB MongoDB database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateMongoDBDatabaseParameters'>
+            /// The parameters to provide for the current MongoDB database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBDatabaseInner> BeginCreateUpdateMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteMongoDBDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of the an Azure Cosmos DB MongoDB database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateMongoDBDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='createUpdateMongoDBCollectionParameters'>
+            /// The parameters to provide for the current MongoDB Collection.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBCollectionInner> BeginCreateUpdateMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteMongoDBCollectionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update the RUs per second of an Azure Cosmos DB MongoDB collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateMongoDBCollectionThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateMongoDBCollectionThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='createUpdateTableParameters'>
+            /// The parameters to provide for the current Table.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TableInner> BeginCreateUpdateTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, TableCreateUpdateParameters createUpdateTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, createUpdateTableParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Table.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Cassandra keyspace
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='createUpdateCassandraKeyspaceParameters'>
+            /// The parameters to provide for the current Cassandra keyspace.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CassandraKeyspaceInner> BeginCreateUpdateCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParameters createUpdateCassandraKeyspaceParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, createUpdateCassandraKeyspaceParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Cassandra keyspace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteCassandraKeyspaceAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateCassandraKeyspaceThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Cassandra Table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='createUpdateCassandraTableParameters'>
+            /// The parameters to provide for the current Cassandra Table.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CassandraTableInner> BeginCreateUpdateCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParameters createUpdateCassandraTableParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, createUpdateCassandraTableParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Cassandra table.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteCassandraTableAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Cassandra table
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='keyspaceName'>
+            /// Cosmos DB keyspace name.
+            /// </param>
+            /// <param name='tableName'>
+            /// Cosmos DB table name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateCassandraTableThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateCassandraTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Gremlin database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateGremlinDatabaseParameters'>
+            /// The parameters to provide for the current Gremlin database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GremlinDatabaseInner> BeginCreateUpdateGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParameters createUpdateGremlinDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateGremlinDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Gremlin database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteGremlinDatabaseAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Gremlin database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateGremlinDatabaseThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update an Azure Cosmos DB Gremlin graph
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='createUpdateGremlinGraphParameters'>
+            /// The parameters to provide for the current Gremlin graph.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GremlinGraphInner> BeginCreateUpdateGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParameters createUpdateGremlinGraphParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateUpdateGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, createUpdateGremlinGraphParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB Gremlin graph.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteGremlinGraphAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Update RUs per second of an Azure Cosmos DB Gremlin graph
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='graphName'>
+            /// Cosmos DB graph name.
+            /// </param>
+            /// <param name='resource'>
+            /// The standard JSON format of a resource throughput
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ThroughputInner> BeginUpdateGremlinGraphThroughputAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResource resource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateGremlinGraphThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
     }

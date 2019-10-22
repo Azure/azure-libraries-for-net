@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ImageDiskReference class.
         /// </summary>
-        /// <param name="id">A relative uri containing either a Platform Imgage
+        /// <param name="id">A relative uri containing either a Platform Image
         /// Repository or user image reference.</param>
         /// <param name="lun">If the disk is created from an image's data disk,
         /// this is an index that indicates which of the data disks in the
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a relative uri containing either a Platform Imgage
+        /// Gets or sets a relative uri containing either a Platform Image
         /// Repository or user image reference.
         /// </summary>
         [JsonProperty(PropertyName = "id")]

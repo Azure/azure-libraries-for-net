@@ -50,7 +50,7 @@ namespace ServiceBusQueueAdvanceFeatures
                         .Define(namespaceName)
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(rgName)
-                        .WithSku(NamespaceSku.PremiumCapacity1)
+                        .WithSku(NamespaceSku.Standard)
                         .Create();
 
                 Utilities.Log("Created service bus " + serviceBusNamespace.Name);

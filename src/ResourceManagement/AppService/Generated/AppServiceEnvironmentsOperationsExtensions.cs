@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppServiceEnvironmentResourceInner> UpdateAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, AppServiceEnvironmentPatchResourceInner hostingEnvironmentEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppServiceEnvironmentResourceInner> UpdateAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, AppServiceEnvironmentPatchResource hostingEnvironmentEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, hostingEnvironmentEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -231,6 +231,35 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='vnetInfo'>
+            /// Details for the new virtual network.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> ChangeVnetAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, VirtualNetworkProfile vnetInfo, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ChangeVnetWithHttpMessagesAsync(resourceGroupName, name, vnetInfo, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get diagnostic information for an App Service Environment.
             /// </summary>
             /// <remarks>
@@ -286,6 +315,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<InboundEnvironmentEndpoint>> GetInboundNetworkDependenciesEndpointsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetInboundNetworkDependenciesEndpointsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get global metric definitions of an App Service Environment.
             /// </summary>
             /// <remarks>
@@ -333,8 +390,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='filter'>
             /// Return only usages/metrics specified in the filter. Filter conforms to
             /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-            /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-            /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -580,8 +637,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='filter'>
             /// Return only usages/metrics specified in the filter. Filter conforms to
             /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-            /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-            /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -667,6 +724,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IList<OperationInner>> ListOperationsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListOperationsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<OutboundEnvironmentEndpoint>> GetOutboundNetworkDependenciesEndpointsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetOutboundNetworkDependenciesEndpointsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -820,8 +905,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='filter'>
             /// Return only usages/metrics specified in the filter. Filter conforms to
             /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-            /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-            /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1017,8 +1102,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='filter'>
             /// Return only usages/metrics specified in the filter. Filter conforms to
             /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-            /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-            /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1087,8 +1172,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='filter'>
             /// Return only usages/metrics specified in the filter. Filter conforms to
             /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
-            /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-            /// '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1214,6 +1299,35 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task BeginDeleteAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, bool? forceDelete = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, forceDelete, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='vnetInfo'>
+            /// Details for the new virtual network.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> BeginChangeVnetAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, VirtualNetworkProfile vnetInfo, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginChangeVnetWithHttpMessagesAsync(resourceGroupName, name, vnetInfo, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -1395,6 +1509,54 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<StampCapacity>> ListCapacitiesNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListCapacitiesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> ChangeVnetNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ChangeVnetNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<InboundEnvironmentEndpoint>> GetInboundNetworkDependenciesEndpointsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetInboundNetworkDependenciesEndpointsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1583,6 +1745,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<Usage>> ListMultiRoleUsagesNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListMultiRoleUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<OutboundEnvironmentEndpoint>> GetOutboundNetworkDependenciesEndpointsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetOutboundNetworkDependenciesEndpointsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1865,6 +2052,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<Usage>> ListWebWorkerUsagesNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWebWorkerUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> BeginChangeVnetNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginChangeVnetNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

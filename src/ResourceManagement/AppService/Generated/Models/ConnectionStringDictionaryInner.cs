@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// <summary>
     /// String dictionary resource.
     /// </summary>
-    public partial class ConnectionStringDictionaryInner : ProxyOnlyResource
+    public partial class ConnectionStringDictionaryInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionStringDictionaryInner
@@ -31,13 +31,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the ConnectionStringDictionaryInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="properties">Connection strings.</param>
-        public ConnectionStringDictionaryInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, ConnStringValueTypePair> properties = default(IDictionary<string, ConnStringValueTypePair>))
-            : base(id, name, kind, type)
+        public ConnectionStringDictionaryInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IDictionary<string, ConnStringValueTypePair> properties = default(IDictionary<string, ConnStringValueTypePair>))
+            : base(id, name, type, kind)
         {
             Properties = properties;
             CustomInit();

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
     /// <summary>
     /// A key vault update allowing various configurations to be set.
     /// </summary>
-    public interface IWithConfigurations 
+    public interface IWithConfigurations
     {
         /// <summary>
         /// Enable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
     /// <summary>
     /// The template for a key vault update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithAccessPolicy,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
     /// <summary>
     /// A key vault update allowing access policies to be modified, attached, or removed.
     /// </summary>
-    public interface IWithAccessPolicy 
+    public interface IWithAccessPolicy
     {
         /// <summary>
         /// Remove an access policy from the access policy list.

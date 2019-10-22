@@ -305,8 +305,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg21908317/providers/Microsoft.KeyVault/vaults/kv08867906?api-version=2016-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMjE5MDgzMTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMva3YwODg2NzkwNj9hcGktdmVyc2lvbj0yMDE2LTEwLTAx",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg21908317/providers/Microsoft.KeyVault/vaults/kv08867906?api-version=2018-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMjE5MDgzMTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMva3YwODg2NzkwNj9hcGktdmVyc2lvbj0yMDE4LTAyLTE0",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"family\": \"A\"\r\n    },\r\n    \"accessPolicies\": []\r\n  }\r\n}",
       "RequestHeaders": {
@@ -329,6 +329,86 @@
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg21908317/providers/Microsoft.KeyVault/vaults/kv08867906\",\r\n  \"name\": \"kv08867906\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://kv08867906.vault.azure.net\",\r\n    \"provisioningState\": \"RegisteringDns\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 13 Mar 2018 18:04:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.0.0.210"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "f1d6649d-bddc-4e14-9b40-0bcf363ec3f0"
+        ],
+        "x-ms-correlation-request-id": [
+          "f1d6649d-bddc-4e14-9b40-0bcf363ec3f0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180313T180417Z:f1d6649d-bddc-4e14-9b40-0bcf363ec3f0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg21908317/providers/Microsoft.KeyVault/vaults/kv08867906?api-version=2018-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMjE5MDgzMTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMva3YwODg2NzkwNj9hcGktdmVyc2lvbj0yMDE4LTAyLTE0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "221"
+        ],
+        "x-ms-client-request-id": [
+          "804396e1-9ffa-4e85-9615-ec890567a3b4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.KeyVault.Fluent.KeyVaultManagementClient/1.7.0.0",
+          "MacAddressHash/32ac13edda214fc6108630a151bc81b40bade0f5b6c8d010a5350f8a3ea67e13"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgNEMV9157/providers/Microsoft.KeyVault/vaults/vault11708\",\r\n  \"name\": \"vault11708\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n        \"objectId\": \"2d6f8413-3191-45f3-a8c6-16c1347a940c\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"list\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\",\r\n            \"recover\",\r\n            \"purge\"\r\n          ],\r\n          \"certificates\": [\r\n            \"get\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n        \"objectId\": \"9ebe32fb-f485-4fa1-a100-3e1bde76f1cc\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"wrapKey\",\r\n            \"unwrapKey\",\r\n            \"sign\",\r\n            \"verify\",\r\n            \"get\",\r\n            \"list\",\r\n            \"create\",\r\n            \"update\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\",\r\n            \"recover\",\r\n            \"purge\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\",\r\n            \"recover\",\r\n            \"purge\"\r\n          ],\r\n          \"certificates\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"create\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://vault11708.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"

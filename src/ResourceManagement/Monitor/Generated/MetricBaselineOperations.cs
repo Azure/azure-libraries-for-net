@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CalculateBaselineResponseInner>> CalculateBaselineWithHttpMessagesAsync(string resourceUri, TimeSeriesInformationInner timeSeriesInformation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CalculateBaselineResponseInner>> CalculateBaselineWithHttpMessagesAsync(string resourceUri, TimeSeriesInformation timeSeriesInformation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceUri == null)
             {
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -386,11 +386,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (timeSeriesInformation != null)
+            if(timeSeriesInformation != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(timeSeriesInformation, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.Record() as Models.SoaRecord;
+                return this.Record();
             }
         }
     }

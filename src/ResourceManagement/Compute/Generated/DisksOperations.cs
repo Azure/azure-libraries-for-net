@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<DiskInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string diskName, DiskUpdateInner disk, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DiskInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string diskName, DiskUpdate disk, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
             AzureOperationResponse<DiskInner> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskName");
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -315,10 +315,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<OperationStatusResponseInner>> DeleteWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<OperationStatusResponseInner> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<AccessUriInner>> GrantAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, GrantAccessDataInner grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AccessUriInner>> GrantAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, GrantAccessData grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
             AzureOperationResponse<AccessUriInner> _response = await BeginGrantAccessWithHttpMessagesAsync(resourceGroupName, diskName, grantAccessData, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -727,10 +727,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<OperationStatusResponseInner>> RevokeAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> RevokeAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<OperationStatusResponseInner> _response = await BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 disk.Validate();
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DiskInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string diskName, DiskUpdateInner disk, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DiskInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string diskName, DiskUpdate disk, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "disk");
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1214,9 +1214,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -1226,7 +1223,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<OperationStatusResponseInner>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1240,7 +1237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskName");
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1358,30 +1355,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<OperationStatusResponseInner>();
+            var _result = new AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OperationStatusResponseInner>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
             }
             if (_shouldTrace)
             {
@@ -1425,7 +1404,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AccessUriInner>> BeginGrantAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, GrantAccessDataInner grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AccessUriInner>> BeginGrantAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, GrantAccessData grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1447,7 +1426,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 grantAccessData.Validate();
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1624,9 +1603,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -1636,7 +1612,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<OperationStatusResponseInner>> BeginRevokeAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginRevokeAccessWithHttpMessagesAsync(string resourceGroupName, string diskName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1650,7 +1626,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskName");
             }
-            string apiVersion = "2018-04-01";
+            string apiVersion = "2019-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1768,30 +1744,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<OperationStatusResponseInner>();
+            var _result = new AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OperationStatusResponseInner>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
             }
             if (_shouldTrace)
             {

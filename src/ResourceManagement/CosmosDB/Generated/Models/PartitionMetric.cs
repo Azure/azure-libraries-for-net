@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="name">The name information for the metric.</param>
         /// <param name="metricValues">The metric values for the specified time
         /// window and timestep.</param>
-        /// <param name="partitionId">The parition id (GUID identifier) of the
+        /// <param name="partitionId">The partition id (GUID identifier) of the
         /// metric values.</param>
         /// <param name="partitionKeyRangeId">The partition key range id
         /// (integer identifier) of the metric values.</param>
-        public PartitionMetric(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), string unit = default(string), MetricName name = default(MetricName), IList<MetricValue> metricValues = default(IList<MetricValue>), string partitionId = default(string), string partitionKeyRangeId = default(string))
+        public PartitionMetric(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), UnitType unit = default(UnitType), MetricName name = default(MetricName), IList<MetricValue> metricValues = default(IList<MetricValue>), string partitionId = default(string), string partitionKeyRangeId = default(string))
             : base(startTime, endTime, timeGrain, unit, name, metricValues)
         {
             PartitionId = partitionId;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the parition id (GUID identifier) of the metric values.
+        /// Gets the partition id (GUID identifier) of the metric values.
         /// </summary>
         [JsonProperty(PropertyName = "partitionId")]
         public string PartitionId { get; private set; }

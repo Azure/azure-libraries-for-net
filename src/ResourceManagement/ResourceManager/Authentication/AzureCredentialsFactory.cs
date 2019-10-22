@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 {
     public class AzureCredentialsFactory
     {
+#if NET45
         /// <summary>
         /// Creates a credentials object from a username/password combination.
         /// </summary>
@@ -33,15 +34,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 ClientId = clientId
             }, tenantId, environment);
         }
-
-#if NETSTANDARD
+#else
         /// <summary>
         /// Creates a credentials object through device flow.
         /// </summary>
         /// <param name="clientId">the client ID of the application</param>
         /// <param name="tenantId">the tenant ID or domain</param>
         /// <param name="environment">the environment to authenticate to</param>
-        /// <param name="deviceCodeHandler">a user defined function to handle device flow</param>
+        /// <param name="deviceCodeFlowHandler">a user defined function to handle device flow</param>
         /// <returns>an authenticated credentials object</returns>
         public AzureCredentials FromDevice(string clientId, string tenantId, AzureEnvironment environment, Func<DeviceCodeResult, bool> deviceCodeFlowHandler = null)
         {
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// <param name="msiLoginInformation">the information needed for MSI authentication</param>
         /// <param name="environment">the environment to authenticate to</param>
         /// <returns>an authenticated credentials object</returns>
-        public AzureCredentials FromMSI(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
+        public AzureCredentials FromMSI(MSILoginInformation msiLoginInformation, AzureEnvironment environment, string tenantId = null)
         {
-            return new AzureCredentials(msiLoginInformation, environment);
+            return new AzureCredentials(msiLoginInformation, environment, tenantId);
         }
 
         /// <summary>
@@ -101,7 +101,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }, tenantId, environment);
         }
 
-#if NET45
         /// <summary>
         /// Creates a credentials object from a service principal.
         /// </summary>
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 X509Certificate = certificate
             }, tenantId, environment);
         }
-#endif
 
         /// <summary>
         /// Creates a credentials object from a file in the following format:
@@ -140,7 +138,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 { "authurl", AzureEnvironment.AzureGlobalCloud.AuthenticationEndpoint },
                 { "baseurl", AzureEnvironment.AzureGlobalCloud.ResourceManagerEndpoint },
                 { "managementuri", AzureEnvironment.AzureGlobalCloud.ManagementEndpoint },
-                { "graphurl", AzureEnvironment.AzureGlobalCloud.GraphEndpoint }
+                { "graphurl", AzureEnvironment.AzureGlobalCloud.GraphEndpoint },
+                { "keyvaultsuffix", AzureEnvironment.AzureGlobalCloud.KeyVaultSuffix }
             };
 
             var lines = File.ReadLines(authFile);
@@ -151,7 +150,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 jsonConfig.GetType()
                     .GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
                     .ToList()
-                    .ForEach(info => config[info.Name] = (string)info.GetValue(jsonConfig));
+                    .ForEach(info => {
+                        var value = (string)info.GetValue(jsonConfig);
+                        if (value != null)
+                        {
+                            config[info.Name] = value;
+                        }
+                    });
             }
             else
             {
@@ -173,7 +178,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 AuthenticationEndpoint = config["authurl"].Replace("\\", ""),
                 ManagementEndpoint = config["managementuri"].Replace("\\", ""),
                 ResourceManagerEndpoint = config["baseurl"].Replace("\\", ""),
-                GraphEndpoint = config["graphurl"].Replace("\\", "")
+                GraphEndpoint = config["graphurl"].Replace("\\", ""),
+                KeyVaultSuffix = config["keyvaultsuffix"].Replace("\\", "")
             };
 
             AzureCredentials credentials;
@@ -230,6 +236,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
             [JsonProperty("activeDirectoryGraphResourceId")]
             private string graphurl;
+
+            [JsonProperty("keyVaultDnsSuffix")]
+            private string keyvaultsuffix;
         }
     }
 }

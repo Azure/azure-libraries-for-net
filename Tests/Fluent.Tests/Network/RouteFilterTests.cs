@@ -76,7 +76,7 @@ namespace Fluent.Tests.Network
                         .Create();
                     routeFilter.Update()
                         .DefineRule(ruleName)
-                        .WithBgpCommunity("12076:5010")
+                        .WithBgpCommunity("12076:51004")
                         .Attach()
                         .Apply();
                     Assert.Equal(1, routeFilter.Rules.Count);
@@ -84,7 +84,7 @@ namespace Fluent.Tests.Network
                     routeFilter.Rules.TryGetValue(ruleName, out rule);
                     Assert.NotNull(rule);
                     Assert.Equal(1, rule.Communities.Count);
-                    Assert.Equal("12076:5010", rule.Communities.ElementAt(0));
+                    Assert.Equal("12076:51004", rule.Communities.ElementAt(0));
 
                     routeFilter.Update()
                         .UpdateRule(ruleName)

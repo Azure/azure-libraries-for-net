@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithStorageAccountKey<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>.WithStorageAccountName(string storageAccountName)
         {
-            return this.WithStorageAccountName(storageAccountName) as ContainerGroup.Definition.IWithStorageAccountKey<ContainerGroup.Definition.IWithVolume>;
+            return this.WithStorageAccountName(storageAccountName);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithGitRevision<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithGitDirectoryNameBeta<ContainerGroup.Definition.IWithVolume>.WithGitDirectoryName(string gitDirectoryName)
         {
-            return this.WithGitDirectoryName(gitDirectoryName) as ContainerGroup.Definition.IWithGitRevision<ContainerGroup.Definition.IWithVolume>;
+            return this.WithGitDirectoryName(gitDirectoryName);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithSecretsMapBeta<ContainerGroup.Definition.IWithVolume>.WithSecrets(IDictionary<string,string> secrets)
         {
-            return this.WithSecrets(secrets) as ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume>;
+            return this.WithSecrets(secrets);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithStorageAccountKey<ContainerGroup.Definition.IWithVolume>.WithStorageAccountKey(string storageAccountKey)
         {
-            return this.WithStorageAccountKey(storageAccountKey) as ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume>;
+            return this.WithStorageAccountKey(storageAccountKey);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the parent definition.</return>
         ContainerGroup.Definition.IWithVolume Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ContainerGroup.Definition.IWithVolume>.Attach()
         {
-            return this.Attach() as ContainerGroup.Definition.IWithVolume;
+            return this.Attach();
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithAzureFileShare<ContainerGroup.Definition.IWithVolume>.WithExistingReadOnlyAzureFileShare(string shareName)
         {
-            return this.WithExistingReadOnlyAzureFileShare(shareName) as ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>;
+            return this.WithExistingReadOnlyAzureFileShare(shareName);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithAzureFileShare<ContainerGroup.Definition.IWithVolume>.WithExistingReadWriteAzureFileShare(string shareName)
         {
-            return this.WithExistingReadWriteAzureFileShare(shareName) as ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>;
+            return this.WithExistingReadWriteAzureFileShare(shareName);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithGitDirectoryName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithGitUrlBeta<ContainerGroup.Definition.IWithVolume>.WithGitUrl(string gitUrl)
         {
-            return this.WithGitUrl(gitUrl) as ContainerGroup.Definition.IWithGitDirectoryName<ContainerGroup.Definition.IWithVolume>;
+            return this.WithGitUrl(gitUrl);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithGitRevisionBeta<ContainerGroup.Definition.IWithVolume>.WithGitRevision(string gitRevision)
         {
-            return this.WithGitRevision(gitRevision) as ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume>;
+            return this.WithGitRevision(gitRevision);
         }
     }
 }

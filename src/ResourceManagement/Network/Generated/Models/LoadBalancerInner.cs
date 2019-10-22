@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// LoadBalancer resource
+    /// LoadBalancer resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class LoadBalancerInner : Management.ResourceManager.Fluent.Resource
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="sku">The load balancer SKU.</param>
         /// <param name="frontendIPConfigurations">Object representing the
-        /// frontend IPs to be used for the load balancer</param>
+        /// frontend IPs to be used for the load balancer.</param>
         /// <param name="backendAddressPools">Collection of backend address
-        /// pools used by a load balancer</param>
+        /// pools used by a load balancer.</param>
         /// <param name="loadBalancingRules">Object collection representing the
-        /// load balancing rules Gets the provisioning </param>
+        /// load balancing rules Gets the provisioning.</param>
         /// <param name="probes">Collection of probe objects used in the load
-        /// balancer</param>
+        /// balancer.</param>
         /// <param name="inboundNatRules">Collection of inbound NAT Rules used
         /// by a load balancer. Defining inbound NAT rules on your load
         /// balancer is mutually exclusive with defining an inbound NAT pool.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// associated with individual virtual machines cannot reference an
         /// inbound NAT pool. They have to reference individual inbound NAT
         /// rules.</param>
-        /// <param name="outboundNatRules">The outbound NAT rules.</param>
+        /// <param name="outboundRules">The outbound rules.</param>
         /// <param name="resourceGuid">The resource GUID property of the load
         /// balancer resource.</param>
         /// <param name="provisioningState">Gets the provisioning state of the
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public LoadBalancerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LoadBalancerSku sku = default(LoadBalancerSku), IList<FrontendIPConfigurationInner> frontendIPConfigurations = default(IList<FrontendIPConfigurationInner>), IList<BackendAddressPoolInner> backendAddressPools = default(IList<BackendAddressPoolInner>), IList<LoadBalancingRuleInner> loadBalancingRules = default(IList<LoadBalancingRuleInner>), IList<ProbeInner> probes = default(IList<ProbeInner>), IList<InboundNatRuleInner> inboundNatRules = default(IList<InboundNatRuleInner>), IList<InboundNatPoolInner> inboundNatPools = default(IList<InboundNatPoolInner>), IList<OutboundNatRuleInner> outboundNatRules = default(IList<OutboundNatRuleInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public LoadBalancerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LoadBalancerSku sku = default(LoadBalancerSku), IList<FrontendIPConfigurationInner> frontendIPConfigurations = default(IList<FrontendIPConfigurationInner>), IList<BackendAddressPoolInner> backendAddressPools = default(IList<BackendAddressPoolInner>), IList<LoadBalancingRuleInner> loadBalancingRules = default(IList<LoadBalancingRuleInner>), IList<ProbeInner> probes = default(IList<ProbeInner>), IList<InboundNatRuleInner> inboundNatRules = default(IList<InboundNatRuleInner>), IList<InboundNatPoolInner> inboundNatPools = default(IList<InboundNatPoolInner>), IList<OutboundRuleInner> outboundRules = default(IList<OutboundRuleInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             Probes = probes;
             InboundNatRules = inboundNatRules;
             InboundNatPools = inboundNatPools;
-            OutboundNatRules = outboundNatRules;
+            OutboundRules = outboundRules;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
@@ -98,27 +98,27 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets object representing the frontend IPs to be used for
-        /// the load balancer
+        /// the load balancer.
         /// </summary>
         [JsonProperty(PropertyName = "properties.frontendIPConfigurations")]
         public IList<FrontendIPConfigurationInner> FrontendIPConfigurations { get; set; }
 
         /// <summary>
         /// Gets or sets collection of backend address pools used by a load
-        /// balancer
+        /// balancer.
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendAddressPools")]
         public IList<BackendAddressPoolInner> BackendAddressPools { get; set; }
 
         /// <summary>
         /// Gets or sets object collection representing the load balancing
-        /// rules Gets the provisioning
+        /// rules Gets the provisioning.
         /// </summary>
         [JsonProperty(PropertyName = "properties.loadBalancingRules")]
         public IList<LoadBalancingRuleInner> LoadBalancingRules { get; set; }
 
         /// <summary>
-        /// Gets or sets collection of probe objects used in the load balancer
+        /// Gets or sets collection of probe objects used in the load balancer.
         /// </summary>
         [JsonProperty(PropertyName = "properties.probes")]
         public IList<ProbeInner> Probes { get; set; }
@@ -151,10 +151,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<InboundNatPoolInner> InboundNatPools { get; set; }
 
         /// <summary>
-        /// Gets or sets the outbound NAT rules.
+        /// Gets or sets the outbound rules.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.outboundNatRules")]
-        public IList<OutboundNatRuleInner> OutboundNatRules { get; set; }
+        [JsonProperty(PropertyName = "properties.outboundRules")]
+        public IList<OutboundRuleInner> OutboundRules { get; set; }
 
         /// <summary>
         /// Gets or sets the resource GUID property of the load balancer
@@ -215,9 +215,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
                     }
                 }
             }
-            if (OutboundNatRules != null)
+            if (OutboundRules != null)
             {
-                foreach (var element3 in OutboundNatRules)
+                foreach (var element3 in OutboundRules)
                 {
                     if (element3 != null)
                     {

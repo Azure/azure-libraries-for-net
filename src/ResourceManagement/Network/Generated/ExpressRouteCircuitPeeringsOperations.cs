@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets the specified authorization from the specified express route circuit.
+        /// Gets the specified peering for the express route circuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

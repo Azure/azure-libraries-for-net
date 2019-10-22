@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// usage values.</param>
         /// <param name="limit">Maximum value for this metric</param>
         /// <param name="currentValue">Current value for this metric</param>
-        /// <param name="partitionId">The parition id (GUID identifier) of the
+        /// <param name="partitionId">The partition id (GUID identifier) of the
         /// usages.</param>
         /// <param name="partitionKeyRangeId">The partition key range id
         /// (integer identifier) of the usages.</param>
-        public PartitionUsage(string unit = default(string), MetricName name = default(MetricName), string quotaPeriod = default(string), int? limit = default(int?), int? currentValue = default(int?), string partitionId = default(string), string partitionKeyRangeId = default(string))
+        public PartitionUsage(UnitType unit = default(UnitType), MetricName name = default(MetricName), string quotaPeriod = default(string), long? limit = default(long?), long? currentValue = default(long?), string partitionId = default(string), string partitionKeyRangeId = default(string))
             : base(unit, name, quotaPeriod, limit, currentValue)
         {
             PartitionId = partitionId;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the parition id (GUID identifier) of the usages.
+        /// Gets the partition id (GUID identifier) of the usages.
         /// </summary>
         [JsonProperty(PropertyName = "partitionId")]
         public string PartitionId { get; private set; }

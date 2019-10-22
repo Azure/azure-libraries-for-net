@@ -5,7 +5,6 @@
 
   <PropertyGroup>
     <Description>Provides management (Fluent) capabilities for Microsoft Azure.</Description>
-    <Version>1.11.1</Version>
     <AssemblyName>Microsoft.Azure.Management.Fluent</AssemblyName>
     <PackageId>Microsoft.Azure.Management.Fluent</PackageId>
     <PackageTags>Microsoft Azure Management Fluent;Fluent</PackageTags>
@@ -16,37 +15,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.AppService.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Batch.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.BatchAI.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Cdn.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerService.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.CosmosDB.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Dns.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Graph.RBAC.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Locks.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Monitor.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Msi.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Network.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Redis.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Search.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage.Fluent" Version="1.11.1" />
-    <PackageReference Include="Microsoft.Azure.Management.TrafficManager.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.AppService.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.BatchAI.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Cdn.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerService.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.CosmosDB.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Dns.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Graph.RBAC.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Locks.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Monitor.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Msi.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Network.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Redis.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Search.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.ServiceBus.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.TrafficManager.Fluent" Version="$(FluentVersion)" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
     <ProjectReference Include="..\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj" />
-    <ProjectReference Include="..\Batch\Microsoft.Azure.Management.Batch.Fluent.csproj" />
     <ProjectReference Include="..\Cdn\Microsoft.Azure.Management.Cdn.Fluent.csproj" />
     <ProjectReference Include="..\Compute\Microsoft.Azure.Management.Compute.Fluent.csproj" />
     <ProjectReference Include="..\ContainerInstance\Microsoft.Azure.Management.ContainerInstance.Fluent.csproj" />

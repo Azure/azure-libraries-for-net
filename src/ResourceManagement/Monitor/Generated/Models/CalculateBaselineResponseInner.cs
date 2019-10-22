@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The response to a calcualte baseline call.
+    /// The response to a calculate baseline call.
     /// </summary>
     public partial class CalculateBaselineResponseInner
     {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// sensitivity.</param>
         /// <param name="timestamps">the array of timestamps of the
         /// baselines.</param>
-        public CalculateBaselineResponseInner(string type, IList<Baseline> baseline, IList<System.DateTime?> timestamps = default(IList<System.DateTime?>))
+        public CalculateBaselineResponseInner(string type, IList<BaselineInner> baseline, IList<System.DateTime?> timestamps = default(IList<System.DateTime?>))
         {
             Type = type;
             Timestamps = timestamps;
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the baseline values for each sensitivity.
         /// </summary>
         [JsonProperty(PropertyName = "baseline")]
-        public IList<Baseline> Baseline { get; set; }
+        public IList<BaselineInner> Baseline { get; set; }
 
         /// <summary>
         /// Validate the object.

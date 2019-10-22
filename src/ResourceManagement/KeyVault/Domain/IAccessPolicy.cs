@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// An immutable client-side representation of a key vault access policy.
     /// </summary>
-    public interface IAccessPolicy  :
+    public interface IAccessPolicy :
         IChildResource<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         IHasInner<Microsoft.Azure.Management.KeyVault.Fluent.Models.AccessPolicyEntry>
     {

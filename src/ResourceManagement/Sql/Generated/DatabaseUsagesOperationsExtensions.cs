@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<DatabaseUsage>> ListByDatabaseAsync(this IDatabaseUsagesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<DatabaseUsageInner>> ListByDatabaseAsync(this IDatabaseUsagesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

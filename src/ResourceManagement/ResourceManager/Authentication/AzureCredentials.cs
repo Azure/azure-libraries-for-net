@@ -5,8 +5,11 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,12 +20,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// </summary>
     public class AzureCredentials : ServiceClientCredentials
     {
-        private UserLoginInformation userLoginInformation;
         private ServicePrincipalLoginInformation servicePrincipalLoginInformation;
         private MSITokenProviderFactory msiTokenProviderFactory;
-
         private IDictionary<Uri, ServiceClientCredentials> credentialsCache;
-#if NETSTANDARD
+#if NET45
+        private UserLoginInformation userLoginInformation;
+#else
         private DeviceCredentialInformation deviceCredentialInformation;
 #endif
 
@@ -34,32 +37,47 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             get
             {
-#if NETSTANDARD
-                if (deviceCredentialInformation != null)
+#if NET45
+                if (userLoginInformation != null && userLoginInformation.ClientId != null)
+                {
+                    return userLoginInformation.ClientId;
+                }
+#else
+                if (deviceCredentialInformation != null && deviceCredentialInformation.ClientId != null)
                 {
                     return deviceCredentialInformation.ClientId;
                 }
 #endif
 
-                return userLoginInformation?.ClientId ?? servicePrincipalLoginInformation?.ClientId;
+                return servicePrincipalLoginInformation?.ClientId;
             }
         }
 
         public AzureEnvironment Environment { get; private set; }
 
+#if NET45
         public AzureCredentials(UserLoginInformation userLoginInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
             this.userLoginInformation = userLoginInformation;
         }
+#else
+        public AzureCredentials(DeviceCredentialInformation deviceCredentialInformation, string tenantId, AzureEnvironment environment)
+            : this(tenantId, environment)
+        {
+            this.deviceCredentialInformation = deviceCredentialInformation;
+
+        }
+#endif
+
         public AzureCredentials(ServicePrincipalLoginInformation servicePrincipalLoginInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
             this.servicePrincipalLoginInformation = servicePrincipalLoginInformation;
         }
 
-        public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
-            : this(tenantId: null, environment: environment)
+        public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment, string tenantId = null)
+            : this(tenantId: tenantId, environment: environment)
         {
             this.msiTokenProviderFactory = new MSITokenProviderFactory(msiLoginInformation);
         }
@@ -84,17 +102,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             TenantId = tenantId;
             Environment = environment;
-            credentialsCache = new Dictionary<Uri, ServiceClientCredentials>();
+            credentialsCache = new ConcurrentDictionary<Uri, ServiceClientCredentials>();
         }
-
-#if NETSTANDARD
-        public AzureCredentials(DeviceCredentialInformation deviceCredentialInformation, string tenantId, AzureEnvironment environment)
-            : this(tenantId, environment)
-        {
-            this.deviceCredentialInformation = deviceCredentialInformation;
-
-        }
-#endif
 
         public AzureCredentials WithDefaultSubscription(string subscriptionId)
         {
@@ -116,10 +125,42 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 adSettings.TokenAudience = new Uri(Environment.GraphEndpoint);
             }
 
+            string host = request.RequestUri.Host;
+            if (host.EndsWith(Environment.KeyVaultSuffix, StringComparison.OrdinalIgnoreCase))
+            {
+                var resource = new Uri(Regex.Replace(Environment.KeyVaultSuffix, "^.", "https://"));
+                if (credentialsCache.ContainsKey(new Uri(Regex.Replace(Environment.KeyVaultSuffix, "^.", "https://"))))
+                {
+                    adSettings.TokenAudience = resource;
+                }
+                else
+                {
+                    using (var r = new HttpRequestMessage(request.Method, url))
+                    {
+                        var response = await new HttpClient().SendAsync(r).ConfigureAwait(false);
+
+                        if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate != null)
+                        {
+                            var header = response.Headers.WwwAuthenticate.ElementAt(0).ToString();
+                            var regex = new Regex("authorization=\"([^\"]+)\"");
+                            var match = regex.Match(header);
+                            adSettings.AuthenticationEndpoint = new Uri(match.Groups[1].Value);
+                            regex = new Regex("resource=\"([^\"]+)\"");
+                            match = regex.Match(header);
+                            adSettings.TokenAudience = new Uri(match.Groups[1].Value);
+                        }
+                    }
+                }
+            }
+
             if (!credentialsCache.ContainsKey(adSettings.TokenAudience))
             {
                 if (servicePrincipalLoginInformation != null)
                 {
+                    if(servicePrincipalLoginInformation.ClientId == null)
+                    {
+                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain a valid ClientId information.");
+                    }
                     if (servicePrincipalLoginInformation.ClientSecret != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
@@ -131,22 +172,31 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
                             TenantId, new ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
                     }
+#else
+                    else if (servicePrincipalLoginInformation.X509Certificate != null)
+                    {
+                        credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
+                            TenantId, new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
+                    }
 #endif
-                    else
+                    else if (servicePrincipalLoginInformation.Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
                             TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache.DefaultShared);
                     }
+                    else
+                    {
+                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain either a valid ClientSecret or Certificate information.");
+                    }
                 }
-#if !NETSTANDARD
+#if NET45
                 else if (userLoginInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginSilentAsync(
                         userLoginInformation.ClientId, TenantId, userLoginInformation.UserName,
                         userLoginInformation.Password, adSettings, TokenCache.DefaultShared);
                 }
-#endif
-#if NETSTANDARD
+#else
                 else if (deviceCredentialInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginByDeviceCodeAsync(

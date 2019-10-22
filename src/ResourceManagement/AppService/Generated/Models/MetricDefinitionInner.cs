@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Metadata for a metric.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class MetricDefinitionInner : ProxyOnlyResource
+    public partial class MetricDefinitionInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the MetricDefinitionInner class.
@@ -32,21 +32,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the MetricDefinitionInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="metricDefinitionName">Name of the metric.</param>
         /// <param name="unit">Unit of the metric.</param>
         /// <param name="primaryAggregationType">Primary aggregation
         /// type.</param>
         /// <param name="metricAvailabilities">List of time grains supported
         /// for the metric together with retention period.</param>
         /// <param name="displayName">Friendly name shown in the UI.</param>
-        public MetricDefinitionInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string metricDefinitionName = default(string), string unit = default(string), string primaryAggregationType = default(string), IList<MetricAvailabilily> metricAvailabilities = default(IList<MetricAvailabilily>), string displayName = default(string))
-            : base(id, name, kind, type)
+        public MetricDefinitionInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string unit = default(string), string primaryAggregationType = default(string), IList<MetricAvailabilily> metricAvailabilities = default(IList<MetricAvailabilily>), string displayName = default(string))
+            : base(id, name, type, kind)
         {
-            MetricDefinitionName = metricDefinitionName;
             Unit = unit;
             PrimaryAggregationType = primaryAggregationType;
             MetricAvailabilities = metricAvailabilities;
@@ -58,12 +53,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets name of the metric.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string MetricDefinitionName { get; private set; }
 
         /// <summary>
         /// Gets unit of the metric.

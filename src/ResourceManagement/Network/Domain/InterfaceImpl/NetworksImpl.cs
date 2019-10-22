@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Network.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Network.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Network.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Application gateway probe health response match
+    /// Application gateway probe health response match.
     /// </summary>
     public partial class ApplicationGatewayProbeHealthResponseMatch
     {

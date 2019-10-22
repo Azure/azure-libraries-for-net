@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Initializes a new instance of the ResponseInner class.
         /// </summary>
         /// <param name="timespan">The timespan for which the data was
-        /// retrieved. Its value consists of two datatimes concatenated,
+        /// retrieved. Its value consists of two datetimes concatenated,
         /// separated by '/'.  This may be adjusted in the future and returned
         /// back from what was originally requested.</param>
         /// <param name="value">the value of the collection.</param>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// queried</param>
         /// <param name="resourceregion">The region of the resource been
         /// queried for metrics.</param>
-        public ResponseInner(string timespan, IList<Metric> value, double? cost = default(double?), System.TimeSpan? interval = default(System.TimeSpan?), string namespaceProperty = default(string), string resourceregion = default(string))
+        public ResponseInner(string timespan, IList<MetricInner> value, double? cost = default(double?), System.TimeSpan? interval = default(System.TimeSpan?), string namespaceProperty = default(string), string resourceregion = default(string))
         {
             Cost = cost;
             Timespan = timespan;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         /// <summary>
         /// Gets or sets the timespan for which the data was retrieved. Its
-        /// value consists of two datatimes concatenated, separated by '/'.
+        /// value consists of two datetimes concatenated, separated by '/'.
         /// This may be adjusted in the future and returned back from what was
         /// originally requested.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the value of the collection.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<Metric> Value { get; set; }
+        public IList<MetricInner> Value { get; set; }
 
         /// <summary>
         /// Validate the object.

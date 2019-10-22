@@ -150,13 +150,12 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
 
         private static RunCommandResultInner RunCommandOnVM(IAzure azure, IVirtualMachine virtualMachine, List<String> commands)
         {
-            RunCommandInputInner runParams = new RunCommandInputInner()
+            RunCommandInput runParams = new RunCommandInput()
             {
                 CommandId = "RunShellScript",
                 Script = commands
             };
             return azure.VirtualMachines
-                    .Inner
                     .RunCommandAsync(virtualMachine.ResourceGroupName, virtualMachine.Name, runParams).Result;
         }
 

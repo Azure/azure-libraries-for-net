@@ -68,6 +68,14 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent.EventHub.Update
         /// <param name="sizeInMB">Window size in MB.</param>
         /// <return>Next stage of the event hub update.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.EventHub.Update.IUpdate WithDataCaptureWindowSizeInMB(int sizeInMB);
+
+
+        /// <summary>
+        ///  Specified the capture whether to Skip Empty Archives.
+        /// </summary>
+        /// <param name="skipEmptyArchives">The skipEmptyArchives value to set.</param>
+        /// <return>Next stage of the event hub update.</return>
+        Microsoft.Azure.Management.Eventhub.Fluent.EventHub.Update.IUpdate WithDataCaptureSkipEmptyArchives(bool skipEmptyArchives);
     }
 
     /// <summary>

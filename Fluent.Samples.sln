@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Fluent", "src\ResourceManagement\Azure.Fluent\Microsoft.Azure.Management.Fluent.csproj", "{C1612F3A-1DE0-4772-BF06-86997B73DA60}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Batch.Fluent", "src\ResourceManagement\Batch\Microsoft.Azure.Management.Batch.Fluent.csproj", "{2870675A-21C9-47AF-8D52-A6EB865BA89E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Cdn.Fluent", "src\ResourceManagement\Cdn\Microsoft.Azure.Management.Cdn.Fluent.csproj", "{23D62A4B-B759-46B0-8AB2-FD0A6591B484}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Compute.Fluent", "src\ResourceManagement\Compute\Microsoft.Azure.Management.Compute.Fluent.csproj", "{4926EE65-45FB-464A-92F9-787D4A241B1E}"
@@ -75,10 +73,6 @@ Global
 		{C1612F3A-1DE0-4772-BF06-86997B73DA60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1612F3A-1DE0-4772-BF06-86997B73DA60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1612F3A-1DE0-4772-BF06-86997B73DA60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2870675A-21C9-47AF-8D52-A6EB865BA89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2870675A-21C9-47AF-8D52-A6EB865BA89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2870675A-21C9-47AF-8D52-A6EB865BA89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2870675A-21C9-47AF-8D52-A6EB865BA89E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23D62A4B-B759-46B0-8AB2-FD0A6591B484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23D62A4B-B759-46B0-8AB2-FD0A6591B484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23D62A4B-B759-46B0-8AB2-FD0A6591B484}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -174,7 +168,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5CF00742-EE11-401C-B6B4-50BD4A10AD34} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{C1612F3A-1DE0-4772-BF06-86997B73DA60} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
-		{2870675A-21C9-47AF-8D52-A6EB865BA89E} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{23D62A4B-B759-46B0-8AB2-FD0A6591B484} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{4926EE65-45FB-464A-92F9-787D4A241B1E} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{A97CE209-C983-48FE-A2B4-FADC21BB7F41} = {6FB01238-DA67-4BC0-98B7-01F07947419F}

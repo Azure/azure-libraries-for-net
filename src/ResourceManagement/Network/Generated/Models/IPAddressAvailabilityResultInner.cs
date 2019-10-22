@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for CheckIPAddressAvailability API service call
+    /// Response for CheckIPAddressAvailability API service call.
     /// </summary>
     public partial class IPAddressAvailabilityResultInner
     {

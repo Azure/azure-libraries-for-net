@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definit
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Sql.Fluent;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition;
 
     /// <summary>
@@ -245,7 +246,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definit
         /// </summary>
         /// <param name="edition">Edition to be set for Elastic Pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate WithEdition(string edition);
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate WithEdition(ElasticPoolEdition edition);
 
         /// <summary>
         /// Sets the premium edition for the SQL Elastic Pool.

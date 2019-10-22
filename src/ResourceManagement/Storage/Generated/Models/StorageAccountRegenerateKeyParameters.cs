@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// StorageAccountRegenerateKeyParameters class.
         /// </summary>
         /// <param name="keyName">The name of storage keys that want to be
-        /// regenerated, possible vaules are key1, key2.</param>
+        /// regenerated, possible values are key1, key2.</param>
         public StorageAccountRegenerateKeyParameters(string keyName)
         {
             KeyName = keyName;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
 
         /// <summary>
         /// Gets or sets the name of storage keys that want to be regenerated,
-        /// possible vaules are key1, key2.
+        /// possible values are key1, key2.
         /// </summary>
         [JsonProperty(PropertyName = "keyName")]
         public string KeyName { get; set; }

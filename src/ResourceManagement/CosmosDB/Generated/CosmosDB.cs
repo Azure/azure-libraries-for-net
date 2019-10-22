@@ -8,6 +8,9 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -16,19 +19,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// Azure Cosmos DB Database Service Resource Provider REST API
     /// </summary>
-    public partial class CosmosDB : ServiceClient<CosmosDB>, ICosmosDB, IAzureClient
+    public partial class CosmosDB : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<CosmosDB>, ICosmosDB, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -38,11 +34,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Azure subscription ID.
@@ -56,19 +47,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -140,193 +132,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Initializes a new instance of the CosmosDB class.
         /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected CosmosDB(params DelegatingHandler[] handlers) : base(handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected CosmosDB(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected CosmosDB(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public CosmosDB(RestClient restClient) : base(restClient)
         {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected CosmosDB(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public CosmosDB(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public CosmosDB(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public CosmosDB(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public CosmosDB(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
         }
 
         /// <summary>
@@ -336,7 +146,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Initializes client properties.
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             DatabaseAccounts = new DatabaseAccountsOperations(this);
             Operations = new Operations(this);
@@ -351,7 +161,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             CollectionPartition = new CollectionPartitionOperations(this);
             PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
             PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            this.BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2015-04-08";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

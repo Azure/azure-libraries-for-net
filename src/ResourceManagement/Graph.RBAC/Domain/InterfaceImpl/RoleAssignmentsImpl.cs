@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>A list of role assignments.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignments.ListByScope(string scope)
         {
-            return this.ListByScope(scope) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>;
+            return this.ListByScope(scope);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An immutable representation of the role assignment.</return>
         async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignments.GetByScopeAsync(string scope, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByScopeAsync(scope, name, cancellationToken) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment;
+            return await this.GetByScopeAsync(scope, name, cancellationToken);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An observable of role assignments.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignments.ListByScopeAsync(string scope, CancellationToken cancellationToken)
         {
-            return await this.ListByScopeAsync(scope, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>;
+            return await this.ListByScopeAsync(scope, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An immutable representation of the role assignment.</return>
         Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignments.GetByScope(string scope, string name)
         {
-            return this.GetByScope(scope, name) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment;
+            return this.GetByScope(scope, name);
         }
     }
 }

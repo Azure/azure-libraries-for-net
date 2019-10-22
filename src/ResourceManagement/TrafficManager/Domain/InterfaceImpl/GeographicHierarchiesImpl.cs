@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>The root of the Geographic Hierarchy used by the Geographic traffic routing method.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicHierarchies.GetRoot()
         {
-            return this.GetRoot() as Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation;
+            return this.GetRoot();
         }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManager;
+                return this.Manager();
             }
         }
     }

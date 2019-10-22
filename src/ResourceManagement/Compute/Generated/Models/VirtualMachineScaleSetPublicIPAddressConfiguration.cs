@@ -8,9 +8,13 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -38,11 +42,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// IP address.</param>
         /// <param name="dnsSettings">The dns settings to be applied on the
         /// publicIP addresses .</param>
-        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings))
+        /// <param name="ipTags">The list of IP tags associated with the public
+        /// IP address.</param>
+        /// <param name="publicIPPrefix">The PublicIPPrefix from which to
+        /// allocate publicIP addresses.</param>
+        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), Management.ResourceManager.Fluent.SubResource publicIPPrefix = default(Management.ResourceManager.Fluent.SubResource))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             DnsSettings = dnsSettings;
+            IpTags = ipTags;
+            PublicIPPrefix = publicIPPrefix;
             CustomInit();
         }
 
@@ -69,6 +79,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsSettings")]
         public VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings DnsSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of IP tags associated with the public IP
+        /// address.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ipTags")]
+        public IList<VirtualMachineScaleSetIpTag> IpTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PublicIPPrefix from which to allocate publicIP
+        /// addresses.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicIPPrefix")]
+        public Management.ResourceManager.Fluent.SubResource PublicIPPrefix { get; set; }
 
         /// <summary>
         /// Validate the object.

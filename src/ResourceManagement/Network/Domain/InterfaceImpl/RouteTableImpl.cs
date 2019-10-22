@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IRouteTable> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IRouteTable>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IRouteTable;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Routes() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IRoute>;
+                return this.Routes();
             }
         }
 
         /// <return>List of subnets associated with this resource.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet> Microsoft.Azure.Management.Network.Fluent.IHasAssociatedSubnets.ListAssociatedSubnets()
         {
-            return this.ListAssociatedSubnets() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet>;
+            return this.ListAssociatedSubnets();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         RouteTable.Update.IUpdate RouteTable.Update.IWithRoute.WithRoute(string destinationAddressPrefix, RouteNextHopType nextHop)
         {
-            return this.WithRoute(destinationAddressPrefix, nextHop) as RouteTable.Update.IUpdate;
+            return this.WithRoute(destinationAddressPrefix, nextHop);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         RouteTable.Update.IUpdate RouteTable.Update.IWithRoute.WithRouteViaVirtualAppliance(string destinationAddressPrefix, string ipAddress)
         {
-            return this.WithRouteViaVirtualAppliance(destinationAddressPrefix, ipAddress) as RouteTable.Update.IUpdate;
+            return this.WithRouteViaVirtualAppliance(destinationAddressPrefix, ipAddress);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         RouteTable.Update.IUpdate RouteTable.Update.IWithRoute.WithoutRoute(string name)
         {
-            return this.WithoutRoute(name) as RouteTable.Update.IUpdate;
+            return this.WithoutRoute(name);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the update.</return>
         Route.Update.IUpdate RouteTable.Update.IWithRoute.UpdateRoute(string name)
         {
-            return this.UpdateRoute(name) as Route.Update.IUpdate;
+            return this.UpdateRoute(name);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the definition.</return>
         Route.UpdateDefinition.IBlank<RouteTable.Update.IUpdate> RouteTable.Update.IWithRoute.DefineRoute(string name)
         {
-            return this.DefineRoute(name) as Route.UpdateDefinition.IBlank<RouteTable.Update.IUpdate>;
+            return this.DefineRoute(name);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         RouteTable.Definition.IWithCreate RouteTable.Definition.IWithRoute.WithRoute(string destinationAddressPrefix, RouteNextHopType nextHop)
         {
-            return this.WithRoute(destinationAddressPrefix, nextHop) as RouteTable.Definition.IWithCreate;
+            return this.WithRoute(destinationAddressPrefix, nextHop);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         RouteTable.Definition.IWithCreate RouteTable.Definition.IWithRoute.WithRouteViaVirtualAppliance(string destinationAddressPrefix, string ipAddress)
         {
-            return this.WithRouteViaVirtualAppliance(destinationAddressPrefix, ipAddress) as RouteTable.Definition.IWithCreate;
+            return this.WithRouteViaVirtualAppliance(destinationAddressPrefix, ipAddress);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the definition.</return>
         Route.Definition.IBlank<RouteTable.Definition.IWithCreate> RouteTable.Definition.IWithRoute.DefineRoute(string name)
         {
-            return this.DefineRoute(name) as Route.Definition.IBlank<RouteTable.Definition.IWithCreate>;
+            return this.DefineRoute(name);
         }
     }
 }

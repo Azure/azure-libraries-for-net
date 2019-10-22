@@ -32,7 +32,7 @@ namespace ManageSimpleApplicationGateway
          *    Routing rule 1 = HTTP listener 1 => backend server pool 1
          *    (round-robin load distribution)
          *
-         *  - MODIFY the application gateway - re-configure the Routing Rule 1 for SSL offload &
+         *  - MODIFY the application gateway - re-configure the Routing Rule 1 for SSL offload and
          *    add a host name, www.contoso.com
          *
          *    Change listener 1 from HTTP to HTTPS

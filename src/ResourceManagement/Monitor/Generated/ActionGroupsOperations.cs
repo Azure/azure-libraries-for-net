@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -167,11 +167,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (actionGroup != null)
+            if(actionGroup != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(actionGroup, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActionGroupResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string actionGroupName, ActionGroupPatchBodyInner actionGroupPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActionGroupResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string actionGroupName, ActionGroupPatchBody actionGroupPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "actionGroupPatch");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -746,11 +746,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (actionGroupPatch != null)
+            if(actionGroupPatch != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(actionGroupPatch, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -949,7 +949,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1091,7 +1091,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1187,7 +1187,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
         /// <summary>
         /// Enable a receiver in an action group. This changes the receiver's status
-        /// from Disabled to Enabled.
+        /// from Disabled to Enabled. This operation is only supported for Email or SMS
+        /// receivers.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1234,7 +1235,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "receiverName");
             }
-            string apiVersion = "2018-03-01";
+            string apiVersion = "2019-06-01";
             EnableRequest enableRequest = new EnableRequest();
             if (receiverName != null)
             {
@@ -1291,7 +1292,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1303,11 +1304,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (enableRequest != null)
+            if(enableRequest != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(enableRequest, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -1335,7 +1336,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="name">The name of the resource. (Note, this is not the resource ID.).</param>
         /// <return>An immutable representation of the resource.</return>
-        async Task<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor>.GetByNameAsync(string name, CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor>.GetByNameAsync(string name, CancellationToken cancellationToken)
         {
             return await this.GetByNameAsync(name, cancellationToken);
         }

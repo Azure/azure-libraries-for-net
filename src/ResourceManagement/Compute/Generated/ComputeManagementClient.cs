@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -22,12 +24,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Compute Client
     /// </summary>
-    public partial class ComputeManagementClient : ServiceClient<ComputeManagementClient>, IComputeManagementClient, IAzureClient
+    public partial class ComputeManagementClient : FluentServiceClientBase<ComputeManagementClient>, IComputeManagementClient, IAzureClient
     {
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public System.Uri BaseUri { get; set; }
+        //public System.Uri BaseUri { get; set; }
 
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Credentials needed for the client to connect to Azure.
         /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
+        //public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
@@ -52,19 +54,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -77,6 +80,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IAvailabilitySetsOperations.
         /// </summary>
         public virtual IAvailabilitySetsOperations AvailabilitySets { get; private set; }
+
+        /// <summary>
+        /// Gets the IProximityPlacementGroupsOperations.
+        /// </summary>
+        public virtual IProximityPlacementGroupsOperations ProximityPlacementGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IDedicatedHostGroupsOperations.
+        /// </summary>
+        public virtual IDedicatedHostGroupsOperations DedicatedHostGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IDedicatedHostsOperations.
+        /// </summary>
+        public virtual IDedicatedHostsOperations DedicatedHosts { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
@@ -99,6 +117,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual IUsageOperations Usage { get; private set; }
 
         /// <summary>
+        /// Gets the IVirtualMachinesOperations.
+        /// </summary>
+        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
+
+        /// <summary>
         /// Gets the IVirtualMachineSizesOperations.
         /// </summary>
         public virtual IVirtualMachineSizesOperations VirtualMachineSizes { get; private set; }
@@ -107,11 +130,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IImagesOperations.
         /// </summary>
         public virtual IImagesOperations Images { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachinesOperations.
-        /// </summary>
-        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineScaleSetsOperations.
@@ -159,215 +177,57 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual ISnapshotsOperations Snapshots { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IGalleriesOperations.
         /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected ComputeManagementClient(params DelegatingHandler[] handlers) : base(handlers)
-        {
-            Initialize();
-        }
+        public virtual IGalleriesOperations Galleries { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IGalleryImagesOperations.
         /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected ComputeManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        {
-            Initialize();
-        }
+        public virtual IGalleryImagesOperations GalleryImages { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IGalleryImageVersionsOperations.
         /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected ComputeManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
+        public virtual IGalleryImageVersionsOperations GalleryImageVersions { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IGalleryApplicationsOperations.
         /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected ComputeManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
+        public virtual IGalleryApplicationsOperations GalleryApplications { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IGalleryApplicationVersionsOperations.
         /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ComputeManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
+        public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
+        /// Gets the IContainerServicesOperations.
         /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ComputeManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public virtual IContainerServicesOperations ContainerServices { get; private set; }
+
+        public ComputeManagementClient(RestClient restClient)
+            : base(restClient)
         {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ComputeManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ComputeManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ComputeManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// An optional partial-method to perform custom initialization.
-        /// </summary>
-        partial void CustomInitialize();
         /// <summary>
         /// Initializes client properties.
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             Operations = new Operations(this);
             AvailabilitySets = new AvailabilitySetsOperations(this);
+            ProximityPlacementGroups = new ProximityPlacementGroupsOperations(this);
+            DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
+            DedicatedHosts = new DedicatedHostsOperations(this);
             VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             VirtualMachineImages = new VirtualMachineImagesOperations(this);
             Usage = new UsageOperations(this);
+            VirtualMachines = new VirtualMachinesOperations(this);
             VirtualMachineSizes = new VirtualMachineSizesOperations(this);
             Images = new ImagesOperations(this);
-            VirtualMachines = new VirtualMachinesOperations(this);
             VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
             VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
@@ -377,6 +237,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             ResourceSkus = new ResourceSkusOperations(this);
             Disks = new DisksOperations(this);
             Snapshots = new SnapshotsOperations(this);
+            Galleries = new GalleriesOperations(this);
+            GalleryImages = new GalleryImagesOperations(this);
+            GalleryImageVersions = new GalleryImageVersionsOperations(this);
+            GalleryApplications = new GalleryApplicationsOperations(this);
+            GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
+            ContainerServices = new ContainerServicesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -407,7 +273,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         new Iso8601TimeSpanConverter()
                     }
             };
-            CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }

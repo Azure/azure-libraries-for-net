@@ -25,5 +25,38 @@ namespace Samples.Tests
                 QueryMetricsAndActivityLogs.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact(Skip = "Live only sample due to the need to query metrics at the current execution time which is always variable.")]
+        [Trait("Samples", "Monitor")]
+        public void SecurityBreachOrRiskActivityLogAlertsTest()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                SecurityBreachOrRiskActivityLogAlerts.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact]
+        [Trait("Samples", "Monitor")]
+        public void WebAppPerformanceMonitoringAlertsTest()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                WebAppPerformanceMonitoringAlerts.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact]
+        [Trait("Samples", "Monitor")]
+        public void AutoscaleSettingsBasedOnPerformanceOrScheduleTest()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                AutoscaleSettingsBasedOnPerformanceOrSchedule.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }

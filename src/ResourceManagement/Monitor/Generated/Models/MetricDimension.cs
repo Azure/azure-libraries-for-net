@@ -14,6 +14,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Specifies a metric dimension.
+    /// </summary>
     public partial class MetricDimension
     {
         /// <summary>
@@ -28,7 +31,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Initializes a new instance of the MetricDimension class.
         /// </summary>
         /// <param name="name">Name of the dimension.</param>
-        /// <param name="operatorProperty">the dimension operator.</param>
+        /// <param name="operatorProperty">the dimension operator. Only
+        /// 'Include' and 'Exclude' are supported</param>
         /// <param name="values">list of dimension values.</param>
         public MetricDimension(string name, string operatorProperty, IList<string> values)
         {
@@ -50,7 +54,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the dimension operator.
+        /// Gets or sets the dimension operator. Only 'Include' and 'Exclude'
+        /// are supported
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
         public string OperatorProperty { get; set; }

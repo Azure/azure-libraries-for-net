@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -56,7 +58,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// settings at all.</param>
         /// <param name="provisioningState">The provisioning state, which only
         /// appears in the response.</param>
-        public VirtualMachineScaleSetExtensionInner(string id = default(string), string name = default(string), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string))
+        /// <param name="provisionAfterExtensions">Collection of extension
+        /// names after which this extension needs to be provisioned.</param>
+        public VirtualMachineScaleSetExtensionInner(string id = default(string), string name = default(string), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>))
             : base(id)
         {
             Name = name;
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             Settings = settings;
             ProtectedSettings = protectedSettings;
             ProvisioningState = provisioningState;
+            ProvisionAfterExtensions = provisionAfterExtensions;
             CustomInit();
         }
 
@@ -136,6 +141,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets collection of extension names after which this
+        /// extension needs to be provisioned.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisionAfterExtensions")]
+        public IList<string> ProvisionAfterExtensions { get; set; }
 
     }
 }

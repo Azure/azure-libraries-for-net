@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:411E9B7C553E0F8FE64EB33DF4872E6A:A0F10EC124D07E925E3BE6285203F7E0
-        public string ServiceLevelObjective()
+        public ServiceObjectiveName ServiceLevelObjective()
         {
             return this.Inner.ServiceLevelObjective;
         }

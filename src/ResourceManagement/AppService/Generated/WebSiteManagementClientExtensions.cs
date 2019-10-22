@@ -132,6 +132,32 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// Gets a list of meters for a given location.
+            /// </summary>
+            /// <remarks>
+            /// Gets a list of meters for a given location.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingLocation'>
+            /// Azure Location of billable resource
+            /// </param>
+            /// <param name='osType'>
+            /// App Service OS type meters used for
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingMeter>> ListBillingMetersAsync(this IWebSiteManagementClient operations, string billingLocation = default(string), string osType = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListBillingMetersWithHttpMessagesAsync(billingLocation, osType, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Check if a resource name is available.
             /// </summary>
             /// <remarks>
@@ -155,7 +181,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResourceNameAvailabilityInner> CheckNameAvailabilityAsync(this IWebSiteManagementClient operations, string name, string type, bool? isFqdn = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ResourceNameAvailabilityInner> CheckNameAvailabilityAsync(this IWebSiteManagementClient operations, string name, CheckNameResourceTypes type, bool? isFqdn = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, type, isFqdn, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -194,19 +220,50 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// </param>
             /// <param name='sku'>
             /// Name of SKU used to filter the regions. Possible values include: 'Free',
-            /// 'Shared', 'Basic', 'Standard', 'Premium', 'PremiumV2', 'Dynamic',
-            /// 'Isolated'
+            /// 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic', 'Isolated',
+            /// 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
             /// </param>
             /// <param name='linuxWorkersEnabled'>
             /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions
             /// that support Linux workers.
             /// </param>
+            /// <param name='xenonWorkersEnabled'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions
+            /// that support Xenon workers.
+            /// </param>
+            /// <param name='linuxDynamicWorkersEnabled'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions
+            /// that support Linux Consumption Workers.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<GeoRegion>> ListGeoRegionsAsync(this IWebSiteManagementClient operations, string sku = default(string), bool? linuxWorkersEnabled = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<GeoRegion>> ListGeoRegionsAsync(this IWebSiteManagementClient operations, SkuName sku = default(SkuName), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListGeoRegionsWithHttpMessagesAsync(sku, linuxWorkersEnabled, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListGeoRegionsWithHttpMessagesAsync(sku, linuxWorkersEnabled, xenonWorkersEnabled, linuxDynamicWorkersEnabled, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List all apps that are assigned to a hostname.
+            /// </summary>
+            /// <remarks>
+            /// List all apps that are assigned to a hostname.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the object.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<IdentifierInner>> ListSiteIdentifiersAssignedToHostNameAsync(this IWebSiteManagementClient operations, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSiteIdentifiersAssignedToHostNameWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -269,7 +326,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetValidationFailureDetailsInner> VerifyHostingEnvironmentVnetAsync(this IWebSiteManagementClient operations, VnetParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetValidationFailureDetailsInner> VerifyHostingEnvironmentVnetAsync(this IWebSiteManagementClient operations, VnetParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.VerifyHostingEnvironmentVnetWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -295,7 +352,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task MoveAsync(this IWebSiteManagementClient operations, string resourceGroupName, CsmMoveResourceEnvelopeInner moveResourceEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task MoveAsync(this IWebSiteManagementClient operations, string resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.MoveWithHttpMessagesAsync(resourceGroupName, moveResourceEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -318,9 +375,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ValidateResponseInner> ValidateAsync(this IWebSiteManagementClient operations, string resourceGroupName, ValidateRequestInner validateRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ValidateResponseInner> ValidateAsync(this IWebSiteManagementClient operations, string resourceGroupName, ValidateRequest validateRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ValidateWithHttpMessagesAsync(resourceGroupName, validateRequest, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validate if the container settings are correct.
+            /// </summary>
+            /// <remarks>
+            /// Validate if the container settings are correct.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='validateContainerSettingsRequest'>
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> ValidateContainerSettingsAsync(this IWebSiteManagementClient operations, ValidateContainerSettingsRequest validateContainerSettingsRequest, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ValidateContainerSettingsWithHttpMessagesAsync(validateContainerSettingsRequest, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -344,7 +426,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ValidateMoveAsync(this IWebSiteManagementClient operations, string resourceGroupName, CsmMoveResourceEnvelopeInner moveResourceEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ValidateMoveAsync(this IWebSiteManagementClient operations, string resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.ValidateMoveWithHttpMessagesAsync(resourceGroupName, moveResourceEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -373,6 +455,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// Gets a list of meters for a given location.
+            /// </summary>
+            /// <remarks>
+            /// Gets a list of meters for a given location.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingMeter>> ListBillingMetersNextAsync(this IWebSiteManagementClient operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListBillingMetersNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get a list of available geographical regions.
             /// </summary>
             /// <remarks>
@@ -390,6 +495,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<GeoRegion>> ListGeoRegionsNextAsync(this IWebSiteManagementClient operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListGeoRegionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List all apps that are assigned to a hostname.
+            /// </summary>
+            /// <remarks>
+            /// List all apps that are assigned to a hostname.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<IdentifierInner>> ListSiteIdentifiersAssignedToHostNameNextAsync(this IWebSiteManagementClient operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSiteIdentifiersAssignedToHostNameNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

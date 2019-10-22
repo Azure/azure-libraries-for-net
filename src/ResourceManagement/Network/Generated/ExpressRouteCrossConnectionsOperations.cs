@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device
+        /// The path of the device.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             TagsObject crossConnectionParameters = new TagsObject();
             if (tags != null)
             {
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device
+        /// The path of the device.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1433,7 +1433,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1646,7 +1646,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

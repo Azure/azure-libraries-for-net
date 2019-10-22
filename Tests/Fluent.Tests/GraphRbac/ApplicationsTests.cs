@@ -43,22 +43,37 @@ namespace Fluent.Tests.Graph.RBAC
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest.cer"))
                                 .WithDuration(TimeSpan.FromDays(100))
                                 .Attach()
+                            .DefineCertificateCredential("cert")
+                                .WithAsymmetricX509Certificate()
+                                .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
+                                .WithDuration(TimeSpan.FromDays(80))
+                                .Attach()
                             .Create();
                     Console.WriteLine(application.Id + " - " + application.ApplicationId);
                     Assert.NotNull(application.Id);
                     Assert.NotNull(application.ApplicationId);
                     Assert.Equal(name, application.Name);
-                    Assert.Equal(1, application.CertificateCredentials.Count);
+                    Assert.Equal(2, application.CertificateCredentials.Count);
                     Assert.Equal(1, application.PasswordCredentials.Count);
                     Assert.Equal(1, application.ReplyUrls.Count);
                     Assert.Equal(1, application.IdentifierUris.Count);
                     Assert.Equal("http://easycreate.azure.com/" + name, application.SignOnUrl.ToString());
 
                     application.Update()
+                            .DefinePasswordCredential("passwd2")
+                                .WithPasswordValue("StrongPass!12")
+                                .WithDuration(TimeSpan.FromDays(20))
+                                .Attach()
+                            .Apply();
+                    Console.WriteLine(application.Id + " - " + application.ApplicationId);
+                    Assert.Equal(2, application.PasswordCredentials.Count);
+
+                    application.Update()
                             .WithoutCredential("passwd")
                             .Apply();
                     Console.WriteLine(application.Id + " - " + application.ApplicationId);
-                    Assert.Equal(0, application.PasswordCredentials.Count);
+                    Assert.Equal(1, application.PasswordCredentials.Count);
+                    Assert.Equal("passwd2", application.PasswordCredentials.First().Value.Name);
                 }
                 finally
                 {

@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             else
             {
-                return FromStorageAccountType(SnapshotStorageAccountTypes.Parse(snapshotSku.Name));
+                return FromStorageAccountType(snapshotSku.Name);
             }
         }
 

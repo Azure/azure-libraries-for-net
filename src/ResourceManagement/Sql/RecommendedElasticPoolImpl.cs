@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:65131A7039722B315DD5137C9DE38A3F:7157334C1BFA649E27CA8B6E9688E986
-        public string DatabaseEdition()
+        public ElasticPoolEdition DatabaseEdition()
         {
             return this.Inner.DatabaseEdition;
         }

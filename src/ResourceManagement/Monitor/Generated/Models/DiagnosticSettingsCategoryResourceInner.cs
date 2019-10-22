@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The diagnostic settings category resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiagnosticSettingsCategoryResourceInner : ProxyOnlyResource
+    public partial class DiagnosticSettingsCategoryResourceInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -32,9 +32,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Initializes a new instance of the
         /// DiagnosticSettingsCategoryResourceInner class.
         /// </summary>
-        /// <param name="id">Azure resource Id</param>
-        /// <param name="name">Azure resource name</param>
-        /// <param name="type">Azure resource type</param>
         /// <param name="categoryType">The type of the diagnostic settings
         /// category. Possible values include: 'Metrics', 'Logs'</param>
         public DiagnosticSettingsCategoryResourceInner(string id = default(string), string name = default(string), string type = default(string), CategoryType categoryType = default(CategoryType))

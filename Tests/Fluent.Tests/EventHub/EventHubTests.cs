@@ -287,6 +287,7 @@ namespace Fluent.Tests.EventHub
                                 //
                                 .WithDataCaptureWindowSizeInSeconds(120)
                                 .WithDataCaptureWindowSizeInMB(300)
+                                .WithDataCaptureSkipEmptyArchives(true)
                                 .Create();
 
                     Assert.NotNull(eventHub1);
@@ -302,6 +303,7 @@ namespace Fluent.Tests.EventHub
                     Assert.Contains("/storageAccounts/", eventHub1.CaptureDestination.StorageAccountResourceId);
                     Assert.Contains(stgName, eventHub1.CaptureDestination.StorageAccountResourceId);
                     Assert.Equal(eventHub1.CaptureDestination.BlobContainer, containerName1, ignoreCase: true);
+                    Assert.True(eventHub1.DataCaptureSkipEmptyArchives);
 
                     // Create another event Hub in the same namespace with data capture uses the same storage account
                     //

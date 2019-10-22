@@ -8,41 +8,36 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
-    using Newtonsoft.Json;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using System.Linq;
 
-    public partial class ProxyResourceInner : Rest.Azure.IResource
+    /// <summary>
+    /// ARM proxy resource.
+    /// </summary>
+    public partial class ProxyResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
-        /// Defines shared properties of an Azure NestedResourceInner.
+        /// Initializes a new instance of the ProxyResourceInner class.
         /// </summary>
-        public ProxyResourceInner() { }
-
-        /// <summary>
-        /// Initializes a new instance of the NestedResourceInner class.
-        /// </summary>
-        public ProxyResourceInner(string id = default(string), string name = default(string), string type = default(string))
+        public ProxyResourceInner()
         {
-            Id = id;
-            Name = name;
-            Type = type;
+            CustomInit();
         }
 
         /// <summary>
-        /// Resource Id
+        /// Initializes a new instance of the ProxyResourceInner class.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public virtual string Id { get; protected set; }
+        public ProxyResourceInner(string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
+        {
+            CustomInit();
+        }
 
         /// <summary>
-        /// Resource name
+        /// An initialization method that performs custom operations like setting defaults
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        partial void CustomInit();
 
-        /// <summary>
-        /// Resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
     }
 }

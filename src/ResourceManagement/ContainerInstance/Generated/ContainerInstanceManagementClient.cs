@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -19,13 +20,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Net;
     using System.Net.Http;
 
-    public partial class ContainerInstanceManagementClient : ServiceClient<ContainerInstanceManagementClient>, IContainerInstanceManagementClient, IAzureClient
+    public partial class ContainerInstanceManagementClient : FluentServiceClientBase<ContainerInstanceManagementClient>, IContainerInstanceManagementClient, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -35,11 +31,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
@@ -54,19 +45,20 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -86,205 +78,19 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         public virtual IContainerGroupUsageOperations ContainerGroupUsage { get; private set; }
 
         /// <summary>
-        /// Gets the IContainerLogsOperations.
+        /// Gets the IContainerOperations.
         /// </summary>
-        public virtual IContainerLogsOperations ContainerLogs { get; private set; }
-
-        /// <summary>
-        /// Gets the IStartContainerOperations.
-        /// </summary>
-        public virtual IStartContainerOperations StartContainer { get; private set; }
+        public virtual IContainerOperations Container { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ContainerInstanceManagementClient class.
         /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected ContainerInstanceManagementClient(params DelegatingHandler[] handlers) : base(handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected ContainerInstanceManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected ContainerInstanceManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public ContainerInstanceManagementClient(RestClient restClient)
+            : base(restClient)
         {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected ContainerInstanceManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ContainerInstanceManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ContainerInstanceManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ContainerInstanceManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ContainerInstanceManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public ContainerInstanceManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
         }
 
         /// <summary>
@@ -294,15 +100,14 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <summary>
         /// Initializes client properties.
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             ContainerGroups = new ContainerGroupsOperations(this);
             Operations = new Operations(this);
             ContainerGroupUsage = new ContainerGroupUsageOperations(this);
-            ContainerLogs = new ContainerLogsOperations(this);
-            StartContainer = new StartContainerOperations(this);
+            Container = new ContainerOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-04-01";
+            ApiVersion = "2018-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

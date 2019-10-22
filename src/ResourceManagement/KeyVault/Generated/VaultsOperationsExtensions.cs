@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
@@ -37,7 +39,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VaultInner> CreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VaultInner> CreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VaultInner> UpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultPatchParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VaultInner> UpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultPatchParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -135,7 +137,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VaultAccessPolicyParametersInner> UpdateAccessPolicyAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyPropertiesInner properties, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VaultAccessPolicyParametersInner> UpdateAccessPolicyAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyProperties properties, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateAccessPolicyWithHttpMessagesAsync(resourceGroupName, vaultName, operationKind, properties, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -262,7 +264,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Microsoft.Azure.Management.ResourceManager.Fluent.Resource>> ListAsync(this IVaultsOperations operations, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Management.ResourceManager.Fluent.SubResource>> ListAsync(this IVaultsOperations operations, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -285,6 +287,32 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             public static async Task<CheckNameAvailabilityResultInner> CheckNameAvailabilityAsync(this IVaultsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update a key vault in the specified subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the Resource Group to which the server belongs.
+            /// </param>
+            /// <param name='vaultName'>
+            /// Name of the vault
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to create or update the vault
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VaultInner> BeginCreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -386,7 +414,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Microsoft.Azure.Management.ResourceManager.Fluent.Resource>> ListNextAsync(this IVaultsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Management.ResourceManager.Fluent.SubResource>> ListNextAsync(this IVaultsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

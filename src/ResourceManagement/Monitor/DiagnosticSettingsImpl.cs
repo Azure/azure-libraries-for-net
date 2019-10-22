@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     using Microsoft.Azure.Management.Monitor.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Rest.Azure;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -114,16 +115,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
 
             List<string> ids1 = new List<string>();
-            List<Task> tasks = new List<Task>();
+            var tasks = new List<Task>();
 
             foreach (var id in ids)
             {
-                Task t = this.DeleteByIdAsync(id, cancellationToken)
-                    .ContinueWith((Task parent) => { ids1.Add(id); },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
-                tasks.Add(t);
+                tasks.Add(Task.Run(async () =>
+                                {
+                                    try
+                                    {
+                                        await this.DeleteByIdAsync(id, cancellationToken);
+                                    }
+                                    catch (CloudException)
+                                    { }
+                                    ids1.Add(id);
+                                }));
             }
 
             await Task.WhenAll(tasks);

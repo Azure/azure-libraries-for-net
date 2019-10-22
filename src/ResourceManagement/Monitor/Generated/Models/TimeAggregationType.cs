@@ -28,7 +28,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         [EnumMember(Value = "Total")]
         Total,
         [EnumMember(Value = "Count")]
-        Count
+        Count,
+        [EnumMember(Value = "Last")]
+        Last
     }
     internal static class TimeAggregationTypeEnumExtension
     {
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this TimeAggregationType value)
         {
-            switch (value)
+            switch( value )
             {
                 case TimeAggregationType.Average:
                     return "Average";
@@ -51,13 +53,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                     return "Total";
                 case TimeAggregationType.Count:
                     return "Count";
+                case TimeAggregationType.Last:
+                    return "Last";
             }
             return null;
         }
 
         internal static TimeAggregationType? ParseTimeAggregationType(this string value)
         {
-            switch (value)
+            switch( value )
             {
                 case "Average":
                     return TimeAggregationType.Average;
@@ -69,6 +73,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                     return TimeAggregationType.Total;
                 case "Count":
                     return TimeAggregationType.Count;
+                case "Last":
+                    return TimeAggregationType.Last;
             }
             return null;
         }

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the edition of the Azure SQL Database.
         /// </summary>
-        string Edition { get; }
+        DatabaseEdition Edition { get; }
 
         /// <summary>
         /// Gets the SQL Sync Group entry point for the current database.
@@ -71,9 +71,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Service Level Objective that is currently active.
         /// </summary>
         System.Guid? CurrentServiceObjectiveId { get; }
-
-        /// <return>The upgradeHint value.</return>
-        Microsoft.Azure.Management.Sql.Fluent.IUpgradeHintInterface GetUpgradeHint();
 
         /// <summary>
         /// Gets the max size of the Azure SQL Database expressed in bytes.
@@ -99,6 +96,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the collation of the Azure SQL Database.
         /// </summary>
         string Collation { get; }
+
+        /// <summary>
+        /// Gets the tags for the current SQL Database
+        /// </summary>
+        IReadOnlyDictionary<string, string> Tags { get; }
 
         /// <summary>
         /// Imports into the current database from a specified URI path; the current database must be empty.
@@ -142,7 +144,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// SQL Database, this is the Service Level Objective that is being
         /// applied to the Azure SQL Database.
         /// </summary>
-        string RequestedServiceObjectiveName { get; }
+        ServiceObjectiveName RequestedServiceObjectiveName { get; }
 
         /// <return>All the replication links associated with this database.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IReplicationLink> ListReplicationLinks();
@@ -203,7 +205,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the Service Level Objective of the Azure SQL Database.
         /// </summary>
-        string ServiceLevelObjective { get; }
+        ServiceObjectiveName ServiceLevelObjective { get; }
 
         /// <summary>
         /// Renames the database.

@@ -1,14 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     internal partial class AvailabilitySetsImpl
     {
@@ -28,7 +25,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the new resource definition.</return>
         AvailabilitySet.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<AvailabilitySet.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as AvailabilitySet.Definition.IBlank;
+            return this.Define(name);
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.List()
+        {
+            return this.List();
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
+        {
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -38,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -48,25 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The list of resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>;
-        }
-
-        /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
-        /// </summary>
-        /// <return>List of resources.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.List()
-        {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>;
-        }
-
-        /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
-        /// </summary>
-        /// <return>List of resources.</return>
-        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
-        {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>;
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
         }
     }
 }

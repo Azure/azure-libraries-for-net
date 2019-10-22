@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly SecurityRuleProtocol Tcp = Parse("Tcp");
         public static readonly SecurityRuleProtocol Udp = Parse("Udp");
+        public static readonly SecurityRuleProtocol Icmp = Parse("Icmp");
+        public static readonly SecurityRuleProtocol Esp = Parse("Esp");
         public static readonly SecurityRuleProtocol Asterisk = Parse("*");
     }
 }

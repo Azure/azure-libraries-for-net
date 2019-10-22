@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.De
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ContainerService.Fluent.Models;
 
     /// <summary>
     /// The stage of the container service definition allowing to specific the Linux root username.
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.De
         /// </summary>
         /// <param name="vmSize">The size of the VM.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterVMSize(ContainerServiceVMSizeTypes vmSize);
     }
 
     /// <summary>
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.De
         /// </summary>
         /// <param name="storageProfile">The storage kind to be used for every machine in the master pool.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterStorageProfile(StorageProfileTypes storageProfile);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition.IWithCreate WithMasterStorageProfile(ContainerServiceStorageProfileTypes storageProfile);
     }
 
     /// <summary>

@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for Bypass.
     /// </summary>
-    public static class Bypass
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<Bypass>))]
+    public class Bypass : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<Bypass>
     {
-        public const string None = "None";
-        public const string Logging = "Logging";
-        public const string Metrics = "Metrics";
-        public const string AzureServices = "AzureServices";
+        public static readonly Bypass None = Parse("None");
+        public static readonly Bypass Logging = Parse("Logging");
+        public static readonly Bypass Metrics = Parse("Metrics");
+        public static readonly Bypass AzureServices = Parse("AzureServices");
     }
 }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             get
             {
-                return this.AccessKeys() as System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType, string>;
+                return this.AccessKeys();
             }
         }
 

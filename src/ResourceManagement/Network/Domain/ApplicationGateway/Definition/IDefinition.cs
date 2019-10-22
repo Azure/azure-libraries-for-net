@@ -109,6 +109,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     }
 
     /// <summary>
+    /// The stage of an application gateway definition allowing to specify Managed Service Identities.
+    /// </summary>
+    public interface IWithManagedServiceIdentity 
+    {
+        /// <summary>
+        /// Specifies an identity to be associated with the application gateway.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithIdentity(ManagedServiceIdentity identity);
+    }
+
+    /// <summary>
     /// The stage of an application gateway definition allowing to add a backend.
     /// </summary>
     public interface IWithBackend
@@ -166,6 +179,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         /// <param name="instanceCount">The capacity as a number between 1 and 10 but also based on the limits imposed by the selected application gateway size.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithInstanceCount(int instanceCount);
+
+
+        /// <summary>
+        /// Specifies the min and max auto scale bound.
+        /// </summary>
+        /// <param name="minCapacity">Lower bound on number of Application Gateway capacity.</param>
+        /// <param name="maxCapacity">Upper bound on number of Application Gateway capacity.</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithAutoscale(int minCapacity, int maxCapacity);
     }
 
     /// <summary>
@@ -279,7 +301,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithSize,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithSku,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithWebApplicationFirewall,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithInstanceCount,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithSslCert,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithFrontendPort,
@@ -295,8 +318,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithDisabledSslProtocol,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAuthenticationCertificate,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRedirectConfiguration,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithManagedServiceIdentity,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAvailabilityZone
     {
+        /// <summary>
+        /// Enables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithEnableHttp2();
+
+        /// <summary>
+        /// Disables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithoutEnableHttp2();
     }
 
     /// <summary>
@@ -310,10 +345,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     }
 
     /// <summary>
-    /// The stage of an application gateway update allowing to specify the size.
+    /// The stage of an application gateway update allowing to specify the sku.
     /// </summary>
-    public interface IWithSize
+    public interface IWithSku
     {
+        /// <summary>
+        /// Set tier of an application gateway. Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'.
+        /// </summary>
+        /// <param name="tier">The tier value to set</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithTier(ApplicationGatewayTier tier);
+
         /// <summary>
         /// Specifies the size of the application gateway to create within the context of the selected tier.
         /// By default, the smallest size is used.
@@ -321,6 +363,28 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         /// <param name="size">An application gateway SKU name.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithSize(ApplicationGatewaySkuName size);
+    }
+
+    /// <summary>
+    /// The stage of the applicationgateway update allowing to specify WebApplicationFirewallConfiguration.
+    /// </summary>
+    public interface IWithWebApplicationFirewall
+    {
+
+        /// <summary>
+        /// Specifies web application firewall configuration with default values.
+        /// </summary>
+        /// <param name="enabled">enable the firewall when created</param>
+        /// <param name="mode">Web application firewall mode.</param>
+        /// <returns>the next stage of the definition</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithWebApplicationFirewall(bool enabled, ApplicationGatewayFirewallMode mode);
+
+        /// <summary>
+        /// Specifies web application firewall configuration.
+        /// </summary>
+        /// <param name="webApplicationFirewallConfiguration">The web application firewall configuration</param>
+        /// <returns>the next stage of the definition</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithWebApplicationFirewall(ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration);
     }
 
     /// <summary>

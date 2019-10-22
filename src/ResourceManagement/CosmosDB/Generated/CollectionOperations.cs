@@ -130,6 +130,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (databaseRid == null)
             {
@@ -384,6 +388,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (databaseRid == null)
             {
@@ -555,7 +563,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Retrieves metric defintions for the given collection.
+        /// Retrieves metric definitions for the given collection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure resource group.
@@ -628,6 +636,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (databaseRid == null)

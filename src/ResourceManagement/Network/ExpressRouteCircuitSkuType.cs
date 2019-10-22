@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:86E56D83C59D665A2120AFEA8D89804D:4E26040AFD9869C516B029A3057AAE99
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             string value = this.ToString();
             if (!(obj is ExpressRouteCircuitSkuType))

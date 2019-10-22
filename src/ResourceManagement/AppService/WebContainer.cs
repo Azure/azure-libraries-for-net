@@ -17,11 +17,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public static readonly WebContainer Tomcat8_5Newest = Parse("Tomcat 8.5");
         public static readonly WebContainer Tomcat8_5_6 = Parse("Tomcat 8.5.6");
         public static readonly WebContainer Tomcat8_5_20 = Parse("tomcat 8.5.20");
+        public static readonly WebContainer Tomcat8_5_31 = Parse("tomcat 8.5.31");
+        public static readonly WebContainer Tomcat8_5_34 = Parse("tomcat 8.5.34");
+        public static readonly WebContainer Tomcat8_5_37 = Parse("tomcat 8.5.37");
         public static readonly WebContainer Tomcat9_0Newest = Parse("tomcat 9.0");
         public static readonly WebContainer Tomcat9_0_0 = Parse("tomcat 9.0.0");
+        public static readonly WebContainer Tomcat9_0_8 = Parse("tomcat 9.0.8");
+        public static readonly WebContainer Tomcat9_0_12 = Parse("tomcat 9.0.12");
+        public static readonly WebContainer Tomcat9_0_14 = Parse("tomcat 9.0.14");
         public static readonly WebContainer Jetty9_1Newest = Parse("Jetty 9.1");
         public static readonly WebContainer Jetty9_1V20131115 = Parse("Jetty 9.1.0.20131115");
         public static readonly WebContainer Jetty9_3Newest = Parse("Jetty 9.3");
         public static readonly WebContainer Jetty9_3V20161014 = Parse("jetty 9.3.13.20161014");
+        public static readonly WebContainer Java8 = Parse("java 8");
     }
 }

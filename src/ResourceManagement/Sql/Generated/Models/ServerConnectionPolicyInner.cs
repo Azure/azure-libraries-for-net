@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="connectionType">The server connection type. Possible
         /// values include: 'Default', 'Proxy', 'Redirect'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="kind">Metadata used for the Azure portal
         /// experience.</param>
         /// <param name="location">Resource location.</param>

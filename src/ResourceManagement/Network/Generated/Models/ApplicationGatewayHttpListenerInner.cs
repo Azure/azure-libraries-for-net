@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -38,8 +40,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource of an application gateway.</param>
         /// <param name="frontendPort">Frontend port resource of an application
         /// gateway.</param>
-        /// <param name="protocol">Protocol. Possible values include: 'Http',
-        /// 'Https'</param>
+        /// <param name="protocol">Protocol of the HTTP listener. Possible
+        /// values include: 'Http', 'Https'</param>
         /// <param name="hostName">Host name of HTTP listener.</param>
         /// <param name="sslCertificate">SSL certificate resource of an
         /// application gateway.</param>
@@ -48,13 +50,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="provisioningState">Provisioning state of the HTTP
         /// listener resource. Possible values are: 'Updating', 'Deleting', and
         /// 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="customErrorConfigurations">Custom error configurations
+        /// of the HTTP listener.</param>
+        /// <param name="name">Name of the HTTP listener that is unique within
+        /// an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayHttpListenerInner(string id = default(string), Management.ResourceManager.Fluent.SubResource frontendIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource frontendPort = default(Management.ResourceManager.Fluent.SubResource), ApplicationGatewayProtocol protocol = default(ApplicationGatewayProtocol), string hostName = default(string), Management.ResourceManager.Fluent.SubResource sslCertificate = default(Management.ResourceManager.Fluent.SubResource), bool? requireServerNameIndication = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayHttpListenerInner(string id = default(string), Management.ResourceManager.Fluent.SubResource frontendIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource frontendPort = default(Management.ResourceManager.Fluent.SubResource), ApplicationGatewayProtocol protocol = default(ApplicationGatewayProtocol), string hostName = default(string), Management.ResourceManager.Fluent.SubResource sslCertificate = default(Management.ResourceManager.Fluent.SubResource), bool? requireServerNameIndication = default(bool?), string provisioningState = default(string), IList<ApplicationGatewayCustomError> customErrorConfigurations = default(IList<ApplicationGatewayCustomError>), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -64,6 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             SslCertificate = sslCertificate;
             RequireServerNameIndication = requireServerNameIndication;
             ProvisioningState = provisioningState;
+            CustomErrorConfigurations = customErrorConfigurations;
             Name = name;
             Etag = etag;
             Type = type;
@@ -89,7 +93,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource FrontendPort { get; set; }
 
         /// <summary>
-        /// Gets or sets protocol. Possible values include: 'Http', 'Https'
+        /// Gets or sets protocol of the HTTP listener. Possible values
+        /// include: 'Http', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public ApplicationGatewayProtocol Protocol { get; set; }
@@ -121,8 +126,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets custom error configurations of the HTTP listener.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.customErrorConfigurations")]
+        public IList<ApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the HTTP listener that is unique within an
+        /// Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

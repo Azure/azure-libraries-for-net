@@ -23,6 +23,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Creates LinuxVMDiskEncryptionSettings.
+        /// </summary>
+        /// <param name="keyVaultId">The resource id of the key vault to store the disk encryption key.</param>
+        public LinuxVMDiskEncryptionConfiguration(string keyVaultId) : base(keyVaultId)
+        {
+        }
+
+        /// <summary>
         /// Specifies the pass phrase for encrypting Linux OS or data disks.
         /// </summary>
         /// <param name="passPhrase">The pass phrase.</param>

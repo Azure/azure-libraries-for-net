@@ -10,7 +10,6 @@ namespace Microsoft.Azure.Management.Msi.Fluent
     /// Entry point to Azure Managed Service Identity (MSI) Identity resource management API.
     /// </summary>
     public interface IIdentities  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Msi.Fluent.IIdentity>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Msi.Fluent.IIdentity>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.Msi.Fluent.IIdentity>,

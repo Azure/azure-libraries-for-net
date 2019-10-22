@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.Storage.Fluent.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
+    using System;
 
     /// <summary>
     /// The implementation of StorageAccounts and its parent interfaces.
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             return new CheckNameAvailabilityResult(await Inner.CheckNameAvailabilityAsync(name, cancellationToken));
         }
+
 
         ///GENMHASH:C4C74C5CA23BE3B4CAFEFD0EF23149A0:B6DE3F3ADD30CF80937F7E47989E73C7
         public CheckNameAvailabilityResult CheckNameAvailability(string name)
@@ -71,12 +73,22 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             // Note: Using GetPropertiesAsync instead of GetAsync to get extended information about the storage account.
             //
-            return await Inner.GetPropertiesAsync(groupName, name, cancellationToken);
+            return await Inner.GetPropertiesAsync(groupName, name, default(StorageAccountExpand?), cancellationToken);
         }
 
         protected async override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
             await Inner.DeleteAsync(groupName, name, cancellationToken);
+        }
+
+        public async Task<string> createSasTokenAsync(string resourceGroupName, string accountName, ServiceSasParameters parameters)
+        {
+            return (await Inner.ListServiceSASAsync(resourceGroupName, accountName, parameters)).ServiceSasToken;
+        }
+
+        public string createSasToken(string resourceGroupName, string accountName, ServiceSasParameters parameters)
+        {
+            return Extensions.Synchronize(() => createSasTokenAsync(resourceGroupName, accountName, parameters));
         }
 
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:2A8077054DAAE50898DF5E1B9FCC9EE9

@@ -54,9 +54,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy ConsistencyPolicy { get; }
 
         /// <summary>
+        /// Gets whether cassandra connector is enabled or not.
+        /// </summary>
+        bool CassandraConnectorEnabled { get; }
+
+        /// <summary>
+        /// Gets the current cassandra connector offer.
+        /// </summary>
+        Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConnectorOffer CassandraConnectorOffer { get; }
+
+        /// <summary>
         /// Gets indicates the type of database account.
         /// </summary>
         string Kind { get; }
+
+        /// <summary>
+        /// Gets whether write is enabled for multiple locations or not
+        /// </summary>
+        bool? MultipleWriteLocationsEnabled { get; }
 
         /// <summary>
         /// Gets a list that contains the Cosmos DB capabilities.
@@ -95,6 +110,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult ListReadOnlyKeys();
+
+        /// <return>The SQL databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ISqlDatabase> ListSqlDatabases();
+
+        /// <return>The SQL databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// It takes offline the specified region for the current Azure Cosmos DB database account.

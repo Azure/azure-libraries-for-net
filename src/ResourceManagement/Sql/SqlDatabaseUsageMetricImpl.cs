@@ -11,11 +11,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxEYXRhYmFzZVVzYWdlTWV0cmljSW1wbA==
     internal partial class SqlDatabaseUsageMetricImpl  :
-        Wrapper<Models.DatabaseUsage>,
+        Wrapper<Models.DatabaseUsageInner>,
         ISqlDatabaseUsageMetric
     {
         ///GENMHASH:A0159F79F51C286DD71841E95366B32C:C0C35E00AF4E17F141675A2C05C7067B
-        internal SqlDatabaseUsageMetricImpl(Models.DatabaseUsage innerObject)
+        internal SqlDatabaseUsageMetricImpl(Models.DatabaseUsageInner innerObject)
             : base(innerObject)
         {
         }

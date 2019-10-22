@@ -27,5 +27,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public WindowsVMDiskEncryptionConfiguration(string keyVaultId, string aadClientId, string aadSecret) : base(keyVaultId, aadClientId, aadSecret)
         {
         }
+
+        /// <summary>
+        /// Creates WindowsVMDiskEncryptionConfiguration.
+        /// </summary>
+        /// <param name="keyVaultId">The resource id of the key vault to store the disk encryption key.</param>
+        public WindowsVMDiskEncryptionConfiguration(string keyVaultId) : base(keyVaultId)
+        {
+        }
     }
 }

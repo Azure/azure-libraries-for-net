@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the status transparent data encryption of the Azure SQL Database.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity.Status
+        TransparentDataEncryptionActivityStatus Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity.Status
         {
             get
             {

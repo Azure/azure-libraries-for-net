@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU of a public IP address
+    /// SKU of a public IP address.
     /// </summary>
     public partial class PublicIPAddressSku
     {

@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ResponseInner>> ListWithHttpMessagesAsync(string resourceUri, ODataQuery<MetadataValueInner> odataQuery = default(ODataQuery<MetadataValueInner>), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string metricnames = default(string), string aggregation = default(string), int? top = default(int?), string orderby = default(string), ResultType? resultType = default(ResultType?), string metricnamespace = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ResponseInner>> ListWithHttpMessagesAsync(string resourceUri, ODataQuery<MetadataValue> odataQuery = default(ODataQuery<MetadataValue>), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string metricnames = default(string), string aggregation = default(string), int? top = default(int?), string orderby = default(string), ResultType? resultType = default(ResultType?), string metricnamespace = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceUri == null)
             {
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

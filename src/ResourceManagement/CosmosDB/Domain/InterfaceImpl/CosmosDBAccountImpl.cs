@@ -306,6 +306,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        /// <summary>
+        /// Gets whether cassandra connector is enabled or not.
+        /// </summary>
+        bool Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.CassandraConnectorEnabled
+        {
+            get
+            {
+                return this.CassandraConnectorEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Gets the current cassandra connector offer.
+        /// </summary>
+        Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConnectorOffer Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.CassandraConnectorOffer
+        {
+            get
+            {
+                return this.CassandraConnectorOffer();
+            }
+        }
+
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
@@ -337,6 +359,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             get
             {
                 return this.Kind();
+            }
+        }
+
+        /// <summary>
+        /// Gets whether multiple write locations are enabled or not.
+        /// </summary>
+        bool? Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.MultipleWriteLocationsEnabled
+        {
+            get
+            {
+                return this.MultipleWriteLocationsEnabled();
             }
         }
 
@@ -380,13 +413,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return await this.ListReadOnlyKeysAsync(cancellationToken);
         }
 
+        /// <return>The SQL databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ISqlDatabase> ICosmosDBAccount.ListSqlDatabases()
+        {
+            return this.ListSqlDatabases();
+        }
+
+        /// <return>The SQL databases for the specified Azure CosmosDB database account.</return>
+        async Task<IEnumerable<ISqlDatabase>> ICosmosDBAccount.ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.ListSqlDatabasesAsync(cancellationToken);
+        }
+
         /// <summary>
         /// It takes offline the specified region for the current Azure Cosmos DB database account.
         /// </summary>
         /// <param name="region">Cosmos DB region.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OfflineRegion(Region region)
         {
- 
+
             this.OfflineRegion(region);
         }
 
@@ -397,7 +442,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OfflineRegionAsync(Region region, CancellationToken cancellationToken)
         {
- 
+
             await this.OfflineRegionAsync(region, cancellationToken);
         }
 
@@ -407,7 +452,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="region">Cosmos DB region.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OnlineRegion(Region region)
         {
- 
+
             this.OnlineRegion(region);
         }
 
@@ -418,7 +463,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OnlineRegionAsync(Region region, CancellationToken cancellationToken)
         {
- 
+
             await this.OnlineRegionAsync(region, cancellationToken);
         }
 
@@ -465,6 +510,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
+        /// Specifies whether mutliple write locations are enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether mutliple write locations are enabled or not</param>
+        /// <returns>The next stage.</returns>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithMultipleLocations.WithMultipleWriteLocationsEnabled(bool enabled)
+        {
+            return this.WithMultipleWriteLocationsEnabled(enabled);
+        }
+
+        /// <summary>
+        /// Specifies whether multiple write locations are enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether multiple write locations are enabled or not,</param>
+        /// <returns>The next stage of the update definition.</returns>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithMultipleLocations.WithMultipleWriteLocationsEnabled(bool enabled)
+        {
+            return this.WithMultipleWriteLocationsEnabled(enabled);
+        }
+
+        /// <summary>
         /// Specifies the list of Virtual Network ACL Rules for the CosmosDB account.
         /// </summary>
         /// <param name="virtualNetworkRules">The list of Virtual Network ACL Rules.</param>
@@ -487,5 +552,33 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithVirtualNetworkRules(virtualNetworkRules);
         }
 
+        /// <summary>
+        /// Specifies a connector offer for cassandra connector.
+        /// </summary>
+        /// <param name="connectorOffer">Connector offer to specify.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithConnector.WithCassandraConnector(ConnectorOffer connectorOffer)
+        {
+            return this.WithCassandraConnector(connectorOffer);
+        }
+
+        /// <summary>
+        /// Specifies a connector offer for cassandra connector.
+        /// </summary>
+        /// <param name="connectorOffer">Connector offer to specify.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConnector.WithCassandraConnector(ConnectorOffer connectorOffer)
+        {
+            return this.WithCassandraConnector(connectorOffer);
+        }
+
+        /// <summary>
+        /// Remove the connector offer.
+        /// </summary>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConnector.WithoutCassandraConnector()
+        {
+            return this.WithoutCassandraConnector();
+        }
     }
 }

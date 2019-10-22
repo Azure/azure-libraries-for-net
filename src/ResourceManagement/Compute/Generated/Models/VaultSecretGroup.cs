@@ -8,8 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// containing all of the certificates in VaultCertificates.</param>
         /// <param name="vaultCertificates">The list of key vault references in
         /// SourceVault which contain certificates.</param>
-        public VaultSecretGroup(ResourceManager.Fluent.SubResource sourceVault = default(ResourceManager.Fluent.SubResource), IList<VaultCertificate> vaultCertificates = default(IList<VaultCertificate>))
+        public VaultSecretGroup(Management.ResourceManager.Fluent.SubResource sourceVault = default(Management.ResourceManager.Fluent.SubResource), IList<VaultCertificate> vaultCertificates = default(IList<VaultCertificate>))
         {
             SourceVault = sourceVault;
             VaultCertificates = vaultCertificates;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// the certificates in VaultCertificates.
         /// </summary>
         [JsonProperty(PropertyName = "sourceVault")]
-        public ResourceManager.Fluent.SubResource SourceVault { get; set; }
+        public Management.ResourceManager.Fluent.SubResource SourceVault { get; set; }
 
         /// <summary>
         /// Gets or sets the list of key vault references in SourceVault which

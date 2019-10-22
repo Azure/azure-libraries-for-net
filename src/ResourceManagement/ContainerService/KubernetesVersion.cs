@@ -31,5 +31,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public static readonly KubernetesVersion KUBERNETES_1_8_11 = Parse("1.8.11");
         public static readonly KubernetesVersion KUBERNETES_1_9_2 = Parse("1.9.2");
         public static readonly KubernetesVersion KUBERNETES_1_9_6 = Parse("1.9.6");
+        public static readonly KubernetesVersion KUBERNETES_1_9_9 = Parse("1.9.9");
     }
 }

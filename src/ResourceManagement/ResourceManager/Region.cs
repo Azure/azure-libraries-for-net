@@ -1,18 +1,18 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/
     /// </summary>
     public partial class Region
     {
-        private static IDictionary<string, Region> regions = new Dictionary<string, Region>();
+        private static ConcurrentDictionary<string, Region> regions = new ConcurrentDictionary<string, Region>();
 
         #region Americas
         public static readonly Region USWest = new Region("westus");
@@ -33,6 +33,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region EuropeWest = new Region("westeurope");
         public static readonly Region UKSouth = new Region("uksouth");
         public static readonly Region UKWest = new Region("ukwest");
+        public static readonly Region FranceCentral = new Region("francecentral");
+        public static readonly Region FranceSouth = new Region("francesouth");
+        public static readonly Region SwitzerlandNorth = new Region("switzerlandnorth");
+        public static readonly Region SwitzerlandWest = new Region("switzerlandwest");
+        public static readonly Region GermanyNorth = new Region("germanynorth");
+        public static readonly Region GermanyWestCentral = new Region("germanywestcentral");
+        public static readonly Region NorwayWest = new Region("norwaywest");
+        public static readonly Region NorwayEast = new Region("norwayeast");
         #endregion
 
         #region Asia
@@ -42,16 +50,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region JapanWest = new Region("japanwest");
         public static readonly Region AustraliaEast = new Region("australiaeast");
         public static readonly Region AustraliaSouthEast = new Region("australiasoutheast");
+        public static readonly Region AustraliaCentral = new Region("australiacentral");
+        public static readonly Region AustraliaCentral2 = new Region("australiacentral2");
         public static readonly Region IndiaCentral = new Region("centralindia");
         public static readonly Region IndiaSouth = new Region("southindia");
         public static readonly Region IndiaWest = new Region("westindia");
         public static readonly Region KoreaSouth = new Region("koreasouth");
         public static readonly Region KoreaCentral = new Region("koreacentral");
+        public static readonly Region UAECentral = new Region("uaecentral");
+        public static readonly Region UAENorth = new Region("uaenorth");
+        #endregion
+
+        #region Africa
+        public static readonly Region SouthAfricaNorth = new Region("southafricanorth");
+        public static readonly Region SouthAfricaWest = new Region("southafricawest");
         #endregion
 
         #region China
         public static readonly Region ChinaNorth = new Region("chinanorth");
         public static readonly Region ChinaEast = new Region("chinaeast");
+        public static readonly Region ChinaNorth2 = new Region("chinanorth2");
+        public static readonly Region ChinaEast2 = new Region("chinaeast2");
         #endregion
 
         #region German
@@ -111,7 +130,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         private Region(string name)
         {
             Name = name.ToLowerInvariant();
-            regions.Add(Name, this);
+            regions.AddOrUpdate(Name, this, (k, v) => v);
         }
 
         public static Region Create(string name)

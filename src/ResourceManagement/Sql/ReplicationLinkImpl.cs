@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:59D8987F7EC078423F8247D1F7D40FBD:D2670680EF14BA9058384CB186AA4289
-        public string ReplicationState()
+        public ReplicationState ReplicationState()
         {
             return this.Inner.ReplicationState;
         }

@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The log profile resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class LogProfileResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class LogProfileResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the LogProfileResourceInner class.
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// created for streaming the Activity Log. The rule ID is of the
         /// format: '{service bus resource ID}/authorizationrules/{key
         /// name}'.</param>
-        public LogProfileResourceInner(IList<string> locations, IList<string> categories, RetentionPolicy retentionPolicy, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string storageAccountId = default(string), string serviceBusRuleId = default(string))
+        public LogProfileResourceInner(string location, IList<string> locations, IList<string> categories, RetentionPolicy retentionPolicy, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string storageAccountId = default(string), string serviceBusRuleId = default(string))
             : base(location, id, name, type, tags)
         {
             StorageAccountId = storageAccountId;
@@ -108,8 +109,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Locations == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Locations");

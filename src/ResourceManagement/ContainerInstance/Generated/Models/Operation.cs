@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -30,12 +31,14 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// <param name="name">The name of the operation.</param>
         /// <param name="display">The display information of the
         /// operation.</param>
+        /// <param name="properties">The additional properties.</param>
         /// <param name="origin">The intended executor of the operation.
         /// Possible values include: 'User', 'System'</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string))
+        public Operation(string name, OperationDisplay display, object properties = default(object), string origin = default(string))
         {
             Name = name;
             Display = display;
+            Properties = properties;
             Origin = origin;
             CustomInit();
         }
@@ -46,10 +49,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the name of the operation.
+        /// Gets or sets the name of the operation.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the display information of the operation.
@@ -58,11 +61,34 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public OperationDisplay Display { get; set; }
 
         /// <summary>
-        /// Gets the intended executor of the operation. Possible values
-        /// include: 'User', 'System'
+        /// Gets or sets the additional properties.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public object Properties { get; set; }
+
+        /// <summary>
+        /// Gets or sets the intended executor of the operation. Possible
+        /// values include: 'User', 'System'
         /// </summary>
         [JsonProperty(PropertyName = "origin")]
-        public string Origin { get; private set; }
+        public string Origin { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Name == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (Display == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Display");
+            }
+        }
     }
 }

@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="backendIPConfigurations">Collection of references to
         /// IPs defined in network interfaces.</param>
-        /// <param name="backendAddresses">Backend addresses</param>
+        /// <param name="backendAddresses">Backend addresses.</param>
         /// <param name="provisioningState">Provisioning state of the backend
         /// address pool resource. Possible values are: 'Updating', 'Deleting',
         /// and 'Failed'.</param>
-        /// <param name="name">Resource that is unique within a resource group.
-        /// This name can be used to access the resource.</param>
+        /// <param name="name">Name of the backend address pool that is unique
+        /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<NetworkInterfaceIPConfigurationInner> BackendIPConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or sets backend addresses
+        /// Gets or sets backend addresses.
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendAddresses")]
         public IList<ApplicationGatewayBackendAddress> BackendAddresses { get; set; }
@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets resource that is unique within a resource group. This
-        /// name can be used to access the resource.
+        /// Gets or sets name of the backend address pool that is unique within
+        /// an Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

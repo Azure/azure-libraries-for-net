@@ -41,23 +41,25 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// pool resource of URL path map.</param>
         /// <param name="defaultBackendHttpSettings">Default backend http
         /// settings resource of URL path map.</param>
+        /// <param name="defaultRewriteRuleSet">Default Rewrite rule set
+        /// resource of URL path map.</param>
         /// <param name="defaultRedirectConfiguration">Default redirect
         /// configuration resource of URL path map.</param>
         /// <param name="pathRules">Path rule of URL path map resource.</param>
         /// <param name="provisioningState">Provisioning state of the backend
         /// http settings resource. Possible values are: 'Updating',
         /// 'Deleting', and 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the URL path map that is unique within
+        /// an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayUrlPathMapInner(string id = default(string), Management.ResourceManager.Fluent.SubResource defaultBackendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource defaultBackendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource defaultRedirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), IList<ApplicationGatewayPathRuleInner> pathRules = default(IList<ApplicationGatewayPathRuleInner>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayUrlPathMapInner(string id = default(string), Management.ResourceManager.Fluent.SubResource defaultBackendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource defaultBackendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource defaultRewriteRuleSet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource defaultRedirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), IList<ApplicationGatewayPathRuleInner> pathRules = default(IList<ApplicationGatewayPathRuleInner>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             DefaultBackendAddressPool = defaultBackendAddressPool;
             DefaultBackendHttpSettings = defaultBackendHttpSettings;
+            DefaultRewriteRuleSet = defaultRewriteRuleSet;
             DefaultRedirectConfiguration = defaultRedirectConfiguration;
             PathRules = pathRules;
             ProvisioningState = provisioningState;
@@ -86,6 +88,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource DefaultBackendHttpSettings { get; set; }
 
         /// <summary>
+        /// Gets or sets default Rewrite rule set resource of URL path map.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.defaultRewriteRuleSet")]
+        public Management.ResourceManager.Fluent.SubResource DefaultRewriteRuleSet { get; set; }
+
+        /// <summary>
         /// Gets or sets default redirect configuration resource of URL path
         /// map.
         /// </summary>
@@ -107,8 +115,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the URL path map that is unique within an
+        /// Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

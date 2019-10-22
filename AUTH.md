@@ -10,7 +10,7 @@ create an authenticated client. There are several possible approaches to authent
 To create an authenticated Azure client:
 
 ```csharp
-Azure azure = Azure.Authenticate("my.azureauth").WithDefaultSubscription();
+IAzure azure = Azure.Authenticate("my.azureauth").WithDefaultSubscription();
 ```
 
 The authentication file, referenced as "my.azureauth" in the example above, contains the information of a service principal. You can generate this file using [Azure CLI 2.0](https://github.com/Azure/azure-cli) through the following command. Make sure you selected your subscription by `az account set --subscription <name or id>` and you have the privileges to create service principals.
@@ -50,7 +50,7 @@ tenant=########-####-####-####-############
 key=XXXXXXXXXXXXXXXX
 managementURI=https\://management.core.windows.net/
 baseURL=https\://management.azure.com/
-authURL=https\://login.windows.net/
+authURL=https\://login.microsoftonline.com/
 graphURL=https\://graph.windows.net/
 ```
 
@@ -64,7 +64,7 @@ certificate=<path to certificate file>
 certificatePassword=XXXXXXXXXXXXXXXX
 managementURI=https\://management.core.windows.net/
 baseURL=https\://management.azure.com/
-authURL=https\://login.windows.net/
+authURL=https\://login.microsoftonline.com/
 graphURL=https\://graph.windows.net/
 ```
 

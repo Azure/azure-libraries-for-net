@@ -22,6 +22,142 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     public partial interface IDiagnosticsOperations
     {
         /// <summary>
+        /// List Hosting Environment Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Hosting Environment Detector Responses
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Site Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListHostingEnvironmentDetectorResponsesWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get Hosting Environment Detector Response
+        /// </summary>
+        /// <remarks>
+        /// Get Hosting Environment Detector Response
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// App Service Environment Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
+        /// </param>
+        /// <param name='startTime'>
+        /// Start Time
+        /// </param>
+        /// <param name='endTime'>
+        /// End Time
+        /// </param>
+        /// <param name='timeGrain'>
+        /// Time Grain
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DetectorResponseInner>> GetHostingEnvironmentDetectorResponseWithHttpMessagesAsync(string resourceGroupName, string name, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesWithHttpMessagesAsync(string resourceGroupName, string siteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get site detector response
+        /// </summary>
+        /// <remarks>
+        /// Get site detector response
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
+        /// </param>
+        /// <param name='startTime'>
+        /// Start Time
+        /// </param>
+        /// <param name='endTime'>
+        /// End Time
+        /// </param>
+        /// <param name='timeGrain'>
+        /// Time Grain
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DetectorResponseInner>> GetSiteDetectorResponseWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
@@ -39,7 +175,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -70,7 +206,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -101,7 +237,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -135,7 +271,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -178,7 +314,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -209,7 +345,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -243,7 +379,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -286,7 +422,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -296,6 +432,80 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<DiagnosticDetectorResponseInner>> ExecuteSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get site detector response
+        /// </summary>
+        /// <remarks>
+        /// Get site detector response
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
+        /// </param>
+        /// <param name='startTime'>
+        /// Start Time
+        /// </param>
+        /// <param name='endTime'>
+        /// End Time
+        /// </param>
+        /// <param name='timeGrain'>
+        /// Time Grain
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DetectorResponseInner>> GetSiteDetectorResponseSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Diagnostics Categories
         /// </summary>
@@ -317,7 +527,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -351,7 +561,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -385,7 +595,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -422,7 +632,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -468,7 +678,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -502,7 +712,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -539,7 +749,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -585,7 +795,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -595,6 +805,56 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<DiagnosticDetectorResponseInner>> ExecuteSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List Hosting Environment Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Hosting Environment Detector Responses
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListHostingEnvironmentDetectorResponsesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Diagnostics Categories
         /// </summary>
@@ -610,7 +870,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -635,7 +895,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -660,7 +920,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -685,7 +945,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -695,6 +955,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<DetectorDefinition>>> GetSiteDetectorNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Diagnostics Categories
         /// </summary>
@@ -710,7 +995,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -735,7 +1020,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -760,7 +1045,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -785,7 +1070,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

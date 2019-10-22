@@ -2,11 +2,21 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.Azure.Management.AppService.Fluent;
-using Microsoft.Azure.Management.Batch.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
+using Microsoft.Azure.Management.ContainerInstance.Fluent;
+using Microsoft.Azure.Management.ContainerRegistry.Fluent;
+using Microsoft.Azure.Management.ContainerService.Fluent;
+using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Dns.Fluent;
+using Microsoft.Azure.Management.Eventhub.Fluent;
+using Microsoft.Azure.Management.EventHub.Fluent;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.KeyVault.Fluent;
+using Microsoft.Azure.Management.Locks.Fluent;
+using Microsoft.Azure.Management.Monitor.Fluent;
+using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Redis.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -17,22 +27,14 @@ using Microsoft.Azure.Management.ServiceBus.Fluent;
 using Microsoft.Azure.Management.Sql.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
+using Microsoft.Rest.Azure;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.Batchai.Fluent;
-using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
+using System.Reflection;
+using System.Threading.Tasks;
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
-using Microsoft.Azure.Management.ContainerInstance.Fluent;
-using Microsoft.Azure.Management.ContainerRegistry.Fluent;
-using Microsoft.Azure.Management.ContainerService.Fluent;
-using Microsoft.Azure.Management.CosmosDB.Fluent;
-using Microsoft.Azure.Management.Graph.RBAC.Fluent;
-using Microsoft.Azure.Management.Locks.Fluent;
-using Microsoft.Azure.Management.Msi.Fluent;
-using Microsoft.Azure.Management.BatchAI.Fluent;
-using Microsoft.Azure.Management.Monitor.Fluent;
-using Microsoft.Azure.Management.Eventhub.Fluent;
-using Microsoft.Azure.Management.EventHub.Fluent;
+using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
 
 namespace Microsoft.Azure.Management.Fluent
 {
@@ -40,13 +42,10 @@ namespace Microsoft.Azure.Management.Fluent
     {
         private IAuthenticated authenticated;
 
-        #region Service Managers
-
         private IResourceManager resourceManager;
         private IStorageManager storageManager;
         private IComputeManager computeManager;
         private INetworkManager networkManager;
-        private IBatchManager batchManager;
         private IKeyVaultManager keyVaultManager;
         private ITrafficManager trafficManager;
         private IDnsZoneManager dnsZoneManager;
@@ -65,10 +64,6 @@ namespace Microsoft.Azure.Management.Fluent
         private IBatchAIManager batchAIManager;
         private IMonitorManager monitorManager;
         private IEventHubManager eventHubManager;
-
-        #endregion Service Managers
-
-        #region Getters
 
         /// <returns>the currently selected subscription ID this client is authenticated to work with</returns>
         public string SubscriptionId
@@ -280,15 +275,6 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Azure Batch accounts</returns>
-        public IBatchAccounts BatchAccounts
-        {
-            get
-            {
-                return batchManager.BatchAccounts;
-            }
-        }
-
         /// <returns>entry point to managing Azure key vaults</returns>
         public IVaults Vaults
         {
@@ -450,6 +436,22 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IRegistryTasks ContainerRegistryTasks
+        {
+            get
+            {
+                return registryManager.ContainerRegistryTasks;
+            }
+        }
+
+        public IRegistryTaskRuns RegistryTaskRuns
+        {
+            get
+            {
+                return registryManager.RegistryTaskRuns;
+            }
+        }
+
         public IAccessManagement AccessManagement
         {
             get
@@ -474,19 +476,11 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        public IBatchAIClusters BatchAIClusters
+        public IBatchAIWorkspaces BatchAIWorkspaces
         {
             get
             {
-                return batchAIManager.BatchAIClusters;
-            }
-        }
-
-        public IBatchAIJobs BatchAIJobs
-        {
-            get
-            {
-                return batchAIManager.BatchAIJobs;
+                return batchAIManager.BatchAIWorkspaces;
             }
         }
 
@@ -495,14 +489,6 @@ namespace Microsoft.Azure.Management.Fluent
             get
             {
                 return batchAIManager.BatchAIUsages;
-            }
-        }
-
-        public IBatchAIFileServers BatchAIFileServers
-        {
-            get
-            {
-                return batchAIManager.BatchAIFileServers;
             }
         }
 
@@ -538,6 +524,22 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IAlertRules AlertRules
+        {
+            get
+            {
+                return this.monitorManager.AlertRules;
+            }
+        }
+
+        public IAutoscaleSettings AutoscaleSettings
+        {
+            get
+            {
+                return this.monitorManager.AutoscaleSettings;
+            }
+        }
+
         public IEventHubNamespaces EventHubNamespaces
         {
             get
@@ -562,9 +564,29 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        #endregion Getters
 
-        #region ctrs
+        public IGalleries Galleries
+        {
+            get
+            {
+                return computeManager.Galleries;
+            }
+        }
+        public IGalleryImages GalleryImages
+        {
+            get
+            {
+                return computeManager.GalleryImages;
+            }
+        }
+
+        public IGalleryImageVersions GalleryImageVersions
+        {
+            get
+            {
+                return computeManager.GalleryImageVersions;
+            }
+        }
 
         private Azure(RestClient restClient, string subscriptionId, string tenantId, IAuthenticated authenticated)
         {
@@ -572,7 +594,6 @@ namespace Microsoft.Azure.Management.Fluent
             storageManager = StorageManager.Authenticate(restClient, subscriptionId);
             computeManager = ComputeManager.Authenticate(restClient, subscriptionId);
             networkManager = NetworkManager.Authenticate(restClient, subscriptionId);
-            batchManager = BatchManager.Authenticate(restClient, subscriptionId);
             keyVaultManager = KeyVaultManager.Authenticate(restClient, subscriptionId, tenantId);
             trafficManager = TrafficManager.Fluent.TrafficManager.Authenticate(restClient, subscriptionId);
             dnsZoneManager = DnsZoneManager.Authenticate(restClient, subscriptionId);
@@ -596,9 +617,51 @@ namespace Microsoft.Azure.Management.Fluent
             this.authenticated = authenticated;
         }
 
-        #endregion ctrs
+        public IEnumerable<IAzureClient> ManagementClients
+        {
+            get
+            {
+                var managersList = new List<object>();
+                var managerTraversalStack = new Stack<object>();
 
-        #region Azure builder
+                managerTraversalStack.Push(this);
+
+                while (managerTraversalStack.Count > 0)
+                {
+                    var stackedObject = managerTraversalStack.Pop();
+                    // if not a rollup package
+                    if (!(stackedObject is IAzure))
+                    {
+                        managersList.Add(stackedObject);
+                        var resourceManager = stackedObject.GetType().GetProperty("ResourceManager");
+                        if (resourceManager != null)
+                        {
+                            managersList.Add(resourceManager.GetValue(stackedObject));
+                        }
+                    }
+
+                    foreach (var obj in stackedObject
+                        .GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+                        .Where(f => f.FieldType.GetInterfaces().Contains(typeof(IManagerBase)))
+                        .Select(f => (IManagerBase)f.GetValue(stackedObject)))
+                    {
+                        managerTraversalStack.Push(obj);
+                    }
+                }
+
+                var result = new List<IAzureClient>();
+                foreach (var m in managersList)
+                {
+                    result.AddRange(m.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+                            .Where(f => f.FieldType.GetInterfaces().Contains(typeof(IAzureClient)))
+                            .Select(f => (IAzureClient)f.GetValue(m)));
+
+                    result.AddRange(m.GetType().GetProperties().Where(n => n.Name.Equals("Inner"))
+                        .Select(f => (IAzureClient)f.GetValue(m)));
+                }
+                return result;
+            }
+        }
 
         private static Authenticated CreateAuthenticated(RestClient restClient, string tenantId)
         {
@@ -631,10 +694,6 @@ namespace Microsoft.Azure.Management.Fluent
             return new Configurable();
         }
 
-        #endregion Azure builder
-
-        #region IAuthenticated and it's implementation
-
         public interface IAuthenticated : IAccessManagement
         {
             string TenantId { get; }
@@ -646,6 +705,8 @@ namespace Microsoft.Azure.Management.Fluent
             IAzure WithSubscription(string subscriptionId);
 
             IAzure WithDefaultSubscription();
+
+            Task<IAzure> WithDefaultSubscriptionAsync();
         }
 
         protected class Authenticated : IAuthenticated
@@ -754,23 +815,46 @@ namespace Microsoft.Azure.Management.Fluent
                 }
                 else
                 {
-                    var resourceManager = ResourceManager.Fluent.ResourceManager.Authenticate(
-                        RestClient.Configure()
-                            .WithBaseUri(restClient.BaseUri)
-                            .WithCredentials(restClient.Credentials).Build());
-                    var subscription = resourceManager.Subscriptions.List()
-                        .FirstOrDefault(s =>
-                            StringComparer.OrdinalIgnoreCase.Equals(s.State, "Enabled") ||
-                            StringComparer.OrdinalIgnoreCase.Equals(s.State, "Warned"));
+                    var resourceManager = GetResourceManager();
+                    var subscriptions = resourceManager.Subscriptions.List();
+                    var subscription = GetDefaultSubscription(subscriptions);
 
                     return WithSubscription(subscription?.SubscriptionId);
                 }
             }
+
+            public async Task<IAzure> WithDefaultSubscriptionAsync()
+            {
+                if (!string.IsNullOrWhiteSpace(defaultSubscription))
+                {
+                    return WithSubscription(defaultSubscription);
+                }
+                else
+                {
+                    var resourceManager = GetResourceManager();
+                    var subscriptions = await resourceManager.Subscriptions.ListAsync().ConfigureAwait(false);
+                    var subscription = GetDefaultSubscription(subscriptions);
+
+                    return WithSubscription(subscription?.SubscriptionId);
+                }
+            }
+
+            private static ISubscription GetDefaultSubscription(IEnumerable<ISubscription> subscriptions)
+            {
+                return subscriptions
+                    .FirstOrDefault(s =>
+                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "Enabled") ||
+                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "Warned"));
+            }
+
+            private ResourceManager.Fluent.ResourceManager.IAuthenticated GetResourceManager()
+            {
+                return ResourceManager.Fluent.ResourceManager.Authenticate(
+                    RestClient.Configure()
+                        .WithBaseUri(restClient.BaseUri)
+                        .WithCredentials(restClient.Credentials).Build());
+            }
         }
-
-        #endregion IAuthenticated and it's implementation
-
-        #region IConfigurable and it's implementation
 
         public interface IConfigurable : IAzureConfigurable<IConfigurable>
         {
@@ -788,8 +872,6 @@ namespace Microsoft.Azure.Management.Fluent
                 return authenticated;
             }
         }
-
-        #endregion IConfigurable and it's implementation
     }
 
     /// <summary>
@@ -885,17 +967,7 @@ namespace Microsoft.Azure.Management.Fluent
         /// <summary>
         /// Entry point to Batch AI clusters management.
         /// </summary>
-        IBatchAIClusters BatchAIClusters { get; }
-
-        /// <summary>
-        /// Entry point to Batch AI file servers management.
-        /// </summary>
-        IBatchAIFileServers BatchAIFileServers { get; }
-
-        /// <summary>
-        /// Entry point to Batch AI jobs management.
-        /// </summary>
-        IBatchAIJobs BatchAIJobs { get; }
+        IBatchAIWorkspaces BatchAIWorkspaces { get; }
 
         /// <summary>
         /// Entry point to Batch AI usages management.
@@ -921,10 +993,30 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Action Groups management.
         /// </summary>
         IActionGroups ActionGroups { get; }
+
+        /// <summary>
+        /// Entry point to manage compute galleries.
+        /// </summary>
+        IGalleries Galleries { get; }
+
+        /// <summary>
+        /// Entry point to manage compute gallery images.
+        /// </summary>
+        IGalleryImages GalleryImages { get; }
+
+        /// <summary>
+        /// Entry point to manage compute gallery image versions.
+        /// </summary>
+        IGalleryImageVersions GalleryImageVersions { get; }
     }
 
     public interface IAzure : IAzureBeta
     {
+        /// <summary>
+        /// Gets all underlying management clients
+        /// </summary>
+        IEnumerable<IAzureClient> ManagementClients { get; }
+
         string SubscriptionId { get; }
 
         /// <summary>
@@ -1006,7 +1098,7 @@ namespace Microsoft.Azure.Management.Fluent
         IVirtualMachineImages VirtualMachineImages { get; }
 
         /// <summary>
-        /// Entry point to virtual machine extendion image management.
+        /// Entry point to virtual machine extension image management.
         /// </summary>
         IVirtualMachineExtensionImages VirtualMachineExtensionImages { get; }
 
@@ -1014,11 +1106,6 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to availability set management.
         /// </summary>
         IAvailabilitySets AvailabilitySets { get; }
-
-        /// <summary>
-        /// Entry point to batch account management.
-        /// </summary>
-        IBatchAccounts BatchAccounts { get; }
 
         /// <summary>
         /// Entry point to Azure Key Vault management.
@@ -1084,5 +1171,25 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Event Hub disaster recovery pairing.
         /// </summary>
         IEventHubDisasterRecoveryPairings EventHubDisasterRecoveryPairings { get; }
+
+        /// <summary>
+        /// Entry point to Azure Monitor Alert Rules management.
+        /// </summary>
+        IAlertRules AlertRules { get; }
+
+        /// <summary>
+        /// Entry point to Azure Monitor Autoscale management.
+        /// </summary>
+        IAutoscaleSettings AutoscaleSettings { get; }
+
+        /// <summary>
+        /// Entry point to Azure Container registry tasks management.
+        /// </summary>
+        IRegistryTasks ContainerRegistryTasks { get; }
+
+        /// <summary>
+        /// Entry point to Azure Container registry task runs management.
+        /// </summary>
+        IRegistryTaskRuns RegistryTaskRuns { get; }
     }
 }

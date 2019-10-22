@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Scale Set.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class VirtualMachineScaleSetInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetInner
@@ -50,20 +51,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// appears in the response.</param>
         /// <param name="overprovision">Specifies whether the Virtual Machine
         /// Scale Set should be overprovisioned.</param>
+        /// <param name="doNotRunExtensionsOnOverprovisionedVMs">When
+        /// Overprovision is enabled, extensions are launched only on the
+        /// requested number of VMs which are finally kept. This property will
+        /// hence ensure that the extensions do not run on the extra
+        /// overprovisioned VMs.</param>
         /// <param name="uniqueId">Specifies the ID which uniquely identifies a
         /// Virtual Machine Scale Set.</param>
         /// <param name="singlePlacementGroup">When true this limits the scale
         /// set to a single placement group, of max size 100 virtual
         /// machines.</param>
-        /// <param name="zoneBalance">Whether to force stictly even Virtual
+        /// <param name="zoneBalance">Whether to force strictly even Virtual
         /// Machine distribution cross x-zones in case there is zone
         /// outage.</param>
         /// <param name="platformFaultDomainCount">Fault Domain count for each
         /// placement group.</param>
+        /// <param name="proximityPlacementGroup">Specifies information about
+        /// the proximity placement group that the virtual machine scale set
+        /// should be assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version:
+        /// 2018-04-01.</param>
+        /// <param name="additionalCapabilities">Specifies additional
+        /// capabilities enabled or disabled on the Virtual Machines in the
+        /// Virtual Machine Scale Set. For instance: whether the Virtual
+        /// Machines have the capability to support attaching managed data
+        /// disks with UltraSSD_LRS storage account type.</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
         /// <param name="zones">The virtual machine scale set zones.</param>
-        public VirtualMachineScaleSetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>))
+        public VirtualMachineScaleSetInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -72,10 +87,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             VirtualMachineProfile = virtualMachineProfile;
             ProvisioningState = provisioningState;
             Overprovision = overprovision;
+            DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs;
             UniqueId = uniqueId;
             SinglePlacementGroup = singlePlacementGroup;
             ZoneBalance = zoneBalance;
             PlatformFaultDomainCount = platformFaultDomainCount;
+            ProximityPlacementGroup = proximityPlacementGroup;
+            AdditionalCapabilities = additionalCapabilities;
             Identity = identity;
             Zones = zones;
             CustomInit();
@@ -130,6 +148,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public bool? Overprovision { get; set; }
 
         /// <summary>
+        /// Gets or sets when Overprovision is enabled, extensions are launched
+        /// only on the requested number of VMs which are finally kept. This
+        /// property will hence ensure that the extensions do not run on the
+        /// extra overprovisioned VMs.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.doNotRunExtensionsOnOverprovisionedVMs")]
+        public bool? DoNotRunExtensionsOnOverprovisionedVMs { get; set; }
+
+        /// <summary>
         /// Gets specifies the ID which uniquely identifies a Virtual Machine
         /// Scale Set.
         /// </summary>
@@ -144,7 +171,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public bool? SinglePlacementGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets whether to force stictly even Virtual Machine
+        /// Gets or sets whether to force strictly even Virtual Machine
         /// distribution cross x-zones in case there is zone outage.
         /// </summary>
         [JsonProperty(PropertyName = "properties.zoneBalance")]
@@ -155,6 +182,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.platformFaultDomainCount")]
         public int? PlatformFaultDomainCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies information about the proximity placement
+        /// group that the virtual machine scale set should be assigned to.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
+        /// 2018-04-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.proximityPlacementGroup")]
+        public Management.ResourceManager.Fluent.SubResource ProximityPlacementGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies additional capabilities enabled or disabled
+        /// on the Virtual Machines in the Virtual Machine Scale Set. For
+        /// instance: whether the Virtual Machines have the capability to
+        /// support attaching managed data disks with UltraSSD_LRS storage
+        /// account type.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.additionalCapabilities")]
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
 
         /// <summary>
         /// Gets or sets the identity of the virtual machine scale set, if
@@ -175,8 +221,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (UpgradePolicy != null)
             {
                 UpgradePolicy.Validate();

@@ -35,7 +35,7 @@ namespace ManageSqlWithRecoveredOrRestoredDatabase
                 // Create a SQL Server with two databases from a sample.
                 Utilities.Log("Creating a SQL Server with two databases from a sample.");
                 var sqlServer = azure.SqlServers.Define(sqlServerName)
-                    .WithRegion(Region.USWest2)
+                    .WithRegion(Region.USEast2)
                     .WithNewResourceGroup(rgName)
                     .WithAdministratorLogin(administratorLogin)
                     .WithAdministratorPassword(administratorPassword)

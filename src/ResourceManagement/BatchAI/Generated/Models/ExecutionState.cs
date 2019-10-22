@@ -8,69 +8,25 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Runtime;
-    using System.Runtime.Serialization;
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ExecutionState.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum ExecutionState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ExecutionState>))]
+    public class ExecutionState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ExecutionState>
     {
-        [EnumMember(Value = "queued")]
-        Queued,
-        [EnumMember(Value = "running")]
-        Running,
-        [EnumMember(Value = "terminating")]
-        Terminating,
-        [EnumMember(Value = "succeeded")]
-        Succeeded,
-        [EnumMember(Value = "failed")]
-        Failed
-    }
-    internal static class ExecutionStateEnumExtension
-    {
-        internal static string ToSerializedValue(this ExecutionState? value)
-        {
-            return value == null ? null : ((ExecutionState)value).ToSerializedValue();
-        }
-
-        internal static string ToSerializedValue(this ExecutionState value)
-        {
-            switch( value )
-            {
-                case ExecutionState.Queued:
-                    return "queued";
-                case ExecutionState.Running:
-                    return "running";
-                case ExecutionState.Terminating:
-                    return "terminating";
-                case ExecutionState.Succeeded:
-                    return "succeeded";
-                case ExecutionState.Failed:
-                    return "failed";
-            }
-            return null;
-        }
-
-        internal static ExecutionState? ParseExecutionState(this string value)
-        {
-            switch( value )
-            {
-                case "queued":
-                    return ExecutionState.Queued;
-                case "running":
-                    return ExecutionState.Running;
-                case "terminating":
-                    return ExecutionState.Terminating;
-                case "succeeded":
-                    return ExecutionState.Succeeded;
-                case "failed":
-                    return ExecutionState.Failed;
-            }
-            return null;
-        }
+        public static readonly ExecutionState Queued = Parse("queued");
+        public static readonly ExecutionState Running = Parse("running");
+        public static readonly ExecutionState Terminating = Parse("terminating");
+        public static readonly ExecutionState Succeeded = Parse("succeeded");
+        public static readonly ExecutionState Failed = Parse("failed");
     }
 }

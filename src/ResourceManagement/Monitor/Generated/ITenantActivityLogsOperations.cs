@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<EventDataInner>>> ListWithHttpMessagesAsync(ODataQuery<EventDataInner> odataQuery = default(ODataQuery<EventDataInner>), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<EventData>>> ListWithHttpMessagesAsync(ODataQuery<EventData> odataQuery = default(ODataQuery<EventData>), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the Activity Logs for the Tenant.&lt;br&gt;Everything that is
         /// applicable to the API to get the Activity Logs for the subscription
@@ -87,6 +87,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<EventDataInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<EventData>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

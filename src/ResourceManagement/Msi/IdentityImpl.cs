@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
     /// The implementation for Identity and its create and update interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1zaS5pbXBsZW1lbnRhdGlvbi5JZGVudGl0eUltcGw=
-    internal sealed partial class IdentityImpl  :
+    internal sealed partial class IdentityImpl :
         GroupableResource<IIdentity, IdentityInner, IdentityImpl, IMsiManager, IWithGroup, IWithCreate, IWithCreate, IUpdate>,
         IIdentity,
         IDefinition,
@@ -150,12 +150,6 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         {
             var inner = await this.Manager.Inner.UserAssignedIdentities.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
             SetInner(inner);
-            // Often getting 'Principal xxx does not exist in the directory yyy'
-            // error when attempting to create role (access) assignments just
-            // after identity creation, so delaying here for some time before
-            // proceeding with next operation.
-            //
-            await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
             await this.roleAssignmentHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
 
             return this;

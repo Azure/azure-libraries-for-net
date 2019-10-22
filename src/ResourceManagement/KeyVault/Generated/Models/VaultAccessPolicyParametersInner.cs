@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
@@ -15,7 +17,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// <summary>
     /// Parameters for updating the access policy in a vault
     /// </summary>
-    public partial class VaultAccessPolicyParametersInner
+    public partial class VaultAccessPolicyParametersInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VaultAccessPolicyParametersInner
@@ -31,16 +33,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="properties">Properties of the access policy</param>
-        /// <param name="id">The resource id of the access policy.</param>
-        /// <param name="name">The resource name of the access policy.</param>
-        /// <param name="type">The resource name of the access policy.</param>
-        /// <param name="location">The resource type of the the access
+        /// <param name="location">The resource type of the access
         /// policy.</param>
-        public VaultAccessPolicyParametersInner(VaultAccessPolicyPropertiesInner properties, string id = default(string), string name = default(string), string type = default(string), string location = default(string))
+        public VaultAccessPolicyParametersInner(VaultAccessPolicyProperties properties, string id = default(string), string name = default(string), string type = default(string), string location = default(string))
+            : base(id, name, type)
         {
-            Id = id;
-            Name = name;
-            Type = type;
             Location = location;
             Properties = properties;
             CustomInit();
@@ -52,25 +49,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the resource id of the access policy.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets the resource name of the access policy.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets the resource name of the access policy.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets the resource type of the the access policy.
+        /// Gets the resource type of the access policy.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }
@@ -79,7 +58,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// Gets or sets properties of the access policy
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public VaultAccessPolicyPropertiesInner Properties { get; set; }
+        public VaultAccessPolicyProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.

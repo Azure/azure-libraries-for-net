@@ -16,9 +16,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVTY2FsZVNldFZNSW1wbA==
     internal partial class VirtualMachineScaleSetVMImpl :
         ChildResource<VirtualMachineScaleSetVMInner, VirtualMachineScaleSetImpl, IVirtualMachineScaleSet>,
+        VirtualMachineScaleSetVM.Update.IUpdate,
         IVirtualMachineScaleSetVM
     {
         private VirtualMachineInstanceView virtualMachineInstanceView;
+
+        private readonly ManagedDataDiskCollection managedDataDisks = new ManagedDataDiskCollection();
+
+        public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var instanceViewInner = await Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
+                this.Parent.ResourceGroupName,
+                this.Parent.Name,
+                this.InstanceId());
+
+            if (instanceViewInner != null)
+            {
+                this.virtualMachineInstanceView = new VirtualMachineInstanceView()
+                {
+                    BootDiagnostics = instanceViewInner.BootDiagnostics,
+                    Disks = instanceViewInner.Disks,
+                    Extensions = instanceViewInner.Extensions,
+                    PlatformFaultDomain = instanceViewInner.PlatformFaultDomain,
+                    PlatformUpdateDomain = instanceViewInner.PlatformUpdateDomain,
+                    RdpThumbPrint = instanceViewInner.RdpThumbPrint,
+                    Statuses = instanceViewInner.Statuses,
+                    VmAgent = instanceViewInner.VmAgent
+                };
+            }
+            return this.virtualMachineInstanceView;
+        }
 
         ///GENMHASH:7A41C20BB6F19CCDAC03072604BF281B:10AB7511A9B5C284B8E2E1F35126DD60
         public string WindowsTimeZone()
@@ -56,26 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:F5949CB4AFA8DD0B8DED0F369B12A8F6:E8FB723EB69B1FF154465213A3298460
         public VirtualMachineInstanceView RefreshInstanceView()
         {
-            VirtualMachineScaleSetVMInstanceViewInner instanceViewInner = Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
-                Parent.ResourceGroupName,
-                Parent.Name,
-                InstanceId()));
-
-            if (instanceViewInner != null)
-            {
-                this.virtualMachineInstanceView = new VirtualMachineInstanceView()
-                {
-                    BootDiagnostics = instanceViewInner.BootDiagnostics,
-                    Disks = instanceViewInner.Disks,
-                    Extensions = instanceViewInner.Extensions,
-                    PlatformFaultDomain = instanceViewInner.PlatformFaultDomain,
-                    PlatformUpdateDomain = instanceViewInner.PlatformUpdateDomain,
-                    RdpThumbPrint = instanceViewInner.RdpThumbPrint,
-                    Statuses = instanceViewInner.Statuses,
-                    VmAgent = instanceViewInner.VmAgent
-                };
-            }
-            return this.virtualMachineInstanceView;
+            return ResourceManager.Fluent.Core.Extensions.Synchronize(() => RefreshInstanceViewAsync());
         }
 
         ///GENMHASH:667E734583F577A898C6389A3D9F4C09:E31C3E6AAB81275E957AEE7FFC644CBF
@@ -225,7 +233,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (Inner.HardwareProfile != null && Inner.HardwareProfile.VmSize != null)
             {
-                return VirtualMachineSizeTypes.Parse(Inner.HardwareProfile.VmSize);
+                return Inner.HardwareProfile.VmSize;
             }
             if (Sku() != null && Sku().Name != null)
             {
@@ -490,6 +498,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 Parent.ResourceGroupName,
                 Parent.Name,
                 InstanceId(),
+                false,
                 cancellationToken);
         }
 
@@ -502,10 +511,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:960A44940EE0E051601BB59CD935FE22:09B1869890AC6095FE0FBE503BBBBFB6
         public async Task ReimageAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Parent.Manager.Inner.VirtualMachineScaleSetVMs.ReimageAsync(
+            await Parent.Manager.Inner.VirtualMachineScaleSetVMs.ReimageWithHttpMessagesAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 InstanceId(),
+                null,
+                null,
                 cancellationToken);
         }
 
@@ -540,6 +551,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             SetInner(await GetInnerAsync(cancellationToken));
             ClearCachedRelatedResources();
+            InitializeDataDisks();
             return this;
         }
 
@@ -565,7 +577,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineScaleSetVMImpl(VirtualMachineScaleSetVMInner inner, VirtualMachineScaleSetImpl parent)
             : base(inner, parent)
         {
-            virtualMachineInstanceView = Inner.InstanceView;
+            if (inner.InstanceView != null)
+            {
+                virtualMachineInstanceView = new VirtualMachineInstanceView(
+                    Inner.InstanceView.PlatformFaultDomain, Inner.InstanceView.PlatformUpdateDomain, null,
+                    null, null, default(HyperVGenerationType), Inner.InstanceView.RdpThumbPrint,
+                    Inner.InstanceView.VmAgent, Inner.InstanceView.MaintenanceRedeployStatus, Inner.InstanceView.Disks,
+                    Inner.InstanceView.Extensions, Inner.InstanceView.BootDiagnostics, Inner.InstanceView.Statuses);
+            }
+            else
+            {
+                virtualMachineInstanceView = null;
+            }
         }
 
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
@@ -609,6 +632,31 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.Parent.ListNetworkInterfacesByInstanceId(this.InstanceId());
         }
 
+        public string ModelDefinitionApplied
+        {
+            get
+            {
+                return this.Inner.ModelDefinitionApplied;
+            }
+        }
+
+        public VirtualMachineScaleSetVMProtectionPolicy ProtectionPolicy
+        {
+            get
+            {
+                return this.Inner.ProtectionPolicy;
+            }
+        }
+
+        public VirtualMachineScaleSetVMNetworkProfileConfiguration NetworkProfileConfiguration
+        {
+            get
+            {
+                return this.Inner.NetworkProfileConfiguration;
+            }
+        }
+
+
         ///GENMHASH:C0264E6C83F004DCB85510D507BABF23:343C0BEE1A4B7107E587437CC211D9EC
         public string StoredImageUnmanagedVhdUri()
         {
@@ -617,6 +665,155 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return Inner.StorageProfile.OsDisk.Image.Uri;
             }
             return null;
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate WithExistingDataDisk(IDisk disk, int lun, CachingTypes cachingType)
+        {
+            return WithExistingDataDisk(disk, lun, cachingType, StorageAccountTypes.Parse(disk.Sku.AccountType.ToString()));
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate WithExistingDataDisk(IDisk dataDisk, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
+        {
+            if (!IsManagedDiskEnabled())
+            {
+                throw new System.InvalidOperationException(ManagedUnmanagedDiskErrors.VM_Both_Unmanaged_And_Managed_Disk_Not_Allowed);
+            }
+            if (dataDisk.Inner.DiskState != DiskState.Unattached)
+            {
+                throw new System.InvalidOperationException("Disk need to be in unattached state");
+            }
+
+            DataDisk attachDataDisk = new DataDisk
+            {
+                CreateOption = DiskCreateOptionTypes.Attach,
+                Lun = lun,
+                Caching = cachingType,
+                ManagedDisk = new ManagedDiskParametersInner
+                {
+                    StorageAccountType = storageAccountType,
+                    Id = dataDisk.Id
+                }
+            };
+            WithExistingDataDisk(attachDataDisk, lun);
+            return this;
+        }
+
+        private VirtualMachineScaleSetVM.Update.IUpdate WithExistingDataDisk(DataDisk dataDisk, int lun)
+        {
+            if (TryFindDataDisk(lun, Inner.StorageProfile.DataDisks) != null)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} already attached", lun));
+            }
+            else if (TryFindDataDisk(lun, managedDataDisks.ExistingDisksToAttach) != null)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} already scheduled to be attached", lun));
+            }
+            managedDataDisks.ExistingDisksToAttach.Add(dataDisk);
+            return this;
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate WithoutDataDisk(int lun)
+        {
+            DataDisk dataDisk = TryFindDataDisk(lun, Inner.StorageProfile.DataDisks);
+            if (dataDisk == null)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} not found", lun));
+            }
+            if (dataDisk.CreateOption != DiskCreateOptionTypes.Attach)
+            {
+                throw new System.InvalidOperationException(string.Format("A data disk with lun {0} cannot be detached, as it is part of Virtual Machine Scale Set model", lun));
+            }
+            managedDataDisks.DiskLunsToRemove.Add(lun);
+            return this;
+        }
+
+        public IVirtualMachineScaleSetVM Apply()
+        {
+            return ResourceManager.Fluent.Core.Extensions.Synchronize(() => ApplyAsync());
+        }
+
+        public async Task<IVirtualMachineScaleSetVM> ApplyAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
+        {
+            managedDataDisks.SyncToVMDataDisks(Inner.StorageProfile);
+            SetInner(await Parent.VirtualMachines().Inner.UpdateAsync(Parent.ResourceGroupName, Parent.Name, InstanceId(), Inner, cancellationToken));
+            ClearCachedRelatedResources();
+            InitializeDataDisks();
+            return this;
+        }
+
+        public VirtualMachineScaleSetVM.Update.IUpdate Update()
+        {
+            InitializeDataDisks();
+            return this;
+        }
+
+        private void InitializeDataDisks()
+        {
+            managedDataDisks.Clear();
+        }
+
+        private DataDisk TryFindDataDisk(int lun, IList<DataDisk> dataDisks)
+        {
+            DataDisk disk = null;
+            foreach (DataDisk dataDisk in dataDisks)
+            {
+                if (lun == dataDisk.Lun)
+                {
+                    disk = dataDisk;
+                    break;
+                }
+            }
+            return disk;
+        }
+
+        /// <summary>
+        /// Class to manage data disk collection.
+        /// </summary>
+        class ManagedDataDiskCollection
+        {
+            internal readonly IList<DataDisk> ExistingDisksToAttach = new List<DataDisk>();
+            internal readonly IList<int> DiskLunsToRemove = new List<int>();
+
+            internal void SyncToVMDataDisks(StorageProfile storageProfile)
+            {
+                if (storageProfile != null && IsPending())
+                {
+                    // remove disks from VM inner
+                    if (storageProfile.DataDisks != null && DiskLunsToRemove.Any())
+                    {
+                        storageProfile.DataDisks = storageProfile.DataDisks
+                            .Where(disk => !DiskLunsToRemove.Contains(disk.Lun))
+                            .ToList();
+                    }
+
+                    // add disks to VM inner
+                    if (ExistingDisksToAttach.Any())
+                    {
+                        if (storageProfile.DataDisks == null)
+                        {
+                            storageProfile.DataDisks = new List<DataDisk>();
+                        }
+                        foreach (DataDisk disk in ExistingDisksToAttach)
+                        {
+                            storageProfile.DataDisks.Add(disk);
+                        }
+                    }
+
+                    // clear ManagedDataDiskCollection after it is synced into VM inner
+                    Clear();
+                }
+            }
+
+            internal void Clear()
+            {
+                ExistingDisksToAttach.Clear();
+                DiskLunsToRemove.Clear();
+            }
+
+            private bool IsPending()
+            {
+                return ExistingDisksToAttach.Any() || DiskLunsToRemove.Any();
+            }
         }
     }
 }

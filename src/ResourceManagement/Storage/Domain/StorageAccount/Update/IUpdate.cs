@@ -48,6 +48,20 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
     }
 
     /// <summary>
+    /// The stage of the storage account update allowing to set whether Azure files aad integration is enabled.
+    /// </summary>
+    public interface IWithAzureFilesAadIntegration:
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies whether Azure files Aad integration will be enabled or not.
+        /// </summary>
+        /// <param name="enabled">Whether Azure files aad integration is enabled or not</param>
+        /// <returns>The next stage of the storage account update.</returns>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithAzureFilesAadIntegrationEnabled(bool enabled);
+    }
+
+    /// <summary>
     /// The template for a storage account update operation, containing all the settings that can be modified.
     /// </summary>
     public interface IUpdate :
@@ -60,6 +74,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithAccessTraffic,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithNetworkAccess,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithUpgrade,
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithAzureFilesAadIntegration,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate>
     {
     }
@@ -182,7 +197,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
         /// </summary>
         /// <deprecated>Use IWithEncryption.WithoutBlobEncryption() instead.</deprecated>
         /// <return>The next stage of storage account update.</return>
-        [System.Obsolete("WithEncryption.WithoutEncryption() is deprecated, use IWithEncryption.WithoutEncryption() instead.")]
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithoutEncryption();
 
         /// <summary>

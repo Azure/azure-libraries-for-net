@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.UnavailabilityReason() as Microsoft.Azure.Management.ServiceBus.Fluent.Models.UnavailableReason;
+                return this.UnavailabilityReason();
             }
         }
 

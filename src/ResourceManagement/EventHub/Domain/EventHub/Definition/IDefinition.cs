@@ -97,6 +97,14 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent.EventHub.Definition
         /// <param name="sizeInMB">Window size in MB.</param>
         /// <return>Next stage of the event hub definition.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.EventHub.Definition.IWithCaptureOptionalSettingsOrCreate WithDataCaptureWindowSizeInMB(int sizeInMB);
+
+
+        /// <summary>
+        /// Set a value that indicates whether to Skip Empty Archives.
+        /// </summary>
+        /// <param name="skipEmptyArchives">The skipEmptyArchives value to set.</param>
+        /// <return>Next stage of the event hub definition.</return>
+        Microsoft.Azure.Management.Eventhub.Fluent.EventHub.Definition.IWithCaptureOptionalSettingsOrCreate WithDataCaptureSkipEmptyArchives(bool skipEmptyArchives);
     }
 
     /// <summary>

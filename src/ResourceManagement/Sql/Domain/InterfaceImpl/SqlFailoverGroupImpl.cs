@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithCreate SqlFailoverGroupOperations.Definition.IWithReadOnlyEndpointPolicy.WithReadOnlyEndpointPolicyDisabled()
         {
-            return this.WithReadOnlyEndpointPolicyDisabled() as SqlFailoverGroupOperations.Definition.IWithCreate;
+            return this.WithReadOnlyEndpointPolicyDisabled();
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithCreate SqlFailoverGroupOperations.Definition.IWithReadOnlyEndpointPolicy.WithReadOnlyEndpointPolicyEnabled()
         {
-            return this.WithReadOnlyEndpointPolicyEnabled() as SqlFailoverGroupOperations.Definition.IWithCreate;
+            return this.WithReadOnlyEndpointPolicyEnabled();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithReadOnlyEndpointPolicy.WithReadOnlyEndpointPolicyDisabled()
         {
-            return this.WithReadOnlyEndpointPolicyDisabled() as SqlFailoverGroup.Update.IUpdate;
+            return this.WithReadOnlyEndpointPolicyDisabled();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithReadOnlyEndpointPolicy.WithReadOnlyEndpointPolicyEnabled()
         {
-            return this.WithReadOnlyEndpointPolicyEnabled() as SqlFailoverGroup.Update.IUpdate;
+            return this.WithReadOnlyEndpointPolicyEnabled();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy SqlFailoverGroupOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName, string location)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName, location) as SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName, location);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy SqlFailoverGroupOperations.Definition.IWithSqlServer.WithExistingSqlServer(ISqlServer sqlServer)
         {
-            return this.WithExistingSqlServer(sqlServer) as SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy;
+            return this.WithExistingSqlServer(sqlServer);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<SqlFailoverGroupOperations.Definition.IWithCreate>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as SqlFailoverGroupOperations.Definition.IWithCreate;
+            return this.WithTags(tags);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<SqlFailoverGroupOperations.Definition.IWithCreate>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as SqlFailoverGroupOperations.Definition.IWithCreate;
+            return this.WithTag(key, value);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithCreate SqlFailoverGroupOperations.Definition.IWithDatabase.WithDatabaseIds(params string[] ids)
         {
-            return this.WithDatabaseIds(ids) as SqlFailoverGroupOperations.Definition.IWithCreate;
+            return this.WithDatabaseIds(ids);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithCreate SqlFailoverGroupOperations.Definition.IWithDatabase.WithDatabaseId(string id)
         {
-            return this.WithDatabaseId(id) as SqlFailoverGroupOperations.Definition.IWithCreate;
+            return this.WithDatabaseId(id);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithDatabase.WithNewDatabaseId(string id)
         {
-            return this.WithNewDatabaseId(id) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithNewDatabaseId(id);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithDatabase.WithoutDatabaseId(string id)
         {
-            return this.WithoutDatabaseId(id) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithoutDatabaseId(id);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithDatabase.WithDatabaseIds(params string[] ids)
         {
-            return this.WithDatabaseIds(ids) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithDatabaseIds(ids);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the resource update.</return>
         SqlFailoverGroup.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<SqlFailoverGroup.Update.IUpdate>.WithoutTag(string key)
         {
-            return this.WithoutTag(key) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithoutTag(key);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the resource update.</return>
         SqlFailoverGroup.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<SqlFailoverGroup.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithTags(tags);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the resource update.</return>
         SqlFailoverGroup.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<SqlFailoverGroup.Update.IUpdate>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithTag(key, value);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlFailoverGroup.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlFailoverGroup.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlFailoverGroup.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithPartnerServer SqlFailoverGroupOperations.Definition.IWithPartnerServer.WithPartnerServerId(string id)
         {
-            return this.WithPartnerServerId(id) as SqlFailoverGroupOperations.Definition.IWithPartnerServer;
+            return this.WithPartnerServerId(id);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags();
             }
         }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.PartnerServers() as System.Collections.Generic.IReadOnlyList<Models.PartnerInfo>;
+                return this.PartnerServers();
             }
         }
 
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Databases() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.Databases();
             }
         }
 
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ReadWriteEndpointPolicy() as Models.ReadWriteEndpointFailoverPolicy;
+                return this.ReadWriteEndpointPolicy();
             }
         }
 
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ReadOnlyEndpointPolicy() as Models.ReadOnlyEndpointFailoverPolicy;
+                return this.ReadOnlyEndpointPolicy();
             }
         }
 
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ReplicationRole() as Models.FailoverGroupReplicationRole;
+                return this.ReplicationRole();
             }
         }
 
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithPartnerServer SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy.WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(int gracePeriodInMinutes)
         {
-            return this.WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(gracePeriodInMinutes) as SqlFailoverGroupOperations.Definition.IWithPartnerServer;
+            return this.WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(gracePeriodInMinutes);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroupOperations.Definition.IWithPartnerServer SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy.WithManualReadWriteEndpointPolicy()
         {
-            return this.WithManualReadWriteEndpointPolicy() as SqlFailoverGroupOperations.Definition.IWithPartnerServer;
+            return this.WithManualReadWriteEndpointPolicy();
         }
 
         /// <summary>
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithReadWriteEndpointPolicy.WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(int gracePeriodInMinutes)
         {
-            return this.WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(gracePeriodInMinutes) as SqlFailoverGroup.Update.IUpdate;
+            return this.WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(gracePeriodInMinutes);
         }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFailoverGroup.Update.IUpdate SqlFailoverGroup.Update.IWithReadWriteEndpointPolicy.WithManualReadWriteEndpointPolicy()
         {
-            return this.WithManualReadWriteEndpointPolicy() as SqlFailoverGroup.Update.IUpdate;
+            return this.WithManualReadWriteEndpointPolicy();
         }
 
         /// <summary>

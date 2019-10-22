@@ -29,16 +29,38 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
         private ISet<string> idOfVMsInSet;
 
+        // Name of the new proximity placement group
+        private string newProximityPlacementGroupName;
+        // Type fo the new proximity placement group
+        private ProximityPlacementGroupType newProximityPlacementGroupType;
+
         ///GENMHASH:8C96B0BDC54BDF41F3FC5BCCAA028C8D:113A819FAF18DEACEC4BCC60120F8166
         internal AvailabilitySetImpl(string name, AvailabilitySetInner innerModel, IComputeManager computeManager) :
             base(name, innerModel, computeManager)
         {
+            newProximityPlacementGroupName = null;
+            newProximityPlacementGroupType = null;
         }
 
         ///GENMHASH:C260E0C5666F525F67582200AB726081:7DE3282328DE495135BCEDAABABE05D1
         public int FaultDomainCount()
         {
             return (Inner.PlatformFaultDomainCount.HasValue) ? Inner.PlatformFaultDomainCount.Value : 0;
+        }
+
+        public IProximityPlacementGroup ProximityPlacementGroup()
+        {
+            ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
+
+            ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, id.Name));
+            if (plgInner == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new ProximityPlacementGroupImpl(plgInner);
+            }
         }
 
         ///GENMHASH:2BD1C2DEE2E7FBB6D90AB920FAD6E9EE:EA53AD3391D9207B84DE8253439698A9
@@ -78,10 +100,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 Inner.PlatformUpdateDomainCount = 5;
             }
+            this.CreateNewProximityPlacementGroup();
             var availabilitySetInner = await Manager.Inner.AvailabilitySets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(availabilitySetInner);
             idOfVMsInSet = null;
             return this;
+        }
+
+        private void CreateNewProximityPlacementGroup()
+        {
+            if (IsInCreateMode)
+            {
+                if (!String.IsNullOrWhiteSpace(this.newProximityPlacementGroupName))
+                {
+                    ProximityPlacementGroupInner plgInner = new ProximityPlacementGroupInner()
+                    {
+                        ProximityPlacementGroupType = this.newProximityPlacementGroupType,
+                        Location = this.Inner.Location
+                    };
+                    plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.CreateOrUpdateAsync(this.ResourceGroupName, newProximityPlacementGroupName, plgInner));
+                    this.Inner.ProximityPlacementGroup = new SubResource() { Id = plgInner.Id };
+                }
+            }
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:031612B4E8FDCD8F07810CE8D68580BA
@@ -133,11 +173,38 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public AvailabilitySetImpl WithProximityPlacementGroup(String proximityPlacementGroupId)
+        {
+            this.newProximityPlacementGroupType = null;
+            this.newProximityPlacementGroupName = null;
+            this.Inner.ProximityPlacementGroup = new SubResource() { Id = proximityPlacementGroupId };
+            return this;
+        }
+
+        public AvailabilitySetImpl WithNewProximityPlacementGroup(String proximityPlacementGroupName, ProximityPlacementGroupType type)
+        {
+            this.newProximityPlacementGroupName = proximityPlacementGroupName;
+            this.newProximityPlacementGroupType = type;
+
+            this.Inner.ProximityPlacementGroup = null;
+
+            return this;
+        }
+
+        public AvailabilitySetImpl WithoutProximityPlacementGroup()
+        {
+            this.newProximityPlacementGroupType = null;
+            this.newProximityPlacementGroupName = null;
+            this.Inner.ProximityPlacementGroup = null;
+            return this;
+        }
+
         ///GENMHASH:8FCDE9292B4D0AE6B0FA60BC84DD60E5:0ADB8EF84E7C5EBD42CD3DED6C7CDC38
         public IEnumerable<IVirtualMachineSize> ListVirtualMachineSizes()
         {
             return Extensions.Synchronize(() => this.Manager.Inner.AvailabilitySets.ListAvailableSizesAsync(this.ResourceGroupName, this.Name))
                 .Select(inner => new VirtualMachineSizeImpl(inner));
         }
+
     }
 }

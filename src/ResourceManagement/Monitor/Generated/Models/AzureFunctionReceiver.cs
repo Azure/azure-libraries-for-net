@@ -36,12 +36,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// app.</param>
         /// <param name="httpTriggerUrl">The http trigger url where http
         /// request sent to.</param>
-        public AzureFunctionReceiver(string name, string functionAppResourceId, string functionName, string httpTriggerUrl)
+        /// <param name="useCommonAlertSchema">Indicates whether to use common
+        /// alert schema.</param>
+        public AzureFunctionReceiver(string name, string functionAppResourceId, string functionName, string httpTriggerUrl, bool useCommonAlertSchema)
         {
             Name = name;
             FunctionAppResourceId = functionAppResourceId;
             FunctionName = functionName;
             HttpTriggerUrl = httpTriggerUrl;
+            UseCommonAlertSchema = useCommonAlertSchema;
             CustomInit();
         }
 
@@ -74,6 +77,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "httpTriggerUrl")]
         public string HttpTriggerUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to use common alert schema.
+        /// </summary>
+        [JsonProperty(PropertyName = "useCommonAlertSchema")]
+        public bool UseCommonAlertSchema { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -7,20 +7,20 @@
     <PackageId>Fluent.Unit.Tests</PackageId>
     <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
+<!--  
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.1</TargetFrameworks>
-    <TestProjectType>true</TestProjectType>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
-
+-->  
   <ItemGroup>  
-    <PackageReference Include="CoreFtp" Version="1.4.0" />
+    <PackageReference Include="CoreFtp" Version="1.4.0" />  
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\..\src\ResourceManagement\Azure.Fluent\Microsoft.Azure.Management.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj" />
-    <ProjectReference Include="..\..\src\ResourceManagement\Batch\Microsoft.Azure.Management.Batch.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\Cdn\Microsoft.Azure.Management.Cdn.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\Compute\Microsoft.Azure.Management.Compute.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\ContainerRegistry\Microsoft.Azure.Management.ContainerRegistry.Fluent.csproj" />
@@ -44,6 +44,10 @@
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  
   <ItemGroup>
     <None Update="Assets\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -52,5 +56,4 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
 </Project>

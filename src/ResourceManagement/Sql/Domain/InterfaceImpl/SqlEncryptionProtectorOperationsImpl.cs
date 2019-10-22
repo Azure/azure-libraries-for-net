@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.GetBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(sqlServer, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return await this.GetBySqlServerAsync(sqlServer, cancellationToken);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>;
+            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(sqlServer, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>;
+            return await this.ListBySqlServerAsync(sqlServer, cancellationToken);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.GetBySqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.GetBySqlServer(ISqlServer sqlServer)
         {
-            return this.GetBySqlServer(sqlServer) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return this.GetBySqlServer(sqlServer);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.ListBySqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.ListBySqlServer(resourceGroupName, sqlServerName) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>;
+            return this.ListBySqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.ListBySqlServer(ISqlServer sqlServer)
         {
-            return this.ListBySqlServer(sqlServer) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>;
+            return this.ListBySqlServer(sqlServer);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition.Get()
         {
-            return this.Get() as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return this.Get();
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition.List()
         {
-            return this.List() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector>;
+            return this.List();
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition.GetAsync(CancellationToken cancellationToken)
         {
-            return await this.GetAsync(cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector;
+            return await this.GetAsync(cancellationToken);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<ISqlEncryptionProtector>> SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<ISqlEncryptionProtector>;
+            return await this.ListAsync(cancellationToken);
         }
     }
 }

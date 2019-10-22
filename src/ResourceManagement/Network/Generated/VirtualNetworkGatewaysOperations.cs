@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -722,6 +722,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Resets the VPN client shared key of the virtual network gateway in the
+        /// specified resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> ResetVpnClientSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginResetVpnClientSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Generates VPN client package for P2S client of the virtual network gateway
         /// in the specified resource group.
         /// </summary>
@@ -868,7 +891,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1052,7 +1075,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the virtual network gateway.
         /// </param>
         /// <param name='peer'>
-        /// The IP address of the peer
+        /// The IP address of the peer.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1171,7 +1194,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1329,6 +1352,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Get VPN client connection health detail per P2S client connection of the
+        /// virtual network gateway in the specified resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<VpnClientConnectionHealthDetailListResultInner>> GetVpnclientConnectionHealthWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse<VpnClientConnectionHealthDetailListResultInner> _response = await BeginGetVpnclientConnectionHealthWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Creates or updates a virtual network gateway in the specified resource
         /// group.
         /// </summary>
@@ -1384,7 +1430,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1600,7 +1646,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1779,7 +1825,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             TagsObject parameters = new TagsObject();
             if (tags != null)
             {
@@ -1990,7 +2036,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2146,6 +2192,180 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Resets the VPN client shared key of the virtual network gateway in the
+        /// specified resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginResetVpnClientSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (virtualNetworkGatewayName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayName");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            string apiVersion = "2019-06-01";
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("virtualNetworkGatewayName", virtualNetworkGatewayName);
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginResetVpnClientSharedKey", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{virtualNetworkGatewayName}", System.Uri.EscapeDataString(virtualNetworkGatewayName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
         /// Generates VPN client package for P2S client of the virtual network gateway
         /// in the specified resource group.
         /// </summary>
@@ -2198,7 +2418,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2288,7 +2508,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -2408,7 +2628,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2611,7 +2831,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2808,7 +3028,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3008,7 +3228,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3169,7 +3389,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the virtual network gateway.
         /// </param>
         /// <param name='peer'>
-        /// The IP address of the peer
+        /// The IP address of the peer.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3210,7 +3430,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3423,7 +3643,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3626,7 +3846,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-02-01";
+            string apiVersion = "2019-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3758,6 +3978,201 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 try
                 {
                     _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<VpnClientIPsecParametersInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Get VPN client connection health detail per P2S client connection of the
+        /// virtual network gateway in the specified resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<VpnClientConnectionHealthDetailListResultInner>> BeginGetVpnclientConnectionHealthWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (virtualNetworkGatewayName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayName");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            string apiVersion = "2019-06-01";
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("virtualNetworkGatewayName", virtualNetworkGatewayName);
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginGetVpnclientConnectionHealth", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{virtualNetworkGatewayName}", System.Uri.EscapeDataString(virtualNetworkGatewayName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<VpnClientConnectionHealthDetailListResultInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<VpnClientConnectionHealthDetailListResultInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

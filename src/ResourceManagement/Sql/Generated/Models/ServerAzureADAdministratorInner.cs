@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="sid">The server administrator Sid (Secure ID).</param>
         /// <param name="tenantId">The server Active Directory Administrator
         /// tenant id.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         public ServerAzureADAdministratorInner(string login, System.Guid sid, System.Guid tenantId, string id = default(string), string name = default(string), string type = default(string))
             : base(id, name, type)
         {

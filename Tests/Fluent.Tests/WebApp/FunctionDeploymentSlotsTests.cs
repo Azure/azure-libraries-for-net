@@ -39,8 +39,8 @@ namespace Fluent.Tests.WebApp
                         .WithStickyAppSetting("stickykey", "stickyvalue")
                         .WithConnectionString("connectionName", "connectionValue", ConnectionStringType.Custom)
                         .WithStickyConnectionString("stickyName", "stickyValue", ConnectionStringType.Custom)
-                        .WithJavaVersion(JavaVersion.V7_51)
-                        .WithWebContainer(WebContainer.Tomcat7_0_50)
+                        .WithJavaVersion(JavaVersion.V11Newest)
+                        .WithWebContainer(WebContainer.Tomcat8_5Newest)
                         .Create();
                     Assert.NotNull(functionApp);
                     Assert.Equal(Region.USWest, functionApp.Region);
@@ -51,7 +51,7 @@ namespace Fluent.Tests.WebApp
                         .WithPythonVersion(PythonVersion.V27)
                         .Create();
                     Assert.NotNull(slot1);
-                    Assert.NotEqual(JavaVersion.V7_51, slot1.JavaVersion);
+                    Assert.NotEqual(JavaVersion.V8Newest, slot1.JavaVersion);
                     Assert.Equal(PythonVersion.V27, slot1.PythonVersion);
                     var appSettingMap = slot1.GetAppSettings();
                     Assert.False(appSettingMap.ContainsKey("appkey"));
@@ -59,13 +59,14 @@ namespace Fluent.Tests.WebApp
                     var connectionStringMap = slot1.GetConnectionStrings();
                     Assert.False(connectionStringMap.ContainsKey("connectionName"));
                     Assert.False(connectionStringMap.ContainsKey("stickyName"));
+                  
 
                     // Create a deployment slot with web app's config
                     var slot2 = functionApp.DeploymentSlots.Define(SlotName2)
                         .WithConfigurationFromParent()
                         .Create();
                     Assert.NotNull(slot2);
-                    Assert.Equal(JavaVersion.V7_51, slot2.JavaVersion);
+                    Assert.Equal(JavaVersion.V11Newest, slot2.JavaVersion);
                     appSettingMap = slot2.GetAppSettings();
                     Assert.Equal("appvalue", appSettingMap["appkey"].Value);
                     Assert.False(appSettingMap["appkey"].Sticky);

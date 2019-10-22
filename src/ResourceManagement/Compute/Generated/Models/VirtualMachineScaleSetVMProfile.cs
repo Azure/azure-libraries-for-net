@@ -56,11 +56,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machines in the scale set. &lt;br&gt;&lt;br&gt;Minimum api-version:
         /// 2017-10-30-preview. Possible values include: 'Regular',
         /// 'Low'</param>
-        /// <param name="evictionPolicy">Specifies the eviction policy for virtual
-        /// machines in a low priority scale set. &lt;br&gt;&lt;br&gt;Minimum api-version:
-        /// 2017-10-30-preview. Possible values include: 'Deallocate',
-        /// 'Delete'</param>
-        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string))
+        /// <param name="evictionPolicy">Specifies the eviction policy for
+        /// virtual machines in a low priority scale set.
+        /// &lt;br&gt;&lt;br&gt;Minimum api-version: 2017-10-30-preview.
+        /// Possible values include: 'Deallocate', 'Delete'</param>
+        /// <param name="billingProfile">Specifies the billing related details
+        /// of a low priority VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
+        /// 2019-03-01.</param>
+        /// <param name="scheduledEventsProfile">Specifies Scheduled Event
+        /// related configurations.</param>
+        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), VirtualMachinePriorityTypes priority = default(VirtualMachinePriorityTypes), VirtualMachineEvictionPolicyTypes evictionPolicy = default(VirtualMachineEvictionPolicyTypes), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile))
         {
             OsProfile = osProfile;
             StorageProfile = storageProfile;
@@ -70,6 +75,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             LicenseType = licenseType;
             Priority = priority;
             EvictionPolicy = evictionPolicy;
+            BillingProfile = billingProfile;
+            ScheduledEventsProfile = scheduledEventsProfile;
             CustomInit();
         }
 
@@ -138,15 +145,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2017-10-30-preview. Possible values include: 'Regular', 'Low'
         /// </summary>
         [JsonProperty(PropertyName = "priority")]
-        public string Priority { get; set; }
+        public VirtualMachinePriorityTypes Priority { get; set; }
 
         /// <summary>
-        ///  Gets or sets specifies the eviction policy for virtual machines in a low priority
-        /// scale set.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version: 2017-10-30-preview.
-        /// Possible values include: 'Deallocate', 'Delete'.
+        /// Gets or sets specifies the eviction policy for virtual machines in
+        /// a low priority scale set.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
+        /// 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
         /// </summary>
         [JsonProperty(PropertyName = "evictionPolicy")]
-        public string EvictionPolicy { get; set; }
+        public VirtualMachineEvictionPolicyTypes EvictionPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the billing related details of a low
+        /// priority VMSS. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum
+        /// api-version: 2019-03-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "billingProfile")]
+        public BillingProfile BillingProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies Scheduled Event related configurations.
+        /// </summary>
+        [JsonProperty(PropertyName = "scheduledEventsProfile")]
+        public ScheduledEventsProfile ScheduledEventsProfile { get; set; }
 
         /// <summary>
         /// Validate the object.

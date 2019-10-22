@@ -13,5 +13,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public static readonly TrafficRoutingMethod Weighted = Parse("Weighted");
         public static readonly TrafficRoutingMethod Priority = Parse("Priority");
         public static readonly TrafficRoutingMethod Geographic = Parse("Geographic");
+        public static readonly TrafficRoutingMethod MultiValue = Parse("MultiValue");
+        public static readonly TrafficRoutingMethod Subnet = Parse("Subnet");
     }
 }

@@ -965,29 +965,40 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #endregion
 
+
+        public ApplicationGatewayImpl WithTier(ApplicationGatewayTier skuTier)
+        {
+            if (this.Inner.Sku == null)
+            {
+                this.Inner.Sku = new ApplicationGatewaySku { Capacity = 1 };
+            }
+            this.Inner.Sku.Tier = skuTier;
+            return this;
+        }
+
         ///GENMHASH:0A25F8D30AF64565545B20B215964E6B:7FF7C66C33A802B8668BFAC46B248EE8
         public ApplicationGatewayImpl WithSize(ApplicationGatewaySkuName skuName)
         {
-            int count;
-            // Preserve instance count if already set
-            if (Sku() != null && Sku().Capacity != null)
+            if (this.Inner.Sku == null)
             {
-                count = Sku().Capacity.Value;
+                this.Inner.Sku = new ApplicationGatewaySku { Capacity = 1 };
             }
-            else
+            this.Inner.Sku.Name = skuName;
+            if (this.Inner.Sku.Tier == null)
             {
-                count = 1; // Default instance count
+
+                if (skuName == ApplicationGatewaySkuName.WAFLarge || skuName == ApplicationGatewaySkuName.WAFMedium)
+                {
+                    this.Inner.Sku.Tier = ApplicationGatewayTier.WAF;
+                }
+                else
+                {
+                    this.Inner.Sku.Tier = ApplicationGatewayTier.Standard;
+                }
             }
-
-            var sku = new ApplicationGatewaySku()
-            {
-                Name = skuName,
-                Capacity = count
-            };
-
-            Inner.Sku = sku;
             return this;
         }
+
 
         ///GENMHASH:94ACA3B358939F31F4F3966CDB1B73A4:7D7FC963A56E00888DE266506161CB7C
         public ApplicationGatewayImpl WithInstanceCount(int capacity)
@@ -1001,6 +1012,59 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+
+
+        ///GENMHASH:94ACA3B358939F31F4F3966CDB1B73A4:7D7FC963A56E00888DE266506161CB7C
+        public ApplicationGatewayImpl WithAutoscale(int minCapacity, int maxCapacity)
+        {
+            Inner.Sku.Capacity = null;
+            Inner.AutoscaleConfiguration = new ApplicationGatewayAutoscaleConfiguration()
+            {
+                MinCapacity = minCapacity, 
+                MaxCapacity = maxCapacity
+            };
+            return this;
+        }
+
+        public ApplicationGatewayImpl WithWebApplicationFirewall(bool enabled, ApplicationGatewayFirewallMode mode)
+        {
+            this.Inner.WebApplicationFirewallConfiguration = new ApplicationGatewayWebApplicationFirewallConfiguration()
+            {
+                Enabled = enabled,
+                FirewallMode = mode,
+                RuleSetType = "OWASP",
+                RuleSetVersion = "3.0"
+            };
+            return this;
+        }
+
+        public ApplicationGatewayImpl WithWebApplicationFirewall(ApplicationGatewayWebApplicationFirewallConfiguration config)
+        {
+            this.Inner.WebApplicationFirewallConfiguration = config;
+            return this;
+        }
+
+        
+        public ApplicationGatewayImpl WithIdentity(ManagedServiceIdentity identity)
+        {
+            this.Inner.Identity = identity;
+            return this;
+        }
+
+        public ApplicationGatewayImpl WithEnableHttp2()
+        {
+            Inner.EnableHttp2 = true;
+            return this;
+        }
+
+        #endregion
+
+        #region Withouters
+        public ApplicationGatewayImpl WithoutEnableHttp2()
+        {
+            Inner.EnableHttp2 = false;
+            return this;
+        }
         #endregion
 
         #region Accessors
@@ -1017,6 +1081,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return 1;
             }
         }
+
+        public ApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration
+        {
+            get
+            {
+                return this.Inner.AutoscaleConfiguration;
+            }
+        }
+
+        public ApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration
+        {
+            get
+            {
+                return this.Inner.WebApplicationFirewallConfiguration;
+            }
+        }
+
 
 
         ///GENMHASH:77914F0D4FB485205682C4181EFAACC8:875B0523271DDA40BF052DD20E89DCA7
@@ -1179,7 +1260,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public IReadOnlyDictionary<string, IApplicationGatewayFrontend> PublicFrontends()
         {
             Dictionary<string, IApplicationGatewayFrontend> publicFrontends = new Dictionary<string, IApplicationGatewayFrontend>();
-            ///GENMHASH:3BF87DE2E0C9BBAA60FEF8B345571B0D:78DEDBCE9849DD9B71BA61C7FBEA3261
+            //GENMHASH:3BF87DE2E0C9BBAA60FEF8B345571B0D:78DEDBCE9849DD9B71BA61C7FBEA3261
             foreach (var frontend in Frontends().Values)
             {
                 if (frontend.IsPublic)
@@ -1208,7 +1289,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F756CBB3F13EF6198269C107AED6F9A2:F819A402FF29D3234FF975971868AD05
         public ApplicationGatewayTier Tier()
         {
-            ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
+            //GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
             if (Sku() != null && Sku().Tier != null)
             {
                 return Sku().Tier;
@@ -1615,18 +1696,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (defaultPublicFrontend != null && defaultPublicFrontend.PublicIPAddressId() == null)
             {
                 // If default public frontend requested but no PIP specified, create one
-                ///GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:28278DE68BEBBF206C58F1B8AC9DEA79
-                Task pipTask = EnsureDefaultPipDefinition().CreateAsync(cancellationToken)
-                    .ContinueWith(
-                        antecedent =>
-                        {
-                            var publicIP = antecedent.Result;
-                            // Attach the created PIP when available
-                            defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
+                //GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:28278DE68BEBBF206C58F1B8AC9DEA79
+                Task pipTask = Task.Run(async () =>
+               {
+                   var publicIP = await EnsureDefaultPipDefinition().CreateAsync(cancellationToken);
+                   // Attach the created PIP when available
+                   defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
+               });
                 tasks.Add(pipTask);
             }
 
@@ -1647,41 +1723,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
             else
             {
                 // But if default IP config does not have a subnet specified, then create a default VNet
-                ///GENMHASH:378C5280A44231F5593B789FF6A1BF16:91307BB6F8D393A842145FECCE969E10
-                Task networkTask = EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken)
-                .ContinueWith(antecedent =>
-                {
-                    //... and assign the created VNet to the default IP config
-                    var network = antecedent.Result;
-                    defaultIPConfig.WithExistingSubnet(network, DEFAULT);
-                    if (defaultPrivateFrontend != null)
-                    {
-                        // If a private frontend is also requested, then use the same VNet for the private frontend as for the IP config
-                        /* TODO: Not sure if the assumption of the same subnet for the frontend and the IP config will hold in
-                         * the future, but the existing ARM template for App Gateway for some reason uses the same subnet for the
-                         * IP config and the private frontend. Also, trying to use different subnets results in server error today saying they
-                         * have to be the same. This may need to be revisited in the future however, as this is somewhat inconsistent
-                         * with what the documentation says.
-                         */
-                        UseSubnetFromIPConfigForFrontend(defaultIPConfig, defaultPrivateFrontend);
-                    }
-                },
-                    cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
-                    TaskScheduler.Default);
+                //GENMHASH:378C5280A44231F5593B789FF6A1BF16:91307BB6F8D393A842145FECCE969E10
+                Task networkTask = Task.Run(async () =>
+               {
+                   var network = await EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken);
+                   //... and assign the created VNet to the default IP config
+                   defaultIPConfig.WithExistingSubnet(network, DEFAULT);
+                   if (defaultPrivateFrontend != null)
+                   {
+                       // If a private frontend is also requested, then use the same VNet for the private frontend as for the IP config
+                       /* TODO: Not sure if the assumption of the same subnet for the frontend and the IP config will hold in
+                        * the future, but the existing ARM template for App Gateway for some reason uses the same subnet for the
+                        * IP config and the private frontend. Also, trying to use different subnets results in server error today saying they
+                        * have to be the same. This may need to be revisited in the future however, as this is somewhat inconsistent
+                        * with what the documentation says.
+                        */
+                       UseSubnetFromIPConfigForFrontend(defaultIPConfig, defaultPrivateFrontend);
+                   }
+               });
                 tasks.Add(networkTask);
             }
 
-            var appGatewayInnerTask = Task.WhenAll(tasks.ToArray()).ContinueWith(
-                antecedent =>
-                {
-                    return Manager.Inner.ApplicationGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default);
-
-            return await appGatewayInnerTask.Result;
+            await Task.WhenAll(tasks.ToArray());
+            return await Manager.Inner.ApplicationGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
         }
 
         ///GENMHASH:644A3298215000D78F5173C9BC6F440E:9BEBC7254CB4CA864A9951088E837542
@@ -1885,7 +1949,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public string FrontendPortNameFromNumber(int portNumber)
         {
             string portName = null;
-            ///GENMHASH:F0126379A1F65359204BD22C7CF55E7C:BE15CAD584433DEAF8B46C62642E8728
+            //GENMHASH:F0126379A1F65359204BD22C7CF55E7C:BE15CAD584433DEAF8B46C62642E8728
             foreach (var portEntry in FrontendPorts())
             {
                 if (portNumber == portEntry.Value)

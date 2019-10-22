@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<SecurityGroupViewResultInner>> GetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Initiate troubleshooting on a specified resource
+        /// Initiate troubleshooting on a specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Task<AzureOperationResponse<TroubleshootingResultInner>> GetTroubleshootingWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, TroubleshootingParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the last completed troubleshooting result on a specified
-        /// resource
+        /// resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -338,7 +338,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<TroubleshootingResultInner>> GetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Configures flow log on a specified resource.
+        /// Configures flow log and traffic analytics (optional) on a specified
+        /// resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -355,7 +356,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -366,7 +367,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<FlowLogInformationInner>> SetFlowLogConfigurationWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Queries status of flow log on a specified resource.
+        /// Queries status of flow log and traffic analytics (optional) on a
+        /// specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -375,7 +377,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the network watcher resource.
         /// </param>
         /// <param name='targetResourceId'>
-        /// The target resource where getting the flow logging status.
+        /// The target resource where getting the flow log and traffic
+        /// analytics (optional) status.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -383,7 +386,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -414,7 +417,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -443,7 +446,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -472,7 +475,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -482,6 +485,34 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<AvailableProvidersListInner>> ListAvailableProvidersWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get network configuration diagnostic.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to get network configuration diagnostic.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<NetworkConfigurationDiagnosticResponseInner>> GetNetworkConfigurationDiagnosticWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified network watcher resource.
         /// </summary>
@@ -497,7 +528,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -523,7 +554,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -551,7 +582,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -580,7 +611,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -591,7 +622,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<SecurityGroupViewResultInner>> BeginGetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Initiate troubleshooting on a specified resource
+        /// Initiate troubleshooting on a specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -608,7 +639,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -620,7 +651,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Task<AzureOperationResponse<TroubleshootingResultInner>> BeginGetTroubleshootingWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, TroubleshootingParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the last completed troubleshooting result on a specified
-        /// resource
+        /// resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -637,7 +668,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -648,7 +679,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<TroubleshootingResultInner>> BeginGetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Configures flow log on a specified resource.
+        /// Configures flow log and traffic analytics (optional) on a specified
+        /// resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -665,7 +697,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -676,7 +708,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<FlowLogInformationInner>> BeginSetFlowLogConfigurationWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Queries status of flow log on a specified resource.
+        /// Queries status of flow log and traffic analytics (optional) on a
+        /// specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -685,7 +718,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the network watcher resource.
         /// </param>
         /// <param name='targetResourceId'>
-        /// The target resource where getting the flow logging status.
+        /// The target resource where getting the flow log and traffic
+        /// analytics (optional) status.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -693,7 +727,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -724,7 +758,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -753,7 +787,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -782,7 +816,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -792,5 +826,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<AvailableProvidersListInner>> BeginListAvailableProvidersWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get network configuration diagnostic.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to get network configuration diagnostic.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<NetworkConfigurationDiagnosticResponseInner>> BeginGetNetworkConfigurationDiagnosticWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

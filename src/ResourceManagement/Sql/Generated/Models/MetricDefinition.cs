@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond',
         /// 'BytesPerSecond'</param>
         /// <param name="metricAvailabilities">The list of database metric
-        /// availabities for the metric.</param>
-        public MetricDefinition(MetricName name = default(MetricName), string primaryAggregationType = default(string), string resourceUri = default(string), string unit = default(string), IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>))
+        /// availabilities for the metric.</param>
+        public MetricDefinition(MetricName name = default(MetricName), PrimaryAggregationType primaryAggregationType = default(PrimaryAggregationType), string resourceUri = default(string), UnitDefinitionType unit = default(UnitDefinitionType), IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>))
         {
             Name = name;
             PrimaryAggregationType = primaryAggregationType;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Minimum', 'Maximum', 'Total'
         /// </summary>
         [JsonProperty(PropertyName = "primaryAggregationType")]
-        public string PrimaryAggregationType { get; private set; }
+        public PrimaryAggregationType PrimaryAggregationType { get; private set; }
 
         /// <summary>
         /// Gets the resource uri of the database.
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
-        public string Unit { get; private set; }
+        public UnitDefinitionType Unit { get; private set; }
 
         /// <summary>
-        /// Gets the list of database metric availabities for the metric.
+        /// Gets the list of database metric availabilities for the metric.
         /// </summary>
         [JsonProperty(PropertyName = "metricAvailabilities")]
         public IList<MetricAvailability> MetricAvailabilities { get; private set; }

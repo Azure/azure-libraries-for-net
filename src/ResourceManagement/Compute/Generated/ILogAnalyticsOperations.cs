@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> ExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInputInner parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> ExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Export logs that show total throttled Api requests for this
         /// subscription in the given time window.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> ExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInputInner parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> ExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Export logs that show Api requests made by this subscription in the
         /// given time window to show throttling activities.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> BeginExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInputInner parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> BeginExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Export logs that show total throttled Api requests for this
         /// subscription in the given time window.
@@ -126,6 +126,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> BeginExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInputInner parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogAnalyticsOperationResultInner>> BeginExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

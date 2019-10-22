@@ -117,6 +117,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -288,7 +292,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<DatabaseAccountInner>> PatchWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountPatchParametersInner updateParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DatabaseAccountInner>> PatchWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountPatchParameters updateParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
             AzureOperationResponse<DatabaseAccountInner> _response = await BeginPatchWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -364,7 +368,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> FailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> FailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, IList<FailoverPolicy> failoverPoliciesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
             AzureOperationResponse _response = await BeginFailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverPoliciesProperty, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -822,6 +826,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -1044,6 +1052,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -1281,7 +1293,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DatabaseAccountListReadOnlyKeysResultInner>> ListReadOnlyKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DatabaseAccountListReadOnlyKeysResultInner>> GetReadOnlyKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1320,6 +1332,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -1335,7 +1351,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListReadOnlyKeys", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "GetReadOnlyKeys", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
@@ -1474,6 +1490,233 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<DatabaseAccountListReadOnlyKeysResultInner>> ListReadOnlyKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListReadOnlyKeys", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<DatabaseAccountListReadOnlyKeysResultInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DatabaseAccountListReadOnlyKeysResultInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
         /// Regenerates an access key for the specified Azure Cosmos DB database
         /// account.
         /// </summary>
@@ -1493,7 +1736,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyKind, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, KeyKind keyKind, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
             AzureOperationResponse _response = await BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyKind, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -1541,6 +1784,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -1750,6 +1997,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -1987,6 +2238,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -2146,7 +2401,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Retrieves metric defintions for the given database account.
+        /// Retrieves metric definitions for the given database account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure resource group.
@@ -2213,6 +2468,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -2368,16 +2627,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Patches the properties of an existing Azure Cosmos DB database account.
+        /// Lists the SQL databases under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure resource group.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='updateParameters'>
-        /// The tags parameter to patch for the current database account.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2400,7 +2656,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DatabaseAccountInner>> BeginPatchWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountPatchParametersInner updateParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<SqlDatabaseInner>>> ListSqlDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -2438,6 +2694,7171 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSqlDatabases", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<SqlDatabaseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SqlDatabaseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the SQL database under an existing Azure Cosmos DB database account
+        /// with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<SqlDatabaseInner>> GetSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetSqlDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<SqlDatabaseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlDatabaseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='createUpdateSqlDatabaseParameters'>
+        /// The parameters to provide for the current SQL database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<SqlDatabaseInner>> CreateUpdateSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParameters createUpdateSqlDatabaseParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<SqlDatabaseInner> _response = await BeginCreateUpdateSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateSqlDatabaseParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetSqlDatabaseThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the SQL container under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<SqlContainerInner>>> ListSqlContainersWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSqlContainers", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<SqlContainerInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SqlContainerInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the SQL container under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<SqlContainerInner>> GetSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (containerName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "containerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetSqlContainer", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<SqlContainerInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlContainerInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='createUpdateSqlContainerParameters'>
+        /// The parameters to provide for the current SQL container.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<SqlContainerInner>> CreateUpdateSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParameters createUpdateSqlContainerParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<SqlContainerInner> _response = await BeginCreateUpdateSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, createUpdateSqlContainerParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL container.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos
+        /// DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetSqlContainerThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (containerName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "containerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetSqlContainerThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateSqlContainerThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateSqlContainerThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<MongoDBDatabaseInner>>> ListMongoDBDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListMongoDBDatabases", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<MongoDBDatabaseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MongoDBDatabaseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<MongoDBDatabaseInner>> GetMongoDBDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetMongoDBDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<MongoDBDatabaseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MongoDBDatabaseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or updates Azure Cosmos DB MongoDB database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='createUpdateMongoDBDatabaseParameters'>
+        /// The parameters to provide for the current MongoDB database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<MongoDBDatabaseInner>> CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<MongoDBDatabaseInner> _response = await BeginCreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB MongoDB database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteMongoDBDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetMongoDBDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetMongoDBDatabaseThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<MongoDBCollectionInner>>> ListMongoDBCollectionsWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListMongoDBCollections", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<MongoDBCollectionInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MongoDBCollectionInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<MongoDBCollectionInner>> GetMongoDBCollectionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (collectionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "collectionName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("collectionName", collectionName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetMongoDBCollection", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{collectionName}", System.Uri.EscapeDataString(collectionName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<MongoDBCollectionInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MongoDBCollectionInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB MongoDB Collection
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='createUpdateMongoDBCollectionParameters'>
+        /// The parameters to provide for the current MongoDB Collection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<MongoDBCollectionInner>> CreateUpdateMongoDBCollectionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<MongoDBCollectionInner> _response = await BeginCreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteMongoDBCollectionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the MongoDB collection under an existing Azure
+        /// Cosmos DB database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetMongoDBCollectionThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (collectionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "collectionName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("collectionName", collectionName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetMongoDBCollectionThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{collectionName}", System.Uri.EscapeDataString(collectionName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update the RUs per second of an Azure Cosmos DB MongoDB collection
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateMongoDBCollectionThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateMongoDBCollectionThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the Tables under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<TableInner>>> ListTablesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListTables", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<TableInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<TableInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the Tables under an existing Azure Cosmos DB database account with the
+        /// provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<TableInner>> GetTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetTable", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<TableInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<TableInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='createUpdateTableParameters'>
+        /// The parameters to provide for the current Table.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<TableInner>> CreateUpdateTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, TableCreateUpdateParameters createUpdateTableParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<TableInner> _response = await BeginCreateUpdateTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, createUpdateTableParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the Table under an existing Azure Cosmos DB
+        /// database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetTableThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, tableName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<CassandraKeyspaceInner>>> ListCassandraKeyspacesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListCassandraKeyspaces", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<CassandraKeyspaceInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CassandraKeyspaceInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<CassandraKeyspaceInner>> GetCassandraKeyspaceWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetCassandraKeyspace", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<CassandraKeyspaceInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CassandraKeyspaceInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Cassandra keyspace
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='createUpdateCassandraKeyspaceParameters'>
+        /// The parameters to provide for the current Cassandra keyspace.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<CassandraKeyspaceInner>> CreateUpdateCassandraKeyspaceWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParameters createUpdateCassandraKeyspaceParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<CassandraKeyspaceInner> _response = await BeginCreateUpdateCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, createUpdateCassandraKeyspaceParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra keyspace.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteCassandraKeyspaceWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteCassandraKeyspaceWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+        /// Cosmos DB database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetCassandraKeyspaceThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetCassandraKeyspaceThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<CassandraTableInner>>> ListCassandraTablesWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListCassandraTables", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<CassandraTableInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CassandraTableInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<CassandraTableInner>> GetCassandraTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetCassandraTable", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<CassandraTableInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CassandraTableInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Cassandra Table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='createUpdateCassandraTableParameters'>
+        /// The parameters to provide for the current Cassandra Table.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<CassandraTableInner>> CreateUpdateCassandraTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParameters createUpdateCassandraTableParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<CassandraTableInner> _response = await BeginCreateUpdateCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, createUpdateCassandraTableParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra table.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteCassandraTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteCassandraTableWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the Cassandra table under an existing Azure
+        /// Cosmos DB database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetCassandraTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetCassandraTableThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Cassandra table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateCassandraTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateCassandraTableThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, tableName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the Gremlin databases under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<GremlinDatabaseInner>>> ListGremlinDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListGremlinDatabases", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<GremlinDatabaseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GremlinDatabaseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the Gremlin databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<GremlinDatabaseInner>> GetGremlinDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetGremlinDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<GremlinDatabaseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<GremlinDatabaseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Gremlin database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='createUpdateGremlinDatabaseParameters'>
+        /// The parameters to provide for the current Gremlin database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<GremlinDatabaseInner>> CreateUpdateGremlinDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParameters createUpdateGremlinDatabaseParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<GremlinDatabaseInner> _response = await BeginCreateUpdateGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateGremlinDatabaseParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteGremlinDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the RUs per second of the Gremlin database under an existing Azure
+        /// Cosmos DB database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetGremlinDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetGremlinDatabaseThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Gremlin database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateGremlinDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the Gremlin graph under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IEnumerable<GremlinGraphInner>>> ListGremlinGraphsWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListGremlinGraphs", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IEnumerable<GremlinGraphInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GremlinGraphInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Gets the Gremlin graph under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<GremlinGraphInner>> GetGremlinGraphWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (graphName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("graphName", graphName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetGremlinGraph", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{graphName}", System.Uri.EscapeDataString(graphName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<GremlinGraphInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<GremlinGraphInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Gremlin graph
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='createUpdateGremlinGraphParameters'>
+        /// The parameters to provide for the current Gremlin graph.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<GremlinGraphInner>> CreateUpdateGremlinGraphWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParameters createUpdateGremlinGraphParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<GremlinGraphInner> _response = await BeginCreateUpdateGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, createUpdateGremlinGraphParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin graph.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteGremlinGraphWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the Gremlin graph throughput under an existing Azure Cosmos DB
+        /// database account with the provided name.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> GetGremlinGraphThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (graphName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("graphName", graphName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetGremlinGraphThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{graphName}", System.Uri.EscapeDataString(graphName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Gremlin graph
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ThroughputInner>> UpdateGremlinGraphThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<ThroughputInner> _response = await BeginUpdateGremlinGraphThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Patches the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='updateParameters'>
+        /// The tags parameter to patch for the current database account.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<DatabaseAccountInner>> BeginPatchWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountPatchParameters updateParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -2528,6 +9949,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
             _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
@@ -2536,6 +9958,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
+            if (!((int)_statusCode != 200))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
             if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
@@ -2675,6 +10101,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -2768,6 +10198,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
             _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
@@ -2776,6 +10207,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
+            if (!((int)_statusCode != 200))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
             if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
@@ -2909,6 +10344,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -2987,6 +10426,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
             _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
@@ -2995,6 +10435,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
             if ((int)_statusCode != 202 && (int)_statusCode != 204)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
@@ -3078,7 +10522,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginFailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginFailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, IList<FailoverPolicy> failoverPoliciesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -3116,6 +10560,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -3348,6 +10796,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -3564,6 +11016,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -3742,7 +11198,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginRegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyKind, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginRegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, KeyKind keyKind, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -3780,6 +11236,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
             if (Client.ApiVersion == null)
@@ -3924,6 +11384,6774 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='createUpdateSqlDatabaseParameters'>
+        /// The parameters to provide for the current SQL database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<SqlDatabaseInner>> BeginCreateUpdateSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, SqlDatabaseCreateUpdateParameters createUpdateSqlDatabaseParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateSqlDatabaseParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateSqlDatabaseParameters");
+            }
+            if (createUpdateSqlDatabaseParameters != null)
+            {
+                createUpdateSqlDatabaseParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("createUpdateSqlDatabaseParameters", createUpdateSqlDatabaseParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateSqlDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateSqlDatabaseParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateSqlDatabaseParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<SqlDatabaseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlDatabaseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteSqlDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateSqlDatabaseThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='createUpdateSqlContainerParameters'>
+        /// The parameters to provide for the current SQL container.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<SqlContainerInner>> BeginCreateUpdateSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, SqlContainerCreateUpdateParameters createUpdateSqlContainerParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (containerName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "containerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateSqlContainerParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateSqlContainerParameters");
+            }
+            if (createUpdateSqlContainerParameters != null)
+            {
+                createUpdateSqlContainerParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("createUpdateSqlContainerParameters", createUpdateSqlContainerParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateSqlContainer", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateSqlContainerParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateSqlContainerParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<SqlContainerInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlContainerInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL container.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (containerName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "containerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteSqlContainer", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateSqlContainerThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (containerName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "containerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateSqlContainerThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or updates Azure Cosmos DB MongoDB database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='createUpdateMongoDBDatabaseParameters'>
+        /// The parameters to provide for the current MongoDB database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<MongoDBDatabaseInner>> BeginCreateUpdateMongoDBDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateMongoDBDatabaseParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateMongoDBDatabaseParameters");
+            }
+            if (createUpdateMongoDBDatabaseParameters != null)
+            {
+                createUpdateMongoDBDatabaseParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("createUpdateMongoDBDatabaseParameters", createUpdateMongoDBDatabaseParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateMongoDBDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateMongoDBDatabaseParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateMongoDBDatabaseParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<MongoDBDatabaseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MongoDBDatabaseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB MongoDB database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteMongoDBDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateMongoDBDatabaseThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB MongoDB Collection
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='createUpdateMongoDBCollectionParameters'>
+        /// The parameters to provide for the current MongoDB Collection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<MongoDBCollectionInner>> BeginCreateUpdateMongoDBCollectionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (collectionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "collectionName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateMongoDBCollectionParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateMongoDBCollectionParameters");
+            }
+            if (createUpdateMongoDBCollectionParameters != null)
+            {
+                createUpdateMongoDBCollectionParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("collectionName", collectionName);
+                tracingParameters.Add("createUpdateMongoDBCollectionParameters", createUpdateMongoDBCollectionParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateMongoDBCollection", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{collectionName}", System.Uri.EscapeDataString(collectionName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateMongoDBCollectionParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateMongoDBCollectionParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<MongoDBCollectionInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MongoDBCollectionInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteMongoDBCollectionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (collectionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "collectionName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("collectionName", collectionName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteMongoDBCollection", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{collectionName}", System.Uri.EscapeDataString(collectionName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update the RUs per second of an Azure Cosmos DB MongoDB collection
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateMongoDBCollectionThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (collectionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "collectionName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("collectionName", collectionName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateMongoDBCollectionThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{collectionName}", System.Uri.EscapeDataString(collectionName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='createUpdateTableParameters'>
+        /// The parameters to provide for the current Table.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<TableInner>> BeginCreateUpdateTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, TableCreateUpdateParameters createUpdateTableParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateTableParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateTableParameters");
+            }
+            if (createUpdateTableParameters != null)
+            {
+                createUpdateTableParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("createUpdateTableParameters", createUpdateTableParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateTable", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateTableParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateTableParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<TableInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<TableInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteTable", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateTableThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Cassandra keyspace
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='createUpdateCassandraKeyspaceParameters'>
+        /// The parameters to provide for the current Cassandra keyspace.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<CassandraKeyspaceInner>> BeginCreateUpdateCassandraKeyspaceWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, CassandraKeyspaceCreateUpdateParameters createUpdateCassandraKeyspaceParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateCassandraKeyspaceParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateCassandraKeyspaceParameters");
+            }
+            if (createUpdateCassandraKeyspaceParameters != null)
+            {
+                createUpdateCassandraKeyspaceParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("createUpdateCassandraKeyspaceParameters", createUpdateCassandraKeyspaceParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateCassandraKeyspace", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateCassandraKeyspaceParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateCassandraKeyspaceParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<CassandraKeyspaceInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CassandraKeyspaceInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra keyspace.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteCassandraKeyspaceWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteCassandraKeyspace", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateCassandraKeyspaceThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Cassandra Table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='createUpdateCassandraTableParameters'>
+        /// The parameters to provide for the current Cassandra Table.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<CassandraTableInner>> BeginCreateUpdateCassandraTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, CassandraTableCreateUpdateParameters createUpdateCassandraTableParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateCassandraTableParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateCassandraTableParameters");
+            }
+            if (createUpdateCassandraTableParameters != null)
+            {
+                createUpdateCassandraTableParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("createUpdateCassandraTableParameters", createUpdateCassandraTableParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateCassandraTable", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateCassandraTableParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateCassandraTableParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<CassandraTableInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CassandraTableInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra table.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteCassandraTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteCassandraTable", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Cassandra table
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyspaceName'>
+        /// Cosmos DB keyspace name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateCassandraTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (keyspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "keyspaceName");
+            }
+            if (tableName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("keyspaceName", keyspaceName);
+                tracingParameters.Add("tableName", tableName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateCassandraTableThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{keyspaceName}", System.Uri.EscapeDataString(keyspaceName));
+            _url = _url.Replace("{tableName}", System.Uri.EscapeDataString(tableName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Gremlin database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='createUpdateGremlinDatabaseParameters'>
+        /// The parameters to provide for the current Gremlin database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<GremlinDatabaseInner>> BeginCreateUpdateGremlinDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, GremlinDatabaseCreateUpdateParameters createUpdateGremlinDatabaseParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateGremlinDatabaseParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateGremlinDatabaseParameters");
+            }
+            if (createUpdateGremlinDatabaseParameters != null)
+            {
+                createUpdateGremlinDatabaseParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("createUpdateGremlinDatabaseParameters", createUpdateGremlinDatabaseParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateGremlinDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateGremlinDatabaseParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateGremlinDatabaseParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<GremlinDatabaseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<GremlinDatabaseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin database.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteGremlinDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteGremlinDatabase", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Gremlin database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateGremlinDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateGremlinDatabaseThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB Gremlin graph
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='createUpdateGremlinGraphParameters'>
+        /// The parameters to provide for the current Gremlin graph.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<GremlinGraphInner>> BeginCreateUpdateGremlinGraphWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, GremlinGraphCreateUpdateParameters createUpdateGremlinGraphParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (graphName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (createUpdateGremlinGraphParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "createUpdateGremlinGraphParameters");
+            }
+            if (createUpdateGremlinGraphParameters != null)
+            {
+                createUpdateGremlinGraphParameters.Validate();
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("graphName", graphName);
+                tracingParameters.Add("createUpdateGremlinGraphParameters", createUpdateGremlinGraphParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateUpdateGremlinGraph", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{graphName}", System.Uri.EscapeDataString(graphName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(createUpdateGremlinGraphParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(createUpdateGremlinGraphParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<GremlinGraphInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<GremlinGraphInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin graph.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse> BeginDeleteGremlinGraphWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (graphName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("graphName", graphName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteGremlinGraph", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{graphName}", System.Uri.EscapeDataString(graphName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 202 && (int)_statusCode != 204))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Gremlin graph
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='resource'>
+        /// The standard JSON format of a resource throughput
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<ThroughputInner>> BeginUpdateGremlinGraphThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string graphName, ThroughputResource resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (databaseName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
+            }
+            if (graphName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
+            if (resource != null)
+            {
+                resource.Validate();
+            }
+            ThroughputUpdateParameters updateThroughputParameters = new ThroughputUpdateParameters();
+            if (resource != null)
+            {
+                updateThroughputParameters.Resource = resource;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("databaseName", databaseName);
+                tracingParameters.Add("graphName", graphName);
+                tracingParameters.Add("updateThroughputParameters", updateThroughputParameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateGremlinGraphThroughput", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}/settings/throughput").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
+            _url = _url.Replace("{graphName}", System.Uri.EscapeDataString(graphName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            if(updateThroughputParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(updateThroughputParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            System.Uri _originRequestUri = _httpRequest.RequestUri;
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if (!((int)_statusCode != 200 && (int)_statusCode != 202))
+            {
+                _httpRequest.RequestUri = _originRequestUri;
+            }
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<ThroughputInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ThroughputInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {

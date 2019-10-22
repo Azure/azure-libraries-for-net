@@ -107,6 +107,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.aadSecret = aadSecret;
         }
 
+        /// <summary>
+        /// Creates VirtualMachineEncryptionConfiguration.
+        /// </summary>
+        /// <param name="keyVaultId">Resource id of the key vault to store the disk encryption key.</param>
+        protected VirtualMachineEncryptionConfiguration(string keyVaultId)
+        {
+            this.keyVaultId = keyVaultId;
+            this.aadClientId = null;
+            this.aadSecret = null;
+        }
+
         /// <return>The operating system type.</return>
         ///GENMHASH:1BAF4F1B601F89251ABCFE6CC4867026:27E486AB74A10242FF421C0798DDC450
         public abstract OperatingSystemTypes OsType();

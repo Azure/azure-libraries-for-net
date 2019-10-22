@@ -26,6 +26,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Update
         /// <param name="name">The name of an existing SSL certificate associated with this application gateway.</param>
         /// <return>The next stage of the update.</return>
         ReturnT WithSslCertificate(string name);
+
+        /// <summary>
+        /// Sepecifies the content of the private key using key vault.
+        /// </summary>
+        /// <param name="keyVaultSecretId">The secret id of key vault.</param>
+        /// <return>The next stage of the update.</return>
+        ReturnT WithSslCertificateFromKeyVaultSecretId(string keyVaultSecretId);
     }
 
     /// <summary>

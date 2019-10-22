@@ -32,9 +32,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="state">The state of the geo backup policy. Possible
         /// values include: 'Disabled', 'Enabled'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="storageType">The storage type of the geo backup
         /// policy.</param>
         /// <param name="kind">Kind of geo backup policy.  This is metadata

@@ -95,6 +95,16 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             return 0;
         }
 
+
+        public bool DataCaptureSkipEmptyArchives()
+        {
+            if (this.Inner.CaptureDescription?.SkipEmptyArchives != null)
+            {
+                return this.Inner.CaptureDescription.SkipEmptyArchives.Value;
+            }
+            return false;
+        }
+
         ///GENMHASH:983D09DB57D14F32384D91C0EC81C8A2:109AC2E4737271E0E67422F073A4FBA1
         public string DataCaptureFileNameFormat()
         {
@@ -226,6 +236,12 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         public EventHubImpl WithDataCaptureWindowSizeInMB(int sizeInMB)
         {
             this.captureSettings.WithDataCaptureWindowSizeInMB(sizeInMB);
+            return this;
+        }
+
+        public EventHubImpl WithDataCaptureSkipEmptyArchives(bool skipEmptyArchives)
+        {
+            this.captureSettings.WithDataCaptureSkipEmptyArchives(skipEmptyArchives);
             return this;
         }
 
@@ -499,6 +515,12 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         internal CaptureSettings WithDataCaptureWindowSizeInMB(int sizeInMB)
         {
             this.EnsureSettings().SizeLimitInBytes = sizeInMB * 1024 * 1024;
+            return this;
+        }
+
+        internal CaptureSettings WithDataCaptureSkipEmptyArchives(bool skipEmptyArchives)
+        {
+            this.EnsureSettings().SkipEmptyArchives = skipEmptyArchives;
             return this;
         }
 

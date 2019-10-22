@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 /usr/bin/yes | sudo apt-get update
 /usr/bin/yes | sudo apt install python-pip

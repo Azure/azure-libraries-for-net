@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.DefinitionWithExistingVhd
 {
     using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.Definition;
@@ -14,5 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.Definition.IWithVhdAttachedDiskSettings<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.Definition.IWithAttach<ParentT>
     {
+
     }
 }

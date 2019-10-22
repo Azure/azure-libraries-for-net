@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             return new MSILoginException(response, "token_type property not found in the response");
         }
 
-        public static MSILoginException AcessTokenNotFound(string response)
+        public static MSILoginException AccessTokenNotFound(string response)
         {
             return new MSILoginException(response, "access_token property not found in the response");
         }

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKey.Update.IUpdate SqlServerKey.Update.IWithCreationDate.WithCreationDate(DateTime creationDate)
         {
-            return this.WithCreationDate(creationDate) as SqlServerKey.Update.IUpdate;
+            return this.WithCreationDate(creationDate);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKeyOperations.Definition.IWithCreate SqlServerKeyOperations.Definition.IWithCreationDate.WithCreationDate(DateTime creationDate)
         {
-            return this.WithCreationDate(creationDate) as SqlServerKeyOperations.Definition.IWithCreate;
+            return this.WithCreationDate(creationDate);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKeyOperations.Definition.IWithServerKeyType SqlServerKeyOperations.Definition.IWithSqlServer.WithExistingSqlServerId(string sqlServerId)
         {
-            return this.WithExistingSqlServerId(sqlServerId) as SqlServerKeyOperations.Definition.IWithServerKeyType;
+            return this.WithExistingSqlServerId(sqlServerId);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKeyOperations.Definition.IWithServerKeyType SqlServerKeyOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlServerKeyOperations.Definition.IWithServerKeyType;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKeyOperations.Definition.IWithServerKeyType SqlServerKeyOperations.Definition.IWithSqlServer.WithExistingSqlServer(ISqlServer sqlServer)
         {
-            return this.WithExistingSqlServer(sqlServer) as SqlServerKeyOperations.Definition.IWithServerKeyType;
+            return this.WithExistingSqlServer(sqlServer);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKey.Update.IUpdate SqlServerKey.Update.IWithThumbprint.WithThumbprint(string thumbprint)
         {
-            return this.WithThumbprint(thumbprint) as SqlServerKey.Update.IUpdate;
+            return this.WithThumbprint(thumbprint);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKeyOperations.Definition.IWithCreate SqlServerKeyOperations.Definition.IWithThumbprint.WithThumbprint(string thumbprint)
         {
-            return this.WithThumbprint(thumbprint) as SqlServerKeyOperations.Definition.IWithCreate;
+            return this.WithThumbprint(thumbprint);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlServerKey.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlServerKey.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlServerKey.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ServerKeyType() as Models.ServerKeyType;
+                return this.ServerKeyType();
             }
         }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerKeyOperations.Definition.IWithCreate SqlServerKeyOperations.Definition.IWithServerKeyType.WithAzureKeyVaultKey(string uri)
         {
-            return this.WithAzureKeyVaultKey(uri) as SqlServerKeyOperations.Definition.IWithCreate;
+            return this.WithAzureKeyVaultKey(uri);
         }
     }
 }

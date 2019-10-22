@@ -45,7 +45,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "The deployment will record client id and secret")]
         [Trait("Samples", "ContainerService")]
         public void ManageKubernetesClusterTest()
         {

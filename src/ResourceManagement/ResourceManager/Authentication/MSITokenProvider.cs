@@ -79,7 +79,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             var endpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT") ?? throw new ArgumentNullException("MSI_ENDPOINT");
             var secret = Environment.GetEnvironmentVariable("MSI_SECRET") ?? throw new ArgumentNullException("MSI_SECRET");
-            HttpRequestMessage msiRequest = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}?resource={resource}&api-version={MSITokenProvider.appServiceMsiApiVersion}");
+
+            string extraQueryArgs = string.Empty;
+            if (this.msiLoginInformation.UserAssignedIdentityClientId != null)
+            {
+                extraQueryArgs = $"{extraQueryArgs}&clientid={this.msiLoginInformation.UserAssignedIdentityClientId}";
+            }
+            else if (this.msiLoginInformation.UserAssignedIdentityObjectId != null || this.msiLoginInformation.UserAssignedIdentityResourceId != null)
+            {
+                throw new ArgumentException("UserAssignedIdentityObjectId/UserAssignedIdentityResourceId not supported in AppService environments");
+            }
+
+            HttpRequestMessage msiRequest = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}?resource={resource}&api-version={MSITokenProvider.appServiceMsiApiVersion}{extraQueryArgs}");
             msiRequest.Headers.Add("Metadata", "true");
             msiRequest.Headers.Add("Secret", secret);
 
@@ -94,7 +105,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             string accessToken = loginInfo.access_token;
             if (accessToken == null)
             {
-                throw MSILoginException.AcessTokenNotFound(content);
+                throw MSILoginException.AccessTokenNotFound(content);
             }
             return new AuthenticationHeaderValue(tokenType, accessToken);
         }
@@ -128,7 +139,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             dynamic loginInfo = JsonConvert.DeserializeObject(content);
             if (loginInfo.access_token == null)
             {
-                throw MSILoginException.AcessTokenNotFound(content);
+                throw MSILoginException.AccessTokenNotFound(content);
             }
             if (loginInfo.token_type == null)
             {
@@ -239,7 +250,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                             dynamic loginInfo = JsonConvert.DeserializeObject(content);
                             if (loginInfo.access_token == null)
                             {
-                                throw MSILoginException.AcessTokenNotFound(content);
+                                throw MSILoginException.AccessTokenNotFound(content);
                             }
                             if (loginInfo.token_type == null)
                             {

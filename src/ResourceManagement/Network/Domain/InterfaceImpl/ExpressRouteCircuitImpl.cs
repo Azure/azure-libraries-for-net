@@ -19,27 +19,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         ExpressRouteCircuit.Definition.IWithBandwidth ExpressRouteCircuit.Definition.IWithPeeringLocation.WithPeeringLocation(string location)
         {
-            return this.WithPeeringLocation(location) as ExpressRouteCircuit.Definition.IWithBandwidth;
+            return this.WithPeeringLocation(location);
         }
 
         ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAllowClassicOperations.WithoutClassicOperations()
         {
-            return this.WithoutClassicOperations() as ExpressRouteCircuit.Update.IUpdate;
+            return this.WithoutClassicOperations();
         }
 
         ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAllowClassicOperations.WithClassicOperations()
         {
-            return this.WithClassicOperations() as ExpressRouteCircuit.Update.IUpdate;
+            return this.WithClassicOperations();
         }
 
         ExpressRouteCircuit.Definition.IWithCreate ExpressRouteCircuit.Definition.IWithAllowClassicOperations.WithClassicOperations()
         {
-            return this.WithClassicOperations() as ExpressRouteCircuit.Definition.IWithCreate;
+            return this.WithClassicOperations();
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PeeringsMap() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>;
+                return this.PeeringsMap();
             }
         }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Sku() as ExpressRouteCircuitSkuType;
+                return this.Sku();
             }
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Peerings() as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings;
+                return this.Peerings();
             }
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ServiceProviderProperties() as Models.ExpressRouteCircuitServiceProviderProperties;
+                return this.ServiceProviderProperties();
             }
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ServiceProviderProvisioningState() as Models.ServiceProviderProvisioningState;
+                return this.ServiceProviderProvisioningState();
             }
         }
 
@@ -158,37 +158,37 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithBandwidth.WithBandwidthInMbps(int bandwidthInMbps)
         {
-            return this.WithBandwidthInMbps(bandwidthInMbps) as ExpressRouteCircuit.Update.IUpdate;
+            return this.WithBandwidthInMbps(bandwidthInMbps);
         }
 
         ExpressRouteCircuit.Definition.IWithSku ExpressRouteCircuit.Definition.IWithBandwidth.WithBandwidthInMbps(int bandwidthInMbps)
         {
-            return this.WithBandwidthInMbps(bandwidthInMbps) as ExpressRouteCircuit.Definition.IWithSku;
+            return this.WithBandwidthInMbps(bandwidthInMbps);
         }
 
         ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAuthorization.WithAuthorization(string authorizationName)
         {
-            return this.WithAuthorization(authorizationName) as ExpressRouteCircuit.Update.IUpdate;
+            return this.WithAuthorization(authorizationName);
         }
 
         ExpressRouteCircuit.Definition.IWithCreate ExpressRouteCircuit.Definition.IWithAuthorization.WithAuthorization(string authorizationName)
         {
-            return this.WithAuthorization(authorizationName) as ExpressRouteCircuit.Definition.IWithCreate;
+            return this.WithAuthorization(authorizationName);
         }
 
         ExpressRouteCircuit.Definition.IWithPeeringLocation ExpressRouteCircuit.Definition.IWithServiceProvider.WithServiceProvider(string serviceProviderName)
         {
-            return this.WithServiceProvider(serviceProviderName) as ExpressRouteCircuit.Definition.IWithPeeringLocation;
+            return this.WithServiceProvider(serviceProviderName);
         }
 
         ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithSku.WithSku(ExpressRouteCircuitSkuType sku)
         {
-            return this.WithSku(sku) as ExpressRouteCircuit.Update.IUpdate;
+            return this.WithSku(sku);
         }
 
         ExpressRouteCircuit.Definition.IWithCreate ExpressRouteCircuit.Definition.IWithSku.WithSku(ExpressRouteCircuitSkuType skuType)
         {
-            return this.WithSku(skuType) as ExpressRouteCircuit.Definition.IWithCreate;
+            return this.WithSku(skuType);
         }
     }
 }

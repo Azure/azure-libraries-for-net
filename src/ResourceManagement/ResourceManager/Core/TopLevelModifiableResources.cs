@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
         public void DeleteByIds(IList<string> ids)
         {
-            DeleteByIdsAsync(ids).Wait();
+            Extensions.Synchronize(() => DeleteByIdsAsync(ids));
         }
 
         public void DeleteByIds(params string[] ids)
         {
-            DeleteByIdsAsync(ids).Wait();
+            Extensions.Synchronize(() => DeleteByIdsAsync(ids));
         }
     }
 }

@@ -3,7 +3,7 @@
     "dir": "AppService",
     "source": "specification/web/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.AppService.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2016-09"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-02"
   },
   "authorization": {
     "dir": "Graph.RBAC",
@@ -11,17 +11,11 @@
     "package": "Microsoft.Azure.Management.Graph.RBAC.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2018-01-01-preview"
   },
-  "batch": {
-    "dir": "Batch",
-    "source": "specification/batch/resource-manager/readme.md",
-    "package": "Microsoft.Azure.Management.Batch.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2017-09"
-  },
   "batchai": {
     "dir": "BatchAI",
     "source": "specification/batchai/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.BatchAI.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2018-03"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-05"
   },
   "cdn": {
     "dir": "Cdn",
@@ -33,25 +27,25 @@
     "dir": "Compute",
     "source": "specification/compute/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Compute.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2018-04"
+    "args": "--payload-flattening-threshold=1 --tag=package-2019-03-01 --remove-inner=VirtualMachineInstanceView,VirtualMachineScaleSetVMInstanceView"
   },
   "containerinstance": {
     "dir": "ContainerInstance",
     "source": "specification/containerinstance/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.ContainerInstance.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2018-04"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-10"
   },
   "containerregistry": {
     "dir": "ContainerRegistry",
     "source": "specification/containerregistry/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.ContainerRegistry.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2017-10"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-09"
   },
   "containerservice": {
     "dir": "ContainerService",
-    "source": "specification/containerservices/resource-manager/readme.md",
+    "source": "specification/containerservice/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.ContainerService.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2017-09 --title=ContainerServiceManagementClient --description=\"Container Service Client\""
+    "args": "--payload-flattening-threshold=1 --tag=package-2019-08 --title=ContainerServiceManagementClient --description=\"Container Service Client\""
   },
   "cosmosdb": {
     "dir": "CosmosDB",
@@ -87,7 +81,7 @@
     "dir": "KeyVault",
     "source": "specification/keyvault/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.KeyVault.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2016-10"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-02"
   },
   "locks": {
     "dir": "Locks",
@@ -99,13 +93,13 @@
     "dir": "Monitor",
     "source": "specification/monitor/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Monitor.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2018-03"
+    "args": "--payload-flattening-threshold=1 --tag=package-2019-06 --add-inner=AutoscaleProfile,ScaleRule"
   },
   "network": {
     "dir": "Network",
     "source": "specification/network/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Network.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2018-02"
+    "args": "--payload-flattening-threshold=1 --tag=package-2019-06"
   },
   "redis": {
     "dir": "RedisCache",
@@ -141,7 +135,7 @@
     "dir": "Storage",
     "source": "specification/storage/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Storage.Fluent",
-    "args": "--payload-flattening-threshold=2 --tag=package-2017-10"
+    "args": "--payload-flattening-threshold=2 --tag=package-2018-11"
   },
   "subscriptions": {
     "dir": "ResourceManager",
@@ -153,12 +147,12 @@
     "dir": "TrafficManager",
     "source": "specification/trafficmanager/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.TrafficManager.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2017-05"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-04"
   },
   "msi": {
     "dir": "Msi",
     "source": "specification/msi/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Msi.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2015-08-31-preview"
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-11-30"
   }
 }

@@ -61,7 +61,7 @@ namespace Fluent.Tests.Storage
 
                     Assert.NotNull(storageAccount2.Inner.NetworkRuleSet);
                     Assert.NotNull(storageAccount2.Inner.NetworkRuleSet.DefaultAction);
-                    Assert.Equal("Deny", storageAccount2.Inner.NetworkRuleSet.DefaultAction, ignoreCase: true);
+                    Assert.Equal(DefaultAction.Deny, storageAccount2.Inner.NetworkRuleSet.DefaultAction);
 
                     Assert.NotNull(storageAccount2.NetworkSubnetsWithAccess);
                     Assert.Equal(0, storageAccount2.NetworkSubnetsWithAccess.Count);
@@ -87,7 +87,7 @@ namespace Fluent.Tests.Storage
 
                     Assert.NotNull(storageAccount3.Inner.NetworkRuleSet);
                     Assert.NotNull(storageAccount3.Inner.NetworkRuleSet.DefaultAction);
-                    Assert.Equal("Allow", storageAccount3.Inner.NetworkRuleSet.DefaultAction, ignoreCase: true);
+                    Assert.Equal(DefaultAction.Allow, storageAccount3.Inner.NetworkRuleSet.DefaultAction);
 
                     Assert.NotNull(storageAccount3.NetworkSubnetsWithAccess);
                     Assert.Equal(0, storageAccount3.NetworkSubnetsWithAccess.Count);
@@ -113,7 +113,7 @@ namespace Fluent.Tests.Storage
 
                     Assert.NotNull(storageAccount4.Inner.NetworkRuleSet);
                     Assert.NotNull(storageAccount4.Inner.NetworkRuleSet.DefaultAction);
-                    Assert.Equal("Deny", storageAccount4.Inner.NetworkRuleSet.DefaultAction, ignoreCase: true);
+                    Assert.Equal(DefaultAction.Deny, storageAccount4.Inner.NetworkRuleSet.DefaultAction);
 
                     Assert.NotNull(storageAccount4.NetworkSubnetsWithAccess);
                     Assert.Equal(0, storageAccount4.NetworkSubnetsWithAccess.Count);

@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -23,15 +24,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// availability. For more information about availability sets, see [Manage
     /// the availability of virtual
     /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-    /// &lt;br&gt;&lt;br&gt; For more information on Azure planned
-    /// maintainance, see [Planned maintenance for virtual machines in
+    /// &lt;br&gt;&lt;br&gt; For more information on Azure planned maintenance,
+    /// see [Planned maintenance for virtual machines in
     /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
     /// &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to availability
     /// set at creation time. An existing VM cannot be added to an availability
     /// set.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AvailabilitySetInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AvailabilitySetInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AvailabilitySetInner class.
@@ -49,14 +50,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="platformFaultDomainCount">Fault Domain count.</param>
         /// <param name="virtualMachines">A list of references to all virtual
         /// machines in the availability set.</param>
+        /// <param name="proximityPlacementGroup">Specifies information about
+        /// the proximity placement group that the availability set should be
+        /// assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version:
+        /// 2018-04-01.</param>
         /// <param name="statuses">The resource status information.</param>
-        /// <param name="sku">Sku of the availability set</param>
-        public AvailabilitySetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
+        /// <param name="sku">Sku of the availability set, only name is
+        /// required to be set. See AvailabilitySetSkuTypes for possible set of
+        /// values. Use 'Aligned' for virtual machines with managed disks and
+        /// 'Classic' for virtual machines with unmanaged disks. Default value
+        /// is 'Classic'.</param>
+        public AvailabilitySetInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
             : base(location, id, name, type, tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
             PlatformFaultDomainCount = platformFaultDomainCount;
             VirtualMachines = virtualMachines;
+            ProximityPlacementGroup = proximityPlacementGroup;
             Statuses = statuses;
             Sku = sku;
             CustomInit();
@@ -84,7 +94,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachines")]
-        public IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
+        public IList<Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies information about the proximity placement
+        /// group that the availability set should be assigned to.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
+        /// 2018-04-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.proximityPlacementGroup")]
+        public Management.ResourceManager.Fluent.SubResource ProximityPlacementGroup { get; set; }
 
         /// <summary>
         /// Gets the resource status information.
@@ -93,10 +112,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public IList<InstanceViewStatus> Statuses { get; private set; }
 
         /// <summary>
-        /// Gets or sets sku of the availability set
+        /// Gets or sets sku of the availability set, only name is required to
+        /// be set. See AvailabilitySetSkuTypes for possible set of values. Use
+        /// 'Aligned' for virtual machines with managed disks and 'Classic' for
+        /// virtual machines with unmanaged disks. Default value is 'Classic'.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

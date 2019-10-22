@@ -15,22 +15,25 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnNlcnZpY2UuaW1wbGVtZW50YXRpb24uS3ViZXJuZXRlc0NsdXN0ZXJBZ2VudFBvb2xJbXBs
     internal partial class KubernetesClusterAgentPoolImpl :
         ChildResource<
-            Models.ContainerServiceAgentPoolProfile,
+            Models.ManagedClusterAgentPoolProfile,
             Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterImpl,
             Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase>,
         IKubernetesClusterAgentPool,
         KubernetesClusterAgentPool.Definition.IDefinition<KubernetesCluster.Definition.IWithCreate>
     {
+        string subnetName;
 
         ///GENMHASH:98DFA3F9E5796918208C02E358977FEC:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal KubernetesClusterAgentPoolImpl(ContainerServiceAgentPoolProfile inner, KubernetesClusterImpl parent) : base(inner, parent)
+        internal KubernetesClusterAgentPoolImpl(ManagedClusterAgentPoolProfile inner, KubernetesClusterImpl parent) : base(inner, parent)
         {
+            string subnetId = inner?.VnetSubnetID;
+            subnetName = (subnetId != null) ? ResourceUtils.NameFromResourceId(subnetId) : null;
         }
 
         ///GENMHASH:11AAAD09C9684B6889E64AC8F924E50D:D461B25035B458150766C6D27E33A746
-        public ContainerServiceVirtualMachineSizeTypes VMSize()
+        public ContainerServiceVMSizeTypes VMSize()
         {
-            return ContainerServiceVirtualMachineSizeTypes.Parse(this.Inner.VmSize);
+            return this.Inner.VmSize;
         }
 
         ///GENMHASH:84A1C38F299C7713046CF6F1527D8F63:475A4C956E8066CDFDFB6FD41618AFA1
@@ -44,10 +47,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Inner.OsDiskSizeGB.Value;
         }
 
-        ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
-        public StorageProfileTypes StorageProfile()
+        ///GENMHASH:B84BFB9102C12A7625CB9CF2E3B5E7CF:BDFE6561FEC5EBDFF96600CDB5E62997
+        public int Count()
         {
-            return StorageProfileTypes.Parse(this.Inner.StorageProfile);
+            if (this.Inner.Count <= 0)
+            {
+                return 0;
+            }
+
+            return this.Inner.Count;
         }
 
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
@@ -56,29 +64,44 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Inner.Name;
         }
 
-        ///GENMHASH:B84BFB9102C12A7625CB9CF2E3B5E7CF:BDFE6561FEC5EBDFF96600CDB5E62997
-        public int Count()
+        public AgentPoolType Type()
         {
-            if (this.Inner.Count == null || !this.Inner.Count.HasValue)
-            {
-                return 0;
-            }
+            return this.Inner.Type;
+        }
 
-            return this.Inner.Count.Value;
+        ///GENMHASH:1C444C90348D7064AB23705C542DDF18:CC1F09230C48EC2C015059C28C3F6ABE
+        public string NetworkId()
+        {
+            string subnetId = this.Inner?.VnetSubnetID;
+            return (subnetId != null) ? ResourceUtils.ParentResourcePathFromResourceId(subnetId) : null;
         }
 
         ///GENMHASH:1BAF4F1B601F89251ABCFE6CC4867026:F71645491B82E137E4D1786750E7ADF0
-        public ContainerServiceOSTypes OSType()
+        public OSType OSType()
         {
-            return ContainerServiceOSTypes.Parse(this.Inner.OsType);
+            return this.Inner.OsType;
         }
 
 
         ///GENMHASH:29F824FFD1866F35F3898F9D3ECE5F1B:E7F1DA78794C44C2AC55569F4DDCBD11
-        public KubernetesClusterAgentPoolImpl WithOSType(ContainerServiceOSTypes osType)
+        public KubernetesClusterAgentPoolImpl WithOSType(OSType osType)
         {
-            this.Inner.OsType = osType.Value;
+            this.Inner.OsType = osType;
 
+            return this;
+        }
+
+        ///GENMHASH:73E98D352C374833FF41103FC46D3A0F:D8A954022322D0DB34AE14ECDCEC78B7
+        public KubernetesClusterAgentPoolImpl WithAgentPoolVirtualMachineCount(int count)
+        {
+            this.Inner.Count = count;
+            return this;
+        }
+
+        ///GENMHASH:B9F2B445162CECADE05A873AE85E93A6:EC0D9D64D8F64291B672502919E853BB
+        public KubernetesClusterAgentPoolImpl WithMaxPodsCount(int podsCount)
+        {
+            this.Inner.MaxPods = podsCount;
             return this;
         }
 
@@ -90,18 +113,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this;
         }
 
-        ///GENMHASH:BCF83D3C194B218EC19BFDDC8A30CBA4:5F7FD5FB381AEECF58C733CCD9F702A3
-        public KubernetesClusterAgentPoolImpl WithVirtualMachineCount(int agentPoolCount)
-        {
-            this.Inner.Count = agentPoolCount;
-
-            return this;
-        }
-
         ///GENMHASH:C622FBAAB8FD0DD09A538E695C688BFC:70CBAB5746AAB14DF4C92F27CD513EE6
-        public KubernetesClusterAgentPoolImpl WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes param0)
+        public KubernetesClusterAgentPoolImpl WithVirtualMachineSize(ContainerServiceVMSizeTypes param0)
         {
-            this.Inner.VmSize = param0.Value;
+            this.Inner.VmSize = param0;
 
             return this;
         }
@@ -114,5 +129,38 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Parent;
         }
 
+        ///GENMHASH:C57133CD301470A479B3BA07CD283E86:0C9FA269AD671A2004FE56897AF90C53
+        public string SubnetName()
+        {
+            if (this.subnetName != null)
+            {
+                return this.subnetName;
+            }
+            else
+            {
+                return ResourceUtils.NameFromResourceId(this.Inner.VnetSubnetID);
+            }
+        }
+
+        ///GENMHASH:AC3242CC7AFA5FD11163B235DA2E6D85:F993D1DA892FDAE482F0E46B146ED99F
+        public KubernetesClusterAgentPoolImpl WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            string vnetSubnetId = virtualNetworkId + "/subnets/" + subnetName;
+            this.subnetName = subnetName;
+            this.Inner.VnetSubnetID = vnetSubnetId;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolType(AgentPoolType agentPoolType)
+        {
+            this.Inner.Type = agentPoolType;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolTypeName(string agentPoolTypeName)
+        {
+            this.Inner.Type = AgentPoolType.Parse(agentPoolTypeName);
+            return this;
+        }
     }
 }

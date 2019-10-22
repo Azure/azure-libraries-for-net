@@ -11,7 +11,8 @@ namespace Fluent.Tests.Storage
 {
     public class Usages
     {
-        [Fact]
+        [Fact (Skip = "Storage is no longer supporting listing")]
+
         public void CanList()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))

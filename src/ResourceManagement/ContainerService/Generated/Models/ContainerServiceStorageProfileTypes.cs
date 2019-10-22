@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ContainerServiceStorageProfileTypes.
     /// </summary>
-    public static class ContainerServiceStorageProfileTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ContainerServiceStorageProfileTypes>))]
+    public class ContainerServiceStorageProfileTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ContainerServiceStorageProfileTypes>
     {
-        public const string StorageAccount = "StorageAccount";
-        public const string ManagedDisks = "ManagedDisks";
+        public static readonly ContainerServiceStorageProfileTypes StorageAccount = Parse("StorageAccount");
+        public static readonly ContainerServiceStorageProfileTypes ManagedDisks = Parse("ManagedDisks");
     }
 }

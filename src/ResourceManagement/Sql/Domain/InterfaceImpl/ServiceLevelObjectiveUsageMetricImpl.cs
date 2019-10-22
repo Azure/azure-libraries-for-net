@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the serviceLevelObjective for SLO usage metric.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric.ServiceLevelObjective
+        ServiceObjectiveName Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric.ServiceLevelObjective
         {
             get
             {

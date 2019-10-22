@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public static partial class VirtualMachineSizesOperationsExtensions
     {
             /// <summary>
-            /// Lists all available virtual machine sizes for a subscription in a location.
+            /// This API is deprecated. Use [Resources
+            /// Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<VirtualMachineSize>> ListAsync(this IVirtualMachineSizesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<VirtualMachineSizeInner>> ListAsync(this IVirtualMachineSizesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
                 {

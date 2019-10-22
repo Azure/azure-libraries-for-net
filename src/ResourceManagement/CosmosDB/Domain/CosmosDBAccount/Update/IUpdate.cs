@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
     /// <summary>
     /// The stage of the cosmos db update allowing to set the consistency policy.
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// The stage of the Cosmos DB update definition allowing the definition of a Virtual Network ACL Rule.
     /// </summary>
-    public interface IWithVirtualNetworkRule  :
+    public interface IWithVirtualNetworkRule :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     }
 
     /// <summary>
-    /// The stage of the cosmos db definition allowing to set the IP range filter.
+    /// The stage of the cosmos db update definition allowing to set the IP range filter.
     /// </summary>
     public interface IWithIpRangeFilter
     {
@@ -91,8 +92,40 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// must be comma separated and must not contain any spaces.
         /// </summary>
         /// <param name="ipRangeFilter">Specifies the set of IP addresses or IP address ranges.</param>
-        /// <return>The next stage of the definition.</return>
+        /// <return>The next stage of the update definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithIpRangeFilter(string ipRangeFilter);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db update definition allowing to specify whether multiple write locations are enabled or not.
+    /// </summary>
+    public interface IWithMultipleLocations
+    {
+        /// <summary>
+        /// Specifies whether multiple write locations are enabled or not for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether multiple write locations are enabled or not for this cosmos db account.</param>
+        /// <returns>The next stage of the update definition.</returns>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithMultipleWriteLocationsEnabled(bool enabled);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db update allowing to specify cassandra connector offer.
+    /// </summary>
+    public interface IWithConnector
+    {
+        /// <summary>
+        /// Specifies a connector offer for cassandra connector.
+        /// </summary>
+        /// <param name="connectorOffer">Connector offer to specify.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithCassandraConnector(ConnectorOffer connectorOffer);
+
+        /// <summary>
+        /// Remove the connector offer.
+        /// </summary>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithoutCassandraConnector();
     }
 
     /// <summary>
@@ -103,7 +136,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithConsistencyPolicy,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithVirtualNetworkRule,
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithIpRangeFilter
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithIpRangeFilter,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithConnector,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithMultipleLocations
     {
     }
 

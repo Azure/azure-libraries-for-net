@@ -8,19 +8,28 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for CheckNameResourceTypes.
     /// </summary>
-    public static class CheckNameResourceTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<CheckNameResourceTypes>))]
+    public class CheckNameResourceTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<CheckNameResourceTypes>
     {
-        public const string Site = "Site";
-        public const string Slot = "Slot";
-        public const string HostingEnvironment = "HostingEnvironment";
-        public const string PublishingUser = "PublishingUser";
-        public const string MicrosoftWebSites = "Microsoft.Web/sites";
-        public const string MicrosoftWebSitesSlots = "Microsoft.Web/sites/slots";
-        public const string MicrosoftWebHostingEnvironments = "Microsoft.Web/hostingEnvironments";
-        public const string MicrosoftWebPublishingUsers = "Microsoft.Web/publishingUsers";
+        public static readonly CheckNameResourceTypes Site = Parse("Site");
+        public static readonly CheckNameResourceTypes Slot = Parse("Slot");
+        public static readonly CheckNameResourceTypes HostingEnvironment = Parse("HostingEnvironment");
+        public static readonly CheckNameResourceTypes PublishingUser = Parse("PublishingUser");
+        public static readonly CheckNameResourceTypes MicrosoftWebSites = Parse("Microsoft.Web/sites");
+        public static readonly CheckNameResourceTypes MicrosoftWebSitesSlots = Parse("Microsoft.Web/sites/slots");
+        public static readonly CheckNameResourceTypes MicrosoftWebHostingEnvironments = Parse("Microsoft.Web/hostingEnvironments");
+        public static readonly CheckNameResourceTypes MicrosoftWebPublishingUsers = Parse("Microsoft.Web/publishingUsers");
     }
 }

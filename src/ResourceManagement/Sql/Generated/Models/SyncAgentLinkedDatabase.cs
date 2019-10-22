@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SyncAgentLinkedDatabase class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="databaseType">Type of the sync agent linked database.
         /// Possible values include: 'AzureSqlDatabase',
         /// 'SqlServerDatabase'</param>
@@ -46,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// database.</param>
         /// <param name="userName">User name of the sync agent linked
         /// database.</param>
-        public SyncAgentLinkedDatabase(string id = default(string), string name = default(string), string type = default(string), string databaseType = default(string), string databaseId = default(string), string description = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string))
+        public SyncAgentLinkedDatabase(string id = default(string), string name = default(string), string type = default(string), SyncMemberDbType databaseType = default(SyncMemberDbType), string databaseId = default(string), string description = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string))
             : base(id, name, type)
         {
             DatabaseType = databaseType;
@@ -68,7 +65,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// include: 'AzureSqlDatabase', 'SqlServerDatabase'
         /// </summary>
         [JsonProperty(PropertyName = "properties.databaseType")]
-        public string DatabaseType { get; private set; }
+        public SyncMemberDbType DatabaseType { get; private set; }
 
         /// <summary>
         /// Gets id of the sync agent linked database.

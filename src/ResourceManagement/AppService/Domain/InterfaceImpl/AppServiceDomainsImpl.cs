@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of the new resource definition.</return>
         AppServiceDomain.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<AppServiceDomain.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as AppServiceDomain.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The list of agreements required for the purchase.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.AppService.Fluent.IDomainLegalAgreement> Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomains.ListAgreements(string topLevelExtension)
         {
-            return this.ListAgreements(topLevelExtension) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.AppService.Fluent.IDomainLegalAgreement>;
+            return this.ListAgreements(topLevelExtension);
         }
     }
 }

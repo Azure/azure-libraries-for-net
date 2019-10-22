@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// An activity log alert resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ActivityLogAlertResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ActivityLogAlertResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ActivityLogAlertResourceInner
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// actions will be activated.</param>
         /// <param name="description">A description of this activity log
         /// alert.</param>
-        public ActivityLogAlertResourceInner(IList<string> scopes, ActivityLogAlertAllOfCondition condition, ActivityLogAlertActionList actions, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? enabled = default(bool?), string description = default(string))
+        public ActivityLogAlertResourceInner(string location, IList<string> scopes, ActivityLogAlertAllOfCondition condition, ActivityLogAlertActionList actions, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? enabled = default(bool?), string description = default(string))
             : base(location, id, name, type, tags)
         {
             Scopes = scopes;
@@ -106,8 +107,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Scopes == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Scopes");

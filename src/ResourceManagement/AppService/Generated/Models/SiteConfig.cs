@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="nodeVersion">Version of Node.js.</param>
         /// <param name="linuxFxVersion">Linux App Framework and
         /// version</param>
+        /// <param name="windowsFxVersion">Xenon App Framework and
+        /// version</param>
         /// <param name="requestTracingEnabled">&lt;code&gt;true&lt;/code&gt;
         /// if request tracing is enabled; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
@@ -58,6 +61,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// &lt;code&gt;false&lt;/code&gt;.</param>
         /// <param name="publishingUsername">Publishing user name.</param>
         /// <param name="appSettings">Application settings.</param>
+        /// <param name="azureStorageAccounts">User-provided Azure storage
+        /// accounts.</param>
         /// <param name="connectionStrings">Connection strings.</param>
         /// <param name="machineKey">Site MachineKey.</param>
         /// <param name="handlerMappings">Handler mappings.</param>
@@ -84,7 +89,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="loadBalancing">Site load balancing. Possible values
         /// include: 'WeightedRoundRobin', 'LeastRequests',
         /// 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'</param>
-        /// <param name="experiments">This is work around for polymophic
+        /// <param name="experiments">This is work around for polymorphic
         /// types.</param>
         /// <param name="limits">Site limits.</param>
         /// <param name="autoHealEnabled">&lt;code&gt;true&lt;/code&gt; if Auto
@@ -101,9 +106,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="localMySqlEnabled">&lt;code&gt;true&lt;/code&gt; to
         /// enable local MySQL; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="ipSecurityRestrictions">IP security
-        /// restrictions.</param>
-        public SiteConfig(int? numberOfWorkers = default(int?), IList<string> defaultDocuments = default(IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string linuxFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), IList<NameValuePair> appSettings = default(IList<NameValuePair>), IList<ConnStringInfo> connectionStrings = default(IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), IList<HandlerMapping> handlerMappings = default(IList<HandlerMapping>), string documentRoot = default(string), string scmType = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), IList<VirtualApplication> virtualApplications = default(IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), Experiments experiments = default(Experiments), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), CorsSettings cors = default(CorsSettings), PushSettingsInner push = default(PushSettingsInner), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), IList<IpSecurityRestriction> ipSecurityRestrictions = default(IList<IpSecurityRestriction>))
+        /// <param name="managedServiceIdentityId">Managed Service Identity
+        /// Id</param>
+        /// <param name="xManagedServiceIdentityId">Explicit Managed Service
+        /// Identity Id</param>
+        /// <param name="ipSecurityRestrictions">IP security restrictions for
+        /// main.</param>
+        /// <param name="scmIpSecurityRestrictions">IP security restrictions
+        /// for scm.</param>
+        /// <param name="scmIpSecurityRestrictionsUseMain">IP security
+        /// restrictions for scm to use main.</param>
+        /// <param name="http20Enabled">Http20Enabled: configures a web site to
+        /// allow clients to connect over http2.0</param>
+        /// <param name="minTlsVersion">MinTlsVersion: configures the minimum
+        /// version of TLS required for SSL requests. Possible values include:
+        /// '1.0', '1.1', '1.2'</param>
+        /// <param name="ftpsState">State of FTP / FTPS service. Possible
+        /// values include: 'AllAllowed', 'FtpsOnly', 'Disabled'</param>
+        /// <param name="reservedInstanceCount">Number of reserved instances.
+        /// This setting only applies to the Consumption Plan</param>
+        public SiteConfig(int? numberOfWorkers = default(int?), IList<string> defaultDocuments = default(IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string linuxFxVersion = default(string), string windowsFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), IList<NameValuePair> appSettings = default(IList<NameValuePair>), IDictionary<string, AzureStorageInfoValue> azureStorageAccounts = default(IDictionary<string, AzureStorageInfoValue>), IList<ConnStringInfo> connectionStrings = default(IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), IList<HandlerMapping> handlerMappings = default(IList<HandlerMapping>), string documentRoot = default(string), ScmType scmType = default(ScmType), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), IList<VirtualApplication> virtualApplications = default(IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), Experiments experiments = default(Experiments), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), CorsSettings cors = default(CorsSettings), PushSettingsInner push = default(PushSettingsInner), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), int? managedServiceIdentityId = default(int?), int? xManagedServiceIdentityId = default(int?), IList<IpSecurityRestriction> ipSecurityRestrictions = default(IList<IpSecurityRestriction>), IList<IpSecurityRestriction> scmIpSecurityRestrictions = default(IList<IpSecurityRestriction>), bool? scmIpSecurityRestrictionsUseMain = default(bool?), bool? http20Enabled = default(bool?), SupportedTlsVersions minTlsVersion = default(SupportedTlsVersions), FtpsState ftpsState = default(FtpsState), int? reservedInstanceCount = default(int?))
         {
             NumberOfWorkers = numberOfWorkers;
             DefaultDocuments = defaultDocuments;
@@ -112,6 +134,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             PythonVersion = pythonVersion;
             NodeVersion = nodeVersion;
             LinuxFxVersion = linuxFxVersion;
+            WindowsFxVersion = windowsFxVersion;
             RequestTracingEnabled = requestTracingEnabled;
             RequestTracingExpirationTime = requestTracingExpirationTime;
             RemoteDebuggingEnabled = remoteDebuggingEnabled;
@@ -121,6 +144,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             DetailedErrorLoggingEnabled = detailedErrorLoggingEnabled;
             PublishingUsername = publishingUsername;
             AppSettings = appSettings;
+            AzureStorageAccounts = azureStorageAccounts;
             ConnectionStrings = connectionStrings;
             MachineKey = machineKey;
             HandlerMappings = handlerMappings;
@@ -147,7 +171,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             ApiDefinition = apiDefinition;
             AutoSwapSlotName = autoSwapSlotName;
             LocalMySqlEnabled = localMySqlEnabled;
+            ManagedServiceIdentityId = managedServiceIdentityId;
+            XManagedServiceIdentityId = xManagedServiceIdentityId;
             IpSecurityRestrictions = ipSecurityRestrictions;
+            ScmIpSecurityRestrictions = scmIpSecurityRestrictions;
+            ScmIpSecurityRestrictionsUseMain = scmIpSecurityRestrictionsUseMain;
+            Http20Enabled = http20Enabled;
+            MinTlsVersion = minTlsVersion;
+            FtpsState = ftpsState;
+            ReservedInstanceCount = reservedInstanceCount;
             CustomInit();
         }
 
@@ -197,6 +229,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "linuxFxVersion")]
         public string LinuxFxVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets xenon App Framework and version
+        /// </summary>
+        [JsonProperty(PropertyName = "windowsFxVersion")]
+        public string WindowsFxVersion { get; set; }
 
         /// <summary>
         /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
@@ -261,6 +299,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public IList<NameValuePair> AppSettings { get; set; }
 
         /// <summary>
+        /// Gets or sets user-provided Azure storage accounts.
+        /// </summary>
+        [JsonProperty(PropertyName = "azureStorageAccounts")]
+        public IDictionary<string, AzureStorageInfoValue> AzureStorageAccounts { get; set; }
+
+        /// <summary>
         /// Gets or sets connection strings.
         /// </summary>
         [JsonProperty(PropertyName = "connectionStrings")]
@@ -291,7 +335,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'OneDrive', 'VSO'
         /// </summary>
         [JsonProperty(PropertyName = "scmType")]
-        public string ScmType { get; set; }
+        public ScmType ScmType { get; set; }
 
         /// <summary>
         /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to use
@@ -363,7 +407,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public SiteLoadBalancing? LoadBalancing { get; set; }
 
         /// <summary>
-        /// Gets or sets this is work around for polymophic types.
+        /// Gets or sets this is work around for polymorphic types.
         /// </summary>
         [JsonProperty(PropertyName = "experiments")]
         public Experiments Experiments { get; set; }
@@ -434,15 +478,68 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public bool? LocalMySqlEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets IP security restrictions.
+        /// Gets or sets managed Service Identity Id
+        /// </summary>
+        [JsonProperty(PropertyName = "managedServiceIdentityId")]
+        public int? ManagedServiceIdentityId { get; set; }
+
+        /// <summary>
+        /// Gets or sets explicit Managed Service Identity Id
+        /// </summary>
+        [JsonProperty(PropertyName = "xManagedServiceIdentityId")]
+        public int? XManagedServiceIdentityId { get; set; }
+
+        /// <summary>
+        /// Gets or sets IP security restrictions for main.
         /// </summary>
         [JsonProperty(PropertyName = "ipSecurityRestrictions")]
         public IList<IpSecurityRestriction> IpSecurityRestrictions { get; set; }
 
         /// <summary>
+        /// Gets or sets IP security restrictions for scm.
+        /// </summary>
+        [JsonProperty(PropertyName = "scmIpSecurityRestrictions")]
+        public IList<IpSecurityRestriction> ScmIpSecurityRestrictions { get; set; }
+
+        /// <summary>
+        /// Gets or sets IP security restrictions for scm to use main.
+        /// </summary>
+        [JsonProperty(PropertyName = "scmIpSecurityRestrictionsUseMain")]
+        public bool? ScmIpSecurityRestrictionsUseMain { get; set; }
+
+        /// <summary>
+        /// Gets or sets http20Enabled: configures a web site to allow clients
+        /// to connect over http2.0
+        /// </summary>
+        [JsonProperty(PropertyName = "http20Enabled")]
+        public bool? Http20Enabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets minTlsVersion: configures the minimum version of TLS
+        /// required for SSL requests. Possible values include: '1.0', '1.1',
+        /// '1.2'
+        /// </summary>
+        [JsonProperty(PropertyName = "minTlsVersion")]
+        public SupportedTlsVersions MinTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets state of FTP / FTPS service. Possible values include:
+        /// 'AllAllowed', 'FtpsOnly', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "ftpsState")]
+        public FtpsState FtpsState { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of reserved instances.
+        /// This setting only applies to the Consumption Plan
+        /// </summary>
+        [JsonProperty(PropertyName = "reservedInstanceCount")]
+        public int? ReservedInstanceCount { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
@@ -451,15 +548,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             {
                 Push.Validate();
             }
-            if (IpSecurityRestrictions != null)
+            if (ReservedInstanceCount > 10)
             {
-                foreach (var element in IpSecurityRestrictions)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "ReservedInstanceCount", 10);
+            }
+            if (ReservedInstanceCount < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "ReservedInstanceCount", 0);
             }
         }
     }

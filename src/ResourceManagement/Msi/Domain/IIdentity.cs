@@ -8,7 +8,6 @@ namespace Microsoft.Azure.Management.Msi.Fluent
     /// An immutable client-side representation of an Azure Managed Service Identity (MSI) Identity resource.
     /// </summary>
     public interface IIdentity  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Msi.Fluent.IMsiManager, IdentityInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Msi.Fluent.IIdentity>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Identity.Update.IUpdate>

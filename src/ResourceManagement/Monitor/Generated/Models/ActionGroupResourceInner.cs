@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// An action group resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ActionGroupResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ActionGroupResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ActionGroupResourceInner class.
@@ -57,7 +58,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// that are part of this action group.</param>
         /// <param name="azureFunctionReceivers">The list of azure function
         /// receivers that are part of this action group.</param>
-        public ActionGroupResourceInner(string groupShortName, bool enabled, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<EmailReceiver> emailReceivers = default(IList<EmailReceiver>), IList<SmsReceiver> smsReceivers = default(IList<SmsReceiver>), IList<WebhookReceiver> webhookReceivers = default(IList<WebhookReceiver>), IList<ItsmReceiver> itsmReceivers = default(IList<ItsmReceiver>), IList<AzureAppPushReceiver> azureAppPushReceivers = default(IList<AzureAppPushReceiver>), IList<AutomationRunbookReceiver> automationRunbookReceivers = default(IList<AutomationRunbookReceiver>), IList<VoiceReceiver> voiceReceivers = default(IList<VoiceReceiver>), IList<LogicAppReceiver> logicAppReceivers = default(IList<LogicAppReceiver>), IList<AzureFunctionReceiver> azureFunctionReceivers = default(IList<AzureFunctionReceiver>))
+        /// <param name="armRoleReceivers">The list of ARM role receivers that
+        /// are part of this action group. Roles are Azure RBAC roles and only
+        /// built-in roles are supported.</param>
+        public ActionGroupResourceInner(string location, string groupShortName, bool enabled, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<EmailReceiver> emailReceivers = default(IList<EmailReceiver>), IList<SmsReceiver> smsReceivers = default(IList<SmsReceiver>), IList<WebhookReceiver> webhookReceivers = default(IList<WebhookReceiver>), IList<ItsmReceiver> itsmReceivers = default(IList<ItsmReceiver>), IList<AzureAppPushReceiver> azureAppPushReceivers = default(IList<AzureAppPushReceiver>), IList<AutomationRunbookReceiver> automationRunbookReceivers = default(IList<AutomationRunbookReceiver>), IList<VoiceReceiver> voiceReceivers = default(IList<VoiceReceiver>), IList<LogicAppReceiver> logicAppReceivers = default(IList<LogicAppReceiver>), IList<AzureFunctionReceiver> azureFunctionReceivers = default(IList<AzureFunctionReceiver>), IList<ArmRoleReceiver> armRoleReceivers = default(IList<ArmRoleReceiver>))
             : base(location, id, name, type, tags)
         {
             GroupShortName = groupShortName;
@@ -71,6 +75,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             VoiceReceivers = voiceReceivers;
             LogicAppReceivers = logicAppReceivers;
             AzureFunctionReceivers = azureFunctionReceivers;
+            ArmRoleReceivers = armRoleReceivers;
             CustomInit();
         }
 
@@ -158,22 +163,31 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public IList<AzureFunctionReceiver> AzureFunctionReceivers { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of ARM role receivers that are part of this
+        /// action group. Roles are Azure RBAC roles and only built-in roles
+        /// are supported.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.armRoleReceivers")]
+        public IList<ArmRoleReceiver> ArmRoleReceivers { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (GroupShortName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "GroupShortName");
             }
             if (GroupShortName != null)
             {
-                if (GroupShortName.Length > 15)
+                if (GroupShortName.Length > 12)
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "GroupShortName", 15);
+                    throw new ValidationException(ValidationRules.MaxLength, "GroupShortName", 12);
                 }
             }
             if (EmailReceivers != null)
@@ -263,6 +277,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                     if (element8 != null)
                     {
                         element8.Validate();
+                    }
+                }
+            }
+            if (ArmRoleReceivers != null)
+            {
+                foreach (var element9 in ArmRoleReceivers)
+                {
+                    if (element9 != null)
+                    {
+                        element9.Validate();
                     }
                 }
             }

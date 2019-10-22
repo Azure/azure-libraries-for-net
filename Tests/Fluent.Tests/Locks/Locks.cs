@@ -245,5 +245,29 @@ namespace Fluent.Tests
             }
         }
 
+        [Fact(Skip ="SPN requires write access to the scope to set a lock on ResourceGroup")]
+        public void LocksRGBugfix()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+
+                string rgName = SdkContext.RandomResourceName("lockBugFix", 15);
+
+                var azure = TestHelper.CreateRollupClient();
+
+                var resourceGroup = azure.ResourceGroups.Define(rgName)
+                    .WithRegion(Region.USWestCentral)
+                    .Create();
+
+                var lockObject = azure.ManagementLocks.Define("lockname")
+                    .WithLockedResourceGroup(resourceGroup.Name)
+                    .WithLevel(LockLevel.CanNotDelete)
+                    .Create();
+
+                azure.ManagementLocks.DeleteById(lockObject.Id);
+
+                azure.ResourceGroups.BeginDeleteByName(rgName);
+            }
+        }
     }
 }

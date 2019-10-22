@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// type is set to location. This would be different locations where
         /// the SKU is restricted.</param>
         /// <param name="reasonCode">The reason for the restriction. As of now
-        /// this can be “QuotaId” or “NotAvailableForSubscription”. Quota Id is
+        /// this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is
         /// set when the SKU has requiredQuotas parameter as the subscription
-        /// does not belong to that quota. The “NotAvailableForSubscription” is
+        /// does not belong to that quota. The "NotAvailableForSubscription" is
         /// related to capacity at DC. Possible values include: 'QuotaId',
         /// 'NotAvailableForSubscription'</param>
-        public Restriction(string type = default(string), IList<string> values = default(IList<string>), string reasonCode = default(string))
+        public Restriction(string type = default(string), IList<string> values = default(IList<string>), ReasonCode reasonCode = default(ReasonCode))
         {
             Type = type;
             Values = values;
@@ -70,14 +70,14 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
 
         /// <summary>
         /// Gets or sets the reason for the restriction. As of now this can be
-        /// “QuotaId” or “NotAvailableForSubscription”. Quota Id is set when
+        /// "QuotaId" or "NotAvailableForSubscription". Quota Id is set when
         /// the SKU has requiredQuotas parameter as the subscription does not
-        /// belong to that quota. The “NotAvailableForSubscription” is related
+        /// belong to that quota. The "NotAvailableForSubscription" is related
         /// to capacity at DC. Possible values include: 'QuotaId',
         /// 'NotAvailableForSubscription'
         /// </summary>
         [JsonProperty(PropertyName = "reasonCode")]
-        public string ReasonCode { get; set; }
+        public ReasonCode ReasonCode { get; set; }
 
     }
 }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// A collection of environment variables to set.
+    /// An environment variable definition.
     /// </summary>
     public partial class EnvironmentVariable
     {
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the EnvironmentVariable class.
         /// </summary>
-        /// <param name="name">The name of the environment variable.</param>
-        /// <param name="value">The value of the environment variable.</param>
+        /// <param name="name">Name.</param>
+        /// <param name="value">Value.</param>
         public EnvironmentVariable(string name, string value)
         {
             Name = name;
@@ -43,14 +43,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the environment variable.
+        /// Gets or sets name.
         /// </summary>
+        /// <remarks>
+        /// The name of the environment variable.
+        /// </remarks>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the environment variable.
+        /// Gets or sets value.
         /// </summary>
+        /// <remarks>
+        /// The value of the environment variable.
+        /// </remarks>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 

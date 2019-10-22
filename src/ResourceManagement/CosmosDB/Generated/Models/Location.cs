@@ -40,13 +40,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// value for a failover priority = (total number of regions - 1).
         /// Failover priority values must be unique for each of the regions in
         /// which the database account exists.</param>
-        public Location(string id = default(string), string locationName = default(string), string documentEndpoint = default(string), string provisioningState = default(string), int? failoverPriority = default(int?))
+        /// <param name="isZoneRedundant">Flag to indicate whether or not this
+        /// region is an AvailabilityZone region</param>
+        public Location(string id = default(string), string locationName = default(string), string documentEndpoint = default(string), string provisioningState = default(string), int? failoverPriority = default(int?), bool? isZoneRedundant = default(bool?))
         {
             Id = id;
             LocationName = locationName;
             DocumentEndpoint = documentEndpoint;
             ProvisioningState = provisioningState;
             FailoverPriority = failoverPriority;
+            IsZoneRedundant = isZoneRedundant;
             CustomInit();
         }
 
@@ -90,6 +93,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "failoverPriority")]
         public int? FailoverPriority { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate whether or not this region is an
+        /// AvailabilityZone region
+        /// </summary>
+        [JsonProperty(PropertyName = "isZoneRedundant")]
+        public bool? IsZoneRedundant { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:F69F9A86EEB56FF0B2A2B78C4CF114C2:7153ECB87E832139279F3EC9F68639FD
         public SqlElasticPoolImpl WithStandardPool()
         {
-            this.Inner.Edition = ElasticPoolEditions.Standard;
+            this.Inner.Edition = ElasticPoolEdition.Standard;
             return this;
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:CE6E5E981686AB8CE8A830CF9AB6387F:D3C554B6F628CA009F2AB5D1A90A12F8
-        public SqlElasticPoolImpl WithEdition(string edition)
+        public SqlElasticPoolImpl WithEdition(ElasticPoolEdition edition)
         {
             this.Inner.Edition = edition;
             return this;
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:F31B0F3D0CD1A4C57DB28EB70C9E094A
-        public string State()
+        public ElasticPoolState State()
         {
             return this.Inner.State;
         }
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:97CD39A6DC806326650B01A4E0BE675A:6729F7814D666C60EC365023C4CC1717
         public SqlElasticPoolImpl WithBasicPool()
         {
-            this.Inner.Edition = ElasticPoolEditions.Basic;
+            this.Inner.Edition = ElasticPoolEdition.Basic;
             return this;
         }
 
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:29AF482561F540D08CF2A859C007C920:9113B025D3F2A0B7AA9DEF0C3FD5A61B
         public SqlElasticPoolImpl WithPremiumPool()
         {
-            this.Inner.Edition = ElasticPoolEditions.Premium;
+            this.Inner.Edition = ElasticPoolEdition.Premium;
             return this;
         }
 
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 this.Inner.Tags = new Dictionary<string, string>();
             }
-            this.Inner.Tags.Add(key, value);
+            this.Inner.Tags[key] = value;
             return this;
         }
 
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:F5BFC9500AE4C04846BAAD2CC50792B3:DA87C4AB3EEB9D4BA746DF610E8BC39F
-        public string Edition()
+        public ElasticPoolEdition Edition()
         {
             return this.Inner.Edition;
         }

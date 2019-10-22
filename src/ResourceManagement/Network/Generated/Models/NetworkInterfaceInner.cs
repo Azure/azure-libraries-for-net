@@ -38,7 +38,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// machine.</param>
         /// <param name="networkSecurityGroup">The reference of the
         /// NetworkSecurityGroup resource.</param>
+        /// <param name="privateEndpoint">A reference to the private endpoint
+        /// to which the network interface is linked.</param>
         /// <param name="ipConfigurations">A list of IPConfigurations of the
+        /// network interface.</param>
+        /// <param name="tapConfigurations">A list of TapConfigurations of the
         /// network interface.</param>
         /// <param name="dnsSettings">The DNS settings in network
         /// interface.</param>
@@ -50,6 +54,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// is accelerated networking enabled.</param>
         /// <param name="enableIPForwarding">Indicates whether IP forwarding is
         /// enabled on this network interface.</param>
+        /// <param name="hostedWorkloads">A list of references to linked
+        /// BareMetal resources.</param>
         /// <param name="resourceGuid">The resource GUID property of the
         /// network interface resource.</param>
         /// <param name="provisioningState">The provisioning state of the
@@ -57,17 +63,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// and 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterfaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualMachine = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource networkSecurityGroup = default(Management.ResourceManager.Fluent.SubResource), IList<NetworkInterfaceIPConfigurationInner> ipConfigurations = default(IList<NetworkInterfaceIPConfigurationInner>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkInterfaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualMachine = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource networkSecurityGroup = default(Management.ResourceManager.Fluent.SubResource), PrivateEndpointInner privateEndpoint = default(PrivateEndpointInner), IList<NetworkInterfaceIPConfigurationInner> ipConfigurations = default(IList<NetworkInterfaceIPConfigurationInner>), IList<NetworkInterfaceTapConfigurationInner> tapConfigurations = default(IList<NetworkInterfaceTapConfigurationInner>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             VirtualMachine = virtualMachine;
             NetworkSecurityGroup = networkSecurityGroup;
+            PrivateEndpoint = privateEndpoint;
             IpConfigurations = ipConfigurations;
+            TapConfigurations = tapConfigurations;
             DnsSettings = dnsSettings;
             MacAddress = macAddress;
             Primary = primary;
             EnableAcceleratedNetworking = enableAcceleratedNetworking;
             EnableIPForwarding = enableIPForwarding;
+            HostedWorkloads = hostedWorkloads;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
@@ -80,10 +89,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the reference of a virtual machine.
+        /// Gets the reference of a virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachine")]
-        public Management.ResourceManager.Fluent.SubResource VirtualMachine { get; set; }
+        public Management.ResourceManager.Fluent.SubResource VirtualMachine { get; private set; }
 
         /// <summary>
         /// Gets or sets the reference of the NetworkSecurityGroup resource.
@@ -92,10 +101,23 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource NetworkSecurityGroup { get; set; }
 
         /// <summary>
+        /// Gets a reference to the private endpoint to which the network
+        /// interface is linked.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpoint")]
+        public PrivateEndpointInner PrivateEndpoint { get; private set; }
+
+        /// <summary>
         /// Gets or sets a list of IPConfigurations of the network interface.
         /// </summary>
         [JsonProperty(PropertyName = "properties.ipConfigurations")]
         public IList<NetworkInterfaceIPConfigurationInner> IpConfigurations { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of TapConfigurations of the network interface.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tapConfigurations")]
+        public IList<NetworkInterfaceTapConfigurationInner> TapConfigurations { get; set; }
 
         /// <summary>
         /// Gets or sets the DNS settings in network interface.
@@ -131,6 +153,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? EnableIPForwarding { get; set; }
 
         /// <summary>
+        /// Gets a list of references to linked BareMetal resources.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostedWorkloads")]
+        public IList<string> HostedWorkloads { get; private set; }
+
+        /// <summary>
         /// Gets or sets the resource GUID property of the network interface
         /// resource.
         /// </summary>
@@ -159,6 +187,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (PrivateEndpoint != null)
+            {
+                PrivateEndpoint.Validate();
+            }
         }
     }
 }

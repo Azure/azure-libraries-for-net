@@ -8,19 +8,18 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Single item in List or Get Consumer group operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ConsumerGroupInner : NestedResourceInner
+    public partial class ConsumerGroupInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ConsumerGroupInner class.
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// <param name="createdAt">Exact time the message was created.</param>
         /// <param name="updatedAt">The exact time the message was
         /// updated.</param>
-        /// <param name="userMetadata">Usermetadata is a placeholder to store
+        /// <param name="userMetadata">User Metadata is a placeholder to store
         /// user-defined string data with maximum length 1024. e.g. it can be
         /// used to store descriptive data, such as list of teams and their
         /// contact information also user-defined configuration settings can be
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         public System.DateTime? UpdatedAt { get; private set; }
 
         /// <summary>
-        /// Gets or sets usermetadata is a placeholder to store user-defined
+        /// Gets or sets user Metadata is a placeholder to store user-defined
         /// string data with maximum length 1024. e.g. it can be used to store
         /// descriptive data, such as list of teams and their contact
         /// information also user-defined configuration settings can be stored.

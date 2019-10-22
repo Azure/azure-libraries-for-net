@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Snapshot resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SnapshotInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class SnapshotInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the SnapshotInner class.
@@ -41,27 +42,42 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// created.</param>
         /// <param name="osType">The Operating System type. Possible values
         /// include: 'Windows', 'Linux'</param>
+        /// <param name="hyperVGeneration">The hypervisor generation of the
+        /// Virtual Machine. Applicable to OS disks only. Possible values
+        /// include: 'V1', 'V2'</param>
         /// <param name="diskSizeGB">If creationData.createOption is Empty,
-        /// this field is mandatory and it indicates the size of the VHD to
+        /// this field is mandatory and it indicates the size of the disk to
         /// create. If this field is present for updates or creation with other
         /// options, it indicates a resize. Resizes are only allowed if the
         /// disk is not attached to a running VM, and can only increase the
         /// disk's size.</param>
-        /// <param name="encryptionSettings">Encryption settings for disk or
-        /// snapshot</param>
+        /// <param name="diskSizeBytes">The size of the disk in bytes. This
+        /// field is read only.</param>
+        /// <param name="uniqueId">Unique Guid identifying the
+        /// resource.</param>
+        /// <param name="encryptionSettingsCollection">Encryption settings
+        /// collection used be Azure Disk Encryption, can contain multiple
+        /// encryption settings per disk or snapshot.</param>
         /// <param name="provisioningState">The disk provisioning
         /// state.</param>
-        public SnapshotInner(CreationData creationData, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettings encryptionSettings = default(EncryptionSettings), string provisioningState = default(string))
+        /// <param name="incremental">Whether a snapshot is incremental.
+        /// Incremental snapshots on the same disk occupy less space than full
+        /// snapshots and can be diffed.</param>
+        public SnapshotInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), HyperVGeneration hyperVGeneration = default(HyperVGeneration), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?))
             : base(location, id, name, type, tags)
         {
             ManagedBy = managedBy;
             Sku = sku;
             TimeCreated = timeCreated;
             OsType = osType;
+            HyperVGeneration = hyperVGeneration;
             CreationData = creationData;
             DiskSizeGB = diskSizeGB;
-            EncryptionSettings = encryptionSettings;
+            DiskSizeBytes = diskSizeBytes;
+            UniqueId = uniqueId;
+            EncryptionSettingsCollection = encryptionSettingsCollection;
             ProvisioningState = provisioningState;
+            Incremental = incremental;
             CustomInit();
         }
 
@@ -95,6 +111,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public OperatingSystemTypes? OsType { get; set; }
 
         /// <summary>
+        /// Gets or sets the hypervisor generation of the Virtual Machine.
+        /// Applicable to OS disks only. Possible values include: 'V1', 'V2'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hyperVGeneration")]
+        public HyperVGeneration HyperVGeneration { get; set; }
+
+        /// <summary>
         /// Gets or sets disk source information. CreationData information
         /// cannot be changed after the disk has been created.
         /// </summary>
@@ -103,7 +126,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets if creationData.createOption is Empty, this field is
-        /// mandatory and it indicates the size of the VHD to create. If this
+        /// mandatory and it indicates the size of the disk to create. If this
         /// field is present for updates or creation with other options, it
         /// indicates a resize. Resizes are only allowed if the disk is not
         /// attached to a running VM, and can only increase the disk's size.
@@ -112,10 +135,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public int? DiskSizeGB { get; set; }
 
         /// <summary>
-        /// Gets or sets encryption settings for disk or snapshot
+        /// Gets the size of the disk in bytes. This field is read only.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.encryptionSettings")]
-        public EncryptionSettings EncryptionSettings { get; set; }
+        [JsonProperty(PropertyName = "properties.diskSizeBytes")]
+        public long? DiskSizeBytes { get; private set; }
+
+        /// <summary>
+        /// Gets unique Guid identifying the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueId")]
+        public string UniqueId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets encryption settings collection used be Azure Disk
+        /// Encryption, can contain multiple encryption settings per disk or
+        /// snapshot.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.encryptionSettingsCollection")]
+        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
 
         /// <summary>
         /// Gets the disk provisioning state.
@@ -124,13 +161,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets whether a snapshot is incremental. Incremental
+        /// snapshots on the same disk occupy less space than full snapshots
+        /// and can be diffed.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.incremental")]
+        public bool? Incremental { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (CreationData == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CreationData");
@@ -139,9 +185,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             {
                 CreationData.Validate();
             }
-            if (EncryptionSettings != null)
+            if (EncryptionSettingsCollection != null)
             {
-                EncryptionSettings.Validate();
+                EncryptionSettingsCollection.Validate();
             }
         }
     }

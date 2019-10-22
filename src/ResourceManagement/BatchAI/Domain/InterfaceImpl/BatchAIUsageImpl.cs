@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-namespace Microsoft.Azure.Management.Batchai.Fluent
+namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using Microsoft.Azure.Management.BatchAI.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
         /// <summary>
         /// Gets the current count of the allocated resources in the subscription.
         /// </summary>
-        int Microsoft.Azure.Management.Batchai.Fluent.IBatchAIUsage.CurrentValue
+        int Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIUsage.CurrentValue
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
         /// Gets the maximum count of the resources that can be allocated in the
         /// subscription.
         /// </summary>
-        long Microsoft.Azure.Management.Batchai.Fluent.IBatchAIUsage.Limit
+        long Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIUsage.Limit
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
         /// <summary>
         /// Gets the name of the type of usage.
         /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.Models.UsageName Microsoft.Azure.Management.Batchai.Fluent.IBatchAIUsage.Name
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.UsageName Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIUsage.Name
         {
             get
             {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
         /// <summary>
         /// Gets the unit of usage measurement.
         /// </summary>
-        string Microsoft.Azure.Management.Batchai.Fluent.IBatchAIUsage.Unit
+        UsageUnit Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIUsage.Unit
         {
             get
             {

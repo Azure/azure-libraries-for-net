@@ -33,9 +33,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="partnerServer">The name of the partner server.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="state">The state.</param>
         /// <param name="location">Communication link location.</param>
         /// <param name="kind">Communication link kind.  This property is used

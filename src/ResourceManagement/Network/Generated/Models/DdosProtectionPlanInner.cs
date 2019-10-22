@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// read-only.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public DdosProtectionPlanInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), IList<Management.ResourceManager.Fluent.SubResource> virtualNetworks = default(IList<Management.ResourceManager.Fluent.SubResource>), string etag = default(string))
+        public DdosProtectionPlanInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), IList<Management.ResourceManager.Fluent.SubResource> virtualNetworks = default(IList<Management.ResourceManager.Fluent.SubResource>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ResourceGuid = resourceGuid;
@@ -98,8 +98,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
         }
     }
 }

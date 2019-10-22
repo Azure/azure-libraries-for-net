@@ -1,13 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     internal partial class VirtualMachineExtensionImageVersionsImpl
     {
@@ -17,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion>;
+            return this.List();
         }
 
         /// <summary>
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachineExtensionImageVersion>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachineExtensionImageVersion>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
     }
 }

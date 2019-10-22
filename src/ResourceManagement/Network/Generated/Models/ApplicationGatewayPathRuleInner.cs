@@ -43,21 +43,23 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// URL path map path rule.</param>
         /// <param name="redirectConfiguration">Redirect configuration resource
         /// of URL path map path rule.</param>
+        /// <param name="rewriteRuleSet">Rewrite rule set resource of URL path
+        /// map path rule.</param>
         /// <param name="provisioningState">Path rule of URL path map resource.
         /// Possible values are: 'Updating', 'Deleting', and 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the path rule that is unique within an
+        /// Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayPathRuleInner(string id = default(string), IList<string> paths = default(IList<string>), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource redirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayPathRuleInner(string id = default(string), IList<string> paths = default(IList<string>), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource redirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource rewriteRuleSet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             Paths = paths;
             BackendAddressPool = backendAddressPool;
             BackendHttpSettings = backendHttpSettings;
             RedirectConfiguration = redirectConfiguration;
+            RewriteRuleSet = rewriteRuleSet;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -98,6 +100,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource RedirectConfiguration { get; set; }
 
         /// <summary>
+        /// Gets or sets rewrite rule set resource of URL path map path rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.rewriteRuleSet")]
+        public Management.ResourceManager.Fluent.SubResource RewriteRuleSet { get; set; }
+
+        /// <summary>
         /// Gets or sets path rule of URL path map resource. Possible values
         /// are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
@@ -105,8 +113,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the path rule that is unique within an
+        /// Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

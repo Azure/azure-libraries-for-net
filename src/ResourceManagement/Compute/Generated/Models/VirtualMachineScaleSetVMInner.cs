@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a virtual machine scale set virtual machine.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetVMInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class VirtualMachineScaleSetVMInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetVMInner
@@ -46,10 +47,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// the virtual machine.</param>
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
+        /// <param name="additionalCapabilities">Specifies additional
+        /// capabilities enabled or disabled on the virtual machine in the
+        /// scale set. For instance: whether the virtual machine has the
+        /// capability to support attaching managed data disks with
+        /// UltraSSD_LRS storage account type.</param>
         /// <param name="osProfile">Specifies the operating system settings for
         /// the virtual machine.</param>
         /// <param name="networkProfile">Specifies the network interfaces of
         /// the virtual machine.</param>
+        /// <param name="networkProfileConfiguration">Specifies the network
+        /// profile configuration of the virtual machine.</param>
         /// <param name="diagnosticsProfile">Specifies the boot diagnostic
         /// settings state. &lt;br&gt;&lt;br&gt;Minimum api-version:
         /// 2015-06-15.</param>
@@ -61,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// of virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
         /// &lt;br&gt;&lt;br&gt; For more information on Azure planned
-        /// maintainance, see [Planned maintenance for virtual machines in
+        /// maintenance, see [Planned maintenance for virtual machines in
         /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
         /// &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to
         /// availability set at creation time. An existing VM cannot be added
@@ -79,6 +87,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// [Azure Hybrid Use Benefit for Windows
         /// Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
         /// &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15</param>
+        /// <param name="modelDefinitionApplied">Specifies whether the model
+        /// applied to the virtual machine is the model of the virtual machine
+        /// scale set or the customized model for the virtual machine.</param>
+        /// <param name="protectionPolicy">Specifies the protection policy of
+        /// the virtual machine.</param>
         /// <param name="plan">Specifies information about the marketplace
         /// image used to create the virtual machine. This element is only used
         /// for marketplace images. Before you can use a marketplace image from
@@ -88,7 +101,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Enter any required information and then click **Save**.</param>
         /// <param name="resources">The virtual machine child extension
         /// resources.</param>
-        public VirtualMachineScaleSetVMInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Microsoft.Azure.Management.ResourceManager.Fluent.SubResource availabilitySet = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>))
+        /// <param name="zones">The virtual machine zones.</param>
+        public VirtualMachineScaleSetVMInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             InstanceId = instanceId;
@@ -98,14 +112,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             InstanceView = instanceView;
             HardwareProfile = hardwareProfile;
             StorageProfile = storageProfile;
+            AdditionalCapabilities = additionalCapabilities;
             OsProfile = osProfile;
             NetworkProfile = networkProfile;
+            NetworkProfileConfiguration = networkProfileConfiguration;
             DiagnosticsProfile = diagnosticsProfile;
             AvailabilitySet = availabilitySet;
             ProvisioningState = provisioningState;
             LicenseType = licenseType;
+            ModelDefinitionApplied = modelDefinitionApplied;
+            ProtectionPolicy = protectionPolicy;
             Plan = plan;
             Resources = resources;
+            Zones = zones;
             CustomInit();
         }
 
@@ -143,7 +162,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets the virtual machine instance view.
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
-        public VirtualMachineInstanceView InstanceView { get; private set; }
+        public VirtualMachineScaleSetVMInstanceView InstanceView { get; private set; }
 
         /// <summary>
         /// Gets or sets specifies the hardware settings for the virtual
@@ -160,6 +179,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public StorageProfile StorageProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies additional capabilities enabled or disabled
+        /// on the virtual machine in the scale set. For instance: whether the
+        /// virtual machine has the capability to support attaching managed
+        /// data disks with UltraSSD_LRS storage account type.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.additionalCapabilities")]
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the operating system settings for the
         /// virtual machine.
         /// </summary>
@@ -172,6 +200,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkProfile")]
         public NetworkProfile NetworkProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the network profile configuration of the
+        /// virtual machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkProfileConfiguration")]
+        public VirtualMachineScaleSetVMNetworkProfileConfiguration NetworkProfileConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the boot diagnostic settings state.
@@ -189,7 +224,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// availability sets, see [Manage the availability of virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For more information on Azure
-        /// planned maintainance, see [Planned maintenance for virtual machines
+        /// planned maintenance, see [Planned maintenance for virtual machines
         /// in
         /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Currently, a VM can only be
@@ -197,7 +232,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// be added to an availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilitySet")]
-        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
+        public Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
 
         /// <summary>
         /// Gets the provisioning state, which only appears in the response.
@@ -224,6 +259,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets specifies whether the model applied to the virtual machine is
+        /// the model of the virtual machine scale set or the customized model
+        /// for the virtual machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.modelDefinitionApplied")]
+        public string ModelDefinitionApplied { get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies the protection policy of the virtual
+        /// machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.protectionPolicy")]
+        public VirtualMachineScaleSetVMProtectionPolicy ProtectionPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets specifies information about the marketplace image used
         /// to create the virtual machine. This element is only used for
         /// marketplace images. Before you can use a marketplace image from an
@@ -242,16 +292,33 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public IList<VirtualMachineExtensionInner> Resources { get; private set; }
 
         /// <summary>
+        /// Gets the virtual machine zones.
+        /// </summary>
+        [JsonProperty(PropertyName = "zones")]
+        public IList<string> Zones { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();
+            }
+            if (Resources != null)
+            {
+                foreach (var element in Resources)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }

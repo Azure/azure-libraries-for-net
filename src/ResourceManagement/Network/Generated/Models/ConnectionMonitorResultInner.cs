@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -19,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     /// Information about the connection monitor.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ConnectionMonitorResultInner
+    public partial class ConnectionMonitorResultInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionMonitorResultInner
@@ -34,11 +36,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the ConnectionMonitorResultInner
         /// class.
         /// </summary>
-        /// <param name="name">Name of the connection monitor.</param>
-        /// <param name="id">ID of the connection monitor.</param>
-        /// <param name="type">Connection monitor type.</param>
-        /// <param name="location">Connection monitor location.</param>
-        /// <param name="tags">Connection monitor tags.</param>
+        /// <param name="source">Describes the source of connection
+        /// monitor.</param>
+        /// <param name="destination">Describes the destination of connection
+        /// monitor.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         /// <param name="autoStart">Determines if the connection monitor will
         /// start automatically once created.</param>
         /// <param name="monitoringIntervalInSeconds">Monitoring interval in
@@ -50,14 +53,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// monitor was started.</param>
         /// <param name="monitoringStatus">The monitoring status of the
         /// connection monitor.</param>
-        public ConnectionMonitorResultInner(ConnectionMonitorSource source, ConnectionMonitorDestination destination, string name = default(string), string id = default(string), string etag = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? autoStart = default(bool?), int? monitoringIntervalInSeconds = default(int?), ProvisioningState provisioningState = default(ProvisioningState), System.DateTime? startTime = default(System.DateTime?), string monitoringStatus = default(string))
+        public ConnectionMonitorResultInner(string location, ConnectionMonitorSource source, ConnectionMonitorDestination destination, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), bool? autoStart = default(bool?), int? monitoringIntervalInSeconds = default(int?), ProvisioningState provisioningState = default(ProvisioningState), System.DateTime? startTime = default(System.DateTime?), string monitoringStatus = default(string))
+            : base(location, id, name, type, tags)
         {
-            Name = name;
-            Id = id;
             Etag = etag;
-            Type = type;
-            Location = location;
-            Tags = tags;
             Source = source;
             Destination = destination;
             AutoStart = autoStart;
@@ -74,46 +73,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets name of the connection monitor.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets ID of the connection monitor.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
 
         /// <summary>
-        /// Gets connection monitor type.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets or sets connection monitor location.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets connection monitor tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
+        /// Gets or sets describes the source of connection monitor.
         /// </summary>
         [JsonProperty(PropertyName = "properties.source")]
         public ConnectionMonitorSource Source { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the destination of connection monitor.
         /// </summary>
         [JsonProperty(PropertyName = "properties.destination")]
         public ConnectionMonitorDestination Destination { get; set; }
@@ -158,8 +131,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Source == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Source");

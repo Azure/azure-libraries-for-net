@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -120,28 +120,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true web app hostname is not registered with DNS on creation.
-        /// This parameter is
-        /// only used for app creation.
-        /// </param>
-        /// <param name='skipCustomDomainVerification'>
-        /// If true, custom (non *.azurewebsites.net) domains associated with
-        /// web app are not verified.
-        /// </param>
-        /// <param name='forceDnsRegistration'>
-        /// If true, web app hostname is force registered with DNS.
-        /// </param>
-        /// <param name='ttlInSeconds'>
-        /// Time to live in seconds for web app's default domain name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -150,7 +135,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SiteInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, bool? skipDnsRegistration = default(bool?), bool? skipCustomDomainVerification = default(bool?), bool? forceDnsRegistration = default(bool?), string ttlInSeconds = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a web, mobile, or API app, or one of the deployment slots.
         /// </summary>
@@ -171,9 +156,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// deletion and you want to delete the empty App Service plan. By
         /// default, the empty App Service plan is not deleted.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true, DNS registration is skipped.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -186,7 +168,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), bool? skipDnsRegistration = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new web, mobile, or API app in an existing resource
         /// group, or updates an existing app.
@@ -205,28 +187,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true web app hostname is not registered with DNS on creation.
-        /// This parameter is
-        /// only used for app creation.
-        /// </param>
-        /// <param name='skipCustomDomainVerification'>
-        /// If true, custom (non *.azurewebsites.net) domains associated with
-        /// web app are not verified.
-        /// </param>
-        /// <param name='forceDnsRegistration'>
-        /// If true, web app hostname is force registered with DNS.
-        /// </param>
-        /// <param name='ttlInSeconds'>
-        /// Time to live in seconds for web app's default domain name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -235,7 +202,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SiteInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, SitePatchResourceInner siteEnvelope, bool? skipDnsRegistration = default(bool?), bool? skipCustomDomainVerification = default(bool?), bool? forceDnsRegistration = default(bool?), string ttlInSeconds = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, SitePatchResource siteEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Analyze a custom hostname.
         /// </summary>
@@ -257,7 +224,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -296,7 +263,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> ApplySlotConfigToProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ApplySlotConfigToProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a backup of an app.
         /// </summary>
@@ -319,7 +286,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -347,7 +314,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -357,40 +324,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<BackupItemInner>>> ListBackupsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Discovers an existing app backup that can be restored from a blob
-        /// in Azure storage.
-        /// </summary>
-        /// <remarks>
-        /// Discovers an existing app backup that can be restored from a blob
-        /// in Azure storage.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='request'>
-        /// A RestoreRequest object that includes Azure storage URL and blog
-        /// name for discovery of backup.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RestoreRequestInner>> DiscoverRestoreWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a backup of an app by its ID.
         /// </summary>
@@ -412,7 +345,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -480,7 +413,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -519,13 +452,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RestoreResponseInner>> RestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> RestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List the configurations of an app
         /// </summary>
@@ -544,7 +474,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -575,7 +505,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -603,7 +533,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -636,7 +566,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -664,7 +594,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -674,6 +604,65 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SiteAuthSettingsInner>> GetAuthSettingsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates the Azure storage account configurations of an app.
+        /// </summary>
+        /// <remarks>
+        /// Updates the Azure storage account configurations of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='azureStorageAccounts'>
+        /// Azure storage accounts of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<AzureStoragePropertyDictionaryResourceInner>> UpdateAzureStorageAccountsWithHttpMessagesAsync(string resourceGroupName, string name, AzureStoragePropertyDictionaryResourceInner azureStorageAccounts, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the Azure storage account configurations of an app.
+        /// </summary>
+        /// <remarks>
+        /// Gets the Azure storage account configurations of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<AzureStoragePropertyDictionaryResourceInner>> ListAzureStorageAccountsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the backup configuration of an app.
         /// </summary>
@@ -695,7 +684,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -748,7 +737,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -779,7 +768,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -807,7 +796,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -835,7 +824,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -867,7 +856,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -898,7 +887,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -926,7 +915,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -954,7 +943,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -985,7 +974,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1013,7 +1002,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1043,7 +1032,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1076,7 +1065,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1106,7 +1095,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1137,7 +1126,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1168,7 +1157,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1200,7 +1189,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1233,7 +1222,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1326,7 +1315,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Stream>> GetWebSiteContainerLogsZipWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Stream>> GetContainerLogsZipWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List continuous web jobs for an app, or a deployment slot.
         /// </summary>
@@ -1345,7 +1334,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1492,7 +1481,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1523,7 +1512,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1557,7 +1546,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1620,7 +1609,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1630,6 +1619,42 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<DeploymentInner>> ListDeploymentLogWithHttpMessagesAsync(string resourceGroupName, string name, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Discovers an existing app backup that can be restored from a blob
+        /// in Azure storage. Use this to get information about the databases
+        /// stored in a backup.
+        /// </summary>
+        /// <remarks>
+        /// Discovers an existing app backup that can be restored from a blob
+        /// in Azure storage. Use this to get information about the databases
+        /// stored in a backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='request'>
+        /// A RestoreRequest object that includes Azure storage URL and blog
+        /// name for discovery of backup.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RestoreRequestInner>> DiscoverBackupWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists ownership identifiers for domain associated with web app.
         /// </summary>
@@ -1648,7 +1673,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1679,7 +1704,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1715,7 +1740,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1779,7 +1804,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1807,7 +1832,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1847,7 +1872,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> CreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> CreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
@@ -1922,7 +1947,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1989,7 +2014,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2050,7 +2075,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2078,7 +2103,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2111,7 +2136,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2146,7 +2171,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2210,7 +2235,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2247,7 +2272,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2315,7 +2340,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2349,7 +2374,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2377,7 +2402,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2407,7 +2432,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2438,7 +2463,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2474,7 +2499,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2538,7 +2563,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2566,7 +2591,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2597,7 +2622,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2640,7 +2665,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> CreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> CreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
@@ -2996,7 +3021,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3024,7 +3049,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3054,7 +3079,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3085,9 +3110,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only metrics specified in the filter (using OData syntax).
         /// For example: $filter=(name.value eq 'Metric1' or name.value eq
-        /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-        /// '2014-12-31T23:59:59Z' and timeGrain eq
-        /// duration'[Hour|Minute|Day]'.
+        /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+        /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3095,7 +3119,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3129,7 +3153,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3138,7 +3162,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<StorageMigrationResponseInner>> MigrateStorageWithHttpMessagesAsync(string subscriptionName, string resourceGroupName, string name, StorageMigrationOptionsInner migrationOptions, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StorageMigrationResponseInner>> MigrateStorageWithHttpMessagesAsync(string subscriptionName, string resourceGroupName, string name, StorageMigrationOptions migrationOptions, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Migrates a local (in-app) MySql database to a remote MySql
         /// database.
@@ -3162,7 +3186,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3171,7 +3195,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationInner>> MigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequestInner migrationRequestEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OperationInner>> MigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequest migrationRequestEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns the status of MySql in app migration, if one is active, and
         /// whether or not MySql in app is enabled
@@ -3192,7 +3216,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3202,6 +3226,143 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<MigrateMySqlStatusInner>> GetMigrateMySqlStatusWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a Swift Virtual Network connection.
+        /// </summary>
+        /// <remarks>
+        /// Gets a Swift Virtual Network connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SwiftVirtualNetworkInner>> GetSwiftVirtualNetworkConnectionWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </summary>
+        /// <remarks>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='connectionEnvelope'>
+        /// Properties of the Virtual Network connection. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SwiftVirtualNetworkInner>> CreateOrUpdateSwiftVirtualNetworkConnectionWithHttpMessagesAsync(string resourceGroupName, string name, SwiftVirtualNetworkInner connectionEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </summary>
+        /// <remarks>
+        /// Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteSwiftVirtualNetworkWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </summary>
+        /// <remarks>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='connectionEnvelope'>
+        /// Properties of the Virtual Network connection. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SwiftVirtualNetworkInner>> UpdateSwiftVirtualNetworkConnectionWithHttpMessagesAsync(string resourceGroupName, string name, SwiftVirtualNetworkInner connectionEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all network features used by the app (or deployment slot, if
         /// specified).
@@ -3236,6 +3397,76 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse<NetworkFeaturesInner>> ListNetworkFeaturesWithHttpMessagesAsync(string resourceGroupName, string name, string view, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Start capturing network packets for the site (To be deprecated).
+        /// </summary>
+        /// <remarks>
+        /// Start capturing network packets for the site (To be deprecated).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<string>> StartWebSiteNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
@@ -3262,7 +3493,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3271,7 +3502,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StartWebSiteNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> StartWebSiteNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stop ongoing capturing network packets for the site.
         /// </summary>
@@ -3293,13 +3524,109 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StopWebSiteNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StopWebSiteNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTracesWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTraceOperationV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTracesV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Generates a new publishing password for an app (or deployment slot,
         /// if specified).
@@ -3342,7 +3669,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(startTime eq
-        /// '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and
+        /// 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and
         /// timeGrain eq duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -3351,7 +3678,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3379,7 +3706,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3407,7 +3734,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3438,7 +3765,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3472,7 +3799,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3510,6 +3837,103 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> DeletePremierAddOnWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates a named add-on of an app.
+        /// </summary>
+        /// <remarks>
+        /// Updates a named add-on of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='premierAddOnName'>
+        /// Add-on name.
+        /// </param>
+        /// <param name='premierAddOn'>
+        /// A JSON representation of the edited premier add-on.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PremierAddOnInner>> UpdatePremierAddOnWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, PremierAddOnPatchResource premierAddOn, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </summary>
+        /// <remarks>
+        /// Gets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateAccessInner>> GetPrivateAccessWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Sets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </summary>
+        /// <remarks>
+        /// Sets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='access'>
+        /// The information for the private access
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateAccessInner>> PutPrivateAccessVnetWithHttpMessagesAsync(string resourceGroupName, string name, PrivateAccessInner access, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get list of processes for a web site, or a deployment slot, or for
         /// a specific scaled-out instance in a web site.
@@ -3792,7 +4216,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3825,7 +4249,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3860,7 +4284,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3912,11 +4336,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='format'>
-        /// Name of the format. Valid values are:
-        /// FileZilla3
-        /// WebDeploy -- default
-        /// Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+        /// <param name='publishingProfileOptions'>
+        /// Specifies publishingProfileOptions for publishing profile. For
+        /// example, use {"format": "FileZilla3"} to get a FileZilla publishing
+        /// profile.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3924,7 +4347,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3933,36 +4356,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Stream>> ListPublishingProfileXmlWithSecretsWithHttpMessagesAsync(string resourceGroupName, string name, string format = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Recovers a web app to a previous snapshot.
-        /// </summary>
-        /// <remarks>
-        /// Recovers a web app to a previous snapshot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of web app.
-        /// </param>
-        /// <param name='recoveryEntity'>
-        /// Snapshot data used for web app recovery. Snapshot information can
-        /// be obtained by calling GetDeletedSites or GetSiteSnapshots API.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> RecoverWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRecoveryRequestInner recoveryEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Stream>> ListPublishingProfileXmlWithSecretsWithHttpMessagesAsync(string resourceGroupName, string name, CsmPublishingProfileOptions publishingProfileOptions, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Resets the configuration settings of the current slot if they were
         /// previously modified by calling the API with POST.
@@ -4024,6 +4418,91 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> RestartWithHttpMessagesAsync(string resourceGroupName, string name, bool? softRestart = default(bool?), bool? synchronous = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </summary>
+        /// <remarks>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='request'>
+        /// Information on restore request .
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestoreFromBackupBlobWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a deleted web app to this web app.
+        /// </summary>
+        /// <remarks>
+        /// Restores a deleted web app to this web app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Deleted web app restore information.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestoreFromDeletedAppWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a web app from a snapshot.
+        /// </summary>
+        /// <remarks>
+        /// Restores a web app from a snapshot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Snapshot restore settings. Snapshot information can be obtained by
+        /// calling GetDeletedSites or GetSiteSnapshots API.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestoreSnapshotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get list of siteextensions for a web site, or a deployment slot.
         /// </summary>
@@ -4162,7 +4641,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4226,28 +4705,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the deployment slot to create or update. By default, this
         /// API attempts to create or modify the production slot.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true web app hostname is not registered with DNS on creation.
-        /// This parameter is
-        /// only used for app creation.
-        /// </param>
-        /// <param name='skipCustomDomainVerification'>
-        /// If true, custom (non *.azurewebsites.net) domains associated with
-        /// web app are not verified.
-        /// </param>
-        /// <param name='forceDnsRegistration'>
-        /// If true, web app hostname is force registered with DNS.
-        /// </param>
-        /// <param name='ttlInSeconds'>
-        /// Time to live in seconds for web app's default domain name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4256,7 +4720,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SiteInner>> CreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, string slot, bool? skipDnsRegistration = default(bool?), bool? skipCustomDomainVerification = default(bool?), bool? forceDnsRegistration = default(bool?), string ttlInSeconds = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteInner>> CreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a web, mobile, or API app, or one of the deployment slots.
         /// </summary>
@@ -4281,9 +4745,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// deletion and you want to delete the empty App Service plan. By
         /// default, the empty App Service plan is not deleted.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true, DNS registration is skipped.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -4296,7 +4757,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), bool? skipDnsRegistration = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new web, mobile, or API app in an existing resource
         /// group, or updates an existing app.
@@ -4319,28 +4780,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the deployment slot to create or update. By default, this
         /// API attempts to create or modify the production slot.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true web app hostname is not registered with DNS on creation.
-        /// This parameter is
-        /// only used for app creation.
-        /// </param>
-        /// <param name='skipCustomDomainVerification'>
-        /// If true, custom (non *.azurewebsites.net) domains associated with
-        /// web app are not verified.
-        /// </param>
-        /// <param name='forceDnsRegistration'>
-        /// If true, web app hostname is force registered with DNS.
-        /// </param>
-        /// <param name='ttlInSeconds'>
-        /// Time to live in seconds for web app's default domain name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4349,7 +4795,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SiteInner>> UpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, SitePatchResourceInner siteEnvelope, string slot, bool? skipDnsRegistration = default(bool?), bool? skipCustomDomainVerification = default(bool?), bool? forceDnsRegistration = default(bool?), string ttlInSeconds = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteInner>> UpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, SitePatchResource siteEnvelope, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Analyze a custom hostname.
         /// </summary>
@@ -4375,7 +4821,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4418,7 +4864,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> ApplySlotConfigurationSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ApplySlotConfigurationSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a backup of an app.
         /// </summary>
@@ -4445,7 +4891,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4477,7 +4923,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4487,44 +4933,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<BackupItemInner>>> ListBackupsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Discovers an existing app backup that can be restored from a blob
-        /// in Azure storage.
-        /// </summary>
-        /// <remarks>
-        /// Discovers an existing app backup that can be restored from a blob
-        /// in Azure storage.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='request'>
-        /// A RestoreRequest object that includes Azure storage URL and blog
-        /// name for discovery of backup.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API
-        /// will perform discovery for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RestoreRequestInner>> DiscoverRestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a backup of an app by its ID.
         /// </summary>
@@ -4550,7 +4958,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4626,7 +5034,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4669,13 +5077,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RestoreResponseInner>> RestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> RestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List the configurations of an app
         /// </summary>
@@ -4698,7 +5103,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4733,7 +5138,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4765,7 +5170,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4802,7 +5207,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4834,7 +5239,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4844,6 +5249,75 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SiteAuthSettingsInner>> GetAuthSettingsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates the Azure storage account configurations of an app.
+        /// </summary>
+        /// <remarks>
+        /// Updates the Azure storage account configurations of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='azureStorageAccounts'>
+        /// Azure storage accounts of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will update the Azure storage account configurations for the
+        /// production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<AzureStoragePropertyDictionaryResourceInner>> UpdateAzureStorageAccountsSlotWithHttpMessagesAsync(string resourceGroupName, string name, AzureStoragePropertyDictionaryResourceInner azureStorageAccounts, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the Azure storage account configurations of an app.
+        /// </summary>
+        /// <remarks>
+        /// Gets the Azure storage account configurations of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will update the Azure storage account configurations for the
+        /// production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<AzureStoragePropertyDictionaryResourceInner>> ListAzureStorageAccountsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the backup configuration of an app.
         /// </summary>
@@ -4869,7 +5343,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4930,7 +5404,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4965,7 +5439,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4997,7 +5471,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5029,7 +5503,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5065,7 +5539,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5100,7 +5574,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5132,7 +5606,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5164,7 +5638,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5199,7 +5673,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5231,7 +5705,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5265,7 +5739,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5300,7 +5774,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5335,7 +5809,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5371,7 +5845,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5408,7 +5882,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5513,7 +5987,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Stream>> GetWebSiteContainerLogsZipSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Stream>> GetContainerLogsZipSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List continuous web jobs for an app, or a deployment slot.
         /// </summary>
@@ -5536,7 +6010,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5703,7 +6177,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5738,7 +6212,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5776,7 +6250,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5847,7 +6321,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5857,6 +6331,46 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<DeploymentInner>> ListDeploymentLogSlotWithHttpMessagesAsync(string resourceGroupName, string name, string id, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Discovers an existing app backup that can be restored from a blob
+        /// in Azure storage. Use this to get information about the databases
+        /// stored in a backup.
+        /// </summary>
+        /// <remarks>
+        /// Discovers an existing app backup that can be restored from a blob
+        /// in Azure storage. Use this to get information about the databases
+        /// stored in a backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='request'>
+        /// A RestoreRequest object that includes Azure storage URL and blog
+        /// name for discovery of backup.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will perform discovery for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RestoreRequestInner>> DiscoverBackupSlotWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists ownership identifiers for domain associated with web app.
         /// </summary>
@@ -5879,7 +6393,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5914,7 +6428,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5954,7 +6468,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6026,7 +6540,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6058,7 +6572,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6102,7 +6616,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> CreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> CreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
@@ -6189,7 +6703,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6264,7 +6778,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6333,7 +6847,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6365,7 +6879,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6402,7 +6916,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6441,7 +6955,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6512,7 +7026,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6552,7 +7066,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6626,7 +7140,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6663,7 +7177,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6694,7 +7208,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6728,7 +7242,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6763,7 +7277,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6803,7 +7317,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6875,7 +7389,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6907,7 +7421,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6942,7 +7456,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6989,7 +7503,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> CreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> CreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
@@ -7385,7 +7899,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7417,7 +7931,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7451,7 +7965,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7486,9 +8000,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only metrics specified in the filter (using OData syntax).
         /// For example: $filter=(name.value eq 'Metric1' or name.value eq
-        /// 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-        /// '2014-12-31T23:59:59Z' and timeGrain eq
-        /// duration'[Hour|Minute|Day]'.
+        /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+        /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7496,7 +8009,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7529,7 +8042,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7539,6 +8052,159 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<MigrateMySqlStatusInner>> GetMigrateMySqlStatusSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a Swift Virtual Network connection.
+        /// </summary>
+        /// <remarks>
+        /// Gets a Swift Virtual Network connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get a gateway for the production slot's Virtual Network.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SwiftVirtualNetworkInner>> GetSwiftVirtualNetworkConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </summary>
+        /// <remarks>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='connectionEnvelope'>
+        /// Properties of the Virtual Network connection. See example.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will add or update connections for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SwiftVirtualNetworkInner>> CreateOrUpdateSwiftVirtualNetworkConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, SwiftVirtualNetworkInner connectionEnvelope, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </summary>
+        /// <remarks>
+        /// Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will delete the connection for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteSwiftVirtualNetworkSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </summary>
+        /// <remarks>
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
+        /// in use by another App Service Plan other than the one this App is
+        /// in.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='connectionEnvelope'>
+        /// Properties of the Virtual Network connection. See example.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will add or update connections for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SwiftVirtualNetworkInner>> UpdateSwiftVirtualNetworkConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, SwiftVirtualNetworkInner connectionEnvelope, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all network features used by the app (or deployment slot, if
         /// specified).
@@ -7577,6 +8243,83 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse<NetworkFeaturesInner>> ListNetworkFeaturesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string view, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get an operation for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Start capturing network packets for the site (To be deprecated).
+        /// </summary>
+        /// <remarks>
+        /// Start capturing network packets for the site (To be deprecated).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for this web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<string>> StartWebSiteNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
@@ -7606,7 +8349,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7615,7 +8358,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StartWebSiteNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> StartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stop ongoing capturing network packets for the site.
         /// </summary>
@@ -7640,13 +8383,121 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StopWebSiteNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get an operation for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StopWebSiteNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTracesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get an operation for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTraceOperationSlotV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get an operation for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> GetNetworkTracesSlotV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Generates a new publishing password for an app (or deployment slot,
         /// if specified).
@@ -7697,7 +8548,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms
         /// to odata syntax. Example: $filter=(startTime eq
-        /// '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and
+        /// 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and
         /// timeGrain eq duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -7706,7 +8557,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7738,7 +8589,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7770,7 +8621,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7805,7 +8656,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7843,7 +8694,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7885,6 +8736,113 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> DeletePremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates a named add-on of an app.
+        /// </summary>
+        /// <remarks>
+        /// Updates a named add-on of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='premierAddOnName'>
+        /// Add-on name.
+        /// </param>
+        /// <param name='premierAddOn'>
+        /// A JSON representation of the edited premier add-on.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will update the named add-on for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PremierAddOnInner>> UpdatePremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, PremierAddOnPatchResource premierAddOn, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </summary>
+        /// <remarks>
+        /// Gets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateAccessInner>> GetPrivateAccessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Sets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </summary>
+        /// <remarks>
+        /// Sets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='access'>
+        /// The information for the private access
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateAccessInner>> PutPrivateAccessVnetSlotWithHttpMessagesAsync(string resourceGroupName, string name, PrivateAccessInner access, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get list of processes for a web site, or a deployment slot, or for
         /// a specific scaled-out instance in a web site.
@@ -8203,7 +9161,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8240,7 +9198,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8279,7 +9237,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8335,15 +9293,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='publishingProfileOptions'>
+        /// Specifies publishingProfileOptions for publishing profile. For
+        /// example, use {"format": "FileZilla3"} to get a FileZilla publishing
+        /// profile.
+        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
         /// will get the publishing profile for the production slot.
-        /// </param>
-        /// <param name='format'>
-        /// Name of the format. Valid values are:
-        /// FileZilla3
-        /// WebDeploy -- default
-        /// Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8351,7 +9308,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8360,40 +9317,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Stream>> ListPublishingProfileXmlWithSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string format = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Recovers a web app to a previous snapshot.
-        /// </summary>
-        /// <remarks>
-        /// Recovers a web app to a previous snapshot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of web app.
-        /// </param>
-        /// <param name='recoveryEntity'>
-        /// Snapshot data used for web app recovery. Snapshot information can
-        /// be obtained by calling GetDeletedSites or GetSiteSnapshots API.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to
-        /// production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> RecoverSlotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRecoveryRequestInner recoveryEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Stream>> ListPublishingProfileXmlWithSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmPublishingProfileOptions publishingProfileOptions, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Resets the configuration settings of the current slot if they were
         /// previously modified by calling the API with POST.
@@ -8463,6 +9387,103 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> RestartSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, bool? softRestart = default(bool?), bool? synchronous = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </summary>
+        /// <remarks>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='request'>
+        /// Information on restore request .
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will restore a backup of the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestoreFromBackupBlobSlotWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a deleted web app to this web app.
+        /// </summary>
+        /// <remarks>
+        /// Restores a deleted web app to this web app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Deleted web app restore information.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of web app slot. If not specified then will default to
+        /// production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestoreFromDeletedAppSlotWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a web app from a snapshot.
+        /// </summary>
+        /// <remarks>
+        /// Restores a web app from a snapshot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Snapshot restore settings. Snapshot information can be obtained by
+        /// calling GetDeletedSites or GetSiteSnapshots API.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of web app slot. If not specified then will default to
+        /// production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestoreSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get list of siteextensions for a web site, or a deployment slot.
         /// </summary>
@@ -8626,7 +9647,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8635,7 +9656,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SlotDifference>>> ListSlotDifferencesSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SlotDifference>>> ListSlotDifferencesSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Swaps two deployment slots of an app.
         /// </summary>
@@ -8667,7 +9688,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> SwapSlotSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> SwapSlotSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns all Snapshots to the user.
         /// </summary>
@@ -8689,7 +9710,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8699,6 +9720,37 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </summary>
+        /// <remarks>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Website Name.
+        /// </param>
+        /// <param name='slot'>
+        /// Website Slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsFromDRSecondarySlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the source control configuration of an app.
         /// </summary>
@@ -8721,7 +9773,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8757,7 +9809,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8823,7 +9875,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8863,6 +9915,46 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse> StartSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Start capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Start capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for this web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> StartNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Stops an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
@@ -8891,6 +9983,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> StopSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Stop ongoing capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Stop ongoing capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for this web app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StopNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Sync web app repository.
         /// </summary>
@@ -8971,7 +10091,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9182,8 +10302,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only information specified in the filter (using OData
         /// syntax). For example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -9192,7 +10312,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9226,7 +10346,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9263,7 +10383,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9303,7 +10423,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9377,7 +10497,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9461,7 +10581,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9506,7 +10626,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9538,7 +10658,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9573,7 +10693,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9606,7 +10726,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9615,7 +10735,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SlotDifference>>> ListSlotDifferencesFromProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SlotDifference>>> ListSlotDifferencesFromProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Swaps two deployment slots of an app.
         /// </summary>
@@ -9643,7 +10763,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> SwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> SwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns all Snapshots to the user.
         /// </summary>
@@ -9662,7 +10782,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9672,6 +10792,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </summary>
+        /// <remarks>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Website Name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsFromDRSecondaryWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the source control configuration of an app.
         /// </summary>
@@ -9690,7 +10838,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9721,7 +10869,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9777,7 +10925,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9813,6 +10961,43 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </exception>
         Task<AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Start capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Start capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> StartNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Stops an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
@@ -9837,6 +11022,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> StopWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Stop ongoing capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Stop ongoing capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StopNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Sync web app repository.
         /// </summary>
@@ -9905,7 +11115,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10092,8 +11302,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='filter'>
         /// Return only information specified in the filter (using OData
         /// syntax). For example: $filter=(name.value eq 'Metric1' or
-        /// name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z'
-        /// and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+        /// name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+        /// endTime eq 2014-12-31T23:59:59Z and timeGrain eq
         /// duration'[Hour|Minute|Day]'.
         /// </param>
         /// <param name='customHeaders'>
@@ -10102,7 +11312,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10132,7 +11342,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10165,7 +11375,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10201,7 +11411,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10267,7 +11477,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10342,7 +11552,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10382,7 +11592,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10410,7 +11620,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10441,7 +11651,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10469,28 +11679,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true web app hostname is not registered with DNS on creation.
-        /// This parameter is
-        /// only used for app creation.
-        /// </param>
-        /// <param name='skipCustomDomainVerification'>
-        /// If true, custom (non *.azurewebsites.net) domains associated with
-        /// web app are not verified.
-        /// </param>
-        /// <param name='forceDnsRegistration'>
-        /// If true, web app hostname is force registered with DNS.
-        /// </param>
-        /// <param name='ttlInSeconds'>
-        /// Time to live in seconds for web app's default domain name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10499,7 +11694,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SiteInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, bool? skipDnsRegistration = default(bool?), bool? skipCustomDomainVerification = default(bool?), bool? forceDnsRegistration = default(bool?), string ttlInSeconds = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restores a specific backup to another app (or deployment slot, if
         /// specified).
@@ -10529,13 +11724,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RestoreResponseInner>> BeginRestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the Git/FTP publishing credentials of an app.
         /// </summary>
@@ -10554,7 +11746,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10594,7 +11786,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create function for web site, or a deployment slot.
         /// </summary>
@@ -10619,7 +11811,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10662,7 +11854,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restores a web app.
         /// </summary>
@@ -10687,7 +11879,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10696,7 +11888,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<StorageMigrationResponseInner>> BeginMigrateStorageWithHttpMessagesAsync(string subscriptionName, string resourceGroupName, string name, StorageMigrationOptionsInner migrationOptions, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StorageMigrationResponseInner>> BeginMigrateStorageWithHttpMessagesAsync(string subscriptionName, string resourceGroupName, string name, StorageMigrationOptions migrationOptions, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Migrates a local (in-app) MySql database to a remote MySql
         /// database.
@@ -10720,7 +11912,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10729,22 +11921,58 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationInner>> BeginMigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequestInner migrationRequestEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OperationInner>> BeginMigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequest migrationRequestEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Recovers a web app to a previous snapshot.
+        /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Recovers a web app to a previous snapshot.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// The name of the web app.
         /// </param>
-        /// <param name='recoveryEntity'>
-        /// Snapshot data used for web app recovery. Snapshot information can
-        /// be obtained by calling GetDeletedSites or GetSiteSnapshots API.
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> BeginStartWebSiteNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </summary>
+        /// <remarks>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='request'>
+        /// Information on restore request .
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10758,7 +11986,64 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginRecoverWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRecoveryRequestInner recoveryEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRestoreFromBackupBlobWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a deleted web app to this web app.
+        /// </summary>
+        /// <remarks>
+        /// Restores a deleted web app to this web app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Deleted web app restore information.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginRestoreFromDeletedAppWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a web app from a snapshot.
+        /// </summary>
+        /// <remarks>
+        /// Restores a web app from a snapshot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Snapshot restore settings. Snapshot information can be obtained by
+        /// calling GetDeletedSites or GetSiteSnapshots API.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginRestoreSnapshotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Install site extension on a web site, or a deployment slot.
         /// </summary>
@@ -10812,28 +12097,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Name of the deployment slot to create or update. By default, this
         /// API attempts to create or modify the production slot.
         /// </param>
-        /// <param name='skipDnsRegistration'>
-        /// If true web app hostname is not registered with DNS on creation.
-        /// This parameter is
-        /// only used for app creation.
-        /// </param>
-        /// <param name='skipCustomDomainVerification'>
-        /// If true, custom (non *.azurewebsites.net) domains associated with
-        /// web app are not verified.
-        /// </param>
-        /// <param name='forceDnsRegistration'>
-        /// If true, web app hostname is force registered with DNS.
-        /// </param>
-        /// <param name='ttlInSeconds'>
-        /// Time to live in seconds for web app's default domain name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10842,7 +12112,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SiteInner>> BeginCreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, string slot, bool? skipDnsRegistration = default(bool?), bool? skipCustomDomainVerification = default(bool?), bool? forceDnsRegistration = default(bool?), string ttlInSeconds = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteInner>> BeginCreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, SiteInner siteEnvelope, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Restores a specific backup to another app (or deployment slot, if
         /// specified).
@@ -10876,13 +12146,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RestoreResponseInner>> BeginRestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the Git/FTP publishing credentials of an app.
         /// </summary>
@@ -10905,7 +12172,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10949,7 +12216,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create function for web site, or a deployment slot.
         /// </summary>
@@ -10978,7 +12245,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11025,12 +12292,84 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeployInner mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MSDeployStatusInner>> BeginCreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeploy mSDeploy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Recovers a web app to a previous snapshot.
+        /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Recovers a web app to a previous snapshot.
+        /// Start capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for this web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> BeginStartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </summary>
+        /// <remarks>
+        /// Restores an app from a backup blob in Azure Storage.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='request'>
+        /// Information on restore request .
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will restore a backup of the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginRestoreFromBackupBlobSlotWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequestInner request, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a deleted web app to this web app.
+        /// </summary>
+        /// <remarks>
+        /// Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11038,9 +12377,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='name'>
         /// Name of web app.
         /// </param>
-        /// <param name='recoveryEntity'>
-        /// Snapshot data used for web app recovery. Snapshot information can
-        /// be obtained by calling GetDeletedSites or GetSiteSnapshots API.
+        /// <param name='restoreRequest'>
+        /// Deleted web app restore information.
         /// </param>
         /// <param name='slot'>
         /// Name of web app slot. If not specified then will default to
@@ -11058,7 +12396,40 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginRecoverSlotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRecoveryRequestInner recoveryEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRestoreFromDeletedAppSlotWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Restores a web app from a snapshot.
+        /// </summary>
+        /// <remarks>
+        /// Restores a web app from a snapshot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of web app.
+        /// </param>
+        /// <param name='restoreRequest'>
+        /// Snapshot restore settings. Snapshot information can be obtained by
+        /// calling GetDeletedSites or GetSiteSnapshots API.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of web app slot. If not specified then will default to
+        /// production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginRestoreSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Install site extension on a web site, or a deployment slot.
         /// </summary>
@@ -11125,7 +12496,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginSwapSlotSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginSwapSlotSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the source control configuration of an app.
         /// </summary>
@@ -11152,7 +12523,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11162,6 +12533,46 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SiteSourceControlInner>> BeginCreateOrUpdateSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControlInner siteSourceControl, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Start capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Start capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for this web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> BeginStartNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Swaps two deployment slots of an app.
         /// </summary>
@@ -11189,7 +12600,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginSwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntityInner slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginSwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the source control configuration of an app.
         /// </summary>
@@ -11211,7 +12622,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11221,6 +12632,43 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SiteSourceControlInner>> BeginCreateOrUpdateSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControlInner siteSourceControl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Start capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Start capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<NetworkTraceInner>>> BeginStartNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all apps for a subscription.
         /// </summary>
@@ -11236,7 +12684,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11261,7 +12709,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11286,7 +12734,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11311,7 +12759,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11340,7 +12788,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11365,7 +12813,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11390,7 +12838,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11415,7 +12863,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11465,7 +12913,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11490,7 +12938,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11598,7 +13046,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11625,7 +13073,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11650,7 +13098,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11756,7 +13204,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11806,7 +13254,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11831,7 +13279,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11856,7 +13304,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11885,7 +13333,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11910,7 +13358,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11935,7 +13383,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11960,7 +13408,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12010,7 +13458,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12035,7 +13483,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12143,7 +13591,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12170,7 +13618,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12195,7 +13643,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12301,7 +13749,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12353,7 +13801,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12378,7 +13826,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12388,6 +13836,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </summary>
+        /// <remarks>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsFromDRSecondarySlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List triggered web jobs for an app, or a deployment slot.
         /// </summary>
@@ -12403,7 +13876,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12457,7 +13930,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12482,7 +13955,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12509,7 +13982,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12534,7 +14007,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12544,6 +14017,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </summary>
+        /// <remarks>
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<Snapshot>>> ListSnapshotsFromDRSecondaryNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List triggered web jobs for an app, or a deployment slot.
         /// </summary>
@@ -12559,7 +14057,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12613,7 +14111,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12638,7 +14136,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

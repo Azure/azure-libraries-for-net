@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.KeyVault;
+
     /// <summary>
     /// Implementation for Vault and its parent interfaces.
     /// </summary>
@@ -29,6 +31,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         IDefinition,
         IUpdate
     {
+        private IKeyVaultClient client;
+        private IKeys keys;
+        private ISecrets secrets;
         private IGraphRbacManager graphRbacManager;
         private IList<AccessPolicyImpl> accessPolicies;
         ///GENMHASH:6553208EDE6088A698CBA12162179CE6:F1BA2A0D99BABACBDE52E4CA2270EF7E
@@ -44,6 +49,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                     this.accessPolicies.Add(new AccessPolicyImpl(entry, this));
                 }
             }
+            this.client = new KeyVaultClientInternal(Manager.RestClient.Credentials, Manager.RestClient.RootHttpHandler, Manager.RestClient.Handlers.ToArray());
         }
 
         ///GENMHASH:FAAD3C3E07174E29B21DE058D968BBF7:A534A23FE2D228AC3080C1CF07E66439
@@ -136,6 +142,32 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 return Inner.Properties.EnabledForTemplateDeployment.Value;
             }
         }
+
+        public IKeys Keys
+        {
+            get
+            {
+                if (keys == null)
+                {
+                    keys = new KeysImpl(client, this);
+                }
+                return keys;
+            }
+        }
+
+        public ISecrets Secrets
+        {
+            get
+            {
+                if (secrets == null)
+                {
+                    secrets = new SecretsImpl(client, this);
+                }
+                return secrets;
+            }
+        }
+
+        IKeyVaultClient IVaultBeta.Client => client;
 
         ///GENMHASH:577E5E9CE0B513EB5189E6F44BB732C7:3949CE4CBC4994E8C88DF2E4815A8696
         public VaultImpl WithEmptyAccessPolicy()
@@ -247,23 +279,19 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 {
                     if (accessPolicy.UserPrincipalName != null)
                     {
-                        tasks.Add(graphRbacManager.Users.GetByNameAsync(accessPolicy.UserPrincipalName, cancellationToken)
-                            .ContinueWith(
-                                // user => accessPolicy.ForObjectId(Guid.Parse(user.Result.Id)),
-                                user => accessPolicy.ForObjectId(user.Result.Id),
-                                cancellationToken,
-                                TaskContinuationOptions.ExecuteSynchronously,
-                                TaskScheduler.Default));
+                        tasks.Add(Task.Run(async () =>
+                        {
+                            var user = await graphRbacManager.Users.GetByNameAsync(accessPolicy.UserPrincipalName, cancellationToken);
+                            accessPolicy.ForObjectId(user.Id);
+                        }));
                     }
                     else if (accessPolicy.ServicePrincipalName != null)
                     {
-                        tasks.Add(graphRbacManager.ServicePrincipals.GetByNameAsync(accessPolicy.ServicePrincipalName, cancellationToken)
-                            .ContinueWith(
-                                // servicePrincipal => accessPolicy.ForObjectId(Guid.Parse(servicePrincipal.Result.Id)),
-                                servicePrincipal => accessPolicy.ForObjectId(servicePrincipal.Result.Id),
-                                cancellationToken,
-                                TaskContinuationOptions.ExecuteSynchronously,
-                                TaskScheduler.Default));
+                        tasks.Add(Task.Run(async () =>
+                        {
+                            var servicePrincipal = await graphRbacManager.ServicePrincipals.GetByNameAsync(accessPolicy.ServicePrincipalName, cancellationToken);
+                            accessPolicy.ForObjectId(servicePrincipal.Id);
+                        }));
                     }
                     else
                     {
@@ -279,7 +307,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         public async override Task<Microsoft.Azure.Management.KeyVault.Fluent.IVault> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await PopulateAccessPolicies(cancellationToken);
-            VaultCreateOrUpdateParametersInner parameters = new VaultCreateOrUpdateParametersInner()
+            VaultCreateOrUpdateParameters parameters = new VaultCreateOrUpdateParameters()
             {
                 Location = RegionName,
                 Properties = Inner.Properties,

@@ -24,18 +24,21 @@ namespace ManageBatchAI
          * Azure Batch AI sample.
          *  - Create Storage account and Azure file share
          *  - Upload sample data to Azure file share
+         *  - Create a workspace and experiment
          *  - Create Batch AI cluster that uses Azure file share to host the training data and scripts for the learning job
          *  - Create Microsoft Cognitive Toolkit job to run on the cluster
          *  - Wait for job to complete
          *  - Get output files
          *
-         * Please note: in order to run this sample, please download and unzip sample package from here: https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D
+         * Please note: in order to run this sample, please download and unzip sample package from <a href="https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D">here</a> 
          * Export path to the content to $SAMPLE_DATA_PATH.
          */
         public static void RunSample(IAzure azure)
         {
             string saName = SdkContext.RandomResourceName("sa", 10);
             string rgName = SdkContext.RandomResourceName("rg", 10);
+            string workspaceName = SdkContext.RandomResourceName("ws", 10);
+            string experimentName = SdkContext.RandomResourceName("exp", 10);
             string sampleDataPath = Environment.GetEnvironmentVariable("SAMPLE_DATA_PATH");
             Region region = Region.USWest2;
             string shareName = SdkContext.RandomResourceName("fs", 20);
@@ -79,13 +82,19 @@ namespace ManageBatchAI
                 rootDir.GetFileReference("Test-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Test-28x28_cntk_text.txt").GetAwaiter().GetResult();
                 rootDir.GetFileReference("ConvNet_MNIST.py").UploadFromFileAsync(sampleDataPath + "/ConvNet_MNIST.py").GetAwaiter().GetResult();
                 Utilities.Log("Data files uploaded.");
+                //=============================================================
+                // Create a workspace and experiment
+                IBatchAIWorkspace workspace = azure.BatchAIWorkspaces.Define(workspaceName)
+                    .WithRegion(region)
+                    .WithNewResourceGroup(rgName)
+                    .Create();
+                IBatchAIExperiment experiment = workspace.CreateExperiment(experimentName);
+
 
                 //=============================================================
                 // Create Batch AI cluster that uses Azure file share to host the training data and scripts for the learning job
                 Utilities.Log("Creating Batch AI cluster...");
-                IBatchAICluster cluster = azure.BatchAIClusters.Define(clusterName)
-                    .WithRegion(region)
-                    .WithNewResourceGroup(rgName)
+                IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
                     .WithVMSize(VirtualMachineSizeTypes.StandardNC6.Value)
                     .WithUserName(userName)
                     .WithPassword("MyPassword")
@@ -103,7 +112,7 @@ namespace ManageBatchAI
                 // =============================================================
                 // Create Microsoft Cognitive Toolkit job to run on the cluster
                 Utilities.Log("Creating Batch AI job...");
-                IBatchAIJob job = azure.BatchAIJobs.Define("myJob")
+                IBatchAIJob job = experiment.Jobs.Define("myJob")
                     .WithExistingCluster(cluster)
                     .WithNodeCount(1)
                     .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")

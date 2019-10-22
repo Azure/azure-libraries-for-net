@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Slot Config names azure resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SlotConfigNamesResourceInner : ProxyOnlyResource
+    public partial class SlotConfigNamesResourceInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the SlotConfigNamesResourceInner
@@ -34,19 +34,19 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the SlotConfigNamesResourceInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="connectionStringNames">List of connection string
         /// names.</param>
         /// <param name="appSettingNames">List of application settings
         /// names.</param>
-        public SlotConfigNamesResourceInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>))
-            : base(id, name, kind, type)
+        /// <param name="azureStorageConfigNames">List of external Azure
+        /// storage account identifiers.</param>
+        public SlotConfigNamesResourceInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>), IList<string> azureStorageConfigNames = default(IList<string>))
+            : base(id, name, type, kind)
         {
             ConnectionStringNames = connectionStringNames;
             AppSettingNames = appSettingNames;
+            AzureStorageConfigNames = azureStorageConfigNames;
             CustomInit();
         }
 
@@ -66,6 +66,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.appSettingNames")]
         public IList<string> AppSettingNames { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of external Azure storage account identifiers.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureStorageConfigNames")]
+        public IList<string> AzureStorageConfigNames { get; set; }
 
     }
 }

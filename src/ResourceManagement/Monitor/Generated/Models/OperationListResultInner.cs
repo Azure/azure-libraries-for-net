@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Microsoft.Insights provider.</param>
         /// <param name="nextLink">URL to get the next set of operation list
         /// results if there are any.</param>
-        public OperationListResultInner(IList<Operation> value = default(IList<Operation>), string nextLink = default(string))
+        public OperationListResultInner(IList<OperationInner> value = default(IList<OperationInner>), string nextLink = default(string))
         {
             Value = value;
             NextLink = nextLink;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// provider.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<Operation> Value { get; set; }
+        public IList<OperationInner> Value { get; set; }
 
         /// <summary>
         /// Gets or sets URL to get the next set of operation list results if

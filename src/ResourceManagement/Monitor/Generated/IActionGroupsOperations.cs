@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActionGroupResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string actionGroupName, ActionGroupPatchBodyInner actionGroupPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActionGroupResourceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string actionGroupName, ActionGroupPatchBody actionGroupPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a list of all action groups in a subscription.
         /// </summary>
@@ -168,7 +168,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Task<AzureOperationResponse<IEnumerable<ActionGroupResourceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Enable a receiver in an action group. This changes the receiver's
-        /// status from Disabled to Enabled.
+        /// status from Disabled to Enabled. This operation is only supported
+        /// for Email or SMS receivers.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

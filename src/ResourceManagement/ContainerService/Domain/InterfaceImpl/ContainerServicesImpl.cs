@@ -28,7 +28,25 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The first stage of the new resource definition.</return>
         ContainerService.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ContainerService.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as ContainerService.Definition.IBlank;
+            return this.Define(name);
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>.List()
+        {
+            return this.List();
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerService>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
+        {
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -38,7 +56,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -48,25 +66,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The list of resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken) as IPagedCollection<IContainerService>;
-        }
-
-        /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
-        /// </summary>
-        /// <return>List of resources.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>.List()
-        {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>;
-        }
-
-        /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
-        /// </summary>
-        /// <return>List of resources.</return>
-        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerService>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IContainerService>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
-        {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerService>;
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
         }
     }
 }

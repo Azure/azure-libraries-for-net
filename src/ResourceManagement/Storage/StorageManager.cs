@@ -13,10 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         #region ctrs
 
         private StorageManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new StorageManagementClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
+            base(restClient, subscriptionId, new StorageManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })
@@ -98,6 +95,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         private IStorageAccounts storageAccounts;
         private IUsages usages;
         private IStorageSkus storageSkus;
+        private IBlobContainers blobContainers;
+        private IBlobServices blobServices;
+        private IManagementPolicies managementPolicies;
 
         public IStorageAccounts StorageAccounts
         {
@@ -134,6 +134,42 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
         }
 
+        public IBlobContainers BlobContainers
+        {
+            get
+            {
+                if (blobContainers == null)
+                {
+                    blobContainers = new BlobContainersImpl(this);
+                }
+                return blobContainers;
+            }
+        }
+
+        public IBlobServices BlobServices
+        {
+            get
+            {
+                if (blobServices == null)
+                {
+                    blobServices = new BlobServicesImpl(this);
+                }
+                return blobServices;
+            }
+        }
+
+        public IManagementPolicies ManagementPolicies
+        {
+            get
+            {
+                if (managementPolicies == null)
+                {
+                    managementPolicies = new ManagementPoliciesImpl(this);
+                }
+                return managementPolicies;
+            }
+        }
+
         #endregion
     }
 
@@ -156,5 +192,20 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Gets the storage service SKU management API entry point
         /// </summary>
         IStorageSkus StorageSkus { get; }
+
+        /// <summary>
+        /// Gets the storage blob container management API entry point
+        /// </summary>
+        IBlobContainers BlobContainers { get; }
+
+        /// <summary>
+        /// Gets the storage blob service management API entry point
+        /// </summary>
+        IBlobServices BlobServices { get; }
+
+        /// <summary>
+        /// Gets the storage management policy management API entry point
+        /// </summary>
+        IManagementPolicies ManagementPolicies { get; }
     }
 }

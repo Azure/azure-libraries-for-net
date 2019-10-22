@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class VaultsImpl 
+    internal partial class VaultsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <returns>an immutable representation of the resource</returns>
         Microsoft.Azure.Management.KeyVault.Fluent.IVault Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.KeyVault.Fluent.IVault>.GetByResourceGroup(string resourceGroupName, string name)
         {
-            return this.GetByResourceGroup(resourceGroupName, name) as Microsoft.Azure.Management.KeyVault.Fluent.IVault;
+            return this.GetByResourceGroup(resourceGroupName, name);
         }
 
         /// <summary>

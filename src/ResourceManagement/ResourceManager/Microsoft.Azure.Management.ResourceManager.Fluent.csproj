@@ -1,22 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <!-- Please do not move/edit code below this line -->
   <Import Project="$([MSBuild]::GetPathOfFileAbove('AzSdk.reference.props'))" />
   <!-- Please do not move/edit code below this line -->
 
   <PropertyGroup>
     <Description>Provides resource group and resource management (Fluent) capabilities for Microsoft Azure.</Description>
-    <Version>1.11.1</Version>
     <AssemblyName>Microsoft.Azure.Management.ResourceManager.Fluent</AssemblyName>
     <PackageId>Microsoft.Azure.Management.ResourceManager.Fluent</PackageId>
     <PackageTags>Microsoft Azure Resource Manager;resource;Fluent</PackageTags>
   </PropertyGroup>
-  
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
+    <TargetFrameworks>net452;net461;netstandard1.4</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.2" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">

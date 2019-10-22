@@ -35,13 +35,16 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// minor, patch).</param>
         /// <param name="defaultProperty">Installed by default if version is
         /// not specified.</param>
+        /// <param name="isPreview">Whether Kubernetes version is currently in
+        /// preview.</param>
         /// <param name="upgrades">The list of available upgrade
         /// versions.</param>
-        public OrchestratorVersionProfile(string orchestratorType, string orchestratorVersion, bool defaultProperty, IList<OrchestratorProfile> upgrades)
+        public OrchestratorVersionProfile(string orchestratorType, string orchestratorVersion, bool? defaultProperty = default(bool?), bool? isPreview = default(bool?), IList<OrchestratorProfile> upgrades = default(IList<OrchestratorProfile>))
         {
             OrchestratorType = orchestratorType;
             OrchestratorVersion = orchestratorVersion;
             DefaultProperty = defaultProperty;
+            IsPreview = isPreview;
             Upgrades = upgrades;
             CustomInit();
         }
@@ -67,7 +70,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Gets or sets installed by default if version is not specified.
         /// </summary>
         [JsonProperty(PropertyName = "default")]
-        public bool DefaultProperty { get; set; }
+        public bool? DefaultProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether Kubernetes version is currently in preview.
+        /// </summary>
+        [JsonProperty(PropertyName = "isPreview")]
+        public bool? IsPreview { get; set; }
 
         /// <summary>
         /// Gets or sets the list of available upgrade versions.
@@ -90,10 +99,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
             if (OrchestratorVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "OrchestratorVersion");
-            }
-            if (Upgrades == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Upgrades");
             }
             if (Upgrades != null)
             {

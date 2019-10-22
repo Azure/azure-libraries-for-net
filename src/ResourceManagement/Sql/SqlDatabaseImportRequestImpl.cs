@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxEYXRhYmFzZUltcG9ydFJlcXVlc3RJbXBs
     internal partial class SqlDatabaseImportRequestImpl :
-        IndexableWrapper<ImportExtensionRequestInner>,
+        IndexableWrapper<ImportExtensionRequest>,
         IExecutable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseImportExportResponse>,
         ISqlDatabaseImportRequest,
         ISqlDatabaseImportRequestDefinition
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 
         ///GENMHASH:81DF4EF59DD03729DDA4493E19748A04:9FF1B194E9F212F1CE07036F74C545E4
         internal SqlDatabaseImportRequestImpl(SqlDatabaseImpl sqlDatabase, ISqlManager sqlServerManager)
-            : base(new ImportExtensionRequestInner())
+            : base(new ImportExtensionRequest())
         {
             this.sqlDatabase = sqlDatabase;
             this.sqlServerManager = sqlServerManager;

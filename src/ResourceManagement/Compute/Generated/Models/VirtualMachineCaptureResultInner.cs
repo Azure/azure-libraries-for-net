@@ -8,17 +8,17 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Serialization;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Resource Id.
+    /// Output of virtual machine capture operation.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineCaptureResultInner : Microsoft.Azure.Management.ResourceManager.Fluent.SubResource
+    public partial class VirtualMachineCaptureResultInner : Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineCaptureResultInner
@@ -33,11 +33,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the VirtualMachineCaptureResultInner
         /// class.
         /// </summary>
-        /// <param name="output">Operation output data (raw JSON)</param>
-        public VirtualMachineCaptureResultInner(string id = default(string), object output = default(object))
+        /// <param name="schema">the schema of the captured virtual
+        /// machine</param>
+        /// <param name="contentVersion">the version of the content</param>
+        /// <param name="parameters">parameters of the captured virtual
+        /// machine</param>
+        /// <param name="resources">a list of resource items of the captured
+        /// virtual machine</param>
+        public VirtualMachineCaptureResultInner(string id = default(string), string schema = default(string), string contentVersion = default(string), object parameters = default(object), IList<object> resources = default(IList<object>))
             : base(id)
         {
-            Output = output;
+            Schema = schema;
+            ContentVersion = contentVersion;
+            Parameters = parameters;
+            Resources = resources;
             CustomInit();
         }
 
@@ -47,10 +56,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets operation output data (raw JSON)
+        /// Gets the schema of the captured virtual machine
         /// </summary>
-        [JsonProperty(PropertyName = "properties.output")]
-        public object Output { get; set; }
+        [JsonProperty(PropertyName = "$schema")]
+        public string Schema { get; private set; }
+
+        /// <summary>
+        /// Gets the version of the content
+        /// </summary>
+        [JsonProperty(PropertyName = "contentVersion")]
+        public string ContentVersion { get; private set; }
+
+        /// <summary>
+        /// Gets parameters of the captured virtual machine
+        /// </summary>
+        [JsonProperty(PropertyName = "parameters")]
+        public object Parameters { get; private set; }
+
+        /// <summary>
+        /// Gets a list of resource items of the captured virtual machine
+        /// </summary>
+        [JsonProperty(PropertyName = "resources")]
+        public IList<object> Resources { get; private set; }
 
     }
 }

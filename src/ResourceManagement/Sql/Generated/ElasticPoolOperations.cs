@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ElasticPoolOperation>>> ListByElasticPoolWithHttpMessagesAsync(string resourceGroupName, string serverName, string elasticPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ElasticPoolOperationInner>>> ListByElasticPoolWithHttpMessagesAsync(string resourceGroupName, string serverName, string elasticPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<ElasticPoolOperation>>();
+            var _result = new AzureOperationResponse<IPage<ElasticPoolOperationInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ElasticPoolOperation>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ElasticPoolOperationInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ElasticPoolOperation>>> ListByElasticPoolNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ElasticPoolOperationInner>>> ListByElasticPoolNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<ElasticPoolOperation>>();
+            var _result = new AzureOperationResponse<IPage<ElasticPoolOperationInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ElasticPoolOperation>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ElasticPoolOperationInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

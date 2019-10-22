@@ -49,15 +49,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public WebSiteManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get Diagnostics Categories
+        /// List Hosting Environment Detector Responses
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Categories
+        /// List Hosting Environment Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
         /// </param>
-        /// <param name='siteName'>
+        /// <param name='name'>
         /// Site Name
         /// </param>
         /// <param name='customHeaders'>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DiagnosticCategoryInner>>> ListSiteDiagnosticCategoriesWithHttpMessagesAsync(string resourceGroupName, string siteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListHostingEnvironmentDetectorResponsesWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -102,15 +102,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
                 }
             }
-            if (siteName == null)
+            if (name == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "siteName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "name");
             }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -119,21 +122,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("name", name);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDiagnosticCategories", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListHostingEnvironmentDetectorResponses", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -195,14 +197,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -212,10 +213,922 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                if (_shouldTrace)
                 {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                    ServiceClientTracing.Error(_invocationId, ex);
                 }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<DetectorResponseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorResponseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Get Hosting Environment Detector Response
+        /// </summary>
+        /// <remarks>
+        /// Get Hosting Environment Detector Response
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// App Service Environment Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
+        /// </param>
+        /// <param name='startTime'>
+        /// Start Time
+        /// </param>
+        /// <param name='endTime'>
+        /// End Time
+        /// </param>
+        /// <param name='timeGrain'>
+        /// Time Grain
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<DetectorResponseInner>> GetHostingEnvironmentDetectorResponseWithHttpMessagesAsync(string resourceGroupName, string name, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
+                }
+            }
+            if (name == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "name");
+            }
+            if (detectorName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "detectorName");
+            }
+            if (timeGrain != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(timeGrain, "PT[1-9][0-9]+[SMH]"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
+                }
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("name", name);
+                tracingParameters.Add("detectorName", detectorName);
+                tracingParameters.Add("startTime", startTime);
+                tracingParameters.Add("endTime", endTime);
+                tracingParameters.Add("timeGrain", timeGrain);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetHostingEnvironmentDetectorResponse", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
+            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (startTime != null)
+            {
+                _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, Client.SerializationSettings).Trim('"'))));
+            }
+            if (endTime != null)
+            {
+                _queryParameters.Add(string.Format("endTime={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endTime, Client.SerializationSettings).Trim('"'))));
+            }
+            if (timeGrain != null)
+            {
+                _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
+            }
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<DetectorResponseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorResponseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesWithHttpMessagesAsync(string resourceGroupName, string siteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
+                }
+            }
+            if (siteName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "siteName");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDetectorResponses", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<DetectorResponseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorResponseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Get site detector response
+        /// </summary>
+        /// <remarks>
+        /// Get site detector response
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
+        /// </param>
+        /// <param name='startTime'>
+        /// Start Time
+        /// </param>
+        /// <param name='endTime'>
+        /// End Time
+        /// </param>
+        /// <param name='timeGrain'>
+        /// Time Grain
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<DetectorResponseInner>> GetSiteDetectorResponseWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
+                }
+            }
+            if (siteName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "siteName");
+            }
+            if (detectorName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "detectorName");
+            }
+            if (timeGrain != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(timeGrain, "PT[1-9][0-9]+[SMH]"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
+                }
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("detectorName", detectorName);
+                tracingParameters.Add("startTime", startTime);
+                tracingParameters.Add("endTime", endTime);
+                tracingParameters.Add("timeGrain", timeGrain);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetSiteDetectorResponse", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (startTime != null)
+            {
+                _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, Client.SerializationSettings).Trim('"'))));
+            }
+            if (endTime != null)
+            {
+                _queryParameters.Add(string.Format("endTime={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endTime, Client.SerializationSettings).Trim('"'))));
+            }
+            if (timeGrain != null)
+            {
+                _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
+            }
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<DetectorResponseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorResponseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Get Diagnostics Categories
+        /// </summary>
+        /// <remarks>
+        /// Get Diagnostics Categories
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<DiagnosticCategoryInner>>> ListSiteDiagnosticCategoriesWithHttpMessagesAsync(string resourceGroupName, string siteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
+                }
+            }
+            if (siteName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "siteName");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDiagnosticCategories", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -281,7 +1194,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -329,7 +1242,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -340,7 +1256,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetSiteDiagnosticCategory", tracingParameters);
             }
@@ -352,9 +1267,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -416,14 +1331,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -433,10 +1347,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -502,7 +1412,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -550,7 +1460,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -561,7 +1474,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListSiteAnalyses", tracingParameters);
             }
@@ -573,9 +1485,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -637,14 +1549,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -654,10 +1565,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -726,7 +1633,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -778,7 +1685,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -790,7 +1700,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("analysisName", analysisName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetSiteAnalysis", tracingParameters);
             }
@@ -803,9 +1712,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{analysisName}", System.Uri.EscapeDataString(analysisName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -867,14 +1776,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -884,10 +1792,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -965,7 +1869,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1024,7 +1928,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1039,7 +1946,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ExecuteSiteAnalysis", tracingParameters);
             }
@@ -1064,9 +1970,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1128,14 +2034,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1145,10 +2050,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1214,7 +2115,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1262,7 +2163,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1273,7 +2177,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListSiteDetectors", tracingParameters);
             }
@@ -1285,9 +2188,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1349,14 +2252,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1366,10 +2268,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1438,7 +2336,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1490,7 +2388,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1502,7 +2403,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("detectorName", detectorName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetSiteDetector", tracingParameters);
             }
@@ -1515,9 +2415,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1579,14 +2479,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1596,10 +2495,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1677,7 +2572,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1736,7 +2631,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1751,7 +2649,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ExecuteSiteDetector", tracingParameters);
             }
@@ -1776,9 +2673,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1840,14 +2737,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1857,10 +2753,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1906,10 +2798,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Get Diagnostics Categories
+        /// List Site Detector Responses
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Categories
+        /// List Site Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1926,7 +2818,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1941,7 +2833,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DiagnosticCategoryInner>>> ListSiteDiagnosticCategoriesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1974,7 +2866,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1985,21 +2880,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("slot", slot);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDiagnosticCategoriesSlot", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDetectorResponsesSlot", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2061,14 +2955,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2078,10 +2971,482 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                if (_shouldTrace)
                 {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                    ServiceClientTracing.Error(_invocationId, ex);
                 }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<DetectorResponseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorResponseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Get site detector response
+        /// </summary>
+        /// <remarks>
+        /// Get site detector response
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
+        /// </param>
+        /// <param name='startTime'>
+        /// Start Time
+        /// </param>
+        /// <param name='endTime'>
+        /// End Time
+        /// </param>
+        /// <param name='timeGrain'>
+        /// Time Grain
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<DetectorResponseInner>> GetSiteDetectorResponseSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
+                }
+            }
+            if (siteName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "siteName");
+            }
+            if (detectorName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "detectorName");
+            }
+            if (slot == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "slot");
+            }
+            if (timeGrain != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(timeGrain, "PT[1-9][0-9]+[SMH]"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
+                }
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("detectorName", detectorName);
+                tracingParameters.Add("slot", slot);
+                tracingParameters.Add("startTime", startTime);
+                tracingParameters.Add("endTime", endTime);
+                tracingParameters.Add("timeGrain", timeGrain);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetSiteDetectorResponseSlot", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
+            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (startTime != null)
+            {
+                _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, Client.SerializationSettings).Trim('"'))));
+            }
+            if (endTime != null)
+            {
+                _queryParameters.Add(string.Format("endTime={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endTime, Client.SerializationSettings).Trim('"'))));
+            }
+            if (timeGrain != null)
+            {
+                _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
+            }
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<DetectorResponseInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorResponseInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Get Diagnostics Categories
+        /// </summary>
+        /// <remarks>
+        /// Get Diagnostics Categories
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<DiagnosticCategoryInner>>> ListSiteDiagnosticCategoriesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
+                }
+            }
+            if (siteName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "siteName");
+            }
+            if (slot == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "slot");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("slot", slot);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDiagnosticCategoriesSlot", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2150,7 +3515,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2202,7 +3567,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2214,7 +3582,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetSiteDiagnosticCategorySlot", tracingParameters);
             }
@@ -2227,9 +3594,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2291,14 +3658,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2308,10 +3674,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2380,7 +3742,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2432,7 +3794,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2444,7 +3809,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListSiteAnalysesSlot", tracingParameters);
             }
@@ -2457,9 +3821,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2521,14 +3885,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2538,10 +3901,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2613,7 +3972,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2669,7 +4028,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2682,7 +4044,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("analysisName", analysisName);
                 tracingParameters.Add("slot", slot);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetSiteAnalysisSlot", tracingParameters);
             }
@@ -2696,9 +4057,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2760,14 +4121,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2777,10 +4137,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2861,7 +4217,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2924,7 +4280,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2940,7 +4299,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ExecuteSiteAnalysisSlot", tracingParameters);
             }
@@ -2966,9 +4324,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3030,14 +4388,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3047,10 +4404,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -3119,7 +4472,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -3171,7 +4524,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3183,7 +4539,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListSiteDetectorsSlot", tracingParameters);
             }
@@ -3196,9 +4551,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3260,14 +4615,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3277,10 +4631,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -3352,7 +4702,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -3408,7 +4758,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3421,7 +4774,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("detectorName", detectorName);
                 tracingParameters.Add("slot", slot);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetSiteDetectorSlot", tracingParameters);
             }
@@ -3435,9 +4787,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3499,14 +4851,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3516,10 +4867,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -3600,7 +4947,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -3663,7 +5010,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2016-03-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3679,7 +5029,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ExecuteSiteDetectorSlot", tracingParameters);
             }
@@ -3705,9 +5054,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3769,14 +5118,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3786,10 +5134,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -3835,6 +5179,348 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// List Hosting Environment Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Hosting Environment Detector Responses
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListHostingEnvironmentDetectorResponsesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (nextPageLink == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("nextPageLink", nextPageLink);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListHostingEnvironmentDetectorResponsesNext", tracingParameters);
+            }
+            // Construct URL
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
+            List<string> _queryParameters = new List<string>();
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<DetectorResponseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorResponseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (nextPageLink == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("nextPageLink", nextPageLink);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDetectorResponsesNext", tracingParameters);
+            }
+            // Construct URL
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
+            List<string> _queryParameters = new List<string>();
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<DetectorResponseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorResponseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
@@ -3849,7 +5535,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -3945,14 +5631,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3962,10 +5647,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -4025,7 +5706,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -4121,14 +5802,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -4138,10 +5818,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -4201,7 +5877,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -4297,14 +5973,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -4314,10 +5989,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -4377,7 +6048,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -4473,14 +6144,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -4490,10 +6160,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -4539,6 +6205,177 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// List Site Detector Responses
+        /// </summary>
+        /// <remarks>
+        /// List Site Detector Responses
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<DetectorResponseInner>>> ListSiteDetectorResponsesSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (nextPageLink == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("nextPageLink", nextPageLink);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListSiteDetectorResponsesSlotNext", tracingParameters);
+            }
+            // Construct URL
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
+            List<string> _queryParameters = new List<string>();
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<DetectorResponseInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorResponseInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
@@ -4553,7 +6390,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -4649,14 +6486,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -4666,10 +6502,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -4729,7 +6561,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -4825,14 +6657,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -4842,10 +6673,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -4905,7 +6732,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -5001,14 +6828,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -5018,10 +6844,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -5081,7 +6903,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -5177,14 +6999,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -5194,10 +7015,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);

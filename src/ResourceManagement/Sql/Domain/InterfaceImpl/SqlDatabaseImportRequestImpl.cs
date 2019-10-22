@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseImportRequest.Definition.IWithStorageTypeAndKey SqlDatabaseImportRequest.Definition.IImportFrom.ImportFrom(string storageUri)
         {
-            return this.ImportFrom(storageUri) as SqlDatabaseImportRequest.Definition.IWithStorageTypeAndKey;
+            return this.ImportFrom(storageUri);
         }
 
         /// <param name="storageAccount">An existing storage account to be used.</param>
@@ -25,21 +25,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="fileName">The exported database file name.</param>
         SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseImportRequest.Definition.IImportFrom.ImportFrom(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportFrom(storageAccount, containerName, fileName) as SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.ImportFrom(storageAccount, containerName, fileName);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseImportRequest.Definition.IWithStorageTypeAndKey.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <param name="storageAccessKey">The storage access key to use.</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseImportRequest.Definition.IWithStorageTypeAndKey.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+                return this.Parent();
             }
         }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseImportRequest.Definition.IWithExecute SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseImportRequest.Definition.IWithExecute;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseImportRequest.Definition.IWithExecute SqlDatabaseImportRequest.Definition.IWithAuthenticationTypeAndLoginPassword.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseImportRequest.Definition.IWithExecute;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
     }
 }

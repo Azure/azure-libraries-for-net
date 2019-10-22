@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next definition stage.</return>
         WebDeployment.Definition.IWithExecute WebDeployment.Definition.IWithExistingDeploymentsDeleted.WithExistingDeploymentsDeleted(bool deleteExisting)
         {
-            return this.WithExistingDeploymentsDeleted(deleteExisting) as WebDeployment.Definition.IWithExecute;
+            return this.WithExistingDeploymentsDeleted(deleteExisting);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next definition stage.</return>
         WebDeployment.Definition.IWithExecute WebDeployment.Definition.IWithAddOnPackage.WithAddOnPackage(string packageUri)
         {
-            return this.WithAddOnPackage(packageUri) as WebDeployment.Definition.IWithExecute;
+            return this.WithAddOnPackage(packageUri);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next definition stage.</return>
         WebDeployment.Definition.IWithExecute WebDeployment.Definition.IWithSetParameters.WithSetParametersXmlFile(string fileUri)
         {
-            return this.WithSetParametersXmlFile(fileUri) as WebDeployment.Definition.IWithExecute;
+            return this.WithSetParametersXmlFile(fileUri);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next definition stage.</return>
         WebDeployment.Definition.IWithExecute WebDeployment.Definition.IWithSetParameters.WithSetParameter(string name, string value)
         {
-            return this.WithSetParameter(name, value) as WebDeployment.Definition.IWithExecute;
+            return this.WithSetParameter(name, value);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next definition stage.</return>
         WebDeployment.Definition.IWithExecute WebDeployment.Definition.IWithPackageUri.WithPackageUri(string packageUri)
         {
-            return this.WithPackageUri(packageUri) as WebDeployment.Definition.IWithExecute;
+            return this.WithPackageUri(packageUri);
         }
     }
 }

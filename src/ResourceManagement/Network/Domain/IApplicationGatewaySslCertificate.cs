@@ -16,5 +16,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets the public data of the certificate.
         /// </summary>
         string PublicData { get; }
+
+        /// <summary>
+        /// Gets Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate'
+        /// object stored in KeyVault.
+        /// </summary>
+        /// <summary>
+        /// Gets the secret id.
+        /// </summary>
+        string KeyVaultSecretId { get; }
     }
 }

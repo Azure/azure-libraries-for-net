@@ -12,7 +12,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Implementation for WebAppSourceControl and its create and update interfaces.
     /// </summary>
-    /// <typeparam name="Fluent">The fluent interface of the parent web app.</typeparam>
+    /// </summary>
+    /// <typeparam name="FluentT">The fluent interface of the parent web app.</typeparam>
+    /// <typeparam name="FluentImplT"></typeparam>
+    /// <typeparam name="DefAfterRegionT"></typeparam>
+    /// <typeparam name="DefAfterGroupT"></typeparam>
+    /// <typeparam name="UpdateT"></typeparam>
+    /// <summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uV2ViQXBwU291cmNlQ29udHJvbEltcGw=
     internal partial class WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>  :
         IndexableWrapper<Microsoft.Azure.Management.AppService.Fluent.Models.SiteSourceControlInner>,
@@ -82,7 +88,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return null;
             }
-            return (bool) Inner.IsMercurial ? Fluent.RepositoryType.Mercurial : Fluent.RepositoryType.Git;
+            return (Inner.IsMercurial.HasValue && Inner.IsMercurial .Value) ? Fluent.RepositoryType.Mercurial : Fluent.RepositoryType.Git;
         }
 
         ///GENMHASH:AF58AEB1DD43D38B7FEDF266F4F40886:63F15AB00FF6315055DD4FFBCA6BE2EC

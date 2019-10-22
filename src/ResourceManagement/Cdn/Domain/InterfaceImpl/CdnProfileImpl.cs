@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of a new CDN endpoint definition.</return>
         CdnEndpoint.Definition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Definition.IWithStandardCreate> CdnProfile.Definition.IWithStandardCreateBeta.DefineNewEndpoint()
         {
-            return this.DefineNewEndpoint() as CdnEndpoint.Definition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Definition.IWithStandardCreate>;
+            return this.DefineNewEndpoint();
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of a new CDN endpoint definition.</return>
         CdnEndpoint.Definition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Definition.IWithStandardCreate> CdnProfile.Definition.IWithStandardCreate.DefineNewEndpoint(string name)
         {
-            return this.DefineNewEndpoint(name) as CdnEndpoint.Definition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Definition.IWithStandardCreate>;
+            return this.DefineNewEndpoint(name);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of a new CDN endpoint definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnProfile.Definition.IWithStandardCreateBeta.DefineNewEndpoint(string name, string endpointOriginHostname)
         {
-            return this.DefineNewEndpoint(name, endpointOriginHostname) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.DefineNewEndpoint(name, endpointOriginHostname);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of CDN profile definition.</return>
         CdnProfile.Definition.IWithStandardCreate CdnProfile.Definition.IWithStandardCreate.WithNewEndpoint(string endpointOriginHostname)
         {
-            return this.WithNewEndpoint(endpointOriginHostname) as CdnProfile.Definition.IWithStandardCreate;
+            return this.WithNewEndpoint(endpointOriginHostname);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of a new CDN endpoint definition.</return>
         CdnEndpoint.Definition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnProfile.Definition.IWithPremiumVerizonCreateBeta.DefineNewPremiumEndpoint()
         {
-            return this.DefineNewPremiumEndpoint() as CdnEndpoint.Definition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.DefineNewPremiumEndpoint();
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of a new CDN endpoint definition.</return>
         CdnEndpoint.Definition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnProfile.Definition.IWithPremiumVerizonCreate.DefineNewPremiumEndpoint(string name)
         {
-            return this.DefineNewPremiumEndpoint(name) as CdnEndpoint.Definition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.DefineNewPremiumEndpoint(name);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The stage representing configuration for the endpoint.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnProfile.Definition.IWithPremiumVerizonCreateBeta.DefineNewPremiumEndpoint(string name, string endpointOriginHostname)
         {
-            return this.DefineNewPremiumEndpoint(name, endpointOriginHostname) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.DefineNewPremiumEndpoint(name, endpointOriginHostname);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnProfile.Definition.IWithPremiumVerizonCreate CdnProfile.Definition.IWithPremiumVerizonCreate.WithNewPremiumEndpoint(string endpointOriginHostname)
         {
-            return this.WithNewPremiumEndpoint(endpointOriginHostname) as CdnProfile.Definition.IWithPremiumVerizonCreate;
+            return this.WithNewPremiumEndpoint(endpointOriginHostname);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of an endpoint definition.</return>
         CdnEndpoint.UpdateDefinition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Update.IUpdate> CdnProfile.Update.IWithEndpointBeta.DefineNewEndpoint()
         {
-            return this.DefineNewEndpoint() as CdnEndpoint.UpdateDefinition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Update.IUpdate>;
+            return this.DefineNewEndpoint();
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of an endpoint definition.</return>
         CdnEndpoint.UpdateDefinition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Update.IUpdate> CdnProfile.Update.IWithEndpoint.DefineNewEndpoint(string name)
         {
-            return this.DefineNewEndpoint(name) as CdnEndpoint.UpdateDefinition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Update.IUpdate>;
+            return this.DefineNewEndpoint(name);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of an endpoint definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnProfile.Update.IWithEndpointBeta.DefineNewEndpoint(string name, string endpointOriginHostname)
         {
-            return this.DefineNewEndpoint(name, endpointOriginHostname) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.DefineNewEndpoint(name, endpointOriginHostname);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of the update of the endpoint.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnProfile.Update.IWithEndpoint.UpdateEndpoint(string name)
         {
-            return this.UpdateEndpoint(name) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.UpdateEndpoint(name);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the update.</return>
         CdnProfile.Update.IUpdate CdnProfile.Update.IWithEndpoint.WithNewEndpoint(string endpointOriginHostname)
         {
-            return this.WithNewEndpoint(endpointOriginHostname) as CdnProfile.Update.IUpdate;
+            return this.WithNewEndpoint(endpointOriginHostname);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of an endpoint definition.</return>
         CdnEndpoint.UpdateDefinition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Update.IUpdate> CdnProfile.Update.IWithEndpointBeta.DefineNewPremiumEndpoint()
         {
-            return this.DefineNewPremiumEndpoint() as CdnEndpoint.UpdateDefinition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Update.IUpdate>;
+            return this.DefineNewPremiumEndpoint();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of an endpoint definition.</return>
         CdnEndpoint.UpdateDefinition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Update.IUpdate> CdnProfile.Update.IWithEndpoint.DefineNewPremiumEndpoint(string name)
         {
-            return this.DefineNewPremiumEndpoint(name) as CdnEndpoint.UpdateDefinition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Update.IUpdate>;
+            return this.DefineNewPremiumEndpoint(name);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of an endpoint definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnProfile.Update.IWithEndpointBeta.DefineNewPremiumEndpoint(string name, string endpointOriginHostname)
         {
-            return this.DefineNewPremiumEndpoint(name, endpointOriginHostname) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.DefineNewPremiumEndpoint(name, endpointOriginHostname);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of the update of the endpoint.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnProfile.Update.IWithEndpoint.UpdatePremiumEndpoint(string name)
         {
-            return this.UpdatePremiumEndpoint(name) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.UpdatePremiumEndpoint(name);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the CDN profile update.</return>
         CdnProfile.Update.IUpdate CdnProfile.Update.IWithEndpoint.WithoutEndpoint(string name)
         {
-            return this.WithoutEndpoint(name) as CdnProfile.Update.IUpdate;
+            return this.WithoutEndpoint(name);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the update.</return>
         CdnProfile.Update.IUpdate CdnProfile.Update.IWithEndpoint.WithNewPremiumEndpoint(string endpointOriginHostname)
         {
-            return this.WithNewPremiumEndpoint(endpointOriginHostname) as CdnProfile.Update.IUpdate;
+            return this.WithNewPremiumEndpoint(endpointOriginHostname);
         }
 
         /// <summary>
@@ -264,13 +264,13 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>CustomDomainValidationResult object if successful.</return>
         Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.ValidateEndpointCustomDomain(string endpointName, string hostName)
         {
-            return this.ValidateEndpointCustomDomain(endpointName, hostName) as Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult;
+            return this.ValidateEndpointCustomDomain(endpointName, hostName);
         }
 
         /// <return>Quotas and actual usages of endpoints under the current CDN profile.</return>
         System.Collections.Generic.IEnumerable<Models.ResourceUsage> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.ListResourceUsage()
         {
-            return this.ListResourceUsage() as System.Collections.Generic.IEnumerable<Models.ResourceUsage>;
+            return this.ListResourceUsage();
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The result if successful.</return>
         Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.CheckEndpointNameAvailability(string name)
         {
-            return this.CheckEndpointNameAvailability(name) as Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult;
+            return this.CheckEndpointNameAvailability(name);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             get
             {
-                return this.Sku() as Models.Sku;
+                return this.Sku();
             }
         }
 
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             get
             {
-                return this.Endpoints() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint>;
+                return this.Endpoints();
             }
         }
 
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.CheckEndpointNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CheckEndpointNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult;
+            return await this.CheckEndpointNameAvailabilityAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The Observable to CustomDomainValidationResult object if successful.</return>
         async Task<Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.ValidateEndpointCustomDomainAsync(string endpointName, string hostName, CancellationToken cancellationToken)
         {
-            return await this.ValidateEndpointCustomDomainAsync(endpointName, hostName, cancellationToken) as Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult;
+            return await this.ValidateEndpointCustomDomainAsync(endpointName, hostName, cancellationToken);
         }
 
         /// <summary>
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnProfile.Definition.IWithStandardCreate CdnProfile.Definition.IWithSku.WithStandardAkamaiSku()
         {
-            return this.WithStandardAkamaiSku() as CdnProfile.Definition.IWithStandardCreate;
+            return this.WithStandardAkamaiSku();
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnProfile.Definition.IWithPremiumVerizonCreate CdnProfile.Definition.IWithSku.WithPremiumVerizonSku()
         {
-            return this.WithPremiumVerizonSku() as CdnProfile.Definition.IWithPremiumVerizonCreate;
+            return this.WithPremiumVerizonSku();
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnProfile.Definition.IWithStandardCreate CdnProfile.Definition.IWithSku.WithStandardVerizonSku()
         {
-            return this.WithStandardVerizonSku() as CdnProfile.Definition.IWithStandardCreate;
+            return this.WithStandardVerizonSku();
         }
     }
 }

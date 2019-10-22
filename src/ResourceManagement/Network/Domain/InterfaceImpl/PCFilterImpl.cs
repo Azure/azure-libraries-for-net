@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Protocol() as Models.PcProtocol;
+                return this.Protocol();
             }
         }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate>, Models.PcProtocol>.WithProtocol(PcProtocol protocol)
         {
-            return this.WithProtocol(protocol) as PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.IPacketCapture;
+                return this.Parent();
             }
         }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithRemotePort<PacketCapture.Definition.IWithCreate>.WithRemotePorts(IList<int> ports)
         {
-            return this.WithRemotePorts(ports) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithRemotePorts(ports);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithRemotePort<PacketCapture.Definition.IWithCreate>.WithRemotePort(int port)
         {
-            return this.WithRemotePort(port) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithRemotePort(port);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithRemotePort<PacketCapture.Definition.IWithCreate>.WithRemotePortRange(int startPort, int endPort)
         {
-            return this.WithRemotePortRange(startPort, endPort) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithRemotePortRange(startPort, endPort);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithRemoteIPAddress<PacketCapture.Definition.IWithCreate>.WithRemoteIPAddressesRange(string startIPAddress, string endIPAddress)
         {
-            return this.WithRemoteIPAddressesRange(startIPAddress, endIPAddress) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithRemoteIPAddressesRange(startIPAddress, endIPAddress);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithRemoteIPAddress<PacketCapture.Definition.IWithCreate>.WithRemoteIPAddresses(IList<string> ipAddresses)
         {
-            return this.WithRemoteIPAddresses(ipAddresses) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithRemoteIPAddresses(ipAddresses);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithRemoteIPAddress<PacketCapture.Definition.IWithCreate>.WithRemoteIPAddress(string ipAddress)
         {
-            return this.WithRemoteIPAddress(ipAddress) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithRemoteIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         PacketCapture.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<PacketCapture.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as PacketCapture.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithLocalPort<PacketCapture.Definition.IWithCreate>.WithLocalPortRange(int startPort, int endPort)
         {
-            return this.WithLocalPortRange(startPort, endPort) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithLocalPortRange(startPort, endPort);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithLocalPort<PacketCapture.Definition.IWithCreate>.WithLocalPorts(IList<int> ports)
         {
-            return this.WithLocalPorts(ports) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithLocalPorts(ports);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithLocalPort<PacketCapture.Definition.IWithCreate>.WithLocalPort(int port)
         {
-            return this.WithLocalPort(port) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithLocalPort(port);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithLocalIP<PacketCapture.Definition.IWithCreate>.WithLocalIPAddressesRange(string startIPAddress, string endIPAddress)
         {
-            return this.WithLocalIPAddressesRange(startIPAddress, endIPAddress) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithLocalIPAddressesRange(startIPAddress, endIPAddress);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithLocalIP<PacketCapture.Definition.IWithCreate>.WithLocalIPAddresses(IList<string> ipAddresses)
         {
-            return this.WithLocalIPAddresses(ipAddresses) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithLocalIPAddresses(ipAddresses);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate> PCFilter.Definition.IWithLocalIP<PacketCapture.Definition.IWithCreate>.WithLocalIPAddress(string ipAddress)
         {
-            return this.WithLocalIPAddress(ipAddress) as PCFilter.Definition.IDefinition<PacketCapture.Definition.IWithCreate>;
+            return this.WithLocalIPAddress(ipAddress);
         }
     }
 }

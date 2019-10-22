@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiskInner> UpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdateInner disk, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskInner> UpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -117,12 +117,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> DeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -182,7 +179,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AccessUriInner> GrantAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessDataInner grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AccessUriInner> GrantAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessData grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GrantAccessWithHttpMessagesAsync(resourceGroupName, diskName, grantAccessData, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -207,12 +204,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> RevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -263,7 +257,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiskInner> BeginUpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdateInner disk, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskInner> BeginUpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -288,12 +282,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> BeginDeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -316,7 +307,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AccessUriInner> BeginGrantAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessDataInner grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AccessUriInner> BeginGrantAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessData grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginGrantAccessWithHttpMessagesAsync(resourceGroupName, diskName, grantAccessData, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -341,12 +332,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> BeginRevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

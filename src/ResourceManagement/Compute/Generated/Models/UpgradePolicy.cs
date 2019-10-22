@@ -37,15 +37,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Automatic', 'Manual', 'Rolling'</param>
         /// <param name="rollingUpgradePolicy">The configuration parameters
         /// used while performing a rolling upgrade.</param>
-        /// <param name="automaticOSUpgrade">Whether OS upgrades should
-        /// automatically be applied to scale set instances in a rolling
-        /// fashion when a newer version of the image becomes
-        /// available.</param>
-        public UpgradePolicy(UpgradeMode? mode = default(UpgradeMode?), RollingUpgradePolicy rollingUpgradePolicy = default(RollingUpgradePolicy), bool? automaticOSUpgrade = default(bool?))
+        /// <param name="automaticOSUpgradePolicy">Configuration parameters
+        /// used for performing automatic OS Upgrade.</param>
+        public UpgradePolicy(UpgradeMode? mode = default(UpgradeMode?), RollingUpgradePolicy rollingUpgradePolicy = default(RollingUpgradePolicy), AutomaticOSUpgradePolicy automaticOSUpgradePolicy = default(AutomaticOSUpgradePolicy))
         {
             Mode = mode;
             RollingUpgradePolicy = rollingUpgradePolicy;
-            AutomaticOSUpgrade = automaticOSUpgrade;
+            AutomaticOSUpgradePolicy = automaticOSUpgradePolicy;
             CustomInit();
         }
 
@@ -75,12 +73,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets whether OS upgrades should automatically be applied to
-        /// scale set instances in a rolling fashion when a newer version of
-        /// the image becomes available.
+        /// Gets or sets configuration parameters used for performing automatic
+        /// OS Upgrade.
         /// </summary>
-        [JsonProperty(PropertyName = "automaticOSUpgrade")]
-        public bool? AutomaticOSUpgrade { get; set; }
+        [JsonProperty(PropertyName = "automaticOSUpgradePolicy")]
+        public AutomaticOSUpgradePolicy AutomaticOSUpgradePolicy { get; set; }
 
         /// <summary>
         /// Validate the object.

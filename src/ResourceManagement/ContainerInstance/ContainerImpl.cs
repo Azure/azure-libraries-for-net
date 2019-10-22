@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcmluc3RhbmNlLmltcGxlbWVudGF0aW9uLkNvbnRhaW5lckltcGw=
     internal partial class ContainerImpl :
-        IContainerInstanceDefinition<ContainerGroup.Definition.IWithNextContainerInstance>
+        IContainerInstanceDefinition<IWithNextContainerInstance>
     {
         private Container innerContainer;
         private ContainerGroupImpl parent;
@@ -76,12 +76,20 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             if (parent.Inner.IpAddress == null)
             {
-                parent.Inner.IpAddress = new IpAddress
-                {
-                    Ip = "Public",
-                    Ports = new List<Port>()
-                };
+                parent.Inner.IpAddress = new IpAddress();
             }
+            if (parent.Inner.IpAddress.Type == null && parent.Inner.IpAddress.DnsNameLabel == null)
+            {
+                parent.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private.ToString();
+            } else
+            {
+                parent.Inner.IpAddress.Type = ContainerGroupIpAddressType.Public.ToString();
+            }
+            if (parent.Inner.IpAddress.Ports == null)
+            {
+                parent.Inner.IpAddress.Ports = new List<Port>();
+            }
+
             return parent.Inner.IpAddress;
         }
 
@@ -288,6 +296,31 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
+        public ContainerImpl WithEnvironmentVariableWithSecuredValue(string envName, string securedValue)
+        {
+            if (innerContainer.EnvironmentVariables == null)
+            {
+                innerContainer.EnvironmentVariables = new List<EnvironmentVariable>();
+            }
+            innerContainer.EnvironmentVariables.Add(new EnvironmentVariable
+            {
+                Name = envName,
+                SecureValue = securedValue
+            });
+
+            return this;
+        }
+
+        public ContainerImpl WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables)
+        {
+            foreach (var entry in environmentVariables)
+            {
+                this.WithEnvironmentVariableWithSecuredValue(entry.Key, entry.Value);
+            }
+
+            return this;
+        }
+
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:3096C005BF39DD1EA35957AEE106323D
         public ContainerGroupImpl Attach()
         {
@@ -298,6 +331,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             parent.Inner.Containers.Add(innerContainer);
 
             return this.parent;
+        }
+
+        public IWithContainerInstanceAttach<IWithNextContainerInstance> WithGpuResource(int gpuCoreCount, GpuSku gpuSku)
+        {
+            GpuResource gpuResource = new GpuResource();
+            gpuResource.Count = gpuCoreCount;
+            gpuResource.Sku = gpuSku;
+            this.innerContainer.Resources.Requests.Gpu = gpuResource;
+
+            return this;
         }
     }
 }

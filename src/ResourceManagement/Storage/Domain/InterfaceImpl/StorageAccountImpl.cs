@@ -98,18 +98,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
         }
 
-        /// <return>Gets the sku of this storage account.</return>
-        /// <summary>
-        /// Use StorageAccount.skuType() instead.
-        /// </summary>
-        Models.Sku Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.Sku
-        {
-            get
-            {
-                return this.Sku();
-            }
-        }
-
         /// <return>Gets the encryption settings on the account.</return>
         /// <summary>
         /// Use  StorageAccount.encryptionKeySource(),  StorageAccount.encryptionStatuses() instead.
@@ -650,6 +638,26 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
+        /// Specifies whether Hns is enabled for this storage account.
+        /// </summary>
+        /// <param name="enabled">Whether Hns will be enabled or not</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithHns.WithHnsEnabled(bool enabled)
+        {
+            return this.WithHnsEnabled(enabled);
+        }
+
+        /// <summary>
+        /// Specifies whether Azure files aad integration is enabled for this storage account.
+        /// </summary>
+        /// <param name="enabled">Whether Azure files aad integration will be enabled or not</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithAzureFilesAadIntegration.WithAzureFilesAadIntegrationEnabled(bool enabled)
+        {
+            return this.WithAzureFilesAadIntegrationEnabled(enabled);
+        }
+
+        /// <summary>
         /// Gets Specifies that the storage account should be upgraded to V2 kind.
         /// </summary>
         /// <summary>
@@ -658,6 +666,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithUpgrade.UpgradeToGeneralPurposeAccountKindV2()
         {
             return this.UpgradeToGeneralPurposeAccountKindV2();
+        }
+
+        
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithAzureFilesAadIntegration.WithAzureFilesAadIntegrationEnabled(bool enabled)
+        {
+            return this.WithAzureFilesAadIntegrationEnabled(enabled);
         }
 
         /// <summary>

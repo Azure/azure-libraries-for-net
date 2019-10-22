@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:8085A7265EABA1790A728BA058BF34C6:BBC4EB2C23A13FF787D5322550E0EB4B
         public SqlSyncMemberImpl WithMemberDatabaseType(SyncMemberDbType databaseType)
         {
-            this.Inner.DatabaseType = databaseType.Value;
+            this.Inner.DatabaseType = databaseType;
             return this;
         }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:875F3540BA3FFB0A7D4F8D040D5A538D:E7F94FDE664937F65EA0A83B5F814E68
         public SqlSyncMemberImpl WithDatabaseType(SyncDirection syncDirection)
         {
-            this.Inner.SyncDirection = syncDirection.Value;
+            this.Inner.SyncDirection = syncDirection;
             return this;
         }
 
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:74CC786A12BD16E99274FDA4312C231B:8CBE6D07DEC2431D8F827589DF59CAAD
         public SyncMemberState SyncState()
         {
-            return Models.SyncMemberState.Parse(this.Inner.SyncState);
+            return this.Inner.SyncState;
         }
 
         ///GENMHASH:0FEDA307DAD2022B36843E8905D26EAD:95BA1017B6D636BB0934427C9B74AB8D
@@ -319,13 +319,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:34645F7AAC85BDB9B4B2319A8E8A5AD6:DEB5F8EF5229ECF71C1EE408DFDD3674
         public SyncMemberDbType DatabaseType()
         {
-            return Models.SyncMemberDbType.Parse(this.Inner.DatabaseType);
+            return this.Inner.DatabaseType;
         }
 
         ///GENMHASH:0A8C95E7BCF012420BB9CA8540401D0F:BD7BB32481D5B7E613BD35E4E7DB5CBF
         public SyncDirection SyncDirection()
         {
-            return Models.SyncDirection.Parse(this.Inner.SyncDirection);
+            return this.Inner.SyncDirection;
         }
 
         ///GENMHASH:6059E1A9D3915C813F3878D0DB9E0819:31BC00949A75A3F86A2BE328DDB25175

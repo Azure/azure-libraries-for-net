@@ -72,10 +72,24 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         bool AdminUserEnabled { get; }
 
         /// <summary>
+        /// Returns entry point to schedule a run.
+        /// </summary>
+        RegistryTaskRun.Definition.IBlankFromRegistry ScheduleRun();
+
+        /// <summary>
         /// Lists the quota usages for the specified container registry.
         /// </summary>
         /// <return>A representation of the future computation of this call.</return>
-        Task<Models.RegistryUsage> ListQuotaUsagesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IReadOnlyCollection<Models.RegistryUsage>> ListQuotaUsagesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>Returns the upload location for the user to be able to upload the source.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.ISourceUploadDefinition GetBuildSourceUploadUrl();
+
+        /// <summary>
+        /// Gets the upload location for the user to be able to upload the source asynchronously.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.ISourceUploadDefinition> GetBuildSourceUploadUrlAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets returns entry point to manage container registry webhooks.

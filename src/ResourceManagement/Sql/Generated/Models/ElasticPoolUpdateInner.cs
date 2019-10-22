@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     /// Represents an elastic pool update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ElasticPoolUpdateInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ElasticPoolUpdateInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ElasticPoolUpdateInner class.
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="state">The state of the elastic pool. Possible values
         /// include: 'Creating', 'Ready', 'Disabled'</param>
         /// <param name="edition">The edition of the elastic pool. Possible
-        /// values include: 'Basic', 'Standard', 'Premium'</param>
+        /// values include: 'Basic', 'Standard', 'Premium', 'GeneralPurpose',
+        /// 'BusinessCritical'</param>
         /// <param name="dtu">The total shared DTU for the database elastic
         /// pool.</param>
         /// <param name="databaseDtuMax">The maximum DTU any one database can
@@ -51,8 +53,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="zoneRedundant">Whether or not this database elastic
         /// pool is zone redundant, which means the replicas of this database
         /// will be spread across multiple availability zones.</param>
-        public ElasticPoolUpdateInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? creationDate = default(System.DateTime?), string state = default(string), string edition = default(string), int? dtu = default(int?), int? databaseDtuMax = default(int?), int? databaseDtuMin = default(int?), int? storageMB = default(int?), bool? zoneRedundant = default(bool?))
-            : base(location, id, name, type, tags)
+        public ElasticPoolUpdateInner(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? creationDate = default(System.DateTime?), ElasticPoolState state = default(ElasticPoolState), ElasticPoolEdition edition = default(ElasticPoolEdition), int? dtu = default(int?), int? databaseDtuMax = default(int?), int? databaseDtuMin = default(int?), int? storageMB = default(int?), bool? zoneRedundant = default(bool?))
+            : base(id, name, type)
         {
             Tags = tags;
             CreationDate = creationDate;
@@ -72,6 +74,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
         /// Gets the creation date of the elastic pool (ISO8601 format).
         /// </summary>
         [JsonProperty(PropertyName = "properties.creationDate")]
@@ -82,14 +90,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'Creating', 'Ready', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
+        public ElasticPoolState State { get; private set; }
 
         /// <summary>
         /// Gets or sets the edition of the elastic pool. Possible values
-        /// include: 'Basic', 'Standard', 'Premium'
+        /// include: 'Basic', 'Standard', 'Premium', 'GeneralPurpose',
+        /// 'BusinessCritical'
         /// </summary>
         [JsonProperty(PropertyName = "properties.edition")]
-        public string Edition { get; set; }
+        public ElasticPoolEdition Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the total shared DTU for the database elastic pool.

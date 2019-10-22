@@ -24,47 +24,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The first stage of the new resource definition.</return>
         KubernetesCluster.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<KubernetesCluster.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as KubernetesCluster.Definition.IBlank;
-        }
-
-        /// <summary>
-        /// Lists resources of the specified type in the specified resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
-        /// <return>The list of resources.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroup(string resourceGroupName)
-        {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>;
-        }
-
-        /// <summary>
-        /// Lists resources of the specified type in the specified resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
-        /// <return>The list of resources.</return>
-        async Task<IPagedCollection<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
-        {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken) as IPagedCollection<IKubernetesCluster>;
-        }
-
-        /// <summary>
-        /// Returns the list of available Kubernetes versions available for the given Azure region.
-        /// </summary>
-        /// <param name="region">The Azure region to query into.</param>
-        /// <return>A set of Kubernetes versions which can be used when creating a service in this region.</return>
-        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersions(Region region)
-        {
-            return this.ListKubernetesVersions(region) as System.Collections.Generic.ISet<string>;
-        }
-
-        /// <summary>
-        /// Returns the list of available Kubernetes versions available for the given Azure region.
-        /// </summary>
-        /// <param name="region">The Azure region to query into.</param>
-        /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
-        async Task<System.Collections.Generic.ISet<string>> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken)
-        {
-            return await this.ListKubernetesVersionsAsync(region, cancellationToken) as System.Collections.Generic.ISet<string>;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -75,7 +35,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The Kube.config content which can be used with a Kubernetes client.</return>
         byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetAdminKubeConfigContents(string resourceGroupName, string kubernetesClusterName)
         {
-            return this.GetAdminKubeConfigContents(resourceGroupName, kubernetesClusterName) as byte[];
+            return this.GetAdminKubeConfigContents(resourceGroupName, kubernetesClusterName);
         }
 
         /// <summary>
@@ -86,7 +46,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
         async Task<byte[]> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetAdminKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.GetAdminKubeConfigContentsAsync(resourceGroupName, kubernetesClusterName, cancellationToken) as byte[];
+            return await this.GetAdminKubeConfigContentsAsync(resourceGroupName, kubernetesClusterName, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +57,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The Kube.config content which can be used with a Kubernetes client.</return>
         byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetUserKubeConfigContents(string resourceGroupName, string kubernetesClusterName)
         {
-            return this.GetUserKubeConfigContents(resourceGroupName, kubernetesClusterName) as byte[];
+            return this.GetUserKubeConfigContents(resourceGroupName, kubernetesClusterName);
         }
 
         /// <summary>
@@ -108,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
         async Task<byte[]> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.GetUserKubeConfigContentsAsync(resourceGroupName, kubernetesClusterName, cancellationToken) as byte[];
+            return await this.GetUserKubeConfigContentsAsync(resourceGroupName, kubernetesClusterName, cancellationToken);
         }
 
         /// <summary>
@@ -117,7 +77,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>;
+            return this.List();
         }
 
         /// <summary>
@@ -126,7 +86,47 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IKubernetesCluster>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IKubernetesCluster>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
+        }
+
+        /// <summary>
+        /// Lists resources of the specified type in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
+        /// <return>The list of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroup(string resourceGroupName)
+        {
+            return this.ListByResourceGroup(resourceGroupName);
+        }
+
+        /// <summary>
+        /// Lists resources of the specified type in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
+        /// <return>The list of resources.</return>
+        async Task<IPagedCollection<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
+        {
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns the list of available Kubernetes versions available for the given Azure region.
+        /// </summary>
+        /// <param name="region">The Azure region to query into.</param>
+        /// <return>A set of Kubernetes versions which can be used when creating a service in this region.</return>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersions(Region region)
+        {
+            return this.ListKubernetesVersions(region);
+        }
+
+        /// <summary>
+        /// Returns the list of available Kubernetes versions available for the given Azure region.
+        /// </summary>
+        /// <param name="region">The Azure region to query into.</param>
+        /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
+        async Task<System.Collections.Generic.ISet<string>> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken)
+        {
+            return await this.ListKubernetesVersionsAsync(region, cancellationToken);
         }
     }
 }

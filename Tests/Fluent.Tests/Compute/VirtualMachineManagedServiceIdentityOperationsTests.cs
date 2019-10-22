@@ -12,6 +12,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace Fluent.Tests.Compute.VirtualMachine
@@ -54,33 +55,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    IVirtualMachineExtension msiExtension = null;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            msiExtension = extension;
-                            break;
-                        }
-                    }
-                    Assert.NotNull(msiExtension);
-
-                    // Check the default token port
-                    //
-                    var publicSettings = msiExtension.PublicSettings;
-                    Assert.NotNull(publicSettings);
-                    Assert.True(publicSettings.ContainsKey("port"));
-                    Object portObj = publicSettings["port"];
-                    Assert.NotNull(portObj);
-                    int? port = ObjectToInteger(portObj);
-                    Assert.True(port.HasValue);
-                    Assert.NotNull(port);
-                    Assert.Equal(50342, port);
-
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
 
                     // Ensure NO role assigned for resource group
@@ -100,7 +74,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.False(found, "Resource group should not have a role assignment with virtual machine MSI principal");
 
                     virtualMachine = virtualMachine.Update()
-                        .WithSystemAssignedManagedServiceIdentity(50343)
+                        .WithSystemAssignedManagedServiceIdentity()
                         .Apply();
 
                     Assert.NotNull(virtualMachine);
@@ -108,31 +82,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
-
-                    extensions = virtualMachine.ListExtensions();
-                    msiExtension = null;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            msiExtension = extension;
-                            break;
-                        }
-                    }
-                    Assert.NotNull(msiExtension);
-                    // Check the default token port
-                    //
-                    publicSettings = msiExtension.PublicSettings;
-                    Assert.NotNull(publicSettings);
-                    Assert.True(publicSettings.ContainsKey("port"));
-                    portObj = publicSettings["port"];
-                    Assert.NotNull(portObj);
-                    port = ObjectToInteger(portObj);
-                    Assert.True(port.HasValue);
-                    Assert.NotNull(port);
-                    Assert.Equal(50343, port);
-
+                    
                     rgRoleAssignments1 = authenticatedClient.RoleAssignments.ListByScope(resourceGroup.Id);
                     Assert.NotNull(rgRoleAssignments1);
                     found = false;
@@ -198,29 +148,17 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // Validate service created service principal
-                    //
-                    IServicePrincipal servicePrincipal = authenticatedClient
-                            .ServicePrincipals
-                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
+                    //IServicePrincipal servicePrincipal = authenticatedClient
+                    //        .ServicePrincipals
+                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    Assert.NotNull(servicePrincipal);
-                    Assert.NotNull(servicePrincipal.Inner);
-
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
+                    //Assert.NotNull(servicePrincipal);
+                    //Assert.NotNull(servicePrincipal.Inner);
 
                     // Ensure role assigned
                     //
@@ -258,7 +196,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var groupName = TestUtilities.GenerateName("rgmsi");
                 var storageAccountName = TestUtilities.GenerateName("ja");
-                var region = Region.USSouthCentral;
+                var region = Region.USEast2;
                 var vmName = "javavm";
                 IAzure azure = null;
                 try
@@ -292,31 +230,18 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
-                    // Validate service created service principal
-                    //
-                    IServicePrincipal servicePrincipal = authenticatedClient
-                            .ServicePrincipals
-                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    // TODO: Renable the below code snippet: https://github.com/Azure/azure-libraries-for-net/issues/739
+                    // 
+                    //  Comment out since the below code need external tennat.
+                    // 
+                    ////
+                    //IServicePrincipal servicePrincipal = authenticatedClient
+                    //        .ServicePrincipals
+                    //        .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
-                    Assert.NotNull(servicePrincipal);
-                    Assert.NotNull(servicePrincipal.Inner);
+                    //Assert.NotNull(servicePrincipal);
+                    //Assert.NotNull(servicePrincipal.Inner);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
-
-                    
                     // Ensure role assigned for resource group
                     //
 
@@ -369,7 +294,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var groupName = TestUtilities.GenerateName("rgmsi");
                 var storageAccountName = TestUtilities.GenerateName("ja");
-                var region = Region.USSouthCentral;
+                var region = Region.USEast2;
                 var vmName = "javavm";
                 IAzure azure = null;
                 try
@@ -395,21 +320,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
-
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    bool extensionFound = false;
-                    foreach (var extension in extensions.Values)
-                    {
-                        if (extension.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && extension.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase))
-                        {
-                            extensionFound = true;
-                            break;
-                        }
-                    }
-                    Assert.True(extensionFound);
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
                     // Ensure NO role assigned for resource group
