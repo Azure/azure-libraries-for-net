@@ -30,9 +30,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <param name="location">the location of the deployment.</param>
         /// <param name="properties">Deployment properties.</param>
         public DeploymentExtendedInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), DeploymentPropertiesExtended properties = default(DeploymentPropertiesExtended))
-            : base(id, name, type)
+            : base(location, id, name, type)
         {
-            Location = location;
             Properties = properties;
             CustomInit();
         }
@@ -41,12 +40,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets the location of the deployment.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets deployment properties.
