@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
         /// <summary>
         /// Uploads a PFX certificate.
         /// </summary>
-        /// <param name="pfxByteArray">The PFX byte array.</param>
+        /// <param name="pfxByteArray">The byte array that contains data from the PFX certificate to upload.</param>
         /// <param name="password">The password to the certificate.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IWithSslType<ParentT> WithPfxByteArrayToUpload(byte[] pfxByteArray, string password);
