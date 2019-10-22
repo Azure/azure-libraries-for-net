@@ -47,7 +47,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to create or update.
+            /// The name of the resource group to create or update. Can include
+            /// alphanumeric, underscore, parentheses, hyphen, period (except at end), and
+            /// Unicode characters that match the allowed characters.
             /// </param>
             /// <param name='parameters'>
             /// Parameters supplied to the create or update a resource group.
@@ -125,7 +127,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResourceGroupInner> UpdateAsync(this IResourceGroupsOperations operations, string resourceGroupName, ResourceGroupPatchableInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ResourceGroupInner> UpdateAsync(this IResourceGroupsOperations operations, string resourceGroupName, ResourceGroupPatchable parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to export as a template.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='parameters'>
             /// Parameters for exporting the template.
@@ -148,7 +150,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResourceGroupExportResultInner> ExportTemplateAsync(this IResourceGroupsOperations operations, string resourceGroupName, ExportTemplateRequestInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ResourceGroupExportResultInner> ExportTemplateAsync(this IResourceGroupsOperations operations, string resourceGroupName, ExportTemplateRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ExportTemplateWithHttpMessagesAsync(resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -168,7 +170,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceGroupInner>> ListAsync(this IResourceGroupsOperations operations, ODataQuery<ResourceGroupFilterInner> odataQuery = default(ODataQuery<ResourceGroupFilterInner>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceGroupInner>> ListAsync(this IResourceGroupsOperations operations, ODataQuery<ResourceGroupFilter> odataQuery = default(ODataQuery<ResourceGroupFilter>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -196,6 +198,29 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             public static async Task BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Captures the specified resource group as a template.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for exporting the template.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ResourceGroupExportResultInner> BeginExportTemplateAsync(this IResourceGroupsOperations operations, string resourceGroupName, ExportTemplateRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginExportTemplateWithHttpMessagesAsync(resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>

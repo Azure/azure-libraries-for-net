@@ -14,23 +14,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Resource filter.
     /// </summary>
-    public partial class GenericResourceFilterInner
+    public partial class GenericResourceFilter
     {
         /// <summary>
-        /// Initializes a new instance of the GenericResourceFilterInner class.
+        /// Initializes a new instance of the GenericResourceFilter class.
         /// </summary>
-        public GenericResourceFilterInner()
+        public GenericResourceFilter()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GenericResourceFilterInner class.
+        /// Initializes a new instance of the GenericResourceFilter class.
         /// </summary>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="tagname">The tag name.</param>
         /// <param name="tagvalue">The tag value.</param>
-        public GenericResourceFilterInner(string resourceType = default(string), string tagname = default(string), string tagvalue = default(string))
+        public GenericResourceFilter(string resourceType = default(string), string tagname = default(string), string tagvalue = default(string))
         {
             ResourceType = resourceType;
             Tagname = tagname;

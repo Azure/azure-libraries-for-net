@@ -37,8 +37,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// deployment.</param>
         /// <param name="timestamp">The timestamp of the template
         /// deployment.</param>
-        /// <param name="outputs">Key/value pairs that represent
-        /// deploymentoutput.</param>
+        /// <param name="duration">The duration of the template
+        /// deployment.</param>
+        /// <param name="outputs">Key/value pairs that represent deployment
+        /// output.</param>
         /// <param name="providers">The list of resource providers needed for
         /// the deployment.</param>
         /// <param name="dependencies">The list of deployment
@@ -56,11 +58,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// 'Complete'</param>
         /// <param name="debugSetting">The debug setting of the
         /// deployment.</param>
-        public DeploymentPropertiesExtended(string provisioningState = default(string), string correlationId = default(string), System.DateTime? timestamp = default(System.DateTime?), object outputs = default(object), IList<ProviderInner> providers = default(IList<ProviderInner>), IList<Dependency> dependencies = default(IList<Dependency>), object template = default(object), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DeploymentMode? mode = default(DeploymentMode?), DebugSetting debugSetting = default(DebugSetting))
+        /// <param name="onErrorDeployment">The deployment on error
+        /// behavior.</param>
+        public DeploymentPropertiesExtended(string provisioningState = default(string), string correlationId = default(string), System.DateTime? timestamp = default(System.DateTime?), string duration = default(string), object outputs = default(object), IList<ProviderInner> providers = default(IList<ProviderInner>), IList<Dependency> dependencies = default(IList<Dependency>), object template = default(object), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DeploymentMode? mode = default(DeploymentMode?), DebugSetting debugSetting = default(DebugSetting), OnErrorDeploymentExtended onErrorDeployment = default(OnErrorDeploymentExtended))
         {
             ProvisioningState = provisioningState;
             CorrelationId = correlationId;
             Timestamp = timestamp;
+            Duration = duration;
             Outputs = outputs;
             Providers = providers;
             Dependencies = dependencies;
@@ -70,6 +75,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
             ParametersLink = parametersLink;
             Mode = mode;
             DebugSetting = debugSetting;
+            OnErrorDeployment = onErrorDeployment;
             CustomInit();
         }
 
@@ -97,7 +103,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         public System.DateTime? Timestamp { get; private set; }
 
         /// <summary>
-        /// Gets or sets key/value pairs that represent deploymentoutput.
+        /// Gets the duration of the template deployment.
+        /// </summary>
+        [JsonProperty(PropertyName = "duration")]
+        public string Duration { get; private set; }
+
+        /// <summary>
+        /// Gets or sets key/value pairs that represent deployment output.
         /// </summary>
         [JsonProperty(PropertyName = "outputs")]
         public object Outputs { get; set; }
@@ -155,6 +167,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "debugSetting")]
         public DebugSetting DebugSetting { get; set; }
+
+        /// <summary>
+        /// Gets or sets the deployment on error behavior.
+        /// </summary>
+        [JsonProperty(PropertyName = "onErrorDeployment")]
+        public OnErrorDeploymentExtended OnErrorDeployment { get; set; }
 
         /// <summary>
         /// Validate the object.

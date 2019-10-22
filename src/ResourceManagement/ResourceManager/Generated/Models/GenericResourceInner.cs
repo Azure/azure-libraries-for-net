@@ -9,7 +9,6 @@
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Resource information.
     /// </summary>
-    public partial class GenericResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class GenericResourceInner : Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the GenericResourceInner class.
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
             if (Kind != null)
             {

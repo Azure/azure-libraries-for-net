@@ -95,6 +95,35 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<ProviderInner>>> ListWithHttpMessagesAsync(int? top = default(int?), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets all resource providers for the tenant.
+        /// </summary>
+        /// <param name='top'>
+        /// The number of results to return. If null is passed returns all
+        /// providers.
+        /// </param>
+        /// <param name='expand'>
+        /// The properties to include in the results. For example, use
+        /// &amp;$expand=metadata in the query string to retrieve resource
+        /// provider metadata. To include property aliases in response, use
+        /// $expand=resourceTypes/aliases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ProviderInner>>> ListAtTenantScopeWithHttpMessagesAsync(int? top = default(int?), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets the specified resource provider.
         /// </summary>
         /// <param name='resourceProviderNamespace'>
@@ -121,6 +150,32 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </exception>
         Task<AzureOperationResponse<ProviderInner>> GetWithHttpMessagesAsync(string resourceProviderNamespace, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the specified resource provider at the tenant level.
+        /// </summary>
+        /// <param name='resourceProviderNamespace'>
+        /// The namespace of the resource provider.
+        /// </param>
+        /// <param name='expand'>
+        /// The $expand query parameter. For example, to include property
+        /// aliases in response, use $expand=resourceTypes/aliases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ProviderInner>> GetAtTenantScopeWithHttpMessagesAsync(string resourceProviderNamespace, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets all resource providers for a subscription.
         /// </summary>
         /// <param name='nextPageLink'>
@@ -142,5 +197,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<ProviderInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets all resource providers for the tenant.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ProviderInner>>> ListAtTenantScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

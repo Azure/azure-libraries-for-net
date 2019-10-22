@@ -9,6 +9,8 @@
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -31,12 +33,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// identity.</param>
         /// <param name="tenantId">The tenant ID of resource.</param>
         /// <param name="type">The identity type. Possible values include:
-        /// 'SystemAssigned'</param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?))
+        /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+        /// 'None'</param>
+        /// <param name="userAssignedIdentities">The list of user identities
+        /// associated with the resource. The user identity dictionary key
+        /// references will be ARM resource ids in the form:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, IdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, IdentityUserAssignedIdentitiesValue>))
         {
             PrincipalId = principalId;
             TenantId = tenantId;
             Type = type;
+            UserAssignedIdentities = userAssignedIdentities;
             CustomInit();
         }
 
@@ -59,10 +67,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
 
         /// <summary>
         /// Gets or sets the identity type. Possible values include:
-        /// 'SystemAssigned'
+        /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+        /// 'None'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public ResourceIdentityType? Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of user identities associated with the
+        /// resource. The user identity dictionary key references will be ARM
+        /// resource ids in the form:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        [JsonProperty(PropertyName = "userAssignedIdentities")]
+        public IDictionary<string, IdentityUserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
 
     }
 }

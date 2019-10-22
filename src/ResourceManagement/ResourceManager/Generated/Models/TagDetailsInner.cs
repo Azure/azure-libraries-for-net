@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the tag ID.
+        /// Gets the tag ID.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
         /// <summary>
         /// Gets or sets the tag name.

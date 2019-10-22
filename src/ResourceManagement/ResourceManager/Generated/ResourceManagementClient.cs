@@ -17,13 +17,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// Provides operations for working with resources and resource groups.
     /// </summary>
-    public partial class ResourceManagementClient : FluentServiceClientBase<ResourceManagementClient>, IResourceManagementClient, IAzureClient
+    public partial class ResourceManagementClient : Fluent.Core.FluentServiceClientBase<ResourceManagementClient>, IResourceManagementClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -34,7 +32,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// The ID of the target subscription.
         /// </summary>
@@ -46,21 +44,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the IDeploymentsOperations.
@@ -98,8 +102,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ResourceManagementClient(RestClient restClient) 
-            : base(restClient)
+        public ResourceManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -112,14 +115,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         protected override void Initialize()
         {
+            Operations = new Operations(this);
             Deployments = new DeploymentsOperations(this);
             Providers = new ProvidersOperations(this);
             Resources = new ResourcesOperations(this);
             ResourceGroups = new ResourceGroupsOperations(this);
             Tags = new TagsOperations(this);
             DeploymentOperations = new DeploymentOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2017-05-10";
+            this.BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2019-08-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -136,6 +140,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -149,6 +154,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     }
             };
             CustomInitialize();
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
     }

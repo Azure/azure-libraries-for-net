@@ -25,6 +25,806 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// </summary>
             /// <remarks>
             /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteAtScopeWithHttpMessagesAsync(scope, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Checks whether the deployment exists.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<bool> CheckExistenceAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckExistenceAtScopeWithHttpMessagesAsync(scope, deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deploys resources at a given scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> GetAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAtScopeWithHttpMessagesAsync(scope, deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Cancels a currently running template deployment.
+            /// </summary>
+            /// <remarks>
+            /// You can cancel a deployment only if the provisioningState is Accepted or
+            /// Running. After the deployment is canceled, the provisioningState is set to
+            /// Canceled. Canceling a template deployment stops the currently running
+            /// template deployment and leaves the resources partially deployed.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CancelAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CancelAtScopeWithHttpMessagesAsync(scope, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> ValidateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ValidateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Exports the template used for specified deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExportResultInner> ExportTemplateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ExportTemplateAtScopeWithHttpMessagesAsync(scope, deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments at the given scope.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtScopeAsync(this IDeploymentsOperations operations, string scope, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtScopeWithHttpMessagesAsync(scope, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteAtTenantScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Checks whether the deployment exists.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<bool> CheckExistenceAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckExistenceAtTenantScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deploys resources at tenant scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> GetAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAtTenantScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Cancels a currently running template deployment.
+            /// </summary>
+            /// <remarks>
+            /// You can cancel a deployment only if the provisioningState is Accepted or
+            /// Running. After the deployment is canceled, the provisioningState is set to
+            /// Canceled. Canceling a template deployment stops the currently running
+            /// template deployment and leaves the resources partially deployed.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CancelAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CancelAtTenantScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> ValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Exports the template used for specified deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExportResultInner> ExportTemplateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ExportTemplateAtTenantScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments at the tenant scope.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtTenantScopeAsync(this IDeploymentsOperations operations, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtTenantScopeWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Checks whether the deployment exists.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<bool> CheckExistenceAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckExistenceAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deploys resources at management group scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> GetAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Cancels a currently running template deployment.
+            /// </summary>
+            /// <remarks>
+            /// You can cancel a deployment only if the provisioningState is Accepted or
+            /// Running. After the deployment is canceled, the provisioningState is set to
+            /// Canceled. Canceling a template deployment stops the currently running
+            /// template deployment and leaves the resources partially deployed.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CancelAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CancelAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> ValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Exports the template used for specified deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExportResultInner> ExportTemplateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ExportTemplateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments for a management group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtManagementGroupScopeWithHttpMessagesAsync(groupId, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Checks whether the deployment exists.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<bool> CheckExistenceAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckExistenceAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deploys resources at subscription scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> GetAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Cancels a currently running template deployment.
+            /// </summary>
+            /// <remarks>
+            /// You can cancel a deployment only if the provisioningState is Accepted or
+            /// Running. After the deployment is canceled, the provisioningState is set to
+            /// Canceled. Canceling a template deployment stops the currently running
+            /// template deployment and leaves the resources partially deployed.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CancelAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CancelAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> ValidateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ValidateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to What If.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> WhatIfAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.WhatIfAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Exports the template used for specified deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExportResultInner> ExportTemplateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ExportTemplateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments for a subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtSubscriptionScopeAsync(this IDeploymentsOperations operations, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtSubscriptionScopeWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
             /// a template deployment removes the associated deployment operations.
             /// Deleting a template deployment does not affect the state of the resource
             /// group. This is an asynchronous operation that returns a status of 202 until
@@ -43,7 +843,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// case insensitive.
             /// </param>
             /// <param name='deploymentName'>
-            /// The name of the deployment to delete.
+            /// The name of the deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -64,7 +864,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// case insensitive.
             /// </param>
             /// <param name='deploymentName'>
-            /// The name of the deployment to check.
+            /// The name of the deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -94,15 +894,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='deploymentName'>
             /// The name of the deployment.
             /// </param>
-            /// <param name='properties'>
-            /// The deployment properties.
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentExtendedInner> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentPropertiesInner properties, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, properties, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -118,7 +918,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='deploymentName'>
-            /// The name of the deployment to get.
+            /// The name of the deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -147,7 +947,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='deploymentName'>
-            /// The name of the deployment to cancel.
+            /// The name of the deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -171,15 +971,43 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='deploymentName'>
             /// The name of the deployment.
             /// </param>
-            /// <param name='properties'>
-            /// The deployment properties.
+            /// <param name='parameters'>
+            /// Parameters to validate.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentValidateResultInner> ValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentPropertiesInner properties, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentValidateResultInner> ValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, properties, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group the template will be deployed to. The name
+            /// is case insensitive.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> WhatIfAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.WhatIfWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -195,7 +1023,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='deploymentName'>
-            /// The name of the deployment from which to get the template.
+            /// The name of the deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -224,9 +1052,285 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DeploymentExtendedInner>> ListByResourceGroupAsync(this IDeploymentsOperations operations, string resourceGroupName, ODataQuery<DeploymentExtendedFilterInner> odataQuery = default(ODataQuery<DeploymentExtendedFilterInner>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DeploymentExtendedInner>> ListByResourceGroupAsync(this IDeploymentsOperations operations, string resourceGroupName, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Calculate the hash of the given template.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='template'>
+            /// The template provided to calculate hash.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TemplateHashResultInner> CalculateTemplateHashAsync(this IDeploymentsOperations operations, object template, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CalculateTemplateHashWithHttpMessagesAsync(template, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteAtScopeWithHttpMessagesAsync(scope, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Deploys resources at a given scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of a deployment.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteAtTenantScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Deploys resources at tenant scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Deploys resources at management group scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a deployment from the deployment history.
+            /// </summary>
+            /// <remarks>
+            /// A template deployment that is currently running cannot be deleted. Deleting
+            /// a template deployment removes the associated deployment operations. This is
+            /// an asynchronous operation that returns a status of 202 until the template
+            /// deployment is successfully deleted. The Location response header contains
+            /// the URI that is used to obtain the status of the process. While the process
+            /// is running, a call to the URI in the Location header returns a status of
+            /// 202. When the process finishes, the URI in the Location header returns a
+            /// status of 204 on success. If the asynchronous request failed, the URI in
+            /// the Location header returns an error-level status code.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Deploys resources at subscription scope.
+            /// </summary>
+            /// <remarks>
+            /// You can provide the template and parameters directly in the request or link
+            /// to JSON files.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to What If.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> BeginWhatIfAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginWhatIfAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -255,7 +1359,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// case insensitive.
             /// </param>
             /// <param name='deploymentName'>
-            /// The name of the deployment to delete.
+            /// The name of the deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -282,15 +1386,123 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='deploymentName'>
             /// The name of the deployment.
             /// </param>
-            /// <param name='properties'>
-            /// The deployment properties.
+            /// <param name='parameters'>
+            /// Additional parameters supplied to the operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentPropertiesInner properties, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, properties, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group the template will be deployed to. The name
+            /// is case insensitive.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> BeginWhatIfAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginWhatIfWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments at the given scope.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtScopeNextAsync(this IDeploymentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtScopeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments at the tenant scope.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtTenantScopeNextAsync(this IDeploymentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtTenantScopeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments for a management group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtManagementGroupScopeNextAsync(this IDeploymentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtManagementGroupScopeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all the deployments for a subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeploymentExtendedInner>> ListAtSubscriptionScopeNextAsync(this IDeploymentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAtSubscriptionScopeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

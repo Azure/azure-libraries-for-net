@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Resource group filter.
     /// </summary>
-    public partial class ResourceGroupFilterInner
+    public partial class ResourceGroupFilter
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupFilterInner class.
+        /// Initializes a new instance of the ResourceGroupFilter class.
         /// </summary>
-        public ResourceGroupFilterInner()
+        public ResourceGroupFilter()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupFilterInner class.
+        /// Initializes a new instance of the ResourceGroupFilter class.
         /// </summary>
         /// <param name="tagName">The tag name.</param>
         /// <param name="tagValue">The tag value.</param>
-        public ResourceGroupFilterInner(string tagName = default(string), string tagValue = default(string))
+        public ResourceGroupFilter(string tagName = default(string), string tagValue = default(string))
         {
             TagName = tagName;
             TagValue = tagValue;
