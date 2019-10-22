@@ -6,18 +6,18 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent;
+using Microsoft.Azure.Management.Network.Fluent.Models;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Renci.SshNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Management.Network.Fluent.Models;
 using Xunit;
-using Microsoft.Azure.Management.Storage.Fluent;
 
 namespace Fluent.Tests.Compute.VirtualMachine
 {
@@ -875,5 +875,87 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
+        [Fact]
+        public void CanEncrypt()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rgName = TestUtilities.GenerateName("rg");
+                var vmName = TestUtilities.GenerateName("vm");
+                var pipName = TestUtilities.GenerateName("pip");
+                var vaultName = TestUtilities.GenerateName("vlt");
+                var keyName = TestUtilities.GenerateName("key");
+                var region = Region.USEast;
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var credentials = SdkContext.AzureCredentialsFactory.FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
+
+                    // windows
+                    var vault = azure.Vaults.Define(vaultName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .DefineAccessPolicy()
+                            .ForServicePrincipal(credentials.ClientId)
+                            .AllowCertificateAllPermissions()
+                            .AllowKeyAllPermissions()
+                            .AllowSecretAllPermissions()
+                            .Attach()
+                        .WithDiskEncryptionEnabled()
+                        .Create();
+
+                    var vm = azure.VirtualMachines.Define(vmName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/24")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithNewPrimaryPublicIPAddress(pipName)
+                        .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2008R2_SP1)
+                        .WithAdminUsername("Foo12")
+                        .WithAdminPassword("abc!@#F0orL")
+                        .WithSize(VirtualMachineSizeTypes.StandardE2sV3)
+                        .Create();
+
+                    vm.DiskEncryption.Enable(vault.Id);
+
+                    Assert.Equal(EncryptionStatus.Encrypted, vm.DiskEncryption.GetMonitor().OSDiskStatus);
+
+                    vm.DiskEncryption.Disable(DiskVolumeType.All);
+
+                    Assert.Equal(EncryptionStatus.NotEncrypted, vm.DiskEncryption.GetMonitor().OSDiskStatus);
+
+                    //linux                
+                    vmName = TestUtilities.GenerateName("vm");
+                    pipName = TestUtilities.GenerateName("pip");
+
+                    vm = azure.VirtualMachines.Define(vmName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/24")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithNewPrimaryPublicIPAddress(pipName)
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithSize(VirtualMachineSizeTypes.StandardE2sV3)
+                        .Create();
+
+                    vm.DiskEncryption.Enable(vault.Id);
+
+                    Assert.NotEqual(EncryptionStatus.NotEncrypted, vm.DiskEncryption.GetMonitor().OSDiskStatus);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch
+                    { }
+                }
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// The implementation for DiskVolumeEncryptionStatus for Windows virtual machine.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uV2luZG93c1ZvbHVtZUVuY3J5cHRpb25Nb25pdG9ySW1wbA==
-    internal partial class WindowsVolumeEncryptionMonitorImpl :
+    internal partial class WindowsVolumeLegacyEncryptionMonitorImpl :
         IDiskVolumeEncryptionMonitor
     {
         private string rgName;
@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 foreach (var extension in virtualMachine.Resources)
                 {
-                    if (extension.Publisher.Equals("Microsoft.Azure.Security", StringComparison.OrdinalIgnoreCase)
-                            && extension.VirtualMachineExtensionType.Equals("AzureDiskEncryption", StringComparison.OrdinalIgnoreCase))
+                    if (EncryptionExtensionIdentifier.IsEncryptionPublisherName(extension.Publisher)
+                            && EncryptionExtensionIdentifier.IsEncryptionTypeName(extension.VirtualMachineExtensionType, OperatingSystemTypes.Windows))
                     {
                         this.encryptionExtension = extension;
                         break;
@@ -155,12 +155,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Creates WindowsVolumeEncryptionMonitorImpl.
+        /// Creates WindowsVolumeLegacyEncryptionMonitorImpl.
         /// </summary>
         /// <param name="virtualMachineId">Resource id of Windows virtual machine to retrieve encryption status from.</param>
         /// <param name="computeManager">Compute manager.</param>
         ///GENMHASH:F0AB482101B80764DF92472E6DF90604:0C2BFB2332C823A9307222D73EFBAF83
-        internal WindowsVolumeEncryptionMonitorImpl(string virtualMachineId, IComputeManager computeManager)
+        internal WindowsVolumeLegacyEncryptionMonitorImpl(string virtualMachineId, IComputeManager computeManager)
         {
             this.rgName = ResourceUtils.GroupFromResourceId(virtualMachineId);
             this.vmName = ResourceUtils.NameFromResourceId(virtualMachineId);

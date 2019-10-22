@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class LinuxDiskVolumeEncryptionMonitorImpl
+    internal partial class LinuxDiskVolumeNoAADEncryptionMonitorImpl
     {
         /// <summary>
         /// Gets data disks encryption status.
