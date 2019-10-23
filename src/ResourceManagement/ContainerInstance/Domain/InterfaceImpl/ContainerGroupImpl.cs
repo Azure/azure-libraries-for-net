@@ -510,6 +510,35 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the container group.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the container group update.</return>
+        ContainerGroup.Update.IUpdate ContainerGroup.Update.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
+        }
+
+        /// <summary>
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be disabled.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ContainerGroup.Update.IUpdate ContainerGroup.Update.IWithSystemAssignedManagedServiceIdentity.WithoutSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithoutSystemAssignedManagedServiceIdentity();
+        }
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the container group should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        ContainerGroup.Update.IUpdate ContainerGroup.Update.IWithUserAssignedManagedServiceIdentity.WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId);
+        }
+
+        /// <summary>
         /// Specifies this is a Linux container group.
         /// </summary>
         /// <return>The next stage of the definition.</return>
@@ -576,6 +605,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the container group.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the container group update.</return>
+        ContainerGroup.Update.IUpdate ContainerGroup.Update.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
+        }
+
+        /// <summary>
         /// Skips the definition of volumes to be shared by the container instances.
         /// An IllegalArgumentException will be thrown if a container instance attempts to define a volume mounting.
         /// </summary>
@@ -622,7 +661,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <param name="resourceId">The id of the resource you are setting up access to.</param>
         /// <param name="role">Access role to be assigned to the identity.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
+        }
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to a specific resource with a specified role.
+        /// </summary>
+        /// <param name="resourceId">The id of the resource you are setting up access to.</param>
+        /// <param name="role">Access role to be assigned to the identity.</param>
+        /// <return>The next stage of the update definition.</return>
+        ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
             return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
         }
@@ -633,7 +683,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <param name="resourceId">The id of the resource you are setting up access to.</param>
         /// <param name="roleDefinitionId">Id of the access role to be assigned to the identity.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
+        }
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to a specific resource with a specified role from the id.
+        /// </summary>
+        /// <param name="resourceId">The id of the resource you are setting up access to.</param>
+        /// <param name="roleDefinitionId">Id of the access role to be assigned to the identity.</param>
+        /// <return>The next stage of the update definition.</return>
+        ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
             return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
@@ -643,7 +704,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <param name="role">Access role to be assigned to the identity.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
+        }
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to the current resource group and with the specified role.
+        /// </summary>
+        /// <param name="role">Access role to be assigned to the identity.</param>
+        /// <return>The next stage of the update definition.</return>
+        ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
             return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
@@ -653,7 +724,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <param name="roleDefinitionId">Id of the access role to be assigned to the identity.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreateBeta.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
+        }
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity with access to the current resource group and with the specified role from the id.
+        /// </summary>
+        /// <param name="roleDefinitionId">Id of the access role to be assigned to the identity.</param>
+        /// <return>The next stage of the update definition.</return>
+        ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
             return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
@@ -663,6 +744,15 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate ContainerGroup.Definition.IWithSystemAssignedManagedServiceIdentityBeta.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity();
+        }
+
+        /// <summary>
+        /// Specifies a system assigned managed service identity for the container group.
+        /// </summary>
+        /// <return>The next stage of the update definition.</return>
+        ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate ContainerGroup.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
             return this.WithSystemAssignedManagedServiceIdentity();
         }

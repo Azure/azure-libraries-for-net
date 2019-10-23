@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     /// Implementation for ContainerGroup and its create interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcmluc3RhbmNlLmltcGxlbWVudGF0aW9uLkNvbnRhaW5lckdyb3VwSW1wbA==
-    internal partial class ContainerGroupImpl  :
+    internal partial class ContainerGroupImpl :
         GroupableResource<
             IContainerGroup,
             ContainerGroupInner,
@@ -36,7 +36,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             IUpdate>,
         IContainerGroup,
         IDefinition,
-        IUpdate
+        IUpdate,
+        ContainerGroup.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate,
+        ContainerGroup.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate
     {
         private IStorageManager storageManager;
         private string creatableStorageAccountKey;
@@ -80,7 +82,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             ResourceIdentityType? type = this.ManagedServiceIdentityType();
             return type != null && type != ResourceIdentityType.None;
         }
-        public LogAnalytics LogAnalytics() {
+        public LogAnalytics LogAnalytics()
+        {
             return this.Inner.Diagnostics.LogAnalytics;
         }
 
@@ -93,7 +96,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return null;
         }
 
-        public string NetworkProfileId() {
+        public string NetworkProfileId()
+        {
             return this.Inner.NetworkProfile.Id;
         }
 
@@ -323,9 +327,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 var resourceInner = new ResourceInner();
                 resourceInner.Location = this.RegionName;
                 resourceInner.Tags = this.Inner.Tags;
-                var updatedInner = await this.Manager.Inner.ContainerGroups.UpdateAsync(this.ResourceGroupName, this.Name, resourceInner, cancellationToken: cancellationToken);
                 // TODO: this will go away after service fixes the update bug
-                updatedInner = await this.GetInnerAsync(cancellationToken);
+                // Tags could only be updated by PATCH request
+                var updatedInner = await this.Manager.Inner.ContainerGroups.UpdateAsync(this.ResourceGroupName, this.Name, resourceInner, cancellationToken: cancellationToken);
+                // Container Env Could not be updated due to service problem
+                foreach (var container in this.Inner.Containers)
+                {
+                    container.EnvironmentVariables = null;
+                }
+
+                updatedInner = await this.Manager.Inner.ContainerGroups.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken: cancellationToken);
+
+                updatedInner = await GetInnerAsync(cancellationToken);
                 SetInner(updatedInner);
                 this.InitializeChildrenFromInner();
 
@@ -546,37 +559,37 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return new ContainerExecResponseImpl(containerExecResponseInner);
         }
 
-        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedManagedServiceIdentity()
+        public ContainerGroupImpl WithSystemAssignedManagedServiceIdentity()
         {
             this.containerGroupMsiHandler.WithLocalManagedServiceIdentity();
             return this;
         }
 
-        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        public ContainerGroupImpl WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
             this.containerGroupMsiHandler.WithAccessTo(resourceId, role);
             return this;
         }
 
-        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        public ContainerGroupImpl WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
             this.containerGroupMsiHandler.WithAccessTo(resourceId, roleDefinitionId);
             return this;
         }
 
-        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        public ContainerGroupImpl WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
             this.containerGroupMsiHandler.WithAccessToCurrentResourceGroup(role);
             return this;
         }
 
-        public IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        public ContainerGroupImpl WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
             this.containerGroupMsiHandler.WithAccessToCurrentResourceGroup(roleDefinitionId);
             return this;
         }
 
-        public IWithCreate WithDnsConfiguration(IList<string> dnsServerNames, string dnsSearchDomains, string dnsOptions)
+        public ContainerGroupImpl WithDnsConfiguration(IList<string> dnsServerNames, string dnsSearchDomains, string dnsOptions)
         {
             DnsConfiguration dnsConfiguration = new DnsConfiguration();
             dnsConfiguration.NameServers = dnsServerNames;
@@ -586,7 +599,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
-        public IWithCreate WithDnsServerNames(IList<string> dnsServerNames)
+        public ContainerGroupImpl WithDnsServerNames(IList<string> dnsServerNames)
         {
             DnsConfiguration dnsConfiguration = new DnsConfiguration();
             dnsConfiguration.NameServers = dnsServerNames;
@@ -594,19 +607,19 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
-        public IWithCreate WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        public ContainerGroupImpl WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
             this.containerGroupMsiHandler.WithExistingExternalManagedServiceIdentity(identity);
             return this;
         }
 
-        public IWithCreate WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        public ContainerGroupImpl WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
         {
             this.containerGroupMsiHandler.WithNewExternalManagedServiceIdentity(creatableIdentity);
             return this;
         }
 
-        public IDnsConfigFork WithNetworkProfileId(string subscriptionId, string resourceGroupName, string networkProfileName)
+        public ContainerGroupImpl WithNetworkProfileId(string subscriptionId, string resourceGroupName, string networkProfileName)
         {
             String networkProfileId = "/subscriptions/" + subscriptionId + "/resourceGroups/" + resourceGroupName + "/providers/Microsoft.Network/networkProfiles/" + networkProfileName;
             ContainerGroupNetworkProfile containerGroupNetworkProfile = new ContainerGroupNetworkProfile();
@@ -620,7 +633,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
-        public IWithCreate WithLogAnalytics(string workspaceId, string workspaceKey)
+        public ContainerGroupImpl WithLogAnalytics(string workspaceId, string workspaceKey)
         {
             LogAnalytics logAnalytics = new LogAnalytics();
             logAnalytics.WorkspaceId = workspaceId;
@@ -630,7 +643,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
-        public IWithCreate WithLogAnalytics(string workspaceId, string workspaceKey, LogAnalyticsLogType logType, IDictionary<string, string> metadata)
+        public ContainerGroupImpl WithLogAnalytics(string workspaceId, string workspaceKey, LogAnalyticsLogType logType, IDictionary<string, string> metadata)
         {
             LogAnalytics logAnalytics = new LogAnalytics();
             logAnalytics.WorkspaceId = workspaceId;
@@ -639,6 +652,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             logAnalytics.Metadata = metadata;
             this.Inner.Diagnostics = new ContainerGroupDiagnostics();
             this.Inner.Diagnostics.LogAnalytics = logAnalytics;
+            return this;
+        }
+
+        public ContainerGroupImpl WithoutSystemAssignedManagedServiceIdentity()
+        {
+            this.containerGroupMsiHandler.WithoutLocalManagedServiceIdentity();
+            return this;
+        }
+
+        public ContainerGroupImpl WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            this.containerGroupMsiHandler.WithoutExternalManagedServiceIdentity(identityId);
             return this;
         }
     }
