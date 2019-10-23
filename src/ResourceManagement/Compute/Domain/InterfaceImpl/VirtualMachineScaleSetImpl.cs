@@ -88,6 +88,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the billing profile.
+        /// </summary>
+        BillingProfile IVirtualMachineScaleSetBeta.BillingProfile
+        {
+            get
+            {
+                return this.BillingProfile();
+            }
+        }
+
+        /// <summary>
         /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine scale set.
         /// </summary>
         string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.BootDiagnosticsStorageUri
@@ -1260,6 +1271,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
         {
             return this.WithLowPriorityVirtualMachine(policy);
+        }
+
+        /// <summary>
+        /// Specifies the billing related details of the low priority virtual machines in the scale set.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBillingProfile.WithMaxPrice(double? maxPrice)
+        {
+            return this.WithMaxPrice(maxPrice);
+        }
+
+        /// <summary>
+        /// Specifies the billing related details of the low priority virtual machines in the scale set.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBillingProfile.WithMaxPrice(double? maxPrice)
+        {
+            return this.WithMaxPrice(maxPrice);
         }
 
         /// <summary>

@@ -410,6 +410,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPlan,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithBootDiagnostics,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPriority,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithBillingProfile,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLicenseType
@@ -1098,6 +1100,45 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="zoneId">The zone identifier.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine definition allowing to specify priority.
+    /// </summary>
+    public interface IWithPriority
+    {
+        /// <summary>
+        /// Specifies that virtual machine should be low priority.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithLowPriority();
+
+        /// <summary>
+        /// Specifies that virtual machine should be low priority.
+        /// </summary>
+        /// <param name="policy">The eviction policy for the virtual machine.</param>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithLowPriority(VirtualMachineEvictionPolicyTypes policy);
+
+        /// <summary>
+        /// Specifies the priority for the virtual machine.
+        /// </summary>
+        /// <param name="priority">The priority.</param>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithPriority(VirtualMachinePriorityTypes priority);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine definition allowing to set the billing related details of a low priority virtual machine.
+    /// </summary>
+    public interface IWithBillingProfile
+    {
+        /// <summary>
+        /// Specifies the billing related details of a low priority virtual machine.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithMaxPrice(double? maxPrice);
     }
 
     /// <summary>

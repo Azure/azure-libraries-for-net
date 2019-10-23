@@ -141,7 +141,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     DiagnosticsProfile = this.Inner.VirtualMachineProfile.DiagnosticsProfile,
                     ExtensionProfile = this.Inner.VirtualMachineProfile.ExtensionProfile,
-                    LicenseType = this.Inner.VirtualMachineProfile.LicenseType
+                    LicenseType = this.Inner.VirtualMachineProfile.LicenseType,
+                    BillingProfile = this.Inner.VirtualMachineProfile.BillingProfile
                 };
                 //
                 if (this.Inner.VirtualMachineProfile.StorageProfile != null)
@@ -1159,6 +1160,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy()
         {
             return this.Inner.VirtualMachineProfile?.EvictionPolicy;
+        }
+
+        public BillingProfile BillingProfile()
+        {
+            return this.Inner.VirtualMachineProfile?.BillingProfile;
         }
 
         ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
@@ -2876,6 +2882,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithLowPriorityVirtualMachine()
         {
             this.WithVirtualMachinePriority(VirtualMachinePriorityTypes.Low);
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithMaxPrice(double? maxPrice)
+        {
+            this.Inner.VirtualMachineProfile.BillingProfile = new BillingProfile(maxPrice);
             return this;
         }
 

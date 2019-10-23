@@ -39,6 +39,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the billing profile value.
+        /// </summary>
+        BillingProfile IVirtualMachineBeta.BillingProfile
+        {
+            get
+            {
+                return this.BillingProfile();
+            }
+        }
+
+        /// <summary>
         /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine.
         /// </summary>
         string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.BootDiagnosticsStorageUri
@@ -152,6 +163,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
+        /// <summary>
+        /// Gets the priority value.
+        /// </summary>
+        VirtualMachinePriorityTypes IVirtualMachineBeta.Priority
+        {
+            get
+            {
+                return this.Priority();
+            }
+        }
+
+        /// <summary>
+        /// Gets the eviction policy value.
+        /// </summary>
+        VirtualMachineEvictionPolicyTypes IVirtualMachineBeta.EvictionPolicy
+        {
+            get
+            {
+                return this.EvictionPolicy();
+            }
+        }
 
         /// <summary>
         /// Get specifies information about the proximity placement group that the virtual machine scale set should be assigned to.
@@ -1846,6 +1878,55 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithPlan.WithPlan(PurchasePlan plan)
         {
             return this.WithPlan(plan);
+        }
+
+        /// <summary>
+        /// Specifies that virtual machine should be low priority.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithPriority.WithLowPriority()
+        {
+            return this.WithLowPriority();
+        }
+
+        /// <summary>
+        /// Specifies that virtual machine should be low priority.
+        /// </summary>
+        /// <param name="policy">The eviction policy value.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithPriority.WithLowPriority(VirtualMachineEvictionPolicyTypes policy)
+        {
+            return this.WithLowPriority(policy);
+        }
+
+        /// <summary>
+        /// Specifies the priority for the virtual machine.
+        /// </summary>
+        /// <param name="priority">The priority value.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithPriority.WithPriority(VirtualMachinePriorityTypes priority)
+        {
+            return this.WithPriority(priority);
+        }
+
+        /// <summary>
+        /// Specifies the billing related details of a low priority virtual machine.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithBillingProfile.WithMaxPrice(double? maxPrice)
+        {
+            return this.WithMaxPrice(maxPrice);
+        }
+
+        /// <summary>
+        /// Specifies the billing related details of a low priority virtual machine.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBillingProfile.WithMaxPrice(double? maxPrice)
+        {
+            return this.WithMaxPrice(maxPrice);
         }
 
         /// <summary>

@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.VirtualMachinePriorityTypes VirtualMachinePriority { get; }
 
         /// <summary>
+        /// Gets the billing related details of the low priority virtual machines in the scale set.
+        /// </summary>
+        BillingProfile BillingProfile { get; }
+
+        /// <summary>
         /// Gets the public ip configuration of virtual machines in the scale set.
         /// </summary>
         Models.VirtualMachineScaleSetPublicIPAddressConfiguration VirtualMachinePublicIpConfig { get; }

@@ -174,6 +174,71 @@ namespace Fluent.Tests.Compute.VirtualMachine
         }
 
         [Fact]
+        public void CanCreateLowPriorityVirtualMachine()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var GroupName = TestUtilities.GenerateName("rgfluentchash-");
+                var computeManager = TestHelper.CreateComputeManager();
+                var resourceManager = TestHelper.CreateResourceManager();
+
+                try
+                {
+                    // Create
+                    var vm = computeManager.VirtualMachines
+                        .Define(VMName)
+                        .WithRegion(Location)
+                        .WithNewResourceGroup(GroupName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012Datacenter)
+                        .WithAdminUsername("Foo12")
+                        .WithAdminPassword("BaR@12!Foo")
+                        .WithUnmanagedDisks()
+                        .WithOSDiskCaching(CachingTypes.ReadWrite)
+                        .WithSize(VirtualMachineSizeTypes.StandardD3)
+                        .WithOSDiskName("javatest")
+                        .WithLowPriority(VirtualMachineEvictionPolicyTypes.Deallocate)
+                        .WithMaxPrice(1000.0)
+                        .Create();
+
+                    var foundedVM = computeManager.VirtualMachines.ListByResourceGroup(GroupName)
+                        .FirstOrDefault(v => v.Name.Equals(VMName, StringComparison.OrdinalIgnoreCase));
+
+                    Assert.NotNull(foundedVM);
+                    Assert.Equal(Location, foundedVM.RegionName);
+                    // Get
+                    foundedVM = computeManager.VirtualMachines.GetByResourceGroup(GroupName, VMName);
+                    Assert.NotNull(foundedVM);
+                    Assert.Equal(Location, foundedVM.RegionName);
+                    Assert.Equal(1000.0, foundedVM.BillingProfile.MaxPrice);
+                    Assert.Equal(VirtualMachineEvictionPolicyTypes.Deallocate, foundedVM.EvictionPolicy);
+                    Assert.Equal(VirtualMachinePriorityTypes.Low, foundedVM.Priority);
+
+                    foundedVM.Deallocate();
+                    foundedVM.Update()
+                        .WithMaxPrice(2000.0)
+                        .Apply();
+
+                    foundedVM.Refresh();
+                    Assert.Equal(2000.0, foundedVM.BillingProfile.MaxPrice);
+
+                    // Delete VM
+                    computeManager.VirtualMachines.DeleteById(foundedVM.Id);
+                }
+                finally
+                {
+                    try
+                    {
+                        resourceManager.ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
         public void CannotUpdateProximityPlacementGroupForVirtualMachine()
         {
 
