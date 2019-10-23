@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("http://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
+            var _baseUrl = string.Format("https://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "admin/functions/{name}/keys").ToString();
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(functionName));
             // Create HTTP transport objects
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("http://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
+            var _baseUrl = string.Format("https://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "admin/functions/{name}/keys/{keyName}").ToString();
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(functionName));
             _url = _url.Replace("{keyName}", System.Uri.EscapeDataString(keyName));
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = string.Format("http://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
+            var _baseUrl = string.Format("https://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "admin/functions/{name}/keys/{keyName}").ToString();
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(functionName));
             _url = _url.Replace("{keyName}", System.Uri.EscapeDataString(keyName));
