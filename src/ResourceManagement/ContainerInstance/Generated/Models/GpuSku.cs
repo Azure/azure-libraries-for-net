@@ -4,6 +4,7 @@
 // license information.
 
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
@@ -11,6 +12,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
     /// <summary>
     /// Defines values for GpuSku.
     /// </summary>
+    [JsonConverter(typeof(ExpandableStringEnumConverter<GpuSku>))]
     public class GpuSku : ExpandableStringEnum<GpuSku>
     {
         public static readonly GpuSku K80 = Parse("K80");
