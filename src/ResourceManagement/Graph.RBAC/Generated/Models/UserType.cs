@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
     using Management.ResourceManager;
     using Management.ResourceManager.Fluent;
     using Management.ResourceManager.Fluent.Core;
-    using Newtonsoft.Json;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for UserType.
     /// </summary>

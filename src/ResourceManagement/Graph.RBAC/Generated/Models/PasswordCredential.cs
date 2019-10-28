@@ -35,14 +35,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// <param name="endDate">End date.</param>
         /// <param name="keyId">Key ID.</param>
         /// <param name="value">Key value.</param>
-        public PasswordCredential(string customKeyIdentifier = default(string), IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string keyId = default(string), string value = default(string))
+        /// <param name="customKeyIdentifier">Custom Key Identifier</param>
+        public PasswordCredential(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string keyId = default(string), string value = default(string), byte[] customKeyIdentifier = default(byte[]))
         {
-            CustomKeyIdentifier = customKeyIdentifier;
             AdditionalProperties = additionalProperties;
             StartDate = startDate;
             EndDate = endDate;
             KeyId = keyId;
             Value = value;
+            CustomKeyIdentifier = customKeyIdentifier;
             CustomInit();
         }
 
@@ -50,12 +51,6 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets custom key identifier.
-        /// </summary>
-        [JsonProperty(PropertyName = "customKeyIdentifier")]
-        public string CustomKeyIdentifier { get; set; }
 
         /// <summary>
         /// Gets or sets unmatched properties from the message are deserialized
@@ -87,6 +82,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets custom Key Identifier
+        /// </summary>
+        [JsonProperty(PropertyName = "customKeyIdentifier")]
+        public byte[] CustomKeyIdentifier { get; set; }
 
     }
 }

@@ -63,6 +63,26 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
 
             /// <summary>
+            /// Updates a service principal in the directory.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='objectId'>
+            /// The object ID of the service principal to delete.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to update a service principal.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task UpdateAsync(this IServicePrincipalsOperations operations, string objectId, ServicePrincipalUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.UpdateWithHttpMessagesAsync(objectId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Deletes a service principal from the directory.
             /// </summary>
             /// <param name='operations'>
@@ -80,7 +100,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
 
             /// <summary>
-            /// Gets service principal information from the directory.
+            /// Gets service principal information from the directory. Query by objectId or
+            /// pass a filter to query by appId
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -115,7 +136,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<DirectoryObject>> ListOwnersAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DirectoryObject>> ListOwnersAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListOwnersWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -175,7 +196,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Models.PasswordCredential>> ListPasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<PasswordCredential>> ListPasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListPasswordCredentialsWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -198,7 +219,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdatePasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, IList<Models.PasswordCredential> value, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UpdatePasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, IList<PasswordCredential> value, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.UpdatePasswordCredentialsWithHttpMessagesAsync(objectId, value, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -218,6 +239,30 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             public static async Task<IPage<ServicePrincipalInner>> ListNextAsync(this IServicePrincipalsOperations operations, string nextLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Directory objects that are owners of this service principal.
+            /// </summary>
+            /// <remarks>
+            /// The owners are a set of non-admin users who are allowed to modify this
+            /// object.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DirectoryObject>> ListOwnersNextAsync(this IServicePrincipalsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOwnersNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
