@@ -127,17 +127,17 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public async Task<IPagedCollection<IActiveDirectoryObject>> ListMembersAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IActiveDirectoryObject, AADObjectInner>.LoadPage(
-                async (cancellation) => await manager.Inner.Groups.GetGroupMembersAsync(Id(), cancellation),
-                manager.Inner.Groups.GetGroupMembersNextAsync,
-                (inner) => WrapObjectInner(inner), true, cancellationToken);
+            return await PagedCollection<IActiveDirectoryObject, DirectoryObject>.LoadPage(
+                  async (cancellation) => await manager.Inner.Groups.GetGroupMembersAsync(Id(), cancellation),
+                  manager.Inner.Groups.GetGroupMembersNextAsync,
+                  (inner) => WrapObjectInner(inner), true, cancellationToken);
         }
 
-        private IActiveDirectoryObject WrapObjectInner(AADObjectInner inner)
+        private IActiveDirectoryObject WrapObjectInner(DirectoryObject inner)
         {
-            var managementClient = ((GroupsOperations) manager.Inner.Groups).Client;
+            var managementClient = ((GroupsOperations)manager.Inner.Groups).Client;
             string serialized = SafeJsonConvert.SerializeObject(inner, managementClient.SerializationSettings);
-            switch (inner.ObjectType)
+            switch (inner.AdditionalProperties["objectType"])
             {
                 case "User":
                     UserInner user = SafeJsonConvert.DeserializeObject<UserInner>(serialized, managementClient.DeserializationSettings);
