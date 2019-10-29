@@ -53,7 +53,7 @@ namespace ManageLinuxWebAppWithTrafficManager
                 Utilities.Log("Purchasing a domain " + domainName + "...");
 
                 azure.ResourceGroups.Define(resourceGroupName)
-                        .WithRegion(Region.USNorthCentral)
+                        .WithRegion(Region.USEast2)
                         .Create();
 
                 var domain = azure.AppServices.AppServiceDomains.Define(domainName)

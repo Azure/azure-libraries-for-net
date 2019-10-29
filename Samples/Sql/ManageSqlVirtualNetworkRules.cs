@@ -40,7 +40,7 @@ namespace ManageSqlVirtualNetworkRules
                 Utilities.Log("Create a virtual network with two subnets: subnet1 and subnet2");
 
                 var virtualNetwork = azure.Networks.Define(vnetName)
-                    .WithRegion(Region.USSouthCentral)
+                    .WithRegion(Region.AsiaSouthEast)
                     .WithNewResourceGroup(rgName)
                     .WithAddressSpace("192.168.0.0/16")
                     .DefineSubnet("subnet1")
@@ -59,7 +59,7 @@ namespace ManageSqlVirtualNetworkRules
                 Utilities.Log("Create a SQL server with one virtual network rule");
 
                 var sqlServer = azure.SqlServers.Define(sqlServerName)
-                    .WithRegion(Region.USSouthCentral)
+                    .WithRegion(Region.AsiaSouthEast)
                     .WithExistingResourceGroup(rgName)
                     .WithAdministratorLogin(administratorLogin)
                     .WithAdministratorPassword(administratorPassword)

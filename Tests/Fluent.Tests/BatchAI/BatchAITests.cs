@@ -146,7 +146,7 @@ namespace Fluent.Tests
                         .WithPassword("MyPassword")
                         .WithAutoScale(1, 1)
                         .Create();
-                    Assert.Equal(AllocationState.Steady, cluster.AllocationState);
+                    Assert.Equal(AllocationState.Resizing, cluster.AllocationState);
                     Assert.Equal(userName, cluster.AdminUserName);
                     IBatchAIJob job = experiment.Jobs.Define("myJob")
                         .WithExistingClusterId(cluster.Id)

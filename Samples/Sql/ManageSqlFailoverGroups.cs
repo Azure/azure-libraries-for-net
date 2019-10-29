@@ -38,7 +38,7 @@ namespace ManageSqlFailoverGroups
                 Utilities.Log("Creating a primary SQL Server with a sample database");
 
                 var sqlPrimaryServer = azure.SqlServers.Define(sqlPrimaryServerName)
-                    .WithRegion(Region.USSouthCentral)
+                    .WithRegion(Region.AsiaSouthEast)
                     .WithNewResourceGroup(rgName)
                     .WithAdministratorLogin(administratorLogin)
                     .WithAdministratorPassword(administratorPassword)

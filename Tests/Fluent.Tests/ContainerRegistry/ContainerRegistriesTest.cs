@@ -26,7 +26,6 @@ namespace Fluent.Tests
                 var regName1 = TestUtilities.GenerateName("acr") + "1";
                 var regName2 = TestUtilities.GenerateName("acr") + "2";
                 var rgName = "rg" + regName;
-                var saName = "sa" + regName;
                 var webhookName1 = "webhookbing1";
                 var webhookName2 = "webhookbing2";
                 var registryManager = TestHelper.CreateRegistryManager();
@@ -39,14 +38,12 @@ namespace Fluent.Tests
                     registry1 = registryManager.ContainerRegistries.Define(regName1)
                             .WithRegion(Region.USWestCentral)
                             .WithNewResourceGroup(rgName)
-                            .WithClassicSku()
-                            .WithNewStorageAccount(saName)
+                            .WithStandardSku()
                             .WithRegistryNameAsAdminUser()
                             .WithTag("tag1", "value1")
                             .Create();
 
                     Assert.True(registry1.AdminUserEnabled);
-                    Assert.Equal(registry1.StorageAccountName, saName);
 
                     var regs = registryManager.ContainerRegistries.List();
                     Assert.True(regs.Count() > 0);
