@@ -93,7 +93,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         protected override void Initialize()
         {
-            //Operations = new Operations(this);
             Subscriptions = new SubscriptionsOperations(this);
             Tenants = new TenantsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
