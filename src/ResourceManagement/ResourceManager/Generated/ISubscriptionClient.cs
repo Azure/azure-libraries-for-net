@@ -64,12 +64,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
         /// <summary>
         /// Gets the ISubscriptionsOperations.
         /// </summary>
