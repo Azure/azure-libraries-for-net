@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region IndiaWest = new Region("westindia");
         public static readonly Region KoreaSouth = new Region("koreasouth");
         public static readonly Region KoreaCentral = new Region("koreacentral");
-        public static readonly Region UAECentral = new Region("uaecentral");
-        public static readonly Region UAENorth = new Region("uaenorth");
         #endregion
 
-        #region Africa
+        #region Middle East and Africa
+        public static readonly Region UAECentral = new Region("uaecentral");
+        public static readonly Region UAENorth = new Region("uaenorth");
         public static readonly Region SouthAfricaNorth = new Region("southafricanorth");
         public static readonly Region SouthAfricaWest = new Region("southafricawest");
         #endregion

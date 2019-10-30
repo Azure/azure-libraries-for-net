@@ -704,6 +704,31 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public VirtualMachineImpl WithPriority(VirtualMachinePriorityTypes priority)
+        {
+            Inner.Priority = priority;
+            return this;
+        }
+
+        public VirtualMachineImpl WithLowPriority()
+        {
+            Inner.Priority = VirtualMachinePriorityTypes.Low;
+            return this;
+        }
+
+        public VirtualMachineImpl WithLowPriority(VirtualMachineEvictionPolicyTypes policy)
+        {
+            this.WithLowPriority();
+            Inner.EvictionPolicy = policy;
+            return this;
+        }
+
+        public VirtualMachineImpl WithMaxPrice(double? maxPrice)
+        {
+            Inner.BillingProfile = new BillingProfile(maxPrice);
+            return this;
+        }
+
         ///GENMHASH:5D8D71845C83EB59F52EB2C4B1C05618:DAD67F2444F1C28988F244EE4625A3F5
         public VirtualMachineImpl WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
@@ -1701,6 +1726,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return false;
         }
 
+        public VirtualMachinePriorityTypes Priority()
+        {
+            return this.Inner.Priority;
+        }
+
+        public VirtualMachineEvictionPolicyTypes EvictionPolicy()
+        {
+            return this.Inner.EvictionPolicy;
+        }
+
+        public BillingProfile BillingProfile()
+        {
+            return this.Inner.BillingProfile;
+        }
+
         ///GENMHASH:F842C1987E811B219C87CFA14349A00B:556CABFA1947D39EDB3AAE3870809862
         public string BootDiagnosticsStorageUri()
         {
@@ -1878,6 +1918,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     HardwareProfile = this.Inner.HardwareProfile,
                     StorageProfile = this.Inner.StorageProfile,
                     OsProfile = this.Inner.OsProfile,
+                    BillingProfile = this.Inner.BillingProfile,
+                    Priority = this.Inner.Priority,
+                    EvictionPolicy = this.Inner.EvictionPolicy,
                     NetworkProfile = this.Inner.NetworkProfile,
                     DiagnosticsProfile = this.Inner.DiagnosticsProfile,
                     AvailabilitySet = this.Inner.AvailabilitySet,

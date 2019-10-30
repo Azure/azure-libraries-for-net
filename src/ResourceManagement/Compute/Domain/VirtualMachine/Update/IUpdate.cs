@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSecondaryNetworkInterface,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithBootDiagnostics,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithBillingProfile,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithLicenseType
@@ -254,6 +255,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// </summary>
         /// <returns>the next stage of the definition.</returns>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutProximityPlacementGroup();
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine update allowing to set the billing related details of a low priority virtual machine.
+    /// </summary>
+    public interface IWithBillingProfile
+    {
+        /// <summary>
+        /// Specifies the billing related details of a low priority virtual machine.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the update.</return>
+        IUpdate WithMaxPrice(double? maxPrice);
     }
 
     /// <summary>

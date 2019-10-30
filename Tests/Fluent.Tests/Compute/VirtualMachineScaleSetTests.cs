@@ -635,6 +635,82 @@ namespace Fluent.Tests.Compute.VirtualMachine
         }
 
         [Fact]
+        public void CanCreateLowPriorityVMSSInstance()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string vmss_name = TestUtilities.GenerateName("vmss");
+                string rgName = TestUtilities.GenerateName("javacsmrg");
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
+                        .WithRegion(Location)
+                        .Create();
+
+                    INetwork network = azure
+                        .Networks
+                        .Define("vmssvnet")
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithAddressSpace("10.0.0.0/28")
+                        .WithSubnet("subnet1", "10.0.0.0/28")
+                        .Create();
+
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
+                    List<string> backends = new List<string>();
+                    foreach (string backend in publicLoadBalancer.Backends.Keys)
+                    {
+                        backends.Add(backend);
+                    }
+                    Assert.True(backends.Count() == 2);
+
+                    IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
+                        .Define(vmss_name)
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardD3v2)
+                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                        .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                        .WithPrimaryInternetFacingLoadBalancerBackends(backends[0], backends[1])
+                        .WithoutPrimaryInternalLoadBalancer()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("jvuser")
+                        .WithRootPassword("123OData!@#123")
+                        .WithUnmanagedDisks()
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
+                        .WithUpgradeMode(UpgradeMode.Manual)
+                        .WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes.Deallocate)
+                        .WithMaxPrice(1000.0)
+                        .WithSinglePlacementGroup()
+                        .Create();
+
+                    Assert.Equal(VirtualMachinePriorityTypes.Low, virtualMachineScaleSet.VirtualMachinePriority);
+                    Assert.Equal(VirtualMachineEvictionPolicyTypes.Deallocate, virtualMachineScaleSet.VirtualMachineEvictionPolicy);
+                    Assert.Equal(1000.0, virtualMachineScaleSet.BillingProfile.MaxPrice);
+
+                    virtualMachineScaleSet.Update()
+                        .WithMaxPrice(2000.0)
+                        .Apply();
+
+                    Assert.Equal(2000.0, virtualMachineScaleSet.BillingProfile.MaxPrice);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
         public void CanEnableMSIWithoutRoleAssignment()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))

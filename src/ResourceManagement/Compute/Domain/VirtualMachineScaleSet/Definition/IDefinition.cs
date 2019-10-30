@@ -1136,6 +1136,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set definition to set the billing related details of the low priority virtual machines in the scale set.
+    /// </summary>
+    public interface IWithBillingProfile
+    {
+        /// <summary>
+        /// Specifies the billing related details of the low priority virtual machines in the scale set.
+        /// </summary>
+        /// <param name="maxPrice">The maxPrice value.</param>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithMaxPrice(double? maxPrice);
+    }
+
+    /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify whether
     /// or not to over-provision virtual machines in the scale set.
     /// </summary>
@@ -1261,6 +1274,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithBootDiagnostics,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithBillingProfile,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithVMPriority,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithVirtualMachinePublicIp,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithAcceleratedNetworking,
