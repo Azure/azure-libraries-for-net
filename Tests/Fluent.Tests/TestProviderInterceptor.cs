@@ -23,7 +23,7 @@ namespace Fluent.Tests.ResourceManager
             {
                 var resourceManager = TestHelper.CreateResourceManager();
                 var keyVaultManager = TestHelper.CreateKeyVaultManager();
-                var provider = resourceManager.Providers.GetByName("Microsoft.KeyVault");
+                var provider = resourceManager.Providers.GetByName("Microsoft.Maps");
                 Assert.NotNull(provider);
 
                 string rgName = SdkContext.RandomResourceName("rg", 10);

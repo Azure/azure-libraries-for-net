@@ -15,22 +15,25 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Deployment operation parameters.
     /// </summary>
-    public partial class Deployment
+    public partial class DeploymentInner
     {
         /// <summary>
-        /// Initializes a new instance of the Deployment class.
+        /// Initializes a new instance of the DeploymentInner class.
         /// </summary>
-        public Deployment()
+        public DeploymentInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Deployment class.
+        /// Initializes a new instance of the DeploymentInner class.
         /// </summary>
         /// <param name="properties">The deployment properties.</param>
-        public Deployment(DeploymentPropertiesInner properties)
+        /// <param name="location">The location to store the deployment
+        /// data.</param>
+        public DeploymentInner(DeploymentProperties properties, string location = default(string))
         {
+            Location = location;
             Properties = properties;
             CustomInit();
         }
@@ -41,10 +44,16 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the location to store the deployment data.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Gets or sets the deployment properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public DeploymentPropertiesInner Properties { get; set; }
+        public DeploymentProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.

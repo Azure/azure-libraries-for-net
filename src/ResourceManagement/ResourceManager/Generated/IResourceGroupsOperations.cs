@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Creates or updates a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group to create or update.
+        /// The name of the resource group to create or update. Can include
+        /// alphanumeric, underscore, parentheses, hyphen, period (except at
+        /// end), and Unicode characters that match the allowed characters.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update a resource group.
@@ -146,12 +148,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ResourceGroupInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, ResourceGroupPatchableInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ResourceGroupInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, ResourceGroupPatchable parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Captures the specified resource group as a template.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group to export as a template.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='parameters'>
         /// Parameters for exporting the template.
@@ -171,7 +173,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ResourceGroupExportResultInner>> ExportTemplateWithHttpMessagesAsync(string resourceGroupName, ExportTemplateRequestInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ResourceGroupExportResultInner>> ExportTemplateWithHttpMessagesAsync(string resourceGroupName, ExportTemplateRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the resource groups for a subscription.
         /// </summary>
@@ -193,7 +195,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ResourceGroupInner>>> ListWithHttpMessagesAsync(ODataQuery<ResourceGroupFilterInner> odataQuery = default(ODataQuery<ResourceGroupFilterInner>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceGroupInner>>> ListWithHttpMessagesAsync(ODataQuery<ResourceGroupFilter> odataQuery = default(ODataQuery<ResourceGroupFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a resource group.
         /// </summary>
@@ -219,6 +221,31 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Captures the specified resource group as a template.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters for exporting the template.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ResourceGroupExportResultInner>> BeginExportTemplateWithHttpMessagesAsync(string resourceGroupName, ExportTemplateRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the resource groups for a subscription.
         /// </summary>

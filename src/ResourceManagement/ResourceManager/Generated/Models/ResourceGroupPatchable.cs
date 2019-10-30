@@ -16,26 +16,25 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Resource group information.
     /// </summary>
-    public partial class ResourceGroupPatchableInner
+    public partial class ResourceGroupPatchable
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupPatchableInner
-        /// class.
+        /// Initializes a new instance of the ResourceGroupPatchable class.
         /// </summary>
-        public ResourceGroupPatchableInner()
+        public ResourceGroupPatchable()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupPatchableInner
-        /// class.
+        /// Initializes a new instance of the ResourceGroupPatchable class.
         /// </summary>
         /// <param name="name">The name of the resource group.</param>
+        /// <param name="properties">The resource group properties.</param>
         /// <param name="managedBy">The ID of the resource that manages this
         /// resource group.</param>
         /// <param name="tags">The tags attached to the resource group.</param>
-        public ResourceGroupPatchableInner(string name = default(string), ResourceGroupProperties properties = default(ResourceGroupProperties), string managedBy = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ResourceGroupPatchable(string name = default(string), ResourceGroupProperties properties = default(ResourceGroupProperties), string managedBy = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Name = name;
             Properties = properties;
@@ -56,6 +55,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource group properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public ResourceGroupProperties Properties { get; set; }

@@ -82,7 +82,7 @@ namespace Fluent.Tests
                 {
                     // Create
                     var sqlPrimaryServer = rollUpClient.SqlServers.Define(sqlServerName)
-                        .WithRegion(Region.USSouthCentral)
+                        .WithRegion(Region.AsiaSouthEast)
                         .WithNewResourceGroup(GroupName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
@@ -269,7 +269,7 @@ namespace Fluent.Tests
 
                     // Create
                     var sqlPrimaryServer = rollUpClient.SqlServers.Define(sqlPrimaryServerName)
-                        .WithRegion(Region.USSouthCentral)
+                        .WithRegion(Region.AsiaSouthEast)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
@@ -280,14 +280,14 @@ namespace Fluent.Tests
                         .Create();
 
                     var sqlSecondaryServer = rollUpClient.SqlServers.Define(sqlSecondaryServerName)
-                        .WithRegion(Region.USEast)
+                        .WithRegion(Region.USEast2)
                         .WithExistingResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
                         .Create();
 
                     var sqlOtherServer = rollUpClient.SqlServers.Define(sqlOtherServerName)
-                        .WithRegion(Region.USEast2)
+                        .WithRegion(Region.USWest2)
                         .WithExistingResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)
@@ -404,7 +404,7 @@ namespace Fluent.Tests
                     var sqlServer = rollUpClient
                         .SqlServers
                         .Define(sqlServerName)
-                        .WithRegion(Region.USSouthCentral)
+                        .WithRegion(Region.AsiaSouthEast)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(sqlServerAdminName)
                         .WithAdministratorPassword(sqlServerAdminPassword)
@@ -488,7 +488,7 @@ namespace Fluent.Tests
                 {
                     // Create
                     var sqlServer1 = rollUpClient.SqlServers.Define(sqlServerName1)
-                        .WithRegion(Region.USSouthCentral)
+                        .WithRegion(Region.AsiaSouthEast)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(sqlServerAdminName)
                         .WithAdministratorPassword(sqlServerAdminPassword)
@@ -512,7 +512,7 @@ namespace Fluent.Tests
                     Assert.Equal(1, sqlServer1.Databases.List().Count);
 
                     var sqlServer2 = rollUpClient.SqlServers.Define(sqlServerName2)
-                        .WithRegion(Region.USSouthCentral)
+                        .WithRegion(Region.AsiaSouthEast)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(sqlServerAdminName)
                         .WithAdministratorPassword(sqlServerAdminPassword)
@@ -568,7 +568,7 @@ namespace Fluent.Tests
                     // Create
                     var sqlServer = rollUpClient.SqlServers
                         .Define(sqlServerName)
-                        .WithRegion(Region.USSouthCentral)
+                        .WithRegion(Region.AsiaSouthEast)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(sqlServerAdminName)
                         .WithAdministratorPassword(sqlServerAdminPassword)

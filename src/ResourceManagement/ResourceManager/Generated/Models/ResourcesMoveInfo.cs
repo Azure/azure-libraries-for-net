@@ -16,23 +16,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Parameters of move resources.
     /// </summary>
-    public partial class ResourcesMoveInfoInner
+    public partial class ResourcesMoveInfo
     {
         /// <summary>
-        /// Initializes a new instance of the ResourcesMoveInfoInner class.
+        /// Initializes a new instance of the ResourcesMoveInfo class.
         /// </summary>
-        public ResourcesMoveInfoInner()
+        public ResourcesMoveInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourcesMoveInfoInner class.
+        /// Initializes a new instance of the ResourcesMoveInfo class.
         /// </summary>
         /// <param name="resources">The IDs of the resources.</param>
         /// <param name="targetResourceGroup">The target resource
         /// group.</param>
-        public ResourcesMoveInfoInner(IList<string> resources = default(IList<string>), string targetResourceGroup = default(string))
+        public ResourcesMoveInfo(IList<string> resources = default(IList<string>), string targetResourceGroup = default(string))
         {
             Resources = resources;
             TargetResourceGroup = targetResourceGroup;

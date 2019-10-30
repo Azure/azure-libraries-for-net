@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Deployment properties.
     /// </summary>
-    public partial class DeploymentPropertiesInner
+    public partial class DeploymentProperties
     {
         /// <summary>
-        /// Initializes a new instance of the DeploymentPropertiesInner class.
+        /// Initializes a new instance of the DeploymentProperties class.
         /// </summary>
-        public DeploymentPropertiesInner()
+        public DeploymentProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DeploymentPropertiesInner class.
+        /// Initializes a new instance of the DeploymentProperties class.
         /// </summary>
         /// <param name="mode">The mode that is used to deploy resources. This
         /// value can be either Incremental or Complete. In Incremental mode,
@@ -55,7 +55,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// both.</param>
         /// <param name="debugSetting">The debug setting of the
         /// deployment.</param>
-        public DeploymentPropertiesInner(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting))
+        /// <param name="onErrorDeployment">The deployment on error
+        /// behavior.</param>
+        public DeploymentProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment))
         {
             Template = template;
             TemplateLink = templateLink;
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
             ParametersLink = parametersLink;
             Mode = mode;
             DebugSetting = debugSetting;
+            OnErrorDeployment = onErrorDeployment;
             CustomInit();
         }
 
@@ -125,6 +128,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "debugSetting")]
         public DebugSetting DebugSetting { get; set; }
+
+        /// <summary>
+        /// Gets or sets the deployment on error behavior.
+        /// </summary>
+        [JsonProperty(PropertyName = "onErrorDeployment")]
+        public OnErrorDeployment OnErrorDeployment { get; set; }
 
         /// <summary>
         /// Validate the object.

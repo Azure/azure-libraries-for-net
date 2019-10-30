@@ -93,7 +93,7 @@ namespace Fluent.Tests.WebApp
                     {
                         UploadFileToWebApp(webApp.GetPublishingProfile(), Path.Combine(".", "Assets", "appservicemsi.war"));
 
-                        SdkContext.DelayProvider.Delay(10000);
+                        SdkContext.DelayProvider.Delay(30000);
 
                         string response = CheckAddress("http://" + WebAppName1 + "." + "azurewebsites.net/appservicemsi/");
                         Assert.NotNull(response);

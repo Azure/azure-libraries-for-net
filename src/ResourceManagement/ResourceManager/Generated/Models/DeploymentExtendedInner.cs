@@ -8,14 +8,13 @@
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Deployment information.
     /// </summary>
-    public partial class DeploymentExtendedInner
+    public partial class DeploymentExtendedInner : Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the DeploymentExtendedInner class.
@@ -28,13 +27,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DeploymentExtendedInner class.
         /// </summary>
-        /// <param name="name">The name of the deployment.</param>
-        /// <param name="id">The ID of the deployment.</param>
+        /// <param name="location">the location of the deployment.</param>
         /// <param name="properties">Deployment properties.</param>
-        public DeploymentExtendedInner(string name, string id = default(string), DeploymentPropertiesExtended properties = default(DeploymentPropertiesExtended))
+        public DeploymentExtendedInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), DeploymentPropertiesExtended properties = default(DeploymentPropertiesExtended))
+            : base(location, id, name, type)
         {
-            Id = id;
-            Name = name;
             Properties = properties;
             CustomInit();
         }
@@ -45,18 +42,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ID of the deployment.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the deployment.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets deployment properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
@@ -65,15 +50,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
             if (Properties != null)
             {
                 Properties.Validate();

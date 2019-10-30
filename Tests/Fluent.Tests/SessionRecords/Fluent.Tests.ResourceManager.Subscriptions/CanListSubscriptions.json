@@ -1,130 +1,131 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "00deda04-7b8a-4a59-9c72-7598787dadc3"
+          "0d1d1cd5-7b2c-44c1-be61-49fa6cc401d2"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.7.0.0",
-          "MacAddressHash/32ac13edda214fc6108630a151bc81b40bade0f5b6c8d010a5350f8a3ea67e13"
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n      \"subscriptionId\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n      \"displayName\": \"Java Libs Tests with TTL = 2 Days\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      },\r\n      \"authorizationSource\": \"RoleBased\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
         "Cache-Control": [
           "no-cache"
-        ],
-        "Date": [
-          "Tue, 13 Mar 2018 18:05:40 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14999"
+          "11999"
         ],
         "x-ms-request-id": [
-          "3cabe78a-e925-4a00-be8b-b987aa9b41c1"
+          "678d8de2-08f1-4e04-ae44-52fd8b19065e"
         ],
         "x-ms-correlation-request-id": [
-          "3cabe78a-e925-4a00-be8b-b987aa9b41c1"
+          "678d8de2-08f1-4e04-ae44-52fd8b19065e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180313T180541Z:3cabe78a-e925-4a00-be8b-b987aa9b41c1"
+          "SOUTHEASTASIA:20191024T012622Z:678d8de2-08f1-4e04-ae44-52fd8b19065e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Thu, 24 Oct 2019 01:26:21 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "460"
         ]
       },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Java Libs Tests with TTL = 2 Days\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4P2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0eca6671-2d17-4c50-a963-f1ac23773eb6"
+          "d15e281f-6889-4bf9-ac4b-727790949476"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.7.0.0",
-          "MacAddressHash/32ac13edda214fc6108630a151bc81b40bade0f5b6c8d010a5350f8a3ea67e13"
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n  \"subscriptionId\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n  \"displayName\": \"Java Libs Tests with TTL = 2 Days\",\r\n  \"state\": \"Enabled\",\r\n  \"subscriptionPolicies\": {\r\n    \"locationPlacementId\": \"Internal_2014-09-01\",\r\n    \"quotaId\": \"Internal_2014-09-01\",\r\n    \"spendingLimit\": \"Off\"\r\n  },\r\n  \"authorizationSource\": \"RoleBased\"\r\n}",
       "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
         "Cache-Control": [
           "no-cache"
-        ],
-        "Date": [
-          "Tue, 13 Mar 2018 18:05:40 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "11989"
         ],
         "x-ms-request-id": [
-          "99dfc21b-61bd-4045-9284-ef3ca818acff"
+          "fb19a9d7-6fae-4837-9e91-ad5482b82096"
         ],
         "x-ms-correlation-request-id": [
-          "99dfc21b-61bd-4045-9284-ef3ca818acff"
+          "fb19a9d7-6fae-4837-9e91-ad5482b82096"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180313T180541Z:99dfc21b-61bd-4045-9284-ef3ca818acff"
+          "SOUTHEASTASIA:20191024T012622Z:fb19a9d7-6fae-4837-9e91-ad5482b82096"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Thu, 24 Oct 2019 01:26:22 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "413"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n  \"authorizationSource\": \"RoleBased\",\r\n  \"managedByTenants\": [],\r\n  \"subscriptionId\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n  \"displayName\": \"Java Libs Tests with TTL = 2 Days\",\r\n  \"state\": \"Enabled\",\r\n  \"subscriptionPolicies\": {\r\n    \"locationPlacementId\": \"Internal_2014-09-01\",\r\n    \"quotaId\": \"Internal_2014-09-01\",\r\n    \"spendingLimit\": \"Off\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "ServicePrincipal": "c6b528d7-8967-4469-a585-f91cb15a3217",
+    "ServicePrincipal": "af519bfa-99e8-4193-b65b-e6cd2f8bde7f",
     "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
   }

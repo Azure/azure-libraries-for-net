@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<GenericResourceFilterInner> odataQuery = default(ODataQuery<GenericResourceFilterInner>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Moves resources from one resource group to another resource group.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> MoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfoInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> MoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfo parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Validates whether resources can be moved from one resource group to
         /// another resource group.
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> ValidateMoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfoInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ValidateMoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfo parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all the resources in a subscription.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListWithHttpMessagesAsync(ODataQuery<GenericResourceFilterInner> odataQuery = default(ODataQuery<GenericResourceFilterInner>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListWithHttpMessagesAsync(ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Checks whether a resource exists.
         /// </summary>
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginMoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfoInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginMoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfo parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Validates whether resources can be moved from one resource group to
         /// another resource group.
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginValidateMoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfoInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginValidateMoveResourcesWithHttpMessagesAsync(string sourceResourceGroupName, ResourcesMoveInfo parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a resource.
         /// </summary>

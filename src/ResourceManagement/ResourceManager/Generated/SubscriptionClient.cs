@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// All resource groups and resources exist within subscriptions. These
@@ -26,7 +24,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// tenants. A tenant is a dedicated instance of Azure Active Directory
     /// (Azure AD) for your organization.
     /// </summary>
-    public partial class SubscriptionClient : FluentServiceClientBase<SubscriptionClient>, ISubscriptionClient, IAzureClient
+    public partial class SubscriptionClient : Fluent.Core.FluentServiceClientBase<SubscriptionClient>, ISubscriptionClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -37,28 +35,34 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// The API version to use for the operation.
         /// </summary>
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the ISubscriptionsOperations.
@@ -69,15 +73,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets the ITenantsOperations.
         /// </summary>
         public virtual ITenantsOperations Tenants { get; private set; }
-                                
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SubscriptionClient(RestClient restClient) 
-            : base(restClient)
+        public SubscriptionClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -90,10 +93,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         protected override void Initialize()
         {
+            //Operations = new Operations(this);
             Subscriptions = new SubscriptionsOperations(this);
             Tenants = new TenantsOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2016-06-01";
+            this.BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2019-06-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
