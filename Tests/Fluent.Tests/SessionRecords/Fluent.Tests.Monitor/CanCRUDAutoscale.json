@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {\r\n    \"type\": \"autoscale\",\r\n    \"tagname\": \"tagvalue\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e98997a2-ba41-4d08-b2ce-0776ff618641"
+          "6d35ec66-a6d2-44a6-a708-f263c7385cc5"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,9 +15,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -37,13 +37,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "0eff3288-dd44-4fd2-8126-47dc176d04f0"
+          "a2ff2f81-2a08-40ac-b7ae-d5d6a16d5069"
         ],
         "x-ms-correlation-request-id": [
-          "0eff3288-dd44-4fd2-8126-47dc176d04f0"
+          "a2ff2f81-2a08-40ac-b7ae-d5d6a16d5069"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061327Z:0eff3288-dd44-4fd2-8126-47dc176d04f0"
+          "SOUTHEASTASIA:20191023T120523Z:a2ff2f81-2a08-40ac-b7ae-d5d6a16d5069"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,10 +52,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:26 GMT"
+          "Wed, 23 Oct 2019 12:05:23 GMT"
         ],
         "Content-Length": [
-          "237"
+          "281"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -64,17 +64,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794\",\r\n  \"name\": \"jmonitor_8cc10794\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {\r\n    \"type\": \"autoscale\",\r\n    \"tagname\": \"tagvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791\",\r\n  \"name\": \"jmonitor_f0f41791\",\r\n  \"type\": \"Microsoft.Resources/resourceGroups\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {\r\n    \"type\": \"autoscale\",\r\n    \"tagname\": \"tagvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NlcnZlcmZhcm1zL0hpZ2hseUF2YWlsYWJsZVdlYkFwcHM/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NlcnZlcmZhcm1zL0hpZ2hseUF2YWlsYWJsZVdlYkFwcHM/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\"\r\n  },\r\n  \"kind\": \"app\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\",\r\n    \"capacity\": 2\r\n  },\r\n  \"kind\": \"app\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "acbd3764-3028-427f-aaff-10aca69cb4c3"
+          "32a5ee81-dcb3-4915-a7f9-d1da65997055"
         ],
         "Accept-Language": [
           "en-US"
@@ -82,15 +82,15 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "141"
+          "161"
         ]
       },
       "ResponseHeaders": {
@@ -104,7 +104,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0d67fd54-7863-4b4f-8d58-f1ef1be8f359"
+          "4fb82ae1-7103-4e06-b851-4cf2ffe0d997"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -116,22 +116,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "2b6ed5ef-2d6f-4afe-9857-533949b61ad0"
+          "64df8734-2f9d-4acb-a258-09d2ef801fb8"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061336Z:2b6ed5ef-2d6f-4afe-9857-533949b61ad0"
+          "SOUTHEASTASIA:20191023T120532Z:64df8734-2f9d-4acb-a258-09d2ef801fb8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:36 GMT"
+          "Wed, 23 Oct 2019 12:05:32 GMT"
         ],
         "Content-Length": [
-          "1358"
+          "1360"
         ],
         "Content-Type": [
           "application/json"
@@ -140,17 +140,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n  \"name\": \"HighlyAvailableWebApps\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"serverFarmId\": 9214,\r\n    \"name\": \"HighlyAvailableWebApps\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": \"Ready\",\r\n    \"webSpace\": \"jmonitor_8cc10794-EastUS2webspace\",\r\n    \"subscription\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 20,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"East US 2\",\r\n    \"perSiteScaling\": false,\r\n    \"maximumElasticWorkerCount\": 1,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": {},\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"jmonitor_8cc10794\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"mdmId\": \"waws-prod-bn1-053_9214\",\r\n    \"targetWorkerCount\": 0,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null,\r\n    \"existingServerFarmIds\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\",\r\n    \"family\": \"P\",\r\n    \"capacity\": 1\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n  \"name\": \"HighlyAvailableWebApps\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"serverFarmId\": 15420,\r\n    \"name\": \"HighlyAvailableWebApps\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 2,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 2,\r\n    \"status\": \"Ready\",\r\n    \"webSpace\": \"jmonitor_f0f41791-EastUS2webspace\",\r\n    \"subscription\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 20,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"East US 2\",\r\n    \"perSiteScaling\": false,\r\n    \"maximumElasticWorkerCount\": 2,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": {},\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"jmonitor_f0f41791\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"mdmId\": \"waws-prod-bn1-047_15420\",\r\n    \"targetWorkerCount\": 0,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null,\r\n    \"existingServerFarmIds\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\",\r\n    \"family\": \"P\",\r\n    \"capacity\": 2\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile1\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 70.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT12H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2050-10-12T20:15:10Z\",\r\n          \"end\": \"2051-09-11T16:08:04Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              12\r\n            ],\r\n            \"minutes\": [\r\n              13\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"operation\": \"Scale\"\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\"\r\n  },\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile1\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 70.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT12H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2050-10-12T20:15:10Z\",\r\n          \"end\": \"2051-09-11T16:08:04Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              12\r\n            ],\r\n            \"minutes\": [\r\n              13\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"operation\": \"Scale\"\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\"\r\n  },\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d9d97d2f-a754-4792-8f88-f8ca08f06515"
+          "7eb5e903-c9b8-4543-90f7-93642b754b54"
         ],
         "Accept-Language": [
           "en-US"
@@ -158,9 +158,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -180,7 +180,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ea190085-69d4-497d-aa2c-de6691848252"
+          "3c20bff3-98d1-4ea2-89a6-54d4ae8e2112"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -189,16 +189,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "89e124b3-453b-4fe4-a8c1-f80e6152de94"
+          "77ed4a6b-21af-4c6d-852b-95d0d40d490c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061347Z:89e124b3-453b-4fe4-a8c1-f80e6152de94"
+          "SOUTHEASTASIA:20191023T120544Z:77ed4a6b-21af-4c6d-852b-95d0d40d490c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:46 GMT"
+          "Wed, 23 Oct 2019 12:05:43 GMT"
         ],
         "Content-Length": [
           "2304"
@@ -210,17 +210,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n  \"name\": \"somesettingZ\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile1\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 70.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT12H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2050-10-12T20:15:10Z\",\r\n          \"end\": \"2051-09-11T16:08:04Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              12\r\n            ],\r\n            \"minutes\": [\r\n              13\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n  \"name\": \"somesettingZ\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile1\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 70.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT12H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2050-10-12T20:15:10Z\",\r\n          \"end\": \"2051-09-11T16:08:04Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              12\r\n            ],\r\n            \"minutes\": [\r\n              13\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT15M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2025-02-02T02:02:02Z\",\r\n          \"end\": \"2025-02-02T03:03:03Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"very new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"10\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"10\"\r\n        },\r\n        \"rules\": [],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2030-02-12T20:15:10Z\",\r\n          \"end\": \"2030-02-12T20:45:10Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"a new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"5\",\r\n          \"maximum\": \"7\",\r\n          \"default\": \"6\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1H\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10H\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 6.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"PercentChangeCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT10H\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": false,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"operation\": \"Scale\"\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\"\r\n  },\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT15M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2025-02-02T02:02:02Z\",\r\n          \"end\": \"2025-02-02T03:03:03Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"very new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"10\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"10\"\r\n        },\r\n        \"rules\": [],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2030-02-12T20:15:10Z\",\r\n          \"end\": \"2030-02-12T20:45:10Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"a new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"5\",\r\n          \"maximum\": \"7\",\r\n          \"default\": \"6\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1H\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10H\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 6.0\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"PercentChangeCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT10H\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": false,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"operation\": \"Scale\"\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\"\r\n  },\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3411432e-0ec2-43a6-9c3a-1a8f8d0d4328"
+          "3cb32c38-0658-4345-b3e0-d793715caa72"
         ],
         "Accept-Language": [
           "en-US"
@@ -228,9 +228,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -250,7 +250,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "84a61c33-0aa2-4f8d-86b6-9368f1c4c93d"
+          "8087ab42-304e-492c-857f-5057b060ba19"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -259,16 +259,16 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "2b3d921d-d1ce-4f78-8de0-de1421ab41ae"
+          "d94a4814-3d4b-4820-8ecd-f173e0e670fe"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061352Z:2b3d921d-d1ce-4f78-8de0-de1421ab41ae"
+          "SOUTHEASTASIA:20191023T120550Z:d94a4814-3d4b-4820-8ecd-f173e0e670fe"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:52 GMT"
+          "Wed, 23 Oct 2019 12:05:49 GMT"
         ],
         "Content-Length": [
           "2379"
@@ -280,17 +280,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n  \"name\": \"somesettingZ\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT15M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2025-02-02T02:02:02Z\",\r\n          \"end\": \"2025-02-02T03:03:03Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"very new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"10\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"10\"\r\n        },\r\n        \"rules\": [],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2030-02-12T20:15:10Z\",\r\n          \"end\": \"2030-02-12T20:45:10Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"a new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"5\",\r\n          \"maximum\": \"7\",\r\n          \"default\": \"6\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1H\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10H\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 6.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"PercentChangeCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT10H\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": false,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n  \"name\": \"somesettingZ\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT15M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2025-02-02T02:02:02Z\",\r\n          \"end\": \"2025-02-02T03:03:03Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"very new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"10\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"10\"\r\n        },\r\n        \"rules\": [],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2030-02-12T20:15:10Z\",\r\n          \"end\": \"2030-02-12T20:45:10Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"a new profile\",\r\n        \"capacity\": {\r\n          \"minimum\": \"5\",\r\n          \"maximum\": \"7\",\r\n          \"default\": \"6\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1H\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10H\",\r\n              \"timeAggregation\": \"Total\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 6.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"PercentChangeCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT10H\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": false,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "682436dc-5e49-455e-8940-0117d7f2cae3"
+          "84485b06-57af-43bb-8e53-8598f576bb71"
         ],
         "Accept-Language": [
           "en-US"
@@ -298,9 +298,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
       "ResponseHeaders": {
@@ -314,7 +314,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f66c3362-6b35-4af7-ab75-04d0716c48cd"
+          "a7661d55-9557-47e4-a0a7-51e24bdf285e"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -323,16 +323,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d8b6673d-71d9-462d-a4a1-725e728a02f9"
+          "373fcf07-c1b9-4d6c-afd7-45c963d6c797"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061347Z:d8b6673d-71d9-462d-a4a1-725e728a02f9"
+          "SOUTHEASTASIA:20191023T120544Z:373fcf07-c1b9-4d6c-afd7-45c963d6c797"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:47 GMT"
+          "Wed, 23 Oct 2019 12:05:44 GMT"
         ],
         "Content-Length": [
           "2304"
@@ -344,17 +344,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n  \"name\": \"somesettingZ\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile1\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 70.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT12H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2050-10-12T20:15:10Z\",\r\n          \"end\": \"2051-09-11T16:08:04Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              12\r\n            ],\r\n            \"minutes\": [\r\n              13\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n  \"name\": \"somesettingZ\",\r\n  \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"profiles\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"capacity\": {\r\n          \"minimum\": \"3\",\r\n          \"maximum\": \"3\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Monday\",\r\n              \"Tuesday\",\r\n              \"Saturday\"\r\n            ],\r\n            \"hours\": [\r\n              18\r\n            ],\r\n            \"minutes\": [\r\n              0\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile1\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 70.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"10\",\r\n              \"cooldown\": \"PT12H\"\r\n            }\r\n          }\r\n        ],\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2050-10-12T20:15:10Z\",\r\n          \"end\": \"2051-09-11T16:08:04Z\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AutoScaleProfile2\",\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"5\",\r\n          \"default\": \"3\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"CPUPercentage\",\r\n              \"metricNamespace\": \"\",\r\n              \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT10M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"LessThan\",\r\n              \"threshold\": 20.0,\r\n              \"dimensions\": null,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Decrease\",\r\n              \"type\": \"ExactCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT3H\"\r\n            }\r\n          }\r\n        ],\r\n        \"recurrence\": {\r\n          \"frequency\": \"Week\",\r\n          \"schedule\": {\r\n            \"timeZone\": \"UTC\",\r\n            \"days\": [\r\n              \"Friday\"\r\n            ],\r\n            \"hours\": [\r\n              12\r\n            ],\r\n            \"minutes\": [\r\n              13\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"name\": \"somesettingZ\",\r\n    \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n    \"notifications\": [\r\n      {\r\n        \"operation\": \"Scale\",\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [\r\n            \"me@mycorp.com\",\r\n            \"you@mycorp.com\",\r\n            \"him@mycorp.com\"\r\n          ]\r\n        },\r\n        \"webhooks\": null\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0c2f6196-0b7e-4073-9f51-2f2bccca892f"
+          "ad6d89ec-95ea-477c-82df-351f2a28854d"
         ],
         "Accept-Language": [
           "en-US"
@@ -362,9 +362,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
       "ResponseHeaders": {
@@ -378,7 +378,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9ed0094e-620d-4fc2-a1ef-a90d38db4bf8"
+          "3514e754-700c-434f-8612-ba654b7feffc"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -387,16 +387,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "6c64fb9a-bdab-4a0b-8a96-d7b77e38ebbe"
+          "98f7e857-7f5f-47b6-8af5-baf57b8ecd19"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061353Z:6c64fb9a-bdab-4a0b-8a96-d7b77e38ebbe"
+          "SOUTHEASTASIA:20191023T120550Z:98f7e857-7f5f-47b6-8af5-baf57b8ecd19"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:52 GMT"
+          "Wed, 23 Oct 2019 12:05:49 GMT"
         ],
         "Content-Length": [
           "2391"
@@ -408,17 +408,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n      \"name\": \"somesettingZ\",\r\n      \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n      \"location\": \"eastus2\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profiles\": [\r\n          {\r\n            \"name\": \"Default\",\r\n            \"capacity\": {\r\n              \"minimum\": \"3\",\r\n              \"maximum\": \"3\",\r\n              \"default\": \"3\"\r\n            },\r\n            \"rules\": [],\r\n            \"recurrence\": {\r\n              \"frequency\": \"Week\",\r\n              \"schedule\": {\r\n                \"timeZone\": \"UTC\",\r\n                \"days\": [\r\n                  \"Monday\",\r\n                  \"Tuesday\",\r\n                  \"Saturday\"\r\n                ],\r\n                \"hours\": [\r\n                  18\r\n                ],\r\n                \"minutes\": [\r\n                  0\r\n                ]\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"AutoScaleProfile2\",\r\n            \"capacity\": {\r\n              \"minimum\": \"1\",\r\n              \"maximum\": \"5\",\r\n              \"default\": \"3\"\r\n            },\r\n            \"rules\": [\r\n              {\r\n                \"metricTrigger\": {\r\n                  \"metricName\": \"CPUPercentage\",\r\n                  \"metricNamespace\": \"\",\r\n                  \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n                  \"timeGrain\": \"PT1M\",\r\n                  \"statistic\": \"Average\",\r\n                  \"timeWindow\": \"PT15M\",\r\n                  \"timeAggregation\": \"Average\",\r\n                  \"operator\": \"LessThan\",\r\n                  \"threshold\": 20.0,\r\n                  \"dimensions\": null,\r\n                  \"dividePerInstance\": false\r\n                },\r\n                \"scaleAction\": {\r\n                  \"direction\": \"Decrease\",\r\n                  \"type\": \"ExactCount\",\r\n                  \"value\": \"1\",\r\n                  \"cooldown\": \"PT3H\"\r\n                }\r\n              }\r\n            ],\r\n            \"fixedDate\": {\r\n              \"timeZone\": \"UTC\",\r\n              \"start\": \"2025-02-02T02:02:02Z\",\r\n              \"end\": \"2025-02-02T03:03:03Z\"\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"very new profile\",\r\n            \"capacity\": {\r\n              \"minimum\": \"10\",\r\n              \"maximum\": \"10\",\r\n              \"default\": \"10\"\r\n            },\r\n            \"rules\": [],\r\n            \"fixedDate\": {\r\n              \"timeZone\": \"UTC\",\r\n              \"start\": \"2030-02-12T20:15:10Z\",\r\n              \"end\": \"2030-02-12T20:45:10Z\"\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"a new profile\",\r\n            \"capacity\": {\r\n              \"minimum\": \"5\",\r\n              \"maximum\": \"7\",\r\n              \"default\": \"6\"\r\n            },\r\n            \"rules\": [\r\n              {\r\n                \"metricTrigger\": {\r\n                  \"metricName\": \"CPUPercentage\",\r\n                  \"metricNamespace\": \"\",\r\n                  \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n                  \"timeGrain\": \"PT1H\",\r\n                  \"statistic\": \"Average\",\r\n                  \"timeWindow\": \"PT10H\",\r\n                  \"timeAggregation\": \"Total\",\r\n                  \"operator\": \"LessThan\",\r\n                  \"threshold\": 6.0,\r\n                  \"dimensions\": null,\r\n                  \"dividePerInstance\": false\r\n                },\r\n                \"scaleAction\": {\r\n                  \"direction\": \"Decrease\",\r\n                  \"type\": \"PercentChangeCount\",\r\n                  \"value\": \"10\",\r\n                  \"cooldown\": \"PT10H\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"enabled\": true,\r\n        \"name\": \"somesettingZ\",\r\n        \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_8cc10794/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n        \"notifications\": [\r\n          {\r\n            \"operation\": \"Scale\",\r\n            \"email\": {\r\n              \"sendToSubscriptionAdministrator\": true,\r\n              \"sendToSubscriptionCoAdministrators\": false,\r\n              \"customEmails\": [\r\n                \"me@mycorp.com\",\r\n                \"you@mycorp.com\",\r\n                \"him@mycorp.com\"\r\n              ]\r\n            },\r\n            \"webhooks\": null\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ\",\r\n      \"name\": \"somesettingZ\",\r\n      \"type\": \"Microsoft.Insights/autoscaleSettings\",\r\n      \"location\": \"eastus2\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profiles\": [\r\n          {\r\n            \"name\": \"Default\",\r\n            \"capacity\": {\r\n              \"minimum\": \"3\",\r\n              \"maximum\": \"3\",\r\n              \"default\": \"3\"\r\n            },\r\n            \"rules\": [],\r\n            \"recurrence\": {\r\n              \"frequency\": \"Week\",\r\n              \"schedule\": {\r\n                \"timeZone\": \"UTC\",\r\n                \"days\": [\r\n                  \"Monday\",\r\n                  \"Tuesday\",\r\n                  \"Saturday\"\r\n                ],\r\n                \"hours\": [\r\n                  18\r\n                ],\r\n                \"minutes\": [\r\n                  0\r\n                ]\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"AutoScaleProfile2\",\r\n            \"capacity\": {\r\n              \"minimum\": \"1\",\r\n              \"maximum\": \"5\",\r\n              \"default\": \"3\"\r\n            },\r\n            \"rules\": [\r\n              {\r\n                \"metricTrigger\": {\r\n                  \"metricName\": \"CPUPercentage\",\r\n                  \"metricNamespace\": \"\",\r\n                  \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n                  \"timeGrain\": \"PT1M\",\r\n                  \"statistic\": \"Average\",\r\n                  \"timeWindow\": \"PT15M\",\r\n                  \"timeAggregation\": \"Average\",\r\n                  \"operator\": \"LessThan\",\r\n                  \"threshold\": 20.0,\r\n                  \"dimensions\": null,\r\n                  \"dividePerInstance\": false\r\n                },\r\n                \"scaleAction\": {\r\n                  \"direction\": \"Decrease\",\r\n                  \"type\": \"ExactCount\",\r\n                  \"value\": \"1\",\r\n                  \"cooldown\": \"PT3H\"\r\n                }\r\n              }\r\n            ],\r\n            \"fixedDate\": {\r\n              \"timeZone\": \"UTC\",\r\n              \"start\": \"2025-02-02T02:02:02Z\",\r\n              \"end\": \"2025-02-02T03:03:03Z\"\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"very new profile\",\r\n            \"capacity\": {\r\n              \"minimum\": \"10\",\r\n              \"maximum\": \"10\",\r\n              \"default\": \"10\"\r\n            },\r\n            \"rules\": [],\r\n            \"fixedDate\": {\r\n              \"timeZone\": \"UTC\",\r\n              \"start\": \"2030-02-12T20:15:10Z\",\r\n              \"end\": \"2030-02-12T20:45:10Z\"\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"a new profile\",\r\n            \"capacity\": {\r\n              \"minimum\": \"5\",\r\n              \"maximum\": \"7\",\r\n              \"default\": \"6\"\r\n            },\r\n            \"rules\": [\r\n              {\r\n                \"metricTrigger\": {\r\n                  \"metricName\": \"CPUPercentage\",\r\n                  \"metricNamespace\": \"\",\r\n                  \"metricResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n                  \"timeGrain\": \"PT1H\",\r\n                  \"statistic\": \"Average\",\r\n                  \"timeWindow\": \"PT10H\",\r\n                  \"timeAggregation\": \"Total\",\r\n                  \"operator\": \"LessThan\",\r\n                  \"threshold\": 6.0,\r\n                  \"dimensions\": null,\r\n                  \"dividePerInstance\": false\r\n                },\r\n                \"scaleAction\": {\r\n                  \"direction\": \"Decrease\",\r\n                  \"type\": \"PercentChangeCount\",\r\n                  \"value\": \"10\",\r\n                  \"cooldown\": \"PT10H\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"enabled\": true,\r\n        \"name\": \"somesettingZ\",\r\n        \"targetResourceUri\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/jmonitor_f0f41791/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n        \"notifications\": [\r\n          {\r\n            \"operation\": \"Scale\",\r\n            \"email\": {\r\n              \"sendToSubscriptionAdministrator\": true,\r\n              \"sendToSubscriptionCoAdministrators\": false,\r\n              \"customEmails\": [\r\n                \"me@mycorp.com\",\r\n                \"you@mycorp.com\",\r\n                \"him@mycorp.com\"\r\n              ]\r\n            },\r\n            \"webhooks\": null\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4d00c8ad-3328-4c18-aea9-95a2ced4c243"
+          "e150d9ab-20ce-4e36-928a-fc1201d6afc3"
         ],
         "Accept-Language": [
           "en-US"
@@ -426,9 +426,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
       "ResponseHeaders": {
@@ -442,13 +442,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "ef3de520-394e-427e-b2eb-1fc490dc3b63"
+          "9cefcb46-61da-419b-866f-2b2e6d58e00d"
         ],
         "x-ms-correlation-request-id": [
-          "ef3de520-394e-427e-b2eb-1fc490dc3b63"
+          "9cefcb46-61da-419b-866f-2b2e6d58e00d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061355Z:ef3de520-394e-427e-b2eb-1fc490dc3b63"
+          "SOUTHEASTASIA:20191023T120552Z:9cefcb46-61da-419b-866f-2b2e6d58e00d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -457,7 +457,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:54 GMT"
+          "Wed, 23 Oct 2019 12:05:51 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -473,13 +473,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791/providers/microsoft.insights/autoscalesettings/somesettingZ?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYXV0b3NjYWxlc2V0dGluZ3Mvc29tZXNldHRpbmdaP2FwaS12ZXJzaW9uPTIwMTUtMDQtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2af63fc4-451b-48a5-9e30-1dcda8ae64d8"
+          "efaeb0ec-e042-4d1e-be65-f93de1c8a8df"
         ],
         "Accept-Language": [
           "en-US"
@@ -487,9 +487,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
       "ResponseHeaders": {
@@ -503,7 +503,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1e132627-d4db-444c-aad0-a0cb118ca649"
+          "775429b6-b536-4b6b-a90b-97e01d68612e"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -512,16 +512,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "96fe9591-c116-4cd9-9e83-4c527bbe149b"
+          "278a26d9-7065-4c40-a851-4e31e56e6701"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061355Z:96fe9591-c116-4cd9-9e83-4c527bbe149b"
+          "SOUTHEASTASIA:20191023T120552Z:278a26d9-7065-4c40-a851-4e31e56e6701"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:54 GMT"
+          "Wed, 23 Oct 2019 12:05:51 GMT"
         ],
         "Expires": [
           "-1"
@@ -534,13 +534,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_8cc10794?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yXzhjYzEwNzk0P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/jmonitor_f0f41791?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2ptb25pdG9yX2YwZjQxNzkxP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2dcc09e2-8aaa-419c-b532-30313f9fd8ae"
+          "92dc7e1e-2c77-43ec-b474-ee6138ce7932"
         ],
         "Accept-Language": [
           "en-US"
@@ -548,9 +548,9 @@
         "User-Agent": [
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.60",
-          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
       "ResponseHeaders": {
@@ -561,7 +561,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1KTU9OSVRPUjo1RjhDQzEwNzk0LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2017-05-10"
+          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1KTU9OSVRPUjo1RkYwRjQxNzkxLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2019-08-01"
         ],
         "Retry-After": [
           "15"
@@ -570,13 +570,13 @@
           "14998"
         ],
         "x-ms-request-id": [
-          "87c36a7f-3441-4e88-96cc-dcc56e2fc18d"
+          "074d0860-267a-484a-84a0-5f8259c1e82f"
         ],
         "x-ms-correlation-request-id": [
-          "87c36a7f-3441-4e88-96cc-dcc56e2fc18d"
+          "074d0860-267a-484a-84a0-5f8259c1e82f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20190917T061359Z:87c36a7f-3441-4e88-96cc-dcc56e2fc18d"
+          "SOUTHEASTASIA:20191023T120556Z:074d0860-267a-484a-84a0-5f8259c1e82f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -585,7 +585,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 17 Sep 2019 06:13:58 GMT"
+          "Wed, 23 Oct 2019 12:05:56 GMT"
         ],
         "Expires": [
           "-1"
@@ -600,14 +600,14 @@
   ],
   "Names": {
     "CanCRUDAutoscale": [
-      "jmonitor_8cc10794",
-      "jmonitorsa26691668",
-      "jmonitords_44773c",
-      "jmonitoreh29110023"
+      "jmonitor_f0f41791",
+      "jmonitorsa88a22696",
+      "jmonitords_28666e",
+      "jmonitoreh06837255"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "5ae156d4-2a10-47dc-a5c7-89fa4cd313ce",
+    "ServicePrincipal": "af519bfa-99e8-4193-b65b-e6cd2f8bde7f",
     "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
   }

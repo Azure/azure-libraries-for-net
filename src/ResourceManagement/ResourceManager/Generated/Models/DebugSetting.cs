@@ -11,6 +11,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// The debug setting.
+    /// </summary>
     public partial class DebugSetting
     {
         /// <summary>

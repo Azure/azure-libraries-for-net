@@ -7,35 +7,37 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "105ffa38-22f8-4b7b-9864-09a0ae24386a"
+          "73d7d9f4-0865-402e-b51a-31183f181582"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25815.02",
-          "Microsoft.Azure.Management.BatchAI.Fluent.BatchAIManagementClient/1.14.0.0",
-          "MacAddressHash/6d3ec60ee9d199db8fafee7ec31e762168f5c97bfa142de1924f697bcf4ce575"
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.BatchAI.Fluent.BatchAIManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Mon, 20 Aug 2018 22:08:28 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "4d2c1bf7-be2f-4cdd-ace9-33f8a6dd3206"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11995"
         ],
         "request-id": [
-          "57958574-374f-477b-a4a9-e0b7a6e6b9d6"
+          "75eb845d-5a18-494b-8c26-d508630c6ec4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,17 +45,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-request-id": [
-          "723ca5fd-ba8a-4d2e-b6f9-c2c460bb562a"
-        ],
         "x-ms-correlation-request-id": [
-          "723ca5fd-ba8a-4d2e-b6f9-c2c460bb562a"
+          "4d2c1bf7-be2f-4cdd-ace9-33f8a6dd3206"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20180820T220829Z:723ca5fd-ba8a-4d2e-b6f9-c2c460bb562a"
+          "SOUTHEASTASIA:20191024T020319Z:4d2c1bf7-be2f-4cdd-ace9-33f8a6dd3206"
+        ],
+        "Date": [
+          "Thu, 24 Oct 2019 02:03:18 GMT"
         ],
         "Content-Length": [
-          "3202"
+          "3918"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -62,13 +64,13 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 100,\r\n      \"name\": {\r\n        \"value\": \"Clusters\",\r\n        \"localizedValue\": \"Clusters\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Total Cluster Dedicated Regional vCPUs\",\r\n        \"localizedValue\": \"Total Cluster Dedicated Regional vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard D Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard D Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard Dv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard Dv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard FSv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard FSv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard NC Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NC Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NCv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv3 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NCv3 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard ND Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard ND Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard NV Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NV Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Total Cluster LowPriority Regional vCPUs\",\r\n        \"localizedValue\": \"Total Cluster Low Priority Regional vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard D Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard D Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard Dv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard Dv2 Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard FSv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard FSv2 Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard NC Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NC Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NCv2 Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv3 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NCv3 Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard ND Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard ND Family Cluster Low Priority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard NV Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NV Family Cluster Low Priority vCPUs\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 100,\r\n      \"name\": {\r\n        \"value\": \"Total Cluster vCPUs\",\r\n        \"localizedValue\": \"Total Cluster vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Total Cluster Dedicated Regional vCPUs\",\r\n        \"localizedValue\": \"Total Cluster Dedicated Regional vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard D Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard D Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard DSv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard DSv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard Dv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard Dv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard FSv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard FSv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard NC Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NC Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NCv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv3 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NCv3 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard ND Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard ND Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"name\": {\r\n        \"value\": \"Standard NDv2 Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NDv2 Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Standard NV Family Cluster Dedicated vCPUs\",\r\n        \"localizedValue\": \"Standard NV Family Cluster Dedicated vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 24,\r\n      \"name\": {\r\n        \"value\": \"Total Cluster LowPriority Regional vCPUs\",\r\n        \"localizedValue\": \"Total Cluster Low Priority Regional vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard D Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard D Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard DSv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard DSv2 Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard Dv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard Dv2 Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard FSv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard FSv2 Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard NC Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NC Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NCv2 Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard NCv3 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NCv3 Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard ND Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard ND Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard NDv2 Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NDv2 Family Cluster LowPriority vCPUs\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": -1,\r\n      \"name\": {\r\n        \"value\": \"Standard NV Family Cluster LowPriority vCPUs\",\r\n        \"localizedValue\": \"Standard NV Family Cluster LowPriority vCPUs\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "ServicePrincipal": "6ffb9e60-5c90-4acb-9701-16d6147f83e7",
+    "ServicePrincipal": "af519bfa-99e8-4193-b65b-e6cd2f8bde7f",
     "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
   }

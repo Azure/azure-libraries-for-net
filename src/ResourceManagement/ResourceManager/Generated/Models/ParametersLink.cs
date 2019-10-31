@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Entity representing the reference to the deployment paramaters.
+    /// Entity representing the reference to the deployment parameters.
     /// </summary>
     public partial class ParametersLink
     {

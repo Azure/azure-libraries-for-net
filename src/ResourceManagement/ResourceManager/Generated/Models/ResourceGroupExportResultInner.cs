@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="template">The template content.</param>
-        /// <param name="error">The error.</param>
-        public ResourceGroupExportResultInner(object template = default(object), ResourceManagementErrorWithDetails error = default(ResourceManagementErrorWithDetails))
+        /// <param name="error">The template export error.</param>
+        public ResourceGroupExportResultInner(object template = default(object), ErrorResponse error = default(ErrorResponse))
         {
             Template = template;
             Error = error;
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         public object Template { get; set; }
 
         /// <summary>
-        /// Gets or sets the error.
+        /// Gets or sets the template export error.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
-        public ResourceManagementErrorWithDetails Error { get; set; }
+        public ErrorResponse Error { get; set; }
 
     }
 }

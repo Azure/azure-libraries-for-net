@@ -28,6 +28,868 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <remarks>
         /// A template deployment that is currently running cannot be deleted.
         /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Checks whether the deployment exists.
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<bool>> CheckExistenceAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at a given scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> CreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a deployment.
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> GetAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Cancels a currently running template deployment.
+        /// </summary>
+        /// <remarks>
+        /// You can cancel a deployment only if the provisioningState is
+        /// Accepted or Running. After the deployment is canceled, the
+        /// provisioningState is set to Canceled. Canceling a template
+        /// deployment stops the currently running template deployment and
+        /// leaves the resources partially deployed.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CancelAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validates whether the specified template is syntactically correct
+        /// and will be accepted by Azure Resource Manager..
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to validate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentValidateResultInner>> ValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Exports the template used for specified deployment.
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExportResultInner>> ExportTemplateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments at the given scope.
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtScopeWithHttpMessagesAsync(string scope, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteAtTenantScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Checks whether the deployment exists.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<bool>> CheckExistenceAtTenantScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at tenant scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> CreateOrUpdateAtTenantScopeWithHttpMessagesAsync(string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a deployment.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> GetAtTenantScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Cancels a currently running template deployment.
+        /// </summary>
+        /// <remarks>
+        /// You can cancel a deployment only if the provisioningState is
+        /// Accepted or Running. After the deployment is canceled, the
+        /// provisioningState is set to Canceled. Canceling a template
+        /// deployment stops the currently running template deployment and
+        /// leaves the resources partially deployed.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CancelAtTenantScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validates whether the specified template is syntactically correct
+        /// and will be accepted by Azure Resource Manager..
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to validate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentValidateResultInner>> ValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Exports the template used for specified deployment.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExportResultInner>> ExportTemplateAtTenantScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments at the tenant scope.
+        /// </summary>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtTenantScopeWithHttpMessagesAsync(ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Checks whether the deployment exists.
+        /// </summary>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<bool>> CheckExistenceAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at management group scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> CreateOrUpdateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a deployment.
+        /// </summary>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> GetAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Cancels a currently running template deployment.
+        /// </summary>
+        /// <remarks>
+        /// You can cancel a deployment only if the provisioningState is
+        /// Accepted or Running. After the deployment is canceled, the
+        /// provisioningState is set to Canceled. Canceling a template
+        /// deployment stops the currently running template deployment and
+        /// leaves the resources partially deployed.
+        /// </remarks>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CancelAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validates whether the specified template is syntactically correct
+        /// and will be accepted by Azure Resource Manager..
+        /// </summary>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to validate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentValidateResultInner>> ValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Exports the template used for specified deployment.
+        /// </summary>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExportResultInner>> ExportTemplateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments for a management group.
+        /// </summary>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtManagementGroupScopeWithHttpMessagesAsync(string groupId, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Checks whether the deployment exists.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<bool>> CheckExistenceAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at subscription scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> CreateOrUpdateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a deployment.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> GetAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Cancels a currently running template deployment.
+        /// </summary>
+        /// <remarks>
+        /// You can cancel a deployment only if the provisioningState is
+        /// Accepted or Running. After the deployment is canceled, the
+        /// provisioningState is set to Canceled. Canceling a template
+        /// deployment stops the currently running template deployment and
+        /// leaves the resources partially deployed.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CancelAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validates whether the specified template is syntactically correct
+        /// and will be accepted by Azure Resource Manager..
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to validate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentValidateResultInner>> ValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns changes that will be made by the deployment if executed at
+        /// the scope of the subscription.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to What If.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<WhatIfOperationResultInner,DeploymentsWhatIfAtSubscriptionScopeHeaders>> WhatIfAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, DeploymentWhatIf parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Exports the template used for specified deployment.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExportResultInner>> ExportTemplateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments for a subscription.
+        /// </summary>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtSubscriptionScopeWithHttpMessagesAsync(ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
         /// operations. Deleting a template deployment does not affect the
         /// state of the resource group. This is an asynchronous operation that
         /// returns a status of 202 until the template deployment is
@@ -44,7 +906,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// name is case insensitive.
         /// </param>
         /// <param name='deploymentName'>
-        /// The name of the deployment to delete.
+        /// The name of the deployment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -67,7 +929,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// name is case insensitive.
         /// </param>
         /// <param name='deploymentName'>
-        /// The name of the deployment to check.
+        /// The name of the deployment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -96,8 +958,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        /// <param name='properties'>
-        /// The deployment properties.
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -114,7 +976,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeploymentExtendedInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentPropertiesInner properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeploymentExtendedInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a deployment.
         /// </summary>
@@ -122,7 +984,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='deploymentName'>
-        /// The name of the deployment to get.
+        /// The name of the deployment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -154,7 +1016,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='deploymentName'>
-        /// The name of the deployment to cancel.
+        /// The name of the deployment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -180,8 +1042,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        /// <param name='properties'>
-        /// The deployment properties.
+        /// <param name='parameters'>
+        /// Parameters to validate.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -198,7 +1060,37 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeploymentValidateResultInner>> ValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentPropertiesInner properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeploymentValidateResultInner>> ValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns changes that will be made by the deployment if executed at
+        /// the scope of the resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group the template will be deployed to.
+        /// The name is case insensitive.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to validate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<WhatIfOperationResultInner,DeploymentsWhatIfHeaders>> WhatIfWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentWhatIf parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Exports the template used for specified deployment.
         /// </summary>
@@ -206,7 +1098,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='deploymentName'>
-        /// The name of the deployment from which to get the template.
+        /// The name of the deployment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -249,7 +1141,307 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<DeploymentExtendedFilterInner> odataQuery = default(ODataQuery<DeploymentExtendedFilterInner>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<DeploymentExtendedFilter> odataQuery = default(ODataQuery<DeploymentExtendedFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Calculate the hash of the given template.
+        /// </summary>
+        /// <param name='template'>
+        /// The template provided to calculate hash.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<TemplateHashResultInner>> CalculateTemplateHashWithHttpMessagesAsync(object template, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at a given scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The scope of a deployment.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteAtTenantScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at tenant scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> BeginCreateOrUpdateAtTenantScopeWithHttpMessagesAsync(string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at management group scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='groupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> BeginCreateOrUpdateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a deployment from the deployment history.
+        /// </summary>
+        /// <remarks>
+        /// A template deployment that is currently running cannot be deleted.
+        /// Deleting a template deployment removes the associated deployment
+        /// operations. This is an asynchronous operation that returns a status
+        /// of 202 until the template deployment is successfully deleted. The
+        /// Location response header contains the URI that is used to obtain
+        /// the status of the process. While the process is running, a call to
+        /// the URI in the Location header returns a status of 202. When the
+        /// process finishes, the URI in the Location header returns a status
+        /// of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys resources at subscription scope.
+        /// </summary>
+        /// <remarks>
+        /// You can provide the template and parameters directly in the request
+        /// or link to JSON files.
+        /// </remarks>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentExtendedInner>> BeginCreateOrUpdateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns changes that will be made by the deployment if executed at
+        /// the scope of the subscription.
+        /// </summary>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to What If.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<WhatIfOperationResultInner,DeploymentsWhatIfAtSubscriptionScopeHeaders>> BeginWhatIfAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, DeploymentWhatIf parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a deployment from the deployment history.
         /// </summary>
@@ -272,7 +1464,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// name is case insensitive.
         /// </param>
         /// <param name='deploymentName'>
-        /// The name of the deployment to delete.
+        /// The name of the deployment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -301,8 +1493,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        /// <param name='properties'>
-        /// The deployment properties.
+        /// <param name='parameters'>
+        /// Additional parameters supplied to the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -319,7 +1511,125 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeploymentExtendedInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentPropertiesInner properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeploymentExtendedInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns changes that will be made by the deployment if executed at
+        /// the scope of the resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group the template will be deployed to.
+        /// The name is case insensitive.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the deployment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to validate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<WhatIfOperationResultInner,DeploymentsWhatIfHeaders>> BeginWhatIfWithHttpMessagesAsync(string resourceGroupName, string deploymentName, DeploymentWhatIf parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments at the given scope.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments at the tenant scope.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtTenantScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments for a management group.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtManagementGroupScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get all the deployments for a subscription.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DeploymentExtendedInner>>> ListAtSubscriptionScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all the deployments for a resource group.
         /// </summary>
