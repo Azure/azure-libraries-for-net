@@ -127,33 +127,24 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public async Task<IPagedCollection<IActiveDirectoryObject>> ListMembersAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IActiveDirectoryObject, AADObjectInner>.LoadPage(
-                async (cancellation) => await manager.Inner.Groups.GetGroupMembersAsync(Id(), cancellation),
-                manager.Inner.Groups.GetGroupMembersNextAsync,
-                (inner) => WrapObjectInner(inner), true, cancellationToken);
+            return await PagedCollection<IActiveDirectoryObject, DirectoryObject>.LoadPage(
+                  async (cancellation) => await manager.Inner.Groups.GetGroupMembersAsync(Id(), cancellation),
+                  manager.Inner.Groups.GetGroupMembersNextAsync,
+                  (inner) => WrapObjectInner(inner), true, cancellationToken);
         }
 
-        private IActiveDirectoryObject WrapObjectInner(AADObjectInner inner)
+        private IActiveDirectoryObject WrapObjectInner(DirectoryObject inner)
         {
-            var managementClient = ((GroupsOperations) manager.Inner.Groups).Client;
-            string serialized = SafeJsonConvert.SerializeObject(inner, managementClient.SerializationSettings);
-            switch (inner.ObjectType)
-            {
-                case "User":
-                    UserInner user = SafeJsonConvert.DeserializeObject<UserInner>(serialized, managementClient.DeserializationSettings);
-                    return new ActiveDirectoryUserImpl(user, manager);
-                case "Group":
-                    ADGroupInner group = SafeJsonConvert.DeserializeObject<ADGroupInner>(serialized, managementClient.DeserializationSettings);
-                    return new ActiveDirectoryGroupImpl(group, manager);
-                case "ServicePrincipal":
-                    ServicePrincipalInner sp = SafeJsonConvert.DeserializeObject<ServicePrincipalInner>(serialized, managementClient.DeserializationSettings);
-                    return new ServicePrincipalImpl(sp, manager);
-                case "Application":
-                    ApplicationInner app = SafeJsonConvert.DeserializeObject<ApplicationInner>(serialized, managementClient.DeserializationSettings);
-                    return new ActiveDirectoryApplicationImpl(app, manager);
-                default:
-                    return null;
-            }
+            if (inner is UserInner)
+                return new ActiveDirectoryUserImpl(inner as UserInner, manager);
+            else if (inner is ADGroupInner)
+                return new ActiveDirectoryGroupImpl(inner as ADGroupInner, manager);
+            else if (inner is ServicePrincipalInner)
+                return new ServicePrincipalImpl(inner as ServicePrincipalInner, manager);
+            else if (inner is ApplicationInner)
+                return new ActiveDirectoryApplicationImpl(inner as ApplicationInner, manager);
+            else
+                return null;
         }
 
         public bool IsInCreateMode()

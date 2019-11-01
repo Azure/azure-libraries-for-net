@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,18 +19,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
-    /// <summary>
-    /// Role based access control provides you a way to apply granular level
-    /// policy administration down to individual resources or resource groups.
-    /// These operations enable you to manage role definitions and role
-    /// assignments. A role definition describes the set of actions that can be
-    /// performed on resources. A role assignment grants access to Azure Active
-    /// Directory users.
-    /// </summary>
-    public partial class AuthorizationManagementClient : FluentServiceClientBase<AuthorizationManagementClient>, IAuthorizationManagementClient, IAzureClient
+    public partial class AuthorizationManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<AuthorizationManagementClient>, IAuthorizationManagementClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -39,26 +31,27 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -68,14 +61,14 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         public virtual IClassicAdministratorsOperations ClassicAdministrators { get; private set; }
 
         /// <summary>
+        /// Gets the IGlobalAdministratorOperations.
+        /// </summary>
+        public virtual IGlobalAdministratorOperations GlobalAdministrator { get; private set; }
+
+        /// <summary>
         /// Gets the IProviderOperationsMetadataOperations.
         /// </summary>
         public virtual IProviderOperationsMetadataOperations ProviderOperationsMetadata { get; private set; }
-
-        /// <summary>
-        /// Gets the IPermissionsOperations.
-        /// </summary>
-        public virtual IPermissionsOperations Permissions { get; private set; }
 
         /// <summary>
         /// Gets the IRoleAssignmentsOperations.
@@ -83,9 +76,19 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         public virtual IRoleAssignmentsOperations RoleAssignments { get; private set; }
 
         /// <summary>
+        /// Gets the IPermissionsOperations.
+        /// </summary>
+        public virtual IPermissionsOperations Permissions { get; private set; }
+
+        /// <summary>
         /// Gets the IRoleDefinitionsOperations.
         /// </summary>
         public virtual IRoleDefinitionsOperations RoleDefinitions { get; private set; }
+
+        /// <summary>
+        /// Gets the IDenyAssignmentsOperations.
+        /// </summary>
+        public virtual IDenyAssignmentsOperations DenyAssignments { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AuthorizationManagementClient class.
@@ -93,8 +96,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public AuthorizationManagementClient(RestClient restClient) 
-            : base(restClient)
+        public AuthorizationManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -108,11 +110,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         protected override void Initialize()
         {
             ClassicAdministrators = new ClassicAdministratorsOperations(this);
+            GlobalAdministrator = new GlobalAdministratorOperations(this);
             ProviderOperationsMetadata = new ProviderOperationsMetadataOperations(this);
-            Permissions = new PermissionsOperations(this);
             RoleAssignments = new RoleAssignmentsOperations(this);
+            Permissions = new PermissionsOperations(this);
             RoleDefinitions = new RoleDefinitionsOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            DenyAssignments = new DenyAssignmentsOperations(this);
+            this.BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

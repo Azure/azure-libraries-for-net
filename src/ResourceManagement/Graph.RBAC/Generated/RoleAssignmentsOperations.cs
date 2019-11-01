@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "roleAssignmentName");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -721,7 +721,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2018-01-01-preview";
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -917,7 +921,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "roleAssignmentName");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1099,7 +1103,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "roleId");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1286,7 +1290,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2018-01-01-preview";
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1473,7 +1481,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "roleId");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1653,7 +1661,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1844,7 +1852,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scope");
             }
-            string apiVersion = "2018-01-01-preview";
+            string apiVersion = "2018-09-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
