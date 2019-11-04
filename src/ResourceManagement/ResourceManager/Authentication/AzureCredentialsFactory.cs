@@ -68,11 +68,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// Creates a credentail object using token from local managed service identity endpoint.
         /// </summary>
         /// <param name="resourceType">Resource Type for MSI Login Information</param>
+        /// <param name="environment">The environment to authenticate to</param>
+        /// <param name="tenantId">The tenant ID</param>
+        /// <returns></returns>
+        public AzureCredentials FromSystemAssignedManagedServiceIdentity(MSIResourceType resourceType, AzureEnvironment environment, string tenantId = null)
+        {
+            return new AzureCredentials(new MSILoginInformation(resourceType), environment, tenantId);
+        }
+
+        /// <summary>
+        /// Creates a credentail object using token from local managed service identity endpoint.
+        /// </summary>
         /// <param name="clientId">User Assigned Identity Client ID</param>
+        /// <param name="resourceType">Resource Type for MSI Login Information</param>
         /// <param name="environment">The environment to authenticate to</param>
         /// <param name="tenantId">The tenant ID</param>
         /// <returns>an authenticated credentials object</returns>
-        public AzureCredentials FromMSI(MSIResourceType resourceType, string clientId, AzureEnvironment environment, string tenantId = null)
+        public AzureCredentials FromUserAssigedManagedServiceIdentity(string clientId, MSIResourceType resourceType, AzureEnvironment environment, string tenantId = null)
         {
             return new AzureCredentials(new MSILoginInformation(resourceType, clientId), environment, tenantId);
         }
