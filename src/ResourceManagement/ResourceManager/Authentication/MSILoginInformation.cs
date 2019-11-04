@@ -11,9 +11,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// </summary>
     public class MSILoginInformation : IBeta
     {
-        public MSILoginInformation(MSIResourceType resourceType)
+        /// <summary>
+        /// Construction for MSI Login
+        /// </summary>
+        /// <param name="resourceType">MSI Resource Type</param>
+        /// <param name="clientId">User Assigned Identity Client ID</param>
+        /// <param name="resourceId">User Assigned Identity Resource ID</param>
+        /// <param name="objectId">User Assigned Identity Object ID</param>
+        public MSILoginInformation(MSIResourceType resourceType, string clientId = null, string resourceId = null, string objectId = null)
         {
             this.ResourceType = resourceType;
+            this.UserAssignedIdentityClientId = clientId;
+            this.UserAssignedIdentityResourceId = resourceId;
+            this.UserAssignedIdentityObjectId = objectId;
         }
 
         /// <summary>
