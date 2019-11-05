@@ -89,9 +89,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         /// </summary>
         public static readonly Region GovernmentUSIowa = new Region("usgoviowa");
 
-        [Obsolete("Use GovernmentUSIowa instead.")]
-        public static readonly Region GovernmnetUSIowa = GovernmentUSIowa;
-
         /// <summary>
         /// U.S. government cloud in Arizona.
         /// </summary>
