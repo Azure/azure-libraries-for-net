@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -21,20 +19,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// An Azure Cosmos DB SQL database.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SqlDatabaseInner : Management.ResourceManager.Fluent.Resource
+    public partial class SqlDatabaseGetResultsInner : ARMResourcePropertiesInner
     {
         /// <summary>
-        /// Initializes a new instance of the SqlDatabaseInner class.
+        /// Initializes a new instance of the SqlDatabaseGetResultsInner class.
         /// </summary>
-        public SqlDatabaseInner()
+        public SqlDatabaseGetResultsInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SqlDatabaseInner class.
+        /// Initializes a new instance of the SqlDatabaseGetResultsInner class.
         /// </summary>
-        /// <param name="sqlDatabaseId">Name of the Cosmos DB SQL
+        /// <param name="sqlDatabaseGetResultsId">Name of the Cosmos DB SQL
         /// database</param>
         /// <param name="_rid">A system generated property. A unique
         /// identifier.</param>
@@ -46,10 +44,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// addressable path of the collections resource.</param>
         /// <param name="_users">A system generated property that specifies the
         /// addressable path of the users resource.</param>
-        public SqlDatabaseInner(string sqlDatabaseId, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string _rid = default(string), object _ts = default(object), string _etag = default(string), string _colls = default(string), string _users = default(string))
+        public SqlDatabaseGetResultsInner(string location, string sqlDatabaseGetResultsId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string _rid = default(string), object _ts = default(object), string _etag = default(string), string _colls = default(string), string _users = default(string))
             : base(location, id, name, type, tags)
         {
-            SqlDatabaseId = sqlDatabaseId;
+            SqlDatabaseGetResultsId = sqlDatabaseGetResultsId;
             this._rid = _rid;
             this._ts = _ts;
             this._etag = _etag;
@@ -67,27 +65,27 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets name of the Cosmos DB SQL database
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public string SqlDatabaseId { get; set; }
+        public string SqlDatabaseGetResultsId { get; set; }
 
         /// <summary>
-        /// Gets or sets a system generated property. A unique identifier.
+        /// Gets a system generated property. A unique identifier.
         /// </summary>
         [JsonProperty(PropertyName = "properties._rid")]
-        public string _rid { get; set; }
+        public string _rid { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property that denotes the last
-        /// updated timestamp of the resource.
+        /// Gets a system generated property that denotes the last updated
+        /// timestamp of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties._ts")]
-        public object _ts { get; set; }
+        public object _ts { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property representing the resource
-        /// etag required for optimistic concurrency control.
+        /// Gets a system generated property representing the resource etag
+        /// required for optimistic concurrency control.
         /// </summary>
         [JsonProperty(PropertyName = "properties._etag")]
-        public string _etag { get; set; }
+        public string _etag { get; private set; }
 
         /// <summary>
         /// Gets or sets a system generated property that specified the
@@ -109,11 +107,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (SqlDatabaseId == null)
+            base.Validate();
+            if (SqlDatabaseGetResultsId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SqlDatabaseId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "SqlDatabaseGetResultsId");
             }
         }
     }

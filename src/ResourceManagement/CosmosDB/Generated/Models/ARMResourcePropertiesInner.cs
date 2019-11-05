@@ -8,30 +8,31 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Newtonsoft.Json;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Cosmos DB resource throughput object
+    /// The core properties of ARM resources.
     /// </summary>
-    public partial class ThroughputResource
+    public partial class ARMResourcePropertiesInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the ThroughputResource class.
+        /// Initializes a new instance of the ARMResourcePropertiesInner class.
         /// </summary>
-        public ThroughputResource()
+        public ARMResourcePropertiesInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ThroughputResource class.
+        /// Initializes a new instance of the ARMResourcePropertiesInner class.
         /// </summary>
-        /// <param name="throughput">Value of the Cosmos DB resource
-        /// throughput</param>
-        public ThroughputResource(int throughput)
+        public ARMResourcePropertiesInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(location, id, name, type, tags)
         {
-            Throughput = throughput;
             CustomInit();
         }
 
@@ -41,20 +42,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets value of the Cosmos DB resource throughput
-        /// </summary>
-        [JsonProperty(PropertyName = "throughput")]
-        public int Throughput { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            //Nothing to validate
+            base.Validate();
         }
     }
 }

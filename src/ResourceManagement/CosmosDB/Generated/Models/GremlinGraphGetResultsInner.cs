@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -21,21 +19,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// An Azure Cosmos DB Gremlin graph.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GremlinGraphInner : Management.ResourceManager.Fluent.Resource
+    public partial class GremlinGraphGetResultsInner : ARMResourcePropertiesInner
     {
         /// <summary>
-        /// Initializes a new instance of the GremlinGraphInner class.
+        /// Initializes a new instance of the GremlinGraphGetResultsInner
+        /// class.
         /// </summary>
-        public GremlinGraphInner()
+        public GremlinGraphGetResultsInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GremlinGraphInner class.
+        /// Initializes a new instance of the GremlinGraphGetResultsInner
+        /// class.
         /// </summary>
-        /// <param name="gremlinGraphId">Name of the Cosmos DB Gremlin
-        /// graph</param>
+        /// <param name="gremlinGraphGetResultsId">Name of the Cosmos DB
+        /// Gremlin graph</param>
         /// <param name="indexingPolicy">The configuration of the indexing
         /// policy. By default, the indexing is automatic for all document
         /// paths within the graph</param>
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// updated timestamp of the resource.</param>
         /// <param name="_etag">A system generated property representing the
         /// resource etag required for optimistic concurrency control.</param>
-        public GremlinGraphInner(string gremlinGraphId, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), string _rid = default(string), object _ts = default(object), string _etag = default(string))
+        public GremlinGraphGetResultsInner(string location, string gremlinGraphGetResultsId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), string _rid = default(string), object _ts = default(object), string _etag = default(string))
             : base(location, id, name, type, tags)
         {
-            GremlinGraphId = gremlinGraphId;
+            GremlinGraphGetResultsId = gremlinGraphGetResultsId;
             IndexingPolicy = indexingPolicy;
             PartitionKey = partitionKey;
             DefaultTtl = defaultTtl;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets name of the Cosmos DB Gremlin graph
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public string GremlinGraphId { get; set; }
+        public string GremlinGraphGetResultsId { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration of the indexing policy. By default,
@@ -114,24 +114,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public ConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets a system generated property. A unique identifier.
+        /// Gets a system generated property. A unique identifier.
         /// </summary>
         [JsonProperty(PropertyName = "properties._rid")]
-        public string _rid { get; set; }
+        public string _rid { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property that denotes the last
-        /// updated timestamp of the resource.
+        /// Gets a system generated property that denotes the last updated
+        /// timestamp of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties._ts")]
-        public object _ts { get; set; }
+        public object _ts { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property representing the resource
-        /// etag required for optimistic concurrency control.
+        /// Gets a system generated property representing the resource etag
+        /// required for optimistic concurrency control.
         /// </summary>
         [JsonProperty(PropertyName = "properties._etag")]
-        public string _etag { get; set; }
+        public string _etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -139,11 +139,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (GremlinGraphId == null)
+            base.Validate();
+            if (GremlinGraphGetResultsId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GremlinGraphId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "GremlinGraphGetResultsId");
+            }
+            if (PartitionKey != null)
+            {
+                PartitionKey.Validate();
             }
         }
     }

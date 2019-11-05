@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// Parameters to create and update Cosmos DB Table.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TableCreateUpdateParameters
+    public partial class TableCreateUpdateParameters : ARMResourcePropertiesInner
     {
         /// <summary>
         /// Initializes a new instance of the TableCreateUpdateParameters
@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public TableCreateUpdateParameters(TableResource resource, IDictionary<string, string> options)
+        public TableCreateUpdateParameters(string location, TableResourceInner resource, IDictionary<string, string> options, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(location, id, name, type, tags)
         {
             Resource = resource;
             Options = options;
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets the standard JSON format of a Table
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public TableResource Resource { get; set; }
+        public TableResourceInner Resource { get; set; }
 
         /// <summary>
         /// Gets or sets a key-value pair of options to be applied for the
@@ -69,8 +70,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Resource == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Resource");

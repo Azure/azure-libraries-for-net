@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -18,34 +16,36 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// An Azure Cosmos DB Gremlin database.
+    /// An Azure Cosmos DB MongoDB database.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GremlinDatabaseInner : Management.ResourceManager.Fluent.Resource
+    public partial class MongoDBDatabaseGetResultsInner : ARMResourcePropertiesInner
     {
         /// <summary>
-        /// Initializes a new instance of the GremlinDatabaseInner class.
+        /// Initializes a new instance of the MongoDBDatabaseGetResultsInner
+        /// class.
         /// </summary>
-        public GremlinDatabaseInner()
+        public MongoDBDatabaseGetResultsInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GremlinDatabaseInner class.
+        /// Initializes a new instance of the MongoDBDatabaseGetResultsInner
+        /// class.
         /// </summary>
-        /// <param name="gremlinDatabaseId">Name of the Cosmos DB Gremlin
-        /// database</param>
+        /// <param name="mongoDBDatabaseGetResultsId">Name of the Cosmos DB
+        /// MongoDB database</param>
         /// <param name="_rid">A system generated property. A unique
         /// identifier.</param>
         /// <param name="_ts">A system generated property that denotes the last
         /// updated timestamp of the resource.</param>
         /// <param name="_etag">A system generated property representing the
         /// resource etag required for optimistic concurrency control.</param>
-        public GremlinDatabaseInner(string gremlinDatabaseId, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string _rid = default(string), object _ts = default(object), string _etag = default(string))
+        public MongoDBDatabaseGetResultsInner(string location, string mongoDBDatabaseGetResultsId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string _rid = default(string), object _ts = default(object), string _etag = default(string))
             : base(location, id, name, type, tags)
         {
-            GremlinDatabaseId = gremlinDatabaseId;
+            MongoDBDatabaseGetResultsId = mongoDBDatabaseGetResultsId;
             this._rid = _rid;
             this._ts = _ts;
             this._etag = _etag;
@@ -58,30 +58,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the Cosmos DB Gremlin database
+        /// Gets or sets name of the Cosmos DB MongoDB database
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public string GremlinDatabaseId { get; set; }
+        public string MongoDBDatabaseGetResultsId { get; set; }
 
         /// <summary>
-        /// Gets or sets a system generated property. A unique identifier.
+        /// Gets a system generated property. A unique identifier.
         /// </summary>
         [JsonProperty(PropertyName = "properties._rid")]
-        public string _rid { get; set; }
+        public string _rid { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property that denotes the last
-        /// updated timestamp of the resource.
+        /// Gets a system generated property that denotes the last updated
+        /// timestamp of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties._ts")]
-        public object _ts { get; set; }
+        public object _ts { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property representing the resource
-        /// etag required for optimistic concurrency control.
+        /// Gets a system generated property representing the resource etag
+        /// required for optimistic concurrency control.
         /// </summary>
         [JsonProperty(PropertyName = "properties._etag")]
-        public string _etag { get; set; }
+        public string _etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -89,11 +89,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (GremlinDatabaseId == null)
+            base.Validate();
+            if (MongoDBDatabaseGetResultsId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GremlinDatabaseId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "MongoDBDatabaseGetResultsId");
             }
         }
     }

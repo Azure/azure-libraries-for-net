@@ -8,37 +8,30 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// An Azure Cosmos DB Table.
+    /// Cosmos DB table resource object
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class TableInner : Management.ResourceManager.Fluent.Resource
+    public partial class TableResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the TableInner class.
+        /// Initializes a new instance of the TableResourceInner class.
         /// </summary>
-        public TableInner()
+        public TableResourceInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TableInner class.
+        /// Initializes a new instance of the TableResourceInner class.
         /// </summary>
-        /// <param name="tableId">Name of the Cosmos DB table</param>
-        public TableInner(string tableId, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        /// <param name="id">Name of the Cosmos DB table</param>
+        public TableResourceInner(string id)
         {
-            TableId = tableId;
+            Id = id;
             CustomInit();
         }
 
@@ -50,8 +43,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <summary>
         /// Gets or sets name of the Cosmos DB table
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public string TableId { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -61,9 +54,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (TableId == null)
+            if (Id == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TableId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
             }
         }
     }

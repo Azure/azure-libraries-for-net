@@ -11,35 +11,35 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// An Azure Cosmos DB MongoDB database.
+    /// The resource model definition for a ARM tracked top level resource
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class MongoDBDatabaseInner : Management.ResourceManager.Fluent.Resource
+    public partial class TrackedResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the MongoDBDatabaseInner class.
+        /// Initializes a new instance of the TrackedResourceInner class.
         /// </summary>
-        public MongoDBDatabaseInner()
+        public TrackedResourceInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MongoDBDatabaseInner class.
+        /// Initializes a new instance of the TrackedResourceInner class.
         /// </summary>
-        /// <param name="mongoDBDatabaseId">Name of the Cosmos DB MongoDB
-        /// database</param>
-        public MongoDBDatabaseInner(string mongoDBDatabaseId, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        /// <param name="tags">Resource tags.</param>
+        public TrackedResourceInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(id, name, type)
         {
-            MongoDBDatabaseId = mongoDBDatabaseId;
+            Tags = tags;
+            Location = location;
             CustomInit();
         }
 
@@ -49,10 +49,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the Cosmos DB MongoDB database
+        /// Gets or sets resource tags.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public string MongoDBDatabaseId { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -62,9 +68,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MongoDBDatabaseId == null)
+            if (Location == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MongoDBDatabaseId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
         }
     }

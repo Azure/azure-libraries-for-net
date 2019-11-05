@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -34,10 +35,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// container can be partitioned</param>
         /// <param name="kind">Indicates the kind of algorithm used for
         /// partitioning. Possible values include: 'Hash', 'Range'</param>
-        public ContainerPartitionKey(IList<string> paths = default(IList<string>), PartitionKind kind = default(PartitionKind))
+        /// <param name="version">Indicates the version of the partition key
+        /// definition</param>
+        public ContainerPartitionKey(IList<string> paths = default(IList<string>), PartitionKind kind = default(PartitionKind), int? version = default(int?))
         {
             Paths = paths;
             Kind = kind;
+            Version = version;
             CustomInit();
         }
 
@@ -60,5 +64,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         [JsonProperty(PropertyName = "kind")]
         public PartitionKind Kind { get; set; }
 
+        /// <summary>
+        /// Gets or sets indicates the version of the partition key definition
+        /// </summary>
+        [JsonProperty(PropertyName = "version")]
+        public int? Version { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Version > 2)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "Version", 2);
+            }
+            if (Version < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Version", 1);
+            }
+        }
     }
 }

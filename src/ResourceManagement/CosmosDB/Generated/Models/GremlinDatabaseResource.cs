@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Cosmos DB Gremlin database id object
+    /// Cosmos DB Gremlin database resource object
     /// </summary>
     public partial class GremlinDatabaseResource
     {

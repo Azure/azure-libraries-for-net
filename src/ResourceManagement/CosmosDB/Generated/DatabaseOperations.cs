@@ -136,14 +136,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseRid");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
             if (filter == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "filter");
             }
+            string apiVersion = "2019-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -154,6 +151,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("databaseRid", databaseRid);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("filter", filter);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListMetrics", tracingParameters);
@@ -166,9 +164,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{databaseRid}", System.Uri.EscapeDataString(databaseRid));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (filter != null)
             {
@@ -385,10 +383,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseRid");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
+            string apiVersion = "2019-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -399,6 +394,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("databaseRid", databaseRid);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("filter", filter);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListUsages", tracingParameters);
@@ -411,9 +407,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{databaseRid}", System.Uri.EscapeDataString(databaseRid));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (filter != null)
             {
@@ -625,10 +621,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseRid");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
+            string apiVersion = "2019-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -639,6 +632,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("databaseRid", databaseRid);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListMetricDefinitions", tracingParameters);
             }
@@ -650,9 +644,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{databaseRid}", System.Uri.EscapeDataString(databaseRid));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

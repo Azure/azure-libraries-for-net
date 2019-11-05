@@ -8,28 +8,27 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Cosmos DB table id object
+    /// Private endpoint which the connection belongs to.
     /// </summary>
-    public partial class TableResource
+    public partial class PrivateEndpointProperty
     {
         /// <summary>
-        /// Initializes a new instance of the TableResource class.
+        /// Initializes a new instance of the PrivateEndpointProperty class.
         /// </summary>
-        public TableResource()
+        public PrivateEndpointProperty()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TableResource class.
+        /// Initializes a new instance of the PrivateEndpointProperty class.
         /// </summary>
-        /// <param name="id">Name of the Cosmos DB table</param>
-        public TableResource(string id)
+        /// <param name="id">Resource id of the private endpoint.</param>
+        public PrivateEndpointProperty(string id = default(string))
         {
             Id = id;
             CustomInit();
@@ -41,23 +40,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the Cosmos DB table
+        /// Gets or sets resource id of the private endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Id == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
-            }
-        }
     }
 }

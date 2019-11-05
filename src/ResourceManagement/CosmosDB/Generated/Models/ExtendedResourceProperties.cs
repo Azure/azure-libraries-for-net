@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The system generated resource properties associated with SQL databases
-    /// and SQL containers.
+    /// The system generated resource properties associated with SQL databases,
+    /// SQL containers, Gremlin databases and Gremlin graphs.
     /// </summary>
     public partial class ExtendedResourceProperties
     {
@@ -48,24 +48,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a system generated property. A unique identifier.
+        /// Gets a system generated property. A unique identifier.
         /// </summary>
         [JsonProperty(PropertyName = "_rid")]
-        public string _rid { get; set; }
+        public string _rid { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property that denotes the last
-        /// updated timestamp of the resource.
+        /// Gets a system generated property that denotes the last updated
+        /// timestamp of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "_ts")]
-        public object _ts { get; set; }
+        public object _ts { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property representing the resource
-        /// etag required for optimistic concurrency control.
+        /// Gets a system generated property representing the resource etag
+        /// required for optimistic concurrency control.
         /// </summary>
         [JsonProperty(PropertyName = "_etag")]
-        public string _etag { get; set; }
+        public string _etag { get; private set; }
 
     }
 }

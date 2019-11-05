@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -18,31 +16,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters to create and update Cosmos DB database accounts.
+    /// Parameters for patching Azure Cosmos DB database account properties.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DatabaseAccountCreateUpdateParametersInner : Management.ResourceManager.Fluent.Resource
+    public partial class DatabaseAccountUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// DatabaseAccountCreateUpdateParametersInner class.
+        /// Initializes a new instance of the DatabaseAccountUpdateParameters
+        /// class.
         /// </summary>
-        public DatabaseAccountCreateUpdateParametersInner()
+        public DatabaseAccountUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// DatabaseAccountCreateUpdateParametersInner class.
+        /// Initializes a new instance of the DatabaseAccountUpdateParameters
+        /// class.
         /// </summary>
-        /// <param name="locations">An array that contains the georeplication
-        /// locations enabled for the Cosmos DB account.</param>
-        /// <param name="kind">Indicates the type of database account. This can
-        /// only be set at database account creation. Possible values include:
-        /// 'GlobalDocumentDB', 'MongoDB', 'Parse'</param>
+        /// <param name="location">The location of the resource group to which
+        /// the resource belongs.</param>
         /// <param name="consistencyPolicy">The consistency policy for the
         /// Cosmos DB account.</param>
+        /// <param name="locations">An array that contains the georeplication
+        /// locations enabled for the Cosmos DB account.</param>
         /// <param name="ipRangeFilter">Cosmos DB Firewall Support: This value
         /// specifies the set of IP addresses or IP address ranges in CIDR form
         /// to be included as the allowed list of client IPs for a given
@@ -66,10 +63,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="connectorOffer">The cassandra connector offer type for
         /// the Cosmos DB database C* account. Possible values include:
         /// 'Small'</param>
-        public DatabaseAccountCreateUpdateParametersInner(IList<Location> locations, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DatabaseAccountKind kind = default(DatabaseAccountKind), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), IList<Capability> capabilities = default(IList<Capability>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), ConnectorOffer connectorOffer = default(ConnectorOffer))
-            : base(location, id, name, type, tags)
+        /// <param name="disableKeyBasedMetadataWriteAccess">Disable write
+        /// operations on metadata resources (databases, containers,
+        /// throughput) via account keys</param>
+        public DatabaseAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Location> locations = default(IList<Location>), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), IList<Capability> capabilities = default(IList<Capability>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), ConnectorOffer connectorOffer = default(ConnectorOffer), bool? disableKeyBasedMetadataWriteAccess = default(bool?))
         {
-            Kind = kind;
+            Tags = tags;
+            Location = location;
             ConsistencyPolicy = consistencyPolicy;
             Locations = locations;
             IpRangeFilter = ipRangeFilter;
@@ -80,15 +80,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
             EnableMultipleWriteLocations = enableMultipleWriteLocations;
             EnableCassandraConnector = enableCassandraConnector;
             ConnectorOffer = connectorOffer;
+            DisableKeyBasedMetadataWriteAccess = disableKeyBasedMetadataWriteAccess;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for DatabaseAccountCreateUpdateParametersInner
-        /// class.
-        /// </summary>
-        static DatabaseAccountCreateUpdateParametersInner()
-        {
-            DatabaseAccountOfferType = "Standard";
         }
 
         /// <summary>
@@ -97,12 +90,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets indicates the type of database account. This can only
-        /// be set at database account creation. Possible values include:
-        /// 'GlobalDocumentDB', 'MongoDB', 'Parse'
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
-        public DatabaseAccountKind Kind { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the resource group to which the
+        /// resource belongs.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the consistency policy for the Cosmos DB account.
@@ -178,10 +175,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public ConnectorOffer ConnectorOffer { get; set; }
 
         /// <summary>
-        /// The offer type for the database
+        /// Gets or sets disable write operations on metadata resources
+        /// (databases, containers, throughput) via account keys
         /// </summary>
-        [JsonProperty(PropertyName = "properties.databaseAccountOfferType")]
-        public static string DatabaseAccountOfferType { get; private set; }
+        [JsonProperty(PropertyName = "properties.disableKeyBasedMetadataWriteAccess")]
+        public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -191,10 +189,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Locations == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Locations");
-            }
             if (ConsistencyPolicy != null)
             {
                 ConsistencyPolicy.Validate();

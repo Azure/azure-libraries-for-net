@@ -44,10 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Version of the API to be used with the client request. The current
-        /// version is 2015-04-08.
+        /// The ID of the target subscription.
         /// </summary>
-        string ApiVersion { get; }
+        string SubscriptionId1 { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -132,6 +131,41 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// Gets the IPartitionKeyRangeIdRegionOperations.
         /// </summary>
         IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
+
+        /// <summary>
+        /// Gets the ISqlResourcesOperations.
+        /// </summary>
+        ISqlResourcesOperations SqlResources { get; }
+
+        /// <summary>
+        /// Gets the IMongoDBResourcesOperations.
+        /// </summary>
+        IMongoDBResourcesOperations MongoDBResources { get; }
+
+        /// <summary>
+        /// Gets the ITableResourcesOperations.
+        /// </summary>
+        ITableResourcesOperations TableResources { get; }
+
+        /// <summary>
+        /// Gets the ICassandraResourcesOperations.
+        /// </summary>
+        ICassandraResourcesOperations CassandraResources { get; }
+
+        /// <summary>
+        /// Gets the IGremlinResourcesOperations.
+        /// </summary>
+        IGremlinResourcesOperations GremlinResources { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
 
     }
 }

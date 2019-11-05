@@ -11,28 +11,33 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Parameters to update Cosmos DB resource throughput.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ThroughputUpdateParameters
+    public partial class ThroughputSettingsUpdateParameters : ARMResourcePropertiesInner
     {
         /// <summary>
-        /// Initializes a new instance of the ThroughputUpdateParameters class.
+        /// Initializes a new instance of the
+        /// ThroughputSettingsUpdateParameters class.
         /// </summary>
-        public ThroughputUpdateParameters()
+        public ThroughputSettingsUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ThroughputUpdateParameters class.
+        /// Initializes a new instance of the
+        /// ThroughputSettingsUpdateParameters class.
         /// </summary>
         /// <param name="resource">The standard JSON format of a resource
         /// throughput</param>
-        public ThroughputUpdateParameters(ThroughputResource resource)
+        public ThroughputSettingsUpdateParameters(string location, ThroughputSettingsResource resource, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(location, id, name, type, tags)
         {
             Resource = resource;
             CustomInit();
@@ -47,7 +52,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets the standard JSON format of a resource throughput
         /// </summary>
         [JsonProperty(PropertyName = "properties.resource")]
-        public ThroughputResource Resource { get; set; }
+        public ThroughputSettingsResource Resource { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -55,8 +60,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Resource == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Resource");

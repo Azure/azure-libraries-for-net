@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -21,20 +19,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// An Azure Cosmos DB container.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SqlContainerInner : Management.ResourceManager.Fluent.Resource
+    public partial class SqlContainerGetResultsInner : ARMResourcePropertiesInner
     {
         /// <summary>
-        /// Initializes a new instance of the SqlContainerInner class.
+        /// Initializes a new instance of the SqlContainerGetResultsInner
+        /// class.
         /// </summary>
-        public SqlContainerInner()
+        public SqlContainerGetResultsInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SqlContainerInner class.
+        /// Initializes a new instance of the SqlContainerGetResultsInner
+        /// class.
         /// </summary>
-        /// <param name="sqlContainerId">Name of the Cosmos DB SQL
+        /// <param name="sqlContainerGetResultsId">Name of the Cosmos DB SQL
         /// container</param>
         /// <param name="indexingPolicy">The configuration of the indexing
         /// policy. By default, the indexing is automatic for all document
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// updated timestamp of the resource.</param>
         /// <param name="_etag">A system generated property representing the
         /// resource etag required for optimistic concurrency control.</param>
-        public SqlContainerInner(string sqlContainerId, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), string _rid = default(string), object _ts = default(object), string _etag = default(string))
+        public SqlContainerGetResultsInner(string location, string sqlContainerGetResultsId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), string _rid = default(string), object _ts = default(object), string _etag = default(string))
             : base(location, id, name, type, tags)
         {
-            SqlContainerId = sqlContainerId;
+            SqlContainerGetResultsId = sqlContainerGetResultsId;
             IndexingPolicy = indexingPolicy;
             PartitionKey = partitionKey;
             DefaultTtl = defaultTtl;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Gets or sets name of the Cosmos DB SQL container
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public string SqlContainerId { get; set; }
+        public string SqlContainerGetResultsId { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration of the indexing policy. By default,
@@ -115,24 +115,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public ConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets a system generated property. A unique identifier.
+        /// Gets a system generated property. A unique identifier.
         /// </summary>
         [JsonProperty(PropertyName = "properties._rid")]
-        public string _rid { get; set; }
+        public string _rid { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property that denotes the last
-        /// updated timestamp of the resource.
+        /// Gets a system generated property that denotes the last updated
+        /// timestamp of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties._ts")]
-        public object _ts { get; set; }
+        public object _ts { get; private set; }
 
         /// <summary>
-        /// Gets or sets a system generated property representing the resource
-        /// etag required for optimistic concurrency control.
+        /// Gets a system generated property representing the resource etag
+        /// required for optimistic concurrency control.
         /// </summary>
         [JsonProperty(PropertyName = "properties._etag")]
-        public string _etag { get; set; }
+        public string _etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -140,11 +140,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (SqlContainerId == null)
+            base.Validate();
+            if (SqlContainerGetResultsId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SqlContainerId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "SqlContainerGetResultsId");
+            }
+            if (PartitionKey != null)
+            {
+                PartitionKey.Validate();
             }
         }
     }

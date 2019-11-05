@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -21,18 +19,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// An Azure Cosmos DB database account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DatabaseAccountInner : Management.ResourceManager.Fluent.Resource
+    public partial class DatabaseAccountGetResultsInner : ARMResourcePropertiesInner
     {
         /// <summary>
-        /// Initializes a new instance of the DatabaseAccountInner class.
+        /// Initializes a new instance of the DatabaseAccountGetResultsInner
+        /// class.
         /// </summary>
-        public DatabaseAccountInner()
+        public DatabaseAccountGetResultsInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DatabaseAccountInner class.
+        /// Initializes a new instance of the DatabaseAccountGetResultsInner
+        /// class.
         /// </summary>
         /// <param name="kind">Indicates the type of database account. This can
         /// only be set at database account creation. Possible values include:
@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// location for the Cosmos DB account.</param>
         /// <param name="readLocations">An array that contains of the read
         /// locations enabled for the Cosmos DB account.</param>
+        /// <param name="locations">An array that contains all of the locations
+        /// enabled for the Cosmos DB account.</param>
         /// <param name="failoverPolicies">An array that contains the regions
         /// ordered by their failover priorities.</param>
         /// <param name="virtualNetworkRules">List of Virtual Network ACL rules
@@ -73,7 +75,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="connectorOffer">The cassandra connector offer type for
         /// the Cosmos DB database C* account. Possible values include:
         /// 'Small'</param>
-        public DatabaseAccountInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DatabaseAccountKind kind = default(DatabaseAccountKind), string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Capability> capabilities = default(IList<Capability>), IList<Location> writeLocations = default(IList<Location>), IList<Location> readLocations = default(IList<Location>), IList<FailoverPolicy> failoverPolicies = default(IList<FailoverPolicy>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), ConnectorOffer connectorOffer = default(ConnectorOffer))
+        /// <param name="disableKeyBasedMetadataWriteAccess">Disable write
+        /// operations on metadata resources (databases, containers,
+        /// throughput) via account keys</param>
+        public DatabaseAccountGetResultsInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DatabaseAccountKind kind = default(DatabaseAccountKind), string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Capability> capabilities = default(IList<Capability>), IList<Location> writeLocations = default(IList<Location>), IList<Location> readLocations = default(IList<Location>), IList<Location> locations = default(IList<Location>), IList<FailoverPolicy> failoverPolicies = default(IList<FailoverPolicy>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), ConnectorOffer connectorOffer = default(ConnectorOffer), bool? disableKeyBasedMetadataWriteAccess = default(bool?))
             : base(location, id, name, type, tags)
         {
             Kind = kind;
@@ -87,11 +92,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
             Capabilities = capabilities;
             WriteLocations = writeLocations;
             ReadLocations = readLocations;
+            Locations = locations;
             FailoverPolicies = failoverPolicies;
             VirtualNetworkRules = virtualNetworkRules;
             EnableMultipleWriteLocations = enableMultipleWriteLocations;
             EnableCassandraConnector = enableCassandraConnector;
             ConnectorOffer = connectorOffer;
+            DisableKeyBasedMetadataWriteAccess = disableKeyBasedMetadataWriteAccess;
             CustomInit();
         }
 
@@ -181,6 +188,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public IList<Location> ReadLocations { get; private set; }
 
         /// <summary>
+        /// Gets an array that contains all of the locations enabled for the
+        /// Cosmos DB account.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.locations")]
+        public IList<Location> Locations { get; private set; }
+
+        /// <summary>
         /// Gets an array that contains the regions ordered by their failover
         /// priorities.
         /// </summary>
@@ -215,13 +229,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public ConnectorOffer ConnectorOffer { get; set; }
 
         /// <summary>
+        /// Gets or sets disable write operations on metadata resources
+        /// (databases, containers, throughput) via account keys
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.disableKeyBasedMetadataWriteAccess")]
+        public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (ConsistencyPolicy != null)
             {
                 ConsistencyPolicy.Validate();
@@ -246,13 +268,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
                     }
                 }
             }
-            if (FailoverPolicies != null)
+            if (Locations != null)
             {
-                foreach (var element2 in FailoverPolicies)
+                foreach (var element2 in Locations)
                 {
                     if (element2 != null)
                     {
                         element2.Validate();
+                    }
+                }
+            }
+            if (FailoverPolicies != null)
+            {
+                foreach (var element3 in FailoverPolicies)
+                {
+                    if (element3 != null)
+                    {
+                        element3.Validate();
                     }
                 }
             }

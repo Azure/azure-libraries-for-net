@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     /// Parameters to create and update Cosmos DB SQL database.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SqlDatabaseCreateUpdateParameters
+    public partial class SqlDatabaseCreateUpdateParameters : ARMResourcePropertiesInner
     {
         /// <summary>
         /// Initializes a new instance of the SqlDatabaseCreateUpdateParameters
@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public SqlDatabaseCreateUpdateParameters(SqlDatabaseResource resource, IDictionary<string, string> options)
+        public SqlDatabaseCreateUpdateParameters(string location, SqlDatabaseResource resource, IDictionary<string, string> options, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(location, id, name, type, tags)
         {
             Resource = resource;
             Options = options;
@@ -70,8 +71,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Resource == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Resource");
