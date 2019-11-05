@@ -41,7 +41,7 @@ where `client`, `tenant`, `subscriptionId`, and `key` or `pfxCertificatePath` an
 
 ## Using Proxy in authentication
 
-This method will help you specify the proxy credentials by two steps when you want to create a authenticated client. First, it reuires an instance of the `AzureCredentials` class from either above approaches:
+This method will help you specify the proxy credentials by two steps when you want to create a authenticated client. First, it requires an instance of the `AzureCredentials` class from either of the above approaches:
 
 ```csharp
 var creds = new AzureCredentialsFactory().FromFile("my.azureauth");
