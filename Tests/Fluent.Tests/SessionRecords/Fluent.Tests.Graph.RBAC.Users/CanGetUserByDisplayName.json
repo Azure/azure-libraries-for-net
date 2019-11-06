@@ -7,126 +7,40 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a5c2aca4-530f-473d-ba86-67ea5956bb6e"
+          "67767709-ebff-4c51-b2dc-bfbdbd07ae67"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.Graph.RBAC.Fluent.GraphRbacManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Graph.RBAC.Fluent.GraphRbacManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'Reader zero' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "189"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata; charset=utf-8"
-        ],
-        "Cache-Control": [
-          "private"
-        ],
-        "Date": [
-          "Wed, 10 Jan 2018 12:16:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "ocp-aad-diagnostics-server-name": [
-          "PsQ9Z9cw9lW/SAFMwFi8L+ljoU1+bKSpefQx7+tAUAQ="
-        ],
-        "request-id": [
-          "575aed3a-e7e8-4df7-8043-fde506ad253a"
-        ],
-        "client-request-id": [
-          "a5102258-d87f-4831-840d-98d3c14c3b7e"
-        ],
-        "x-ms-dirapi-data-contract-version": [
-          "1.6"
-        ],
-        "ocp-aad-session-key": [
-          "4_9eE-1wbOs30JF_URcaaF8m5pOdXNrRVsuUoR5oJ86PvtRe3dlzwd6k0H0VVnp7qHwGBRy_GrMVHIzCXwh_gw2y0l0kqjekhzqzvaKbbg4jxobPr0lHIELoaonJqv4r3AAwGq0jpjNr-3AuwcnvjSXKQW9Xb_e5-KykzUq9yUYsUCSU41R6RwKUt_bN5QGwXQRglP9s7RXcqdltKFQnoA.Y6HOoiH-tGheCBlV-k0A-GQJvBh75J-S7Rh8HWC3_R4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Access-Control-Allow-Origin": [
-          "*"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "Duration": [
-          "569671"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/users?$filter=displayName%20eq%20'Reader%20zero'&api-version=1.6",
-      "EncodedRequestUri": "LzU0ODI2YjIyLTM4ZDYtNGZiMi1iYWQ5LWI3YjkzYTNlOWM1YS91c2Vycz8kZmlsdGVyPWRpc3BsYXlOYW1lJTIwZXElMjAnUmVhZGVyJTIwemVybycmYXBpLXZlcnNpb249MS42",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "a6fb1085-e62a-4ebb-ae02-4ed9d7d23fd9"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.Graph.RBAC.Fluent.GraphRbacManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/$metadata#directoryObjects/Microsoft.DirectoryServices.User\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.User\",\r\n      \"objectType\": \"User\",\r\n      \"objectId\": \"0cd0c91f-b7c7-495b-9fb4-1241f0533f53\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"assignedLicenses\": [],\r\n      \"assignedPlans\": [],\r\n      \"city\": null,\r\n      \"companyName\": null,\r\n      \"country\": null,\r\n      \"creationType\": null,\r\n      \"department\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"Reader zero\",\r\n      \"employeeId\": null,\r\n      \"facsimileTelephoneNumber\": null,\r\n      \"givenName\": \"Reader\",\r\n      \"immutableId\": null,\r\n      \"isCompromised\": null,\r\n      \"jobTitle\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"legalAgeGroupClassification\": null,\r\n      \"mail\": null,\r\n      \"mailNickname\": \"readerzero\",\r\n      \"mobile\": null,\r\n      \"onPremisesDistinguishedName\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"otherMails\": [],\r\n      \"passwordPolicies\": \"None\",\r\n      \"passwordProfile\": null,\r\n      \"physicalDeliveryOfficeName\": null,\r\n      \"postalCode\": null,\r\n      \"preferredLanguage\": null,\r\n      \"provisionedPlans\": [],\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"refreshTokensValidFromDateTime\": \"2016-12-15T19:25:22Z\",\r\n      \"showInAddressList\": null,\r\n      \"signInNames\": [],\r\n      \"sipProxyAddress\": null,\r\n      \"state\": null,\r\n      \"streetAddress\": null,\r\n      \"surname\": \"Zero\",\r\n      \"telephoneNumber\": null,\r\n      \"usageLocation\": null,\r\n      \"userIdentities\": [],\r\n      \"userPrincipalName\": \"readerzero@AzureSDKTeam.onmicrosoft.com\",\r\n      \"userType\": \"Member\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1331"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
         "Cache-Control": [
           "no-cache"
-        ],
-        "Date": [
-          "Wed, 10 Jan 2018 12:16:50 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
         "ocp-aad-diagnostics-server-name": [
-          "4faI+PQU6I9bj2peJs4PPsoHg3OyFdftj7Uo0GY4ujA="
+          "p38q61VL3vxkaK7bcPBGFXMhnMrGtZZS3iy6gCnTPpA="
         ],
         "request-id": [
-          "90381fc2-2589-4ae6-9b28-8dfc660e880c"
+          "3c3dba3f-1caf-4c3d-b7f8-78d40a429ee8"
         ],
         "client-request-id": [
-          "cc3bf173-eb36-4516-92b5-3b8805d8db54"
+          "67767709-ebff-4c51-b2dc-bfbdbd07ae67"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "6UOgxv_Tk3QdBn4yyURyCGnffylqEpBvtc0hLFYaxoQgWd2uV0Jew43X2G5L0yDjWwWa_MkrVsV5z1ok1XPXPrWCrw6NaCmTPZsj4_JGnyFQ4Y4pwWcESe3rP6m574aWvbx-LF5w8MIgsCEZCaAoO2724yxxrxpJhytZZPv2Dtuz27uzRbFzGMff8CaRfSaHKXqW6x_khCp6W8Z-yzKR0g.npSs5njrDuw1Hu9sQadmD97MdSKPUnswHEuyuRFrvGg"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+          "B6r5_v6CABAzZvAfprPkFrjoVyYuqjl67VoSMG1NptOWyTzaVULRlowjl4Vhc0OAdmEwW2Kkx_Z36c0Fo7npe_G9P7Jb5inE5gqGbCg0p73bG7gv-SUrZRIAfumNKglHOgW-XKNwWNJchpFNO0MQzz3RdMSQM5DnpO-ESKLAJ6Q.1TZmezfBJR0vStV0Ch6SFb1PQ-GvhtNvFXYwrs3rocA"
         ],
         "DataServiceVersion": [
           "3.0;"
@@ -141,19 +55,107 @@
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
         ],
         "Duration": [
-          "677058"
+          "2429822"
+        ],
+        "Date": [
+          "Mon, 28 Oct 2019 06:34:46 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "269"
         ]
       },
+      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'Reader zero' does not exist or one of its queried reference-property objects are not present.\"\r\n    },\r\n    \"requestId\": \"3c3dba3f-1caf-4c3d-b7f8-78d40a429ee8\",\r\n    \"date\": \"2019-10-28T06:34:47\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/users?$filter=displayName%20eq%20'Reader%20zero'&api-version=1.6",
+      "EncodedRequestUri": "LzU0ODI2YjIyLTM4ZDYtNGZiMi1iYWQ5LWI3YjkzYTNlOWM1YS91c2Vycz8kZmlsdGVyPWRpc3BsYXlOYW1lJTIwZXElMjAnUmVhZGVyJTIwemVybycmYXBpLXZlcnNpb249MS42",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8aaaa442-b899-44bd-ab1a-b91e7292e9c7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Graph.RBAC.Fluent.GraphRbacManagementClient/1.0.0.61",
+          "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "jAY6tweZL71h4Zs/fSXIbbKUblkE4vI7Xhf6+Ag18Ok="
+        ],
+        "request-id": [
+          "9df98283-ae47-4d62-845e-a569cee90ad5"
+        ],
+        "client-request-id": [
+          "8aaaa442-b899-44bd-ab1a-b91e7292e9c7"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "3C1Xx4maYK3XkG4pImvyOVUMyNZX7H4P0k15YuJWLgPwarhd1G6EWdOQxWxq6bwUp6r9GnC1cFN3BD2kyVg9DQp_W8i9u9lKLYc5cV5Ofk1GMO-87gTkCvkLAPKb8YPq38jBJECCWfbUNBmmDFNBF_votuFmym4MnmhFd51JDzo.rRj7rXx6rpW1zM8HJtdTkc8BgcqNxH4Eb2E42Ey5jZs"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Duration": [
+          "2496454"
+        ],
+        "Date": [
+          "Mon, 28 Oct 2019 06:34:47 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1570"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/$metadata#directoryObjects\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.User\",\r\n      \"objectType\": \"User\",\r\n      \"objectId\": \"0cd0c91f-b7c7-495b-9fb4-1241f0533f53\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"ageGroup\": null,\r\n      \"assignedLicenses\": [],\r\n      \"assignedPlans\": [],\r\n      \"city\": null,\r\n      \"companyName\": null,\r\n      \"consentProvidedForMinor\": null,\r\n      \"country\": null,\r\n      \"createdDateTime\": \"2016-07-25T22:05:59Z\",\r\n      \"creationType\": null,\r\n      \"department\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"Reader zero\",\r\n      \"employeeId\": null,\r\n      \"facsimileTelephoneNumber\": null,\r\n      \"givenName\": \"Reader\",\r\n      \"immutableId\": null,\r\n      \"isCompromised\": null,\r\n      \"jobTitle\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"legalAgeGroupClassification\": null,\r\n      \"mail\": null,\r\n      \"mailNickname\": \"readerzero\",\r\n      \"mobile\": null,\r\n      \"onPremisesDistinguishedName\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"otherMails\": [],\r\n      \"passwordPolicies\": \"None\",\r\n      \"passwordProfile\": null,\r\n      \"physicalDeliveryOfficeName\": null,\r\n      \"postalCode\": null,\r\n      \"preferredLanguage\": null,\r\n      \"provisionedPlans\": [],\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"refreshTokensValidFromDateTime\": \"2016-12-15T19:25:22Z\",\r\n      \"showInAddressList\": null,\r\n      \"signInNames\": [],\r\n      \"sipProxyAddress\": null,\r\n      \"state\": null,\r\n      \"streetAddress\": null,\r\n      \"surname\": \"Zero\",\r\n      \"telephoneNumber\": null,\r\n      \"thumbnailPhoto@odata.mediaEditLink\": \"directoryObjects/0cd0c91f-b7c7-495b-9fb4-1241f0533f53/Microsoft.DirectoryServices.User/thumbnailPhoto\",\r\n      \"usageLocation\": null,\r\n      \"userIdentities\": [],\r\n      \"userPrincipalName\": \"readerzero@AzureSDKTeam.onmicrosoft.com\",\r\n      \"userState\": null,\r\n      \"userStateChangedOn\": null,\r\n      \"userType\": \"Member\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "ServicePrincipal": "a971e5df-eeb7-4481-9bf7-e72e66a2ba12",
+    "ServicePrincipal": "6345c07e-79bd-46c3-8486-ae12b7d6893d",
     "AADTenant": "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a",
     "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
   }

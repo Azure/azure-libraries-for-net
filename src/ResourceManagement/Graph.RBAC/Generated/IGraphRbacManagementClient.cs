@@ -49,32 +49,38 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         string TenantID { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running
-        /// Operations. Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default
+        /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated
-        /// and included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// set to true a unique x-ms-client-request-id value is generated and
+        /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
 
         /// <summary>
-        /// Gets the IObjectsOperations.
+        /// Gets the ISignedInUserOperations.
         /// </summary>
-        IObjectsOperations Objects { get; }
+        ISignedInUserOperations SignedInUser { get; }
 
         /// <summary>
         /// Gets the IApplicationsOperations.
         /// </summary>
         IApplicationsOperations Applications { get; }
+
+        /// <summary>
+        /// Gets the IDeletedApplicationsOperations.
+        /// </summary>
+        IDeletedApplicationsOperations DeletedApplications { get; }
 
         /// <summary>
         /// Gets the IGroupsOperations.
@@ -92,9 +98,19 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         IUsersOperations Users { get; }
 
         /// <summary>
+        /// Gets the IObjectsOperations.
+        /// </summary>
+        IObjectsOperations Objects { get; }
+
+        /// <summary>
         /// Gets the IDomainsOperations.
         /// </summary>
         IDomainsOperations Domains { get; }
+
+        /// <summary>
+        /// Gets the IOAuth2PermissionGrantOperations.
+        /// </summary>
+        IOAuth2PermissionGrantOperations OAuth2PermissionGrant { get; }
 
     }
 }

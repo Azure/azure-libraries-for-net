@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<GenericResourceInner>> ListByResourceGroupAsync(this IResourcesOperations operations, string resourceGroupName, ODataQuery<GenericResourceFilterInner> odataQuery = default(ODataQuery<GenericResourceFilterInner>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<GenericResourceInner>> ListByResourceGroupAsync(this IResourcesOperations operations, string resourceGroupName, ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task MoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfoInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task MoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfo parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.MoveResourcesWithHttpMessagesAsync(sourceResourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ValidateMoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfoInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ValidateMoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfo parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.ValidateMoveResourcesWithHttpMessagesAsync(sourceResourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<GenericResourceInner>> ListAsync(this IResourcesOperations operations, ODataQuery<GenericResourceFilterInner> odataQuery = default(ODataQuery<GenericResourceFilterInner>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<GenericResourceInner>> ListAsync(this IResourcesOperations operations, ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginMoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfoInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginMoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfo parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginMoveResourcesWithHttpMessagesAsync(sourceResourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginValidateMoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfoInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginValidateMoveResourcesAsync(this IResourcesOperations operations, string sourceResourceGroupName, ResourcesMoveInfo parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginValidateMoveResourcesWithHttpMessagesAsync(sourceResourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }

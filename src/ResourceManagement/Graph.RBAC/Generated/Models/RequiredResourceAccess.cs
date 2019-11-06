@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
     /// specified OAuth 2.0 permission scopes may be requested by client
     /// applications (through the requiredResourceAccess collection) when
     /// calling a resource application. The requiredResourceAccess property of
-    /// the Application entity is a collection of ReqiredResourceAccess.
+    /// the Application entity is a collection of RequiredResourceAccess.
     /// </summary>
     public partial class RequiredResourceAccess
     {

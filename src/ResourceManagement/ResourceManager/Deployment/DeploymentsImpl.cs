@@ -135,10 +135,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         private DeploymentImpl WrapModel(string name)
         {
             return new DeploymentImpl(
-                    new DeploymentExtendedInner
-                    {
-                        Name = name
-                    },
+                    new DeploymentExtendedInner(null, name),
                     resourceManager
                 );
         }

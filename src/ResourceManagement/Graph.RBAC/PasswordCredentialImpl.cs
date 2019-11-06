@@ -108,11 +108,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         }
 
         internal PasswordCredentialImpl(Models.PasswordCredential passwordCredential)
-                    : base(!String.IsNullOrEmpty(passwordCredential.CustomKeyIdentifier) ? System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(passwordCredential.CustomKeyIdentifier)) : passwordCredential.KeyId, passwordCredential)
+                    : base(passwordCredential.CustomKeyIdentifier?.Length > 0 ? System.Text.Encoding.UTF8.GetString(passwordCredential.CustomKeyIdentifier) : passwordCredential.KeyId, passwordCredential)
         {
-            if (!String.IsNullOrEmpty(passwordCredential.CustomKeyIdentifier))
+            if (passwordCredential.CustomKeyIdentifier?.Length > 0)
             {
-                name = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(passwordCredential.CustomKeyIdentifier));
+                name = System.Text.Encoding.UTF8.GetString(passwordCredential.CustomKeyIdentifier);
             }
             else
             {
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         internal PasswordCredentialImpl(string name, IHasCredential<T> parent)
             : base(name, new Models.PasswordCredential()
             {
-                CustomKeyIdentifier = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(name)),
+                CustomKeyIdentifier = System.Text.Encoding.UTF8.GetBytes(name),
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddYears(1)
             })

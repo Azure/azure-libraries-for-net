@@ -20,24 +20,9 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     public static partial class ObjectsOperationsExtensions
     {
             /// <summary>
-            /// Gets the details for the currently logged-in user.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<AADObjectInner> GetCurrentUserAsync(this IObjectsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetCurrentUserWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets AD group membership for the specified AD object IDs.
+            /// Gets the directory objects specified in a list of object IDs. You can also
+            /// specify which resource collections (users, groups, etc.) should be searched
+            /// by specifying the optional types parameter.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -48,7 +33,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AADObjectInner>> GetObjectsByObjectIdsAsync(this IObjectsOperations operations, GetObjectsParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DirectoryObject>> GetObjectsByObjectIdsAsync(this IObjectsOperations operations, GetObjectsParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetObjectsByObjectIdsWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -68,7 +53,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AADObjectInner>> GetObjectsByObjectIdsNextAsync(this IObjectsOperations operations, string nextLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DirectoryObject>> GetObjectsByObjectIdsNextAsync(this IObjectsOperations operations, string nextLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetObjectsByObjectIdsNextWithHttpMessagesAsync(nextLink, null, cancellationToken).ConfigureAwait(false))
                 {

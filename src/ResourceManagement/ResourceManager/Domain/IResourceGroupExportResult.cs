@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         string TemplateJson { get; }
 
         /// <returns>the error, if any.</returns>
-        ResourceManagementErrorWithDetails Error { get; }
+        ErrorResponse Error { get; }
 
     }
 }
