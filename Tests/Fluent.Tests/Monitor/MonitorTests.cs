@@ -19,13 +19,13 @@ namespace Fluent.Tests
 {
     public class Monitor
     {
-        [Fact(Skip ="Failing with BadRequest error when calling ActivityLogs. Will investigate for next release.")]
+        [Fact]
         public void CanListEventsAndMetrics()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var azure = TestHelper.CreateRollupClient();
-                DateTime recordDateTime = new DateTime(2019, 03, 01, 00, 07, 40);
+                DateTime recordDateTime = new DateTime(2019, 11, 01, 00, 08, 00);
                 var vm = azure.VirtualMachines.List().First();
 
                 // Metric Definition
@@ -39,7 +39,7 @@ namespace Fluent.Tests
 
                 // Metric
                 var metrics = mt.First().DefineQuery()
-                        .StartingFrom(recordDateTime.AddDays(-30))
+                        .StartingFrom(recordDateTime.AddDays(-1))
                         .EndsBefore(recordDateTime)
                         .WithResultType(ResultType.Data)
                         .Execute();
@@ -52,7 +52,7 @@ namespace Fluent.Tests
                 // Activity Logs
                 var retVal = azure.ActivityLogs
                         .DefineQuery()
-                        .StartingFrom(recordDateTime.AddDays(-30))
+                        .StartingFrom(recordDateTime.AddDays(-1))
                         .EndsBefore(recordDateTime)
                         .WithResponseProperties(
                                 EventDataPropertyName.ResourceId,
