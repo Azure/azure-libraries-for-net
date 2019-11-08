@@ -506,6 +506,8 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/resources-dotnet-deploy-using-arm-template">Deploy resources with ARM templates</a></li>
 <li><a href="https://github.com/Azure-Samples/resources-dotnet-deploy-using-arm-template-with-progress">Deploy resources with ARM templates (with progress)</a></li>
 <li><a href="https://github.com/Azure-Samples/resources-dotnet-deploy-virtual-machine-with-managed-disks-using-arm-template">Deploy a virtual machine with managed disks using an ARM template</a></li>
+<li><a href="https://github.com/Azure-Samples/resources-dotnet-manage-policy-assignment">Manage policy assignments</a></li>
+<li><a href="https://github.com/Azure-Samples/resources-dotnet-manage-policy-definition">Manage policy definitions</a></li>
 </ul></td>
   </tr>
 

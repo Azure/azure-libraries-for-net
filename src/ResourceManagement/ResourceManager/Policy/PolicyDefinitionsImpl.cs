@@ -28,12 +28,22 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public override void DeleteById(string id)
         {
-            Extensions.Synchronize(() => DeleteByIdAsync(id, CancellationToken.None));
+            throw new System.NotSupportedException();
         }
 
-        public async override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default)
         {
-            await client.DeleteAsync(ResourceUtils.NameFromResourceId(id), cancellationToken);
+            throw new System.NotSupportedException();
+        }
+
+        public void DeleteByName(string name)
+        {
+            Extensions.Synchronize(() => DeleteByNameAsync(name, CancellationToken.None));
+        }
+
+        public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await client.DeleteAsync(name, cancellationToken);
         }
 
         public IPolicyDefinition GetByName(string name)

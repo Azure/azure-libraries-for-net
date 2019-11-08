@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         ISupportsListing<IPolicyDefinition>,
         ISupportsGettingByName<IPolicyDefinition>,
         ISupportsCreating<PolicyDefinition.Definition.IBlank>,
-        ISupportsDeletingById
+        ISupportsDeletingByName
     {
     }
 }
