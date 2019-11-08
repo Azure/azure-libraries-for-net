@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             throw new System.NotSupportedException();
         }
 
-        public override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default)
+        public override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             throw new System.NotSupportedException();
         }
