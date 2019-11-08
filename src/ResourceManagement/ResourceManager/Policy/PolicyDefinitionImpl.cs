@@ -87,6 +87,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return this;
         }
 
+        public IWithCreate WithBuiltInPolicyType()
+        {
+            Inner.PolicyType = PolicyType.BuiltIn;
+            return this;
+        }
+
+        public IWithCreate WithCustomPolicyType()
+        {
+            Inner.PolicyType = PolicyType.Custom;
+            return this;
+        }
+
         public IWithCreate WithDescription(string description)
         {
             Inner.Description = description;
@@ -105,6 +117,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return this;
         }
 
+        public IWithCreate WithNotSpecifiedPolicyType()
+        {
+            Inner.PolicyType = PolicyType.NotSpecified;
+            return this;
+        }
+
+        public IUpdate WithoutPolicyType()
+        {
+            Inner.PolicyType = null;
+            return this;
+        }
+
         public IWithCreate WithPolicyRule(object policyRule)
         {
             Inner.PolicyRule = policyRule;
@@ -117,15 +141,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return this;
         }
 
-        public IWithCreate WithPolicyType(PolicyType policyType)
-        {
-            Inner.PolicyType = policyType;
-            return this;
-        }
-
         protected async override Task<PolicyDefinitionInner> GetInnerAsync(CancellationToken cancellationToken)
         {
             return await client.GetAsync(Name, cancellationToken);
+        }
+
+        IUpdate PolicyDefinition.Update.IWithPolicyType.WithBuiltInPolicyType()
+        {
+            Inner.PolicyType = PolicyType.BuiltIn;
+            return this;
+        }
+
+        IUpdate PolicyDefinition.Update.IWithPolicyType.WithCustomPolicyType()
+        {
+            Inner.PolicyType = PolicyType.Custom;
+            return this;
         }
 
         IUpdate PolicyDefinition.Update.IWithDescription.WithDescription(string description)
@@ -146,15 +176,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return this;
         }
 
-        IUpdate PolicyDefinition.Update.IWithPolicyRule.WithPolicyRule(object policyRule)
+        IUpdate PolicyDefinition.Update.IWithPolicyType.WithNotSpecifiedPolicyType()
         {
-            Inner.PolicyRule = policyRule;
+            Inner.PolicyType = PolicyType.NotSpecified;
             return this;
         }
 
-        IUpdate PolicyDefinition.Update.IWithPolicyType.WithPolicyType(PolicyType policyType)
+        IUpdate PolicyDefinition.Update.IWithPolicyRule.WithPolicyRule(object policyRule)
         {
-            Inner.PolicyType = policyType;
+            Inner.PolicyRule = policyRule;
             return this;
         }
     }

@@ -172,6 +172,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         private IFeatures features;
         private IProviders providers;
         private IPolicyAssignments policyAssignments;
+        private IPolicyDefinitions policyDefinitions;
 
         #endregion
 
@@ -248,6 +249,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
         }
 
+        public IPolicyDefinitions PolicyDefinitions
+        {
+            get
+            {
+                if (policyDefinitions == null)
+                {
+                    policyDefinitions = new PolicyDefinitionsImpl(policyClient.PolicyDefinitions);
+                }
+                return policyDefinitions;
+            }
+        }
+
         #endregion
     }
 
@@ -285,5 +298,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets the policy assignment management API entry point.
         /// </summary>
         IPolicyAssignments PolicyAssignments { get; }
+
+        /// <summary>
+        /// Gets the policy definition management API entry point.
+        /// </summary>
+        IPolicyDefinitions PolicyDefinitions { get; }
     }
 }

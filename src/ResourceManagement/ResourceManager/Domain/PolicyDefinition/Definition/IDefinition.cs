@@ -88,11 +88,22 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.PolicyDefinition.Def
     public interface IWithPolicyType
     {
         /// <summary>
-        /// Specifies the policy type of PolicyDefinition.
+        /// Specifies the policy type of PolicyDefinition to be 'NotSpecified'.
         /// </summary>
-        /// <param name="policyType">The policy type of the PolicyDefinition.</param>
         /// <return>The next stage of the definition.</return>
-        IWithCreate WithPolicyType(PolicyType policyType);
+        IWithCreate WithNotSpecifiedPolicyType();
+
+        /// <summary>
+        /// Specifies the policy type of PolicyDefinition to be 'BuiltIn'.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithBuiltInPolicyType();
+
+        /// <summary>
+        /// Specifies the policy type of PolicyDefinition to be 'Custom'.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        IWithCreate WithCustomPolicyType();
     }
 
     /// <summary>

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return this;
         }
 
-        public IWithCreate WithDisplay(string displayName)
+        public IWithCreate WithDisplayName(string displayName)
         {
             Inner.DisplayName = displayName;
             return this;

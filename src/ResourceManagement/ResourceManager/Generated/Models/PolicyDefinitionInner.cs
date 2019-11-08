@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <param name="parameters">Required if a parameter is used in policy
         /// rule.</param>
         public PolicyDefinitionInner(string id = default(string), string name = default(string), string type = default(string), PolicyType policyType = default(PolicyType), string mode = default(string), string displayName = default(string), string description = default(string), object policyRule = default(object), object metadata = default(object), object parameters = default(object))
-            : base(id, name, type)
+            : base(default(string), id, name, type)
         {
             PolicyType = policyType;
             Mode = mode;

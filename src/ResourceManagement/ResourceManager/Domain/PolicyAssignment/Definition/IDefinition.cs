@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.PolicyAssignment.Def
         /// </summary>
         /// <param name="displayName">The display name of the PolicyAssignment.</param>
         /// <return>The next stage of the definition.</return>
-        IWithCreate WithDisplay(string displayName);
+        IWithCreate WithDisplayName(string displayName);
     }
 
     /// <summary>

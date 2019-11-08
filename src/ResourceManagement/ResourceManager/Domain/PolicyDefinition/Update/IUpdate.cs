@@ -69,7 +69,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.PolicyDefinition.Upd
         /// <param name="policyRule">The policy rule of the PolicyDefinition.</param>
         /// <return>The next stage of the update.</return>
         IUpdate WithPolicyRule(Object policyRule);
-
     }
 
     /// <summary>
@@ -78,10 +77,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.PolicyDefinition.Upd
     public interface IWithPolicyType
     {
         /// <summary>
-        /// Specifies the policy type of PolicyDefinition.
+        /// Specifies the policy type of PolicyDefinition to be 'NotSpecified'.
         /// </summary>
-        /// <param name="policyType">The policy type of the PolicyDefinition.</param>
         /// <return>The next stage of the update.</return>
-        IUpdate WithPolicyType(PolicyType policyType);
+        IUpdate WithNotSpecifiedPolicyType();
+
+        /// <summary>
+        /// Specifies the policy type of PolicyDefinition to be 'BuiltIn'.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        IUpdate WithBuiltInPolicyType();
+
+        /// <summary>
+        /// Specifies the policy type of PolicyDefinition to be 'Custom'.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        IUpdate WithCustomPolicyType();
+
+        /// <summary>
+        /// Removes the policy type of PolicyDefinition.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        IUpdate WithoutPolicyType();
     }
 }

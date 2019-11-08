@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <param name="identity">The managed identity associated with the
         /// policy assignment.</param>
         public PolicyAssignmentInner(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string policyDefinitionId = default(string), string scope = default(string), IList<string> notScopes = default(IList<string>), object parameters = default(object), string description = default(string), object metadata = default(object), EnforcementMode enforcementMode = default(EnforcementMode), PolicySku sku = default(PolicySku), string location = default(string), Identity identity = default(Identity))
-            : base(id, name, type)
+            : base(default(string), id, name, type)
         {
             DisplayName = displayName;
             PolicyDefinitionId = policyDefinitionId;
