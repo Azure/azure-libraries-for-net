@@ -244,6 +244,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithSku,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithBlobStorageAccountKind,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithGeneralPurposeAccountKind,
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithFileStorageAccountKind,
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithBlockBlobStorageAccountKind,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithEncryption,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCustomDomain,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithManagedServiceIdentity,
@@ -277,6 +279,30 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition
         /// </summary>
         /// <return>The next stage of storage account definition.</return>
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCreateAndAccessTier WithBlobStorageAccountKind();
+    }
+
+    /// <summary>
+    /// The stage of a storage account definition allowing to specify account kind as block blob storage.
+    /// </summary>
+    public interface IWithBlockBlobStorageAccountKind
+    {
+        /// <summary>
+        /// Specifies the storage account kind to be "BlockBlobStorage". 
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCreate WithBlockBlobStorageAccountKind();
+    }
+
+    /// <summary>
+    /// The stage of a storage account definition allowing to specify account kind as file storage.
+    /// </summary>
+    public interface IWithFileStorageAccountKind
+    {
+        /// <summary>
+        /// Specifies the storage account kind to be "FileStorage". 
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition.IWithCreate WithFileStorageAccountKind();
     }
 
     /// <summary>
