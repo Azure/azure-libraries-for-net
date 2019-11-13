@@ -4,6 +4,7 @@
 // license information.
 
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
@@ -11,6 +12,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
     /// <summary>
     /// Defines values for ContainerGroupIpAddressType.
     /// </summary>
+    [JsonConverter(typeof(ExpandableStringEnumConverter<ContainerGroupIpAddressType>))]
     public class ContainerGroupIpAddressType : ExpandableStringEnum<ContainerGroupIpAddressType>
     {
         public static readonly ContainerGroupIpAddressType Public = Parse("Public");
