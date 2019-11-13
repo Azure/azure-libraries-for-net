@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     public partial class CosmosDBAccountImpl :
         GroupableResource<
             ICosmosDBAccount,
-            Models.DatabaseAccountInner,
+            Models.DatabaseAccountGetResultsInner,
             CosmosDBAccountImpl,
             ICosmosDBManager,
             IWithGroup,
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             CosmosDBAccountImpl self = this;
             int currentDelayDueToMissingFailovers = 0;
-            Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner =
+            Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner =
                 this.CreateUpdateParametersInner(this.Inner);
             await this.Manager.Inner.DatabaseAccounts.CreateOrUpdateAsync(
                 ResourceGroupName, Name, createUpdateParametersInner);
@@ -94,11 +94,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return databaseAccount;
         }
 
-        private Models.DatabaseAccountCreateUpdateParametersInner CreateUpdateParametersInner(Models.DatabaseAccountInner inner)
+        private Models.DatabaseAccountCreateUpdateParameters CreateUpdateParametersInner(Models.DatabaseAccountGetResultsInner inner)
         {
             this.EnsureFailoverIsInitialized();
-            Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner =
-            new Models.DatabaseAccountCreateUpdateParametersInner();
+            Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner =
+            new Models.DatabaseAccountCreateUpdateParameters();
             createUpdateParametersInner.Location = this.RegionName.ToLower();
             createUpdateParametersInner.ConsistencyPolicy = inner.ConsistencyPolicy;
             createUpdateParametersInner.IpRangeFilter = inner.IpRangeFilter;
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return Extensions.Synchronize(() => this.ListConnectionStringsAsync());
         }
 
-        internal CosmosDBAccountImpl(string name, Models.DatabaseAccountInner innerObject, ICosmosDBManager manager) :
+        internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
         {
             this.failoverPolicies = new List<Models.FailoverPolicy>();
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
+        private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
             if (failoverPolicies.Count > 0)
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.Inner.ReadLocations as IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location>;
         }
 
-        protected override async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountGetResultsInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.Inner.DatabaseAccounts.GetAsync(this.ResourceGroupName, this.Name);
         }
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await this.Manager.Inner.DatabaseAccounts
+            var result = await this.Manager.Inner.SqlResources
                 .ListSqlDatabasesAsync(this.ResourceGroupName, this.Name);
             return result.Select(inner => new SqlDatabaseImpl(inner));
         }

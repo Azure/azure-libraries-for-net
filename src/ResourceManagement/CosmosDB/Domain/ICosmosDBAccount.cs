@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// </remarks>
     public interface ICosmosDBAccount :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBManager, Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBManager, Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountGetResultsInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<CosmosDBAccount.Update.IUpdate>
     {

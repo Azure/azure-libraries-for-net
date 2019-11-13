@@ -5,17 +5,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     internal partial class SqlDatabaseImpl :
-        Wrapper<Models.SqlDatabaseInner>,
+        Wrapper<Models.SqlDatabaseGetResultsInner>,
         ISqlDatabase
     {
-        internal SqlDatabaseImpl(Models.SqlDatabaseInner innerObject)
+        internal SqlDatabaseImpl(Models.SqlDatabaseGetResultsInner innerObject)
             : base(innerObject)
         {
         }
 
         public string SqlDatabaseId()
         {
-            return this.Inner.SqlDatabaseId;
+            return this.Inner.SqlDatabaseGetResultsId;
         }
 
         public string _rid()
