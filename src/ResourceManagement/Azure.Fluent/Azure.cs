@@ -248,6 +248,24 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        /// <returns>entry point to managing policy assignments</returns>
+        public IPolicyAssignments PolicyAssignments
+        {
+            get
+            {
+                return resourceManager.PolicyAssignments;
+            }
+        }
+
+        /// <returns>entry point to managing policy definitions</returns>
+        public IPolicyDefinitions PolicyDefinitions
+        {
+            get
+            {
+                return resourceManager.PolicyDefinitions;
+            }
+        }
+
         /// <returns>entry point to managing virtual machine images</returns>
         public IVirtualMachineImages VirtualMachineImages
         {
@@ -1091,6 +1109,16 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Resource Manager template deployment management.
         /// </summary>
         IDeployments Deployments { get; }
+
+        /// <summary>
+        /// Entry point to Azure Resource Manager policy assignment management.
+        /// </summary>
+        IPolicyAssignments PolicyAssignments { get; }
+
+        /// <summary>
+        /// Entry point to Azure Resource Manager policy definition management.
+        /// </summary>
+        IPolicyDefinitions PolicyDefinitions { get; }
 
         /// <summary>
         /// Entry point to virtual machine image management.

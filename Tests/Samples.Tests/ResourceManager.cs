@@ -60,5 +60,23 @@ namespace Samples.Tests
                 this.GetType().FullName,
                 DeployVirtualMachineUsingARMTemplate.Program.RunSample);
         }
+
+        [Fact]
+        [Trait("Samples", "ResourceManager")]
+        public void ManagePolicyDefinitionTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManagePolicyDefinition.Program.RunSample);
+        }
+
+        [Fact]
+        [Trait("Samples", "ResourceManager")]
+        public void ManagePolicyAssignmentTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManagePolicyAssignment.Program.RunSample);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     {
         #region SDK clients
         private FeatureClient featureClient;
+        private PolicyClient policyClient;
         #endregion
 
         #region ctrs
@@ -23,8 +24,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 SubscriptionId = subscriptionId
             })
         {
-            featureClient = new FeatureClient(restClient);
-            featureClient.SubscriptionId = subscriptionId;
+            featureClient = new FeatureClient(restClient)
+            {
+                SubscriptionId = subscriptionId
+            };
+            policyClient = new PolicyClient(restClient)
+            {
+                SubscriptionId = subscriptionId
+            };
             ResourceManager = this;
         }
 
@@ -164,6 +171,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         private IDeployments deployments;
         private IFeatures features;
         private IProviders providers;
+        private IPolicyAssignments policyAssignments;
+        private IPolicyDefinitions policyDefinitions;
 
         #endregion
 
@@ -228,6 +237,30 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
         }
 
+        public IPolicyAssignments PolicyAssignments
+        {
+            get
+            {
+                if(policyAssignments == null)
+                {
+                    policyAssignments = new PolicyAssignmentsImpl(policyClient.PolicyAssignments);
+                }
+                return policyAssignments;
+            }
+        }
+
+        public IPolicyDefinitions PolicyDefinitions
+        {
+            get
+            {
+                if (policyDefinitions == null)
+                {
+                    policyDefinitions = new PolicyDefinitionsImpl(policyClient.PolicyDefinitions);
+                }
+                return policyDefinitions;
+            }
+        }
+
         #endregion
     }
 
@@ -260,5 +293,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets the provider management API entry point.
         /// </summary>
         IProviders Providers { get; }
+
+        /// <summary>
+        /// Gets the policy assignment management API entry point.
+        /// </summary>
+        IPolicyAssignments PolicyAssignments { get; }
+
+        /// <summary>
+        /// Gets the policy definition management API entry point.
+        /// </summary>
+        IPolicyDefinitions PolicyDefinitions { get; }
     }
 }
