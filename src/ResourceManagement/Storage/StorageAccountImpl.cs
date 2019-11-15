@@ -181,6 +181,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             return this;
         }
 
+        public StorageAccountImpl WithFileStorageAccountKind()
+        {
+            createParameters.Kind = Models.Kind.FileStorage;
+            return this;
+        }
+
+        public StorageAccountImpl WithBlockBlobStorageAccountKind()
+        {
+            createParameters.Kind = Models.Kind.BlockBlobStorage;
+            return this;
+        }
+
         ///GENMHASH:A3DE4AE524C4F886153A43EE5DD7157A:ECF5D7B6B3EF47B86D11FDF931EFFD89
         public StorageAccountImpl WithGeneralPurposeAccountKind()
         {

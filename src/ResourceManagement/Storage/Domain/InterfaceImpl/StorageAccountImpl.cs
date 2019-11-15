@@ -222,6 +222,24 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
+        /// Specifies the storage account kind to be "FileStorage".
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithFileStorageAccountKind.WithFileStorageAccountKind()
+        {
+            return this.WithFileStorageAccountKind();
+        }
+
+        /// <summary>
+        /// Specifies the storage account kind to be "BlockBlobStorage".
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithBlockBlobStorageAccountKind.WithBlockBlobStorageAccountKind()
+        {
+            return this.WithBlockBlobStorageAccountKind();
+        }
+
+        /// <summary>
         /// Specifies the access tier used for billing.
         /// Access tier cannot be changed more than once every 7 days (168 hours).
         /// Access tier cannot be set for StandardLRS, StandardGRS, StandardRAGRS,
