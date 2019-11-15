@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     using System;
     using System.Collections.Generic;
 
-    public class AzureCliSubscription
+    internal class AzureCliSubscription
     {
         [JsonProperty(PropertyName = "environmentName")]
         public string EnvironmentName { get; set; }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         }
     }
 
-    public class UserInfo
+    internal class UserInfo
     {
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         public string Name { get; set; }
     }
 
-    public class AzureCliSubscriptionWrapper
+    internal class AzureCliSubscriptionWrapper
     {
         [JsonProperty(PropertyName = "subscriptions")]
         public IEnumerable<AzureCliSubscription> Subscriptions { get; set; }

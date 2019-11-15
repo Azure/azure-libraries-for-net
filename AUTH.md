@@ -51,7 +51,7 @@ Run `az login --service-principal -u <app-url> -p <password> --tenant <tenant>` 
 Initialize the Azure client as following:
 
 ```csharp
-var creds = AzureCredentials.Create();
+var creds = AzureCliCredentials.Create();
 var azure = Azure.Authenticate(creds).WithSubscription(subscriptionId);
 ```
 

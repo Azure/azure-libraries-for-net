@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 {
     using Newtonsoft.Json;
 
-    public class AzureCliToken
+    internal class AzureCliToken
     {
         [JsonProperty(PropertyName = "_authority")]
         public string Authority { get; set; }
