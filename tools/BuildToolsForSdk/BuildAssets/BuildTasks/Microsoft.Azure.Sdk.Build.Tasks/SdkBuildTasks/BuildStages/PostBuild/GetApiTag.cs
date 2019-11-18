@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Azure.Sdk.Build.Tasks.BuildStages.PostBuild
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+namespace Microsoft.Azure.Sdk.Build.Tasks.BuildStages.PostBuild
 {
     /*
         using Microsoft.Azure.Sdk.Build.Tasks.BaseTasks;
