@@ -6,7 +6,7 @@
   </Target>
 
   <ItemGroup>
-    <SourceFiles Include="$(LibraryRoot)\tools\BuildAssets\**\*.*"/>
+    <SourceFiles Include="$(LibraryRoot)\tools\BuildToolsForSdk\BuildAssets\**\*.*"/>
   </ItemGroup>
   
   <Target Name="CopyBuildTools">
