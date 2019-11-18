@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
     /// The final stage of the private endpoint connection definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IWithState<ParentT>
     {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
     /// The entirety of a private endpoint connection definition definition as a part of parent update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IWithState<ParentT>,
         Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IWithAttach<ParentT>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
     /// The first stage of a private endpoint connection definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IWithState<ParentT>
     {
     }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
     /// The stage of the private endpoint connection definition allowing to set state.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithState<ParentT> 
+    public interface IWithState<ParentT>
     {
         /// <summary>
         /// Specifies description of state property.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
         /// </summary>
         /// <param name="property">A private link service connection state property.</param>
         /// <return>The next stage of definition.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IWithAttach<ParentT> WithStateProperty(PrivateLinkServiceConnectionStateProperty property);
+        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IWithAttach<ParentT> WithStateProperty(Models.PrivateLinkServiceConnectionStateProperty property);
 
         /// <summary>
         /// Specifies status of state property.

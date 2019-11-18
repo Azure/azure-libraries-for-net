@@ -6,21 +6,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    /// <summary>
-    /// A private link resource.
-    /// </summary>
-    public interface IPrivateLinkResource :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.PrivateLinkResourceInner>
+    public partial class PrivateLinkResourceImpl
     {
-
         /// <summary>
         /// Gets the private link resource group id.
         /// </summary>
         /// <summary>
         /// Gets the groupId value.
         /// </summary>
-        string GroupId { get; }
+        string Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.GroupId
+        {
+            get
+            {
+                return this.GroupId();
+            }
+        }
 
         /// <summary>
         /// Gets the id value.
@@ -28,7 +28,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the id value.
         /// </summary>
-        string Id { get; }
+        string Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.Id
+        {
+            get
+            {
+                return this.Id();
+            }
+        }
 
         /// <summary>
         /// Gets the name value.
@@ -36,7 +42,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the name value.
         /// </summary>
-        string Name { get; }
+        string Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.Name
+        {
+            get
+            {
+                return this.Name();
+            }
+        }
 
         /// <summary>
         /// Gets the private link resource required member names.
@@ -44,7 +56,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the requiredMembers value.
         /// </summary>
-        System.Collections.Generic.IList<string> RequiredMembers { get; }
+        System.Collections.Generic.IList<string> Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.RequiredMembers
+        {
+            get
+            {
+                return this.RequiredMembers();
+            }
+        }
 
         /// <summary>
         /// Gets the type value.
@@ -52,6 +70,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the type value.
         /// </summary>
-        string Type { get; }
+        string Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.Type
+        {
+            get
+            {
+                return this.Type();
+            }
+        }
     }
 }

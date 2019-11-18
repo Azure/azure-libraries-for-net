@@ -328,6 +328,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        /// <summary>
+        /// Gets whether metadata write access is disabled or not.
+        /// </summary>
+        bool ICosmosDBAccount.KeyBasedMetadataWriteAccessDisabled
+        {
+            get
+            {
+                return this.KeyBaseMetadataWriteAccessDisabled();
+            }
+        }
+
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
@@ -579,6 +590,68 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConnector.WithoutCassandraConnector()
         {
             return this.WithoutCassandraConnector();
+        }
+
+        /// <summary>
+        /// Starts the definition of a private endpoint connection to be attached
+        /// to the cosmos db account.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <returns>The first stage of a private endpoint connection definition.</returns>
+        PrivateEndpointConnection.Definition.IBlank<CosmosDBAccount.Definition.IWithCreate> CosmosDBAccount.Definition.IWithPrivateEndpointConnection.DefineNewPrivateEndpointConnection(string name)
+        {
+            return this.DefineNewPrivateEndpointConnection(name);
+        }
+
+        /// <summary>
+        /// Starts the definition of a private endpoint connection to be attached
+        /// to the cosmos db account.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <returns>The first stage of a private endpoint connection definition.</returns>
+        PrivateEndpointConnection.UpdateDefinition.IBlank<CosmosDBAccount.Update.IWithOptionals> CosmosDBAccount.Update.IWithPrivateEndpointConnection.DefineNewPrivateEndpointConnection(string name)
+        {
+            return this.DefineNewPrivateEndpointConnection(name);
+        }
+
+        /// <summary>
+        /// Start the update of an existing private endpoint connection.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <returns>The first stage of a private endpoint connection definition.</returns>
+        PrivateEndpointConnection.Update.IUpdate CosmosDBAccount.Update.IWithPrivateEndpointConnection.UpdatePrivateEndpointConnection(string name)
+        {
+            return this.UpdatePrivateEndpointConnection(name);
+        }
+
+        /// <summary>
+        /// Remove an existing private endpoint connection.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithPrivateEndpointConnection.WithoutPrivateEndpointConnection(string name)
+        {
+            return this.WithoutPrivateEndpointConnection(name);
+        }
+
+        /// <summary>
+        /// Specifies whether metadata write access should be disabled.
+        /// </summary>
+        /// <param name="disabled">Whether metadata write access is disabled or not.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithKeyBasedMetadataWriteAccess.WithDisableKeyBaseMetadataWriteAccess(bool disabled)
+        {
+            return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
+        }
+
+        /// <summary>
+        /// Specifies whether metadata write access should be disabled.
+        /// </summary>
+        /// <param name="disabled">Whether metadata write access is disabled or not.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess.WithDisableKeyBaseMetadataWriteAccess(bool disabled)
+        {
+            return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
         }
     }
 }

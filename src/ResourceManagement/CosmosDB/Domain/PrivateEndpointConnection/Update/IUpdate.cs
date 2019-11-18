@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
     /// <summary>
     /// The stage of the private endpoint connection update allowing to specify state.
     /// </summary>
-    public interface IWithState 
+    public interface IWithState
     {
         /// <summary>
         /// Specifies description of state property.
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
         /// </summary>
         /// <param name="property">A private link service connection state property.</param>
         /// <return>The next stage of update.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Update.IUpdate WithStateProperty(PrivateLinkServiceConnectionStateProperty property);
+        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Update.IUpdate WithStateProperty(Models.PrivateLinkServiceConnectionStateProperty property);
 
         /// <summary>
         /// Specifies status of state property.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.U
     /// <summary>
     /// The entirety of private endpoint connection update as a part of parent virtual machine update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IUpdate>,
         Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Update.IWithState
     {
