@@ -54,10 +54,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             CosmosDBAccountImpl self = this;
             int currentDelayDueToMissingFailovers = 0;
-            Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner =
-                this.CreateUpdateParametersInner(this.Inner);
-            await this.Manager.Inner.DatabaseAccounts.CreateOrUpdateAsync(
-                ResourceGroupName, Name, createUpdateParametersInner);
+            HasLocation locationParameters;
+
+            if (IsInCreateMode)
+            {
+                Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner =
+                    this.CreateUpdateParametersInner(this.Inner);
+                await this.Manager.Inner.DatabaseAccounts.CreateOrUpdateAsync(
+                    ResourceGroupName, Name, createUpdateParametersInner);
+                locationParameters = new CreateUpdateLocationParameters(createUpdateParametersInner);
+            }
+            else
+            {
+                Models.DatabaseAccountUpdateParameters updateParametersInner =
+                    this.UpdateParametersInner(this.Inner);
+                await this.Manager.Inner.DatabaseAccounts.UpdateAsync(
+                    ResourceGroupName, Name, updateParametersInner);
+                locationParameters = new UpdateLocationParameters(updateParametersInner);
+            }
             this.failoverPolicies.Clear();
             this.hasFailoverPolicyChanges = false;
             bool done = false;
@@ -71,7 +85,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (maxDelayDueToMissingFailovers > currentDelayDueToMissingFailovers &&
                     (databaseAccount.Id == null
                     || databaseAccount.Id.Length == 0
-                    || createUpdateParametersInner.Locations.Count >
+                    || locationParameters.Locations.Count >
                         databaseAccount.Inner.FailoverPolicies.Count))
                 {
                     currentDelayDueToMissingFailovers += 5000;
@@ -112,13 +126,39 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
             createUpdateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
             createUpdateParametersInner.ConnectorOffer = inner.ConnectorOffer;
+            createUpdateParametersInner.EnableAutomaticFailover = inner.EnableAutomaticFailover;
+            createUpdateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
                 virtualNetworkRulesMap = null;
             }
-            this.AddLocationsForCreateUpdateParameters(createUpdateParametersInner, this.failoverPolicies);
+            this.AddLocationsForParameters(new CreateUpdateLocationParameters(createUpdateParametersInner), this.failoverPolicies);
             return createUpdateParametersInner;
+        }
+
+        private DatabaseAccountUpdateParameters UpdateParametersInner(DatabaseAccountGetResultsInner inner)
+        {
+            this.EnsureFailoverIsInitialized();
+            var updateParametersInner = new DatabaseAccountUpdateParameters();
+            updateParametersInner.Tags = inner.Tags;
+            updateParametersInner.Location = this.RegionName.ToLower();
+            updateParametersInner.ConsistencyPolicy = inner.ConsistencyPolicy;
+            updateParametersInner.IpRangeFilter = inner.IpRangeFilter;
+            updateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
+            updateParametersInner.EnableAutomaticFailover = inner.EnableAutomaticFailover;
+            updateParametersInner.Capabilities = inner.Capabilities;
+            updateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
+            updateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
+            updateParametersInner.ConnectorOffer = inner.ConnectorOffer;
+            updateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
+            if (virtualNetworkRulesMap != null)
+            {
+                updateParametersInner.VirtualNetworkRules = this.virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
+                this.virtualNetworkRulesMap = null;
+            }
+            AddLocationsForParameters(new UpdateLocationParameters(updateParametersInner), this.failoverPolicies);
+            return updateParametersInner;
         }
 
         private bool IsProvisioningStateFinal(string state)
@@ -306,7 +346,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
+        private void AddLocationsForParameters(HasLocation locationParameters, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
             if (failoverPolicies.Count > 0)
@@ -324,11 +364,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 Models.Location location = new Models.Location();
                 location.FailoverPriority = 0;
-                location.LocationName = createUpdateParametersInner.Location;
+                location.LocationName = locationParameters.Location;
                 locations.Add(location);
             }
 
-            createUpdateParametersInner.Locations = locations;
+            locationParameters.Locations = locations;
         }
 
         public CosmosDBAccountImpl WithIpRangeFilter(string ipRangeFilter)
@@ -690,6 +730,72 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 result.Add(new PrivateLinkResourceImpl(inner));
             }
             return result;
+        }
+
+        interface HasLocation
+        {
+            string Location { get; }
+            IList<Location> Locations { get; set; }
+        }
+
+        public class CreateUpdateLocationParameters : HasLocation
+        {
+            private DatabaseAccountCreateUpdateParameters parameters;
+
+            public CreateUpdateLocationParameters(DatabaseAccountCreateUpdateParameters createUpdateParameters)
+            {
+                parameters = createUpdateParameters;
+            }
+
+            public string Location
+            {
+                get
+                {
+                    return parameters.Location;
+                }
+            }
+
+            public IList<Location> Locations
+            {
+                get
+                {
+                    return parameters.Locations;
+                }
+                set
+                {
+                    parameters.Locations = Locations;
+                }
+            }
+        }
+
+        public class UpdateLocationParameters : HasLocation
+        {
+            private DatabaseAccountUpdateParameters parameters;
+
+            public UpdateLocationParameters(DatabaseAccountUpdateParameters updateParameters)
+            {
+                parameters = updateParameters;
+            }
+
+            public string Location
+            {
+                get
+                {
+                    return parameters.Location;
+                }
+            }
+
+            public IList<Location> Locations
+            {
+                get
+                {
+                    return parameters.Locations;
+                }
+                set
+                {
+                    parameters.Locations = Locations;
+                }
+            }
         }
     }
 }
