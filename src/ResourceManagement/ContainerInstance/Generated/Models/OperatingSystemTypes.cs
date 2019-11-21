@@ -7,6 +7,7 @@
 // </auto-generated>
 
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
@@ -14,6 +15,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
     /// <summary>
     /// Defines values for OperatingSystemTypes.
     /// </summary>
+    [JsonConverter(typeof(ExpandableStringEnumConverter<OperatingSystemTypes>))]
     public class OperatingSystemTypes : ExpandableStringEnum<OperatingSystemTypes>
     {
         public static readonly OperatingSystemTypes Windows = Parse("Windows");

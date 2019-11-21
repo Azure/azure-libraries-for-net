@@ -101,6 +101,12 @@
     "package": "Microsoft.Azure.Management.Network.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2019-06"
   },
+  "policy": {
+    "dir": "ResourceManager",
+    "source": "specification/resources/resource-manager/readme.md",
+    "package": "Microsoft.Azure.Management.ResourceManager.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-policy-2019-06"
+  },  
   "redis": {
     "dir": "RedisCache",
     "source": "specification/redis/resource-manager/readme.md",

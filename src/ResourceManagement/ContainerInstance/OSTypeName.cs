@@ -3,10 +3,12 @@
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Defines values for container instance OS type.
     /// </summary>
+    [JsonConverter(typeof(ExpandableStringEnumConverter<OSTypeName>))]
     public class OSTypeName : ExpandableStringEnum<OSTypeName>
     {
         public static readonly OSTypeName Linux = Parse("Linux");

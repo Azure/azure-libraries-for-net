@@ -4,6 +4,7 @@
 
 
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
@@ -11,6 +12,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
     /// <summary>
     /// Defines values for ContainerGroupRestartPolicy.
     /// </summary>
+    [JsonConverter(typeof(ExpandableStringEnumConverter<ContainerGroupRestartPolicy>))]
     public class ContainerGroupRestartPolicy : ExpandableStringEnum<ContainerGroupRestartPolicy>
     {
         public static readonly ContainerGroupRestartPolicy Always = Parse("always");

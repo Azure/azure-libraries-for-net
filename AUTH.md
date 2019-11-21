@@ -39,6 +39,53 @@ var azure = Azure.Authenticate(creds).WithSubscription(subscriptionId);
 
 where `client`, `tenant`, `subscriptionId`, and `key` or `pfxCertificatePath` and `password` are strings with the required pieces of information about your service principal and subscription. The last parameter, `AzureEnvironment.AzureGlobalCloud` represents the Azure worldwide public cloud. You can use a different value out of the currently supported alternatives in the `AzureEnvironment` enum.
 
+## Using credentials from Azure CLI automatically
+
+If you have [Azure CLI](https://github.com/Azure/azure-cli) (>=2.0) installed and authenticated on your machine, the SDK client is able to use the current account and subscription Azure CLI is logged in.
+
+Run `az login --service-principal -u <app-url> -p <password> --tenant <tenant>` to authenticate to Azure CLI in your terminal. 
+- `app-url`: The URL or name associated with the service principal.
+- `password`: The service principal password.
+- `tenant`: The tenant associated with the service principal, as either an .onmicrosoft.com domain or Azure object ID.
+
+Initialize the Azure client as following:
+
+```csharp
+var creds = AzureCliCredentials.Create();
+var azure = Azure.Authenticate(creds).WithSubscription(subscriptionId);
+```
+
+Please note when Azure CLI is authenticated with a service principal, it will never expire until the service principal credential expires.
+
+## Using Proxy in authentication
+
+This approach will setup proxy credentials with two steps to create an authenticated client. 
+
+- First, it requires an instance of the `AzureCredentials` class from either of the above approaches:
+
+```csharp
+var creds = new AzureCredentialsFactory().FromFile("my.azureauth");
+```
+
+or
+
+```csharp
+var creds = new AzureCredentialsFactory().FromServicePrincipal(client, key, tenant, AzureEnvironment.AzureGlobalCloud);
+```
+
+- Second, it requires an instance of the `RestClient` class to specify proxy credentials:
+```csharp
+RestClient restClient = RestClient.Configure()
+        .WithEnvironment(credentials.Environment)
+        .WithCredentials(creds)
+        .Build();
+
+restClient.RootHttpHandler.DefaultProxyCredentials = CredentialCache.DefaultCredentials;
+
+IAzure azure = Azure.Authenticate(restClient, creds.TenantId)
+        .WithDefaultSubscription();
+```
+
 ## Auth file formats
 
 Prior to this release, we've been using Java properties file format containing the following information:

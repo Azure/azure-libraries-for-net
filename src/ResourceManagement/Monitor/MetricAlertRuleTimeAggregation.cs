@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// </summary>
     public sealed partial class MetricAlertRuleTimeAggregation : ExpandableStringEnum<MetricAlertRuleTimeAggregation>
     {
+        public static readonly MetricAlertRuleTimeAggregation Count = Parse("Count");
         public static readonly MetricAlertRuleTimeAggregation Average = Parse("Average");
         public static readonly MetricAlertRuleTimeAggregation Minimum = Parse("Minimum");
         public static readonly MetricAlertRuleTimeAggregation Maximum = Parse("Maximum");

@@ -1,0 +1,179 @@
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- DelaySignVerification properties -->
+  <PropertyGroup>
+    <OnPremiseTargetsFile>$(CISignRepo)\tools\sdkbuildtools\targets\onPremise.targets</OnPremiseTargetsFile>
+  </PropertyGroup>
+
+  <!-- Policheck properties -->
+  <PropertyGroup>
+    <DebugMessageImp>Low</DebugMessageImp>
+    <PolicheckScanDir>$(ScopeScanPath)</PolicheckScanDir>
+  </PropertyGroup>
+
+  <Target Name="PreSignBinariesDependsOn">
+    <ItemGroup>
+      <PolicheckScanDir Include="@(FilesToSign)" />
+    </ItemGroup>
+     <PropertyGroup>      
+      <ScopeScanPath Condition=" '$(Scope)' != 'All' ">$(ProjectRootDir)</ScopeScanPath>
+      <ScopeScanPath Condition=" '$(ScopeScanPath)' == '' AND '$(Scope)' != 'All' ">$(LibrarySourceFolder)\$(Scope.TrimEnd('\'))</ScopeScanPath>
+      <ScopeScanPath Condition=" '$(ScopeScanPath)' == '' AND '$(Scope)' != 'All' ">$(LibraryRoot)\$(Scope.TrimEnd('\'))</ScopeScanPath>
+      <PolicheckScanDir Condition=" Exists($(ScopeScanPath))">$(ScopeScanPath)</PolicheckScanDir>
+    </PropertyGroup>
+  </Target>
+  <Target Name="PreSignBinaries" DependsOnTargets="PreSignBinariesDependsOn" Condition=" '$(CodeSign)' == 'true' AND '$(Configuration)' == 'Release' ">
+    <Message Text="DelaySignedFileItems ....... @(DelaySignedFileItems)" Importance="$(DebugMessageImp)" />
+    <CallTarget Targets="PoliCheckTarget" RunEachTargetSeparately="true" />
+    <Message Text="Done executing PreSign Target" Importance="$(DebugMessageImp)" />
+  </Target>
+
+  <Target Name="SignBinariesDependsOn">
+    <Message Text="UnsignedFileItems ....... @(FilesToSign)" Importance="$(DebugMessageImp)" />
+    <ItemGroup>
+      <UnsignedFileItems Include="@(FilesToSign)" />
+    </ItemGroup>
+     <PropertyGroup>
+      <UseSourceDirAsSignDir>false</UseSourceDirAsSignDir>
+      <CopySignedFilesToOriginalLoc>true</CopySignedFilesToOriginalLoc>
+      <SignOperationLogDir>$(BinariesFolder)</SignOperationLogDir>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="SignBinaries" DependsOnTargets="SignBinariesDependsOn" Condition=" '$(CodeSign)' == 'true' AND '$(Configuration)' == 'Release' ">
+    <Message Text="ProjectFile .... $(OnPremiseTargetsFile)" Importance="$(DebugMessageImp)" />
+    <CallTarget Targets="AuthenticodeSignBinariesTarget" RunEachTargetSeparately="true" />
+    <Message Text="Done executing Sign Target" Importance="$(DebugMessageImp)" />
+  </Target>
+
+  <Target Name="PostSignBinariesDependsOn">
+    <ItemGroup>
+      <DelaySignedFileItems Include="@(FilesToSign)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="PostSignBinaries" DependsOnTargets="PostSignBinariesDependsOn" Condition=" '$(CodeSign)' == 'true' ">
+    <Message Text="DelaySignedFileItems ....... @(DelaySignedFileItems)" Importance="$(DebugMessageImp)" />
+    <CallTarget Targets="VerifyAssemblyPublicTokenTarget" RunEachTargetSeparately="true" />
+    <Message Text="Done executing PreSign Target" Importance="$(DebugMessageImp)" />
+  </Target>
+
+  <Target Name="SignNugetPackageDependsOn">
+    <Message Text="BuiltPackageOutputDir ....... @(BuiltPackageOutputDir)" Importance="$(DebugMessageImp)" />
+    <PropertyGroup>
+      <UnsignedNupkgsDir>$(BuiltPackageOutputDir)</UnsignedNupkgsDir>
+      <UseSourceDirAsSignNupkgsDir>false</UseSourceDirAsSignNupkgsDir>
+      <CopySignedNupkgsToOriginalLoc>true</CopySignedNupkgsToOriginalLoc>
+      <SignOperationLogDir>$(BinariesFolder)</SignOperationLogDir>
+    </PropertyGroup>
+  </Target>
+  <Target Name="SignNugetPackage" DependsOnTargets="SignNugetPackageDependsOn" 
+          Condition=" '$(CodeSign)' == 'true' AND '$(Configuration)' == 'Release' AND '$(SkipAuthSign)' != 'true' ">
+    <CallTarget Targets="AuthenticodeSignNugetTarget" />
+    <Message Text="Done executing Signing Nuget Packages" Importance="$(DebugMessageImp)" />
+  </Target>
+
+  <Target Name="RunSignTargets" Condition=" '$(CodeSign)' == 'true' 
+        AND '$(SkipAuthSign)' != 'true' 
+        AND '$(Configuration)' == 'Release' "
+        DependsOnTargets="SignBinaries" />
+  <!--  DependsOnTargets="SignBinaries;PostSignBinaries" 
+  RunEachTargetSeparately="true" 
+  -->
+  
+  
+  <Import Condition=" Exists('$(CISignRepo)') " Project="$(CISignRepo)\tools\sdkbuildtools\targets\onPremise.targets" />
+</Project>
+
+
+<!--
+DependsOnTargets="DelaySignedVerificationTarget"
+  <Target Name="PreSign" Condition=" '$(CodeSign)' == 'true' AND '$(AuthenticodeSign)' == 'true' " DependsOnTargets="GlobalReadinessTools">
+    <PropertyGroup>
+      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+    </PropertyGroup>
+    <GetFrameworkSdkPath>
+      <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
+    </GetFrameworkSdkPath>
+
+    <ItemGroup>
+      <DelaySignedAssembliesToValidate Include="@(FilesToSign)" />
+    </ItemGroup>
+    <Message Text="Unsigned files .... @(DelaySignedAssembliesToValidate)" />
+
+    <Message Importance="high" Text="Contains no files. Code sign will skip."
+				 Condition="'@(DelaySignedAssembliesToValidate)' == ''" />
+         
+    <ValidateStrongNameSignatureTask
+			WindowsSdkPath="$(WindowsSdkPath)"
+			Assembly="%(DelaySignedAssembliesToValidate.Identity)"
+			ExpectedTokenSignature="$(StrongNameToken)"
+			ExpectedDelaySigned="true"
+			ContinueOnError="false"
+			Condition="'@(DelaySignedAssembliesToValidate)' != ''"/>
+  </Target>
+
+  <Target Name="GlobalReadinessTools" Condition=" '$(RunGlobalReadinessTools)' == 'true'" DependsOnTargets="GlobalReadinessToolsInfo;RunPoliCheck">
+    <Message Text="Global Readiness Tools execution complete..."/>
+  </Target>
+  <Target Name="RunPoliCheck" Condition=" '$(OnPremiseBuild)' == 'true' AND '$(RunGlobalReadinessTools)' == 'true' " DependsOnTargets="CorporateValidation"/>
+  <Target Name="GlobalReadinessToolsInfo">
+    <PropertyGroup>
+      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+      <ScopeScanPath Condition=" '$(Scope)' != 'All' ">$(ProjectRootDir)</ScopeScanPath>
+      <ScopeScanPath Condition=" '$(ScopeScanPath)' == '' AND '$(Scope)' != 'All' ">$(LibrarySourceFolder)\$(Scope.TrimEnd('\'))</ScopeScanPath>
+      <ScopeScanPath Condition=" '$(ScopeScanPath)' == '' AND '$(Scope)' != 'All' ">$(LibraryRoot)\$(Scope.TrimEnd('\'))</ScopeScanPath>
+      <CorporateScanPaths Condition=" Exists($(ScopeScanPath))">$(ScopeScanPath)</CorporateScanPaths>
+    </PropertyGroup>
+    <Message Text="Scope..... $(Scope)" Condition=" '$(DebugTrace)' == 'true' "/>
+    <Message Text="ProjectRootDir..... $(ProjectRootDir)" Condition=" '$(DebugTrace)' == 'true' "/>
+    <Message Text="ScopeScanPath ..... $(ScopeScanPath)" Condition=" '$(DebugTrace)' == 'true' "/>
+    <Message Text="ProjectRootDir ..... $(ProjectRootDir)" Condition=" '$(DebugTrace)' == 'true' "/>
+    <Message Text="CorporateScanPaths ..... $(CorporateScanPaths)" Condition=" '$(DebugTrace)' == 'true' "/>
+    <Message Text="Running PoliCheck on ..... $(CorporateScanPaths)" Condition=" '$(CorporateScanPaths)' != '' and '$(RunGlobalReadinessTools)' == 'true'"/>
+  </Target>
+
+  <Target Name="Sign" Condition=" '$(CodeSign)' == 'true' AND '$(AuthenticodeSign)' == 'true' ">
+    <CodeSigningTask
+			Description="Microsoft Azure SDK"
+			Keywords="Microsoft Azure .NET SDK"
+			UnsignedFiles="@(DelaySignedAssembliesToValidate)"
+			DestinationPath="%(DelaySignedAssembliesToValidate.RootDir)%(DelaySignedAssembliesToValidate.Directory)"
+			SigningLogPath="$(LibraryRoot)\binaries"
+			ToolsPath="$(CIToolsPath)"
+			Condition="'$(CodeSign)' == 'true' and '@(DelaySignedAssembliesToValidate)' != ''" />
+
+  </Target>
+
+  <Target Name="PostSign" Condition=" '$(CodeSign)' == 'true' AND '$(AuthenticodeSign)' == 'true'">
+    <ValidateStrongNameSignatureTask
+		WindowsSdkPath="$(WindowsSdkPath)"
+		Assembly="%(DelaySignedAssembliesToValidate.Identity)"
+		ExpectedTokenSignature="$(StrongNameToken)"
+		ExpectedDelaySigned="false"
+		ContinueOnError="false"
+		Condition="'$(CodeSign)' == 'true' and '@(DelaySignedAssembliesToValidate)' != ''"/>
+  </Target>
+  
+  <Target Name="SignNugetPackage" Condition=" '$(CodeSign)' == 'true' AND '$(SkipSignNugetPackage)' != 'true' AND '$(SkipNugetSigning)' != 'true' ">
+  
+  <Message Text="Generating nuget manifest for Nuget Signing....."/>
+	<Message Text="SignManifestRootDir - $(SignManifestRootDir)" Condition=" '$(DebugTrace)' == 'true' "/>
+	<Message Text="BinariesFolder - $(BinariesFolder)" Condition=" '$(DebugTrace)' == 'true' "/>
+	<Message Text="PackageOutputPath - $(PackageOutputPath)" Condition=" '$(DebugTrace)' == 'true' "/>
+	<Message Text="CurrentUser $(USERNAME)" Condition=" '$(DebugTrace)' == 'true' "/>
+	<Message Text="CodeSign=$(CodeSign), AuthenticodeSign=$(AuthenticodeSign)" Condition=" '$(DebugTrace)' == 'true' "/>
+	
+	
+	<SignNugetTask 
+		InSignedFilesRootDirPath="$(BinariesFolder)" 
+		InSigningOperation="nuget" 
+		InSearchExtensionToSearch=".nupkg" 
+		InNugetPackageRootDir="$(PackageOutputPath)" 
+		InSignManifestDirPath="$(SignManifestRootDir)"
+		InSignBuildName="$(BuildNameLabel)"
+		CiToolsRootDir="$(CIToolsPath)" ContinueOnError="ErrorAndStop" >
+	</SignNugetTask>
+	
+  </Target>
+
+  <Target Name="RunSignTargets" DependsOnTargets="PreSign;Sign;PostSign"/>
+-->

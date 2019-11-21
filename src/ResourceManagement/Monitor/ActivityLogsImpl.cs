@@ -49,9 +49,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:6F01E78E35D7E5AB58994AE36EDFAB4A:B883F859C5ECB2870CD846D5172095F9
         private string GetOdataFilterString()
         {
+            // 2019/11/08 monitor service only accepts UTC time.
+            // https://github.com/Azure/azure-libraries-for-net/issues/511
             return string.Format("eventTimestamp ge '{0}' and eventTimestamp le '{1}'",
-                this.queryStartTime.ToString("o"),
-                this.queryEndTime.ToString("o"));
+                this.queryStartTime.ToUniversalTime().ToString("o"),
+                this.queryEndTime.ToUniversalTime().ToString("o"));
         }
 
         ///GENMHASH:66A358446BB2F4C0D4EA5FC8537BD415:7FDA4951E189B2016B3D2310EE5F3420

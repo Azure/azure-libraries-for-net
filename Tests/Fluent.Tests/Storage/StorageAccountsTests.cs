@@ -147,6 +147,49 @@ namespace Fluent.Tests.Storage
         }
 
         [Fact]
+        public void CanCreateWithFileStorageKindSku()
+        {
+            var customerTags = new Dictionary<string, string>
+            {
+                ["ID"] = "1234",
+                ["Customer"] = "foo"
+            };
+
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rgName = TestUtilities.GenerateName("rgstg");
+                var stgName = TestUtilities.GenerateName("stgbnt");
+                try
+                {
+                    var storageManager = TestHelper.CreateStorageManager();
+
+                    var storageAccount = storageManager.StorageAccounts.Define(stgName)
+                        .WithRegion(Region.USEast2)
+                        .WithNewResourceGroup(rgName)
+                        .WithFileStorageAccountKind()
+                        .WithSku(StorageAccountSkuType.Premium_LRS)
+                        .WithAzureFilesAadIntegrationEnabled(false)
+                        .WithTags(customerTags)
+                        .Create();
+
+                    // Check the overridden settings
+                    Assert.Equal(SkuName.PremiumLRS, storageAccount.SkuType.Name);
+                    Assert.Equal(Kind.FileStorage, storageAccount.Kind);
+                    Assert.False(storageAccount.AzureFilesAadIntegration);
+                    Assert.Equal(customerTags, storageAccount.Tags);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
         public void CanGetAndRegenerateKeys()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
