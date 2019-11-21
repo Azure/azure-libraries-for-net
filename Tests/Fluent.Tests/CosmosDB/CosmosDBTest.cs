@@ -6,8 +6,10 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent.Models;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Fluent.Tests
@@ -70,7 +72,6 @@ namespace Fluent.Tests
                     }
                     catch { }
                 }
-
             }
         }
 
@@ -172,7 +173,102 @@ namespace Fluent.Tests
                     catch { }
                 }
             }
+        }
 
+        [Fact]
+        public void CanCreateSqlPrivateEndpoint()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var networkName = SdkContext.RandomResourceName("network", 22);
+                var subnetName = SdkContext.RandomResourceName("subnet", 22);
+                var plsConnectionName = SdkContext.RandomResourceName("plsconnect", 22);
+                var pedName = SdkContext.RandomResourceName("ped", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName)
+                        .WithRegion(region)
+                        .Create();
+
+                    var network = azure.Networks.Define(networkName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithAddressSpace("10.0.0.0/16")
+                        .DefineSubnet(subnetName)
+                            .WithAddressPrefix("10.0.0.0/24")
+                            .WithAccessFromService(ServiceEndpointType.MicrosoftAzureCosmosDB)
+                            .Attach()
+                        .Create();
+
+                    network.Subnets[subnetName].Inner.PrivateEndpointNetworkPolicies = "Disabled";
+                    network.Subnets[subnetName].Inner.PrivateLinkServiceNetworkPolicies = "Disabled";
+
+                    network.Update()
+                        .UpdateSubnet(subnetName)
+                        .Parent()
+                        .Apply();
+
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelSql()
+                        .WithStrongConsistency()
+                        .WithDisableKeyBaseMetadataWriteAccess(true)
+                        .Create();
+
+                    Assert.True(databaseAccount.KeyBasedMetadataWriteAccessDisabled);
+
+                    var privateLinkServiceConnection = new PrivateLinkServiceConnectionInner(null,
+                        databaseAccount.Id,
+                        new List<string> { "Sql" },
+                        null,
+                        new PrivateLinkServiceConnectionState("Approved"),
+                        plsConnectionName);
+
+                    var privateEndpoint = new PrivateEndpointInner(region.ToString(),
+                        null,
+                        pedName,
+                        null,
+                        null,
+                        network.Subnets[subnetName].Inner,
+                        null,
+                        null,
+                        new List<PrivateLinkServiceConnectionInner> { privateLinkServiceConnection },
+                        null);
+
+                    azure.Networks.Manager.Inner.PrivateEndpoints
+                        .CreateOrUpdateWithHttpMessagesAsync(rgName, pedName, privateEndpoint).Wait();
+
+                    Assert.Equal("Approved", databaseAccount.GetPrivateEndpointConnection(pedName).PrivateLinkServiceConnectionState.Status);
+
+                    databaseAccount.Update()
+                        .DefineNewPrivateEndpointConnection(pedName)
+                        .WithStatus("Rejected")
+                        .WithDescription("Rej")
+                        .Attach()
+                        .Apply();
+
+                    var connections = databaseAccount.ListPrivateEndpointConnection();
+                    Assert.True(connections.ContainsKey(pedName));
+                    Assert.Equal("Rejected", connections[pedName].PrivateLinkServiceConnectionState.Status);
+
+                    Assert.Equal(1, databaseAccount.ListPrivateLinkResources().Count);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
         }
     }
 }

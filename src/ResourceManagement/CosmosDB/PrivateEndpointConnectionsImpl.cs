@@ -25,12 +25,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             : base(parent, "PrivateEndpointConnection")
         {
             this.Client = client;
-            this.CacheCollection();
         }
 
         protected override IList<PrivateEndpointConnectionImpl> ListChildResources()
         {
-            return new List<PrivateEndpointConnectionImpl>();
+            return Extensions.Synchronize(() => ListAsync());
         }
 
         protected override PrivateEndpointConnectionImpl NewChildResource(string name)
@@ -66,6 +65,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public PrivateEndpointConnectionImpl Define(string name)
         {
+            if (this.Collection == null)
+            {
+                this.Refresh();
+            }
             return this.PrepareDefine(name);
         }
 
@@ -93,12 +96,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public void Remove(string name)
         {
+            if (this.Collection == null)
+            {
+                this.Refresh();
+            }
             this.PrepareRemove(name);
         }
 
         public PrivateEndpointConnectionImpl Update(string name)
         {
+            if (this.Collection == null)
+            {
+                this.Refresh();
+            }
             return this.PrepareUpdate(name);
+        }
+
+        public void AddPrivateEndpointConnection(PrivateEndpointConnectionImpl privateEndpointConnection)
+        {
+            this.AddChildResource(privateEndpointConnection);
         }
     }
 }

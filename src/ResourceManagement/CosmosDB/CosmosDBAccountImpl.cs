@@ -38,6 +38,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
 
+        internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
+            base(name, innerObject, manager)
+        {
+            this.failoverPolicies = new List<Models.FailoverPolicy>();
+            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this.Manager.Inner.PrivateEndpointConnections, this);
+        }
+
         public CosmosDBAccountImpl WithReadReplication(Region region)
         {
             this.EnsureFailoverIsInitialized();
@@ -46,7 +53,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             FailoverPolicy.FailoverPriority = this.failoverPolicies.Count;
             this.hasFailoverPolicyChanges = true;
             this.failoverPolicies.Add(FailoverPolicy);
-            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this.Manager.Inner.PrivateEndpointConnections, this);
             return this;
         }
 
@@ -106,6 +112,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 }
             }
 
+            await this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken);
             this.SetInner(databaseAccount.Inner);
             this.initializeFailover();
             return databaseAccount;
@@ -309,12 +316,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public IDatabaseAccountListConnectionStringsResult ListConnectionStrings()
         {
             return Extensions.Synchronize(() => this.ListConnectionStringsAsync());
-        }
-
-        internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
-            base(name, innerObject, manager)
-        {
-            this.failoverPolicies = new List<Models.FailoverPolicy>();
         }
 
         public Models.ConsistencyPolicy ConsistencyPolicy()
@@ -668,6 +669,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        internal CosmosDBAccountImpl WithPrivateEndpointConnection(PrivateEndpointConnectionImpl privateEndpointConnection)
+        {
+            this.privateEndpointConnections.AddPrivateEndpointConnection(privateEndpointConnection);
+            return this;
+        }
+
         public PrivateEndpointConnectionImpl DefineNewPrivateEndpointConnection(string name)
         {
             return this.privateEndpointConnections.Define(name);
@@ -763,7 +770,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 }
                 set
                 {
-                    parameters.Locations = Locations;
+                    parameters.Locations = value;
                 }
             }
         }
@@ -793,7 +800,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 }
                 set
                 {
-                    parameters.Locations = Locations;
+                    parameters.Locations = value;
                 }
             }
         }

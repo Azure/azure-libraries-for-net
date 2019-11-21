@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public CosmosDBAccountImpl Attach()
         {
-            return Parent;
+            return Parent.WithPrivateEndpointConnection(this);
         }
 
         public override async Task<IPrivateEndpointConnection> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         CosmosDBAccount.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<CosmosDBAccount.Update.IUpdate>.Parent()
         {
-            return this.Parent;
+            return this.Attach();
         }
     }
 }
