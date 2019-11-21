@@ -28,8 +28,5 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         public static readonly SkuName StandardRAGRS = Parse("Standard_RAGRS");
         public static readonly SkuName StandardZRS = Parse("Standard_ZRS");
         public static readonly SkuName PremiumLRS = Parse("Premium_LRS");
-        public static readonly SkuName PremiumZRS = Parse("Premium_ZRS");
-        public static readonly SkuName StandardGZRS = Parse("Standard_GZRS");
-        public static readonly SkuName StandardRAGZRS = Parse("Standard_RAGZRS");
     }
 }

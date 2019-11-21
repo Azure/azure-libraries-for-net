@@ -28,18 +28,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Static value Premium_LRS for StorageAccountSkuType.
         /// </summary>
         public static readonly StorageAccountSkuType Premium_LRS = new StorageAccountSkuType(SkuName.PremiumLRS);
-        /// <summary>
-        /// Static value Premium_ZRS for StorageAccountSkuType.
-        /// </summary>
-        public static readonly StorageAccountSkuType Premium_ZRS = new StorageAccountSkuType(SkuName.PremiumZRS);
-        /// <summary>
-        /// Static value Standard_GZRS for StorageAccountSkuType.
-        /// </summary>
-        public static readonly StorageAccountSkuType Standard_GZRS = new StorageAccountSkuType(SkuName.StandardGZRS);
-        /// <summary>
-        /// Static value Standard_RAGZRS for StorageAccountSkuType.
-        /// </summary>
-        public static readonly StorageAccountSkuType Standard_RAGZRS = new StorageAccountSkuType(SkuName.StandardRAGZRS);
 
         private SkuName name;
 
