@@ -248,10 +248,10 @@ namespace Fluent.Tests
                     Assert.Equal("Approved", databaseAccount.GetPrivateEndpointConnection(pedName).PrivateLinkServiceConnectionState.Status);
 
                     databaseAccount.Update()
-                        .DefineNewPrivateEndpointConnection(pedName)
+                        .UpdatePrivateEndpointConnection(pedName)
                         .WithStatus("Rejected")
                         .WithDescription("Rej")
-                        .Attach()
+                        .Parent()
                         .Apply();
 
                     var connections = databaseAccount.ListPrivateEndpointConnection();

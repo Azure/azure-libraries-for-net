@@ -65,10 +65,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public PrivateEndpointConnectionImpl Define(string name)
         {
-            if (this.Collection == null)
-            {
-                this.Refresh();
-            }
             return this.PrepareDefine(name);
         }
 
@@ -96,7 +92,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public void Remove(string name)
         {
-            if (this.Collection == null)
+            if (this.Collection.Count == 0)
             {
                 this.Refresh();
             }
@@ -105,7 +101,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public PrivateEndpointConnectionImpl Update(string name)
         {
-            if (this.Collection == null)
+            if (this.Collection.Count == 0)
             {
                 this.Refresh();
             }
