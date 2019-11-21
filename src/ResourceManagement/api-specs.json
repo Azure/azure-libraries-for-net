@@ -101,6 +101,12 @@
     "package": "Microsoft.Azure.Management.Network.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2019-06"
   },
+  "privatedns": {
+    "dir": "PrivateDns",
+    "source": "specification/privatedns/resource-manager/readme.md",
+    "package": "Microsoft.Azure.Management.PrivateDns.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-2018-09"
+  }, 
   "policy": {
     "dir": "ResourceManager",
     "source": "specification/resources/resource-manager/readme.md",
