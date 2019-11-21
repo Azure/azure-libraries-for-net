@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Please do not move/edit code below this line -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('AzSdk.reference.props'))" />
+  <!-- Please do not move/edit code below this line -->
+
+  <PropertyGroup>
+    <Description>Provides Private DNS management (Fluent) capabilities for Microsoft Azure.</Description>
+    <AssemblyName>Microsoft.Azure.Management.PrivateDns.Fluent</AssemblyName>
+    <PackageId>Microsoft.Azure.Management.PrivateDns.Fluent</PackageId>
+    <PackageTags>Microsoft Azure Private DNS management;private dnszone;network;Fluent</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
+  </ItemGroup>
+</Project>
