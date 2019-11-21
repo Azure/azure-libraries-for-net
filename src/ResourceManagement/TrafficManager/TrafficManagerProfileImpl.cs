@@ -181,6 +181,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return (int)Inner.MonitorConfig.Port.Value;
         }
 
+        public long? IntervalInSeconds()
+        {
+            return Inner.MonitorConfig?.IntervalInSeconds;
+        }
+
+        public long? TimeoutInSeconds()
+        {
+            return Inner.MonitorConfig?.TimeoutInSeconds;
+        }
+
+        public long? ToleratedNumberOfFailures()
+        {
+            return Inner.MonitorConfig?.ToleratedNumberOfFailures;
+        }
+
         ///GENMHASH:C69FFBA25D969C2C45775433EBFD49EA:01BC02A541C8C945111AEC0AF9DB6FF1
         public TrafficManagerProfileImpl WithPriorityBasedRouting()
         {
@@ -250,6 +265,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "https";
+            return this;
+        }
+
+        public TrafficManagerProfileImpl WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures = default(long?))
+        {
+            Inner.MonitorConfig.IntervalInSeconds = intervalInSeconds;
+            Inner.MonitorConfig.ToleratedNumberOfFailures = toleratedNumberOfFailures;
+            Inner.MonitorConfig.TimeoutInSeconds = timeoutInSeconds;
             return this;
         }
 

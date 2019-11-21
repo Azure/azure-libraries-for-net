@@ -63,6 +63,7 @@ namespace Fluent.Tests
                                 .FromRegion(Region.IndiaCentral)
                                 .Attach()
                             .WithHttpsMonitoring()
+                            .WithFastFailover(10, 5)
                             .WithTimeToLive(500)
                             .Create();
 
@@ -75,6 +76,16 @@ namespace Fluent.Tests
                     Assert.Single(nestedProfile.ExternalEndpoints);
                     Assert.Equal(nestedTmProfileDnsLabel + ".trafficmanager.net", nestedProfile.Fqdn);
                     Assert.Equal(500, nestedProfile.TimeToLive);
+                    Assert.Equal(10, nestedProfile.IntervalInSeconds);
+                    Assert.Equal(5, nestedProfile.TimeoutInSeconds);
+
+                    nestedProfile.Update()
+                        .WithFastFailover(intervalInSeconds:30, timeoutInSeconds:10, toleratedNumberOfFailures:5)
+                        .Apply();
+                    nestedProfile.Refresh();
+                    Assert.Equal(30, nestedProfile.IntervalInSeconds);
+                    Assert.Equal(10, nestedProfile.TimeoutInSeconds);
+                    Assert.Equal(5, nestedProfile.ToleratedNumberOfFailures);
 
                     // Creates a public ip to be used as an Azure endpoint
                     //
