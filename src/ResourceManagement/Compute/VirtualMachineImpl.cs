@@ -1643,6 +1643,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public IProximityPlacementGroup ProximityPlacementGroup()
         {
+            if (Inner.ProximityPlacementGroup == null)
+            {
+                return null;
+            }
+
             ResourceId id = ResourceId.FromString(Inner.ProximityPlacementGroup.Id);
 
             ProximityPlacementGroupInner plgInner = Extensions.Synchronize(() => this.Manager.Inner.ProximityPlacementGroups.GetAsync(this.ResourceGroupName, id.Name));
