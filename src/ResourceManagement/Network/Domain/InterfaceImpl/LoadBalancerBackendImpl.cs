@@ -79,6 +79,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithExistingVirtualMachines(vms);
         }
 
+
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
+        {
+            return this.WithExistingVirtualMachines(vms);
+        }
+
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
+        {
+            return this.WithExistingVirtualMachines(vms);
+        }
+
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithoutExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
+        {
+            return this.WithoutExistingVirtualMachines(vms);
+        }
+
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithoutExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
+        {
+            return this.WithoutExistingVirtualMachines(vms);
+        }
+
         /// <summary>
         /// Adds the specified set of virtual machines, assuming they are from the same
         /// availability set, to this back end address pool.

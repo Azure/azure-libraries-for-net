@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         LoadBalancer.Definition.IDefinition,
         IUpdate
     {
-        private IDictionary<string, string> nicsInBackends = new Dictionary<string, string>();
+        private readonly IDictionary<string, string> nicsInBackends = new Dictionary<string, string>();
+        private readonly IDictionary<string, string> nicsRemovedFromBackends = new Dictionary<string, string>();
         private IDictionary<string, string> creatablePIPKeys = new Dictionary<string, string>();
 
         // Children
@@ -175,6 +176,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (nicsInBackends != null)
             {
                 List<Exception> nicExceptions = new List<Exception>();
+
+                // Update the NICs to point to the backend pool
+                foreach (var nicRemovedInBackend in nicsRemovedFromBackends)
+                {
+                    string nicId = nicRemovedInBackend.Key;
+                    try
+                    {
+                        var nic = Manager.NetworkInterfaces.GetById(nicId);
+                        var nicIP = nic.PrimaryIPConfiguration;
+                        nic.Update()
+                            .UpdateIPConfiguration(nicIP.Name)
+                            .WithoutLoadBalancerBackends()
+                            .Parent()
+                        .Apply();
+                    }
+                    catch (Exception e)
+                    {
+                        // Aggregate the exceptions
+                        nicExceptions.Add(e);
+                    }
+                }
 
                 // Update the NICs to point to the backend pool
                 foreach (var nicInBackend in nicsInBackends)
@@ -429,6 +451,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        internal LoadBalancerImpl WithoutExistingVirtualMachine(IHasNetworkInterfaces vm, string backendName)
+        {
+            if (backendName != null)
+            {
+                DefineBackend(backendName).Attach();
+                if (vm.PrimaryNetworkInterfaceId != null)
+                {
+                    nicsRemovedFromBackends[vm.PrimaryNetworkInterfaceId] = backendName.ToLower();
+                }
+            }
+            return this;
+        }
 
         ///GENMHASH:83EB7E99BCC747CE59AF36FB9564E603:F43FF67D037F98DA2675C048997AB3E4
         internal LoadBalancerProbeImpl DefineTcpProbe(string name)
