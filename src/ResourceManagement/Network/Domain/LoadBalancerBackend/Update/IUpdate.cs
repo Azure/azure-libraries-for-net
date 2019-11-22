@@ -50,11 +50,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update
         /// <summary>
         /// Removes the specified set of virtual machines from this backend address pool.
         /// </summary>
+        /// <param name="vms">Existing virtual machines to be removed from this backend.</param>
+        /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate WithoutExistingVirtualMachines(params IHasNetworkInterfaces[] vms);
 
         /// <summary>
         /// Removes the specified set of virtual machines from this backend address pool.
         /// </summary>
+        /// <param name="vms">Existing virtual machines to be removed from this backend.</param>
+        /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate WithoutExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms);
     }
 }

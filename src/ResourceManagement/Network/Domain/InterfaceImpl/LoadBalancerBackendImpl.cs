@@ -79,7 +79,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithExistingVirtualMachines(vms);
         }
 
-
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
             return this.WithExistingVirtualMachines(vms);
