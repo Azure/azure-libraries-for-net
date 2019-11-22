@@ -50,8 +50,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             var result = new Dictionary<string, IPrivateEndpointConnection>();
             foreach (var privateEndpointConnectionInner in privateEndpointConnectionInners)
             {
-                result.Add(privateEndpointConnectionInner.Name,
-                    new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner, Client));
+                var childResource = new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner, Client);
+                this.AddPrivateEndpointConnection(childResource);
+                result.Add(privateEndpointConnectionInner.Name, childResource);
             }
 
             return result;
@@ -60,7 +61,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public async Task<PrivateEndpointConnectionImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
             var inner = await Client.GetAsync(Parent.ResourceGroupName, Parent.Name, name, cancellationToken);
-            return new PrivateEndpointConnectionImpl(name, Parent, inner, Client);
+            var childResource = new PrivateEndpointConnectionImpl(name, Parent, inner, Client);
+            this.AddPrivateEndpointConnection(childResource);
+            return childResource;
         }
 
         public PrivateEndpointConnectionImpl Define(string name)
@@ -75,7 +78,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             var result = new List<PrivateEndpointConnectionImpl>();
             foreach (var privateEndpointConnectionInner in privateEndpointConnectionInners)
             {
-                result.Add(new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner, Client));
+                var childeResource = new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner, Client);
+                this.AddPrivateEndpointConnection(childeResource);
+                result.Add(childeResource);
             }
 
             return result;
