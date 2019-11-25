@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// A private endpoint connection.
     /// </summary>
-    public partial class PrivateEndpointConnectionImpl :
+    internal partial class PrivateEndpointConnectionImpl :
         ExternalChildResource<IPrivateEndpointConnection,
             PrivateEndpointConnectionInner,
             ICosmosDBAccount,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class PrivateEndpointConnectionImpl
+    internal partial class PrivateEndpointConnectionImpl
     {
         /// <summary>
         /// Gets private endpoint which the connection belongs to.

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    public partial class PrivateLinkResourceImpl
+    internal partial class PrivateLinkResourceImpl
     {
         /// <summary>
         /// Gets the private link resource group id.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the requiredMembers value.
         /// </summary>
-        System.Collections.Generic.IList<string> Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.RequiredMembers
+        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource.RequiredMembers
         {
             get
             {

@@ -139,16 +139,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>All private endpoint connection in the account.</return>
-        System.Collections.Generic.IDictionary<string, Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateEndpointConnection> ListPrivateEndpointConnection();
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateEndpointConnection> ListPrivateEndpointConnection();
 
         /// <return>All private endpoint connection in the account.</return>
-        Task<System.Collections.Generic.IDictionary<string, Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateEndpointConnection>> ListPrivateEndpointConnectionAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateEndpointConnection>> ListPrivateEndpointConnectionAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>All private link resources in the account.</return>
-        System.Collections.Generic.IList<Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource> ListPrivateLinkResources();
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource> ListPrivateLinkResources();
 
         /// <return>All private link resources in the account.</return>
-        Task<System.Collections.Generic.IList<Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource>> ListPrivateLinkResourcesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource>> ListPrivateLinkResourcesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// It takes offline the specified region for the current Azure Cosmos DB database account.

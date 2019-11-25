@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// Represents a private endpoint connection collection.
     /// </summary>
-    public partial class PrivateEndpointConnectionsImpl :
+    internal partial class PrivateEndpointConnectionsImpl :
         ExternalChildResourcesCached<
             PrivateEndpointConnectionImpl,
             IPrivateEndpointConnection,

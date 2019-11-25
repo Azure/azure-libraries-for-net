@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// A private link resource.
     /// </summary>
-    public partial class PrivateLinkResourceImpl :
+    internal partial class PrivateLinkResourceImpl :
         Wrapper<Models.PrivateLinkResourceInner>,
         IPrivateLinkResource
     {
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return Inner.Name;
         }
 
-        public IList<string> RequiredMembers()
+        public IReadOnlyList<string> RequiredMembers()
         {
-            return Inner.RequiredMembers;
+            return new List<string>(Inner.RequiredMembers).AsReadOnly();
         }
 
         public string Type()

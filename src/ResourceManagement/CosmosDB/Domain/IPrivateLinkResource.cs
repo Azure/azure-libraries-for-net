@@ -17,14 +17,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the private link resource group id.
         /// </summary>
-        /// <summary>
-        /// Gets the groupId value.
-        /// </summary>
         string GroupId { get; }
 
-        /// <summary>
-        /// Gets the id value.
-        /// </summary>
         /// <summary>
         /// Gets the id value.
         /// </summary>
@@ -33,22 +27,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets the name value.
         /// </summary>
-        /// <summary>
-        /// Gets the name value.
-        /// </summary>
         string Name { get; }
 
         /// <summary>
         /// Gets the private link resource required member names.
         /// </summary>
-        /// <summary>
-        /// Gets the requiredMembers value.
-        /// </summary>
-        System.Collections.Generic.IList<string> RequiredMembers { get; }
+        System.Collections.Generic.IReadOnlyList<string> RequiredMembers { get; }
 
-        /// <summary>
-        /// Gets the type value.
-        /// </summary>
         /// <summary>
         /// Gets the type value.
         /// </summary>

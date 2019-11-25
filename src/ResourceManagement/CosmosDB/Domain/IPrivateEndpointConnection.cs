@@ -17,16 +17,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// Gets private endpoint which the connection belongs to.
         /// </summary>
-        /// <summary>
-        /// Gets the privateEndpoint value.
-        /// </summary>
         PrivateEndpointProperty PrivateEndpoint { get; }
 
         /// <summary>
         /// Gets connection State of the Private Endpoint Connection.
-        /// </summary>
-        /// <summary>
-        /// Gets the privateLinkServiceConnectionState value.
         /// </summary>
         PrivateLinkServiceConnectionStateProperty PrivateLinkServiceConnectionState { get; }
     }

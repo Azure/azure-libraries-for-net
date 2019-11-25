@@ -3,14 +3,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Definition
 {
-    using Microsoft.Azure.Management.CosmosDB.Fluent;
-    using Microsoft.Azure.Management.CosmosDB.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.CosmosDB.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.CosmosDB.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-
     /// <summary>
     /// The stage of the private endpoint connection definition allowing to set state.
     /// </summary>

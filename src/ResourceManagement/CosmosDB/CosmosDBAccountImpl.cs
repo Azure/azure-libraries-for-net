@@ -675,12 +675,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public PrivateEndpointConnectionImpl DefineNewPrivateEndpointConnection(string name)
+        internal PrivateEndpointConnectionImpl DefineNewPrivateEndpointConnection(string name)
         {
             return this.privateEndpointConnections.Define(name);
         }
 
-        public PrivateEndpointConnectionImpl UpdatePrivateEndpointConnection(string name)
+        internal PrivateEndpointConnectionImpl UpdatePrivateEndpointConnection(string name)
         {
             return this.privateEndpointConnections.Update(name);
         }
@@ -701,14 +701,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return await this.privateEndpointConnections.GetImplAsync(name, cancellationToken);
         }
 
-        public IDictionary<string, IPrivateEndpointConnection> ListPrivateEndpointConnection()
+        public IReadOnlyDictionary<string, IPrivateEndpointConnection> ListPrivateEndpointConnection()
         {
             return Extensions.Synchronize(() => this.ListPrivateEndpointConnectionAsync());
         }
 
-        public async Task<IDictionary<string, IPrivateEndpointConnection>> ListPrivateEndpointConnectionAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IReadOnlyDictionary<string, IPrivateEndpointConnection>> ListPrivateEndpointConnectionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.privateEndpointConnections.AsMapAsync(cancellationToken);
+            var privateEndpointConnection = await this.privateEndpointConnections.AsMapAsync(cancellationToken);
+            return privateEndpointConnection.ToDictionary(kv => kv.Key, kv => kv.Value);
         }
 
         public IPrivateLinkResource GetPrivateLinkResource(string groupName)
@@ -722,12 +723,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return new PrivateLinkResourceImpl(inner);
         }
 
-        public IList<IPrivateLinkResource> ListPrivateLinkResources()
+        public IReadOnlyList<IPrivateLinkResource> ListPrivateLinkResources()
         {
             return Extensions.Synchronize(() => this.ListPrivateLinkResourcesAsync());
         }
 
-        public async Task<IList<IPrivateLinkResource>> ListPrivateLinkResourcesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IReadOnlyList<IPrivateLinkResource>> ListPrivateLinkResourcesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var inners = await this.Manager.Inner.PrivateLinkResources.ListByDatabaseAccountAsync(ResourceGroupName, Name, cancellationToken);
 

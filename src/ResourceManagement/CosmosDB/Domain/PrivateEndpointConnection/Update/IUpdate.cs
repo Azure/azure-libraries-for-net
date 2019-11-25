@@ -3,11 +3,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Update
 {
-    using Microsoft.Azure.Management.CosmosDB.Fluent;
-    using Microsoft.Azure.Management.CosmosDB.Fluent;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-
     /// <summary>
     /// The stage of the private endpoint connection update allowing to specify state.
     /// </summary>
