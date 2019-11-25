@@ -3,15 +3,7 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update;
     using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Definition;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Update;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     internal partial class PrivateEndpointConnectionImpl
     {

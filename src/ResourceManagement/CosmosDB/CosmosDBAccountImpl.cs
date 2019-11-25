@@ -2,18 +2,17 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using System.Collections.Generic;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.Resource.Update;
     using System;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Definition;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The implementation for DatabaseAccount.

@@ -3,9 +3,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Collections.Generic;
-
     internal partial class PrivateLinkResourceImpl
     {
         /// <summary>

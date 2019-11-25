@@ -3,11 +3,6 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     internal partial class PrivateEndpointConnectionsImpl
     {
     }
