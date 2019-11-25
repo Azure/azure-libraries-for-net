@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithoutExistingVirtualMachines(vms);
         }
 
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithoutExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate LoadBalancerBackend.Update.IWithVirtualMachine.WithoutExistingVirtualMachines(IEnumerable<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
             return this.WithoutExistingVirtualMachines(vms);
         }

@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (vms != null) ? this.WithExistingVirtualMachines(new List<IHasNetworkInterfaces>(vms)) : this;
         }
 
-        internal LoadBalancerBackendImpl WithoutExistingVirtualMachines(ICollection<IHasNetworkInterfaces> vms)
+        internal LoadBalancerBackendImpl WithoutExistingVirtualMachines(IEnumerable<IHasNetworkInterfaces> vms)
         {
             if (vms != null)
             {

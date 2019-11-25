@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 }
 
                 nicsInBackends.Clear();
+                nicsRemovedFromBackends.Clear();
                 Refresh();
             }
         }

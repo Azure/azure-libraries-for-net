@@ -59,6 +59,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update
         /// </summary>
         /// <param name="vms">Existing virtual machines to be removed from this backend.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate WithoutExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms);
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update.IUpdate WithoutExistingVirtualMachines(IEnumerable<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms);
     }
 }
