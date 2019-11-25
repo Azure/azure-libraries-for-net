@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     public partial class CosmosDBAccountsImpl :
         TopLevelModifiableResources<ICosmosDBAccount,
             CosmosDBAccountImpl,
-            Models.DatabaseAccountInner,
+            Models.DatabaseAccountGetResultsInner,
             IDatabaseAccountsOperations,
             ICosmosDBManager>,
         ICosmosDBAccounts
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return WrapModel(name);
         }
 
-        protected override ICosmosDBAccount WrapModel(Models.DatabaseAccountInner inner)
+        protected override ICosmosDBAccount WrapModel(Models.DatabaseAccountGetResultsInner inner)
         {
             return new CosmosDBAccountImpl(inner.Name, inner, Manager);
         }
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         protected override CosmosDBAccountImpl WrapModel(string name)
         {
-            return new CosmosDBAccountImpl(name, new Models.DatabaseAccountInner(), Manager);
+            return new CosmosDBAccountImpl(name, new Models.DatabaseAccountGetResultsInner(), Manager);
         }
 
         protected async override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public override async Task<IPagedCollection<ICosmosDBAccount>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<ICosmosDBAccount, Models.DatabaseAccountInner>.LoadPage(async (cancellation) =>
+            return await PagedCollection<ICosmosDBAccount, Models.DatabaseAccountGetResultsInner>.LoadPage(async (cancellation) =>
                 await this.Manager.Inner.DatabaseAccounts.ListAsync(cancellationToken), WrapModel, cancellationToken);
         }
 
@@ -71,31 +71,31 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public override async Task<IPagedCollection<ICosmosDBAccount>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<ICosmosDBAccount, Models.DatabaseAccountInner>.LoadPage(async (cancellation) =>
+            return await PagedCollection<ICosmosDBAccount, Models.DatabaseAccountGetResultsInner>.LoadPage(async (cancellation) =>
                 await this.Manager.Inner.DatabaseAccounts.ListByResourceGroupAsync(resourceGroupName, cancellationToken), WrapModel, cancellationToken);
         }
 
-        protected override Task<IPage<Models.DatabaseAccountInner>> ListInnerAsync(CancellationToken cancellationToken)
+        protected override Task<IPage<Models.DatabaseAccountGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        protected override Task<IPage<Models.DatabaseAccountInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected override Task<IPage<Models.DatabaseAccountGetResultsInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        protected override Task<IPage<Models.DatabaseAccountInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
+        protected override Task<IPage<Models.DatabaseAccountGetResultsInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        protected async override Task<IPage<Models.DatabaseAccountInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected async override Task<IPage<Models.DatabaseAccountGetResultsInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
         {
-            return await Task.FromResult<IPage<Models.DatabaseAccountInner>>(null);
+            return await Task.FromResult<IPage<Models.DatabaseAccountGetResultsInner>>(null);
         }
 
-        protected async override Task<Models.DatabaseAccountInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        protected async override Task<Models.DatabaseAccountGetResultsInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
             return await Inner.GetAsync(groupName, name, cancellationToken);
         }

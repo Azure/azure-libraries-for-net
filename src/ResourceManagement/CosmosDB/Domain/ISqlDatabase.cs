@@ -4,7 +4,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
     public interface ISqlDatabase :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SqlDatabaseInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SqlDatabaseGetResultsInner>
     {
         /// <summary>
         /// Gets name of the Cosmos DB SQL database

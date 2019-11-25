@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Cosmos DB MongoDB database id object
+    /// Cosmos DB MongoDB database resource object
     /// </summary>
     public partial class MongoDBDatabaseResource
     {

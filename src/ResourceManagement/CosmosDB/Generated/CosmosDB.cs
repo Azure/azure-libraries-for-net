@@ -41,10 +41,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Version of the API to be used with the client request. The current version
-        /// is 2015-04-08.
+        /// The ID of the target subscription.
         /// </summary>
-        public string ApiVersion { get; private set; }
+        public string SubscriptionId1 { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -130,6 +129,41 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public virtual IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; private set; }
 
         /// <summary>
+        /// Gets the ISqlResourcesOperations.
+        /// </summary>
+        public virtual ISqlResourcesOperations SqlResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IMongoDBResourcesOperations.
+        /// </summary>
+        public virtual IMongoDBResourcesOperations MongoDBResources { get; private set; }
+
+        /// <summary>
+        /// Gets the ITableResourcesOperations.
+        /// </summary>
+        public virtual ITableResourcesOperations TableResources { get; private set; }
+
+        /// <summary>
+        /// Gets the ICassandraResourcesOperations.
+        /// </summary>
+        public virtual ICassandraResourcesOperations CassandraResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IGremlinResourcesOperations.
+        /// </summary>
+        public virtual IGremlinResourcesOperations GremlinResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the CosmosDB class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
@@ -161,8 +195,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             CollectionPartition = new CollectionPartitionOperations(this);
             PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
             PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
+            SqlResources = new SqlResourcesOperations(this);
+            MongoDBResources = new MongoDBResourcesOperations(this);
+            TableResources = new TableResourcesOperations(this);
+            CassandraResources = new CassandraResourcesOperations(this);
+            GremlinResources = new GremlinResourcesOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2015-04-08";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

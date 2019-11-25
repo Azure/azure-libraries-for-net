@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Cosmos DB Cassandra table id object
+    /// Cosmos DB Cassandra table resource object
     /// </summary>
     public partial class CassandraTableResource
     {

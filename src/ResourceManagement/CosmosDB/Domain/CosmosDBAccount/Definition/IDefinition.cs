@@ -143,8 +143,37 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithVirtualNetworkRule,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithMultipleLocations,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConnector,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKeyBasedMetadataWriteAccess,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithPrivateEndpointConnection,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to specify metadata write access.
+    /// </summary>
+    public interface IWithKeyBasedMetadataWriteAccess 
+    {
+        /// <summary>
+        /// Specifies whether metadata write access should be disabled.
+        /// </summary>
+        /// <param name="disabled">Whether metadata write access is disabled or not.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithDisableKeyBaseMetadataWriteAccess(bool disabled);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to specify private endpoint connection.
+    /// </summary>
+    public interface IWithPrivateEndpointConnection 
+    {
+        /// <summary>
+        /// Starts the definition of a private endpoint connection to be attached
+        /// to the cosmos db account.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <return>The first stage of a private endpoint connection definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Definition.IBlank<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate> DefineNewPrivateEndpointConnection(string name);
     }
 
     /// <summary>

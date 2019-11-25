@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Cosmos DB SQL database id object
+    /// Cosmos DB SQL database resource object
     /// </summary>
     public partial class SqlDatabaseResource
     {

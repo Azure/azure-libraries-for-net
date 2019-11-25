@@ -2,17 +2,17 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using System.Collections.Generic;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.Resource.Update;
     using System;
-    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using System.Collections.Generic;
     using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The implementation for DatabaseAccount.
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     public partial class CosmosDBAccountImpl :
         GroupableResource<
             ICosmosDBAccount,
-            Models.DatabaseAccountInner,
+            Models.DatabaseAccountGetResultsInner,
             CosmosDBAccountImpl,
             ICosmosDBManager,
             IWithGroup,
@@ -35,6 +35,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private bool hasFailoverPolicyChanges;
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
+        private PrivateEndpointConnectionsImpl privateEndpointConnections;
+
+        internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
+            base(name, innerObject, manager)
+        {
+            this.failoverPolicies = new List<Models.FailoverPolicy>();
+            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this.Manager.Inner.PrivateEndpointConnections, this);
+        }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
         {
@@ -51,10 +59,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             CosmosDBAccountImpl self = this;
             int currentDelayDueToMissingFailovers = 0;
-            Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner =
-                this.CreateUpdateParametersInner(this.Inner);
-            await this.Manager.Inner.DatabaseAccounts.CreateOrUpdateAsync(
-                ResourceGroupName, Name, createUpdateParametersInner);
+            HasLocation locationParameters;
+
+            if (IsInCreateMode)
+            {
+                Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner =
+                    this.CreateUpdateParametersInner(this.Inner);
+                await this.Manager.Inner.DatabaseAccounts.CreateOrUpdateAsync(
+                    ResourceGroupName, Name, createUpdateParametersInner);
+                locationParameters = new CreateUpdateLocationParameters(createUpdateParametersInner);
+            }
+            else
+            {
+                Models.DatabaseAccountUpdateParameters updateParametersInner =
+                    this.UpdateParametersInner(this.Inner);
+                await this.Manager.Inner.DatabaseAccounts.UpdateAsync(
+                    ResourceGroupName, Name, updateParametersInner);
+                locationParameters = new UpdateLocationParameters(updateParametersInner);
+            }
             this.failoverPolicies.Clear();
             this.hasFailoverPolicyChanges = false;
             bool done = false;
@@ -68,7 +90,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 if (maxDelayDueToMissingFailovers > currentDelayDueToMissingFailovers &&
                     (databaseAccount.Id == null
                     || databaseAccount.Id.Length == 0
-                    || createUpdateParametersInner.Locations.Count >
+                    || locationParameters.Locations.Count >
                         databaseAccount.Inner.FailoverPolicies.Count))
                 {
                     currentDelayDueToMissingFailovers += 5000;
@@ -89,16 +111,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 }
             }
 
+            await this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken);
             this.SetInner(databaseAccount.Inner);
             this.initializeFailover();
             return databaseAccount;
         }
 
-        private Models.DatabaseAccountCreateUpdateParametersInner CreateUpdateParametersInner(Models.DatabaseAccountInner inner)
+        private Models.DatabaseAccountCreateUpdateParameters CreateUpdateParametersInner(Models.DatabaseAccountGetResultsInner inner)
         {
             this.EnsureFailoverIsInitialized();
-            Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner =
-            new Models.DatabaseAccountCreateUpdateParametersInner();
+            Models.DatabaseAccountCreateUpdateParameters createUpdateParametersInner =
+            new Models.DatabaseAccountCreateUpdateParameters();
             createUpdateParametersInner.Location = this.RegionName.ToLower();
             createUpdateParametersInner.ConsistencyPolicy = inner.ConsistencyPolicy;
             createUpdateParametersInner.IpRangeFilter = inner.IpRangeFilter;
@@ -109,13 +132,39 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
             createUpdateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
             createUpdateParametersInner.ConnectorOffer = inner.ConnectorOffer;
+            createUpdateParametersInner.EnableAutomaticFailover = inner.EnableAutomaticFailover;
+            createUpdateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
                 virtualNetworkRulesMap = null;
             }
-            this.AddLocationsForCreateUpdateParameters(createUpdateParametersInner, this.failoverPolicies);
+            this.AddLocationsForParameters(new CreateUpdateLocationParameters(createUpdateParametersInner), this.failoverPolicies);
             return createUpdateParametersInner;
+        }
+
+        private DatabaseAccountUpdateParameters UpdateParametersInner(DatabaseAccountGetResultsInner inner)
+        {
+            this.EnsureFailoverIsInitialized();
+            var updateParametersInner = new DatabaseAccountUpdateParameters();
+            updateParametersInner.Tags = inner.Tags;
+            updateParametersInner.Location = this.RegionName.ToLower();
+            updateParametersInner.ConsistencyPolicy = inner.ConsistencyPolicy;
+            updateParametersInner.IpRangeFilter = inner.IpRangeFilter;
+            updateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
+            updateParametersInner.EnableAutomaticFailover = inner.EnableAutomaticFailover;
+            updateParametersInner.Capabilities = inner.Capabilities;
+            updateParametersInner.EnableMultipleWriteLocations = inner.EnableMultipleWriteLocations;
+            updateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
+            updateParametersInner.ConnectorOffer = inner.ConnectorOffer;
+            updateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
+            if (virtualNetworkRulesMap != null)
+            {
+                updateParametersInner.VirtualNetworkRules = this.virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
+                this.virtualNetworkRulesMap = null;
+            }
+            AddLocationsForParameters(new UpdateLocationParameters(updateParametersInner), this.failoverPolicies);
+            return updateParametersInner;
         }
 
         private bool IsProvisioningStateFinal(string state)
@@ -268,12 +317,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return Extensions.Synchronize(() => this.ListConnectionStringsAsync());
         }
 
-        internal CosmosDBAccountImpl(string name, Models.DatabaseAccountInner innerObject, ICosmosDBManager manager) :
-            base(name, innerObject, manager)
-        {
-            this.failoverPolicies = new List<Models.FailoverPolicy>();
-        }
-
         public Models.ConsistencyPolicy ConsistencyPolicy()
         {
             return this.Inner.ConsistencyPolicy;
@@ -303,7 +346,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
+        private void AddLocationsForParameters(HasLocation locationParameters, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
             if (failoverPolicies.Count > 0)
@@ -321,11 +364,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 Models.Location location = new Models.Location();
                 location.FailoverPriority = 0;
-                location.LocationName = createUpdateParametersInner.Location;
+                location.LocationName = locationParameters.Location;
                 locations.Add(location);
             }
 
-            createUpdateParametersInner.Locations = locations;
+            locationParameters.Locations = locations;
         }
 
         public CosmosDBAccountImpl WithIpRangeFilter(string ipRangeFilter)
@@ -353,7 +396,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.Inner.ReadLocations as IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location>;
         }
 
-        protected override async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountGetResultsInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Manager.Inner.DatabaseAccounts.GetAsync(this.ResourceGroupName, this.Name);
         }
@@ -412,7 +455,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await this.Manager.Inner.DatabaseAccounts
+            var result = await this.Manager.Inner.SqlResources
                 .ListSqlDatabasesAsync(this.ResourceGroupName, this.Name);
             return result.Select(inner => new SqlDatabaseImpl(inner));
         }
@@ -613,6 +656,153 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.Inner.EnableCassandraConnector = false;
             this.Inner.ConnectorOffer = null;
             return this;
+        }
+
+        public bool KeyBaseMetadataWriteAccessDisabled()
+        {
+            return this.Inner.DisableKeyBasedMetadataWriteAccess ?? false;
+        }
+        public CosmosDBAccountImpl WithDisableKeyBaseMetadataWriteAccess(bool disabled)
+        {
+            this.Inner.DisableKeyBasedMetadataWriteAccess = disabled;
+            return this;
+        }
+
+        internal CosmosDBAccountImpl WithPrivateEndpointConnection(PrivateEndpointConnectionImpl privateEndpointConnection)
+        {
+            this.privateEndpointConnections.AddPrivateEndpointConnection(privateEndpointConnection);
+            return this;
+        }
+
+        internal PrivateEndpointConnectionImpl DefineNewPrivateEndpointConnection(string name)
+        {
+            return this.privateEndpointConnections.Define(name);
+        }
+
+        internal PrivateEndpointConnectionImpl UpdatePrivateEndpointConnection(string name)
+        {
+            return this.privateEndpointConnections.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutPrivateEndpointConnection(string name)
+        {
+            this.privateEndpointConnections.Remove(name);
+            return this;
+        }
+
+        public IPrivateEndpointConnection GetPrivateEndpointConnection(string name)
+        {
+            return Extensions.Synchronize(() => this.GetPrivateEndpointConnectionAsync(name));
+        }
+
+        public async Task<IPrivateEndpointConnection> GetPrivateEndpointConnectionAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.privateEndpointConnections.GetImplAsync(name, cancellationToken);
+        }
+
+        public IReadOnlyDictionary<string, IPrivateEndpointConnection> ListPrivateEndpointConnection()
+        {
+            return Extensions.Synchronize(() => this.ListPrivateEndpointConnectionAsync());
+        }
+
+        public async Task<IReadOnlyDictionary<string, IPrivateEndpointConnection>> ListPrivateEndpointConnectionAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var privateEndpointConnection = await this.privateEndpointConnections.AsMapAsync(cancellationToken);
+            return privateEndpointConnection.ToDictionary(kv => kv.Key, kv => kv.Value);
+        }
+
+        public IPrivateLinkResource GetPrivateLinkResource(string groupName)
+        {
+            return Extensions.Synchronize(() => this.GetPrivateLinkResourceAsync(groupName));
+        }
+
+        public async Task<IPrivateLinkResource> GetPrivateLinkResourceAsync(string groupName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await this.Manager.Inner.PrivateLinkResources.GetAsync(ResourceGroupName, Name, groupName, cancellationToken);
+            return new PrivateLinkResourceImpl(inner);
+        }
+
+        public IReadOnlyList<IPrivateLinkResource> ListPrivateLinkResources()
+        {
+            return Extensions.Synchronize(() => this.ListPrivateLinkResourcesAsync());
+        }
+
+        public async Task<IReadOnlyList<IPrivateLinkResource>> ListPrivateLinkResourcesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inners = await this.Manager.Inner.PrivateLinkResources.ListByDatabaseAccountAsync(ResourceGroupName, Name, cancellationToken);
+
+            var result = new List<IPrivateLinkResource>();
+            foreach (var inner in inners)
+            {
+                result.Add(new PrivateLinkResourceImpl(inner));
+            }
+            return result;
+        }
+
+        interface HasLocation
+        {
+            string Location { get; }
+            IList<Location> Locations { get; set; }
+        }
+
+        public class CreateUpdateLocationParameters : HasLocation
+        {
+            private DatabaseAccountCreateUpdateParameters parameters;
+
+            public CreateUpdateLocationParameters(DatabaseAccountCreateUpdateParameters createUpdateParameters)
+            {
+                parameters = createUpdateParameters;
+            }
+
+            public string Location
+            {
+                get
+                {
+                    return parameters.Location;
+                }
+            }
+
+            public IList<Location> Locations
+            {
+                get
+                {
+                    return parameters.Locations;
+                }
+                set
+                {
+                    parameters.Locations = value;
+                }
+            }
+        }
+
+        public class UpdateLocationParameters : HasLocation
+        {
+            private DatabaseAccountUpdateParameters parameters;
+
+            public UpdateLocationParameters(DatabaseAccountUpdateParameters updateParameters)
+            {
+                parameters = updateParameters;
+            }
+
+            public string Location
+            {
+                get
+                {
+                    return parameters.Location;
+                }
+            }
+
+            public IList<Location> Locations
+            {
+                get
+                {
+                    return parameters.Locations;
+                }
+                set
+                {
+                    parameters.Locations = value;
+                }
+            }
         }
     }
 }

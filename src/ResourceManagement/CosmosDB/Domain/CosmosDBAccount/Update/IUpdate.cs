@@ -97,6 +97,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     }
 
     /// <summary>
+    /// The stage of the cosmos db update allowing to specify metadata write access.
+    /// </summary>
+    public interface IWithKeyBasedMetadataWriteAccess 
+    {
+        /// <summary>
+        /// Specifies whether metadata write access should be disabled.
+        /// </summary>
+        /// <param name="disabled">Whether metadata write access is disabled or not.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithDisableKeyBaseMetadataWriteAccess(bool disabled);
+    }
+
+    /// <summary>
     /// The stage of the cosmos db update definition allowing to specify whether multiple write locations are enabled or not.
     /// </summary>
     public interface IWithMultipleLocations
@@ -138,7 +151,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithVirtualNetworkRule,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithIpRangeFilter,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithConnector,
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithMultipleLocations
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithMultipleLocations,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithPrivateEndpointConnection
     {
     }
 
@@ -170,5 +185,33 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithoutReadReplication(Region region);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db update allowing to specify private endpoint connection.
+    /// </summary>
+    public interface IWithPrivateEndpointConnection 
+    {
+        /// <summary>
+        /// Start the definition of a private endpoint connection to be attached
+        /// to the cosmos db account.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <return>The first stage of a private endpoint connection definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.UpdateDefinition.IBlank<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals> DefineNewPrivateEndpointConnection(string name);
+
+        /// <summary>
+        /// Start the update of an existing private endpoint connection.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <return>The first stage of a private endpoint connection update.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.PrivateEndpointConnection.Update.IUpdate UpdatePrivateEndpointConnection(string name);
+
+        /// <summary>
+        /// Remove an existing private endpoint connection.
+        /// </summary>
+        /// <param name="name">The reference name for the private endpoint connection.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithoutPrivateEndpointConnection(string name);
     }
 }

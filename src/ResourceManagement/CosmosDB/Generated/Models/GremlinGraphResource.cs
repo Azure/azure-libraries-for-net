@@ -108,6 +108,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Id");
             }
+            if (PartitionKey != null)
+            {
+                PartitionKey.Validate();
+            }
         }
     }
 }
