@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="tags">Resource tags</param>
         /// <param name="provisioningState">The current state of the gallery
         /// Application Version.</param>
-        public GalleryApplicationVersionUpdate(GalleryApplicationVersionPublishingProfile publishingProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState1 provisioningState = default(ProvisioningState1), ReplicationStatus replicationStatus = default(ReplicationStatus))
+        public GalleryApplicationVersionUpdate(GalleryApplicationVersionPublishingProfile publishingProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState provisioningState = default(ProvisioningState), ReplicationStatus replicationStatus = default(ReplicationStatus))
             : base(id, name, type, tags)
         {
             PublishingProfile = publishingProfile;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState1 ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// </summary>
