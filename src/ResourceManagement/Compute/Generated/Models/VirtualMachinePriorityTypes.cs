@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     {
         public static readonly VirtualMachinePriorityTypes Regular = Parse("Regular");
         public static readonly VirtualMachinePriorityTypes Low = Parse("Low");
+        public static readonly VirtualMachinePriorityTypes Spot = Parse("Spot");
     }
 }

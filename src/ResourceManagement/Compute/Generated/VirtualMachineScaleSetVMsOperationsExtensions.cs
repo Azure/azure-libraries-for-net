@@ -314,7 +314,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             /// <summary>
-            /// Redeploys a virtual machine in a VM scale set.
+            /// Shuts down the virtual machine in the virtual machine scale set, moves it
+            /// to a new node, and powers it back on.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -597,7 +598,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             /// <summary>
-            /// Redeploys a virtual machine in a VM scale set.
+            /// Shuts down the virtual machine in the virtual machine scale set, moves it
+            /// to a new node, and powers it back on.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

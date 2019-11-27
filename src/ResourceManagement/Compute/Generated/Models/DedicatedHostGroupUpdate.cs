@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// host should be assigned to. Only tags may be updated.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DedicatedHostGroupUpdate : UpdateResource
+    public partial class DedicatedHostGroupUpdate : UpdateResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the DedicatedHostGroupUpdate class.
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// creation. If not provided, the group supports all zones in the
         /// region. If provided, enforces each host in the group to be in the
         /// same zone.</param>
-        public DedicatedHostGroupUpdate(int platformFaultDomainCount, IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> hosts = default(IList<SubResourceReadOnly>), IList<string> zones = default(IList<string>))
-            : base(tags)
+        public DedicatedHostGroupUpdate(int platformFaultDomainCount, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> hosts = default(IList<SubResourceReadOnly>), IList<string> zones = default(IList<string>))
+            : base(id, name, type, tags)
         {
             PlatformFaultDomainCount = platformFaultDomainCount;
             Hosts = hosts;

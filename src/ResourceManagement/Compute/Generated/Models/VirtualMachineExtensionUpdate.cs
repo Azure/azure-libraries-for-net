@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Extension.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineExtensionUpdate : UpdateResource
+    public partial class VirtualMachineExtensionUpdate : UpdateResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineExtensionUpdate
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// changed.</param>
         /// <param name="publisher">The name of the extension handler
         /// publisher.</param>
-        /// <param name="type">Specifies the type of the extension; an example
-        /// is "CustomScriptExtension".</param>
+        /// <param name="virtualMachineExtensionUpdateType">Specifies the type
+        /// of the extension; an example is "CustomScriptExtension".</param>
         /// <param name="typeHandlerVersion">Specifies the version of the
         /// script handler.</param>
         /// <param name="autoUpgradeMinorVersion">Indicates whether the
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="protectedSettings">The extension can contain either
         /// protectedSettings or protectedSettingsFromKeyVault or no protected
         /// settings at all.</param>
-        public VirtualMachineExtensionUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object))
-            : base(tags)
+        public VirtualMachineExtensionUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionUpdateType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object))
+            : base(id, name, type, tags)
         {
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            Type = type;
+            VirtualMachineExtensionUpdateType = virtualMachineExtensionUpdateType;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             Settings = settings;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// "CustomScriptExtension".
         /// </summary>
         [JsonProperty(PropertyName = "properties.type")]
-        public string Type { get; set; }
+        public string VirtualMachineExtensionUpdateType { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the version of the script handler.
