@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:3E6A2E1842CF7045A3B0CF12AF9A85DA:8631322721E2C0858A3ABA04A72303A3
-        public IWithSource WithLocation(Region location)
+        public GalleryImageVersionImpl WithLocation(Region location)
         {
             this.Inner.Location = location.ToString();
             return null;
