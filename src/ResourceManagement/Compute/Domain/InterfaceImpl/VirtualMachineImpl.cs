@@ -2438,5 +2438,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.WithWinRM(listener);
         }
+
+        /// <summary>
+        /// Specifies a new priority for the virtual machine.
+        /// </summary>
+        /// <param name="priority">a priority from the list of available priority types.</param>
+        /// <returns>the next stage of the virtual machine update.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithPriority.WithPriority(VirtualMachinePriorityTypes priority)
+        {
+            return this.WithPriority(priority);
+        }
     }
 }

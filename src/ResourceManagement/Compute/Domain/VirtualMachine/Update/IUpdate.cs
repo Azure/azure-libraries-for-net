@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithBillingProfile,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithPriority,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithLicenseType
     {
 
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// <return>The next stage of the update.</return>
         /// <deprecated>Use  .withOSDiskSizeInGB(int) instead.</deprecated>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithOSDiskSizeInGB(int size);
-        
+
         /// <summary>
         /// Specifies a new size for the virtual machine.
         /// </summary>
@@ -482,5 +483,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// <param name="identityId">ARM resource id of the identity.</param>
         /// <return>The next stage of the virtual machine update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutUserAssignedManagedServiceIdentity(string identityId);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine update allowing to update priority.
+    /// </summary>
+    public interface IWithPriority :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies a new priority for the virtual machine.
+        /// </summary>
+        /// <param name="priority">a priority from the list of available priority types.</param>
+        /// <returns>the next stage of the virtual machine update.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithPriority(VirtualMachinePriorityTypes priority);
     }
 }
