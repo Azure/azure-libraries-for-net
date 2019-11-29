@@ -38,7 +38,6 @@ namespace Fluent.Tests.ResourceManager
                         .WithProviderNamespace("Microsoft.Web")
                         .WithoutPlan()
                         .WithApiVersion("2015-08-01")
-                        .WithParentResource("")
                         .WithProperties(JsonConvert.DeserializeObject("{\"SiteMode\":\"Limited\",\"ComputeMode\":\"Shared\"}"))
                         .Create();
 

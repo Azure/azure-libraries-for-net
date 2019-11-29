@@ -87,10 +87,16 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
+        public void prepareDefaultValue()
+        {
+            this.parentResourceId = this.parentResourceId ?? "";
+        }
+
         #region Implementation of IResourceCreator interface
 
         public async override Task<IGenericResource> CreateResourceAsync(CancellationToken cancellationToken)
         {
+            prepareDefaultValue();
             GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
                 resourceProviderNamespace,
                 parentResourceId,
