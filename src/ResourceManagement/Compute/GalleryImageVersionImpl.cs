@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// The implementation for GalleryImageVersion and its create and update interfaces.
     /// </summary>
-    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uR2FsbGVyeUltYWdlVmVyc2lvbkltcGw=
-    internal partial class GalleryImageVersionImpl :
+///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uR2FsbGVyeUltYWdlVmVyc2lvbkltcGw=
+    internal partial class GalleryImageVersionImpl  :
         CreatableUpdatable<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion,
             Models.GalleryImageVersionInner,
             Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersionImpl,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private string resourceGroupName;
 
         ///GENMHASH:C5378B9EF2CBEA67609922A619C2EE9C:D736A936D9D3AF7AC6642FBDEA5B2EE8
-        internal GalleryImageVersionImpl(string name, IComputeManager manager) : base(name, new GalleryImageVersionInner())
+        internal  GalleryImageVersionImpl(string name, IComputeManager manager) : base(name, new GalleryImageVersionInner())
         {
             this.computeManager = manager;
             // Set resource name
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:142BF410A4E871AE35AD3B4F42DEEEED:297C906CC91021F0511221843025550B
-        internal GalleryImageVersionImpl(GalleryImageVersionInner inner, IComputeManager manager) : base(inner.Name, inner)
+        internal  GalleryImageVersionImpl(GalleryImageVersionInner inner, IComputeManager manager) : base(inner.Name, inner)
         {
             this.computeManager = manager;
             // Set resource name
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:4B19A5F1B35CA91D20F63FBB66E86252:3E9F81F446FDF2A19095DC13C7608416
-        public IReadOnlyDictionary<string, string> Tags()
+        public IReadOnlyDictionary<string,string> Tags()
         {
             if (this.Inner.Tags == null)
             {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             bool found = false;
             string newRegionName = region.ToString();
             string newRegionNameTrimmed = newRegionName.Replace(" ", "");
-            foreach (var targetRegion in this.Inner.PublishingProfile.TargetRegions)
+            foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
             {
                 string regionStr = targetRegion.Name;
                 string regionStrTrimmed = regionStr.Replace(" ", "");
@@ -190,8 +190,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     break;
                 }
             }
-            if (!found)
-            {
+            if (!found) {
                 this.Inner.PublishingProfile.TargetRegions.Add(new TargetRegion
                 {
                     Name = newRegionName,
@@ -203,7 +202,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             //
             found = false;
             string locationTrimmed = this.Location().Replace(" ", "");
-            foreach (var targetRegion in this.Inner.PublishingProfile.TargetRegions)
+            foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
             {
                 string regionStr = targetRegion.Name;
                 string regionStrTrimmed = regionStr.Replace(" ", "");
@@ -237,7 +236,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             //
             bool found = false;
             string locationTrimmed = this.Location().Replace(" ", "");
-            foreach (var targetRegion in this.Inner.PublishingProfile.TargetRegions)
+            foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
             {
                 string regionStr = targetRegion.Name;
                 string regionStrTrimmed = regionStr.Replace(" ", "");
@@ -313,7 +312,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 string regionNameToRemove = region.ToString();
                 string regionNameToRemoveTrimmed = regionNameToRemove.Replace(" ", "");
                 //
-                foreach (var targetRegion in this.Inner.PublishingProfile.TargetRegions)
+                foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
                 {
                     string regionStr = targetRegion.Name;
                     string regionStrTrimmed = regionStr.Replace(" ", "");
@@ -346,6 +345,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:CA5E9729D8A52829B6C1B261BAF80C9D:3DBA090410887CA497FAFE10B7C1E724
         public GalleryImageVersionImpl WithSourceCustomImage(string customImageId)
         {
+            if (this.Inner.PublishingProfile == null)
+            {
+                this.Inner.PublishingProfile = new GalleryImageVersionPublishingProfile();
+            }
+            if (this.Inner.PublishingProfile.Source == null)
+            {
+                this.Inner.PublishingProfile.Source = new GalleryArtifactSource();
+            }
+            this.Inner.PublishingProfile.Source.ManagedImage = new ManagedArtifact()
+            {
+                Id = customImageId
+            };
             return this;
         }
 
@@ -356,7 +367,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:0A35F4FBFC584D98FAACCA25325781E8
-        public GalleryImageVersionImpl WithTags(IDictionary<string, string> tags)
+        public GalleryImageVersionImpl WithTags(IDictionary<string,string> tags)
         {
             this.Inner.Tags = tags;
             return this;

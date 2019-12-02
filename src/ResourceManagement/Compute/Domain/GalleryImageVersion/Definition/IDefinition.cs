@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// <summary>
     /// The stage of the gallery image version definition allowing to specify location.
     /// </summary>
-    public interface IWithLocation :
+    public interface IWithLocation  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -21,21 +21,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// </summary>
         /// <param name="location">Resource location.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithLocation(string location);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithSource WithLocation(string location);
 
         /// <summary>
         /// Specifies location.
         /// </summary>
         /// <param name="location">Resource location.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithLocation(Region location);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithSource WithLocation(Region location);
     }
 
     /// <summary>
     /// The stage of image version definition allowing to specify the regions in which the image version
     /// has to be available.
     /// </summary>
-    public interface IWithAvailableRegion :
+    public interface IWithAvailableRegion  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// should not be considered as a candidate version when VM is deployed with 'latest' as version
     /// of the image.
     /// </summary>
-    public interface IWithExcludeFromLatest :
+    public interface IWithExcludeFromLatest  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// <summary>
     /// The stage of the gallery image version definition allowing to specify end of life of the version.
     /// </summary>
-    public interface IWithEndOfLifeDate :
+    public interface IWithEndOfLifeDate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// <summary>
     /// The stage of the gallery image version definition allowing to specify Tags.
     /// </summary>
-    public interface IWithTags :
+    public interface IWithTags  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// </summary>
         /// <param name="tags">The resource tags.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithTags(IDictionary<string, string> tags);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithTags(IDictionary<string,string> tags);
     }
 
     /// <summary>
     /// The first stage of a gallery image version definition.
     /// </summary>
-    public interface IBlank :
+    public interface IBlank  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithImage
     {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// <summary>
     /// The stage of the gallery image version definition allowing to specify parent image.
     /// </summary>
-    public interface IWithImage :
+    public interface IWithImage  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// <summary>
     /// The entirety of the gallery image version definition.
     /// </summary>
-    public interface IDefinition :
+    public interface IDefinition  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithImage,
@@ -147,13 +147,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate :
+    public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion>,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithAvailableRegion,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithEndOfLifeDate,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithExcludeFromLatest,
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithSource,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithTags
     {
 
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
     /// <summary>
     /// The stage of the image version definition allowing to specify the source.
     /// </summary>
-    public interface IWithSource :
+    public interface IWithSource  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -171,7 +170,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// </summary>
         /// <param name="customImageId">The ARM id of the custom image.</param>
         /// <return>The next definition stage.</return>
-        [Obsolete("WithSourceCustomImage is deprecated, source image was removed from REST API")]
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithSourceCustomImage(string customImageId);
 
         /// <summary>
@@ -179,7 +177,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// </summary>
         /// <param name="customImage">The custom image.</param>
         /// <return>The next definition stage.</return>
-        [Obsolete("WithSourceCustomImage is deprecated, source image was removed from REST API")]
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithSourceCustomImage(IVirtualMachineCustomImage customImage);
     }
 }
