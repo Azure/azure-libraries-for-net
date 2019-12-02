@@ -8,12 +8,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
+    using Microsoft.Azure.Management.Network.Fluent;
     using System.Collections.Generic;
 
     /// <summary>
     /// The Kubernetes cluster definition allowing to specify a network profile.
     /// </summary>
-    public interface INetworkProfileDefinitionStages 
+    public interface INetworkProfileDefinitionStages
     {
 
     }
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify the DNS prefix label.
     /// </summary>
-    public interface IWithDnsPrefix 
+    public interface IWithDnsPrefix
     {
 
         /// <summary>
@@ -37,11 +38,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// the resource to be created, but also allows for any other optional settings to
     /// be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithNetworkProfile,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithDnsPrefix,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAddOnProfiles,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithVirtualNode,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate>
     {
 
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify the service principal secret.
     /// </summary>
-    public interface IWithServicePrincipalProfile 
+    public interface IWithServicePrincipalProfile
     {
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify the cluster's add-on's profiles.
     /// </summary>
-    public interface IWithAddOnProfiles  :
+    public interface IWithAddOnProfiles :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAddOnProfilesBeta
     {
 
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specific the Linux root username.
     /// </summary>
-    public interface IWithLinuxRootUsername 
+    public interface IWithLinuxRootUsername
     {
         /// <summary>
         /// Begins the definition to specify Linux root username.
@@ -86,7 +88,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify a network profile.
     /// </summary>
-    public interface IWithNetworkProfile  :
+    public interface IWithNetworkProfile :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -102,7 +104,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify the service principal client ID.
     /// </summary>
-    public interface IWithServicePrincipalClientId 
+    public interface IWithServicePrincipalClientId
     {
         /// <summary>
         /// Properties for Kubernetes cluster service principal.
@@ -118,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// can be attached to the parent container service definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithNetworkPolicy<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithPodCidr<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithServiceCidr<ParentT>,
@@ -132,7 +134,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify an agent pool profile.
     /// </summary>
-    public interface IWithAgentPool 
+    public interface IWithAgentPool
     {
 
         /// <summary>
@@ -147,7 +149,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// The first stage of a network profile definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the Kubernetes cluster network profile definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAttach<ParentT>
     {
@@ -163,7 +165,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// Interface for all the definitions related to a Kubernetes cluster.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IBlank,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithGroup,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithVersion,
@@ -175,6 +177,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAgentPool,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithNetworkProfile,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAddOnProfiles,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithVirtualNode,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate
     {
 
@@ -183,7 +186,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specific the Linux SSH key.
     /// </summary>
-    public interface IWithLinuxSshKey 
+    public interface IWithLinuxSshKey
     {
         /// <summary>
         /// Begins the definition to specify Linux ssh key.
@@ -198,7 +201,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// Docker bridge network.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the network profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithDockerBridgeCidr<ParentT> 
+    public interface IWithDockerBridgeCidr<ParentT>
     {
 
         /// <summary>
@@ -217,7 +220,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// The stage of a network profile definition allowing to specify an IP address assigned to the Kubernetes DNS service.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the network profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithDnsServiceIP<ParentT> 
+    public interface IWithDnsServiceIP<ParentT>
     {
 
         /// <summary>
@@ -237,7 +240,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// assign service cluster IPs.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the network profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithServiceCidr<ParentT> 
+    public interface IWithServiceCidr<ParentT>
     {
 
         /// <summary>
@@ -257,7 +260,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// The entirety of a Kubernetes cluster network profile definition as a part of a parent definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface INetworkProfileDefinition<ParentT>  :
+    public interface INetworkProfileDefinition<ParentT> :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithNetworkPolicy<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithPodCidr<ParentT>,
@@ -272,7 +275,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithVersion>
     {
 
@@ -283,7 +286,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// assign pod IPs when kubenet is used.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the network profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithPodCidr<ParentT> 
+    public interface IWithPodCidr<ParentT>
     {
 
         /// <summary>
@@ -298,7 +301,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// The stage of a network profile definition allowing to specify the network policy.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the network profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithNetworkPolicy<ParentT> 
+    public interface IWithNetworkPolicy<ParentT>
     {
 
         /// <summary>
@@ -312,7 +315,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify orchestration type.
     /// </summary>
-    public interface IWithVersion 
+    public interface IWithVersion
     {
 
         /// <summary>
@@ -339,7 +342,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The first stage of a container service definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithGroup>
     {
 
@@ -348,7 +351,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// <summary>
     /// The stage of the Kubernetes cluster definition allowing to specify the cluster's add-on's profiles.
     /// </summary>
-    public interface IWithAddOnProfilesBeta  :
+    public interface IWithAddOnProfilesBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -357,6 +360,22 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         /// </summary>
         /// <param name="addOnProfileMap">The cluster's add-on's profiles.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAddOnProfiles(IDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAddOnProfiles(IDictionary<string, Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap);
+    }
+
+
+    /// <summary>
+    /// The stage of the Kubernetes cluster definition allowing to enable virtual node.
+    /// </summary>
+    public interface IWithVirtualNode :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Create a virtual node with ACI.
+        /// </summary>
+        /// <param name="network">The AKS network.</param>
+        /// <param name="subnetName">The subnet to create virtual node.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate WithVirtualNode(INetwork network, string subnetName);
     }
 }

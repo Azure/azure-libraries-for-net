@@ -27,9 +27,13 @@ namespace Fluent.Tests.ContainerService
                 var dnsPrefix = "dns" + aksName;
                 var rgName = "rg" + aksName;
                 var agentPoolName = "ap0" + aksName;
+                var networkName = "net" + aksName;
+                var agentPoolSubnetName = "agentsub" + networkName;
+                var virtualNodeSubnetName = "virtualNodesub" + networkName;
                 IKubernetesCluster kubernetesCluster = null;
                 var containerServiceManager = TestHelper.CreateContainerServiceManager();
                 var resourceManager = TestHelper.CreateResourceManager();
+                var networkManager = TestHelper.CreateNetworkManager();
 
                 try
                 {
@@ -43,6 +47,18 @@ namespace Fluent.Tests.ContainerService
                     string servicePrincipalClientId = GetSecondaryServicePrincipalClientID(envSecondaryServicePrincipal);
                     string servicePrincipalSecret = GetSecondaryServicePrincipalSecret(envSecondaryServicePrincipal);
 
+                    var network = networkManager.Networks.Define(networkName)
+                        .WithRegion(Region.USCentral)
+                        .WithNewResourceGroup(rgName)
+                        .WithAddressSpace("10.100.0.0/16")
+                        .DefineSubnet(agentPoolSubnetName)
+                            .WithAddressPrefix("10.100.0.0/24")
+                            .Attach()
+                        .DefineSubnet(virtualNodeSubnetName)
+                            .WithAddressPrefix("10.100.1.0/24")
+                            .Attach()
+                        .Create();
+
                     kubernetesCluster = containerServiceManager.KubernetesClusters.Define(aksName)
                         .WithRegion(Region.USCentral)
                         .WithNewResourceGroup(rgName)
@@ -55,8 +71,13 @@ namespace Fluent.Tests.ContainerService
                             .WithVirtualMachineSize(ContainerServiceVMSizeTypes.StandardD1V2)
                             .WithAgentPoolVirtualMachineCount(1)
                             .WithAgentPoolType(AgentPoolType.VirtualMachineScaleSets)
+                            .WithVirtualNetwork(network.Id, agentPoolSubnetName)
                             .Attach()
                         .WithDnsPrefix("mp1" + dnsPrefix)
+                        .WithVirtualNode(network, virtualNodeSubnetName)
+                        .DefineNetworkProfile
+                            .WithNetworkPlugin(NetworkPlugin.Azure)
+                            .Attach()
                         .WithTag("tag1", "value1")
                         .Create();
 
@@ -113,7 +134,7 @@ namespace Fluent.Tests.ContainerService
                     var keyVal = line.Trim().Split(new char[] { '=' }, 2);
                     if (keyVal.Length < 2)
                         return true; // Ignore lines that don't look like $$$=$$$
-                if (keyVal[0].Equals("client"))
+                    if (keyVal[0].Equals("client"))
                         clientId = keyVal[1];
                     return true;
                 });
@@ -140,7 +161,7 @@ namespace Fluent.Tests.ContainerService
                         secret = keyVal[1];
                     return true;
                 });
-                }
+            }
             return secret;
         }
     }

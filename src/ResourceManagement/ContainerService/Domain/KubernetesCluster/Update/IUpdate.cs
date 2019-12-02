@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
 {
     using Microsoft.Azure.Management.ContainerService.Fluent;
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
+    using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify the cluster's network profile.
     /// </summary>
-    public interface IWithNetworkProfile  :
+    public interface IWithNetworkProfile :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithNetworkProfileBeta
     {
 
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify the number of agents in the specified pool.
     /// </summary>
-    public interface IWithUpdateAgentPoolCount  :
+    public interface IWithUpdateAgentPoolCount :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithUpdateAgentPoolCountBeta
     {
 
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify if Kubernetes Role-Based Access Control is enabled or disabled.
     /// </summary>
-    public interface IWithRBAC  :
+    public interface IWithRBAC :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithRBACBeta
     {
 
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify the cluster's add-on's profiles.
     /// </summary>
-    public interface IWithAddOnProfiles  :
+    public interface IWithAddOnProfiles :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithAddOnProfilesBeta
     {
 
@@ -48,11 +49,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithUpdateAgentPoolCount,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithAddOnProfiles,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithNetworkProfile,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithRBAC,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IWithVirtualNode,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>
     {
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify the cluster's network profile.
     /// </summary>
-    public interface IWithNetworkProfileBeta  :
+    public interface IWithNetworkProfileBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify the number of agents in the specified pool.
     /// </summary>
-    public interface IWithUpdateAgentPoolCountBeta  :
+    public interface IWithUpdateAgentPoolCountBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify if Kubernetes Role-Based Access Control is enabled or disabled.
     /// </summary>
-    public interface IWithRBACBeta  :
+    public interface IWithRBACBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -120,7 +122,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
     /// <summary>
     /// The stage of the Kubernetes cluster update definition allowing to specify the cluster's add-on's profiles.
     /// </summary>
-    public interface IWithAddOnProfilesBeta  :
+    public interface IWithAddOnProfilesBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -129,6 +131,27 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
         /// </summary>
         /// <param name="addOnProfileMap">The cluster's add-on's profiles.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAddOnProfiles(IDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAddOnProfiles(IDictionary<string, Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap);
+    }
+
+    /// <summary>
+    /// The stage of the Kubernetes cluster definition allowing to specify virtual node.
+    /// </summary>
+    public interface IWithVirtualNode :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Create a virtual node with ACI.
+        /// </summary>
+        /// <param name="network">The AKS network.</param>
+        /// <param name="subnetName">The subnet to create virtual node.</param>
+        /// <returns>The next stage of the update.</returns>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithVirtualNode(INetwork network, string subnetName);
+
+        /// <summary>
+        /// Remove ACI virtual node.
+        /// </summary>
+        /// <returns>The next stage of the update.</returns>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithoutVirtualNode();
     }
 }
