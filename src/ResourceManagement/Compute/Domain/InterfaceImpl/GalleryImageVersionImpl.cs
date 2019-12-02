@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="location">Resource location.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithLocation.WithLocation(string location)
+        GalleryImageVersion.Definition.IWithSource GalleryImageVersion.Definition.IWithLocation.WithLocation(string location)
         {
             return this.WithLocation(location);
         }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="location">Resource location.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithLocation.WithLocation(Region location)
+        GalleryImageVersion.Definition.IWithSource GalleryImageVersion.Definition.IWithLocation.WithLocation(Region location)
         {
             return this.WithLocation(location);
         }
