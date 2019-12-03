@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update
     /// </summary>
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
-        IWithVirtualMachine
+        IWithVirtualMachines
     {
     }
 
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Update
     /// The stage of a load balancer backend definition allowing to select a set of virtual machines to load balance
     /// the network traffic among.
     /// </summary>
-    public interface IWithVirtualMachine
+    public interface IWithVirtualMachines
     {
         /// <summary>
         /// Adds the specified set of virtual machines, assuming they are from the same
