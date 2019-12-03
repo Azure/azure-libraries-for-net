@@ -16,12 +16,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
-    <PackageReference Include="Microsoft.Azure.Management.Network.Fluent" Version="$(FluentVersion)" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
-    <ProjectReference Include="..\Network\Microsoft.Azure.Management.Network.Fluent.csproj" />
   </ItemGroup>
 </Project>

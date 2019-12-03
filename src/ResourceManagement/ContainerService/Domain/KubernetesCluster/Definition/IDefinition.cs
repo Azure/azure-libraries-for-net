@@ -8,7 +8,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent;
     using System.Collections.Generic;
 
     /// <summary>
@@ -373,9 +372,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         /// <summary>
         /// Create a virtual node with ACI.
         /// </summary>
-        /// <param name="network">The AKS network.</param>
-        /// <param name="subnetName">The subnet to create virtual node.</param>
+        /// <param name="subnetName">The subnet in AKS network to create virtual node.</param>
         /// <returns>The next stage of the definition.</returns>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate WithVirtualNode(INetwork network, string subnetName);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate WithVirtualNode(string subnetName);
     }
 }

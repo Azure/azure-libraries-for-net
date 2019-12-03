@@ -15,7 +15,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System;
     using System.Text;
     using System.Text.RegularExpressions;
-    using Microsoft.Azure.Management.Network.Fluent;
 
     /// <summary>
     /// The implementation for KubernetesCluster and its create and update interfaces.
@@ -392,13 +391,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this;
         }
 
-        public KubernetesClusterImpl WithVirtualNode(INetwork network, string subnetName)
+        public KubernetesClusterImpl WithVirtualNode(string subnetName)
         {
-            if (!network.Subnets.ContainsKey(subnetName))
-            {
-                throw new ArgumentException($"network {network.Id} does not have subnet named {subnetName}");
-            }
-
             if (this.Inner.AddonProfiles == null)
             {
                 this.Inner.AddonProfiles = new Dictionary<string, ManagedClusterAddonProfile>();

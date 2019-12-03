@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update;
     using Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition;
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
     using System.Threading;
@@ -357,9 +356,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name="network">The AKS network.</param>
         /// <param name="subnetName">The subnet to create virtual node.</param>
         /// <returns>The next stage of the definition.</returns>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate KubernetesCluster.Definition.IWithVirtualNode.WithVirtualNode(INetwork network, string subnetName)
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate KubernetesCluster.Definition.IWithVirtualNode.WithVirtualNode(string subnetName)
         {
-            return this.WithVirtualNode(network, subnetName);
+            return this.WithVirtualNode(subnetName);
         }
 
         /// <summary>
@@ -368,9 +367,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name="network">The AKS network.</param>
         /// <param name="subnetName">The subnet to create virtual node.</param>
         /// <returns>The next stage of the update.</returns>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithVirtualNode.WithVirtualNode(INetwork network, string subnetName)
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithVirtualNode.WithVirtualNode(string subnetName)
         {
-            return this.WithVirtualNode(network, subnetName);
+            return this.WithVirtualNode(subnetName);
         }
 
 

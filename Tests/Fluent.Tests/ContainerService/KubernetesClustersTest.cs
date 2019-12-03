@@ -74,7 +74,7 @@ namespace Fluent.Tests.ContainerService
                             .WithVirtualNetwork(network.Id, agentPoolSubnetName)
                             .Attach()
                         .WithDnsPrefix("mp1" + dnsPrefix)
-                        .WithVirtualNode(network, virtualNodeSubnetName)
+                        .WithVirtualNode(virtualNodeSubnetName)
                         .DefineNetworkProfile
                             .WithNetworkPlugin(NetworkPlugin.Azure)
                             .Attach()

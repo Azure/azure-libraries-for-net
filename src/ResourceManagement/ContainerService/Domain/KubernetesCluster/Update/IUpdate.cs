@@ -4,7 +4,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
 {
     using Microsoft.Azure.Management.ContainerService.Fluent;
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
@@ -143,10 +142,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
         /// <summary>
         /// Create a virtual node with ACI.
         /// </summary>
-        /// <param name="network">The AKS network.</param>
-        /// <param name="subnetName">The subnet to create virtual node.</param>
+        /// <param name="subnetName">The subnet in AKS network to create virtual node.</param>
         /// <returns>The next stage of the update.</returns>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithVirtualNode(INetwork network, string subnetName);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithVirtualNode(string subnetName);
 
         /// <summary>
         /// Remove ACI virtual node.
