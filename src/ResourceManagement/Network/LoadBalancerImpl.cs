@@ -225,8 +225,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     throw new AggregateException(nicExceptions);
                 }
 
-                nicsInBackends.Clear();
-                nicsRemovedFromBackends.Clear();
+                ResetBackend();
+
                 Refresh();
             }
         }
@@ -1120,6 +1120,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 creatablePip = precreatablePIP.WithNewResourceGroup(newGroup).WithLeafDomainLabel(dnsLeafLabel);
             }
             return WithNewPublicIPAddress(creatablePip, frontendName);
+        }
+
+        override public IUpdate Update()
+        {
+            ResetBackend();
+
+            return base.Update();
+        }
+
+        private void ResetBackend()
+        {
+            nicsInBackends.Clear();
+            nicsRemovedFromBackends.Clear();
         }
     }
 }
