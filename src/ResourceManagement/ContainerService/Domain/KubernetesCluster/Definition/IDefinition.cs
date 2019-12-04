@@ -370,7 +370,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Create a virtual node with ACI.
+        /// Creates a virtual node with ACI.
+        /// IMPORTANT! This method should be called after 'WithAddOnProfiles'.
         /// </summary>
         /// <param name="subnetName">The subnet in AKS network to create virtual node.</param>
         /// <returns>The next stage of the definition.</returns>
