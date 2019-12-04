@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     /// The implementation for KubernetesCluster and its create and update interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnNlcnZpY2UuaW1wbGVtZW50YXRpb24uS3ViZXJuZXRlc0NsdXN0ZXJJbXBs
-    internal partial class KubernetesClusterImpl  :
+    internal partial class KubernetesClusterImpl :
         GroupableResource<
             Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster,
             Models.ManagedClusterInner,
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:74FD01C4FC381135670EAFAC2C75EA51:6CB16D2F81CB6E4FD3ACCDBFF6EC2552
-        public IReadOnlyDictionary<string,Models.ManagedClusterAddonProfile> AddonProfiles()
+        public IReadOnlyDictionary<string, Models.ManagedClusterAddonProfile> AddonProfiles()
         {
-            return (Dictionary<string, Models.ManagedClusterAddonProfile>) this.Inner.AddonProfiles;
+            return (Dictionary<string, Models.ManagedClusterAddonProfile>)this.Inner.AddonProfiles;
         }
 
         ///GENMHASH:577F8437932AEC6E08E1A137969BDB4A:A1945CF277DF5AE74D653481F44D96CE
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             {
                 return null;
             }
-         }
+        }
 
         ///GENMHASH:8FE1C58590920D7DDF40D8E3653C31E2:0059EE666E400AB5C8904F3E81CC0B6F
         public IBlank<KubernetesCluster.Definition.IWithCreate> DefineNetworkProfile()
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
 
         ///GENMHASH:810F040E6FF88D302DA1C0A34006F058:22F3FCFE8015028492C33E22D1F4F1B8
-        public KubernetesClusterImpl WithAddOnProfiles(IDictionary<string,Models.ManagedClusterAddonProfile> addOnProfileMap)
+        public KubernetesClusterImpl WithAddOnProfiles(IDictionary<string, Models.ManagedClusterAddonProfile> addOnProfileMap)
         {
             this.Inner.AddonProfiles = addOnProfileMap;
             return this;
@@ -391,5 +391,29 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this;
         }
 
+        public KubernetesClusterImpl WithVirtualNode(string subnetName)
+        {
+            if (this.Inner.AddonProfiles == null)
+            {
+                this.Inner.AddonProfiles = new Dictionary<string, ManagedClusterAddonProfile>();
+            }
+
+            var config = new Dictionary<string, string>()
+            {
+                { "SubnetName", subnetName }
+            };
+            this.Inner.AddonProfiles.Add("aciConnectorLinux", new ManagedClusterAddonProfile(true, config));
+
+            return this;
+        }
+
+        public KubernetesClusterImpl WithoutVirtualNode()
+        {
+            if (this.Inner.AddonProfiles != null)
+            {
+                this.Inner.AddonProfiles.Remove("aciConnectorLinux");
+            }
+            return this;
+        }
     }
 }

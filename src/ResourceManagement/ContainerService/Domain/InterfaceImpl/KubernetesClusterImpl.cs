@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class KubernetesClusterImpl 
+    internal partial class KubernetesClusterImpl
     {
         /// <summary>
         /// Gets the cluster's add-on's profiles.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AddonProfiles
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AddonProfiles
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the agent pools in the Kubernetes cluster.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AgentPools
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AgentPools
         {
             get
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="addOnProfileMap">The cluster's add-on's profiles.</param>
         /// <return>The next stage of the update.</return>
-        KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithAddOnProfilesBeta.WithAddOnProfiles(IDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap)
+        KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithAddOnProfilesBeta.WithAddOnProfiles(IDictionary<string, Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap)
         {
             return this.WithAddOnProfiles(addOnProfileMap);
         }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="addOnProfileMap">The cluster's add-on's profiles.</param>
         /// <return>The next stage of the update.</return>
-        KubernetesCluster.Update.IUpdate KubernetesCluster.Definition.IWithAddOnProfilesBeta.WithAddOnProfiles(IDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap)
+        KubernetesCluster.Update.IUpdate KubernetesCluster.Definition.IWithAddOnProfilesBeta.WithAddOnProfiles(IDictionary<string, Microsoft.Azure.Management.ContainerService.Fluent.Models.ManagedClusterAddonProfile> addOnProfileMap)
         {
             return this.WithAddOnProfiles(addOnProfileMap);
         }
@@ -348,6 +348,36 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         KubernetesCluster.Definition.IWithLinuxRootUsername KubernetesCluster.Definition.IWithVersion.WithVersion(string kubernetesVersion)
         {
             return this.WithVersion(kubernetesVersion);
+        }
+
+        /// <summary>
+        /// Creates a virtual node with ACI.
+        /// </summary>
+        /// <param name="subnetName">The subnet to create virtual node.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate KubernetesCluster.Definition.IWithVirtualNode.WithVirtualNode(string subnetName)
+        {
+            return this.WithVirtualNode(subnetName);
+        }
+
+        /// <summary>
+        /// Creates a virtual node with ACI.
+        /// </summary>
+        /// <param name="subnetName">The subnet to create virtual node.</param>
+        /// <returns>The next stage of the update.</returns>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithVirtualNode.WithVirtualNode(string subnetName)
+        {
+            return this.WithVirtualNode(subnetName);
+        }
+
+
+        /// <summary>
+        /// Removes ACI virtual node.
+        /// </summary>
+        /// <returns>The next stage of the update.</returns>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithVirtualNode.WithoutVirtualNode()
+        {
+            return this.WithoutVirtualNode();
         }
     }
 }
