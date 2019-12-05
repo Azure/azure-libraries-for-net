@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
+using Microsoft.Azure.Management.PrivateDns.Fluent;
 using Microsoft.Azure.Management.Redis.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IKeyVaultManager keyVaultManager;
         private ITrafficManager trafficManager;
         private IDnsZoneManager dnsZoneManager;
+        private IPrivateDnsZoneManager privateDnsZoneManager;
         private ISqlManager sqlManager;
         private ICdnManager cdnManager;
         private IRedisManager redisManager;
@@ -317,6 +319,15 @@ namespace Microsoft.Azure.Management.Fluent
             get
             {
                 return dnsZoneManager.Zones;
+            }
+        }
+
+        /// <returns>entry point to managing private DNS zones</returns>
+        public IPrivateDnsZones PrivateDnsZones
+        {
+            get
+            {
+                return privateDnsZoneManager.PrivateDnsZones;
             }
         }
 
@@ -615,6 +626,7 @@ namespace Microsoft.Azure.Management.Fluent
             keyVaultManager = KeyVaultManager.Authenticate(restClient, subscriptionId, tenantId);
             trafficManager = TrafficManager.Fluent.TrafficManager.Authenticate(restClient, subscriptionId);
             dnsZoneManager = DnsZoneManager.Authenticate(restClient, subscriptionId);
+            privateDnsZoneManager = PrivateDnsZoneManager.Authenticate(restClient, subscriptionId);
             sqlManager = SqlManager.Authenticate(restClient, subscriptionId);
             redisManager = RedisManager.Authenticate(restClient, subscriptionId);
             cdnManager = CdnManager.Authenticate(restClient, subscriptionId);
@@ -1149,6 +1161,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to DNS zone management.
         /// </summary>
         IDnsZones DnsZones { get; }
+
+        /// <summary>
+        /// Entry point to private DNS zone management.
+        /// </summary>
+        IPrivateDnsZones PrivateDnsZones { get; }
 
         /// <summary>
         /// Entry point to Azure SQL server management.

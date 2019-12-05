@@ -31,6 +31,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Monitor.Fluent" Version="$(FluentVersion)" />
     <PackageReference Include="Microsoft.Azure.Management.Msi.Fluent" Version="$(FluentVersion)" />
     <PackageReference Include="Microsoft.Azure.Management.Network.Fluent" Version="$(FluentVersion)" />
+    <PackageReference Include="Microsoft.Azure.Management.PrivateDns.Fluent" Version="$(FluentVersion)" />
     <PackageReference Include="Microsoft.Azure.Management.Redis.Fluent" Version="$(FluentVersion)" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
     <PackageReference Include="Microsoft.Azure.Management.Search.Fluent" Version="$(FluentVersion)" />
@@ -58,6 +59,7 @@
     <ProjectReference Include="..\Monitor\Microsoft.Azure.Management.Monitor.Fluent.csproj" />
     <ProjectReference Include="..\Msi\Microsoft.Azure.Management.Msi.Fluent.csproj" />
     <ProjectReference Include="..\Network\Microsoft.Azure.Management.Network.Fluent.csproj" />
+    <ProjectReference Include="..\PrivateDns\Microsoft.Azure.Management.PrivateDns.Fluent.csproj" />
     <ProjectReference Include="..\RedisCache\Microsoft.Azure.Management.Redis.Fluent.csproj" />
     <ProjectReference Include="..\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
     <ProjectReference Include="..\Search\Microsoft.Azure.Management.Search.Fluent.csproj" />

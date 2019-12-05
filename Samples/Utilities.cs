@@ -47,6 +47,7 @@ using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Eventhub.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent;
+using Microsoft.Azure.Management.PrivateDns.Fluent;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -1729,6 +1730,157 @@ namespace Microsoft.Azure.Management.Samples.Common
                         builder.Append("\n\t\t\tValue: ").Append(txtRecord.Value.FirstOrDefault());
                     }
                 }
+            }
+            Utilities.Log(builder.ToString());
+        }
+
+        public static void Print(IPrivateDnsZone privateDnsZone)
+        {
+            var builder = new StringBuilder();
+            builder.Append("Private Dns Zone: ").Append(privateDnsZone.Id)
+                    .Append("\n\tName (Top level domain): ").Append(privateDnsZone.Name)
+                    .Append("\n\tResource group: ").Append(privateDnsZone.ResourceGroupName)
+                    .Append("\n\tRegion: ").Append(privateDnsZone.RegionName)
+                    .Append("\n\tTags: ").Append(privateDnsZone.Tags)
+                    .Append("\n\tNumber of record sets: ").Append(privateDnsZone.NumberOfRecordSets)
+                    .Append("\n\tMax number of record sets: ").Append(privateDnsZone.MaxNumberOfRecordSets)
+                    .Append("\n\tNumber of virtual network links: ").Append(privateDnsZone.NumberOfVirtualNetworkLinks)
+                    .Append("\n\tMax number of virtual network links: ").Append(privateDnsZone.NumberOfVirtualNetworkLinks)
+                    .Append("\n\tNumber of virtual network links with registration: ")
+                        .Append(privateDnsZone.NumberOfVirtualNetworkLinksWithRegistration)
+                    .Append("\n\tMax number of virtual network links with registration: ")
+                        .Append(privateDnsZone.MaxNumberOfVirtualNetworkLinksWithRegistration);
+
+            var aRecordSets = privateDnsZone.ARecordSets.List();
+            builder.Append("\n\tA Record sets:");
+            foreach (var aRecordSet in aRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(aRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(aRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(aRecordSet.TimeToLive)
+                        .Append("\n\t\tIp v4 addresses: ");
+                foreach (var ipAddress in aRecordSet.IPv4Addresses)
+                {
+                    builder.Append("\n\t\t\t").Append(ipAddress);
+                }
+            }
+
+            var aaaaRecordSets = privateDnsZone.AaaaRecordSets.List();
+            builder.Append("\n\tAAAA Record sets:");
+            foreach (var aaaaRecordSet in aaaaRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(aaaaRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(aaaaRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(aaaaRecordSet.TimeToLive)
+                        .Append("\n\t\tIp v6 addresses: ");
+                foreach (var ipAddress in aaaaRecordSet.IPv6Addresses)
+                {
+                    builder.Append("\n\t\t\t").Append(ipAddress);
+                }
+            }
+
+            var cnameRecordSets = privateDnsZone.CnameRecordSets.List();
+            builder.Append("\n\tCNAME Record sets:");
+            foreach (var cnameRecordSet in cnameRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(cnameRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(cnameRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(cnameRecordSet.TimeToLive)
+                        .Append("\n\t\tCanonical name: ").Append(cnameRecordSet.CanonicalName);
+            }
+
+            var mxRecordSets = privateDnsZone.MxRecordSets.List();
+            builder.Append("\n\tMX Record sets:");
+            foreach (var mxRecordSet in mxRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(mxRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(mxRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(mxRecordSet.TimeToLive)
+                        .Append("\n\t\tRecords: ");
+                foreach (var mxRecord in mxRecordSet.Records)
+                {
+                    builder.Append("\n\t\t\tExchange server, Preference: ")
+                            .Append(mxRecord.Exchange)
+                            .Append(" ")
+                            .Append(mxRecord.Preference);
+                }
+            }
+
+            var ptrRecordSets = privateDnsZone.PtrRecordSets.List();
+            builder.Append("\n\tPTR Record sets:");
+            foreach (var ptrRecordSet in ptrRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(ptrRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(ptrRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(ptrRecordSet.TimeToLive)
+                        .Append("\n\t\tTarget domain names: ");
+                foreach (var domainNames in ptrRecordSet.TargetDomainNames)
+                {
+                    builder.Append("\n\t\t\t").Append(domainNames);
+                }
+            }
+
+            var soaRecordSets = privateDnsZone.SoaRecordSets.List();
+            builder.Append("\n\tSOA Record sets:");
+            foreach (var soaRecordSet in soaRecordSets)
+            {
+                var soaRecord = soaRecordSet.Record;
+                builder.Append("\n\tSOA Record:")
+                    .Append("\n\t\tHost:").Append(soaRecord.Host)
+                    .Append("\n\t\tEmail:").Append(soaRecord.Email)
+                    .Append("\n\t\tExpire time (seconds):").Append(soaRecord.ExpireTime)
+                    .Append("\n\t\tRefresh time (seconds):").Append(soaRecord.RefreshTime)
+                    .Append("\n\t\tRetry time (seconds):").Append(soaRecord.RetryTime)
+                    .Append("\n\t\tNegative response cache ttl (seconds):").Append(soaRecord.MinimumTtl)
+                    .Append("\n\t\tTtl (seconds):").Append(soaRecordSet.TimeToLive);
+            }
+
+            var srvRecordSets = privateDnsZone.SrvRecordSets.List();
+            builder.Append("\n\tSRV Record sets:");
+            foreach (var srvRecordSet in srvRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(srvRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(srvRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(srvRecordSet.TimeToLive)
+                        .Append("\n\t\tRecords: ");
+                foreach (var srvRecord in srvRecordSet.Records)
+                {
+                    builder.Append("\n\t\t\tTarget, Port, Priority, Weight: ")
+                            .Append(srvRecord.Target)
+                            .Append(", ")
+                            .Append(srvRecord.Port)
+                            .Append(", ")
+                            .Append(srvRecord.Priority)
+                            .Append(", ")
+                            .Append(srvRecord.Weight);
+                }
+            }
+
+            var txtRecordSets = privateDnsZone.TxtRecordSets.List();
+            builder.Append("\n\tTXT Record sets:");
+            foreach (var txtRecordSet in txtRecordSets)
+            {
+                builder.Append("\n\t\tId: ").Append(txtRecordSet.Id)
+                        .Append("\n\t\tName: ").Append(txtRecordSet.Name)
+                        .Append("\n\t\tTtl (seconds): ").Append(txtRecordSet.TimeToLive)
+                        .Append("\n\t\tRecords: ");
+                foreach (var txtRecord in txtRecordSet.Records)
+                {
+                    if (txtRecord.Value.Count() > 0)
+                    {
+                        builder.Append("\n\t\t\tValue: ").Append(txtRecord.Value.FirstOrDefault());
+                    }
+                }
+            }
+
+            var virtualNetworkLinks = privateDnsZone.VirtualNetworkLinks.List();
+            builder.Append("\n\tVirtual network links:");
+            foreach (var virtualNetworkLink in virtualNetworkLinks)
+            {
+                builder.Append("\n\t\tId: ").Append(virtualNetworkLink.Id)
+                        .Append("\n\t\tName: ").Append(virtualNetworkLink.Name)
+                        .Append("\n\t\tReference of virtual network: ").Append(virtualNetworkLink.ReferencedVirtualNetworkId)
+                        .Append("\n\t\tRegistration enabled: ").Append(virtualNetworkLink.IsAutoRegistrationEnabled);
             }
             Utilities.Log(builder.ToString());
         }
