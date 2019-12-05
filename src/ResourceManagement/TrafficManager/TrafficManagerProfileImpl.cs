@@ -247,6 +247,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:088F115956764D909356F941714DD214:72C3991B01AC2306292D697D6CB9A5EE
         public TrafficManagerProfileImpl WithHttpMonitoring(int port, string path)
         {
+            EnsureMonitorConfig();
+
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "http";
@@ -262,6 +264,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:339D7124F9EE53875E3B1321B2E2D9FD:A28860E9058E7040BCE32AA17CDB136B
         public TrafficManagerProfileImpl WithHttpsMonitoring(int port, string path)
         {
+            EnsureMonitorConfig();
+
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "https";
@@ -270,6 +274,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
 
         public TrafficManagerProfileImpl WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures = default(long?))
         {
+            EnsureMonitorConfig();
+
             Inner.MonitorConfig.IntervalInSeconds = intervalInSeconds;
             Inner.MonitorConfig.ToleratedNumberOfFailures = toleratedNumberOfFailures;
             Inner.MonitorConfig.TimeoutInSeconds = timeoutInSeconds;
@@ -331,6 +337,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public TrafficManagerEndpointImpl UpdateNestedProfileTargetEndpoint(string name)
         {
             return this.endpoints.UpdateNestedProfileEndpoint(name);
+        }
+
+        private void EnsureMonitorConfig()
+        {
+            if (Inner.MonitorConfig == null)
+            {
+                Inner.MonitorConfig = new MonitorConfig();
+            }
         }
     }
 }

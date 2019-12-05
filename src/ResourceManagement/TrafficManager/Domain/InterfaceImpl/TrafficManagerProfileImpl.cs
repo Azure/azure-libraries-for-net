@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return this.WithHttpsMonitoring(port, path);
         }
 
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringConfiguration.WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures)
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithFastFailover.WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures)
         {
             return this.WithFastFailover(intervalInSeconds, timeoutInSeconds, toleratedNumberOfFailures);
         }
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return this.WithHttpsMonitoring(port, path);
         }
 
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration.WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures)
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithFastFailover.WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures)
         {
             return this.WithFastFailover(intervalInSeconds, timeoutInSeconds, toleratedNumberOfFailures);
         }
