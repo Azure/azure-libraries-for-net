@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             return resource;
         }
 
-        public IReadOnlyList<string> IPv4Adresses
+        public IReadOnlyList<string> IPv4Addresses
         {
             get
             {

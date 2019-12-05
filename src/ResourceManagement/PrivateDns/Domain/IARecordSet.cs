@@ -14,6 +14,6 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <summary>
         /// Gets the IP v4 addresses of A records in this record set.
         /// </summary>
-        IReadOnlyList<string> IPv4Adresses { get; }
+        IReadOnlyList<string> IPv4Addresses { get; }
     }
 }

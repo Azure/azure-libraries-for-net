@@ -215,6 +215,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             return Parent;
         }
 
+        public override string ChildResourceKey
+        {
+            get
+            {
+                return Name() + "_" + RecordType().ToString();
+            }
+        }
+
         public async override Task<IPrivateDnsRecordSet> CreateAsync(CancellationToken cancellationToken)
         {
             return await CreateOrUpdateAsync(Inner, cancellationToken);
@@ -1049,6 +1057,10 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             return WithTextInternal(text);
         }
 
+        /// <summary>
+        /// Attaches the child update to the parent resource update.
+        /// </summary>
+        /// <return>The next stage of the parent update.</return>
         PrivateDnsZone.Update.IUpdate IInUpdate<PrivateDnsZone.Update.IUpdate>.Attach()
         {
             return Parent;
@@ -1082,79 +1094,6 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         PrivateDnsRecordSet.UpdateDefinition.IWithAttach<PrivateDnsZone.Update.IUpdate> PrivateDnsRecordSet.UpdateDefinition.IWithEtagCheck<PrivateDnsZone.Update.IUpdate>.WithETagCheck()
         {
             return WithETagCheckInternal();
-        }
-
-        class ETagState
-        {
-            private bool doImplicitETagCheckOnCreate;
-            private bool doImplicitETagCheckOnUpdate;
-            private string eTagOnDelete;
-            private string eTagOnUpdate;
-
-            public ETagState()
-            {
-            }
-
-            public ETagState Clear()
-            {
-                this.doImplicitETagCheckOnCreate = false;
-                this.doImplicitETagCheckOnUpdate = false;
-                this.eTagOnUpdate = null;
-                this.eTagOnDelete = null;
-                return this;
-            }
-
-            public string IfMatchValueOnDelete()
-            {
-                return this.eTagOnDelete;
-            }
-
-            public string IfMatchValueOnUpdate(string currentETagValue)
-            {
-                string eTagValue = null;
-                if (this.doImplicitETagCheckOnUpdate)
-                {
-                    eTagValue = currentETagValue;
-                }
-                if (this.eTagOnUpdate != null)
-                {
-                    eTagValue = this.eTagOnUpdate;
-                }
-                return eTagValue;
-            }
-
-            public string IfNonMatchValueOnCreate()
-            {
-                if (this.doImplicitETagCheckOnCreate)
-                {
-                    return "*";
-                }
-                return null;
-            }
-
-            public ETagState WithExplicitETagCheckOnDelete(string eTagValue)
-            {
-                this.eTagOnDelete = eTagValue;
-                return this;
-            }
-
-            public ETagState WithExplicitETagCheckOnUpdate(string eTagValue)
-            {
-                this.eTagOnUpdate = eTagValue;
-                return this;
-            }
-
-            public ETagState WithImplicitETagCheckOnCreate()
-            {
-                this.doImplicitETagCheckOnCreate = true;
-                return this;
-            }
-
-            public ETagState WithImplicitETagCheckOnUpdate()
-            {
-                this.doImplicitETagCheckOnUpdate = true;
-                return this;
-            }
         }
     }
 }

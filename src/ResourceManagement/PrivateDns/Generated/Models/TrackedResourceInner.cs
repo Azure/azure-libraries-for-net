@@ -8,12 +8,7 @@
 
 namespace Microsoft.Azure.Management.PrivateDns.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Newtonsoft.Json;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// The resource model definition for a ARM tracked top level resource
@@ -35,10 +30,8 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.Models
         /// <param name="location">The Azure Region where the resource
         /// lives</param>
         public TrackedResourceInner(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string))
-            : base(id, name, type)
+            : base(location, id, name, type, tags)
         {
-            Tags = tags;
-            Location = location;
             CustomInit();
         }
 
@@ -46,18 +39,5 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Azure Region where the resource lives
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
     }
 }

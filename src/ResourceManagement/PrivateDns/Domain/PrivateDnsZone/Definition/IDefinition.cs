@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Definition
     public interface IWithCreate :
         ResourceManager.Fluent.Core.ResourceActions.ICreatable<IPrivateDnsZone>,
         ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<IWithCreate>,
-        ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<IWithCreate>,
         PrivateDnsZone.Definition.IWithETagCheck,
-        PrivateDnsZone.Definition.IWithRecordSet
+        PrivateDnsZone.Definition.IWithRecordSet,
+        PrivateDnsZone.Definition.IWithVirtualNetworkLink
     {
     }
 
@@ -104,5 +104,18 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Definition
         /// <param name="name">The name of the TXT record set.</param>
         /// <return>The stage representing configuration for the TXT record set.</return>
         PrivateDnsRecordSet.Definition.ITxtRecordSetBlank<IWithCreate> DefineTxtRecordSet(string name);
+    }
+
+    /// <summary>
+    /// The stage of the private DNS zone definition allowing to specify virtual network link.
+    /// </summary>
+    public interface IWithVirtualNetworkLink
+    {
+        /// <summary>
+        /// Specifies definition of a virtual network link.
+        /// </summary>
+        /// <param name="name">The name of the virtual network link.</param>
+        /// <return>The stage representing configuration for the virtual network link.</return>
+        VirtualNetworkLink.Definition.IBlank<IWithCreate> DefineVirtualNetworkLink(string name);
     }
 }

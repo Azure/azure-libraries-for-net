@@ -4,7 +4,6 @@
 namespace Microsoft.Azure.Management.PrivateDns.Fluent
 {
     using Microsoft.Azure.Management.PrivateDns.Fluent.Models;
-    using Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
     using System.Threading;
@@ -16,10 +15,10 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
     internal class PrivateDnsZonesImpl :
         IPrivateDnsZones
     {
-        private readonly PrivateDnsManager manager;
-        internal PrivateDnsZonesImpl(PrivateDnsManager privateDnsManager)
+        private readonly PrivateDnsZoneManager manager;
+        internal PrivateDnsZonesImpl(PrivateDnsZoneManager privateDnsZoneManager)
         {
-            manager = privateDnsManager;
+            manager = privateDnsZoneManager;
         }
 
         /// <summary>
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <return>The private zones</return>
         public IEnumerable<IPrivateDnsZone> List(int? pageSize = default(int?))
         {
-            return Extensions.Synchronize(() => ListAsync(pageSize, CancellationToken.None));
+            return Extensions.Synchronize(() => ListAsync(pageSize, true, CancellationToken.None));
         }
 
         /// <summary>
@@ -151,11 +150,13 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// </summary>
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>The private zones</return>
-        public async Task<IPagedCollection<IPrivateDnsZone>> ListAsync(int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<IPrivateDnsZone>> ListAsync(int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IPrivateDnsZone, PrivateZoneInner>.LoadPage(
                 async (cancellation) => await manager.Inner.PrivateZones.ListAsync(pageSize, cancellationToken),
+                manager.Inner.PrivateZones.ListNextAsync,
                 WrapModel,
+                loadAllPages,
                 cancellationToken);
         }
 
@@ -167,7 +168,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <return>The private zones</return>
         public IEnumerable<IPrivateDnsZone> ListByResourceGroup(string resourceGroupName, int? pageSize = default(int?))
         {
-            return Extensions.Synchronize(() => ListByResourceGroupAsync(resourceGroupName, pageSize, CancellationToken.None));
+            return Extensions.Synchronize(() => ListByResourceGroupAsync(resourceGroupName, pageSize, pageSize == null, CancellationToken.None));
         }
 
         /// <summary>
@@ -176,17 +177,19 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <param name="resourceGroupName">The resource group the resource is part of.</param>
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>The private zones</return>
-        public async Task<IPagedCollection<IPrivateDnsZone>> ListByResourceGroupAsync(string resourceGroupName, int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<IPrivateDnsZone>> ListByResourceGroupAsync(string resourceGroupName, int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IPrivateDnsZone, PrivateZoneInner>.LoadPage(
                 async(cancellation) => await manager.Inner.PrivateZones.ListByResourceGroupAsync(resourceGroupName, pageSize, cancellation),
+                manager.Inner.PrivateZones.ListByResourceGroupNextAsync,
                 WrapModel,
+                loadAllPages,
                 cancellationToken);
         }
 
         protected PrivateDnsZoneImpl WrapModel(string name)
         {
-            return WrapModel(new PrivateZoneInner(name: name));
+            return WrapModel(new PrivateZoneInner(name: name, location:"global"));
         }
 
         protected PrivateDnsZoneImpl WrapModel(PrivateZoneInner inner)

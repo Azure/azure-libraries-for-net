@@ -14,14 +14,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
     /// An immutable client-side representation of an Azure Private DNS Zone.
     /// </summary>
     public interface IPrivateDnsZone :
-        IGroupableResource<IPrivateDnsManager, PrivateZoneInner>,
+        IGroupableResource<IPrivateDnsZoneManager, PrivateZoneInner>,
         IRefreshable<IPrivateDnsZone>,
         IUpdatable<PrivateDnsZone.Update.IUpdate>
     {
         /// <summary>
-        /// Gets or sets the ETag of the zone.
+        /// Gets the etag associated with the private DNS zone.
         /// </summary>
-        string Etag { get; }
+        string ETag { get; }
 
         /// <summary>
         /// Gets the maximum number of record sets that can be created in this
@@ -106,6 +106,11 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         ITxtRecordSets TxtRecordSets { get; }
 
         /// <summary>
+        /// Gets entry point to manage virtual network links in this private zone.
+        /// </summary>
+        IVirtualNetworkLinks VirtualNetworkLinks { get; }
+
+        /// <summary>
         /// Lists all the record sets in this private zone with the given suffix, also limits
         /// the number of entries per page to the given page size.
         /// </summary>
@@ -121,6 +126,6 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <param name="recordSetNameSuffix">The record set name suffix.</param>
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>The record sets.</return>
-        Task<IPagedCollection<IPrivateDnsRecordSet>> ListRecordSetsAsync(string recordSetNameSuffix = default(string), int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<IPrivateDnsRecordSet>> ListRecordSetsAsync(string recordSetNameSuffix = default(string), int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

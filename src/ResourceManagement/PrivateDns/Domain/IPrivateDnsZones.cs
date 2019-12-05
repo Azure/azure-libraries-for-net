@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// </summary>
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>The private zones</return>
-        Task<IPagedCollection<IPrivateDnsZone>> ListAsync(int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<IPrivateDnsZone>> ListAsync(int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Lists all the private zones, identifying it by its name and its resource group.
@@ -77,6 +77,6 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <param name="resourceGroupName">The resource group the resource is part of.</param>
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>The private zones</return>
-        Task<IPagedCollection<IPrivateDnsZone>> ListByResourceGroupAsync(string resourceGroupName, int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<IPrivateDnsZone>> ListByResourceGroupAsync(string resourceGroupName, int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

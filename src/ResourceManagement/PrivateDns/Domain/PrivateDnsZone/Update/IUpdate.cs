@@ -11,7 +11,8 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Update
         ResourceManager.Fluent.Core.ResourceActions.IAppliable<IPrivateDnsZone>,
         ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<IUpdate>,
         PrivateDnsZone.Update.IWithETagCheck,
-        PrivateDnsZone.Update.IWithRecordSet
+        PrivateDnsZone.Update.IWithRecordSet,
+        PrivateDnsZone.Update.IWithVirtualNetworkLink
     {
     }
 
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Update
         /// </summary>
         /// <param name="name">Name of the A record set.</param>
         /// <return>The stage representing configuration for the A record set.</return>
-        PrivateDnsRecordSet.UpdateDefinition.IAaaaRecordSetBlank<IUpdate> DefineARecordSet(string name);
+        PrivateDnsRecordSet.UpdateDefinition.IARecordSetBlank<IUpdate> DefineARecordSet(string name);
 
         /// <summary>
         /// Specifies definition of an AAAA record set.
@@ -247,6 +248,41 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Update
         /// <param name="eTagValue">The etag to use for concurrent protection.</param>
         /// <return>The next stage of private DNS zone update.</return>
         PrivateDnsZone.Update.IUpdate WithoutTxtRecordSet(string name, string eTagValue);
+    }
+
+    /// <summary>
+    /// The stage of the private DNS zone update allowing to specify virtual network link.
+    /// </summary>
+    public interface IWithVirtualNetworkLink
+    {
+        /// <summary>
+        /// Specifies definition of a virtual network link.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <return>The stage representing configuration for the virtual network link.</return>
+        VirtualNetworkLink.UpdateDefinition.IBlank<IUpdate> DefineVirtualNetworkLink(string name);
+
+        /// <summary>
+        /// Specifies update of a virtual network link.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <return>The stage representing configuration for the virtual network link.</return>
+        VirtualNetworkLink.Update.IUpdate UpdateVirtualNetworkLink(string name);
+
+        /// <summary>
+        /// Removes a virtual network link in the private DNS zone.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <return>The next stage of private DNS zone update.</return>
+        PrivateDnsZone.Update.IUpdate WithoutVirtualNetworkLink(string name);
+
+        /// <summary>
+        /// Removes a virtual network link in the private DNS zone.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <param name="eTagValue">The etag to use for concurrent protection.</param>
+        /// <return>The next stage of private DNS zone update.</return>
+        PrivateDnsZone.Update.IUpdate WithoutVirtualNetworkLink(string name, string eTagValue);
     }
 
     /// <summary>

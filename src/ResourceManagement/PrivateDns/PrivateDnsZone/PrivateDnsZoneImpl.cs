@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         GroupableResource<IPrivateDnsZone,
             PrivateZoneInner,
             PrivateDnsZoneImpl,
-            IPrivateDnsManager,
+            IPrivateDnsZoneManager,
             PrivateDnsZone.Definition.IWithCreate,
             PrivateDnsZone.Definition.IWithCreate,
             PrivateDnsZone.Definition.IWithCreate,
@@ -28,12 +28,16 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
     {
         private string privateDnsZoneETag;
         private PrivateDnsRecordSetsImpl recordSetsImpl;
+        private VirtualNetworkLinksImpl virtualNetworkLinksImpl;
 
-        internal PrivateDnsZoneImpl(string name, PrivateZoneInner innerModel, IPrivateDnsManager privateDnsManager)
-            : base(name, innerModel, privateDnsManager)
+        internal PrivateDnsZoneImpl(string name, PrivateZoneInner innerModel, IPrivateDnsZoneManager privateDnsZoneManager)
+            : base(name, innerModel, privateDnsZoneManager)
         {
             recordSetsImpl = new PrivateDnsRecordSetsImpl(this);
+            virtualNetworkLinksImpl = new VirtualNetworkLinksImpl(this);
             InitRecordSets();
+            VirtualNetworkLinks = virtualNetworkLinksImpl;
+            virtualNetworkLinksImpl.ClearPendingOperations();
         }
 
         private void InitRecordSets()
@@ -50,9 +54,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Gets or sets the ETag of the zone.
+        /// Gets the etag associated with the private DNS zone.
         /// </summary>
-        public string Etag
+        public string ETag
         {
             get
             {
@@ -184,6 +188,8 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// </summary>
         public ITxtRecordSets TxtRecordSets { get; private set; }
 
+        public IVirtualNetworkLinks VirtualNetworkLinks { get; private set; }
+
         public async override Task<IPrivateDnsZone> CreateResourceAsync(CancellationToken cancellationToken)
         {
             PrivateZoneInner innerResource;
@@ -210,6 +216,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             SetInner(innerResource);
             privateDnsZoneETag = null;
             await recordSetsImpl.CommitAndGetAllAsync(cancellationToken);
+            await virtualNetworkLinksImpl.CommitAndGetAllAsync(cancellationToken);
             return this;
         }
 
@@ -222,7 +229,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <return>The record sets.</return>
         public IEnumerable<IPrivateDnsRecordSet> ListRecordSets(string recordSetNameSuffix = default(string), int? pageSize = default(int?))
         {
-            return Extensions.Synchronize(() => ListRecordSetsAsync(recordSetNameSuffix, pageSize, CancellationToken.None));
+            return Extensions.Synchronize(() => ListRecordSetsAsync(recordSetNameSuffix, pageSize, pageSize == null, CancellationToken.None));
         }
 
         /// <summary>
@@ -232,7 +239,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <param name="recordSetNameSuffix">The record set name suffix.</param>
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>The record sets.</return>
-        public async Task<IPagedCollection<IPrivateDnsRecordSet>> ListRecordSetsAsync(string recordSetNameSuffix = default(string), int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<IPrivateDnsRecordSet>> ListRecordSetsAsync(string recordSetNameSuffix = default(string), int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IPrivateDnsRecordSet, RecordSetInner>.LoadPage(
                 async(cancellation) => await Manager.Inner.RecordSets.ListAsync(
@@ -241,7 +248,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
                     top: pageSize,
                     recordsetnamesuffix: recordSetNameSuffix,
                     cancellationToken: cancellation),
+                Manager.Inner.RecordSets.ListNextAsync,
                 WrapModel,
+                loadAllPages,
                 cancellationToken
                 );
         }
@@ -336,6 +345,11 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             return recordSetsImpl.DefineTxtRecordSet(name);
         }
 
+        internal VirtualNetworkLinkImpl DefineVirtualNetworkLinkInternal(string name)
+        {
+            return virtualNetworkLinksImpl.DefineVirtualNetworkLink(name);
+        }
+
         internal PrivateDnsRecordSetImpl UpdateAaaaRecordSetInternal(string name)
         {
             return recordSetsImpl.UpdateAaaaRecordSet(name);
@@ -374,6 +388,11 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         internal PrivateDnsRecordSetImpl UpdateTxtRecordSetInternal(string name)
         {
             return recordSetsImpl.UpdateTxtRecordSet(name);
+        }
+
+        internal VirtualNetworkLinkImpl UpdateVirtualNetworkLinkInternal(string name)
+        {
+            return virtualNetworkLinksImpl.UpdateVirtualNetworkLink(name);
         }
 
         internal PrivateDnsZoneImpl WithoutAaaaRecordSetInternal(string name, string eTagValue)
@@ -424,6 +443,12 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             return this;
         }
 
+        internal PrivateDnsZoneImpl WithoutVirtualNetworkLinkInternal(string name, string eTagValue)
+        {
+            virtualNetworkLinksImpl.WithoutVirtualNetworkLink(name, eTagValue);
+            return this;
+        }
+
         /// <summary>
         /// Specifies that If-None-Match header to prevent updating an existing private DNS zone.
         /// </summary>
@@ -468,7 +493,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// </summary>
         /// <param name="name">Name of the A record set.</param>
         /// <return>The stage representing configuration for the A record set.</return>
-        PrivateDnsRecordSet.UpdateDefinition.IAaaaRecordSetBlank<PrivateDnsZone.Update.IUpdate> PrivateDnsZone.Update.IWithRecordSet.DefineARecordSet(string name)
+        PrivateDnsRecordSet.UpdateDefinition.IARecordSetBlank<PrivateDnsZone.Update.IUpdate> PrivateDnsZone.Update.IWithRecordSet.DefineARecordSet(string name)
         {
             return DefineARecordSetInternal(name);
         }
@@ -854,6 +879,57 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         PrivateDnsRecordSet.Definition.ITxtRecordSetBlank<PrivateDnsZone.Definition.IWithCreate> PrivateDnsZone.Definition.IWithRecordSet.DefineTxtRecordSet(string name)
         {
             return DefineTxtRecordSetInternal(name);
+        }
+
+        /// <summary>
+        /// Specifies definition of a virtual network link.
+        /// </summary>
+        /// <param name="name">The name of the virtual network link.</param>
+        /// <return>The stage representing configuration for the virtual network link.</return>
+        VirtualNetworkLink.Definition.IBlank<PrivateDnsZone.Definition.IWithCreate> PrivateDnsZone.Definition.IWithVirtualNetworkLink.DefineVirtualNetworkLink(string name)
+        {
+            return DefineVirtualNetworkLinkInternal(name);
+        }
+
+        /// <summary>
+        /// Specifies definition of a virtual network link.
+        /// </summary>
+        /// <param name="name">The name of the virtual network link.</param>
+        /// <return>The stage representing configuration for the virtual network link.</return>
+        VirtualNetworkLink.UpdateDefinition.IBlank<PrivateDnsZone.Update.IUpdate> PrivateDnsZone.Update.IWithVirtualNetworkLink.DefineVirtualNetworkLink(string name)
+        {
+            return DefineVirtualNetworkLinkInternal(name);
+        }
+
+        /// <summary>
+        /// Specifies update of a virtual network link.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <return>The stage representing configuration for the virtual network link.</return>
+        VirtualNetworkLink.Update.IUpdate PrivateDnsZone.Update.IWithVirtualNetworkLink.UpdateVirtualNetworkLink(string name)
+        {
+            return UpdateVirtualNetworkLinkInternal(name);
+        }
+
+        /// <summary>
+        /// Removes a virtual network link in the private DNS zone.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <return>The next stage of private DNS zone update.</return>
+        PrivateDnsZone.Update.IUpdate PrivateDnsZone.Update.IWithVirtualNetworkLink.WithoutVirtualNetworkLink(string name)
+        {
+            return WithoutVirtualNetworkLinkInternal(name, null);
+        }
+
+        /// <summary>
+        /// Removes a virtual network link in the private DNS zone.
+        /// </summary>
+        /// <param name="name">Name of the virtual network link.</param>
+        /// <param name="eTagValue">The etag to use for concurrent protection.</param>
+        /// <return>The next stage of private DNS zone update.</return>
+        PrivateDnsZone.Update.IUpdate PrivateDnsZone.Update.IWithVirtualNetworkLink.WithoutVirtualNetworkLink(string name, string eTagValue)
+        {
+            return WithoutVirtualNetworkLinkInternal(name, eTagValue);
         }
     }
 }

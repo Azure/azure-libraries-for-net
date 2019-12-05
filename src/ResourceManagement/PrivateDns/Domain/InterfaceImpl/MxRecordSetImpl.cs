@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             return new MxRecordSetImpl(
                 name,
                 parent,
-                new RecordSetInner{ MxRecords = new List<MxRecord>());
+                new RecordSetInner { MxRecords = new List<MxRecord>() });
         }
 
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)

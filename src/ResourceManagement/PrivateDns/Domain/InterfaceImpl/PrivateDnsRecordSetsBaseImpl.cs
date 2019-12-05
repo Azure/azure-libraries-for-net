@@ -101,10 +101,10 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
 
         public IEnumerable<RecordSetT> List(string recordSetNameSuffix = default(string), int? pageSize = default(int?))
         {
-            return Extensions.Synchronize(() => ListAsync(recordSetNameSuffix, pageSize));
+            return Extensions.Synchronize(() => ListAsync(recordSetNameSuffix, pageSize, pageSize == null, CancellationToken.None));
         }
 
-        public async Task<IPagedCollection<RecordSetT>> ListAsync(string recordSetNameSuffix = default(string), int? pageSize = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<RecordSetT>> ListAsync(string recordSetNameSuffix = default(string), int? pageSize = default(int?), bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<RecordSetT, RecordSetInner>.LoadPage(
                 async (cancellation) => await parent.Manager.Inner.RecordSets.ListByTypeAsync(
@@ -114,7 +114,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
                     top: pageSize,
                     recordsetnamesuffix: recordSetNameSuffix,
                     cancellationToken: cancellationToken),
+                parent.Manager.Inner.RecordSets.ListByTypeNextAsync,
                 WrapModel,
+                loadAllPages,
                 cancellationToken);
         }
     }

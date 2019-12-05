@@ -6,13 +6,13 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    public class PrivateDnsManager : Manager<IPrivateDnsManagementClient>, IPrivateDnsManager
+    public class PrivateDnsZoneManager : Manager<IPrivateDnsManagementClient>, IPrivateDnsZoneManager
     {
         #region Fluent private collections
         private IPrivateDnsZones privateDnsZones;
         #endregion
 
-        public PrivateDnsManager(RestClient restClient, string subscriptionId) :
+        public PrivateDnsZoneManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new PrivateDnsManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
@@ -20,20 +20,20 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         {
         }
 
-        #region PrivateDnsManager builder
+        #region PrivateDnsZoneManager builder
         
-        public static IPrivateDnsManager Authenticate(AzureCredentials credentials, string subscriptionId)
+        public static IPrivateDnsZoneManager Authenticate(AzureCredentials credentials, string subscriptionId)
         {
-            return new PrivateDnsManager(RestClient.Configure()
+            return new PrivateDnsZoneManager(RestClient.Configure()
                 .WithEnvironment(credentials.Environment)
                 .WithCredentials(credentials)
                 .WithDelegatingHandler(new ProviderRegistrationDelegatingHandler(credentials))
                 .Build(), subscriptionId);
         }
 
-        public static IPrivateDnsManager Authenticate(RestClient restClient, string subscriptionId)
+        public static IPrivateDnsZoneManager Authenticate(RestClient restClient, string subscriptionId)
         {
-            return new PrivateDnsManager(restClient, subscriptionId);
+            return new PrivateDnsZoneManager(restClient, subscriptionId);
         }
 
         public static IConfigurable Configure()
@@ -47,16 +47,16 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         
         public interface IConfigurable : IAzureConfigurable<IConfigurable>
         {
-            IPrivateDnsManager Authenticate(AzureCredentials credentials, string subscriptionId);
+            IPrivateDnsZoneManager Authenticate(AzureCredentials credentials, string subscriptionId);
         }
 
         protected class Configurable :
             AzureConfigurable<IConfigurable>,
             IConfigurable
         {
-            public IPrivateDnsManager Authenticate(AzureCredentials credentials, string subscriptionId)
+            public IPrivateDnsZoneManager Authenticate(AzureCredentials credentials, string subscriptionId)
             {
-                return new PrivateDnsManager(BuildRestClient(credentials), subscriptionId);
+                return new PrivateDnsZoneManager(BuildRestClient(credentials), subscriptionId);
             }
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
     }
 
-    public interface IPrivateDnsManager : IManager<IPrivateDnsManagementClient>
+    public interface IPrivateDnsZoneManager : IManager<IPrivateDnsManagementClient>
     {
         IPrivateDnsZones PrivateDnsZones { get; }
     }
