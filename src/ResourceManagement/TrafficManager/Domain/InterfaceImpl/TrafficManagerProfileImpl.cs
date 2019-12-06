@@ -312,6 +312,30 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             }
         }
 
+        long? ITrafficManagerProfile.IntervalInSeconds 
+        {
+            get
+            {
+                return this.IntervalInSeconds();
+            }
+        }
+
+        long? ITrafficManagerProfile.TimeoutInSeconds
+        {
+            get
+            {
+                return this.TimeoutInSeconds();
+            }
+        }
+
+        long? ITrafficManagerProfile.ToleratedNumberOfFailures
+        {
+            get
+            {
+                return this.ToleratedNumberOfFailures();
+            }
+        }
+
         /// <summary>
         /// Specifies that end user traffic should be distributed to the endpoints based on the weight assigned
         /// to the endpoint.
@@ -515,6 +539,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return this.WithHttpsMonitoring(port, path);
         }
 
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringFastFailover.WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures)
+        {
+            return this.WithFastFailover(intervalInSeconds, timeoutInSeconds, toleratedNumberOfFailures);
+        }
+
         /// <summary>
         /// Specify to use HTTP monitoring for the endpoints that checks for HTTP 200 response from the path '/'
         /// at regular intervals, using port 80.
@@ -557,6 +586,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration.WithHttpsMonitoring(int port, string path)
         {
             return this.WithHttpsMonitoring(port, path);
+        }
+
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringFastFailover.WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures)
+        {
+            return this.WithFastFailover(intervalInSeconds, timeoutInSeconds, toleratedNumberOfFailures);
         }
     }
 }

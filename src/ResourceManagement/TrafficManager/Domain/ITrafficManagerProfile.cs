@@ -71,5 +71,26 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// the profile, and the configured profile status.
         /// </summary>
         Microsoft.Azure.Management.TrafficManager.Fluent.ProfileMonitorStatus MonitorStatus { get; }
+
+        /// <summary>
+        /// Gets the monitor interval for endpoints in this profile.
+        /// This is the interval at which Traffic Manager will check the health
+        /// of each endpoint in this profile.
+        /// </summary>
+        long? IntervalInSeconds { get; }
+
+        /// <summary>
+        /// Gets the monitor timeout for endpoints in this profile.
+        /// This is the time that Traffic Manager allows endpoints in this
+        /// profile to response to the health check.
+        /// </summary>
+        long? TimeoutInSeconds { get; }
+
+        /// <summary>
+        /// Gets the number of consecutive failed health check that
+        /// Traffic Manager tolerates before declaring an endpoint in this
+        /// profile Degraded after the next failed health check.
+        /// </summary>
+        long? ToleratedNumberOfFailures { get; }
     }
 }

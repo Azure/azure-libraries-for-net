@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringConfiguration,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithMonitoringFastFailover,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTtl,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithProfileStatus,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint
@@ -145,6 +146,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         /// <param name="path">The monitoring path.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithHttpsMonitoring(int port, string path);
+    }
+
+    /// <summary>
+    /// The stage of the traffic manager profile definition allowing to specify the fast failover settings for monitoring.
+    /// </summary>
+    public interface IWithMonitoringFastFailover
+    {
+        /// <summary>
+        /// Specify the fast failover settings for monitoring.
+        /// </summary>
+        /// <param name="intervalInSeconds">The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile. Possible values include: 10, 30.</param>
+        /// <param name="timeoutInSeconds">The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check. Possible values: between 5 to 10.</param>
+        /// <param name="toleratedNumberOfFailures">The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check. Possible values: between 0 and 9.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithCreate WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures = default(long?));
     }
 
     /// <summary>

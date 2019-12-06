@@ -181,6 +181,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             return (int)Inner.MonitorConfig.Port.Value;
         }
 
+        public long? IntervalInSeconds()
+        {
+            return Inner.MonitorConfig?.IntervalInSeconds;
+        }
+
+        public long? TimeoutInSeconds()
+        {
+            return Inner.MonitorConfig?.TimeoutInSeconds;
+        }
+
+        public long? ToleratedNumberOfFailures()
+        {
+            return Inner.MonitorConfig?.ToleratedNumberOfFailures;
+        }
+
         ///GENMHASH:C69FFBA25D969C2C45775433EBFD49EA:01BC02A541C8C945111AEC0AF9DB6FF1
         public TrafficManagerProfileImpl WithPriorityBasedRouting()
         {
@@ -232,6 +247,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:088F115956764D909356F941714DD214:72C3991B01AC2306292D697D6CB9A5EE
         public TrafficManagerProfileImpl WithHttpMonitoring(int port, string path)
         {
+            EnsureMonitorConfig();
+
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "http";
@@ -247,9 +264,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:339D7124F9EE53875E3B1321B2E2D9FD:A28860E9058E7040BCE32AA17CDB136B
         public TrafficManagerProfileImpl WithHttpsMonitoring(int port, string path)
         {
+            EnsureMonitorConfig();
+
             Inner.MonitorConfig.Port = port;
             Inner.MonitorConfig.Path = path;
             Inner.MonitorConfig.Protocol = "https";
+            return this;
+        }
+
+        public TrafficManagerProfileImpl WithFastFailover(long? intervalInSeconds, long? timeoutInSeconds, long? toleratedNumberOfFailures = default(long?))
+        {
+            EnsureMonitorConfig();
+
+            Inner.MonitorConfig.IntervalInSeconds = intervalInSeconds;
+            Inner.MonitorConfig.ToleratedNumberOfFailures = toleratedNumberOfFailures;
+            Inner.MonitorConfig.TimeoutInSeconds = timeoutInSeconds;
             return this;
         }
 
@@ -308,6 +337,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public TrafficManagerEndpointImpl UpdateNestedProfileTargetEndpoint(string name)
         {
             return this.endpoints.UpdateNestedProfileEndpoint(name);
+        }
+
+        private void EnsureMonitorConfig()
+        {
+            if (Inner.MonitorConfig == null)
+            {
+                Inner.MonitorConfig = new MonitorConfig();
+            }
         }
     }
 }
