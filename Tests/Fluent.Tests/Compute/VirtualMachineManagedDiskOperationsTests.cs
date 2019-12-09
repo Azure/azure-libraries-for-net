@@ -73,7 +73,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -248,7 +248,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -430,7 +430,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -522,7 +522,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -590,8 +590,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             // Start: Add bunch of empty managed disks
                             .WithNewDataDisk(1)
                             .WithNewDataDisk(1, 1, CachingTypes.ReadOnly)
-                            .WithNewDataDisk(creatableEmptyDisk1) 
-                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)      
+                            .WithNewDataDisk(creatableEmptyDisk1)
+                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
                             .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
@@ -692,7 +692,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -740,7 +740,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }

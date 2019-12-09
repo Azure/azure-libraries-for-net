@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public DiskImpl WithHyperVGeneration(HyperVGeneration hyperVGeneration)
         {
-            Inner.HyperVGeneration =hyperVGeneration;
+            Inner.HyperVGeneration = hyperVGeneration;
             return this;
         }
 

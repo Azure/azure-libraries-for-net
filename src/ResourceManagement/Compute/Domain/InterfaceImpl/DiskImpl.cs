@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.WithOSType(osType);
         }
-        
+
         /// <summary>
         /// Specifies the hypervisor generation of the managed disk.
         /// </summary>

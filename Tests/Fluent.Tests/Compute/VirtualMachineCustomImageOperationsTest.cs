@@ -142,7 +142,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -201,7 +201,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -336,7 +336,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
