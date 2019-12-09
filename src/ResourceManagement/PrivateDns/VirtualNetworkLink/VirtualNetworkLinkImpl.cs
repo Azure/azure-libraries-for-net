@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies to disable auto-registration for virtual network records.
+        /// Disables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkLink.Definition.IWithAttach<PrivateDnsZone.Definition.IWithCreate> VirtualNetworkLink.Definition.IWithAutoRegistration<PrivateDnsZone.Definition.IWithCreate>.DisableAutoRegistration()
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies to enable auto-registration for virtual network records.
+        /// Enables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkLink.Definition.IWithAttach<PrivateDnsZone.Definition.IWithCreate> VirtualNetworkLink.Definition.IWithAutoRegistration<PrivateDnsZone.Definition.IWithCreate>.EnableAutoRegistration()
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies to enable auto-registration for virtual network records.
+        /// Enables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkLink.UpdateDefinition.IWithAttach<PrivateDnsZone.Update.IUpdate> VirtualNetworkLink.UpdateDefinition.IWithAutoRegistration<PrivateDnsZone.Update.IUpdate>.EnableAutoRegistration()
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies to disable auto-registration for virtual network records.
+        /// Disables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkLink.UpdateDefinition.IWithAttach<PrivateDnsZone.Update.IUpdate> VirtualNetworkLink.UpdateDefinition.IWithAutoRegistration<PrivateDnsZone.Update.IUpdate>.DisableAutoRegistration()
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies to enable auto-registration for virtual network records.
+        /// Enables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the update.</return>
         VirtualNetworkLink.Update.IUpdate VirtualNetworkLink.Update.IWithAutoRegistration.EnableAutoRegistration()
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies to disable auto-registration for virtual network records.
+        /// Disables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the update.</return>
         VirtualNetworkLink.Update.IUpdate VirtualNetworkLink.Update.IWithAutoRegistration.DisableAutoRegistration()

@@ -18,24 +18,23 @@ namespace ManagePrivateDns
         private const string CustomDomainName = "private.contoso.com";
 
         /**
-         * Azure Private DNS sample for managing DNS zones.
-         *  - Creates a Private DNS Zone (private.contoso.com)
-         *  - Creates a Virtual Network
-         *  - Link a Virtual Network
-         *  - Creates test Virtual Machines
-         *  - Creates an additional DNS Record
+         * Azure private DNS sample for managing DNS zones.
+         *  - Creates a private DNS zone (private.contoso.com)
+         *  - Creates a virtual network
+         *  - Link a virtual network
+         *  - Creates test virtual machines
+         *  - Creates an additional DNS record
          *  - Test the private DNS zone
          */
         public static void RunSample(IAzure azure)
         {
-            string rgName = SdkContext.RandomResourceName("MyARG", 24);
-            string vnName = SdkContext.RandomResourceName("MyVN", 24);
-            string subnetName = SdkContext.RandomResourceName("BackendSubnet", 24);
-            string linkName = SdkContext.RandomResourceName("MyVNLINK", 24);
-            string vm1Name = SdkContext.RandomResourceName("MyVM01", 24);
-            string vm2Name = SdkContext.RandomResourceName("MyVM02", 24);
-            string rsName = SdkContext.RandomResourceName("MyRecordSet", 24);
-            string osDiskName = SdkContext.RandomResourceName("OSDisk", 24);
+            string rgName = SdkContext.RandomResourceName("rgNEMV_", 24);
+            string vnName = SdkContext.RandomResourceName("vnetwork1-", 24);
+            string subnetName = SdkContext.RandomResourceName("subnet1-", 24);
+            string linkName = SdkContext.RandomResourceName("vnlink1-", 24);
+            string vm1Name = SdkContext.RandomResourceName("vm1-", 24);
+            string vm2Name = SdkContext.RandomResourceName("vm2-", 24);
+            string rsName = SdkContext.RandomResourceName("recordset1-", 24);
 
             try
             {
@@ -44,7 +43,7 @@ namespace ManagePrivateDns
                     .Create();
 
                 //============================================================
-                // Creates a Private DNS Zone
+                // Creates a private DNS zone
 
                 Utilities.Log("Creating private DNS zone " + CustomDomainName + "...");
                 var privateDnsZone = azure.PrivateDnsZones.Define(CustomDomainName)
@@ -54,9 +53,8 @@ namespace ManagePrivateDns
                 Utilities.Log("Created private DNS zone " + privateDnsZone.Name);
                 Utilities.Print(privateDnsZone);
 
-
                 //============================================================
-                // Creates a Virtual Network
+                // Creates a virtual network
 
                 Utilities.Log("Creating virtual network " + vnName + "...");
                 INetwork virtualNetwork = azure.Networks.Define(vnName)
@@ -68,7 +66,7 @@ namespace ManagePrivateDns
                 Utilities.Log("Created virtual network " + virtualNetwork.Name);
 
                 //============================================================
-                // Link a Virtual Network
+                // Link a virtual network
 
                 Utilities.Log("Creating virtual network link " + linkName + " within private zone " + privateDnsZone.Name + " ...");
                 privateDnsZone.Update()
@@ -82,7 +80,7 @@ namespace ManagePrivateDns
                 Utilities.Print(privateDnsZone);
 
                 //============================================================
-                // Creates test Virtual Machines
+                // Creates test virtual machines
 
                 Utilities.Log("Creating first virtual machine " + vm1Name + "...");
                 var virtualMachine1 = azure.VirtualMachines.Define(vm1Name)
@@ -95,10 +93,6 @@ namespace ManagePrivateDns
                     .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012Datacenter)
                     .WithAdminUsername("azureadmin")
                     .WithAdminPassword("Azure12345678")
-                    .WithUnmanagedDisks()
-                    .WithOSDiskCaching(CachingTypes.ReadWrite)
-                    .WithSize(VirtualMachineSizeTypes.StandardD3)
-                    .WithOSDiskName(osDiskName)
                     .Create();
                 Utilities.Log("Created first virtual machine " + virtualMachine1.Name);
                 Utilities.Log("Starting first virtual machine " + virtualMachine1.Name + "...");
@@ -116,10 +110,6 @@ namespace ManagePrivateDns
                     .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012Datacenter)
                     .WithAdminUsername("Foo12")
                     .WithAdminPassword("BaR@12!Foo")
-                    .WithUnmanagedDisks()
-                    .WithOSDiskCaching(CachingTypes.ReadWrite)
-                    .WithSize(VirtualMachineSizeTypes.StandardD3)
-                    .WithOSDiskName(osDiskName)
                     .Create();
                 Utilities.Log("Created second virtual machine " + virtualMachine2.Name);
                 Utilities.Log("Starting second virtual machine " + virtualMachine2.Name + "...");
@@ -127,7 +117,7 @@ namespace ManagePrivateDns
                 Utilities.Log("Started second virtual machine " + virtualMachine2.Name);
 
                 //============================================================
-                // Creates an additional DNS Record
+                // Creates an additional DNS record
                 Utilities.Log("Creating additional record set " + rsName + "...");
                 privateDnsZone.Update()
                     .DefineARecordSet(rsName)

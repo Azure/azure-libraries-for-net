@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         /// <return>The private zones</return>
         public IEnumerable<IPrivateDnsZone> List(int? pageSize = default(int?))
         {
-            return Extensions.Synchronize(() => ListAsync(pageSize, true, CancellationToken.None));
+            return Extensions.Synchronize(() => ListAsync(pageSize, pageSize == null, CancellationToken.None));
         }
 
         /// <summary>
@@ -185,6 +185,22 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
                 WrapModel,
                 loadAllPages,
                 cancellationToken);
+        }
+
+        IPrivateDnsZoneManager IHasManager<IPrivateDnsZoneManager>.Manager
+        {
+            get
+            {
+                return manager;
+            }
+        }
+
+        IPrivateZonesOperations IHasInner<IPrivateZonesOperations>.Inner
+        {
+            get
+            {
+                return manager.Inner.PrivateZones;
+            }
         }
 
         protected PrivateDnsZoneImpl WrapModel(string name)

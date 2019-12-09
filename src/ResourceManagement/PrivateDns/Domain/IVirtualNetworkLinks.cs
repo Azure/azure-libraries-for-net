@@ -11,7 +11,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
 
     public interface IVirtualNetworkLinks :
         ISupportsGettingById<IVirtualNetworkLink>,
-        ISupportsGettingByName<IVirtualNetworkLink>
+        ISupportsGettingByName<IVirtualNetworkLink>,
+        IHasParent<IPrivateDnsZone>,
+        IHasInner<IVirtualNetworkLinksOperations>
     {
         /// <summary>
         /// Deletes a record set from Azure, identifying it by its resource ID.

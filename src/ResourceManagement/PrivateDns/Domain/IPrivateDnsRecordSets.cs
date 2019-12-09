@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
     public interface IPrivateDnsRecordSets<RecordSetT> :
         ISupportsGettingById<RecordSetT>,
         ISupportsGettingByName<RecordSetT>,
-        IHasParent<IPrivateDnsZone>
+        IHasParent<IPrivateDnsZone>,
+        IHasInner<IRecordSetsOperations>
     {
         /// <summary>
         /// Deletes a record set from Azure, identifying it by its resource ID.

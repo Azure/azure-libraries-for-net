@@ -119,5 +119,13 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
                 loadAllPages,
                 cancellationToken);
         }
+
+        IRecordSetsOperations IHasInner<IRecordSetsOperations>.Inner
+        {
+            get
+            {
+                return parent.Manager.Inner.RecordSets;
+            }
+        }
     }
 }

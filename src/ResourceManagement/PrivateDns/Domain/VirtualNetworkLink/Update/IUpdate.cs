@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.VirtualNetworkLink.Update
     public interface IWithAutoRegistration
     {
         /// <summary>
-        /// Specifies to enable auto-registration for virtual network records.
+        /// Enables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the update.</return>
         IUpdate EnableAutoRegistration();
 
         /// <summary>
-        /// Specifies to disable auto-registration for virtual network records.
+        /// Disables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the update.</return>
         IUpdate DisableAutoRegistration();

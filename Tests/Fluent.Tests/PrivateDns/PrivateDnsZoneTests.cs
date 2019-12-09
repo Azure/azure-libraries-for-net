@@ -85,6 +85,7 @@ namespace Fluent.Tests.PrivateDns
 
                     EnsureETagExceptionIsThrown(() => 
                     {
+                        //The request of update should fail because ETag mismatch
                         privateDnsZone.Update()
                             .WithEtagCheck(privateDnsZone.ETag + "-foo")
                             .Apply();
@@ -129,6 +130,7 @@ namespace Fluent.Tests.PrivateDns
 
                     EnsureETagExceptionIsThrown(() =>
                     {
+                        //The request of deletion should fail because ETag mismatch
                         azure.PrivateDnsZones.DeleteById(privateDnsZone.Id, privateDnsZone.ETag + "-foo");
                     });
 

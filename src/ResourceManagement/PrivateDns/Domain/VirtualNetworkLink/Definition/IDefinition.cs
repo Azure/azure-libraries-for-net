@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.VirtualNetworkLink.Defini
     public interface IWithAutoRegistration<ParentT>
     {
         /// <summary>
-        /// Specifies to enable auto-registration for virtual network records.
+        /// Enables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         IWithAttach<ParentT> EnableAutoRegistration();
 
         /// <summary>
-        /// Specifies to disable auto-registration for virtual network records.
+        /// Disables auto-registration for virtual network records.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         IWithAttach<ParentT> DisableAutoRegistration();
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.VirtualNetworkLink.Defini
     public interface IWithRegion<ParentT>
     {
         /// <summary>
-        /// Specifies where the virtual network link lives.
+        /// Specifies the region for the virtual network link.
         /// </summary>
         /// <param name="regionName">The value of region name.</param>
         /// <return>The next stage of the definition.</return>
         IWithAttach<ParentT> WithRegion(string regionName);
 
         /// <summary>
-        /// Specifies where the virtual network link lives.
+        /// Specifies the region for the virtual network link.
         /// </summary>
         /// <param name="region">The value of region.</param>
         /// <return>The next stage of the definition.</return>

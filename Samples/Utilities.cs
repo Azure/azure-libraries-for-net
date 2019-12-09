@@ -1746,10 +1746,8 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\tMax number of record sets: ").Append(privateDnsZone.MaxNumberOfRecordSets)
                     .Append("\n\tNumber of virtual network links: ").Append(privateDnsZone.NumberOfVirtualNetworkLinks)
                     .Append("\n\tMax number of virtual network links: ").Append(privateDnsZone.NumberOfVirtualNetworkLinks)
-                    .Append("\n\tNumber of virtual network links with registration: ")
-                        .Append(privateDnsZone.NumberOfVirtualNetworkLinksWithRegistration)
-                    .Append("\n\tMax number of virtual network links with registration: ")
-                        .Append(privateDnsZone.MaxNumberOfVirtualNetworkLinksWithRegistration);
+                    .Append("\n\tNumber of virtual network links with registration: ").Append(privateDnsZone.NumberOfVirtualNetworkLinksWithRegistration)
+                    .Append("\n\tMax number of virtual network links with registration: ").Append(privateDnsZone.MaxNumberOfVirtualNetworkLinksWithRegistration);
 
             var aRecordSets = privateDnsZone.ARecordSets.List();
             builder.Append("\n\tA Record sets:");

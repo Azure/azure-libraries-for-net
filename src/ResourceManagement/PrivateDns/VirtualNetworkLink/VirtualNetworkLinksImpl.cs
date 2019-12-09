@@ -154,6 +154,22 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
                 cancellationToken);
         }
 
+        IPrivateDnsZone IHasParent<IPrivateDnsZone>.Parent
+        {
+            get
+            {
+                return Parent;
+            }
+        }
+
+        IVirtualNetworkLinksOperations IHasInner<IVirtualNetworkLinksOperations>.Inner
+        {
+            get
+            {
+                return Parent.Manager.Inner.VirtualNetworkLinks;
+            }
+        }
+
         private IVirtualNetworkLink WrapModel(VirtualNetworkLinkInner inner)
         {
             return inner == null ? null : new VirtualNetworkLinkImpl(Parent, inner);

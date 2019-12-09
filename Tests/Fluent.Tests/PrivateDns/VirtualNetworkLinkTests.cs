@@ -68,6 +68,7 @@ namespace Fluent.Tests.PrivateDns
                     AggregateException compositeException = null;
                     try
                     {
+                        //The request of creation should fail because resource already exists
                         privateDnsZone = azure.PrivateDnsZones.Define(topLevelDomain)
                             .WithExistingResourceGroup(groupName)
                             .DefineVirtualNetworkLink(virtualNetworkLinkName)
@@ -81,17 +82,7 @@ namespace Fluent.Tests.PrivateDns
                     {
                         compositeException = exception;
                     }
-                    Assert.NotNull(compositeException);
-                    Assert.NotNull(compositeException.InnerExceptions);
-                    Assert.True(compositeException.InnerExceptions.Count == 1);
-                    foreach (var exception in compositeException.InnerExceptions)
-                    {
-                        Assert.True(exception is CloudException);
-                        CloudError cloudError = ((CloudException)exception).Body;
-                        Assert.NotNull(cloudError);
-                        Assert.NotNull(cloudError.Code);
-                        Assert.Contains("PreconditionFailed", cloudError.Code);
-                    }
+                    ValidateAggregateException(compositeException, 1);
                 }
                 finally
                 {
@@ -159,6 +150,7 @@ namespace Fluent.Tests.PrivateDns
                     AggregateException compositeException = null;
                     try
                     {
+                        //The request of update should fail because ETag mismatch
                         privateDnsZone.Update()
                             .UpdateVirtualNetworkLink(virtualNetworkLinkName)
                                 .EnableAutoRegistration()
@@ -170,17 +162,7 @@ namespace Fluent.Tests.PrivateDns
                     {
                         compositeException = exception;
                     }
-                    Assert.NotNull(compositeException);
-                    Assert.NotNull(compositeException.InnerExceptions);
-                    Assert.True(compositeException.InnerExceptions.Count == 1);
-                    foreach (var exception in compositeException.InnerExceptions)
-                    {
-                        Assert.True(exception is CloudException);
-                        CloudError cloudError = ((CloudException)exception).Body;
-                        Assert.NotNull(cloudError);
-                        Assert.NotNull(cloudError.Code);
-                        Assert.Contains("PreconditionFailed", cloudError.Code);
-                    }
+                    ValidateAggregateException(compositeException, 1);
 
                     privateDnsZone.Update()
                             .UpdateVirtualNetworkLink(virtualNetworkLinkName)
@@ -262,6 +244,7 @@ namespace Fluent.Tests.PrivateDns
                     AggregateException compositeException = null;
                     try
                     {
+                        //The request of deletion should fail because ETag mismatch
                         privateDnsZone.Update()
                             .WithoutVirtualNetworkLink(virtualNetworkLinkName, link.ETag + "-foo")
                             .Apply();
@@ -270,17 +253,7 @@ namespace Fluent.Tests.PrivateDns
                     {
                         compositeException = exception;
                     }
-                    Assert.NotNull(compositeException);
-                    Assert.NotNull(compositeException.InnerExceptions);
-                    Assert.True(compositeException.InnerExceptions.Count == 1);
-                    foreach (var exception in compositeException.InnerExceptions)
-                    {
-                        Assert.True(exception is CloudException);
-                        CloudError cloudError = ((CloudException)exception).Body;
-                        Assert.NotNull(cloudError);
-                        Assert.NotNull(cloudError.Code);
-                        Assert.Contains("PreconditionFailed", cloudError.Code);
-                    }
+                    ValidateAggregateException(compositeException, 1);
 
                     privateDnsZone.Update()
                             .WithoutVirtualNetworkLink(virtualNetworkLinkName, link.ETag)
@@ -300,6 +273,21 @@ namespace Fluent.Tests.PrivateDns
                     {
                     }
                 }
+            }
+        }
+
+        private void ValidateAggregateException(AggregateException aggregateException, int innerExceptionsCount)
+        {
+            Assert.NotNull(aggregateException);
+            Assert.NotNull(aggregateException.InnerExceptions);
+            Assert.True(aggregateException.InnerExceptions.Count == innerExceptionsCount);
+            foreach (var exception in aggregateException.InnerExceptions)
+            {
+                Assert.True(exception is CloudException);
+                CloudError cloudError = ((CloudException)exception).Body;
+                Assert.NotNull(cloudError);
+                Assert.NotNull(cloudError.Code);
+                Assert.Contains("PreconditionFailed", cloudError.Code);
             }
         }
     }

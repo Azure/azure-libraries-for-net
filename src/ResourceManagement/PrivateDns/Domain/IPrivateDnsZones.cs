@@ -15,7 +15,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
     public interface IPrivateDnsZones :
         ISupportsCreating<PrivateDnsZone.Definition.IBlank>,
         ISupportsGettingById<IPrivateDnsZone>,
-        ISupportsGettingByResourceGroup<IPrivateDnsZone>
+        ISupportsGettingByResourceGroup<IPrivateDnsZone>,
+        IHasManager<IPrivateDnsZoneManager>,
+        IHasInner<IPrivateZonesOperations>
     {
         /// <summary>
         /// Deletes a private zone from Azure, identifying it by its resource ID.
