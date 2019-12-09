@@ -291,14 +291,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Update
     public interface IWithETagCheck
     {
         /// <summary>
-        /// Specifies that If-Match header needs to set to the current eTag value associated
+        /// Specifies If-Match header to the current eTag value associated
         /// with the private DNS Zone.
         /// </summary>
         /// <return>The next stage of the update.</return>
         PrivateDnsZone.Update.IUpdate WithETagCheck();
 
         /// <summary>
-        /// Specifies that if-Match header needs to set to the given eTag value.
+        /// Specifies If-Match header to the given eTag value.
         /// </summary>
         /// <param name="eTagValue">The eTag value.</param>
         /// <return>The next stage of the update.</return>

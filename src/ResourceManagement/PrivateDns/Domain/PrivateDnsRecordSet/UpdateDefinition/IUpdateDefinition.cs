@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsRecordSet.Updat
     public interface IWithEtagCheck<ParentT>
     {
         /// <summary>
-        /// Specifies that If-None-Match header to prevent updating an existing record set.
+        /// Specifies If-None-Match header to prevent updating an existing record set.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         PrivateDnsRecordSet.UpdateDefinition.IWithAttach<ParentT> WithETagCheck();

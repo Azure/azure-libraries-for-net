@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         {
             var fullyQualifiedType = type;
             var parts = fullyQualifiedType.Split('/');
-            return (RecordType)Enum.Parse(typeof(RecordType), parts[parts.Length - 1]);
+            return RecordTypeEnumExtension.ParseRecordType(parts[parts.Length - 1]).Value;
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that if-Match header to prevent updating existing resource.
+        /// Specifies If-Match header to prevent updating existing resource.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         PrivateDnsRecordSet.Definition.IWithAttach<IWithCreate> PrivateDnsRecordSet.Definition.IWithEtagCheck<PrivateDnsZone.Definition.IWithCreate>.WithETagCheck()
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that if-Match header needs to set to the given eTag value.
+        /// Specifies If-Match header needs to set to the given eTag value.
         /// </summary>
         /// <param name="eTagValue">The eTag value.</param>
         /// <return>The next stage of the update.</return>
@@ -550,8 +550,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that If-Match header needs to set to the current eTag value associated
-        /// with the record set.
+        /// Specifies If-Match header to the current eTag value associated with the record set.
         /// </summary>
         /// <return>The next stage of the update.</return>
         PrivateDnsRecordSet.Update.IUpdate PrivateDnsRecordSet.Update.IWithETagCheck.WithETagCheck()
@@ -1088,7 +1087,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that If-None-Match header to prevent updating an existing record set.
+        /// Specifies If-None-Match header to prevent updating an existing record set.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         PrivateDnsRecordSet.UpdateDefinition.IWithAttach<PrivateDnsZone.Update.IUpdate> PrivateDnsRecordSet.UpdateDefinition.IWithEtagCheck<PrivateDnsZone.Update.IUpdate>.WithETagCheck()

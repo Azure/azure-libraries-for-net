@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that If-None-Match header needs to set to  to prevent updating an existing virtual network link.
+        /// Specifies If-None-Match header to prevent updating an existing virtual network link.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkLink.Definition.IWithAttach<PrivateDnsZone.Definition.IWithCreate> VirtualNetworkLink.Definition.IWithETagCheck<PrivateDnsZone.Definition.IWithCreate>.WithETagCheck()
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that If-None-Match header needs to set to  to prevent updating an existing virtual network link.
+        /// Specifies If-None-Match header to prevent updating an existing virtual network link.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkLink.UpdateDefinition.IWithAttach<PrivateDnsZone.Update.IUpdate> VirtualNetworkLink.UpdateDefinition.IWithETagCheck<PrivateDnsZone.Update.IUpdate>.WithETagCheck()
@@ -360,8 +360,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that If-Match header needs to set to the current eTag value associated
-        /// with the virtual network link.
+        /// Specifies If-Match header to the current eTag value associated with the virtual network link.
         /// </summary>
         /// <return>The next stage of the update.</return>
         VirtualNetworkLink.Update.IUpdate VirtualNetworkLink.Update.IWithETagCheck.WithETagCheck()
@@ -370,7 +369,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         }
 
         /// <summary>
-        /// Specifies that if-Match header needs to set to the given eTag value.
+        /// Specifies If-Match header to the given eTag value.
         /// </summary>
         /// <param name="eTagValue">The eTag value.</param>
         /// <return>The next stage of the update.</return>

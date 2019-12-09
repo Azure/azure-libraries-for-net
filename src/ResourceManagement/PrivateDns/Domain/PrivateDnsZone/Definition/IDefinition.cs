@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsZone.Definition
     public interface IWithETagCheck
     {
         /// <summary>
-        /// Specifies that If-None-Match header to prevent updating an existing private DNS zone.
+        /// Specifies If-None-Match header to prevent updating an existing private DNS zone.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         PrivateDnsZone.Definition.IWithCreate WithETagCheck();

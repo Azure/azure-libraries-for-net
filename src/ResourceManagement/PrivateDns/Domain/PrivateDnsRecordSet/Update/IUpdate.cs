@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.PrivateDnsRecordSet.Updat
     public interface IWithETagCheck
     {
         /// <summary>
-        /// Specifies that If-Match header needs to set to the current eTag value associated
+        /// Specifies If-Match header to the current eTag value associated
         /// with the record set.
         /// </summary>
         /// <return>The next stage of the update.</return>
         PrivateDnsRecordSet.Update.IUpdate WithETagCheck();
 
         /// <summary>
-        /// Specifies that if-Match header needs to set to the given eTag value.
+        /// Specifies If-Match header to the given eTag value.
         /// </summary>
         /// <param name="eTagValue">The eTag value.</param>
         /// <return>The next stage of the update.</return>

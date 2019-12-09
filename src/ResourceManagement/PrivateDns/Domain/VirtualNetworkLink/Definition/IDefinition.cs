@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.VirtualNetworkLink.Defini
     public interface IWithETagCheck<ParentT>
     {
         /// <summary>
-        /// Specifies that If-None-Match header needs to set to  to prevent updating an existing virtual network link.
+        /// Specifies If-None-Match header to prevent updating an existing virtual network link.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         IWithAttach<ParentT> WithETagCheck();

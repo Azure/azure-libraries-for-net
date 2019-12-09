@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Management.PrivateDns.Fluent.VirtualNetworkLink.Update
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The set of configurations that can be updated for virtual network link.
     /// </summary>
@@ -40,14 +40,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent.VirtualNetworkLink.Update
     public interface IWithETagCheck
     {
         /// <summary>
-        /// Specifies that If-Match header needs to set to the current eTag value associated
+        /// Specifies If-Match header to the current eTag value associated
         /// with the virtual network link.
         /// </summary>
         /// <return>The next stage of the update.</return>
         IUpdate WithETagCheck();
 
         /// <summary>
-        /// Specifies that if-Match header needs to set to the given eTag value.
+        /// Specifies If-Match header to the given eTag value.
         /// </summary>
         /// <param name="eTagValue">The eTag value.</param>
         /// <return>The next stage of the update.</return>
