@@ -33,6 +33,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
             var managedDataDiskNamePrefix = Utilities.CreateRandomName("ds-data-");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var publicIpDnsLabel = Utilities.CreateRandomName("pip");
+            var storageAccountName = Utilities.CreateRandomName("stg");
 
             var apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh";
             var apacheInstallCommand = "bash install_apache.sh";
@@ -71,6 +72,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                             .WithPublicSetting("fileUris", apacheInstallScriptUris)
                             .WithPublicSetting("commandToExecute", apacheInstallCommand)
                             .Attach()
+                        .WithNewStorageAccount(storageAccountName)
                         .WithSize(VirtualMachineSizeTypes.StandardD3V2)
                         .Create();
 
@@ -103,6 +105,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                         .WithRegion(region)
                         .WithExistingResourceGroup(rgName)
                         .WithLinuxFromVhd(specializedOSVhdUri)
+                        .WithStorageAccountName(storageAccountName)
                         .WithSizeInGB(100)
                         .Create();
 
@@ -123,6 +126,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                             .WithExistingResourceGroup(rgName)
                             .WithData()
                             .FromVhd(dataVhdUri)
+                            .WithStorageAccountName(storageAccountName)
                             .WithSizeInGB(150)
                             .WithSku(DiskSkuTypes.StandardLRS)
                             .Create();

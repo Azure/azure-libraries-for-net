@@ -215,10 +215,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var vmName = SdkContext.RandomResourceName("vm7-", 20);
+                var storageAccountName = SdkContext.RandomResourceName("stg", 17);
                 var uname = "juser";
                 var password = "123tEst!@|ac";
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
+                var storageManager = TestHelper.CreateStorageManager();
                 var rgName = TestUtilities.GenerateName("rgfluentchash-");
                 try
                 {
@@ -239,7 +241,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .Attach()
                             .WithNewUnmanagedDataDisk(100)
                             .WithSize(VirtualMachineSizeTypes.StandardDS5V2)
-                            .WithNewStorageAccount(SdkContext.RandomResourceName("stg", 17))
+                            .WithNewStorageAccount(storageAccountName)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -258,10 +260,13 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRegion(Location)
                             .WithNewResourceGroup(rgName)
                             .WithLinuxFromVhd(osVhdUri)
+                            .WithStorageAccountName(storageAccountName)
                             .Create();
 
                     // Create managed disk with Data from vm's lun0 data disk
                     //
+                    var storageAccount = storageManager.StorageAccounts.GetByResourceGroup(rgName, storageAccountName);
+
                     var dataDiskName1 = SdkContext.RandomResourceName("dsk", 15);
                     var vmNativeDataDisk1 = dataDisks[0];
                     var managedDataDisk1 = computeManager.Disks.Define(dataDiskName1)
@@ -269,6 +274,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewResourceGroup(rgName)
                             .WithData()
                             .FromVhd(vmNativeDataDisk1.VhdUri)
+                            .WithStorageAccount(storageAccount)
                             .Create();
 
                     // Create managed disk with Data from vm's lun1 data disk
@@ -280,6 +286,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewResourceGroup(rgName)
                             .WithData()
                             .FromVhd(vmNativeDataDisk2.VhdUri)
+                            .WithStorageAccountId(storageAccount.Id)
                             .Create();
 
                     // Create an image from the above managed disks

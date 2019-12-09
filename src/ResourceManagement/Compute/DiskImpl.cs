@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
+    using Microsoft.Azure.Management.Storage.Fluent;
 
     /// <summary>
     /// The implementation for Disk and its create and update interfaces.
@@ -384,6 +385,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public DiskImpl FromSnapshot(ISnapshot snapshot)
         {
             return FromSnapshot(snapshot.Id);
+        }
+
+        public DiskImpl WithStorageAccountId(string storageAccountId)
+        {
+            Inner.CreationData.StorageAccountId = storageAccountId;
+            return this;
+        }
+
+        public DiskImpl WithStorageAccountName(string storageAccountName)
+        {
+            var id = ResourceUtils.ConstructResourceId(this.Manager.SubscriptionId,
+                this.ResourceGroupName,
+                "Microsoft.Storage",
+                "storageAccounts",
+                storageAccountName,
+                "");
+            return this.WithStorageAccountId(id);
+        }
+
+        public DiskImpl WithStorageAccount(IStorageAccount account)
+        {
+            return this.WithStorageAccountId(account.Id);
         }
     }
 }

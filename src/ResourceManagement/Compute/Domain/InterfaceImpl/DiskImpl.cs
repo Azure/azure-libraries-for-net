@@ -8,10 +8,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Compute.Fluent.Disk.Definition;
     using Microsoft.Azure.Management.Compute.Fluent.Disk.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Microsoft.Rest;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-
+    using Microsoft.Azure.Management.Storage.Fluent;
 
     internal partial class DiskImpl
     {
@@ -182,7 +180,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromVhd.FromVhd(string vhdUrl)
+        Disk.Definition.IWithStorageAccount Disk.Definition.IWithDataDiskFromVhd.FromVhd(string vhdUrl)
         {
             return this.FromVhd(vhdUrl);
         }
@@ -302,7 +300,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Disk.Definition.IWithCreateAndSize Disk.Definition.IWithLinuxDiskSource.WithLinuxFromVhd(string vhdUrl)
+        Disk.Definition.IWithStorageAccount Disk.Definition.IWithLinuxDiskSource.WithLinuxFromVhd(string vhdUrl)
         {
             return this.WithLinuxFromVhd(vhdUrl);
         }
@@ -342,7 +340,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="sizeInGB">The disk size in GB.</param>
         /// <return>The next stage of the definition.</return>
-        Disk.Definition.IWithCreateAndSize Disk.Definition.IWithCreateAndSize.WithSizeInGB(int sizeInGB)
+        Disk.Definition.IWithCreate Disk.Definition.IWithCreateAndSize.WithSizeInGB(int sizeInGB)
         {
             return this.WithSizeInGB(sizeInGB);
         }
@@ -432,9 +430,39 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Disk.Definition.IWithCreateAndSize Disk.Definition.IWithWindowsDiskSource.WithWindowsFromVhd(string vhdUrl)
+        Disk.Definition.IWithStorageAccount Disk.Definition.IWithWindowsDiskSource.WithWindowsFromVhd(string vhdUrl)
         {
             return this.WithWindowsFromVhd(vhdUrl);
+        }
+
+        /// <summary>
+        /// Specifies the storage account id.
+        /// </summary>
+        /// <param name="storageAccountId">The storage account id</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize IWithStorageAccount.WithStorageAccountId(string storageAccountId)
+        {
+            return this.WithStorageAccountId(storageAccountId);
+        }
+
+        /// <summary>
+        /// Specifies the storage account name in same resource group.
+        /// </summary>
+        /// <param name="storageAccountName">The storage account name in same resource group</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize IWithStorageAccount.WithStorageAccountName(string storageAccountName)
+        {
+            return this.WithStorageAccountName(storageAccountName);
+        }
+
+        /// <summary>
+        /// Specifies the storage account.
+        /// </summary>
+        /// <param name="account">The storage account</param>
+        /// <returns>The next stage of the definition</returns>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize IWithStorageAccount.WithStorageAccount(IStorageAccount account)
+        {
+            return this.WithStorageAccount(account);
         }
     }
 }
