@@ -374,22 +374,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// <summary>
         /// Specifies the storage account id.
         /// </summary>
-        /// <param name="storageAccountId">The storage account id</param>
-        /// <returns>The next stage of the definition</returns>
+        /// <param name="storageAccountId">The storage account id.</param>
+        /// <returns>The next stage of the definition.</returns>
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithStorageAccountId(string storageAccountId);
 
         /// <summary>
         /// Specifies the storage account name in same resource group.
         /// </summary>
-        /// <param name="storageAccountName">The storage account name in same resource group</param>
-        /// <returns>The next stage of the definition</returns>
+        /// <param name="storageAccountName">The storage account name in same resource group.</param>
+        /// <returns>The next stage of the definition.</returns>
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithStorageAccountName(string storageAccountName);
 
         /// <summary>
         /// Specifies the storage account.
         /// </summary>
-        /// <param name="account">The storage account</param>
-        /// <returns>The next stage of the definition</returns>
+        /// <param name="account">The storage account.</param>
+        /// <returns>The next stage of the definition.</returns>
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithStorageAccount(IStorageAccount account);
     }
 
