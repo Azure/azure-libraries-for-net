@@ -8,8 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -50,10 +48,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="storageAccountType">Specifies the storage account type
         /// to be used to store the image. This property is not updatable.
         /// Possible values include: 'Standard_LRS', 'Standard_ZRS'</param>
-        public GalleryImageVersionPublishingProfile(GalleryArtifactSource source, IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), StorageAccountType storageAccountType = default(StorageAccountType))
+        public GalleryImageVersionPublishingProfile(IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), StorageAccountType storageAccountType = default(StorageAccountType))
             : base(targetRegions, replicaCount, excludeFromLatest, publishedDate, endOfLifeDate, storageAccountType)
         {
-            Source = source;
             CustomInit();
         }
 
@@ -62,27 +59,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         partial void CustomInit();
 
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "source")]
-        public GalleryArtifactSource Source { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Source == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Source");
-            }
-            if (Source != null)
-            {
-                Source.Validate();
-            }
-        }
     }
 }

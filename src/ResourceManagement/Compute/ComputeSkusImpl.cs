@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Rest.Azure;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
@@ -48,7 +49,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:11D194372CF16B8AF88A146421D05EAF
         public async Task<IPagedCollection<IComputeSku>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IComputeSku, ResourceSkuInner>.LoadPage(this.Inner().ListAsync, this.Inner().ListNextAsync, this.WrapModel, loadAllPages, cancellationToken);
+            return await PagedCollection<IComputeSku, ResourceSkuInner>.LoadPage(this.ListInnerAsync, this.Inner().ListNextAsync, this.WrapModel, loadAllPages, cancellationToken);
+        }
+
+        private async Task<IPage<ResourceSkuInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Inner().ListAsync(null, cancellationToken);
         }
 
         ///GENMHASH:2ED29FF482F2137640A1CA66925828A8:E51B3B0303249AFE9CE203C2598B0127

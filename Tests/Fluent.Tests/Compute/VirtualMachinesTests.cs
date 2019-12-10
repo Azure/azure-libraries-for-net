@@ -12,6 +12,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.Azure;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Collections.Generic;
@@ -174,7 +175,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
         }
 
         [Fact]
-        public void CanCreateLowPriorityVirtualMachine()
+        public void CanCreateUpdatePriorityAndPrice()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
@@ -216,13 +217,48 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.Equal(VirtualMachineEvictionPolicyTypes.Deallocate, foundedVM.EvictionPolicy);
                     Assert.Equal(VirtualMachinePriorityTypes.Low, foundedVM.Priority);
 
+                    // change max price
+                    try
+                    {
+                        foundedVM.Update()
+                            .WithMaxPrice(1500.0)
+                            .Apply();
+                        // not run to assert
+                        Assert.Equal(1500.0, foundedVM.BillingProfile.MaxPrice);
+                        Assert.True(false);
+                    }
+                    catch (CloudException) { } // cannot change max price when vm in running
+
                     foundedVM.Deallocate();
                     foundedVM.Update()
                         .WithMaxPrice(2000.0)
                         .Apply();
+                    foundedVM.Start();
 
                     foundedVM.Refresh();
                     Assert.Equal(2000.0, foundedVM.BillingProfile.MaxPrice);
+
+                    // change priority
+                    foundedVM = foundedVM.Update()
+                        .WithPriority(VirtualMachinePriorityTypes.Spot)
+                        .Apply();
+                    Assert.Equal(VirtualMachinePriorityTypes.Spot, foundedVM.Priority);
+
+                    foundedVM = foundedVM.Update()
+                        .WithPriority(VirtualMachinePriorityTypes.Low)
+                        .Apply();
+                    Assert.Equal(VirtualMachinePriorityTypes.Low, foundedVM.Priority);
+
+                    try
+                    {
+                        foundedVM.Update()
+                            .WithPriority(VirtualMachinePriorityTypes.Regular)
+                            .Apply();
+                        // not run to assert
+                        Assert.Equal(VirtualMachinePriorityTypes.Regular, foundedVM.Priority);
+                        Assert.True(false);
+                    }
+                    catch (CloudException) { } // cannot change priority from low to regular
 
                     // Delete VM
                     computeManager.VirtualMachines.DeleteById(foundedVM.Id);

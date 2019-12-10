@@ -33,6 +33,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
             var managedDataDiskNamePrefix = Utilities.CreateRandomName("ds-data-");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var publicIpDnsLabel = Utilities.CreateRandomName("pip");
+            var storageAccountName = Utilities.CreateRandomName("stg");
 
             var apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh";
             var apacheInstallCommand = "bash install_apache.sh";
@@ -71,6 +72,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                             .WithPublicSetting("fileUris", apacheInstallScriptUris)
                             .WithPublicSetting("commandToExecute", apacheInstallCommand)
                             .Attach()
+                        .WithNewStorageAccount(storageAccountName)
                         .WithSize(VirtualMachineSizeTypes.StandardD3V2)
                         .Create();
 
@@ -81,7 +83,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                 //
                 var specializedOSVhdUri = linuxVM.OSUnmanagedDiskVhdUri;
                 var dataVhdUris = new List<string>();
-                foreach (var dataDisk  in  linuxVM.UnmanagedDataDisks.Values)
+                foreach (var dataDisk in linuxVM.UnmanagedDataDisks.Values)
                 {
                     dataVhdUris.Add(dataDisk.VhdUri);
                 }
@@ -103,6 +105,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                         .WithRegion(region)
                         .WithExistingResourceGroup(rgName)
                         .WithLinuxFromVhd(specializedOSVhdUri)
+                        .WithStorageAccountName(storageAccountName)
                         .WithSizeInGB(100)
                         .Create();
 
@@ -114,7 +117,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
 
                 var dataDisks = new List<IDisk>();
                 var i = 0;
-                foreach (String dataVhdUri  in  dataVhdUris)
+                foreach (String dataVhdUri in dataVhdUris)
                 {
                     Utilities.Log($"Creating managed disk from the Data VHD: {dataVhdUri}");
 
@@ -123,6 +126,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                             .WithExistingResourceGroup(rgName)
                             .WithData()
                             .FromVhd(dataVhdUri)
+                            .WithStorageAccountName(storageAccountName)
                             .WithSizeInGB(150)
                             .WithSku(DiskSkuTypes.StandardLRS)
                             .Create();
@@ -153,7 +157,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                 Utilities.PrintVirtualMachine(linuxVM2);
 
                 var dataDiskIds = new List<string>();
-                foreach (var disk  in  linuxVM2.DataDisks.Values)
+                foreach (var disk in linuxVM2.DataDisks.Values)
                 {
                     dataDiskIds.Add(disk.Id);
                 }
@@ -174,7 +178,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromVhd
                 // Get the readonly SAS URI to the data disks
                 Utilities.Log("Getting data disks SAS Uris");
 
-                foreach (String diskId  in  dataDiskIds)
+                foreach (String diskId in dataDiskIds)
                 {
                     var dataDisk = azure.Disks.GetById(diskId);
                     var dataDiskSasUri = dataDisk.GrantAccess(24 * 60);

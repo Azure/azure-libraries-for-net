@@ -52,6 +52,38 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             /// <summary>
+            /// Update a gallery Image Definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery in which the Image Definition is to be
+            /// updated.
+            /// </param>
+            /// <param name='galleryImageName'>
+            /// The name of the gallery Image Definition to be updated. The allowed
+            /// characters are alphabets and numbers with dots, dashes, and periods allowed
+            /// in the middle. The maximum length is 80 characters.
+            /// </param>
+            /// <param name='galleryImage'>
+            /// Parameters supplied to the update gallery image operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryImageInner> UpdateAsync(this IGalleryImagesOperations operations, string resourceGroupName, string galleryName, string galleryImageName, GalleryImageUpdate galleryImage, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Retrieves information about a gallery Image Definition.
             /// </summary>
             /// <param name='operations'>
@@ -153,6 +185,38 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public static async Task<GalleryImageInner> BeginCreateOrUpdateAsync(this IGalleryImagesOperations operations, string resourceGroupName, string galleryName, string galleryImageName, GalleryImageInner galleryImage, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update a gallery Image Definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery in which the Image Definition is to be
+            /// updated.
+            /// </param>
+            /// <param name='galleryImageName'>
+            /// The name of the gallery Image Definition to be updated. The allowed
+            /// characters are alphabets and numbers with dots, dashes, and periods allowed
+            /// in the middle. The maximum length is 80 characters.
+            /// </param>
+            /// <param name='galleryImage'>
+            /// Parameters supplied to the update gallery image operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryImageInner> BeginUpdateAsync(this IGalleryImagesOperations operations, string resourceGroupName, string galleryName, string galleryImageName, GalleryImageUpdate galleryImage, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

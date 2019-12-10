@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineUpdate : UpdateResource
+    public partial class VirtualMachineUpdate : UpdateResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineUpdate class.
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2018-04-01.</param>
         /// <param name="priority">Specifies the priority for the virtual
         /// machine. &lt;br&gt;&lt;br&gt;Minimum api-version: 2019-03-01.
-        /// Possible values include: 'Regular', 'Low'</param>
+        /// Possible values include: 'Regular', 'Low', 'Spot'</param>
         /// <param name="evictionPolicy">Specifies the eviction policy for the
-        /// low priority virtual machine. Only supported value is 'Deallocate'.
+        /// Azure Spot virtual machine. Only supported value is 'Deallocate'.
         /// &lt;br&gt;&lt;br&gt;Minimum api-version: 2019-03-01. Possible
         /// values include: 'Deallocate', 'Delete'</param>
         /// <param name="billingProfile">Specifies the billing related details
-        /// of a low priority virtual machine. &lt;br&gt;&lt;br&gt;Minimum
+        /// of a Azure Spot virtual machine. &lt;br&gt;&lt;br&gt;Minimum
         /// api-version: 2019-03-01.</param>
         /// <param name="host">Specifies information about the dedicated host
         /// that the virtual machine resides in. &lt;br&gt;&lt;br&gt;Minimum
@@ -117,8 +117,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="identity">The identity of the virtual machine, if
         /// configured.</param>
         /// <param name="zones">The virtual machine zones.</param>
-        public VirtualMachineUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource virtualMachineScaleSet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), VirtualMachinePriorityTypes priority = default(VirtualMachinePriorityTypes), VirtualMachineEvictionPolicyTypes evictionPolicy = default(VirtualMachineEvictionPolicyTypes), BillingProfile billingProfile = default(BillingProfile), Management.ResourceManager.Fluent.SubResource host = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>))
-            : base(tags)
+        public VirtualMachineUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource virtualMachineScaleSet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), VirtualMachinePriorityTypes priority = default(VirtualMachinePriorityTypes), VirtualMachineEvictionPolicyTypes evictionPolicy = default(VirtualMachineEvictionPolicyTypes), BillingProfile billingProfile = default(BillingProfile), Management.ResourceManager.Fluent.SubResource host = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>))
+            : base(id, name, type, tags)
         {
             Plan = plan;
             HardwareProfile = hardwareProfile;
@@ -249,13 +249,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Gets or sets specifies the priority for the virtual machine.
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2019-03-01. Possible values include: 'Regular', 'Low'
+        /// 2019-03-01. Possible values include: 'Regular', 'Low', 'Spot'
         /// </summary>
         [JsonProperty(PropertyName = "properties.priority")]
         public VirtualMachinePriorityTypes Priority { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the eviction policy for the low priority
+        /// Gets or sets specifies the eviction policy for the Azure Spot
         /// virtual machine. Only supported value is 'Deallocate'.
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
         /// 2019-03-01. Possible values include: 'Deallocate', 'Delete'
@@ -264,10 +264,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public VirtualMachineEvictionPolicyTypes EvictionPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the billing related details of a low
-        /// priority virtual machine.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2019-03-01.
+        /// Gets or sets specifies the billing related details of a Azure Spot
+        /// virtual machine. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum
+        /// api-version: 2019-03-01.
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfile")]
         public BillingProfile BillingProfile { get; set; }

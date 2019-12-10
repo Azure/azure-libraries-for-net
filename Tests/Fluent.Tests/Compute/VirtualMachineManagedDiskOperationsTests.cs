@@ -73,7 +73,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -248,7 +248,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -430,7 +430,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -522,7 +522,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -590,8 +590,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             // Start: Add bunch of empty managed disks
                             .WithNewDataDisk(1)
                             .WithNewDataDisk(1, 1, CachingTypes.ReadOnly)
-                            .WithNewDataDisk(creatableEmptyDisk1) 
-                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)      
+                            .WithNewDataDisk(creatableEmptyDisk1)
+                            .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
                             .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
@@ -639,6 +639,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
                 var rgName = TestUtilities.GenerateName("rgfluentchash-");
+                var storageAccountName = SdkContext.RandomResourceName("stg", 17);
                 try
                 {
                     // Creates a native virtual machine
@@ -655,7 +656,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootPassword(password)
                             .WithUnmanagedDisks()                  /* UN-MANAGED OS and DATA DISKS */
                             .WithSize(VirtualMachineSizeTypes.StandardD5V2)
-                            .WithNewStorageAccount(SdkContext.RandomResourceName("stg", 17))
+                            .WithNewStorageAccount(storageAccountName)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -670,6 +671,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRegion(Location)
                             .WithExistingResourceGroup(rgName)
                             .WithLinuxFromVhd(osVhdUri)
+                            .WithStorageAccountName(storageAccountName)
                             .Create();
 
                     // Creates a managed virtual machine
@@ -692,7 +694,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }
@@ -740,7 +742,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 finally
                 {
                     try
-                    { 
+                    {
                         resourceManager.ResourceGroups.DeleteByName(rgName);
                     }
                     catch { }

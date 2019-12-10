@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -16,21 +18,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// The Update Resource model definition.
     /// </summary>
-    public partial class UpdateResource
+    public partial class UpdateResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the UpdateResource class.
+        /// Initializes a new instance of the UpdateResourceInner class.
         /// </summary>
-        public UpdateResource()
+        public UpdateResourceInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UpdateResource class.
+        /// Initializes a new instance of the UpdateResourceInner class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
-        public UpdateResource(IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public UpdateResourceInner(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(id, name, type)
         {
             Tags = tags;
             CustomInit();

@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -18,19 +19,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// Compute Client
     /// </summary>
-    public partial class ComputeManagementClient : FluentServiceClientBase<ComputeManagementClient>, IComputeManagementClient, IAzureClient
+    public partial class ComputeManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<ComputeManagementClient>, IComputeManagementClient, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        //public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -40,11 +34,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        //public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
@@ -177,6 +166,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual ISnapshotsOperations Snapshots { get; private set; }
 
         /// <summary>
+        /// Gets the IDiskEncryptionSetsOperations.
+        /// </summary>
+        public virtual IDiskEncryptionSetsOperations DiskEncryptionSets { get; private set; }
+
+        /// <summary>
         /// Gets the IGalleriesOperations.
         /// </summary>
         public virtual IGalleriesOperations Galleries { get; private set; }
@@ -206,11 +200,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         public virtual IContainerServicesOperations ContainerServices { get; private set; }
 
-        public ComputeManagementClient(RestClient restClient)
-            : base(restClient)
+        /// <summary>
+        /// Initializes a new instance of the ComputeManagementClient class.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        public ComputeManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
+        /// <summary>
+        /// An optional partial-method to perform custom initialization.
+        /// </summary>
+        partial void CustomInitialize();
         /// <summary>
         /// Initializes client properties.
         /// </summary>
@@ -237,13 +240,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             ResourceSkus = new ResourceSkusOperations(this);
             Disks = new DisksOperations(this);
             Snapshots = new SnapshotsOperations(this);
+            DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
             GalleryApplications = new GalleryApplicationsOperations(this);
             GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
             ContainerServices = new ContainerServicesOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            this.BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -273,6 +277,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         new Iso8601TimeSpanConverter()
                     }
             };
+            CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }

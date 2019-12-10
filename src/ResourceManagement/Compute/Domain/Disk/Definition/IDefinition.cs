@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Storage.Fluent;
 
     /// <summary>
     /// The stage of the managed disk definition allowing to choose Linux OS source.
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithLinuxFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithStorageAccount WithLinuxFromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize FromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithStorageAccount FromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithStorageAccount WithWindowsFromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -217,7 +218,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// </summary>
         /// <param name="sizeInGB">The disk size in GB.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithSizeInGB(int sizeInGB);
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate WithSizeInGB(int sizeInGB);
     }
 
     /// <summary>
@@ -334,6 +335,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromUpload,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromSnapshot,
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithStorageAccount,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate
     {
@@ -359,6 +361,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// <param name="snapshot">Snapshot resource.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize FromSnapshot(ISnapshot snapshot);
+    }
+
+    /// <summary>
+    /// The stage of the managed disk definition allowing to specify storage account
+    /// that contains disk information.
+    /// 
+    /// It is mandatory in import option.
+    /// </summary>
+    public interface IWithStorageAccount
+    {
+        /// <summary>
+        /// Specifies the storage account id.
+        /// </summary>
+        /// <param name="storageAccountId">The storage account id.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithStorageAccountId(string storageAccountId);
+
+        /// <summary>
+        /// Specifies the storage account name in same resource group.
+        /// </summary>
+        /// <param name="storageAccountName">The storage account name in same resource group.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithStorageAccountName(string storageAccountName);
+
+        /// <summary>
+        /// Specifies the storage account.
+        /// </summary>
+        /// <param name="account">The storage account.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithStorageAccount(IStorageAccount account);
     }
 
     /// <summary>

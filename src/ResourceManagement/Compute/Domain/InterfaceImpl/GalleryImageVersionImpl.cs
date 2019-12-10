@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class GalleryImageVersionImpl 
+    internal partial class GalleryImageVersionImpl
     {
         /// <summary>
         /// Gets the date indicating image version's end of life.
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return this.ReplicationStatus();
             }
         }
- 
+
         /// <summary>
         /// Gets the image version storageProfile describing OS and data disks.
         /// </summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the tags associated with the image version.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.Tags
         {
             get
             {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="tags">Resource tags.</param>
         /// <return>The next update stage.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithTags.WithTags(IDictionary<string,string> tags)
+        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithTags.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags);
         }
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="tags">The resource tags.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithTags.WithTags(IDictionary<string,string> tags)
+        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithTags.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags);
         }

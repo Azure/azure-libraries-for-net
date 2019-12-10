@@ -25,12 +25,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceSkuInner>> ListAsync(this IResourceSkusOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceSkuInner>> ListAsync(this IResourceSkusOperations operations, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(filter, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -127,6 +127,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Lists all availability sets in a subscription.
         /// </summary>
+        /// <param name='expand'>
+        /// The expand expression to apply to the operation.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -142,7 +145,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AvailabilitySetInner>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AvailabilitySetInner>>> ListBySubscriptionWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all availability sets in a resource group.
         /// </summary>

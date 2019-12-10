@@ -423,7 +423,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to redeploy a virtual machine.
+        /// Shuts down the virtual machine, moves it to a new node, and powers
+        /// it back on.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -751,7 +752,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse> BeginStartWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to redeploy a virtual machine.
+        /// Shuts down the virtual machine, moves it to a new node, and powers
+        /// it back on.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

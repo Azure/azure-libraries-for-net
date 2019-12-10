@@ -63,6 +63,47 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<GalleryApplicationVersionInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionInner galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Update a gallery Application Version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Application Gallery in which the Application
+        /// Definition resides.
+        /// </param>
+        /// <param name='galleryApplicationName'>
+        /// The name of the gallery Application Definition in which the
+        /// Application Version is to be updated.
+        /// </param>
+        /// <param name='galleryApplicationVersionName'>
+        /// The name of the gallery Application Version to be updated. Needs to
+        /// follow semantic version name pattern: The allowed characters are
+        /// digit and period. Digits must be within the range of a 32-bit
+        /// integer. Format:
+        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+        /// </param>
+        /// <param name='galleryApplicationVersion'>
+        /// Parameters supplied to the update gallery Application Version
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryApplicationVersionInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionUpdate galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Retrieves information about a gallery Application Version.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -201,6 +242,47 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<GalleryApplicationVersionInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionInner galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Update a gallery Application Version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Application Gallery in which the Application
+        /// Definition resides.
+        /// </param>
+        /// <param name='galleryApplicationName'>
+        /// The name of the gallery Application Definition in which the
+        /// Application Version is to be updated.
+        /// </param>
+        /// <param name='galleryApplicationVersionName'>
+        /// The name of the gallery Application Version to be updated. Needs to
+        /// follow semantic version name pattern: The allowed characters are
+        /// digit and period. Digits must be within the range of a 32-bit
+        /// integer. Format:
+        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+        /// </param>
+        /// <param name='galleryApplicationVersion'>
+        /// Parameters supplied to the update gallery Application Version
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryApplicationVersionInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionUpdate galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete a gallery Application Version.
         /// </summary>

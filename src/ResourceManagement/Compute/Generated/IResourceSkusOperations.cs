@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the list of Microsoft.Compute SKUs available for your
         /// Subscription.
         /// </summary>
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ResourceSkuInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceSkuInner>>> ListWithHttpMessagesAsync(string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the list of Microsoft.Compute SKUs available for your
         /// Subscription.
