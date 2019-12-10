@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Fluent
             return Subscriptions.GetById(SubscriptionId);
         }
 
-        /// <returns>entry point to managing locks</returns>
+        /// <returns>entry point to manage locks</returns>
         public IManagementLocks ManagementLocks
         {
             get
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing resource groups</returns>
+        /// <returns>entry point to manage resource groups</returns>
         public IResourceGroups ResourceGroups
         {
             get
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing storage accounts</returns>
+        /// <returns>entry point to manage storage accounts</returns>
         public IStorageAccounts StorageAccounts
         {
             get
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing virtual machines</returns>
+        /// <returns>entry point to manage virtual machines</returns>
         public IVirtualMachines VirtualMachines
         {
             get
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing virtual machine scale sets</returns>
+        /// <returns>entry point to manage virtual machine scale sets</returns>
         public IVirtualMachineScaleSets VirtualMachineScaleSets
         {
             get
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing virtual networks</returns>
+        /// <returns>entry point to manage virtual networks</returns>
         public INetworks Networks
         {
             get
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing network security groups</returns>
+        /// <returns>entry point to manage network security groups</returns>
         public INetworkSecurityGroups NetworkSecurityGroups
         {
             get
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing public IP addresses</returns>
+        /// <returns>entry point to manage public IP addresses</returns>
         public IPublicIPAddresses PublicIPAddresses
         {
             get
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing network interfaces</returns>
+        /// <returns>entry point to manage network interfaces</returns>
         public INetworkInterfaces NetworkInterfaces
         {
             get
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing virtual load balancers</returns>
+        /// <returns>entry point to manage virtual load balancers</returns>
         public ILoadBalancers LoadBalancers
         {
             get
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing application gateways</returns>
+        /// <returns>entry point to manage application gateways</returns>
         public IApplicationGateways ApplicationGateways
         {
             get
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing network watchers</returns>
+        /// <returns>entry point to manage network watchers</returns>
         public INetworkWatchers NetworkWatchers
         {
             get
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Azure Virtual Network Gateways</returns>
+        /// <returns>entry point to manage Azure Virtual Network Gateways</returns>
         public IVirtualNetworkGateways VirtualNetworkGateways
         {
             get
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Azure Local Network Gateways</returns>
+        /// <returns>entry point to manage Azure Local Network Gateways</returns>
         public ILocalNetworkGateways LocalNetworkGateways
         {
             get
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Azure Express Route Circuits</returns>
+        /// <returns>entry point to manage Azure Express Route Circuits</returns>
         public IExpressRouteCircuits ExpressRouteCircuits
         {
             get
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Application Security Gropus</returns>
+        /// <returns>entry point to manage Application Security Gropus</returns>
         public IApplicationSecurityGroups ApplicationSecurityGroups
         {
             get
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Route Filters</returns>
+        /// <returns>entry point to manage Route Filters</returns>
         public IRouteFilters RouteFilters
         {
             get
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing DDoS protection plans</returns>
+        /// <returns>entry point to manage DDoS protection plans</returns>
         public IDdosProtectionPlans DdosProtectionPlans
         {
             get
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing deployments</returns>
+        /// <returns>entry point to manage deployments</returns>
         public IDeployments Deployments
         {
             get
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing policy assignments</returns>
+        /// <returns>entry point to manage policy assignments</returns>
         public IPolicyAssignments PolicyAssignments
         {
             get
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing policy definitions</returns>
+        /// <returns>entry point to manage policy definitions</returns>
         public IPolicyDefinitions PolicyDefinitions
         {
             get
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing virtual machine images</returns>
+        /// <returns>entry point to manage virtual machine images</returns>
         public IVirtualMachineImages VirtualMachineImages
         {
             get
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing virtual machine extension images</returns>
+        /// <returns>entry point to manage virtual machine extension images</returns>
         public IVirtualMachineExtensionImages VirtualMachineExtensionImages
         {
             get
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing availability sets</returns>
+        /// <returns>entry point to manage availability sets</returns>
         public IAvailabilitySets AvailabilitySets
         {
             get
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Azure key vaults</returns>
+        /// <returns>entry point to manage Azure key vaults</returns>
         public IVaults Vaults
         {
             get
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Traffic Manager profiles</returns>
+        /// <returns>entry point to manage Traffic Manager profiles</returns>
         public ITrafficManagerProfiles TrafficManagerProfiles
         {
             get
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing DNS zones</returns>
+        /// <returns>entry point to manage DNS zones</returns>
         public IDnsZones DnsZones
         {
             get
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing private DNS zones</returns>
+        /// <returns>entry point to manage private DNS zones</returns>
         public IPrivateDnsZones PrivateDnsZones
         {
             get
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing SQL servers</returns>
+        /// <returns>entry point to manage SQL servers</returns>
         public ISqlServers SqlServers
         {
             get
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Redis caches</returns>
+        /// <returns>entry point to manage Redis caches</returns>
         public IRedisCaches RedisCaches
         {
             get
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing CDN profiles</returns>
+        /// <returns>entry point to manage CDN profiles</returns>
         public ICdnProfiles CdnProfiles
         {
             get
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing web apps</returns>
+        /// <returns>entry point to manage web apps</returns>
         public IWebApps WebApps
         {
             get
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing app services</returns>
+        /// <returns>entry point to manage app services</returns>
         public IAppServiceManager AppServices
         {
             get
@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Management.Fluent
         IRegistries ContainerRegistries { get; }
 
         /// <summary>
-        /// Entry point to managing locks.
+        /// Entry point to manage locks.
         /// </summary>
         IManagementLocks ManagementLocks { get; }
 
