@@ -36,6 +36,7 @@ using System.Threading.Tasks;
 using Microsoft.Rest;
 using Xunit.Abstractions;
 using Microsoft.Azure.Management.Msi.Fluent;
+using Microsoft.Azure.Management.PrivateDns.Fluent;
 
 namespace Fluent.Tests.Common
 {
@@ -187,6 +188,15 @@ namespace Fluent.Tests.Common
         public static ICdnManager CreateCdnManager()
         {
             return CreateMockedManager(c => CdnManager
+                .Configure()
+                .WithDelegatingHandlers(GetHandlers())
+                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
+                .Authenticate(c, c.DefaultSubscriptionId));
+        }
+
+        public static IPrivateDnsZoneManager CreatePrivateDnsZoneManager()
+        {
+            return CreateMockedManager(c => PrivateDnsZoneManager
                 .Configure()
                 .WithDelegatingHandlers(GetHandlers())
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
