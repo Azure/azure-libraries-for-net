@@ -2440,6 +2440,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies a vault secret to add to the vm.
+        /// Each call to this method adds to the list of vault secrets.
+        /// </summary>
+        /// <param name="vaultId">The vault id.</param>
+        /// <param name="certificateStore">The vm certificate store e.g. "My".</param>
+        /// <param name="certificateUrl">The vault certificate URL.</param>
+        /// <return>The stage representing creatable Windows VM definition.</return>
+        VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsCreateUnmanaged.WithVaultSecret(
+            string vaultId, string certificateUrl, string certificateStore)
+        {
+            return this.WithVaultSecret(vaultId, certificateUrl, certificateStore);
+        }
+
+        /// <summary>
+        /// Specifies a vault secret to add to the vm.
+        /// Each call to this method adds to the list of vault secrets.
+        /// </summary>
+        /// <param name="vaultId">The vault id.</param>
+        /// <param name="certificateStore">The vm certificate store e.g. "My".</param>
+        /// <param name="certificateUrl">The vault certificate URL.</param>
+        /// <return>The stage representing creatable Windows VM definition.</return>
+        VirtualMachine.Definition.IWithWindowsCreateManaged VirtualMachine.Definition.IWithWindowsCreateManaged.WithVaultSecret(
+            string vaultId, string certificateUrl, string certificateStore)
+        {
+            return this.WithVaultSecret(vaultId, certificateUrl, certificateStore );
+        }
+
+
+
+        /// <summary>
         /// Specifies a new priority for the virtual machine.
         /// </summary>
         /// <param name="priority">a priority from the list of available priority types.</param>
