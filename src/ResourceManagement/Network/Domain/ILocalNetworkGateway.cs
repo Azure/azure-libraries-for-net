@@ -36,6 +36,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the LocalNetworkGateway resource.
         /// </summary>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
     }
 }

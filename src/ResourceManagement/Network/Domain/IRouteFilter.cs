@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the route filter resource.
         /// </summary>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
 
         /// <summary>
         /// Gets rules associated with this route filter, indexed by their names.

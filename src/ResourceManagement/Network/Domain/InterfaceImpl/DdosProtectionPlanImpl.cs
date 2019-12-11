@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the DDoS protection plan resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IDdosProtectionPlan.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IDdosProtectionPlan.ProvisioningState
         {
             get
             {

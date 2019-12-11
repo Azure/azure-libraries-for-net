@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the application security group resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IApplicationSecurityGroup.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IApplicationSecurityGroup.ProvisioningState
         {
             get
             {

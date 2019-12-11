@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the VirtualNetworkGatewayConnection resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection.ProvisioningState
         {
             get
             {

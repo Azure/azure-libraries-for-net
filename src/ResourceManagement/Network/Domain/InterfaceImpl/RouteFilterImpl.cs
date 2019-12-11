@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the route filter resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IRouteFilter.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IRouteFilter.ProvisioningState
         {
             get
             {

@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule.ProvisioningState
         {
             get
             {

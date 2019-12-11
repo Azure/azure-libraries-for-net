@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent
 {
+    using Microsoft.Azure.Management.Network.Fluent.Models;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the LocalNetworkGateway resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway.ProvisioningState
         {
             get
             {
