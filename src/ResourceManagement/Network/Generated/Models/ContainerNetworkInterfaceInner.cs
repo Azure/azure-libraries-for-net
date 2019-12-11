@@ -44,13 +44,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="ipConfigurations">Reference to the ip configuration on
         /// this container nic.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource.</param>
+        /// container network interface resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource. This name can be used
         /// to access the resource.</param>
         /// <param name="type">Sub Resource type.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ContainerNetworkInterfaceInner(string id = default(string), Management.ResourceManager.Fluent.SubResource containerNetworkInterfaceConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource container = default(Management.ResourceManager.Fluent.SubResource), IList<ContainerNetworkInterfaceIpConfiguration> ipConfigurations = default(IList<ContainerNetworkInterfaceIpConfiguration>), string provisioningState = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public ContainerNetworkInterfaceInner(string id = default(string), ContainerNetworkInterfaceConfigurationInner containerNetworkInterfaceConfiguration = default(ContainerNetworkInterfaceConfigurationInner), Management.ResourceManager.Fluent.SubResource container = default(Management.ResourceManager.Fluent.SubResource), IList<ContainerNetworkInterfaceIpConfiguration> ipConfigurations = default(IList<ContainerNetworkInterfaceIpConfiguration>), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string type = default(string), string etag = default(string))
             : base(id)
         {
             ContainerNetworkInterfaceConfiguration = containerNetworkInterfaceConfiguration;
@@ -69,11 +70,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets container network interface configuration from which
-        /// this container network interface is created.
+        /// Gets container network interface configuration from which this
+        /// container network interface is created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.containerNetworkInterfaceConfiguration")]
-        public Management.ResourceManager.Fluent.SubResource ContainerNetworkInterfaceConfiguration { get; set; }
+        public ContainerNetworkInterfaceConfigurationInner ContainerNetworkInterfaceConfiguration { get; private set; }
 
         /// <summary>
         /// Gets or sets reference to the container to which this container
@@ -83,17 +84,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource Container { get; set; }
 
         /// <summary>
-        /// Gets or sets reference to the ip configuration on this container
-        /// nic.
+        /// Gets reference to the ip configuration on this container nic.
         /// </summary>
         [JsonProperty(PropertyName = "properties.ipConfigurations")]
-        public IList<ContainerNetworkInterfaceIpConfiguration> IpConfigurations { get; set; }
+        public IList<ContainerNetworkInterfaceIpConfiguration> IpConfigurations { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource.
+        /// Gets the provisioning state of the container network interface
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource. This name can be used to
@@ -109,11 +111,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
     }
 }

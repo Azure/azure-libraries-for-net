@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// gateway.</param>
         /// <param name="bgpSettings">Local network gateway's BGP speaker
         /// settings.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// <param name="provisioningState">The provisioning state of the VPN
+        /// gateway resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
         /// <param name="vpnGatewayScaleUnit">The scale unit for this vpn
         /// gateway.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         public VpnGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualHub = default(Management.ResourceManager.Fluent.SubResource), IList<VpnConnectionInner> connections = default(IList<VpnConnectionInner>), BgpSettings bgpSettings = default(BgpSettings), ProvisioningState provisioningState = default(ProvisioningState), int? vpnGatewayScaleUnit = default(int?), string etag = default(string))
             : base(location, id, name, type, tags)
         {
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public BgpSettings BgpSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
+        /// Gets the provisioning state of the VPN gateway resource. Possible
         /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the scale unit for this vpn gateway.

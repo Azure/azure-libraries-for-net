@@ -36,20 +36,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="subnet">The ID of the subnet from which the private IP
         /// will be allocated.</param>
-        /// <param name="networkInterfaces">Gets an array of references to the
+        /// <param name="networkInterfaces">An array of references to the
         /// network interfaces created for this private endpoint.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// private endpoint. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// private endpoint resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="privateLinkServiceConnections">A grouping of
         /// information about the connection to the remote resource.</param>
         /// <param name="manualPrivateLinkServiceConnections">A grouping of
         /// information about the connection to the remote resource. Used when
         /// the network admin does not have access to approve connections to
         /// the remote resource.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public PrivateEndpointInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), IList<NetworkInterfaceInner> networkInterfaces = default(IList<NetworkInterfaceInner>), string provisioningState = default(string), IList<PrivateLinkServiceConnectionInner> privateLinkServiceConnections = default(IList<PrivateLinkServiceConnectionInner>), IList<PrivateLinkServiceConnectionInner> manualPrivateLinkServiceConnections = default(IList<PrivateLinkServiceConnectionInner>), string etag = default(string))
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public PrivateEndpointInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), IList<NetworkInterfaceInner> networkInterfaces = default(IList<NetworkInterfaceInner>), ProvisioningState provisioningState = default(ProvisioningState), IList<PrivateLinkServiceConnectionInner> privateLinkServiceConnections = default(IList<PrivateLinkServiceConnectionInner>), IList<PrivateLinkServiceConnectionInner> manualPrivateLinkServiceConnections = default(IList<PrivateLinkServiceConnectionInner>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Subnet = subnet;
@@ -81,11 +81,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<NetworkInterfaceInner> NetworkInterfaces { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the private endpoint. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the private endpoint resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets a grouping of information about the connection to the
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

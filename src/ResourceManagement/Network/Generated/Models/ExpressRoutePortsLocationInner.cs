@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="availableBandwidths">The inventory of available
         /// ExpressRoutePort bandwidths.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// ExpressRoutePortLocation resource. Possible values are:
-        /// 'Succeeded', 'Updating', 'Deleting', and 'Failed'.</param>
-        public ExpressRoutePortsLocationInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string address = default(string), string contact = default(string), IList<ExpressRoutePortsLocationBandwidths> availableBandwidths = default(IList<ExpressRoutePortsLocationBandwidths>), string provisioningState = default(string))
+        /// express route port location resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        public ExpressRoutePortsLocationInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string address = default(string), string contact = default(string), IList<ExpressRoutePortsLocationBandwidths> availableBandwidths = default(IList<ExpressRoutePortsLocationBandwidths>), ProvisioningState provisioningState = default(ProvisioningState))
             : base(location, id, name, type, tags)
         {
             Address = address;
@@ -81,12 +81,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<ExpressRoutePortsLocationBandwidths> AvailableBandwidths { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the ExpressRoutePortLocation
-        /// resource. Possible values are: 'Succeeded', 'Updating', 'Deleting',
-        /// and 'Failed'.
+        /// Gets the provisioning state of the express route port location
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Validate the object.

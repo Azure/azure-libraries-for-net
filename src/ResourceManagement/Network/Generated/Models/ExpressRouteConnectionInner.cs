@@ -38,19 +38,22 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// peering.</param>
         /// <param name="name">The name of the resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// express route connection resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="authorizationKey">Authorization key to establish the
         /// connection.</param>
         /// <param name="routingWeight">The routing weight associated to the
         /// connection.</param>
-        public ExpressRouteConnectionInner(ExpressRouteCircuitPeeringId expressRouteCircuitPeering, string name, string id = default(string), ProvisioningState provisioningState = default(ProvisioningState), string authorizationKey = default(string), int? routingWeight = default(int?))
+        /// <param name="enableInternetSecurity">Enable internet
+        /// security.</param>
+        public ExpressRouteConnectionInner(ExpressRouteCircuitPeeringId expressRouteCircuitPeering, string name, string id = default(string), ProvisioningState provisioningState = default(ProvisioningState), string authorizationKey = default(string), int? routingWeight = default(int?), bool? enableInternetSecurity = default(bool?))
             : base(id)
         {
             ProvisioningState = provisioningState;
             ExpressRouteCircuitPeering = expressRouteCircuitPeering;
             AuthorizationKey = authorizationKey;
             RoutingWeight = routingWeight;
+            EnableInternetSecurity = enableInternetSecurity;
             Name = name;
             CustomInit();
         }
@@ -61,11 +64,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the express route connection
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the ExpressRoute circuit peering.
@@ -84,6 +88,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.routingWeight")]
         public int? RoutingWeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets enable internet security.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableInternetSecurity")]
+        public bool? EnableInternetSecurity { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource.

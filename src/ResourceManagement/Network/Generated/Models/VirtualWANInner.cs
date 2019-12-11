@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="virtualHubs">List of VirtualHubs in the
         /// VirtualWAN.</param>
         /// <param name="vpnSites">List of VpnSites in the VirtualWAN.</param>
-        /// <param name="securityProviderName">The Security Provider
-        /// name.</param>
         /// <param name="allowBranchToBranchTraffic">True if branch to branch
         /// traffic is allowed.</param>
         /// <param name="allowVnetToVnetTraffic">True if Vnet to Vnet traffic
@@ -48,25 +46,23 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="office365LocalBreakoutCategory">The office local
         /// breakout category. Possible values include: 'Optimize',
         /// 'OptimizeAndAllow', 'All', 'None'</param>
-        /// <param name="p2SVpnServerConfigurations">List of all
-        /// P2SVpnServerConfigurations associated with the virtual wan.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public VirtualWANInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? disableVpnEncryption = default(bool?), IList<Management.ResourceManager.Fluent.SubResource> virtualHubs = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> vpnSites = default(IList<Management.ResourceManager.Fluent.SubResource>), string securityProviderName = default(string), bool? allowBranchToBranchTraffic = default(bool?), bool? allowVnetToVnetTraffic = default(bool?), OfficeTrafficCategory office365LocalBreakoutCategory = default(OfficeTrafficCategory), IList<P2SVpnServerConfigurationInner> p2SVpnServerConfigurations = default(IList<P2SVpnServerConfigurationInner>), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
+        /// virtual WAN resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="virtualWANType">The type of the VirtualWAN.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public VirtualWANInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? disableVpnEncryption = default(bool?), IList<Management.ResourceManager.Fluent.SubResource> virtualHubs = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> vpnSites = default(IList<Management.ResourceManager.Fluent.SubResource>), bool? allowBranchToBranchTraffic = default(bool?), bool? allowVnetToVnetTraffic = default(bool?), OfficeTrafficCategory office365LocalBreakoutCategory = default(OfficeTrafficCategory), ProvisioningState provisioningState = default(ProvisioningState), string virtualWANType = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             DisableVpnEncryption = disableVpnEncryption;
             VirtualHubs = virtualHubs;
             VpnSites = vpnSites;
-            SecurityProviderName = securityProviderName;
             AllowBranchToBranchTraffic = allowBranchToBranchTraffic;
             AllowVnetToVnetTraffic = allowVnetToVnetTraffic;
             Office365LocalBreakoutCategory = office365LocalBreakoutCategory;
-            P2SVpnServerConfigurations = p2SVpnServerConfigurations;
             ProvisioningState = provisioningState;
+            VirtualWANType = virtualWANType;
             Etag = etag;
             CustomInit();
         }
@@ -95,12 +91,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<Management.ResourceManager.Fluent.SubResource> VpnSites { get; private set; }
 
         /// <summary>
-        /// Gets or sets the Security Provider name.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.securityProviderName")]
-        public string SecurityProviderName { get; set; }
-
-        /// <summary>
         /// Gets or sets true if branch to branch traffic is allowed.
         /// </summary>
         [JsonProperty(PropertyName = "properties.allowBranchToBranchTraffic")]
@@ -120,18 +110,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public OfficeTrafficCategory Office365LocalBreakoutCategory { get; set; }
 
         /// <summary>
-        /// Gets or sets list of all P2SVpnServerConfigurations associated with
-        /// the virtual wan.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.p2SVpnServerConfigurations")]
-        public IList<P2SVpnServerConfigurationInner> P2SVpnServerConfigurations { get; set; }
-
-        /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
+        /// Gets the provisioning state of the virtual WAN resource. Possible
         /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the type of the VirtualWAN.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.type")]
+        public string VirtualWANType { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource

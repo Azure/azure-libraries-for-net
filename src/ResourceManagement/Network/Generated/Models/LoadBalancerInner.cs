@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="outboundRules">The outbound rules.</param>
         /// <param name="resourceGuid">The resource GUID property of the load
         /// balancer resource.</param>
-        /// <param name="provisioningState">Gets the provisioning state of the
-        /// PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the load
+        /// balancer resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public LoadBalancerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LoadBalancerSku sku = default(LoadBalancerSku), IList<FrontendIPConfigurationInner> frontendIPConfigurations = default(IList<FrontendIPConfigurationInner>), IList<BackendAddressPoolInner> backendAddressPools = default(IList<BackendAddressPoolInner>), IList<LoadBalancingRuleInner> loadBalancingRules = default(IList<LoadBalancingRuleInner>), IList<ProbeInner> probes = default(IList<ProbeInner>), IList<InboundNatRuleInner> inboundNatRules = default(IList<InboundNatRuleInner>), IList<InboundNatPoolInner> inboundNatPools = default(IList<InboundNatPoolInner>), IList<OutboundRuleInner> outboundRules = default(IList<OutboundRuleInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public LoadBalancerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LoadBalancerSku sku = default(LoadBalancerSku), IList<FrontendIPConfigurationInner> frontendIPConfigurations = default(IList<FrontendIPConfigurationInner>), IList<BackendAddressPoolInner> backendAddressPools = default(IList<BackendAddressPoolInner>), IList<LoadBalancingRuleInner> loadBalancingRules = default(IList<LoadBalancingRuleInner>), IList<ProbeInner> probes = default(IList<ProbeInner>), IList<InboundNatRuleInner> inboundNatRules = default(IList<InboundNatRuleInner>), IList<InboundNatPoolInner> inboundNatPools = default(IList<InboundNatPoolInner>), IList<OutboundRuleInner> outboundRules = default(IList<OutboundRuleInner>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -157,25 +157,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<OutboundRuleInner> OutboundRules { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource GUID property of the load balancer
-        /// resource.
+        /// Gets the resource GUID property of the load balancer resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the PublicIP resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the load balancer resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

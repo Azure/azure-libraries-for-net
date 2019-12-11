@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Deprovisioning'</param>
         /// <param name="serviceProviderNotes">Additional read only notes set
         /// by the connectivity provider.</param>
-        /// <param name="provisioningState">Gets the provisioning state of the
-        /// public IP resource. Possible values are: 'Updating', 'Deleting',
-        /// and 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// express route cross connection resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="peerings">The list of peerings.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public ExpressRouteCrossConnectionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), int? sTag = default(int?), string peeringLocation = default(string), int? bandwidthInMbps = default(int?), ExpressRouteCircuitReference expressRouteCircuit = default(ExpressRouteCircuitReference), ServiceProviderProvisioningState serviceProviderProvisioningState = default(ServiceProviderProvisioningState), string serviceProviderNotes = default(string), string provisioningState = default(string), IList<ExpressRouteCrossConnectionPeeringInner> peerings = default(IList<ExpressRouteCrossConnectionPeeringInner>), string etag = default(string))
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public ExpressRouteCrossConnectionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), int? sTag = default(int?), string peeringLocation = default(string), int? bandwidthInMbps = default(int?), ExpressRouteCircuitReference expressRouteCircuit = default(ExpressRouteCircuitReference), ServiceProviderProvisioningState serviceProviderProvisioningState = default(ServiceProviderProvisioningState), string serviceProviderNotes = default(string), ProvisioningState provisioningState = default(ProvisioningState), IList<ExpressRouteCrossConnectionPeeringInner> peerings = default(IList<ExpressRouteCrossConnectionPeeringInner>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             PrimaryAzurePort = primaryAzurePort;
@@ -132,11 +132,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ServiceProviderNotes { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the public IP resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the express route cross connection
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the list of peerings.

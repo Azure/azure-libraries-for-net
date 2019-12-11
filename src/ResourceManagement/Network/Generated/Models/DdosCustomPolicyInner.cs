@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// if the user changes its name or migrate the resource across
         /// subscriptions or resource groups.</param>
         /// <param name="provisioningState">The provisioning state of the DDoS
-        /// custom policy resource. Possible values are: 'Succeeded',
-        /// 'Updating', 'Deleting', and 'Failed'.</param>
+        /// custom policy resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="publicIPAddresses">The list of public IPs associated
         /// with the DDoS custom policy resource. This list is
         /// read-only.</param>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// policy customization parameters.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public DdosCustomPolicyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), IList<Management.ResourceManager.Fluent.SubResource> publicIPAddresses = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<ProtocolCustomSettingsFormat> protocolCustomSettings = default(IList<ProtocolCustomSettingsFormat>), string etag = default(string))
+        public DdosCustomPolicyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), IList<Management.ResourceManager.Fluent.SubResource> publicIPAddresses = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<ProtocolCustomSettingsFormat> protocolCustomSettings = default(IList<ProtocolCustomSettingsFormat>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ResourceGuid = resourceGuid;
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets the provisioning state of the DDoS custom policy resource.
-        /// Possible values are: 'Succeeded', 'Updating', 'Deleting', and
-        /// 'Failed'.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets the list of public IPs associated with the DDoS custom policy

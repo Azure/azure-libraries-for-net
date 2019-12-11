@@ -98,35 +98,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates a route in the specified route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the route filter rule.
-            /// </param>
-            /// <param name='routeFilterRuleParameters'>
-            /// Parameters supplied to the update route filter rule operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RouteFilterRuleInner> UpdateAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, PatchRouteFilterRuleInner routeFilterRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets all RouteFilterRules in a route filter.
             /// </summary>
             /// <param name='operations'>
@@ -196,35 +167,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             public static async Task<RouteFilterRuleInner> BeginCreateOrUpdateAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRuleInner routeFilterRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates a route in the specified route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the route filter rule.
-            /// </param>
-            /// <param name='routeFilterRuleParameters'>
-            /// Parameters supplied to the update route filter rule operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RouteFilterRuleInner> BeginUpdateAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, PatchRouteFilterRuleInner routeFilterRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

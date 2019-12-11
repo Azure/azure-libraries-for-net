@@ -37,15 +37,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="linkedResourceType">Resource type of the linked
         /// resource.</param>
         /// <param name="link">Link to the external resource.</param>
-        /// <param name="provisioningState">Provisioning state of the
-        /// ResourceNavigationLink resource.</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource navigation link resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">Name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Resource type.</param>
-        public ResourceNavigationLinkInner(string id = default(string), string linkedResourceType = default(string), string link = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ResourceNavigationLinkInner(string id = default(string), string linkedResourceType = default(string), string link = default(string), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             LinkedResourceType = linkedResourceType;
@@ -75,10 +76,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Link { get; set; }
 
         /// <summary>
-        /// Gets provisioning state of the ResourceNavigationLink resource.
+        /// Gets the provisioning state of the resource navigation link
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets name of the resource that is unique within a resource

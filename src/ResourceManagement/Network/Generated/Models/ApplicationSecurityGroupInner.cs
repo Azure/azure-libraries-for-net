@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource, even if the user changes its name or migrate the resource
         /// across subscriptions or resource groups.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// application security group resource. Possible values are:
-        /// 'Succeeded', 'Updating', 'Deleting', and 'Failed'.</param>
+        /// application security group resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ApplicationSecurityGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public ApplicationSecurityGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ResourceGuid = resourceGuid;
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets the provisioning state of the application security group
-        /// resource. Possible values are: 'Succeeded', 'Updating', 'Deleting',
-        /// and 'Failed'.
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
         }
     }
 }

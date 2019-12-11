@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates service Endpoint Policies.
+            /// Updates tags of a service endpoint policy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceEndpointPolicyInner> UpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceEndpointPolicyInner> UpdateTagsAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -199,32 +199,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             public static async Task<ServiceEndpointPolicyInner> BeginCreateOrUpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, ServiceEndpointPolicyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates service Endpoint Policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='serviceEndpointPolicyName'>
-            /// The name of the service endpoint policy.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ServiceEndpointPolicyInner> BeginUpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

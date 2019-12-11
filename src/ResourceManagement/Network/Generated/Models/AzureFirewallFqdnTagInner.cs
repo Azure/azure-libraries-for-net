@@ -34,12 +34,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the AzureFirewallFqdnTagInner class.
         /// </summary>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource.</param>
+        /// <param name="provisioningState">The provisioning state of the Azure
+        /// firewall FQDN tag resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="fqdnTagName">The name of this FQDN Tag.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public AzureFirewallFqdnTagInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string fqdnTagName = default(string), string etag = default(string))
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public AzureFirewallFqdnTagInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState provisioningState = default(ProvisioningState), string fqdnTagName = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -54,10 +55,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the provisioning state of the resource.
+        /// Gets the provisioning state of the Azure firewall FQDN tag
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets the name of this FQDN Tag.
@@ -80,7 +83,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
         }
     }
 }

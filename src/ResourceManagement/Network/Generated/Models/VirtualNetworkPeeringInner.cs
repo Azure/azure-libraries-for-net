@@ -57,13 +57,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// peering. Possible values include: 'Initiated', 'Connected',
         /// 'Disconnected'</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource.</param>
+        /// virtual network peering resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public VirtualNetworkPeeringInner(string id = default(string), bool? allowVirtualNetworkAccess = default(bool?), bool? allowForwardedTraffic = default(bool?), bool? allowGatewayTransit = default(bool?), bool? useRemoteGateways = default(bool?), Management.ResourceManager.Fluent.SubResource remoteVirtualNetwork = default(Management.ResourceManager.Fluent.SubResource), AddressSpace remoteAddressSpace = default(AddressSpace), VirtualNetworkPeeringState peeringState = default(VirtualNetworkPeeringState), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public VirtualNetworkPeeringInner(string id = default(string), bool? allowVirtualNetworkAccess = default(bool?), bool? allowForwardedTraffic = default(bool?), bool? allowGatewayTransit = default(bool?), bool? useRemoteGateways = default(bool?), Management.ResourceManager.Fluent.SubResource remoteVirtualNetwork = default(Management.ResourceManager.Fluent.SubResource), AddressSpace remoteAddressSpace = default(AddressSpace), VirtualNetworkPeeringState peeringState = default(VirtualNetworkPeeringState), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
             AllowVirtualNetworkAccess = allowVirtualNetworkAccess;
@@ -141,10 +142,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public VirtualNetworkPeeringState PeeringState { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource.
+        /// Gets the provisioning state of the virtual network peering
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -154,11 +157,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
     }
 }

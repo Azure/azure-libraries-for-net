@@ -67,16 +67,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="disableOutboundSnat">Configures SNAT for the VMs in
         /// the backend pool to use the publicIP address specified in the
         /// frontend of the load balancing rule.</param>
-        /// <param name="provisioningState">Gets the provisioning state of the
-        /// PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the load
+        /// balancing rule resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within
         /// the set of load balancing rules used by the load balancer. This
         /// name can be used to access the resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public LoadBalancingRuleInner(TransportProtocol protocol, int frontendPort, string id = default(string), Management.ResourceManager.Fluent.SubResource frontendIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource probe = default(Management.ResourceManager.Fluent.SubResource), LoadDistribution loadDistribution = default(LoadDistribution), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public LoadBalancingRuleInner(TransportProtocol protocol, int frontendPort, string id = default(string), Management.ResourceManager.Fluent.SubResource frontendIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource probe = default(Management.ResourceManager.Fluent.SubResource), LoadDistribution loadDistribution = default(LoadDistribution), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -188,11 +188,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? DisableOutboundSnat { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the PublicIP resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the load balancing rule resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within the set
@@ -203,11 +204,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Gets type of the resource.

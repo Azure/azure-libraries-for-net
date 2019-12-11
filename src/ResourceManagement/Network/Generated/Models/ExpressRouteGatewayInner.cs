@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="expressRouteConnections">List of ExpressRoute
         /// connections to the ExpressRoute gateway.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// express route gateway resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         public ExpressRouteGatewayInner(VirtualHubId virtualHub, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExpressRouteGatewayPropertiesAutoScaleConfiguration autoScaleConfiguration = default(ExpressRouteGatewayPropertiesAutoScaleConfiguration), IList<ExpressRouteConnectionInner> expressRouteConnections = default(IList<ExpressRouteConnectionInner>), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
@@ -74,11 +74,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<ExpressRouteConnectionInner> ExpressRouteConnections { get; private set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the express route gateway resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the Virtual Hub where the ExpressRoute gateway is or

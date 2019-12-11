@@ -16,37 +16,39 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Radius Server root certificate of P2SVpnServerConfiguration.
+    /// P2SConnectionConfiguration Resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class P2SVpnServerConfigRadiusServerRootCertificateInner : Management.ResourceManager.Fluent.SubResource
+    public partial class P2SConnectionConfigurationInner : Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// P2SVpnServerConfigRadiusServerRootCertificateInner class.
+        /// Initializes a new instance of the P2SConnectionConfigurationInner
+        /// class.
         /// </summary>
-        public P2SVpnServerConfigRadiusServerRootCertificateInner()
+        public P2SConnectionConfigurationInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// P2SVpnServerConfigRadiusServerRootCertificateInner class.
+        /// Initializes a new instance of the P2SConnectionConfigurationInner
+        /// class.
         /// </summary>
-        /// <param name="publicCertData">The certificate public data.</param>
+        /// <param name="vpnClientAddressPool">The reference of the address
+        /// space resource which represents Address space for P2S
+        /// VpnClient.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// P2SVpnServerConfiguration Radius Server root certificate resource.
-        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.</param>
+        /// P2SConnectionConfiguration resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public P2SVpnServerConfigRadiusServerRootCertificateInner(string publicCertData, string id = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public P2SConnectionConfigurationInner(string id = default(string), AddressSpace vpnClientAddressPool = default(AddressSpace), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
-            PublicCertData = publicCertData;
+            VpnClientAddressPool = vpnClientAddressPool;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -59,18 +61,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the certificate public data.
+        /// Gets or sets the reference of the address space resource which
+        /// represents Address space for P2S VpnClient.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.publicCertData")]
-        public string PublicCertData { get; set; }
+        [JsonProperty(PropertyName = "properties.vpnClientAddressPool")]
+        public AddressSpace VpnClientAddressPool { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the P2SVpnServerConfiguration Radius
-        /// Server root certificate resource. Possible values are: 'Updating',
-        /// 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the P2SConnectionConfiguration
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -80,24 +83,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (PublicCertData == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PublicCertData");
-            }
-        }
     }
 }

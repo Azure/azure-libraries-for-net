@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// table.</param>
         /// <param name="subnets">A collection of references to
         /// subnets.</param>
-        /// <param name="disableBgpRoutePropagation">Gets or sets whether to
-        /// disable the routes learned by BGP on that route table. True means
+        /// <param name="disableBgpRoutePropagation">Whether to disable the
+        /// routes learned by BGP on that route table. True means
         /// disable.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public RouteTableInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteInner> routes = default(IList<RouteInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), bool? disableBgpRoutePropagation = default(bool?), string provisioningState = default(string), string etag = default(string))
+        /// <param name="provisioningState">The provisioning state of the route
+        /// table resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public RouteTableInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteInner> routes = default(IList<RouteInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), bool? disableBgpRoutePropagation = default(bool?), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Routes = routes;
@@ -82,18 +82,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? DisableBgpRoutePropagation { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the route table resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

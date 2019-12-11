@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             TagsObject parameters = new TagsObject();
             if (tags != null)
             {
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1501,7 +1501,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Get network configuration diagnostic.
+        /// Gets Network Configuration Diagnostic data to help customers understand and
+        /// debug network behavior. It provides detailed information on what security
+        /// rules were applied to a specified traffic flow and the result of evaluating
+        /// these rules. Customers must provide details of a flow like source,
+        /// destination, protocol, etc. The API returns whether traffic was allowed or
+        /// denied, the rules evaluated for the specified flow and the evaluation
+        /// results.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1566,7 +1572,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1749,7 +1755,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1974,7 +1980,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2195,7 +2201,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "targetResourceId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             SecurityGroupViewParameters parameters = new SecurityGroupViewParameters();
             if (targetResourceId != null)
             {
@@ -2425,7 +2431,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2646,7 +2652,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "targetResourceId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             QueryTroubleshootingParameters parameters = new QueryTroubleshootingParameters();
             if (targetResourceId != null)
             {
@@ -2877,7 +2883,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3100,7 +3106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "targetResourceId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             FlowLogStatusParameters parameters = new FlowLogStatusParameters();
             if (targetResourceId != null)
             {
@@ -3332,7 +3338,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3558,7 +3564,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3780,7 +3786,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3951,7 +3957,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Get network configuration diagnostic.
+        /// Gets Network Configuration Diagnostic data to help customers understand and
+        /// debug network behavior. It provides detailed information on what security
+        /// rules were applied to a specified traffic flow and the result of evaluating
+        /// these rules. Customers must provide details of a flow like source,
+        /// destination, protocol, etc. The API returns whether traffic was allowed or
+        /// denied, the rules evaluated for the specified flow and the evaluation
+        /// results.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -4005,7 +4017,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

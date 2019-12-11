@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="operatorProperty">Describes operator to be matched.
         /// Possible values include: 'IPMatch', 'Equal', 'Contains',
         /// 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual',
-        /// 'BeginsWith', 'EndsWith', 'Regex'</param>
+        /// 'BeginsWith', 'EndsWith', 'Regex', 'GeoMatch'</param>
         /// <param name="matchValues">Match value.</param>
         /// <param name="negationConditon">Describes if this is negate
         /// condition or not.</param>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets describes operator to be matched. Possible values
         /// include: 'IPMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan',
         /// 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith',
-        /// 'Regex'
+        /// 'Regex', 'GeoMatch'
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
         public WebApplicationFirewallOperator OperatorProperty { get; set; }

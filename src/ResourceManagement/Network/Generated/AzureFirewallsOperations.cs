@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Updates tags for an Azure Firewall resource.
+        /// Updates tags of an Azure Firewall resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -298,8 +298,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or update Azure Firewall operation.
+        /// <param name='tags'>
+        /// Resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AzureFirewallInner>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewallInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AzureFirewallInner>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -332,15 +332,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "azureFirewallName");
             }
-            if (parameters == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
-            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
+            TagsObject parameters = new TagsObject();
+            if (tags != null)
+            {
+                parameters.Tags = tags;
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -350,8 +351,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("azureFirewallName", azureFirewallName);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateTags", tracingParameters);
             }
@@ -534,7 +535,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -712,7 +713,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -899,7 +900,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1086,7 +1087,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

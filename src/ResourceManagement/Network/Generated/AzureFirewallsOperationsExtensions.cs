@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates tags for an Azure Firewall resource.
+            /// Updates tags of an Azure Firewall resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -100,15 +102,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='azureFirewallName'>
             /// The name of the Azure Firewall.
             /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update Azure Firewall operation.
+            /// <param name='tags'>
+            /// Resource tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AzureFirewallInner> UpdateTagsAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, AzureFirewallInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AzureFirewallInner> UpdateTagsAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, azureFirewallName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

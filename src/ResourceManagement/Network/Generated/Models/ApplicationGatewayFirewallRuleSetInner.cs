@@ -43,8 +43,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="ruleGroups">The rule groups of the web application
         /// firewall rule set.</param>
         /// <param name="provisioningState">The provisioning state of the web
-        /// application firewall rule set.</param>
-        public ApplicationGatewayFirewallRuleSetInner(string ruleSetType, string ruleSetVersion, IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string))
+        /// application firewall rule set. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        public ApplicationGatewayFirewallRuleSetInner(string ruleSetType, string ruleSetVersion, IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState provisioningState = default(ProvisioningState))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -60,11 +61,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the provisioning state of the web application firewall
-        /// rule set.
+        /// Gets the provisioning state of the web application firewall rule
+        /// set. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the type of the web application firewall rule set.
