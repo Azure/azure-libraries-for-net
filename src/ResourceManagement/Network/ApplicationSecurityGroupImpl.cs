@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for ApplicationSecurityGroup and its create and update interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25TZWN1cml0eUdyb3VwSW1wbA==
-    internal partial class ApplicationSecurityGroupImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25TZWN1cml0eUdyb3VwSW1wbA==
+    internal partial class ApplicationSecurityGroupImpl :
         GroupableResource<
             IApplicationSecurityGroup,
             ApplicationSecurityGroupInner,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     {
 
         ///GENMHASH:CDC434186BC1559858E48D056A58CABA:3881994DCADCE14215F82F0CC81BDD88
-        internal  ApplicationSecurityGroupImpl(string name, ApplicationSecurityGroupInner innerModel, INetworkManager networkManager) : base(name, innerModel, networkManager)
+        internal ApplicationSecurityGroupImpl(string name, ApplicationSecurityGroupInner innerModel, INetworkManager networkManager) : base(name, innerModel, networkManager)
         {
         }
 

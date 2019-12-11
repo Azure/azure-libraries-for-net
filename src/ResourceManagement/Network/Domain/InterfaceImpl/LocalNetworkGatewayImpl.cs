@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this.WithoutAddressSpace(cidr);
         }
 
-    /// <summary>
+        /// <summary>
         /// Execute the update request.
         /// </summary>
         /// <return>The updated resource.</return>

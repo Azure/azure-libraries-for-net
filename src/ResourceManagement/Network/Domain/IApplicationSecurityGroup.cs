@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Application security group.
     /// </summary>
-    public interface IApplicationSecurityGroup  :
+    public interface IApplicationSecurityGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.ApplicationSecurityGroupInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.ApplicationSecurityGroupInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IApplicationSecurityGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ApplicationSecurityGroup.Update.IUpdate>
     {

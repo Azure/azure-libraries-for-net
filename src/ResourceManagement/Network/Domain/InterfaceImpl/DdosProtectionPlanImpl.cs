@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class DdosProtectionPlanImpl 
+    internal partial class DdosProtectionPlanImpl
     {
         /// <summary>
         /// Gets the provisioning state of the DDoS protection plan resource.

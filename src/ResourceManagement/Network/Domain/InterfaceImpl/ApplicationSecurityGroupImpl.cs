@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class ApplicationSecurityGroupImpl 
+    internal partial class ApplicationSecurityGroupImpl
     {
         /// <summary>
         /// Gets the provisioning state of the application security group resource.

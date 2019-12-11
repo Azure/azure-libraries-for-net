@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for RouteFilter and its create and update interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uUm91dGVGaWx0ZXJJbXBs
-    internal partial class RouteFilterImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uUm91dGVGaWx0ZXJJbXBs
+    internal partial class RouteFilterImpl :
         GroupableParentResource<
             IRouteFilter,
             RouteFilterInner,
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition,
         RouteFilter.Update.IUpdate
     {
-        private Dictionary<string,Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> peerings;
-        private Dictionary<string,Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule> rules = new Dictionary<string, IRouteFilterRule>();
+        private Dictionary<string, Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> peerings;
+        private Dictionary<string, Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule> rules = new Dictionary<string, IRouteFilterRule>();
 
         ///GENMHASH:C2FD30D8052EB6327C4D154A64924D82:3881994DCADCE14215F82F0CC81BDD88
-        internal  RouteFilterImpl(string name, RouteFilterInner innerModel, INetworkManager networkManager) : base(name, innerModel, networkManager)
+        internal RouteFilterImpl(string name, RouteFilterInner innerModel, INetworkManager networkManager) : base(name, innerModel, networkManager)
         {
         }
 
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F91F57741BB7E185BF012523964DEED0:27E486AB74A10242FF421C0798DDC450
         protected override void AfterCreating()
         {
-        
+
         }
 
         ///GENMHASH:AC21A10EE2E745A89E94E447800452C1:6B5FEA60100196D0796FB383009C539A
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:DAC0ADBD485D3FA7934FDCF3DF6AFB33:FD9760FB9C19877AA8BD26C189E8917A
-        public IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> Peerings()
+        public IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> Peerings()
         {
             return this.peerings;
         }
@@ -124,15 +124,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:72B8E1071F896522FFFEF85D9357CBCC:FC8B3AE517369B64F33F8DC475426F01
-        public IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule> Rules()
+        public IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule> Rules()
         {
-            return this.rules;            
+            return this.rules;
         }
 
         ///GENMHASH:0E516034DD6EAC0154C689EE19E8DACC:F1D272BA2CF3403B8640F386D36F9C9E
         public RouteFilterRule.Update.IUpdate UpdateRule(string name)
         {
-            return (RouteFilterRuleImpl) this.rules[name];
+            return (RouteFilterRuleImpl)this.rules[name];
         }
 
         ///GENMHASH:EC4B0EE9E5C17F0368D305042F19A0FD:BB6B3B198CEC808EF295F8AE72D11548

@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:DD514B859A01D5FDAFF5D26EACDFE197:40A980295F5EA8FF8304DA8C06E899BF
         public VirtualNetworkGatewayConnectionImpl UpdateTags()
         {
-             return this;
+            return this;
         }
 
         ///GENMHASH:63E7CC3AA7BB3CB910E5D0EE8931223C:05BC5F2415598E47C21323CD8B084A89
