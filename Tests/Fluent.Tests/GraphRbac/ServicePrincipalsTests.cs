@@ -71,14 +71,11 @@ namespace Fluent.Tests.Graph.RBAC
                     {
                         if (certificateCredential.Name != "spcert")
                         {
+                            certificateCount++;
                             Assert.Equal(certificate.GetCertHashString(), certificateCredential.CustomKeyIdentifier);
                         }
-                        else
-                        {
-                            certificateCount++;
-                            Assert.True(certificateCount < 2);
-                        }
                     }
+                    Assert.True(certificateCount > 0);
 
                     // Update
                     servicePrincipal.Update()

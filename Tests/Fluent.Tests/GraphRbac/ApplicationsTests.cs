@@ -67,14 +67,11 @@ namespace Fluent.Tests.Graph.RBAC
                     {
                         if (certificateCredential.Name != "cert")
                         {
+                            certificateCount++;
                             Assert.Equal(certificate.GetCertHashString(), certificateCredential.CustomKeyIdentifier);
                         }
-                        else
-                        {
-                            certificateCount++;
-                            Assert.True(certificateCount < 2);
-                        }
                     }
+                    Assert.True(certificateCount > 0);
 
                     application.Update()
                             .DefinePasswordCredential("passwd2")
