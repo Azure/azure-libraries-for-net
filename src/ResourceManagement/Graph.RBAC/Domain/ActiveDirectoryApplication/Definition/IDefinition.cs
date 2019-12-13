@@ -111,7 +111,6 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
 
         /// <summary>
         /// Starts the definition of a certificate credential.
-        /// It cannot be deleted by Management API since there is not name.
         /// </summary>
         /// <return>The first stage in certificate credential definition.</return>
         Microsoft.Azure.Management.Graph.RBAC.Fluent.CertificateCredential.Definition.IBlank<Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition.IWithCreate> DefineCertificateCredential();

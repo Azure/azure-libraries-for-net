@@ -156,6 +156,16 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         }
 
         /// <summary>
+        /// Removes a key.
+        /// </summary>
+        /// <param name="keyIdentifier">The custom key identifier.</param>
+        /// <return>The next stage of the application update.</return>
+        Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithCredential.WithoutCredentialByIdentifier(string keyIdentifier)
+        {
+            return this.WithoutCredentialByIdentifier(keyIdentifier);
+        }
+
+        /// <summary>
         /// Starts the definition of a password credential.
         /// </summary>
         /// <param name="name">The descriptive name of the password credential.</param>

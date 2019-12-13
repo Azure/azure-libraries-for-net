@@ -140,11 +140,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
         }
 
-        internal CertificateCredentialImpl(string name, IHasCredential<T> parent, string customKeyIdentifier)
+        internal CertificateCredentialImpl(string name, IHasCredential<T> parent, string customKeyIdentifier, Guid? keyId)
             : base(name, new KeyCredential()
             {
                 Usage = "Verify",
                 CustomKeyIdentifier = customKeyIdentifier,
+                KeyId = (keyId ?? Guid.NewGuid()).ToString(),
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddYears(1)
             })

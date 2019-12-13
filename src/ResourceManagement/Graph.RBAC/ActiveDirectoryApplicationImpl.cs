@@ -194,6 +194,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                     updateParameters.PasswordCredentials = cachedPasswordCredentials.Values.Select(pc => pc.Inner).ToList();
                 }
                 updateParameters.PasswordCredentials.Add(credential.Inner);
+                cachedPasswordCredentials.Add(credential.Id(), credential);
             }
             return this;
         }
@@ -244,13 +245,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         public CertificateCredentialImpl<T> DefineCertificateCredential<T>(string name) where T : class
         {
             var identifier = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(name));
-            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, identifier);
+            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, identifier, null);
         }
 
         public CertificateCredentialImpl<T> DefineCertificateCredential<T>() where T : class
         {
-            var name = Guid.NewGuid().ToString();
-            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, null);
+            var key = Guid.NewGuid();
+            return new CertificateCredentialImpl<T>(key.ToString(), (IHasCredential<T>)this, null, key);
         }
 
         public ActiveDirectoryApplicationImpl WithCertificateCredential<T>(CertificateCredentialImpl<T> credential) where T : class
@@ -270,6 +271,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                     updateParameters.KeyCredentials = cachedCertificateCredentials.Values.Select(pc => pc.Inner).ToList();
                 }
                 updateParameters.KeyCredentials.Add(credential.Inner);
+                cachedCertificateCredentials.Add(credential.Id(), credential);
             }
             return this;
         }
@@ -347,6 +349,29 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                     updateParameters.ReplyUrls = new List<string>(ReplyUrls());
                 }
                 updateParameters.ReplyUrls.Add(replyUrl);
+            }
+            return this;
+        }
+
+        public ActiveDirectoryApplicationImpl WithoutCredentialByIdentifier(string keyIdentifier)
+        {
+            foreach (var credential in cachedPasswordCredentials)
+            {
+                if (keyIdentifier.Equals(credential.Value.Inner.CustomKeyIdentifier))
+                {
+                    cachedPasswordCredentials.Remove(credential.Value.Id);
+                    updateParameters.PasswordCredentials = cachedPasswordCredentials.Values.Select(pc => pc.Inner).ToList();
+                    return this;
+                }
+            }
+            foreach (var credential in cachedCertificateCredentials)
+            {
+                if (keyIdentifier.Equals(credential.Value.CustomKeyIdentifier))
+                {
+                    cachedCertificateCredentials.Remove(credential.Value.Id);
+                    updateParameters.KeyCredentials = cachedCertificateCredentials.Values.Select(pc => pc.Inner).ToList();
+                    return this;
+                }
             }
             return this;
         }

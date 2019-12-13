@@ -110,13 +110,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         public CertificateCredentialImpl<T> DefineCertificateCredential<T>(string name) where T : class
         {
             var identifier = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(name));
-            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, identifier);
+            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, identifier, null);
         }
 
         public CertificateCredentialImpl<T> DefineCertificateCredential<T>() where T : class
         {
-            var name = Guid.NewGuid().ToString();
-            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, null);
+            var key = Guid.NewGuid();
+            return new CertificateCredentialImpl<T>(key.ToString(), (IHasCredential<T>)this, null, key);
         }
 
         public ServicePrincipalImpl WithoutCredential(string name)
@@ -132,6 +132,27 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             foreach (var credential in cachedCertificateCredentials.Values)
             {
                 if (name.Equals(credential.Name))
+                {
+                    certificateCredentialsToDelete.Add(credential.Id);
+                    return this;
+                }
+            }
+            return this;
+        }
+
+        public ServicePrincipalImpl WithoutCredentialByIdentifier(string keyIdentifier)
+        {
+            foreach (var credential in cachedPasswordCredentials.Values)
+            {
+                if (keyIdentifier.Equals(credential.Inner.CustomKeyIdentifier))
+                {
+                    passwordCredentialsToDelete.Add(credential.Id);
+                    return this;
+                }
+            }
+            foreach (var credential in cachedCertificateCredentials.Values)
+            {
+                if (keyIdentifier.Equals(credential.CustomKeyIdentifier))
                 {
                     certificateCredentialsToDelete.Add(credential.Id);
                     return this;

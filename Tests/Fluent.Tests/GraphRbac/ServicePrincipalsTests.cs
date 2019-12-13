@@ -85,12 +85,13 @@ namespace Fluent.Tests.Graph.RBAC
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
                                 .WithDuration(TimeSpan.FromDays(2))
                                 .Attach()
+                            .WithoutCredentialByIdentifier(certificate.GetCertHashString())
                             .Apply();
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.ApplicationId);
                     Assert.Equal(2, servicePrincipal.ServicePrincipalNames.Count);
                     Assert.Equal(0, servicePrincipal.PasswordCredentials.Count);
-                    Assert.Equal(3, servicePrincipal.CertificateCredentials.Count);
+                    Assert.Equal(2, servicePrincipal.CertificateCredentials.Count);
                 }
                 finally
                 {
