@@ -13,5 +13,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ICredential,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.KeyCredential>
     {
+        /// <summary>
+        /// Custom Key Identifier. If the credential is defined by .NET SDK with name,
+        /// it would be the base64 encoding of name. If it is set by other tools, it would
+        /// be that value. Otherwise, it would usually be the thrumbprint of cretificate.
+        /// </summary>
+        string CustomKeyIdentifier { get; }
     }
 }

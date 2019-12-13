@@ -78,6 +78,19 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         }
 
         /// <summary>
+        /// Custom Key Identifier. If the credential is defined by .NET SDK with name,
+        /// it would be the base64 encoding of name. If it is set by other tools, it would
+        /// be that value. Otherwise, it would usually be the thrumbprint of cretificate.
+        /// </summary>
+        string ICertificateCredential.CustomKeyIdentifier
+        {
+            get
+            {
+                return this.CustomKeyIdentifier();
+            }
+        }
+
+        /// <summary>
         /// Export the information of this service principal into an auth file.
         /// </summary>
         /// <param name="outputStream">The output stream to export the file.</param>

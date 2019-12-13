@@ -123,6 +123,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         }
 
         /// <summary>
+        /// Starts the definition of a certificate credential.
+        /// </summary>
+        /// <return>The first stage in certificate credential definition.</return>
+        CertificateCredential.UpdateDefinition.IBlank<ServicePrincipal.Update.IUpdate> ServicePrincipal.Update.IWithCredentialBeta.DefineCertificateCredential()
+        {
+            return this.DefineCertificateCredential<IUpdate>();
+        }
+
+        /// <summary>
         /// Removes a key.
         /// </summary>
         /// <param name="name">The name of the key.</param>
@@ -150,6 +159,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         CertificateCredential.Definition.IBlank<ServicePrincipal.Definition.IWithCreate> ServicePrincipal.Definition.IWithCredentialBeta.DefineCertificateCredential(string name)
         {
             return this.DefineCertificateCredential<IWithCreate>(name);
+        }
+
+        /// <summary>
+        /// Starts the definition of a certificate credential.
+        /// </summary>
+        /// <return>The first stage in certificate credential definition.</return>
+        CertificateCredential.Definition.IBlank<ServicePrincipal.Definition.IWithCreate> ServicePrincipal.Definition.IWithCredentialBeta.DefineCertificateCredential()
+        {
+            return this.DefineCertificateCredential<IWithCreate>();
         }
 
         /// <summary>

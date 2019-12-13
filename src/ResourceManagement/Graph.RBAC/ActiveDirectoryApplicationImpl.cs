@@ -243,7 +243,14 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public CertificateCredentialImpl<T> DefineCertificateCredential<T>(string name) where T : class
         {
-            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this);
+            var identifier = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(name));
+            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, identifier);
+        }
+
+        public CertificateCredentialImpl<T> DefineCertificateCredential<T>() where T : class
+        {
+            var name = Guid.NewGuid().ToString();
+            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, null);
         }
 
         public ActiveDirectoryApplicationImpl WithCertificateCredential<T>(CertificateCredentialImpl<T> credential) where T : class
@@ -260,7 +267,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 if (updateParameters.KeyCredentials == null)
                 {
-                    updateParameters.KeyCredentials = new List<KeyCredential>();
+                    updateParameters.KeyCredentials = cachedCertificateCredentials.Values.Select(pc => pc.Inner).ToList();
                 }
                 updateParameters.KeyCredentials.Add(credential.Inner);
             }

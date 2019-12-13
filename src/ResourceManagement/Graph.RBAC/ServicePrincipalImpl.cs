@@ -109,7 +109,14 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public CertificateCredentialImpl<T> DefineCertificateCredential<T>(string name) where T : class
         {
-            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this);
+            var identifier = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(name));
+            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, identifier);
+        }
+
+        public CertificateCredentialImpl<T> DefineCertificateCredential<T>() where T : class
+        {
+            var name = Guid.NewGuid().ToString();
+            return new CertificateCredentialImpl<T>(name, (IHasCredential<T>)this, null);
         }
 
         public ServicePrincipalImpl WithoutCredential(string name)

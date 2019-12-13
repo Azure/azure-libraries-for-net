@@ -56,6 +56,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update
         Microsoft.Azure.Management.Graph.RBAC.Fluent.CertificateCredential.UpdateDefinition.IBlank<Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update.IUpdate> DefineCertificateCredential(string name);
 
         /// <summary>
+        /// Starts the definition of a certificate credential.
+        /// It cannot be deleted by Management API since there is not name.
+        /// </summary>
+        /// <return>The first stage in certificate credential update.</return>
+        Microsoft.Azure.Management.Graph.RBAC.Fluent.CertificateCredential.UpdateDefinition.IBlank<Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update.IUpdate> DefineCertificateCredential();
+
+        /// <summary>
         /// Removes a credential.
         /// </summary>
         /// <param name="name">The name of the credential.</param>

@@ -106,6 +106,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
         Microsoft.Azure.Management.Graph.RBAC.Fluent.CertificateCredential.UpdateDefinition.IBlank<Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Update.IUpdate> DefineCertificateCredential(string name);
 
         /// <summary>
+        /// Starts the definition of a certificate credential.
+        /// It cannot be deleted by Management API since there is not name.
+        /// </summary>
+        /// <return>The first stage in certificate credential definition.</return>
+        Microsoft.Azure.Management.Graph.RBAC.Fluent.CertificateCredential.UpdateDefinition.IBlank<Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Update.IUpdate> DefineCertificateCredential();
+
+        /// <summary>
         /// Removes a key.
         /// </summary>
         /// <param name="name">The name of the key.</param>
