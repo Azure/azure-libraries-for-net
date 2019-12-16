@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// GremlinResourcesOperations operations.
     /// </summary>
-    internal partial class GremlinResourcesOperations : IServiceOperations<CosmosDB>, IGremlinResourcesOperations
+    internal partial class GremlinResourcesOperations : IServiceOperations<CosmosDBManagementClient>, IGremlinResourcesOperations
     {
         /// <summary>
         /// Initializes a new instance of the GremlinResourcesOperations class.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal GremlinResourcesOperations(CosmosDB client)
+        internal GremlinResourcesOperations(CosmosDBManagementClient client)
         {
             if (client == null)
             {
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Gets a reference to the CosmosDB
+        /// Gets a reference to the CosmosDBManagementClient
         /// </summary>
-        public CosmosDB Client { get; private set; }
+        public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
         /// Lists the Gremlin databases under an existing Azure Cosmos DB database

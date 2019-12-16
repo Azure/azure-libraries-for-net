@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// Azure Cosmos DB Database Service Resource Provider REST API
     /// </summary>
-    public partial interface ICosmosDB : System.IDisposable
+    public partial interface ICosmosDBManagementClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.

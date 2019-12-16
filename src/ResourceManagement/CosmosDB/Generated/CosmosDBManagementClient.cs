@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// Azure Cosmos DB Database Service Resource Provider REST API
     /// </summary>
-    public partial class CosmosDB : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<CosmosDB>, ICosmosDB, IAzureClient
+    public partial class CosmosDBManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<CosmosDBManagementClient>, ICosmosDBManagementClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -164,12 +164,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the CosmosDB class.
+        /// Initializes a new instance of the CosmosDBManagementClient class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public CosmosDB(RestClient restClient) : base(restClient)
+        public CosmosDBManagementClient(RestClient restClient) : base(restClient)
         {
         }
 

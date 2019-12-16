@@ -34,18 +34,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Initializes a new instance of the ThroughputSettingsGetResultsInner
         /// class.
         /// </summary>
-        /// <param name="throughput">Value of the Cosmos DB resource
-        /// throughput</param>
-        /// <param name="minimumThroughput">The minimum throughput of the
-        /// resource</param>
-        /// <param name="offerReplacePending">The throughput replace is
-        /// pending</param>
-        public ThroughputSettingsGetResultsInner(string location, int throughput, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string minimumThroughput = default(string), string offerReplacePending = default(string))
+        public ThroughputSettingsGetResultsInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ThroughputSettingsGetPropertiesResource resource = default(ThroughputSettingsGetPropertiesResource))
             : base(location, id, name, type, tags)
         {
-            Throughput = throughput;
-            MinimumThroughput = minimumThroughput;
-            OfferReplacePending = offerReplacePending;
+            Resource = resource;
             CustomInit();
         }
 
@@ -55,22 +47,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets value of the Cosmos DB resource throughput
         /// </summary>
-        [JsonProperty(PropertyName = "properties.throughput")]
-        public int Throughput { get; set; }
-
-        /// <summary>
-        /// Gets the minimum throughput of the resource
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minimumThroughput")]
-        public string MinimumThroughput { get; private set; }
-
-        /// <summary>
-        /// Gets the throughput replace is pending
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.offerReplacePending")]
-        public string OfferReplacePending { get; private set; }
+        [JsonProperty(PropertyName = "properties.resource")]
+        public ThroughputSettingsGetPropertiesResource Resource { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -81,6 +60,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public override void Validate()
         {
             base.Validate();
+            if (Resource != null)
+            {
+                Resource.Validate();
+            }
         }
     }
 }

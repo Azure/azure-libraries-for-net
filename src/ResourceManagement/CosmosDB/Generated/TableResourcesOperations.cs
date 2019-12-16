@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// TableResourcesOperations operations.
     /// </summary>
-    internal partial class TableResourcesOperations : IServiceOperations<CosmosDB>, ITableResourcesOperations
+    internal partial class TableResourcesOperations : IServiceOperations<CosmosDBManagementClient>, ITableResourcesOperations
     {
         /// <summary>
         /// Initializes a new instance of the TableResourcesOperations class.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal TableResourcesOperations(CosmosDB client)
+        internal TableResourcesOperations(CosmosDBManagementClient client)
         {
             if (client == null)
             {
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Gets a reference to the CosmosDB
+        /// Gets a reference to the CosmosDBManagementClient
         /// </summary>
-        public CosmosDB Client { get; private set; }
+        public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
         /// Lists the Tables under an existing Azure Cosmos DB database account.

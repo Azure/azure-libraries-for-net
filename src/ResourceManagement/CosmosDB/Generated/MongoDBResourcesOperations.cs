@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// MongoDBResourcesOperations operations.
     /// </summary>
-    internal partial class MongoDBResourcesOperations : IServiceOperations<CosmosDB>, IMongoDBResourcesOperations
+    internal partial class MongoDBResourcesOperations : IServiceOperations<CosmosDBManagementClient>, IMongoDBResourcesOperations
     {
         /// <summary>
         /// Initializes a new instance of the MongoDBResourcesOperations class.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal MongoDBResourcesOperations(CosmosDB client)
+        internal MongoDBResourcesOperations(CosmosDBManagementClient client)
         {
             if (client == null)
             {
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Gets a reference to the CosmosDB
+        /// Gets a reference to the CosmosDBManagementClient
         /// </summary>
-        public CosmosDB Client { get; private set; }
+        public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
         /// Lists the MongoDB databases under an existing Azure Cosmos DB database
