@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             : base(name, new Models.PasswordCredential()
             {
                 CustomKeyIdentifier = System.Text.Encoding.UTF8.GetBytes(name),
+                KeyId = Guid.NewGuid().ToString(),
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddYears(1)
             })

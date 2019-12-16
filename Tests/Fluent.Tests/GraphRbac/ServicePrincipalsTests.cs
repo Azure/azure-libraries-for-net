@@ -15,6 +15,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Fluent.Tests.Graph.RBAC
 {
@@ -42,13 +43,18 @@ namespace Fluent.Tests.Graph.RBAC
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest.cer"))
                                 .WithDuration(TimeSpan.FromDays(1))
                                 .Attach()
+                            .DefineCertificateCredential()
+                                .WithAsymmetricX509Certificate()
+                                .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
+                                .WithDuration(TimeSpan.FromDays(1))
+                                .Attach()
                             .Create();
                     Console.WriteLine(servicePrincipal.Id + " - " + string.Join(", ", servicePrincipal.ServicePrincipalNames));
                     Assert.NotNull(servicePrincipal.Id);
                     Assert.NotNull(servicePrincipal.ApplicationId);
                     Assert.Equal(2, servicePrincipal.ServicePrincipalNames.Count);
                     Assert.Equal(1, servicePrincipal.PasswordCredentials.Count);
-                    Assert.Equal(1, servicePrincipal.CertificateCredentials.Count);
+                    Assert.Equal(2, servicePrincipal.CertificateCredentials.Count);
 
                     // Get
                     servicePrincipal = manager.ServicePrincipals.GetByName(servicePrincipal.ApplicationId);
@@ -56,7 +62,20 @@ namespace Fluent.Tests.Graph.RBAC
                     Assert.NotNull(servicePrincipal.ApplicationId);
                     Assert.Equal(2, servicePrincipal.ServicePrincipalNames.Count);
                     Assert.Equal(1, servicePrincipal.PasswordCredentials.Count);
-                    Assert.Equal(1, servicePrincipal.CertificateCredentials.Count);
+                    Assert.Equal(2, servicePrincipal.CertificateCredentials.Count);
+
+                    // Check thumbprint, the customKeyIdentifier would be thumbprint if not set
+                    var certificate = new X509Certificate("Assets/myTest2.cer");
+                    var certificateCount = 0;
+                    foreach (var certificateCredential in servicePrincipal.CertificateCredentials.Values)
+                    {
+                        if (certificateCredential.Name != "spcert")
+                        {
+                            certificateCount++;
+                            Assert.Equal(certificate.GetCertHashString(), certificateCredential.CustomKeyIdentifier);
+                        }
+                    }
+                    Assert.True(certificateCount > 0);
 
                     // Update
                     servicePrincipal.Update()
@@ -66,6 +85,7 @@ namespace Fluent.Tests.Graph.RBAC
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
                                 .WithDuration(TimeSpan.FromDays(2))
                                 .Attach()
+                            .WithoutCredentialByIdentifier(certificate.GetCertHashString())
                             .Apply();
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.ApplicationId);

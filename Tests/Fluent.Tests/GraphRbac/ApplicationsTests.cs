@@ -15,6 +15,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Fluent.Tests.Graph.RBAC
 {
@@ -43,7 +44,7 @@ namespace Fluent.Tests.Graph.RBAC
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest.cer"))
                                 .WithDuration(TimeSpan.FromDays(100))
                                 .Attach()
-                            .DefineCertificateCredential("cert")
+                            .DefineCertificateCredential()
                                 .WithAsymmetricX509Certificate()
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
                                 .WithDuration(TimeSpan.FromDays(80))
@@ -59,14 +60,35 @@ namespace Fluent.Tests.Graph.RBAC
                     Assert.Equal(1, application.IdentifierUris.Count);
                     Assert.Equal("http://easycreate.azure.com/" + name, application.SignOnUrl.ToString());
 
+                    // check thumbprint, the customKeyIdentifier would be thumbprint if not set
+                    var certificate = new X509Certificate("Assets/myTest2.cer");
+                    var certificateCount = 0;
+                    foreach (var certificateCredential in application.CertificateCredentials.Values)
+                    {
+                        if (certificateCredential.Name != "cert")
+                        {
+                            certificateCount++;
+                            Assert.Equal(certificate.GetCertHashString(), certificateCredential.CustomKeyIdentifier);
+                        }
+                    }
+                    Assert.True(certificateCount > 0);
+
                     application.Update()
                             .DefinePasswordCredential("passwd2")
                                 .WithPasswordValue("StrongPass!12")
                                 .WithDuration(TimeSpan.FromDays(20))
                                 .Attach()
+                            .DefineCertificateCredential("cert")
+                                .WithAsymmetricX509Certificate()
+                                .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
+                                .WithDuration(TimeSpan.FromDays(1))
+                                .Attach()
+                            .WithoutCredentialByIdentifier(certificate.GetCertHashString())
                             .Apply();
+
                     Console.WriteLine(application.Id + " - " + application.ApplicationId);
                     Assert.Equal(2, application.PasswordCredentials.Count);
+                    Assert.Equal(2, application.CertificateCredentials.Count);
 
                     application.Update()
                             .WithoutCredential("passwd")

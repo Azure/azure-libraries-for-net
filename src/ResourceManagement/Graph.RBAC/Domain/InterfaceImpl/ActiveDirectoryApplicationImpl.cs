@@ -137,6 +137,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         }
 
         /// <summary>
+        /// Starts the definition of a certificate credential.
+        /// </summary>
+        /// <return>The first stage in certificate credential definition.</return>
+        CertificateCredential.UpdateDefinition.IBlank<ActiveDirectoryApplication.Update.IUpdate> ActiveDirectoryApplication.Update.IWithCredential.DefineCertificateCredential()
+        {
+            return this.DefineCertificateCredential<IUpdate>();
+        }
+
+        /// <summary>
         /// Removes a key.
         /// </summary>
         /// <param name="name">The name of the key.</param>
@@ -144,6 +153,16 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithCredential.WithoutCredential(string name)
         {
             return this.WithoutCredential(name);
+        }
+
+        /// <summary>
+        /// Removes a key.
+        /// </summary>
+        /// <param name="keyIdentifier">The custom key identifier.</param>
+        /// <return>The next stage of the application update.</return>
+        Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithCredential.WithoutCredentialByIdentifier(string keyIdentifier)
+        {
+            return this.WithoutCredentialByIdentifier(keyIdentifier);
         }
 
         /// <summary>
@@ -164,6 +183,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         CertificateCredential.Definition.IBlank<ActiveDirectoryApplication.Definition.IWithCreate> ActiveDirectoryApplication.Definition.IWithCredential.DefineCertificateCredential(string name)
         {
             return this.DefineCertificateCredential<IWithCreate>(name);
+        }
+
+        /// <summary>
+        /// Starts the definition of a certificate credential.
+        /// </summary>
+        /// <return>The first stage in certificate credential definition.</return>
+        CertificateCredential.Definition.IBlank<ActiveDirectoryApplication.Definition.IWithCreate> ActiveDirectoryApplication.Definition.IWithCredential.DefineCertificateCredential()
+        {
+            return this.DefineCertificateCredential<IWithCreate>();
         }
 
         /// <summary>
