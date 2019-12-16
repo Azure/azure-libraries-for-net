@@ -1,9 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Management.CosmosDB.Fluent.Domain.SqlDatabase.Update
+namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
 {
     /// <summary>
     /// The entirety of sql database update as a part of parent cosmos db account update.
