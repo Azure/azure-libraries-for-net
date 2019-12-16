@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rg1995?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnMTk5NT9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg4904?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnNDkwND9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "41d7fc11-4ae9-4489-b8eb-c5195f80baf1"
+          "454af263-6021-4a72-83ce-06ec00b857f2"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,7 +16,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
@@ -34,16 +34,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-request-id": [
-          "bb742e54-a6e3-4305-8147-b9c7f0061454"
+          "404b48b4-1816-4770-bf61-24b4412a273d"
         ],
         "x-ms-correlation-request-id": [
-          "bb742e54-a6e3-4305-8147-b9c7f0061454"
+          "404b48b4-1816-4770-bf61-24b4412a273d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040636Z:bb742e54-a6e3-4305-8147-b9c7f0061454"
+          "SOUTHEASTASIA:20191213T173706Z:404b48b4-1816-4770-bf61-24b4412a273d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,7 +52,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:36 GMT"
+          "Fri, 13 Dec 2019 17:37:05 GMT"
         ],
         "Content-Length": [
           "209"
@@ -64,17 +64,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995\",\r\n  \"name\": \"rg1995\",\r\n  \"type\": \"Microsoft.Resources/resourceGroups\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904\",\r\n  \"name\": \"rg4904\",\r\n  \"type\": \"Microsoft.Resources/resourceGroups\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZuZXQ2M2MzOTk1MmY0Zjc/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZuZXQ3YWUyOTYyMTcwNmU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/28\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"10.0.0.0/28\"\r\n        },\r\n        \"name\": \"subnet1\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "18c2811e-22da-4655-ba2a-a50660523b50"
+          "4828116c-e26d-44dd-a462-5d2dde9d183f"
         ],
         "Accept-Language": [
           "en-US"
@@ -83,7 +83,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
@@ -104,16 +104,16 @@
           "3"
         ],
         "x-ms-request-id": [
-          "eb4fbad3-25e8-49f4-8cff-89dbde71c39c"
+          "2511c49d-87cc-42eb-9ee4-8c92b7facae9"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Network/locations/eastus/operations/eb4fbad3-25e8-49f4-8cff-89dbde71c39c?api-version=2019-06-01"
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Network/locations/eastus/operations/2511c49d-87cc-42eb-9ee4-8c92b7facae9?api-version=2019-09-01"
         ],
         "x-ms-correlation-request-id": [
-          "864c1ac4-71a7-4a49-af65-beae483f6b68"
+          "50e7fe91-f420-4a35-b2d3-66c328872de4"
         ],
         "x-ms-arm-service-request-id": [
-          "e138d054-f208-42f3-930f-3516e4215dfc"
+          "ef72e077-7666-4d4e-af0c-112a65a01050"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,16 +123,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1198"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040639Z:864c1ac4-71a7-4a49-af65-beae483f6b68"
+          "SOUTHEASTASIA:20191213T173713Z:50e7fe91-f420-4a35-b2d3-66c328872de4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:39 GMT"
+          "Fri, 13 Dec 2019 17:37:12 GMT"
         ],
         "Content-Length": [
           "1332"
@@ -144,12 +144,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vnet63c39952f4f7\",\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7\",\r\n  \"etag\": \"W/\\\"b7dd07b5-2694-4de9-972c-626052e5d5bc\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"7f79b211-b6c4-4ecd-8777-d64e83301f95\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/28\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"subnet1\",\r\n        \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7/subnets/subnet1\",\r\n        \"etag\": \"W/\\\"b7dd07b5-2694-4de9-972c-626052e5d5bc\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.0.0/28\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vnet7ae29621706e\",\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e\",\r\n  \"etag\": \"W/\\\"6f4b3f28-700c-4183-8433-3b6993ec4630\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b88bb7b8-ffe6-401e-a319-5f53aec63ce2\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/28\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"subnet1\",\r\n        \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e/subnets/subnet1\",\r\n        \"etag\": \"W/\\\"6f4b3f28-700c-4183-8433-3b6993ec4630\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.0.0/28\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Network/locations/eastus/operations/eb4fbad3-25e8-49f4-8cff-89dbde71c39c?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvZWI0ZmJhZDMtMjVlOC00OWY0LThjZmYtODlkYmRlNzFjMzljP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Network/locations/eastus/operations/2511c49d-87cc-42eb-9ee4-8c92b7facae9?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMjUxMWM0OWQtODdjYy00MmViLTllZTQtOGM5MmI3ZmFjYWU5P2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -157,7 +157,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -169,13 +169,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "54e30631-678e-4cd7-91d9-40a34c5d802c"
+          "683934d6-f4c6-4c5d-8148-1065183588b4"
         ],
         "x-ms-correlation-request-id": [
-          "f106fb6b-ced7-495e-9a42-d27bfb6f3146"
+          "e25fb31f-0dbb-4e7c-9905-7b27bab4382b"
         ],
         "x-ms-arm-service-request-id": [
-          "6886facc-8795-494e-bab5-e99911b4398a"
+          "35cdeea6-2659-4700-9cb3-11074dcb0a65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -185,16 +185,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11966"
+          "11995"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040643Z:f106fb6b-ced7-495e-9a42-d27bfb6f3146"
+          "SOUTHEASTASIA:20191213T173717Z:e25fb31f-0dbb-4e7c-9905-7b27bab4382b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:43 GMT"
+          "Fri, 13 Dec 2019 17:37:16 GMT"
         ],
         "Content-Length": [
           "29"
@@ -210,8 +210,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZuZXQ2M2MzOTk1MmY0Zjc/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZuZXQ3YWUyOTYyMTcwNmU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -219,7 +219,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -231,16 +231,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"36500184-4659-4aff-93b2-aadde7d94933\""
+          "W/\"f8508213-e6ec-4bf2-b59e-e17214c1cebe\""
         ],
         "x-ms-request-id": [
-          "3395e4f2-5385-4502-854e-3e1aded10e16"
+          "0d907dd6-3b65-407a-b0bf-e9b58acefdd2"
         ],
         "x-ms-correlation-request-id": [
-          "77dd9701-2084-4908-956b-0d3ed983239b"
+          "dd79d99c-8b98-4b53-809a-ec7e279dafb1"
         ],
         "x-ms-arm-service-request-id": [
-          "385b23ab-e7b8-4dc0-8ca0-7b40e1cd9eb6"
+          "efed4341-d899-429c-bbda-070f1a007712"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -250,16 +250,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11965"
+          "11994"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040644Z:77dd9701-2084-4908-956b-0d3ed983239b"
+          "SOUTHEASTASIA:20191213T173717Z:dd79d99c-8b98-4b53-809a-ec7e279dafb1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:43 GMT"
+          "Fri, 13 Dec 2019 17:37:16 GMT"
         ],
         "Content-Length": [
           "1334"
@@ -271,17 +271,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vnet63c39952f4f7\",\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7\",\r\n  \"etag\": \"W/\\\"36500184-4659-4aff-93b2-aadde7d94933\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"7f79b211-b6c4-4ecd-8777-d64e83301f95\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/28\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"subnet1\",\r\n        \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7/subnets/subnet1\",\r\n        \"etag\": \"W/\\\"36500184-4659-4aff-93b2-aadde7d94933\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.0/28\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vnet7ae29621706e\",\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e\",\r\n  \"etag\": \"W/\\\"f8508213-e6ec-4bf2-b59e-e17214c1cebe\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b88bb7b8-ffe6-401e-a319-5f53aec63ce2\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/28\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"subnet1\",\r\n        \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e/subnets/subnet1\",\r\n        \"etag\": \"W/\\\"f8508213-e6ec-4bf2-b59e-e17214c1cebe\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.0/28\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya0ludGVyZmFjZXMvbmljdm04MzA3MDMwODkyMDBhP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya0ludGVyZmFjZXMvbmljdm0xMDU3ODU1MDI2ODBhP2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7/subnets/subnet1\"\r\n          },\r\n          \"primary\": true\r\n        },\r\n        \"name\": \"primary\"\r\n      }\r\n    ],\r\n    \"dnsSettings\": {}\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e/subnets/subnet1\"\r\n          },\r\n          \"primary\": true\r\n        },\r\n        \"name\": \"primary\"\r\n      }\r\n    ],\r\n    \"dnsSettings\": {}\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9f63b5b5-4b17-4d0c-95ab-983329aa666c"
+          "2191d051-2baa-437c-ab49-14a15aef82f8"
         ],
         "Accept-Language": [
           "en-US"
@@ -290,7 +290,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
@@ -308,16 +308,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "887b278d-58c8-4362-8359-ff118d63934f"
+          "7c60bfe7-ee7d-4632-a8d9-9be752bdce9e"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Network/locations/eastus/operations/887b278d-58c8-4362-8359-ff118d63934f?api-version=2019-06-01"
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Network/locations/eastus/operations/7c60bfe7-ee7d-4632-a8d9-9be752bdce9e?api-version=2019-09-01"
         ],
         "x-ms-correlation-request-id": [
-          "f915db72-77eb-4d8a-a337-c8228097cf41"
+          "c6648ab0-70df-4107-9c94-b70afad94b4c"
         ],
         "x-ms-arm-service-request-id": [
-          "d1b6b65e-882e-4888-a0b3-dba2f047937e"
+          "82ef9138-beb7-4127-9e98-4f48f1dab0bd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -327,16 +327,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1197"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040646Z:f915db72-77eb-4d8a-a337-c8228097cf41"
+          "SOUTHEASTASIA:20191213T173720Z:c6648ab0-70df-4107-9c94-b70afad94b4c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:45 GMT"
+          "Fri, 13 Dec 2019 17:37:20 GMT"
         ],
         "Content-Length": [
           "1625"
@@ -348,12 +348,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"nicvm830703089200a\",\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a\",\r\n  \"etag\": \"W/\\\"a76b72b6-dc45-49c8-893a-9769bc409863\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"9b95d06f-1455-456f-a5fa-48b1d5e9b028\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"primary\",\r\n        \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a/ipConfigurations/primary\",\r\n        \"etag\": \"W/\\\"a76b72b6-dc45-49c8-893a-9769bc409863\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.0.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7/subnets/subnet1\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"cgzhs54ew1gu3b1x0zhigma5sf.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"nicvm105785502680a\",\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a\",\r\n  \"etag\": \"W/\\\"220efecc-0819-46fc-a649-42f0c1ac3c46\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"1c4f6a3b-30b2-489c-a4af-679ab22a6465\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"primary\",\r\n        \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a/ipConfigurations/primary\",\r\n        \"etag\": \"W/\\\"220efecc-0819-46fc-a649-42f0c1ac3c46\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.0.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e/subnets/subnet1\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"xc1yxohg52pebiyzl3j03rr22c.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya0ludGVyZmFjZXMvbmljdm04MzA3MDMwODkyMDBhP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya0ludGVyZmFjZXMvbmljdm0xMDU3ODU1MDI2ODBhP2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -361,7 +361,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Network.Fluent.NetworkManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -373,16 +373,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"a76b72b6-dc45-49c8-893a-9769bc409863\""
+          "W/\"220efecc-0819-46fc-a649-42f0c1ac3c46\""
         ],
         "x-ms-request-id": [
-          "e2269d9c-39bb-4883-9b60-b946fa68fdeb"
+          "ea452510-bbc0-4ddd-b15f-d90a0acb8eeb"
         ],
         "x-ms-correlation-request-id": [
-          "28fbb9b7-9ec3-4d7b-b9e3-4578a6dcd313"
+          "bf822696-41b7-4826-bcf0-d52493b265c9"
         ],
         "x-ms-arm-service-request-id": [
-          "a47c96ea-6469-4776-8911-dcbb68f65803"
+          "15f9bc06-0471-4118-b9f7-619371846349"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -392,16 +392,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11964"
+          "11993"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040646Z:28fbb9b7-9ec3-4d7b-b9e3-4578a6dcd313"
+          "SOUTHEASTASIA:20191213T173721Z:bf822696-41b7-4826-bcf0-d52493b265c9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:45 GMT"
+          "Fri, 13 Dec 2019 17:37:20 GMT"
         ],
         "Content-Length": [
           "1625"
@@ -413,17 +413,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"nicvm830703089200a\",\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a\",\r\n  \"etag\": \"W/\\\"a76b72b6-dc45-49c8-893a-9769bc409863\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"9b95d06f-1455-456f-a5fa-48b1d5e9b028\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"primary\",\r\n        \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a/ipConfigurations/primary\",\r\n        \"etag\": \"W/\\\"a76b72b6-dc45-49c8-893a-9769bc409863\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.0.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/virtualNetworks/vnet63c39952f4f7/subnets/subnet1\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"cgzhs54ew1gu3b1x0zhigma5sf.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"nicvm105785502680a\",\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a\",\r\n  \"etag\": \"W/\\\"220efecc-0819-46fc-a649-42f0c1ac3c46\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"1c4f6a3b-30b2-489c-a4af-679ab22a6465\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"primary\",\r\n        \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a/ipConfigurations/primary\",\r\n        \"etag\": \"W/\\\"220efecc-0819-46fc-a649-42f0c1ac3c46\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.0.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/virtualNetworks/vnet7ae29621706e/subnets/subnet1\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"xc1yxohg52pebiyzl3j03rr22c.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Compute/virtualMachines/vm8307?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtODMwNz9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Compute/virtualMachines/vm1057?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtMTA1Nz9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Basic_A0\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      }\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm8307\",\r\n      \"adminUsername\": \"firstuser\",\r\n      \"adminPassword\": \"afh123RVS!\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Basic_A0\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      }\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm1057\",\r\n      \"adminUsername\": \"firstuser\",\r\n      \"adminPassword\": \"afh123RVS!\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6e13add-5e6e-4308-aa1f-30d7203287ea"
+          "396a9c99-8c3d-4942-ade2-07465629cac6"
         ],
         "Accept-Language": [
           "en-US"
@@ -432,7 +432,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
@@ -453,7 +453,7 @@
           "10"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa?api-version=2019-03-01"
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/a29b00c1-3a69-4612-b888-2a4d7121b6aa?api-version=2019-03-01"
         ],
         "Azure-AsyncNotification": [
           "Enabled"
@@ -465,26 +465,26 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa"
+          "a29b00c1-3a69-4612-b888-2a4d7121b6aa"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "2e9233f8-1993-40b6-a587-9cafa9fa811c"
+          "b7741dd9-7643-4603-8452-c1d2e1c2c91f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040649Z:2e9233f8-1993-40b6-a587-9cafa9fa811c"
+          "SOUTHEASTASIA:20191213T173724Z:b7741dd9-7643-4603-8452-c1d2e1c2c91f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:48 GMT"
+          "Fri, 13 Dec 2019 17:37:24 GMT"
         ],
         "Content-Length": [
           "1415"
@@ -496,12 +496,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vm8307\",\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Compute/virtualMachines/vm8307\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"vmId\": \"9c8468f0-4d83-403e-81b3-c9b8f954398e\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Basic_A0\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm8307\",\r\n      \"adminUsername\": \"firstuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"provisionVMAgent\": true\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a\",\r\n          \"properties\": {\r\n            \"primary\": true\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vm1057\",\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Compute/virtualMachines/vm1057\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"vmId\": \"2769ba21-afca-4450-a402-bd2a6b53c370\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Basic_A0\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm1057\",\r\n      \"adminUsername\": \"firstuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"provisionVMAgent\": true\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a\",\r\n          \"properties\": {\r\n            \"primary\": true\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMTk1ZDhjYjUtZTJjYS00ZmRkLThhMjUtY2ViOTVmYWFkZmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/a29b00c1-3a69-4612-b888-2a4d7121b6aa?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYTI5YjAwYzEtM2E2OS00NjEyLWI4ODgtMmE0ZDcxMjFiNmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -509,7 +509,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -524,35 +524,35 @@
           "30"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14999,Microsoft.Compute/GetOperation30Min;29977"
+          "Microsoft.Compute/GetOperation3Min;14999,Microsoft.Compute/GetOperation30Min;29987"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a086b3e5-eebf-41ca-a5ef-89a4ea4d7646"
+          "6b1b1124-6d51-4af1-ab51-ef6b9eaf821d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11963"
+          "11991"
         ],
         "x-ms-correlation-request-id": [
-          "15619765-d9d9-4bf4-b99f-11e71d5a8da2"
+          "713f0b81-11b5-4c77-81e5-a043d3fcf015"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040659Z:15619765-d9d9-4bf4-b99f-11e71d5a8da2"
+          "SOUTHEASTASIA:20191213T173735Z:713f0b81-11b5-4c77-81e5-a043d3fcf015"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:06:58 GMT"
+          "Fri, 13 Dec 2019 17:37:35 GMT"
         ],
         "Content-Length": [
-          "133"
+          "134"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -561,12 +561,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:06:48.101444+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:37:23.3935416+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"a29b00c1-3a69-4612-b888-2a4d7121b6aa\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMTk1ZDhjYjUtZTJjYS00ZmRkLThhMjUtY2ViOTVmYWFkZmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/a29b00c1-3a69-4612-b888-2a4d7121b6aa?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYTI5YjAwYzEtM2E2OS00NjEyLWI4ODgtMmE0ZDcxMjFiNmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -574,7 +574,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -586,35 +586,35 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14998,Microsoft.Compute/GetOperation30Min;29976"
+          "Microsoft.Compute/GetOperation3Min;14998,Microsoft.Compute/GetOperation30Min;29986"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e49f0a61-e3e1-4acd-8cbb-ee6eaa290ff4"
+          "bf0146a6-e5a7-4684-ad62-1a8061a91cd5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11962"
+          "11990"
         ],
         "x-ms-correlation-request-id": [
-          "65ab5942-df62-4105-b6f9-d39f62e4bc52"
+          "be4df068-35a3-4da1-bc56-a6df4ff128ef"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040729Z:65ab5942-df62-4105-b6f9-d39f62e4bc52"
+          "SOUTHEASTASIA:20191213T173805Z:be4df068-35a3-4da1-bc56-a6df4ff128ef"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:07:29 GMT"
+          "Fri, 13 Dec 2019 17:38:04 GMT"
         ],
         "Content-Length": [
-          "133"
+          "134"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -623,12 +623,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:06:48.101444+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:37:23.3935416+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"a29b00c1-3a69-4612-b888-2a4d7121b6aa\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMTk1ZDhjYjUtZTJjYS00ZmRkLThhMjUtY2ViOTVmYWFkZmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/a29b00c1-3a69-4612-b888-2a4d7121b6aa?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYTI5YjAwYzEtM2E2OS00NjEyLWI4ODgtMmE0ZDcxMjFiNmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -636,7 +636,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -648,35 +648,35 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14997,Microsoft.Compute/GetOperation30Min;29975"
+          "Microsoft.Compute/GetOperation3Min;14997,Microsoft.Compute/GetOperation30Min;29985"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "671731c1-d85c-433f-ac50-bb0b0eac68a0"
+          "359df20c-783c-4126-a32c-539dcf42d50d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11961"
+          "11989"
         ],
         "x-ms-correlation-request-id": [
-          "496c6d94-93fd-4369-8d42-5b3546e85c71"
+          "0419f586-12aa-4816-9e91-5a87dd4d812e"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040800Z:496c6d94-93fd-4369-8d42-5b3546e85c71"
+          "SOUTHEASTASIA:20191213T173835Z:0419f586-12aa-4816-9e91-5a87dd4d812e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:07:59 GMT"
+          "Fri, 13 Dec 2019 17:38:35 GMT"
         ],
         "Content-Length": [
-          "133"
+          "134"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -685,12 +685,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:06:48.101444+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:37:23.3935416+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"a29b00c1-3a69-4612-b888-2a4d7121b6aa\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMTk1ZDhjYjUtZTJjYS00ZmRkLThhMjUtY2ViOTVmYWFkZmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/a29b00c1-3a69-4612-b888-2a4d7121b6aa?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYTI5YjAwYzEtM2E2OS00NjEyLWI4ODgtMmE0ZDcxMjFiNmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -698,7 +698,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -710,35 +710,35 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14996,Microsoft.Compute/GetOperation30Min;29974"
+          "Microsoft.Compute/GetOperation3Min;14996,Microsoft.Compute/GetOperation30Min;29984"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4862014f-cfcc-4a40-8a53-76785b695589"
+          "799fb124-ddf4-4618-89cc-82cd0962738d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11960"
+          "11988"
         ],
         "x-ms-correlation-request-id": [
-          "5132c835-d5ee-4073-a501-d01e353c7871"
+          "179eaacd-d784-4a3c-98e8-a54ab4e7e4e4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040830Z:5132c835-d5ee-4073-a501-d01e353c7871"
+          "SOUTHEASTASIA:20191213T173906Z:179eaacd-d784-4a3c-98e8-a54ab4e7e4e4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:08:30 GMT"
+          "Fri, 13 Dec 2019 17:39:05 GMT"
         ],
         "Content-Length": [
-          "133"
+          "134"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -747,12 +747,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:06:48.101444+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:37:23.3935416+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"a29b00c1-3a69-4612-b888-2a4d7121b6aa\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMTk1ZDhjYjUtZTJjYS00ZmRkLThhMjUtY2ViOTVmYWFkZmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/a29b00c1-3a69-4612-b888-2a4d7121b6aa?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYTI5YjAwYzEtM2E2OS00NjEyLWI4ODgtMmE0ZDcxMjFiNmFhP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -760,7 +760,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -772,35 +772,35 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14994,Microsoft.Compute/GetOperation30Min;29972"
+          "Microsoft.Compute/GetOperation3Min;14993,Microsoft.Compute/GetOperation30Min;29981"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1fdc1a44-dc47-4262-8f4c-8a2eceb53759"
+          "fa597473-96b5-400a-8a6a-7e1e63cb057b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11959"
+          "11987"
         ],
         "x-ms-correlation-request-id": [
-          "35c2fa09-64df-484f-aa43-21f82f7163e6"
+          "e9a44076-3007-4948-b1be-73f709d970a8"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040900Z:35c2fa09-64df-484f-aa43-21f82f7163e6"
+          "SOUTHEASTASIA:20191213T173936Z:e9a44076-3007-4948-b1be-73f709d970a8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:08:59 GMT"
+          "Fri, 13 Dec 2019 17:39:35 GMT"
         ],
         "Content-Length": [
-          "183"
+          "184"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -809,12 +809,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:06:48.101444+08:00\",\r\n  \"endTime\": \"2019-10-24T12:08:49.1490633+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"195d8cb5-e2ca-4fdd-8a25-ceb95faadfaa\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:37:23.3935416+08:00\",\r\n  \"endTime\": \"2019-12-14T01:39:30.2060585+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"a29b00c1-3a69-4612-b888-2a4d7121b6aa\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Compute/virtualMachines/vm8307?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtODMwNz9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Compute/virtualMachines/vm1057?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtMTA1Nz9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -822,7 +822,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -834,32 +834,32 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/LowCostGet3Min;3997,Microsoft.Compute/LowCostGet30Min;31981"
+          "Microsoft.Compute/LowCostGet3Min;3997,Microsoft.Compute/LowCostGet30Min;31992"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fd977c61-0466-49cc-b3e0-90b89e6ca5dc"
+          "04ca506d-c564-46ad-9f7b-e1458a403167"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11958"
+          "11986"
         ],
         "x-ms-correlation-request-id": [
-          "2eafe74d-602a-4721-aa09-416741a85282"
+          "3535746e-5399-4da5-8613-651e98efe1a3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040901Z:2eafe74d-602a-4721-aa09-416741a85282"
+          "SOUTHEASTASIA:20191213T173936Z:3535746e-5399-4da5-8613-651e98efe1a3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:09:00 GMT"
+          "Fri, 13 Dec 2019 17:39:35 GMT"
         ],
         "Content-Length": [
           "1689"
@@ -871,17 +871,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vm8307\",\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Compute/virtualMachines/vm8307\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"vmId\": \"9c8468f0-4d83-403e-81b3-c9b8f954398e\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Basic_A0\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"vm8307_OsDisk_1_df37a859139a4c559157388e5eaeae39\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Compute/disks/vm8307_OsDisk_1_df37a859139a4c559157388e5eaeae39\"\r\n        },\r\n        \"diskSizeGB\": 30\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm8307\",\r\n      \"adminUsername\": \"firstuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"provisionVMAgent\": true\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Network/networkInterfaces/nicvm830703089200a\",\r\n          \"properties\": {\r\n            \"primary\": true\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vm1057\",\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Compute/virtualMachines/vm1057\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"vmId\": \"2769ba21-afca-4450-a402-bd2a6b53c370\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Basic_A0\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"vm1057_OsDisk_1_abe124fe009e4eae845c650b651ed70e\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Compute/disks/vm1057_OsDisk_1_abe124fe009e4eae845c650b651ed70e\"\r\n        },\r\n        \"diskSizeGB\": 30\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm1057\",\r\n      \"adminUsername\": \"firstuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"provisionVMAgent\": true\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Network/networkInterfaces/nicvm105785502680a\",\r\n          \"properties\": {\r\n            \"primary\": true\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1995/providers/Microsoft.Compute/virtualMachines/vm8307/runCommand?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMTk5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtODMwNy9ydW5Db21tYW5kP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg4904/providers/Microsoft.Compute/virtualMachines/vm1057/runCommand?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnNDkwNC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtMTA1Ny9ydW5Db21tYW5kP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"commandId\": \"RunShellScript\",\r\n  \"script\": [\r\n    \"sudo apt-get update\",\r\n    \"sudo apt-get install -y git\"\r\n  ],\r\n  \"parameters\": []\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3b35bc3-30a9-453c-9c33-2cc662b4c420"
+          "f199f1a2-29f7-4daf-8585-9c13cf6fc61c"
         ],
         "Accept-Language": [
           "en-US"
@@ -890,7 +890,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ],
         "Content-Type": [
@@ -908,10 +908,10 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/bb884f10-c412-40bb-bb00-454f22ef0109?monitor=true&api-version=2019-03-01"
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1?monitor=true&api-version=2019-03-01"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/bb884f10-c412-40bb-bb00-454f22ef0109?api-version=2019-03-01"
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1?api-version=2019-03-01"
         ],
         "x-ms-ratelimit-remaining-resource": [
           "Microsoft.Compute/UpdateVM3Min;239,Microsoft.Compute/UpdateVM30Min;1199"
@@ -920,26 +920,26 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bb884f10-c412-40bb-bb00-454f22ef0109"
+          "5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "cbbfd834-1877-4769-8f99-96b56a9ca50b"
+          "4ac6a792-cbb4-45d2-bc82-f5d3823510e2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040901Z:cbbfd834-1877-4769-8f99-96b56a9ca50b"
+          "SOUTHEASTASIA:20191213T173937Z:4ac6a792-cbb4-45d2-bc82-f5d3823510e2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:09:00 GMT"
+          "Fri, 13 Dec 2019 17:39:36 GMT"
         ],
         "Expires": [
           "-1"
@@ -952,8 +952,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/bb884f10-c412-40bb-bb00-454f22ef0109?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYmI4ODRmMTAtYzQxMi00MGJiLWJiMDAtNDU0ZjIyZWYwMTA5P2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNWRkMmNiMjUtMGU3Yy00ZmVkLWI0YTItNjUyMGQzZTU5MWYxP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -961,7 +961,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -973,32 +973,32 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14993,Microsoft.Compute/GetOperation30Min;29970"
+          "Microsoft.Compute/GetOperation3Min;14991,Microsoft.Compute/GetOperation30Min;29979"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6d595fff-2fab-4b19-9ff7-543323a18d84"
+          "9a344b3c-2afc-40e0-ace8-cf0da026b94d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11957"
+          "11985"
         ],
         "x-ms-correlation-request-id": [
-          "f3de0b9c-70e0-4292-9c81-712c66829b03"
+          "eedf5acf-5190-4f50-ac5b-cf5187cfb21b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T040931Z:f3de0b9c-70e0-4292-9c81-712c66829b03"
+          "SOUTHEASTASIA:20191213T174007Z:eedf5acf-5190-4f50-ac5b-cf5187cfb21b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:09:31 GMT"
+          "Fri, 13 Dec 2019 17:40:07 GMT"
         ],
         "Content-Length": [
           "134"
@@ -1010,12 +1010,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:09:01.2429115+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"bb884f10-c412-40bb-bb00-454f22ef0109\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:39:36.9873052+08:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/bb884f10-c412-40bb-bb00-454f22ef0109?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYmI4ODRmMTAtYzQxMi00MGJiLWJiMDAtNDU0ZjIyZWYwMTA5P2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNWRkMmNiMjUtMGU3Yy00ZmVkLWI0YTItNjUyMGQzZTU5MWYxP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1023,7 +1023,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -1035,35 +1035,35 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14991,Microsoft.Compute/GetOperation30Min;29971"
+          "Microsoft.Compute/GetOperation3Min;14989,Microsoft.Compute/GetOperation30Min;29976"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "10996260-2b87-4741-b582-791059295cde"
+          "412a28ec-79b4-4476-8258-6950aa8c1320"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11969"
+          "11984"
         ],
         "x-ms-correlation-request-id": [
-          "29550054-5e75-4c05-9485-0b4500999e98"
+          "a628b04a-47e2-4e52-b9bc-43fc89efd935"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T041002Z:29550054-5e75-4c05-9485-0b4500999e98"
+          "SOUTHEASTASIA:20191213T174037Z:a628b04a-47e2-4e52-b9bc-43fc89efd935"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:10:01 GMT"
+          "Fri, 13 Dec 2019 17:40:37 GMT"
         ],
         "Content-Length": [
-          "2362"
+          "2712"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1072,12 +1072,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-10-24T12:09:01.2429115+08:00\",\r\n  \"endTime\": \"2019-10-24T12:09:39.5087764+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"value\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"Enable succeeded: \\n[stdout]\\nGet:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]\\nHit:2 http://archive.ubuntu.com/ubuntu xenial InRelease\\nGet:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]\\nGet:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]\\nGet:5 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [770 kB]\\nGet:6 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [1055 kB]\\nGet:7 http://security.ubuntu.com/ubuntu xenial-security/main Translation-en [298 kB]\\nGet:8 http://archive.ubuntu.com/ubuntu xenial-updates/main Translation-en [408 kB]\\nGet:9 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [463 kB]\\nGet:10 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [768 kB]\\nGet:11 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [190 kB]\\nGet:12 http://archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [322 kB]\\nGet:13 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [5728 B]\\nGet:14 http://security.ubuntu.com/ubuntu xenial-security/multiverse Translation-en [2708 B]\\nGet:15 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [16.8 kB]\\nGet:16 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse Translation-en [8468 B]\\nGet:17 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [7280 B]\\nGet:18 http://archive.ubuntu.com/ubuntu xenial-backports/main Translation-en [4456 B]\\nGet:19 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [8064 B]\\nGet:20 http://archive.ubuntu.com/ubuntu xenial-backports/universe Translation-en [4328 B]\\nFetched 4658 kB in 13s (348 kB/s)\\nReading package lists...\\nReading package lists...\\nBuilding dependency tree...\\nReading state information...\\ngit is already the newest version (1:2.7.4-0ubuntu1.6).\\n0 upgraded, 0 newly installed, 0 to remove and 42 not upgraded.\\n\\n[stderr]\\n\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"name\": \"bb884f10-c412-40bb-bb00-454f22ef0109\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-14T01:39:36.9873052+08:00\",\r\n  \"endTime\": \"2019-12-14T01:40:31.6905565+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"value\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"Enable succeeded: \\n[stdout]\\nGet:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]\\nHit:2 http://archive.ubuntu.com/ubuntu xenial InRelease\\nGet:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]\\nGet:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]\\nGet:5 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [7532 kB]\\nGet:6 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [797 kB]\\nGet:7 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [466 kB]\\nGet:8 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [192 kB]\\nGet:9 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [5728 B]\\nGet:10 http://security.ubuntu.com/ubuntu xenial-security/multiverse Translation-en [2708 B]\\nGet:11 http://archive.ubuntu.com/ubuntu xenial/universe Translation-en [4354 kB]\\nGet:12 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [144 kB]\\nGet:13 http://archive.ubuntu.com/ubuntu xenial/multiverse Translation-en [106 kB]\\nGet:14 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [1082 kB]\\nGet:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [771 kB]\\nGet:16 http://archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [324 kB]\\nGet:17 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [16.8 kB]\\nGet:18 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse Translation-en [8468 B]\\nGet:19 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [7280 B]\\nGet:20 http://archive.ubuntu.com/ubuntu xenial-backports/main Translation-en [4456 B]\\nGet:21 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [8064 B]\\nGet:22 http://archive.ubuntu.com/ubuntu xenial-backports/universe Translation-en [4328 B]\\nFetched 16.2 MB in 29s (541 kB/s)\\nReading package lists...\\nReading package lists...\\nBuilding dependency tree...\\nReading state information...\\ngit is already the newest version (1:2.7.4-0ubuntu1.7).\\nThe following package was automatically installed and is no longer required:\\n  grub-pc-bin\\nUse 'sudo apt autoremove' to remove it.\\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\\n\\n[stderr]\\n\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"name\": \"5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.Compute/locations/eastus/operations/bb884f10-c412-40bb-bb00-454f22ef0109?monitor=true&api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYmI4ODRmMTAtYzQxMi00MGJiLWJiMDAtNDU0ZjIyZWYwMTA5P21vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Compute/locations/eastus/operations/5dd2cb25-0e7c-4fed-b4a2-6520d3e591f1?monitor=true&api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNWRkMmNiMjUtMGU3Yy00ZmVkLWI0YTItNjUyMGQzZTU5MWYxP21vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1085,7 +1085,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.Compute.Fluent.ComputeManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -1097,35 +1097,35 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14990,Microsoft.Compute/GetOperation30Min;29970"
+          "Microsoft.Compute/GetOperation3Min;14988,Microsoft.Compute/GetOperation30Min;29975"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5e2e5c2e-3d44-4d13-bf72-e3978eb9a974"
+          "8b7a51ce-5719-458e-9c35-aa80520f8f24"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11968"
+          "11983"
         ],
         "x-ms-correlation-request-id": [
-          "1ede04a7-37c7-4551-88a6-69ab4a7a468f"
+          "56229a63-cac4-4e31-925f-4ccd79b572f2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T041002Z:1ede04a7-37c7-4551-88a6-69ab4a7a468f"
+          "SOUTHEASTASIA:20191213T174038Z:56229a63-cac4-4e31-925f-4ccd79b572f2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:10:01 GMT"
+          "Fri, 13 Dec 2019 17:40:37 GMT"
         ],
         "Content-Length": [
-          "2137"
+          "2428"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1134,17 +1134,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"message\": \"Enable succeeded: \\n[stdout]\\nGet:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]\\nHit:2 http://archive.ubuntu.com/ubuntu xenial InRelease\\nGet:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]\\nGet:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]\\nGet:5 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [770 kB]\\nGet:6 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [1055 kB]\\nGet:7 http://security.ubuntu.com/ubuntu xenial-security/main Translation-en [298 kB]\\nGet:8 http://archive.ubuntu.com/ubuntu xenial-updates/main Translation-en [408 kB]\\nGet:9 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [463 kB]\\nGet:10 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [768 kB]\\nGet:11 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [190 kB]\\nGet:12 http://archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [322 kB]\\nGet:13 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [5728 B]\\nGet:14 http://security.ubuntu.com/ubuntu xenial-security/multiverse Translation-en [2708 B]\\nGet:15 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [16.8 kB]\\nGet:16 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse Translation-en [8468 B]\\nGet:17 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [7280 B]\\nGet:18 http://archive.ubuntu.com/ubuntu xenial-backports/main Translation-en [4456 B]\\nGet:19 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [8064 B]\\nGet:20 http://archive.ubuntu.com/ubuntu xenial-backports/universe Translation-en [4328 B]\\nFetched 4658 kB in 13s (348 kB/s)\\nReading package lists...\\nReading package lists...\\nBuilding dependency tree...\\nReading state information...\\ngit is already the newest version (1:2.7.4-0ubuntu1.6).\\n0 upgraded, 0 newly installed, 0 to remove and 42 not upgraded.\\n\\n[stderr]\\n\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"message\": \"Enable succeeded: \\n[stdout]\\nGet:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]\\nHit:2 http://archive.ubuntu.com/ubuntu xenial InRelease\\nGet:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]\\nGet:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]\\nGet:5 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [7532 kB]\\nGet:6 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [797 kB]\\nGet:7 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [466 kB]\\nGet:8 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [192 kB]\\nGet:9 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [5728 B]\\nGet:10 http://security.ubuntu.com/ubuntu xenial-security/multiverse Translation-en [2708 B]\\nGet:11 http://archive.ubuntu.com/ubuntu xenial/universe Translation-en [4354 kB]\\nGet:12 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [144 kB]\\nGet:13 http://archive.ubuntu.com/ubuntu xenial/multiverse Translation-en [106 kB]\\nGet:14 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [1082 kB]\\nGet:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [771 kB]\\nGet:16 http://archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [324 kB]\\nGet:17 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [16.8 kB]\\nGet:18 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse Translation-en [8468 B]\\nGet:19 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [7280 B]\\nGet:20 http://archive.ubuntu.com/ubuntu xenial-backports/main Translation-en [4456 B]\\nGet:21 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [8064 B]\\nGet:22 http://archive.ubuntu.com/ubuntu xenial-backports/universe Translation-en [4328 B]\\nFetched 16.2 MB in 29s (541 kB/s)\\nReading package lists...\\nReading package lists...\\nBuilding dependency tree...\\nReading state information...\\ngit is already the newest version (1:2.7.4-0ubuntu1.7).\\nThe following package was automatically installed and is no longer required:\\n  grub-pc-bin\\nUse 'sudo apt autoremove' to remove it.\\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\\n\\n[stderr]\\n\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rg1995?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnMTk5NT9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg4904?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnNDkwND9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "38e37178-07cd-42c3-bdec-189457edfaa0"
+          "78449706-f0f1-4ab9-bc37-455de65e0eda"
         ],
         "Accept-Language": [
           "en-US"
@@ -1153,7 +1153,7 @@
           "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.61",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.0.0.62",
           "MacAddressHash/f198b50d7e3ef6510679efb9e4c9a1474fd2bf18cf1d6a2182c79b00464dbadd"
         ]
       },
@@ -1165,22 +1165,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SRzE5OTUtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2019-08-01"
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SRzQ5MDQtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2019-08-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-request-id": [
-          "c2ec167d-0e51-44c4-8deb-b3fb0910e90a"
+          "e23ed07a-e284-40a0-b8b6-d52fd5c9fe04"
         ],
         "x-ms-correlation-request-id": [
-          "c2ec167d-0e51-44c4-8deb-b3fb0910e90a"
+          "e23ed07a-e284-40a0-b8b6-d52fd5c9fe04"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20191024T041008Z:c2ec167d-0e51-44c4-8deb-b3fb0910e90a"
+          "SOUTHEASTASIA:20191213T174043Z:e23ed07a-e284-40a0-b8b6-d52fd5c9fe04"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1189,7 +1189,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Oct 2019 04:10:07 GMT"
+          "Fri, 13 Dec 2019 17:40:43 GMT"
         ],
         "Expires": [
           "-1"
@@ -1204,18 +1204,18 @@
   ],
   "Names": {
     "CanRunScriptOnVM": [
-      "rg1995",
-      "vnet1066",
-      "vm8307",
-      "pip1627",
-      "abc931",
-      "nicvm830703089200a",
-      "vnet63c39952f4f7"
+      "rg4904",
+      "vnet2403",
+      "vm1057",
+      "pip9066",
+      "abc7051",
+      "nicvm105785502680a",
+      "vnet7ae29621706e"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "af519bfa-99e8-4193-b65b-e6cd2f8bde7f",
+    "ServicePrincipal": "f95af6c4-6bb0-46be-945d-307f2410f6ca",
     "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
+    "SubscriptionId": "ec0aa5f7-9e78-40c9-85cd-535c6305b380"
   }
 }
