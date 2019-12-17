@@ -15,32 +15,32 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public string SqlDatabaseId()
         {
-            return this.Inner.SqlDatabaseGetResultsId;
+            return this.Inner.Resource.Id;
         }
 
         public string _rid()
         {
-            return this.Inner._rid;
+            return this.Inner.Resource._rid;
         }
 
         public object _ts()
         {
-            return this.Inner._ts;
+            return this.Inner.Resource._ts;
         }
 
         public string _etag()
         {
-            return this.Inner._etag;
+            return this.Inner.Resource._etag;
         }
 
         public string _colls()
         {
-            return this.Inner._colls;
+            return this.Inner.Resource._colls;
         }
 
         public string _users()
         {
-            return this.Inner._users;
+            return this.Inner.Resource._users;
         }
     }
 }

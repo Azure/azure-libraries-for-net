@@ -52,9 +52,9 @@ namespace Fluent.Tests
                 {
                     Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient).BaseUri.Host);
                 }
-                else if (client is Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDB)
+                else if (client is Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBManagementClient)
                 {
-                    Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDB).BaseUri.Host);
+                    Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBManagementClient).BaseUri.Host);
                 }
                 else if (client is Microsoft.Azure.Management.Dns.Fluent.DnsManagementClient)
                 {

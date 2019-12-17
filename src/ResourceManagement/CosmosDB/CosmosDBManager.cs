@@ -8,14 +8,14 @@ using System.Linq;
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    public class CosmosDBManager : Manager<ICosmosDB>, ICosmosDBManager
+    public class CosmosDBManager : Manager<ICosmosDBManagementClient>, ICosmosDBManager
     {
         #region Fluent private collections
         private ICosmosDBAccounts databaseAccounts;
         #endregion
 
         public CosmosDBManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new CosmosDB(restClient)
+            base(restClient, subscriptionId, new CosmosDBManagementClient(restClient)
             {
                 SubscriptionId = subscriptionId
             })
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
     }
 
-    public interface ICosmosDBManager : IManager<ICosmosDB>
+    public interface ICosmosDBManager : IManager<ICosmosDBManagementClient>
     {
         ICosmosDBAccounts CosmosDBAccounts { get; }
     }
