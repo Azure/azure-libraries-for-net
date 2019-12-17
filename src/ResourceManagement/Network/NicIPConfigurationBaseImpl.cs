@@ -110,7 +110,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     loadBalancers[loadBalancerId.ToLower()] = loadBalancer;
                 }
                 string ruleName = ResourceUtils.NameFromResourceId(reference.Id);
-                rules.Add(loadBalancer.InboundNatRules[ruleName]);
+                if (loadBalancer.InboundNatRules.ContainsKey(ruleName))
+                {
+                    rules.Add(loadBalancer.InboundNatRules[ruleName]);
+                }
             }
             return rules;
         }
