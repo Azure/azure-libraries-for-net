@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </return>
         public async Task<AzureOperationResponse<IPage<OperationInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string apiVersion = "2019-06-01";
+            string apiVersion = "2019-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

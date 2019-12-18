@@ -15,9 +15,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// DDoS protection plan.
     /// </summary>
-    public interface IDdosProtectionPlan  :
+    public interface IDdosProtectionPlan :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.DdosProtectionPlanInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.DdosProtectionPlanInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IDdosProtectionPlan>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<DdosProtectionPlan.Update.IUpdate>
     {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the DDoS protection plan resource.
         /// </summary>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
 
         /// <summary>
         /// Gets the resource GUID property of the DDoS protection plan resource.

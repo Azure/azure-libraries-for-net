@@ -85,9 +85,9 @@ namespace Fluent.Tests.Network
                         .WithTag("tag1", "value1")
                         .Create();
                     erc.Peerings.DefineMicrosoftPeering()
-                        .WithAdvertisedPublicPrefixes("123.1.0.0/24")
-                        .WithPrimaryPeerAddressPrefix("123.0.0.0/30")
-                        .WithSecondaryPeerAddressPrefix("123.0.0.4/30")
+                        .WithAdvertisedPublicPrefixes("124.1.0.0/24")
+                        .WithPrimaryPeerAddressPrefix("124.0.0.0/30")
+                        .WithSecondaryPeerAddressPrefix("124.0.0.4/30")
                         .WithVlanId(200)
                         .WithPeerAsn(100)
                         .Create();
@@ -97,11 +97,11 @@ namespace Fluent.Tests.Network
                             .Update()
                             .WithVlanId(300)
                             .WithPeerAsn(101)
-                            .WithSecondaryPeerAddressPrefix("123.0.0.8/30")
+                            .WithSecondaryPeerAddressPrefix("124.0.0.8/30")
                             .Apply();
                     Assert.Equal(300, peering.VlanId);
                     Assert.Equal(101, peering.PeerAsn);
-                    Assert.Equal("123.0.0.8/30", peering.SecondaryPeerAddressPrefix);
+                    Assert.Equal("124.0.0.8/30", peering.SecondaryPeerAddressPrefix);
                     manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
                 }
                 finally

@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// interface.</param>
         /// <param name="macAddress">The MAC address of the network
         /// interface.</param>
-        /// <param name="primary">Gets whether this is a primary network
-        /// interface on a virtual machine.</param>
+        /// <param name="primary">Whether this is a primary network interface
+        /// on a virtual machine.</param>
         /// <param name="enableAcceleratedNetworking">If the network interface
         /// is accelerated networking enabled.</param>
         /// <param name="enableIPForwarding">Indicates whether IP forwarding is
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="resourceGuid">The resource GUID property of the
         /// network interface resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// public IP resource. Possible values are: 'Updating', 'Deleting',
-        /// and 'Failed'.</param>
+        /// network interface resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterfaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualMachine = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource networkSecurityGroup = default(Management.ResourceManager.Fluent.SubResource), PrivateEndpointInner privateEndpoint = default(PrivateEndpointInner), IList<NetworkInterfaceIPConfigurationInner> ipConfigurations = default(IList<NetworkInterfaceIPConfigurationInner>), IList<NetworkInterfaceTapConfigurationInner> tapConfigurations = default(IList<NetworkInterfaceTapConfigurationInner>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkInterfaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualMachine = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource networkSecurityGroup = default(Management.ResourceManager.Fluent.SubResource), PrivateEndpointInner privateEndpoint = default(PrivateEndpointInner), IList<NetworkInterfaceIPConfigurationInner> ipConfigurations = default(IList<NetworkInterfaceIPConfigurationInner>), IList<NetworkInterfaceTapConfigurationInner> tapConfigurations = default(IList<NetworkInterfaceTapConfigurationInner>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             VirtualMachine = virtualMachine;
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<NetworkInterfaceIPConfigurationInner> IpConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of TapConfigurations of the network interface.
+        /// Gets a list of TapConfigurations of the network interface.
         /// </summary>
         [JsonProperty(PropertyName = "properties.tapConfigurations")]
-        public IList<NetworkInterfaceTapConfigurationInner> TapConfigurations { get; set; }
+        public IList<NetworkInterfaceTapConfigurationInner> TapConfigurations { get; private set; }
 
         /// <summary>
         /// Gets or sets the DNS settings in network interface.
@@ -126,17 +126,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public NetworkInterfaceDnsSettings DnsSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets the MAC address of the network interface.
+        /// Gets the MAC address of the network interface.
         /// </summary>
         [JsonProperty(PropertyName = "properties.macAddress")]
-        public string MacAddress { get; set; }
+        public string MacAddress { get; private set; }
 
         /// <summary>
         /// Gets whether this is a primary network interface on a virtual
         /// machine.
         /// </summary>
         [JsonProperty(PropertyName = "properties.primary")]
-        public bool? Primary { get; set; }
+        public bool? Primary { get; private set; }
 
         /// <summary>
         /// Gets or sets if the network interface is accelerated networking
@@ -159,25 +159,25 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<string> HostedWorkloads { get; private set; }
 
         /// <summary>
-        /// Gets or sets the resource GUID property of the network interface
-        /// resource.
+        /// Gets the resource GUID property of the network interface resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the public IP resource.
-        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the network interface resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

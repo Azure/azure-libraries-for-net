@@ -65,16 +65,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// traffic selectors.</param>
         /// <param name="ipsecPolicies">The IPSec Policies to be considered by
         /// this connection.</param>
+        /// <param name="trafficSelectorPolicies">The Traffic Selector Policies
+        /// to be considered by this connection.</param>
         /// <param name="resourceGuid">The resource GUID property of the
-        /// VirtualNetworkGatewayConnection resource.</param>
+        /// virtual network gateway connection resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// VirtualNetworkGatewayConnection resource. Possible values are:
-        /// 'Updating', 'Deleting', and 'Failed'.</param>
+        /// virtual network gateway connection resource. Possible values
+        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="expressRouteGatewayBypass">Bypass ExpressRoute Gateway
         /// for data forwarding.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public VirtualNetworkGatewayConnectionInner(Management.ResourceManager.Fluent.SubResource virtualNetworkGateway1, VirtualNetworkGatewayConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string authorizationKey = default(string), Management.ResourceManager.Fluent.SubResource virtualNetworkGateway2 = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource localNetworkGateway2 = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkGatewayConnectionProtocol connectionProtocol = default(VirtualNetworkGatewayConnectionProtocol), int? routingWeight = default(int?), string sharedKey = default(string), VirtualNetworkGatewayConnectionStatus connectionStatus = default(VirtualNetworkGatewayConnectionStatus), IList<TunnelConnectionHealth> tunnelConnectionStatus = default(IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), Management.ResourceManager.Fluent.SubResource peer = default(Management.ResourceManager.Fluent.SubResource), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), string resourceGuid = default(string), string provisioningState = default(string), bool? expressRouteGatewayBypass = default(bool?), string etag = default(string))
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public VirtualNetworkGatewayConnectionInner(Management.ResourceManager.Fluent.SubResource virtualNetworkGateway1, VirtualNetworkGatewayConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string authorizationKey = default(string), Management.ResourceManager.Fluent.SubResource virtualNetworkGateway2 = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource localNetworkGateway2 = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkGatewayConnectionProtocol connectionProtocol = default(VirtualNetworkGatewayConnectionProtocol), int? routingWeight = default(int?), string sharedKey = default(string), VirtualNetworkGatewayConnectionStatus connectionStatus = default(VirtualNetworkGatewayConnectionStatus), IList<TunnelConnectionHealth> tunnelConnectionStatus = default(IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), Management.ResourceManager.Fluent.SubResource peer = default(Management.ResourceManager.Fluent.SubResource), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(IList<TrafficSelectorPolicy>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), bool? expressRouteGatewayBypass = default(bool?), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             AuthorizationKey = authorizationKey;
@@ -93,6 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             EnableBgp = enableBgp;
             UsePolicyBasedTrafficSelectors = usePolicyBasedTrafficSelectors;
             IpsecPolicies = ipsecPolicies;
+            TrafficSelectorPolicies = trafficSelectorPolicies;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             ExpressRouteGatewayBypass = expressRouteGatewayBypass;
@@ -206,19 +209,26 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<IpsecPolicy> IpsecPolicies { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource GUID property of the
-        /// VirtualNetworkGatewayConnection resource.
+        /// Gets or sets the Traffic Selector Policies to be considered by this
+        /// connection.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        [JsonProperty(PropertyName = "properties.trafficSelectorPolicies")]
+        public IList<TrafficSelectorPolicy> TrafficSelectorPolicies { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the VirtualNetworkGatewayConnection
-        /// resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.
+        /// Gets the resource GUID property of the virtual network gateway
+        /// connection resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceGuid")]
+        public string ResourceGuid { get; private set; }
+
+        /// <summary>
+        /// Gets the provisioning state of the virtual network gateway
+        /// connection resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets bypass ExpressRoute Gateway for data forwarding.
@@ -231,7 +241,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -256,6 +266,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
                     if (element != null)
                     {
                         element.Validate();
+                    }
+                }
+            }
+            if (TrafficSelectorPolicies != null)
+            {
+                foreach (var element1 in TrafficSelectorPolicies)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
                     }
                 }
             }

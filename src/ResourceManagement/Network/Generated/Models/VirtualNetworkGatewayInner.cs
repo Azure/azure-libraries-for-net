@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Possible values include: 'Vpn', 'ExpressRoute'</param>
         /// <param name="vpnType">The type of this virtual network gateway.
         /// Possible values include: 'PolicyBased', 'RouteBased'</param>
+        /// <param name="vpnGatewayGeneration">The generation for this
+        /// VirtualNetworkGateway. Must be None if gatewayType is not VPN.
+        /// Possible values include: 'None', 'Generation1',
+        /// 'Generation2'</param>
         /// <param name="enableBgp">Whether BGP is enabled for this virtual
         /// network gateway or not.</param>
         /// <param name="activeActive">ActiveActive flag.</param>
@@ -59,18 +63,23 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource which represents the custom routes address space specified
         /// by the customer for virtual network gateway and VpnClient.</param>
         /// <param name="resourceGuid">The resource GUID property of the
-        /// VirtualNetworkGateway resource.</param>
+        /// virtual network gateway resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// VirtualNetworkGateway resource. Possible values are: 'Updating',
-        /// 'Deleting', and 'Failed'.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public VirtualNetworkGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfigurationInner> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfigurationInner>), VirtualNetworkGatewayType gatewayType = default(VirtualNetworkGatewayType), VpnType vpnType = default(VpnType), bool? enableBgp = default(bool?), bool? activeActive = default(bool?), Management.ResourceManager.Fluent.SubResource gatewayDefaultSite = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        /// virtual network gateway resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="enableDnsForwarding">Whether dns forwarding is enabled
+        /// or not.</param>
+        /// <param name="inboundDnsForwardingEndpoint">The IP address allocated
+        /// by the gateway to which dns requests can be sent.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public VirtualNetworkGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfigurationInner> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfigurationInner>), VirtualNetworkGatewayType gatewayType = default(VirtualNetworkGatewayType), VpnType vpnType = default(VpnType), VpnGatewayGeneration vpnGatewayGeneration = default(VpnGatewayGeneration), bool? enableBgp = default(bool?), bool? activeActive = default(bool?), Management.ResourceManager.Fluent.SubResource gatewayDefaultSite = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             IpConfigurations = ipConfigurations;
             GatewayType = gatewayType;
             VpnType = vpnType;
+            VpnGatewayGeneration = vpnGatewayGeneration;
             EnableBgp = enableBgp;
             ActiveActive = activeActive;
             GatewayDefaultSite = gatewayDefaultSite;
@@ -80,6 +89,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             CustomRoutes = customRoutes;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            EnableDnsForwarding = enableDnsForwarding;
+            InboundDnsForwardingEndpoint = inboundDnsForwardingEndpoint;
             Etag = etag;
             CustomInit();
         }
@@ -108,6 +119,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.vpnType")]
         public VpnType VpnType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the generation for this VirtualNetworkGateway. Must be
+        /// None if gatewayType is not VPN. Possible values include: 'None',
+        /// 'Generation1', 'Generation2'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.vpnGatewayGeneration")]
+        public VpnGatewayGeneration VpnGatewayGeneration { get; set; }
 
         /// <summary>
         /// Gets or sets whether BGP is enabled for this virtual network
@@ -159,25 +178,39 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public AddressSpace CustomRoutes { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource GUID property of the
-        /// VirtualNetworkGateway resource.
+        /// Gets the resource GUID property of the virtual network gateway
+        /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the VirtualNetworkGateway resource.
-        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the virtual network gateway
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets whether dns forwarding is enabled or not.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableDnsForwarding")]
+        public bool? EnableDnsForwarding { get; set; }
+
+        /// <summary>
+        /// Gets the IP address allocated by the gateway to which dns requests
+        /// can be sent.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.inboundDnsForwardingEndpoint")]
+        public string InboundDnsForwardingEndpoint { get; private set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

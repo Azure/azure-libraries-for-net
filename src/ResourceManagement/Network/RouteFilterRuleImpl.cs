@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for  RouteFilterRule and its create and update interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uUm91dGVGaWx0ZXJSdWxlSW1wbA==
-    internal partial class RouteFilterRuleImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uUm91dGVGaWx0ZXJSdWxlSW1wbA==
+    internal partial class RouteFilterRuleImpl :
         ChildResource<RouteFilterRuleInner,
             RouteFilterImpl,
             IRouteFilter>,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     {
 
         ///GENMHASH:13DC7420187ABBB7C8DD8DB9BB60179C:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal  RouteFilterRuleImpl(RouteFilterRuleInner inner, RouteFilterImpl parent) : base(inner, parent)
+        internal RouteFilterRuleImpl(RouteFilterRuleInner inner, RouteFilterImpl parent) : base(inner, parent)
         {
         }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:5D4BF21E49789459EF95BA820BF19FF2
         public RouteFilterImpl Attach()
         {
-           return base.Parent.WithRule(this);
+            return base.Parent.WithRule(this);
         }
 
         ///GENMHASH:1CAA7CDA757B61DD12C2FA4A0E0CD040:ADCADCD34C378242E7F8E63B22D82C45
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:3DB04077E6BABC0FB5A5ACDA19D11309
-        public string ProvisioningState()
+        public ProvisioningState ProvisioningState()
         {
             return Inner.ProvisioningState;
         }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public string RouteFilterRuleType()
         {
             return RouteFilterRuleInner.RouteFilterRuleType;
-            
+
         }
 
         ///GENMHASH:16F7C45243A612D87C78AE426C45F5FF:DDE981312440502ADDA28149709EC2EC
@@ -108,7 +108,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:89D4559CBD4F10C45690195FC3D6ECC4:65076E0C66A04C9C26AFAD5C44678F26
         public RouteFilterRuleImpl WithBgpCommunity(string community)
         {
-            if (Inner.Communities == null) {
+            if (Inner.Communities == null)
+            {
                 Inner.Communities = new List<String>();
             }
             Inner.Communities.Add(community);

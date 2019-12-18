@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class RouteFilterImpl 
+    internal partial class RouteFilterImpl
     {
         /// <summary>
         /// Gets express route circuit peerings associated with this route filter, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> Microsoft.Azure.Management.Network.Fluent.IRouteFilter.Peerings
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> Microsoft.Azure.Management.Network.Fluent.IRouteFilter.Peerings
         {
             get
             {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the route filter resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IRouteFilter.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IRouteFilter.ProvisioningState
         {
             get
             {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets rules associated with this route filter, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule> Microsoft.Azure.Management.Network.Fluent.IRouteFilter.Rules
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule> Microsoft.Azure.Management.Network.Fluent.IRouteFilter.Rules
         {
             get
             {

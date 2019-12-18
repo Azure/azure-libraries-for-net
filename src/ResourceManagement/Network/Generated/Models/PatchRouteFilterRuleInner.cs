@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// include: 'Allow', 'Deny'</param>
         /// <param name="communities">The collection for bgp community values
         /// to filter on. e.g. ['12076:5010','12076:5020'].</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values are: 'Updating', 'Deleting', 'Succeeded'
-        /// and 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the route
+        /// filter rule resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public PatchRouteFilterRuleInner(Access access, IList<string> communities, string id = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public PatchRouteFilterRuleInner(Access access, IList<string> communities, string id = default(string), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
             Access = access;
@@ -84,11 +84,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<string> Communities { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource. Possible values are:
-        /// 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// Gets the provisioning state of the route filter rule resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets the name of the resource that is unique within a resource

@@ -36,12 +36,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Tcp', 'Http', 'Https', 'Icmp'</param>
         /// <param name="protocolConfiguration">Configuration of the
         /// protocol.</param>
-        public ConnectivityParameters(ConnectivitySource source, ConnectivityDestination destination, Protocol protocol = default(Protocol), ProtocolConfiguration protocolConfiguration = default(ProtocolConfiguration))
+        /// <param name="preferredIPVersion">Preferred IP version of the
+        /// connection. Possible values include: 'IPv4', 'IPv6'</param>
+        public ConnectivityParameters(ConnectivitySource source, ConnectivityDestination destination, Protocol protocol = default(Protocol), ProtocolConfiguration protocolConfiguration = default(ProtocolConfiguration), IPVersion preferredIPVersion = default(IPVersion))
         {
             Source = source;
             Destination = destination;
             Protocol = protocol;
             ProtocolConfiguration = protocolConfiguration;
+            PreferredIPVersion = preferredIPVersion;
             CustomInit();
         }
 
@@ -74,6 +77,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "protocolConfiguration")]
         public ProtocolConfiguration ProtocolConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets preferred IP version of the connection. Possible
+        /// values include: 'IPv4', 'IPv6'
+        /// </summary>
+        [JsonProperty(PropertyName = "preferredIPVersion")]
+        public IPVersion PreferredIPVersion { get; set; }
 
         /// <summary>
         /// Validate the object.

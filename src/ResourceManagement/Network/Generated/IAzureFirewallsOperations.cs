@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<AzureFirewallInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewallInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates tags for an Azure Firewall resource.
+        /// Updates tags of an Azure Firewall resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -106,9 +106,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or update Azure Firewall
-        /// operation.
+        /// <param name='tags'>
+        /// Resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AzureFirewallInner>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewallInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AzureFirewallInner>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all Azure Firewalls in a resource group.
         /// </summary>

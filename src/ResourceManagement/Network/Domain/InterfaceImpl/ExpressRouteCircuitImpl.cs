@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets provisioningState.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit.ProvisioningState
         {
             get
             {

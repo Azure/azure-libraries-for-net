@@ -36,18 +36,25 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the WebApplicationFirewallPolicyInner
         /// class.
         /// </summary>
+        /// <param name="managedRules">Describes the managedRules
+        /// structure.</param>
         /// <param name="policySettings">Describes policySettings for
         /// policy.</param>
         /// <param name="customRules">Describes custom rules inside the
         /// policy.</param>
         /// <param name="applicationGateways">A collection of references to
         /// application gateways.</param>
-        /// <param name="provisioningState">Provisioning state of the
-        /// WebApplicationFirewallPolicy.</param>
+        /// <param name="provisioningState">The provisioning state of the web
+        /// application firewall policy resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="resourceState">Resource status of the policy.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public WebApplicationFirewallPolicyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PolicySettings policySettings = default(PolicySettings), IList<WebApplicationFirewallCustomRule> customRules = default(IList<WebApplicationFirewallCustomRule>), IList<ApplicationGatewayInner> applicationGateways = default(IList<ApplicationGatewayInner>), string provisioningState = default(string), WebApplicationFirewallPolicyResourceState resourceState = default(WebApplicationFirewallPolicyResourceState), string etag = default(string))
+        /// <param name="httpListeners">A collection of references to
+        /// application gateway http listeners.</param>
+        /// <param name="pathBasedRules">A collection of references to
+        /// application gateway path rules.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public WebApplicationFirewallPolicyInner(ManagedRulesDefinition managedRules, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PolicySettings policySettings = default(PolicySettings), IList<WebApplicationFirewallCustomRule> customRules = default(IList<WebApplicationFirewallCustomRule>), IList<ApplicationGatewayInner> applicationGateways = default(IList<ApplicationGatewayInner>), ProvisioningState provisioningState = default(ProvisioningState), WebApplicationFirewallPolicyResourceState resourceState = default(WebApplicationFirewallPolicyResourceState), IList<Management.ResourceManager.Fluent.SubResource> httpListeners = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> pathBasedRules = default(IList<Management.ResourceManager.Fluent.SubResource>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             PolicySettings = policySettings;
@@ -55,6 +62,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ApplicationGateways = applicationGateways;
             ProvisioningState = provisioningState;
             ResourceState = resourceState;
+            ManagedRules = managedRules;
+            HttpListeners = httpListeners;
+            PathBasedRules = pathBasedRules;
             Etag = etag;
             CustomInit();
         }
@@ -83,10 +93,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<ApplicationGatewayInner> ApplicationGateways { get; private set; }
 
         /// <summary>
-        /// Gets provisioning state of the WebApplicationFirewallPolicy.
+        /// Gets the provisioning state of the web application firewall policy
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets resource status of the policy.
@@ -99,11 +111,30 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public WebApplicationFirewallPolicyResourceState ResourceState { get; private set; }
 
         /// <summary>
+        /// Gets or sets describes the managedRules structure.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.managedRules")]
+        public ManagedRulesDefinition ManagedRules { get; set; }
+
+        /// <summary>
+        /// Gets a collection of references to application gateway http
+        /// listeners.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.httpListeners")]
+        public IList<Management.ResourceManager.Fluent.SubResource> HttpListeners { get; private set; }
+
+        /// <summary>
+        /// Gets a collection of references to application gateway path rules.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.pathBasedRules")]
+        public IList<Management.ResourceManager.Fluent.SubResource> PathBasedRules { get; private set; }
+
+        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -113,6 +144,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (ManagedRules == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "ManagedRules");
+            }
+            if (PolicySettings != null)
+            {
+                PolicySettings.Validate();
+            }
             if (CustomRules != null)
             {
                 foreach (var element in CustomRules)
@@ -132,6 +171,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
                         element1.Validate();
                     }
                 }
+            }
+            if (ManagedRules != null)
+            {
+                ManagedRules.Validate();
             }
         }
     }

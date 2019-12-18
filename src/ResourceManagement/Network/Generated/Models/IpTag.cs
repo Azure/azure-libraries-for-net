@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the IpTag class.
         /// </summary>
-        /// <param name="ipTagType">Gets or sets the ipTag type: Example
+        /// <param name="ipTagType">The IP tag type. Example:
         /// FirstPartyUsage.</param>
-        /// <param name="tag">Gets or sets value of the IpTag associated with
-        /// the public IP. Example SQL, Storage etc.</param>
+        /// <param name="tag">The value of the IP tag associated with the
+        /// public IP. Example: SQL.</param>
         public IpTag(string ipTagType = default(string), string tag = default(string))
         {
             IpTagType = ipTagType;
@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ipTag type: Example FirstPartyUsage.
+        /// Gets or sets the IP tag type. Example: FirstPartyUsage.
         /// </summary>
         [JsonProperty(PropertyName = "ipTagType")]
         public string IpTagType { get; set; }
 
         /// <summary>
-        /// Gets or sets value of the IpTag associated with the public IP.
-        /// Example SQL, Storage etc.
+        /// Gets or sets the value of the IP tag associated with the public IP.
+        /// Example: SQL.
         /// </summary>
         [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }

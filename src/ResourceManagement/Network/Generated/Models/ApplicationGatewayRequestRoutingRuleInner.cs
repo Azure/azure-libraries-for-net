@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="ruleType">Rule type. Possible values include: 'Basic',
         /// 'PathBasedRouting'</param>
+        /// <param name="priority">Priority of the request routing
+        /// rule.</param>
         /// <param name="backendAddressPool">Backend address pool resource of
         /// the application gateway.</param>
         /// <param name="backendHttpSettings">Backend http settings resource of
@@ -48,18 +50,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// rule of the application gateway.</param>
         /// <param name="redirectConfiguration">Redirect configuration resource
         /// of the application gateway.</param>
-        /// <param name="provisioningState">Provisioning state of the request
-        /// routing rule resource. Possible values are: 'Updating', 'Deleting',
-        /// and 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// request routing rule resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">Name of the request routing rule that is unique
         /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayRequestRoutingRuleInner(string id = default(string), ApplicationGatewayRequestRoutingRuleType ruleType = default(ApplicationGatewayRequestRoutingRuleType), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource httpListener = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource urlPathMap = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource rewriteRuleSet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource redirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayRequestRoutingRuleInner(string id = default(string), ApplicationGatewayRequestRoutingRuleType ruleType = default(ApplicationGatewayRequestRoutingRuleType), int? priority = default(int?), Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource httpListener = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource urlPathMap = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource rewriteRuleSet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource redirectConfiguration = default(Management.ResourceManager.Fluent.SubResource), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             RuleType = ruleType;
+            Priority = priority;
             BackendAddressPool = backendAddressPool;
             BackendHttpSettings = backendHttpSettings;
             HttpListener = httpListener;
@@ -84,6 +87,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.ruleType")]
         public ApplicationGatewayRequestRoutingRuleType RuleType { get; set; }
+
+        /// <summary>
+        /// Gets or sets priority of the request routing rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.priority")]
+        public int? Priority { get; set; }
 
         /// <summary>
         /// Gets or sets backend address pool resource of the application
@@ -126,12 +135,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource RedirectConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets provisioning state of the request routing rule
-        /// resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.
+        /// Gets the provisioning state of the request routing rule resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets name of the request routing rule that is unique within
@@ -141,17 +150,34 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
-        /// Gets or sets type of the resource.
+        /// Gets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public string Type { get; private set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Priority > 20000)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "Priority", 20000);
+            }
+            if (Priority < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Priority", 1);
+            }
+        }
     }
 }

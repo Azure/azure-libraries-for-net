@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="rewriteRules">Rewrite rules in the rewrite rule
         /// set.</param>
-        /// <param name="provisioningState">Provisioning state of the rewrite
-        /// rule set resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// rewrite rule set resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">Name of the rewrite rule set that is unique
         /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ApplicationGatewayRewriteRuleSetInner(string id = default(string), IList<ApplicationGatewayRewriteRule> rewriteRules = default(IList<ApplicationGatewayRewriteRule>), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public ApplicationGatewayRewriteRuleSetInner(string id = default(string), IList<ApplicationGatewayRewriteRule> rewriteRules = default(IList<ApplicationGatewayRewriteRule>), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
             RewriteRules = rewriteRules;
@@ -67,11 +67,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<ApplicationGatewayRewriteRule> RewriteRules { get; set; }
 
         /// <summary>
-        /// Gets provisioning state of the rewrite rule set resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the rewrite rule set resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets name of the rewrite rule set that is unique within an

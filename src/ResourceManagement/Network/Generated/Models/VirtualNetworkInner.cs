@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="resourceGuid">The resourceGuid property of the Virtual
         /// Network resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// virtual network resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="enableDdosProtection">Indicates if DDoS protection is
         /// enabled for all the protected resources in the virtual network. It
         /// requires a DDoS protection plan associated with the
@@ -56,9 +56,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// enabled for all the subnets in the virtual network.</param>
         /// <param name="ddosProtectionPlan">The DDoS protection plan
         /// associated with the virtual network.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public VirtualNetworkInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), IList<SubnetInner> subnets = default(IList<SubnetInner>), IList<VirtualNetworkPeeringInner> virtualNetworkPeerings = default(IList<VirtualNetworkPeeringInner>), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDdosProtection = default(bool?), bool? enableVmProtection = default(bool?), Management.ResourceManager.Fluent.SubResource ddosProtectionPlan = default(Management.ResourceManager.Fluent.SubResource), string etag = default(string))
+        /// <param name="bgpCommunities">Bgp Communities sent over ExpressRoute
+        /// with each route corresponding to a prefix in this VNET.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public VirtualNetworkInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), IList<SubnetInner> subnets = default(IList<SubnetInner>), IList<VirtualNetworkPeeringInner> virtualNetworkPeerings = default(IList<VirtualNetworkPeeringInner>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), bool? enableDdosProtection = default(bool?), bool? enableVmProtection = default(bool?), Management.ResourceManager.Fluent.SubResource ddosProtectionPlan = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkBgpCommunities bgpCommunities = default(VirtualNetworkBgpCommunities), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             AddressSpace = addressSpace;
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             EnableDdosProtection = enableDdosProtection;
             EnableVmProtection = enableVmProtection;
             DdosProtectionPlan = ddosProtectionPlan;
+            BgpCommunities = bgpCommunities;
             Etag = etag;
             CustomInit();
         }
@@ -106,18 +109,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<VirtualNetworkPeeringInner> VirtualNetworkPeerings { get; set; }
 
         /// <summary>
-        /// Gets or sets the resourceGuid property of the Virtual Network
-        /// resource.
+        /// Gets the resourceGuid property of the Virtual Network resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the PublicIP resource.
-        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the virtual network resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets indicates if DDoS protection is enabled for all the
@@ -142,11 +145,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource DdosProtectionPlan { get; set; }
 
         /// <summary>
+        /// Gets or sets bgp Communities sent over ExpressRoute with each route
+        /// corresponding to a prefix in this VNET.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.bgpCommunities")]
+        public VirtualNetworkBgpCommunities BgpCommunities { get; set; }
+
+        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -156,6 +166,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (BgpCommunities != null)
+            {
+                BgpCommunities.Validate();
+            }
         }
     }
 }

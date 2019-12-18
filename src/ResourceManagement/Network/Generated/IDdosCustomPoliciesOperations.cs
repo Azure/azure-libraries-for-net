@@ -174,33 +174,5 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<DdosCustomPolicyInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosCustomPolicyName, DdosCustomPolicyInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a DDoS custom policy tags.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ddosCustomPolicyName'>
-        /// The name of the DDoS custom policy.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<DdosCustomPolicyInner>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ddosCustomPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

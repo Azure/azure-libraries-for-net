@@ -190,7 +190,7 @@ namespace Fluent.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip ="ignore this as service retired")]
         public void CanCreateFileServer()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))

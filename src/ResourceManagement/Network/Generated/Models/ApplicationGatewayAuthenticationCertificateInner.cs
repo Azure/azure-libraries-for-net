@@ -35,15 +35,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// ApplicationGatewayAuthenticationCertificateInner class.
         /// </summary>
         /// <param name="data">Certificate public data.</param>
-        /// <param name="provisioningState">Provisioning state of the
-        /// authentication certificate resource. Possible values are:
-        /// 'Updating', 'Deleting', and 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// authentication certificate resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">Name of the authentication certificate that is
         /// unique within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayAuthenticationCertificateInner(string id = default(string), string data = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayAuthenticationCertificateInner(string id = default(string), string data = default(string), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             Data = data;
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Data { get; set; }
 
         /// <summary>
-        /// Gets or sets provisioning state of the authentication certificate
-        /// resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.
+        /// Gets the provisioning state of the authentication certificate
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets name of the authentication certificate that is unique
@@ -81,17 +81,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
-        /// Gets or sets type of the resource.
+        /// Gets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public string Type { get; private set; }
 
     }
 }

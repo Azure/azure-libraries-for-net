@@ -60,16 +60,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// security.</param>
         /// <param name="useLocalAzureIpAddress">Use local azure ip to initiate
         /// connection.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">The provisioning state of the VPN
+        /// connection resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="vpnLinkConnections">List of all vpn site link
         /// connections to the gateway.</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         public VpnConnectionInner(string id = default(string), Management.ResourceManager.Fluent.SubResource remoteVpnSite = default(Management.ResourceManager.Fluent.SubResource), int? routingWeight = default(int?), VpnConnectionStatus connectionStatus = default(VpnConnectionStatus), VirtualNetworkGatewayConnectionProtocol vpnConnectionProtocolType = default(VirtualNetworkGatewayConnectionProtocol), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? enableInternetSecurity = default(bool?), bool? useLocalAzureIpAddress = default(bool?), ProvisioningState provisioningState = default(ProvisioningState), IList<VpnSiteLinkConnectionInner> vpnLinkConnections = default(IList<VpnSiteLinkConnectionInner>), string name = default(string), string etag = default(string))
             : base(id)
         {
@@ -187,11 +187,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? UseLocalAzureIpAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the VPN connection resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets list of all vpn site link connections to the gateway.

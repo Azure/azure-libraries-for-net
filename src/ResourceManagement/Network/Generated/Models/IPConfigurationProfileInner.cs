@@ -36,14 +36,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="subnet">The reference of the subnet resource to create
         /// a container network interface ip configuration.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource.</param>
+        /// <param name="provisioningState">The provisioning state of the IP
+        /// configuration profile resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource. This name can be used
         /// to access the resource.</param>
         /// <param name="type">Sub Resource type.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public IPConfigurationProfileInner(string id = default(string), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public IPConfigurationProfileInner(string id = default(string), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string type = default(string), string etag = default(string))
             : base(id)
         {
             Subnet = subnet;
@@ -67,10 +68,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource Subnet { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource.
+        /// Gets the provisioning state of the IP configuration profile
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource. This name can be used to
@@ -86,11 +89,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
     }
 }

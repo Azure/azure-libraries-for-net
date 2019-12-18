@@ -203,32 +203,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates public IP prefix tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='publicIpPrefixName'>
-            /// The name of the public IP prefix.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<PublicIPPrefixInner> BeginUpdateTagsAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets all the public IP prefixes in a subscription.
             /// </summary>
             /// <param name='operations'>

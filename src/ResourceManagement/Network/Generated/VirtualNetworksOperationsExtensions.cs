@@ -252,32 +252,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates a virtual network tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualNetworkInner> BeginUpdateTagsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets all virtual networks in a subscription.
             /// </summary>
             /// <param name='operations'>

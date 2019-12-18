@@ -221,34 +221,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<LoadBalancerInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, LoadBalancerInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates a load balancer tags.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<LoadBalancerInner>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Gets all the load balancers in a subscription.
         /// </summary>
         /// <param name='nextPageLink'>

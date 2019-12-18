@@ -182,32 +182,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates VirtualHub tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The resource group name of the VirtualHub.
-            /// </param>
-            /// <param name='virtualHubName'>
-            /// The name of the VirtualHub.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualHubInner> BeginUpdateTagsAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualHubName, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Deletes a VirtualHub.
             /// </summary>
             /// <param name='operations'>

@@ -400,32 +400,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Updates a network interface tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkInterfaceInner> BeginUpdateTagsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets all route tables applied to a network interface.
             /// </summary>
             /// <param name='operations'>

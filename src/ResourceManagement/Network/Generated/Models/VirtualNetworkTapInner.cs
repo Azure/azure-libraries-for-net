@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="networkInterfaceTapConfigurations">Specifies the list
         /// of resource IDs for the network interface IP configuration that
         /// needs to be tapped.</param>
-        /// <param name="resourceGuid">The resourceGuid property of the virtual
-        /// network tap.</param>
+        /// <param name="resourceGuid">The resource GUID property of the
+        /// virtual network tap resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// virtual network tap. Possible values are: 'Updating', 'Deleting',
-        /// and 'Failed'.</param>
+        /// virtual network tap resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="destinationNetworkInterfaceIPConfiguration">The
         /// reference to the private IP Address of the collector nic that will
         /// receive the tap.</param>
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// that will receive the tap.</param>
         /// <param name="destinationPort">The VXLAN destination port that will
         /// receive the tapped traffic.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public VirtualNetworkTapInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<NetworkInterfaceTapConfigurationInner> networkInterfaceTapConfigurations = default(IList<NetworkInterfaceTapConfigurationInner>), string resourceGuid = default(string), string provisioningState = default(string), Management.ResourceManager.Fluent.SubResource destinationNetworkInterfaceIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource destinationLoadBalancerFrontEndIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), int? destinationPort = default(int?), string etag = default(string))
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public VirtualNetworkTapInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<NetworkInterfaceTapConfigurationInner> networkInterfaceTapConfigurations = default(IList<NetworkInterfaceTapConfigurationInner>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), Management.ResourceManager.Fluent.SubResource destinationNetworkInterfaceIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource destinationLoadBalancerFrontEndIPConfiguration = default(Management.ResourceManager.Fluent.SubResource), int? destinationPort = default(int?), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             NetworkInterfaceTapConfigurations = networkInterfaceTapConfigurations;
@@ -78,17 +78,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<NetworkInterfaceTapConfigurationInner> NetworkInterfaceTapConfigurations { get; private set; }
 
         /// <summary>
-        /// Gets the resourceGuid property of the virtual network tap.
+        /// Gets the resource GUID property of the virtual network tap
+        /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the virtual network tap. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the virtual network tap resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the reference to the private IP Address of the
@@ -116,7 +118,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

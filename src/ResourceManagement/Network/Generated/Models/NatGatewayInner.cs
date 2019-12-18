@@ -43,16 +43,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// associated with the nat gateway resource.</param>
         /// <param name="subnets">An array of references to the subnets using
         /// this nat gateway resource.</param>
-        /// <param name="resourceGuid">The resource GUID property of the nat
+        /// <param name="resourceGuid">The resource GUID property of the NAT
         /// gateway resource.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// NatGateway resource. Possible values are: 'Updating', 'Deleting',
-        /// and 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the NAT
+        /// gateway resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
         /// <param name="zones">A list of availability zones denoting the zone
         /// in which Nat Gateway should be deployed.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NatGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), NatGatewaySku sku = default(NatGatewaySku), int? idleTimeoutInMinutes = default(int?), IList<Management.ResourceManager.Fluent.SubResource> publicIpAddresses = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> publicIpPrefixes = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> subnets = default(IList<Management.ResourceManager.Fluent.SubResource>), string resourceGuid = default(string), string provisioningState = default(string), IList<string> zones = default(IList<string>), string etag = default(string))
+        public NatGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), NatGatewaySku sku = default(NatGatewaySku), int? idleTimeoutInMinutes = default(int?), IList<Management.ResourceManager.Fluent.SubResource> publicIpAddresses = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> publicIpPrefixes = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> subnets = default(IList<Management.ResourceManager.Fluent.SubResource>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), IList<string> zones = default(IList<string>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -106,18 +106,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<Management.ResourceManager.Fluent.SubResource> Subnets { get; private set; }
 
         /// <summary>
-        /// Gets or sets the resource GUID property of the nat gateway
-        /// resource.
+        /// Gets the resource GUID property of the NAT gateway resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the NatGateway resource.
-        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the NAT gateway resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets a list of availability zones denoting the zone in
@@ -127,11 +126,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<string> Zones { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

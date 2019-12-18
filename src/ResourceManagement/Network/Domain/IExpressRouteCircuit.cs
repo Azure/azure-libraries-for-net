@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets provisioningState.
         /// </summary>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
 
         /// <summary>
         /// Gets the SKU type.

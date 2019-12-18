@@ -224,23 +224,19 @@ namespace Fluent.Tests
 
                     Assert.True(databaseAccount.KeyBasedMetadataWriteAccessDisabled);
 
-                    var privateLinkServiceConnection = new PrivateLinkServiceConnectionInner(null,
-                        databaseAccount.Id,
-                        new List<string> { "Sql" },
-                        null,
-                        new PrivateLinkServiceConnectionState("Approved"),
-                        plsConnectionName);
+                    var privateLinkServiceConnection = new PrivateLinkServiceConnectionInner(name: plsConnectionName)
+                    {
+                        PrivateLinkServiceId = databaseAccount.Id,
+                        GroupIds = new List<string> { "Sql" },
+                        PrivateLinkServiceConnectionState = new PrivateLinkServiceConnectionState("Approved"),
+                    };
 
-                    var privateEndpoint = new PrivateEndpointInner(region.ToString(),
-                        null,
-                        pedName,
-                        null,
-                        null,
-                        network.Subnets[subnetName].Inner,
-                        null,
-                        null,
-                        new List<PrivateLinkServiceConnectionInner> { privateLinkServiceConnection },
-                        null);
+                    var privateEndpoint = new PrivateEndpointInner(name: pedName)
+                    {
+                        Location = region.ToString(),
+                        Subnet = network.Subnets[subnetName].Inner,
+                        PrivateLinkServiceConnections = new List<PrivateLinkServiceConnectionInner> { privateLinkServiceConnection },
+                    };
 
                     azure.Networks.Manager.Inner.PrivateEndpoints
                         .CreateOrUpdateWithHttpMessagesAsync(rgName, pedName, privateEndpoint).Wait();

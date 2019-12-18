@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A route filter rule in a route filter group.
     /// </summary>
-    public interface IRouteFilterRule  :
+    public interface IRouteFilterRule :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.RouteFilterRuleInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.IRouteFilter>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the resource.
         /// </summary>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
 
         /// <summary>
         /// Gets the rule type of the rule.

@@ -37,15 +37,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="virtualNetworkTap">The reference of the Virtual
         /// Network Tap resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// network interface tap configuration. Possible values are:
-        /// 'Updating', 'Deleting', and 'Failed'.</param>
+        /// network interface tap configuration resource. Possible values
+        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Sub Resource type.</param>
-        public NetworkInterfaceTapConfigurationInner(string id = default(string), Management.ResourceManager.Fluent.SubResource virtualNetworkTap = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public NetworkInterfaceTapConfigurationInner(string id = default(string), Management.ResourceManager.Fluent.SubResource virtualNetworkTap = default(Management.ResourceManager.Fluent.SubResource), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             VirtualNetworkTap = virtualNetworkTap;
@@ -69,11 +69,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets the provisioning state of the network interface tap
-        /// configuration. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.
+        /// configuration resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Gets sub Resource type.

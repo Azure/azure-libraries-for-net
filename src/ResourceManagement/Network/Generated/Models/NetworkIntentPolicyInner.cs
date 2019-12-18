@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the NetworkIntentPolicyInner class.
         /// </summary>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         public NetworkIntentPolicyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

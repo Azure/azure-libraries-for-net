@@ -225,6 +225,60 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
+            /// Starts packet capture on virtual network gateway connection in the
+            /// specified resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkGatewayConnectionName'>
+            /// The name of the virtual network gateway connection.
+            /// </param>
+            /// <param name='filterData'>
+            /// Start Packet capture parameters.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<string> StartPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, string filterData = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.StartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, filterData, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Stops packet capture on virtual network gateway connection in the specified
+            /// resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkGatewayConnectionName'>
+            /// The name of the virtual network gateway Connection.
+            /// </param>
+            /// <param name='sasUrl'>
+            /// SAS url for packet capture on virtual network gateway.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<string> StopPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, string sasUrl = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.StopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, sasUrl, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Creates or updates a virtual network gateway connection in the specified
             /// resource group.
             /// </summary>
@@ -353,6 +407,60 @@ namespace Microsoft.Azure.Management.Network.Fluent
             public static async Task<ConnectionResetSharedKeyInner> BeginResetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, int keyLength, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginResetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, keyLength, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Starts packet capture on virtual network gateway connection in the
+            /// specified resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkGatewayConnectionName'>
+            /// The name of the virtual network gateway connection.
+            /// </param>
+            /// <param name='filterData'>
+            /// Start Packet capture parameters.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<string> BeginStartPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, string filterData = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, filterData, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Stops packet capture on virtual network gateway connection in the specified
+            /// resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkGatewayConnectionName'>
+            /// The name of the virtual network gateway Connection.
+            /// </param>
+            /// <param name='sasUrl'>
+            /// SAS url for packet capture on virtual network gateway.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<string> BeginStopPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, string sasUrl = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, sasUrl, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

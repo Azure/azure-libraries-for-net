@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Application security group.
     /// </summary>
-    public interface IApplicationSecurityGroup  :
+    public interface IApplicationSecurityGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.ApplicationSecurityGroupInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.ApplicationSecurityGroupInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IApplicationSecurityGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ApplicationSecurityGroup.Update.IUpdate>
     {
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the application security group resource.
         /// </summary>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
 
         /// <summary>
         /// Gets the resource GUID property of the application security group resource.

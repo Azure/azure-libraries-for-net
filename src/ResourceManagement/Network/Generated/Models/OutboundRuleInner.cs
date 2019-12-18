@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// balancer. Possible values include: 'Tcp', 'Udp', 'All'</param>
         /// <param name="allocatedOutboundPorts">The number of outbound ports
         /// to be used for NAT.</param>
-        /// <param name="provisioningState">Gets the provisioning state of the
-        /// PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// outbound rule resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="enableTcpReset">Receive bidirectional TCP Reset on TCP
         /// flow idle timeout or unexpected connection termination. This
         /// element is only used when the protocol is set to TCP.</param>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public OutboundRuleInner(IList<Management.ResourceManager.Fluent.SubResource> frontendIPConfigurations, Management.ResourceManager.Fluent.SubResource backendAddressPool, LoadBalancerOutboundRuleProtocol protocol, string id = default(string), int? allocatedOutboundPorts = default(int?), string provisioningState = default(string), bool? enableTcpReset = default(bool?), int? idleTimeoutInMinutes = default(int?), string name = default(string), string etag = default(string), string type = default(string))
+        public OutboundRuleInner(IList<Management.ResourceManager.Fluent.SubResource> frontendIPConfigurations, Management.ResourceManager.Fluent.SubResource backendAddressPool, LoadBalancerOutboundRuleProtocol protocol, string id = default(string), int? allocatedOutboundPorts = default(int?), ProvisioningState provisioningState = default(ProvisioningState), bool? enableTcpReset = default(bool?), int? idleTimeoutInMinutes = default(int?), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             AllocatedOutboundPorts = allocatedOutboundPorts;
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource BackendAddressPool { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the PublicIP resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the outbound rule resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the protocol for the outbound rule in load balancer.
@@ -134,11 +134,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Gets type of the resource.

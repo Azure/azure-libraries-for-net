@@ -43,7 +43,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// rule.</param>
         /// <param name="translatedPort">The translated port for this NAT
         /// rule.</param>
-        public AzureFirewallNatRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<AzureFirewallNetworkRuleProtocol> protocols = default(IList<AzureFirewallNetworkRuleProtocol>), string translatedAddress = default(string), string translatedPort = default(string))
+        /// <param name="translatedFqdn">The translated FQDN for this NAT
+        /// rule.</param>
+        /// <param name="sourceIpGroups">List of source IpGroups for this
+        /// rule.</param>
+        public AzureFirewallNatRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<AzureFirewallNetworkRuleProtocol> protocols = default(IList<AzureFirewallNetworkRuleProtocol>), string translatedAddress = default(string), string translatedPort = default(string), string translatedFqdn = default(string), IList<string> sourceIpGroups = default(IList<string>))
         {
             Name = name;
             Description = description;
@@ -53,6 +57,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             Protocols = protocols;
             TranslatedAddress = translatedAddress;
             TranslatedPort = translatedPort;
+            TranslatedFqdn = translatedFqdn;
+            SourceIpGroups = sourceIpGroups;
             CustomInit();
         }
 
@@ -110,6 +116,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "translatedPort")]
         public string TranslatedPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets the translated FQDN for this NAT rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "translatedFqdn")]
+        public string TranslatedFqdn { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of source IpGroups for this rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "sourceIpGroups")]
+        public IList<string> SourceIpGroups { get; set; }
 
     }
 }

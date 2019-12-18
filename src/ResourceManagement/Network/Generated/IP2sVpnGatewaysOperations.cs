@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -224,6 +224,36 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<P2SVpnGatewayInner>> GetP2sVpnConnectionHealthWithHttpMessagesAsync(string resourceGroupName, string gatewayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the sas url to get the connection health detail of P2S clients
+        /// of the virtual wan P2SVpnGateway in the specified resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the P2SVpnGateway.
+        /// </param>
+        /// <param name='request'>
+        /// Request parameters supplied to get p2s vpn connections detailed
+        /// health.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<P2SVpnConnectionHealthInner>> GetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Creates a virtual wan p2s vpn gateway if it doesn't exist else
         /// updates the existing gateway.
         /// </summary>
@@ -243,7 +273,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -253,34 +283,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<P2SVpnGatewayInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnGatewayInner p2SVpnGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates virtual wan p2s vpn gateway tags.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<P2SVpnGatewayInner>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a virtual wan p2s vpn gateway.
         /// </summary>
@@ -296,7 +298,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -360,6 +362,36 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<P2SVpnGatewayInner>> BeginGetP2sVpnConnectionHealthWithHttpMessagesAsync(string resourceGroupName, string gatewayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the sas url to get the connection health detail of P2S clients
+        /// of the virtual wan P2SVpnGateway in the specified resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the P2SVpnGateway.
+        /// </param>
+        /// <param name='request'>
+        /// Request parameters supplied to get p2s vpn connections detailed
+        /// health.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<P2SVpnConnectionHealthInner>> BeginGetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists all the P2SVpnGateways in a resource group.
         /// </summary>
         /// <param name='nextPageLink'>
@@ -371,7 +403,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -393,7 +425,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

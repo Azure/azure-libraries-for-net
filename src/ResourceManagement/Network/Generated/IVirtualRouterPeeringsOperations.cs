@@ -17,21 +17,46 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// P2sVpnServerConfigurationsOperations operations.
+    /// VirtualRouterPeeringsOperations operations.
     /// </summary>
-    public partial interface IP2sVpnServerConfigurationsOperations
+    public partial interface IVirtualRouterPeeringsOperations
     {
         /// <summary>
-        /// Retrieves the details of a P2SVpnServerConfiguration.
+        /// Deletes the specified peering from a Virtual Router.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnServerConfiguration.
+        /// The name of the resource group.
         /// </param>
-        /// <param name='virtualWanName'>
-        /// The name of the VirtualWan.
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
         /// </param>
-        /// <param name='p2SVpnServerConfigurationName'>
-        /// The name of the P2SVpnServerConfiguration.
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the specified Virtual Router Peering.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the Virtual Router Peering.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -48,24 +73,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnServerConfigurationInner>> GetWithHttpMessagesAsync(string resourceGroupName, string virtualWanName, string p2SVpnServerConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualRouterPeeringInner>> GetWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates a P2SVpnServerConfiguration to associate with a VirtualWan
-        /// if it doesn't exist else updates the existing
-        /// P2SVpnServerConfiguration.
+        /// Creates or updates the specified Virtual Router Peering.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
+        /// The name of the resource group.
         /// </param>
-        /// <param name='virtualWanName'>
-        /// The name of the VirtualWan.
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
         /// </param>
-        /// <param name='p2SVpnServerConfigurationName'>
-        /// The name of the P2SVpnServerConfiguration.
+        /// <param name='peeringName'>
+        /// The name of the Virtual Router Peering.
         /// </param>
-        /// <param name='p2SVpnServerConfigurationParameters'>
-        /// Parameters supplied to create or Update a
-        /// P2SVpnServerConfiguration.
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update Virtual Router Peering
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -82,41 +105,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnServerConfigurationInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualWanName, string p2SVpnServerConfigurationName, P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualRouterPeeringInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, VirtualRouterPeeringInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a P2SVpnServerConfiguration.
+        /// Lists all Virtual Router Peerings in a Virtual Router resource.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnServerConfiguration.
+        /// The name of the resource group.
         /// </param>
-        /// <param name='virtualWanName'>
-        /// The name of the VirtualWan.
-        /// </param>
-        /// <param name='p2SVpnServerConfigurationName'>
-        /// The name of the P2SVpnServerConfiguration.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualWanName, string p2SVpnServerConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Retrieves all P2SVpnServerConfigurations for a particular
-        /// VirtualWan.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWanName'>
-        /// The name of the VirtualWan.
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -133,24 +130,47 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<P2SVpnServerConfigurationInner>>> ListByVirtualWanWithHttpMessagesAsync(string resourceGroupName, string virtualWanName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<VirtualRouterPeeringInner>>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates a P2SVpnServerConfiguration to associate with a VirtualWan
-        /// if it doesn't exist else updates the existing
-        /// P2SVpnServerConfiguration.
+        /// Deletes the specified peering from a Virtual Router.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
+        /// The name of the resource group.
         /// </param>
-        /// <param name='virtualWanName'>
-        /// The name of the VirtualWan.
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
         /// </param>
-        /// <param name='p2SVpnServerConfigurationName'>
-        /// The name of the P2SVpnServerConfiguration.
+        /// <param name='peeringName'>
+        /// The name of the peering.
         /// </param>
-        /// <param name='p2SVpnServerConfigurationParameters'>
-        /// Parameters supplied to create or Update a
-        /// P2SVpnServerConfiguration.
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates the specified Virtual Router Peering.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the Virtual Router Peering.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update Virtual Router Peering
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -167,35 +187,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnServerConfigurationInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualWanName, string p2SVpnServerConfigurationName, P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualRouterPeeringInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, VirtualRouterPeeringInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a P2SVpnServerConfiguration.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnServerConfiguration.
-        /// </param>
-        /// <param name='virtualWanName'>
-        /// The name of the VirtualWan.
-        /// </param>
-        /// <param name='p2SVpnServerConfigurationName'>
-        /// The name of the P2SVpnServerConfiguration.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualWanName, string p2SVpnServerConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Retrieves all P2SVpnServerConfigurations for a particular
-        /// VirtualWan.
+        /// Lists all Virtual Router Peerings in a Virtual Router resource.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -215,6 +209,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<P2SVpnServerConfigurationInner>>> ListByVirtualWanNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<VirtualRouterPeeringInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

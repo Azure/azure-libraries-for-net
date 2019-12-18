@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// VirtualHub.</param>
         /// <param name="expressRouteGateway">The expressRouteGateway
         /// associated with this VirtualHub.</param>
+        /// <param name="azureFirewall">The azureFirewall associated with this
+        /// VirtualHub.</param>
         /// <param name="virtualNetworkConnections">List of all vnet
         /// connections with this VirtualHub.</param>
         /// <param name="addressPrefix">Address-prefix for this
@@ -49,21 +51,30 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="routeTable">The routeTable associated with this
         /// virtual hub.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
-        public VirtualHubInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualWan = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource vpnGateway = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource p2SVpnGateway = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource expressRouteGateway = default(Management.ResourceManager.Fluent.SubResource), IList<HubVirtualNetworkConnectionInner> virtualNetworkConnections = default(IList<HubVirtualNetworkConnectionInner>), string addressPrefix = default(string), VirtualHubRouteTable routeTable = default(VirtualHubRouteTable), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
+        /// virtual hub resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="securityProviderName">The Security Provider
+        /// name.</param>
+        /// <param name="virtualHubRouteTableV2s">List of all virtual hub route
+        /// table v2s associated with this VirtualHub.</param>
+        /// <param name="sku">The sku of this VirtualHub.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
+        public VirtualHubInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualWan = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource vpnGateway = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource p2SVpnGateway = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource expressRouteGateway = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource azureFirewall = default(Management.ResourceManager.Fluent.SubResource), IList<HubVirtualNetworkConnectionInner> virtualNetworkConnections = default(IList<HubVirtualNetworkConnectionInner>), string addressPrefix = default(string), VirtualHubRouteTable routeTable = default(VirtualHubRouteTable), ProvisioningState provisioningState = default(ProvisioningState), string securityProviderName = default(string), IList<VirtualHubRouteTableV2Inner> virtualHubRouteTableV2s = default(IList<VirtualHubRouteTableV2Inner>), string sku = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             VirtualWan = virtualWan;
             VpnGateway = vpnGateway;
             P2SVpnGateway = p2SVpnGateway;
             ExpressRouteGateway = expressRouteGateway;
+            AzureFirewall = azureFirewall;
             VirtualNetworkConnections = virtualNetworkConnections;
             AddressPrefix = addressPrefix;
             RouteTable = routeTable;
             ProvisioningState = provisioningState;
+            SecurityProviderName = securityProviderName;
+            VirtualHubRouteTableV2s = virtualHubRouteTableV2s;
+            Sku = sku;
             Etag = etag;
             CustomInit();
         }
@@ -99,6 +110,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource ExpressRouteGateway { get; set; }
 
         /// <summary>
+        /// Gets or sets the azureFirewall associated with this VirtualHub.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureFirewall")]
+        public Management.ResourceManager.Fluent.SubResource AzureFirewall { get; set; }
+
+        /// <summary>
         /// Gets or sets list of all vnet connections with this VirtualHub.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualNetworkConnections")]
@@ -117,11 +134,30 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public VirtualHubRouteTable RouteTable { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
+        /// Gets the provisioning state of the virtual hub resource. Possible
         /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the Security Provider name.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.securityProviderName")]
+        public string SecurityProviderName { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of all virtual hub route table v2s associated
+        /// with this VirtualHub.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.virtualHubRouteTableV2s")]
+        public IList<VirtualHubRouteTableV2Inner> VirtualHubRouteTableV2s { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sku of this VirtualHub.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sku")]
+        public string Sku { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource

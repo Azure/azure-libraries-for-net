@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="nextHopIpAddress">The IP address packets should be
         /// forwarded to. Next hop values are only allowed in routes where the
         /// next hop type is VirtualAppliance.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values are: 'Updating', 'Deleting', and
-        /// 'Failed'.</param>
+        /// <param name="provisioningState">The provisioning state of the route
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public RouteInner(RouteNextHopType nextHopType, string id = default(string), string addressPrefix = default(string), string nextHopIpAddress = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public RouteInner(RouteNextHopType nextHopType, string id = default(string), string addressPrefix = default(string), string nextHopIpAddress = default(string), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
             AddressPrefix = addressPrefix;
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string NextHopIpAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the route resource. Possible values
+        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

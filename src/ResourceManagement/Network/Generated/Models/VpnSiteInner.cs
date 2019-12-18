@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="addressSpace">The AddressSpace that contains an array
         /// of IP address ranges.</param>
         /// <param name="bgpProperties">The set of bgp properties.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// <param name="provisioningState">The provisioning state of the VPN
+        /// site resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
         /// <param name="isSecuritySite">IsSecuritySite flag.</param>
-        /// <param name="vpnSiteLinks">List of all vpn site links</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
+        /// <param name="vpnSiteLinks">List of all vpn site links.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         public VpnSiteInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualWan = default(Management.ResourceManager.Fluent.SubResource), DeviceProperties deviceProperties = default(DeviceProperties), string ipAddress = default(string), string siteKey = default(string), AddressSpace addressSpace = default(AddressSpace), BgpSettings bgpProperties = default(BgpSettings), ProvisioningState provisioningState = default(ProvisioningState), bool? isSecuritySite = default(bool?), IList<VpnSiteLinkInner> vpnSiteLinks = default(IList<VpnSiteLinkInner>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
@@ -109,11 +109,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public BgpSettings BgpProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
+        /// Gets the provisioning state of the VPN site resource. Possible
         /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets isSecuritySite flag.
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? IsSecuritySite { get; set; }
 
         /// <summary>
-        /// Gets or sets list of all vpn site links
+        /// Gets or sets list of all vpn site links.
         /// </summary>
         [JsonProperty(PropertyName = "properties.vpnSiteLinks")]
         public IList<VpnSiteLinkInner> VpnSiteLinks { get; set; }

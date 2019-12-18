@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="resourceGuid">The resource GUID property of the
         /// service endpoint policy resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// service endpoint policy. Possible values are: 'Updating',
-        /// 'Deleting', and 'Failed'.</param>
+        /// service endpoint policy resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ServiceEndpointPolicyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<ServiceEndpointPolicyDefinitionInner> serviceEndpointPolicyDefinitions = default(IList<ServiceEndpointPolicyDefinitionInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public ServiceEndpointPolicyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<ServiceEndpointPolicyDefinitionInner> serviceEndpointPolicyDefinitions = default(IList<ServiceEndpointPolicyDefinitionInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), string resourceGuid = default(string), ProvisioningState provisioningState = default(ProvisioningState), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ServiceEndpointPolicyDefinitions = serviceEndpointPolicyDefinitions;
@@ -83,18 +83,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ResourceGuid { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the service endpoint policy.
-        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// Gets the provisioning state of the service endpoint policy
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

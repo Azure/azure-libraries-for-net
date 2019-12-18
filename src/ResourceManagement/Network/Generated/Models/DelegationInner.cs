@@ -39,12 +39,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="actions">Describes the actions permitted to the
         /// service upon delegation.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource.</param>
+        /// service delegation resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// subnet. This name can be used to access the resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public DelegationInner(string id = default(string), string serviceName = default(string), IList<string> actions = default(IList<string>), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public DelegationInner(string id = default(string), string serviceName = default(string), IList<string> actions = default(IList<string>), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
             ServiceName = serviceName;
@@ -68,17 +69,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ServiceName { get; set; }
 
         /// <summary>
-        /// Gets or sets describes the actions permitted to the service upon
+        /// Gets describes the actions permitted to the service upon
         /// delegation.
         /// </summary>
         [JsonProperty(PropertyName = "properties.actions")]
-        public IList<string> Actions { get; set; }
+        public IList<string> Actions { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource.
+        /// Gets the provisioning state of the service delegation resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -88,11 +91,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a unique read-only string that changes whenever the
-        /// resource is updated.
+        /// Gets a unique read-only string that changes whenever the resource
+        /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
+        public string Etag { get; private set; }
 
     }
 }

@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="matchConditions">List of match conditions.</param>
         /// <param name="action">Type of Actions. Possible values include:
         /// 'Allow', 'Block', 'Log'</param>
-        /// <param name="name">Gets name of the resource that is unique within
-        /// a policy. This name can be used to access the resource.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
+        /// <param name="name">The name of the resource that is unique within a
+        /// policy. This name can be used to access the resource.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         public WebApplicationFirewallCustomRule(int priority, WebApplicationFirewallRuleType ruleType, IList<MatchCondition> matchConditions, WebApplicationFirewallAction action, string name = default(string), string etag = default(string))
         {
             Name = name;
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets name of the resource that is unique within a policy. This name
-        /// can be used to access the resource.
+        /// Gets or sets the name of the resource that is unique within a
+        /// policy. This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

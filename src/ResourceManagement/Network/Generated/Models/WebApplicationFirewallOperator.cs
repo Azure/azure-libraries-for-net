@@ -33,5 +33,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public static readonly WebApplicationFirewallOperator BeginsWith = Parse("BeginsWith");
         public static readonly WebApplicationFirewallOperator EndsWith = Parse("EndsWith");
         public static readonly WebApplicationFirewallOperator Regex = Parse("Regex");
+        public static readonly WebApplicationFirewallOperator GeoMatch = Parse("GeoMatch");
     }
 }

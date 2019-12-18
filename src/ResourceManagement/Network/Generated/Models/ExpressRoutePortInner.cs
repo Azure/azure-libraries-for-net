@@ -54,13 +54,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="circuits">Reference the ExpressRoute circuit(s) that
         /// are provisioned on this ExpressRoutePort resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// ExpressRoutePort resource. Possible values are: 'Succeeded',
-        /// 'Updating', 'Deleting', and 'Failed'.</param>
+        /// express route port resource. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="resourceGuid">The resource GUID property of the
-        /// ExpressRoutePort resource.</param>
+        /// express route port resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRoutePortInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), ExpressRoutePortsEncapsulation encapsulation = default(ExpressRoutePortsEncapsulation), string etherType = default(string), string allocationDate = default(string), IList<ExpressRouteLinkInner> links = default(IList<ExpressRouteLinkInner>), IList<Management.ResourceManager.Fluent.SubResource> circuits = default(IList<Management.ResourceManager.Fluent.SubResource>), string provisioningState = default(string), string resourceGuid = default(string), string etag = default(string))
+        /// <param name="identity">The identity of ExpressRoutePort, if
+        /// configured.</param>
+        public ExpressRoutePortInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), ExpressRoutePortsEncapsulation encapsulation = default(ExpressRoutePortsEncapsulation), string etherType = default(string), string allocationDate = default(string), IList<ExpressRouteLinkInner> links = default(IList<ExpressRouteLinkInner>), IList<Management.ResourceManager.Fluent.SubResource> circuits = default(IList<Management.ResourceManager.Fluent.SubResource>), ProvisioningState provisioningState = default(ProvisioningState), string resourceGuid = default(string), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
             : base(location, id, name, type, tags)
         {
             PeeringLocation = peeringLocation;
@@ -75,6 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             ResourceGuid = resourceGuid;
             Etag = etag;
+            Identity = identity;
             CustomInit();
         }
 
@@ -145,19 +148,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<Management.ResourceManager.Fluent.SubResource> Circuits { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the ExpressRoutePort resource.
-        /// Possible values are: 'Succeeded', 'Updating', 'Deleting', and
-        /// 'Failed'.
+        /// Gets the provisioning state of the express route port resource.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets the resource GUID property of the ExpressRoutePort
-        /// resource.
+        /// Gets the resource GUID property of the express route port resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; set; }
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
@@ -165,6 +167,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the identity of ExpressRoutePort, if configured.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.

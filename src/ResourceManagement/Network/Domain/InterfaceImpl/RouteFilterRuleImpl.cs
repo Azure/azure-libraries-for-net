@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class RouteFilterRuleImpl 
+    internal partial class RouteFilterRuleImpl
     {
         /// <summary>
         /// Gets the access type of the rule.
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the resource.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule.ProvisioningState
+        ProvisioningState Microsoft.Azure.Management.Network.Fluent.IRouteFilterRule.ProvisioningState
         {
             get
             {

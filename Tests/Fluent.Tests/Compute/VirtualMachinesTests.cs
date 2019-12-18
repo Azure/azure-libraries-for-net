@@ -391,7 +391,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     }
                     catch (Microsoft.Rest.Azure.CloudException clEx)
                     {
-                        Assert.Equal("Changing property 'proximityPlacementGroup.id' is not allowed.", clEx.Message, true);
+                        Assert.Equal("Updating proximity placement group of VM chashvm is not allowed while the VM is running. Please stop/deallocate the VM and retry the operation.", clEx.Message, true);
                     }
 
                     // Delete resources

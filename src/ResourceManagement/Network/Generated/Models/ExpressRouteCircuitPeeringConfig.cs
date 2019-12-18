@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<string> AdvertisedCommunities { get; set; }
 
         /// <summary>
-        /// Gets or sets the advertised public prefix state of the Peering
-        /// resource. Possible values include: 'NotConfigured', 'Configuring',
+        /// Gets the advertised public prefix state of the Peering resource.
+        /// Possible values include: 'NotConfigured', 'Configuring',
         /// 'Configured', 'ValidationNeeded'
         /// </summary>
         [JsonProperty(PropertyName = "advertisedPublicPrefixesState")]
-        public ExpressRouteCircuitPeeringAdvertisedPublicPrefixState AdvertisedPublicPrefixesState { get; set; }
+        public ExpressRouteCircuitPeeringAdvertisedPublicPrefixState AdvertisedPublicPrefixesState { get; private set; }
 
         /// <summary>
         /// Gets or sets the legacy mode of the peering.

@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="publicIPAddress">Reference of the PublicIP
         /// resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// bastion host IP configuration resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="privateIPAllocationMethod">Private IP allocation
         /// method. Possible values include: 'Static', 'Dynamic'</param>
         /// <param name="name">Name of the resource that is unique within a
@@ -79,11 +79,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public Management.ResourceManager.Fluent.SubResource PublicIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the bastion host IP configuration
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets private IP allocation method. Possible values include:

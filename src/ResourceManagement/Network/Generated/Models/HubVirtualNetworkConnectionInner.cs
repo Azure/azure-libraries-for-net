@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// to use Virtual Hub's gateways.</param>
         /// <param name="enableInternetSecurity">Enable internet
         /// security.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">The provisioning state of the hub
+        /// virtual network connection resource. Possible values include:
+        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
-        /// <param name="etag">Gets a unique read-only string that changes
-        /// whenever the resource is updated.</param>
+        /// <param name="etag">A unique read-only string that changes whenever
+        /// the resource is updated.</param>
         public HubVirtualNetworkConnectionInner(string id = default(string), Management.ResourceManager.Fluent.SubResource remoteVirtualNetwork = default(Management.ResourceManager.Fluent.SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), bool? enableInternetSecurity = default(bool?), ProvisioningState provisioningState = default(ProvisioningState), string name = default(string), string etag = default(string))
             : base(id)
         {
@@ -93,11 +93,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public bool? EnableInternetSecurity { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the hub virtual network connection
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a

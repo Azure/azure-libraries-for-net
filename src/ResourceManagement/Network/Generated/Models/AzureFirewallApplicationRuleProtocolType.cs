@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly AzureFirewallApplicationRuleProtocolType Http = Parse("Http");
         public static readonly AzureFirewallApplicationRuleProtocolType Https = Parse("Https");
+        public static readonly AzureFirewallApplicationRuleProtocolType Mssql = Parse("Mssql");
     }
 }
