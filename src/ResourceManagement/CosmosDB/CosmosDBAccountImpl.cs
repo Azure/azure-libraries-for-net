@@ -36,12 +36,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
+        private SqlDatabasesImpl sqlDatabases;
 
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
         {
             this.failoverPolicies = new List<Models.FailoverPolicy>();
             this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this.Manager.Inner.PrivateEndpointConnections, this);
+            this.sqlDatabases = new SqlDatabasesImpl(this.Manager.Inner.SqlResources, this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
@@ -455,9 +457,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await this.Manager.Inner.SqlResources
-                .ListSqlDatabasesAsync(this.ResourceGroupName, this.Name);
-            return result.Select(inner => new SqlDatabaseImpl(inner));
+            return await this.sqlDatabases.ListAsync(cancellationToken);
+        }
+
+        public ISqlDatabase GetSqlDatabase(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetSqlDatabaseAsync(databaseName));
+        }
+
+        public async Task<ISqlDatabase> GetSqlDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.sqlDatabases.GetImplAsync(databaseName, cancellationToken);
         }
 
         ///GENMHASH:6A08D79B3D058AD12B94D8E88D3A66BB:CBB08B5D2F8EBB6B1A4BE51DA2907810
@@ -737,6 +747,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 result.Add(new PrivateLinkResourceImpl(inner));
             }
             return result;
+        }
+
+        internal CosmosDBAccountImpl WithSqlDatabase(SqlDatabaseImpl sqlDatabase)
+        {
+            this.sqlDatabases.AddSqlDatabase(sqlDatabase);
+            return this;
+        }
+
+        internal SqlDatabaseImpl DefineNewSqlDatabase(string name)
+        {
+            return this.sqlDatabases.Define(name);
+        }
+
+        internal SqlDatabaseImpl UpdateSqlDatabase(string name)
+        {
+            return this.sqlDatabases.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutSqlDatabase(string name)
+        {
+            this.sqlDatabases.Remove(name);
+            return this;
         }
 
         interface HasLocation

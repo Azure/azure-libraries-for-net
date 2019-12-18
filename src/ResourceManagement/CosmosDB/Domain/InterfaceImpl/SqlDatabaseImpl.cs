@@ -73,5 +73,68 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return this._users();
             }
         }
+
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<ISqlDatabase, ICosmosDBAccount>.Id
+        {
+            get
+            {
+                return this.Id();
+            }
+        }
+
+        SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate> HasOptions.Definition.IWithOptions<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>>.WithOption(string key, string value)
+        {
+            return this.WithOption(key, value);
+        }
+
+        SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate> HasOptions.Definition.IWithOptions<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsAppend(options);
+        }
+
+        SqlDatabase.Update.IUpdate HasOptions.Update.IWithOptions<SqlDatabase.Update.IUpdate>.WithOption(string key, string value)
+        {
+            return this.WithOption(key, value);
+        }
+
+        SqlDatabase.Update.IUpdate HasOptions.Update.IWithOptions<SqlDatabase.Update.IUpdate>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsAppend(options);
+        }
+
+        SqlDatabase.Update.IUpdate HasOptions.Update.IWithOptions<SqlDatabase.Update.IUpdate>.WithOptionsReplace(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsReplace(options);
+        }
+
+        SqlDatabase.Update.IUpdate HasOptions.Update.IWithOptions<SqlDatabase.Update.IUpdate>.WithoutOption(string key)
+        {
+            return this.WithoutOption(key);
+        }
+
+        SqlDatabase.Update.IUpdate HasOptions.Update.IWithOptions<SqlDatabase.Update.IUpdate>.WithoutOptions()
+        {
+            return this.WithoutOptions();
+        }
+
+        SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate> HasThroughputSettings.Definition.IWithThroughput<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>>.WithThroughput(int throughput)
+        {
+            return this.WithThroughput(throughput);
+        }
+
+        SqlDatabase.Update.IUpdate HasThroughputSettings.Update.IWithThroughput<SqlDatabase.Update.IUpdate>.WithThroughput(int throughput)
+        {
+            return this.WithThroughput(throughput);
+        }
+
+        CosmosDBAccount.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<CosmosDBAccount.Definition.IWithCreate>.Attach()
+        {
+            return this.Attach();
+        }
+
+        CosmosDBAccount.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IUpdate>.Parent()
+        {
+            return this.Attach();
+        }
     }
 }

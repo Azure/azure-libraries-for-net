@@ -126,6 +126,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The specific private link resource group.</return>
         Task<Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource> GetPrivateLinkResourceAsync(string groupName, CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <param name="databaseName">Database name of sql database.</param>
+        /// <returns>The specific sql database.</returns>
+        ISqlDatabase GetSqlDatabase(string databaseName);
+
+        /// <param name="databaseName">Database name of sql database.</param>
+        /// <returns>The specific sql database.</returns>
+        Task<ISqlDatabase> GetSqlDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken));
+
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(CancellationToken cancellationToken = default(CancellationToken));
 
