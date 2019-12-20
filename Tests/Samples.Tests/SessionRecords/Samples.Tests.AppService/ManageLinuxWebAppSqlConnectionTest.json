@@ -65,7 +65,7 @@
       "RequestUri": "/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI1ZWI2OGUtNzNlMi00ZmE4LWIxOGEtNDZjZDFiZTRjY2U1L3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfOGFlOTg5MjU1OThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvanNka3NlcnZlcmU4NjQ3Mzk2MT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"2.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"2.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,7 +84,7 @@
           "Microsoft.Azure.Management.Sql.Fluent.SqlManagementClient/1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "517"
@@ -132,7 +132,7 @@
       "RequestUri": "/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI1ZWI2OGUtNzNlMi00ZmE4LWIxOGEtNDZjZDFiZTRjY2U1L3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfOGFlOTg5MjU1OThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvanNka3NlcnZlcmU4NjQ3Mzk2MT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"12.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\"\r\n  },\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"12.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  },\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -151,7 +151,7 @@
           "Microsoft.Azure.Management.Sql.Fluent.SqlManagementClient/1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -766,7 +766,7 @@
           "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\",\r\n    \"ProjectNami.DBHost\": \"jsdkservere86473961.database.windows.net\",\r\n    \"ProjectNami.DBName\": \"jsdkdb19c65136f9a\",\r\n    \"ProjectNami.DBUser\": \"jsdkadmin\",\r\n    \"ProjectNami.DBPass\": \"StrongPass!123\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\",\r\n    \"ProjectNami.DBHost\": \"jsdkservere86473961.database.windows.net\",\r\n    \"ProjectNami.DBName\": \"jsdkdb19c65136f9a\",\r\n    \"ProjectNami.DBUser\": \"jsdkadmin\",\r\n    \"ProjectNami.DBPass\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -820,7 +820,7 @@
       "RequestUri": "/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings?api-version=2016-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI1ZWI2OGUtNzNlMi00ZmE4LWIxOGEtNDZjZDFiZTRjY2U1L3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfOGFlOTg5MjU1OThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcDEtZDUwOTA2NDlhOS9jb25maWcvYXBwc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNi0wOC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\",\r\n    \"ProjectNami.DBHost\": \"jsdkservere86473961.database.windows.net\",\r\n    \"ProjectNami.DBName\": \"jsdkdb19c65136f9a\",\r\n    \"ProjectNami.DBUser\": \"jsdkadmin\",\r\n    \"ProjectNami.DBPass\": \"StrongPass!123\"\r\n  },\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\",\r\n    \"ProjectNami.DBHost\": \"jsdkservere86473961.database.windows.net\",\r\n    \"ProjectNami.DBName\": \"jsdkdb19c65136f9a\",\r\n    \"ProjectNami.DBUser\": \"jsdkadmin\",\r\n    \"ProjectNami.DBPass\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  },\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -839,7 +839,7 @@
           "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\",\r\n    \"ProjectNami.DBHost\": \"jsdkservere86473961.database.windows.net\",\r\n    \"ProjectNami.DBName\": \"jsdkdb19c65136f9a\",\r\n    \"ProjectNami.DBUser\": \"jsdkadmin\",\r\n    \"ProjectNami.DBPass\": \"StrongPass!123\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Web/sites/webapp1-d5090649a9/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\",\r\n    \"ProjectNami.DBHost\": \"jsdkservere86473961.database.windows.net\",\r\n    \"ProjectNami.DBName\": \"jsdkdb19c65136f9a\",\r\n    \"ProjectNami.DBUser\": \"jsdkadmin\",\r\n    \"ProjectNami.DBPass\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"

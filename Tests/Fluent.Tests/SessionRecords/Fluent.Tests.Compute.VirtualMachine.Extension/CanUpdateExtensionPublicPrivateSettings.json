@@ -326,7 +326,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"7SBSEduR/2SCZZmjWBg/XMS1hPx22TBMVpn9em6qJ5U4U3TM5dS8ECMrDcN7QBHoT1FJGQASnJABNdl13iuGew==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Rx7Z0Y4A9XcdfD0au8DvcrT3PBfUH1QoHZO7kIZXeuqKjwwqUvs8iK5Kxhgumyf3jal1gaDfhDOFfX9MKRDung==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -390,7 +390,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"MDo+pLqAHP5NCum79YYJfHePs1syXPXNGeRn9Y+2cKDrPeDMMd9/EkhEgDSM4ubbHwpwfF22x2R3vvoJ7Gtl1A==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Rx7Z0Y4A9XcdfD0au8DvcrT3PBfUH1QoHZO7kIZXeuqKjwwqUvs8iK5Kxhgumyf3jal1gaDfhDOFfX9MKRDung==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1278,7 +1278,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg5571/providers/Microsoft.Compute/virtualMachines/extvm6210/extensions/CustomScriptForLinux?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzU1NzEvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9leHR2bTYyMTAvZXh0ZW5zaW9ucy9DdXN0b21TY3JpcHRGb3JMaW51eD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"CustomScriptForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"http://stg3582.blob.core.windows.net/scripts/install_apache.sh\"\r\n      ]\r\n    },\r\n    \"protectedSettings\": {\r\n      \"commandToExecute\": \"bash install_apache.sh\",\r\n      \"storageAccountName\": \"stg3582\",\r\n      \"storageAccountKey\": \"7SBSEduR/2SCZZmjWBg/XMS1hPx22TBMVpn9em6qJ5U4U3TM5dS8ECMrDcN7QBHoT1FJGQASnJABNdl13iuGew==\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"CustomScriptForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"http://stg3582.blob.core.windows.net/scripts/install_apache.sh\"\r\n      ]\r\n    },\r\n    \"protectedSettings\": {\r\n      \"commandToExecute\": \"bash install_apache.sh\",\r\n      \"storageAccountName\": \"stg3582\",\r\n      \"storageAccountKey\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "06205a60-d90a-43dc-820f-254094f90b79"
@@ -1358,7 +1358,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg5571/providers/Microsoft.Compute/virtualMachines/extvm6210/extensions/CustomScriptForLinux?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzU1NzEvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9leHR2bTYyMTAvZXh0ZW5zaW9ucy9DdXN0b21TY3JpcHRGb3JMaW51eD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"CustomScriptForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"http://stg3582.blob.core.windows.net/scripts2/install_apache.sh\"\r\n      ]\r\n    },\r\n    \"protectedSettings\": {\r\n      \"commandToExecute\": \"bash install_apache.sh\",\r\n      \"storageAccountName\": \"stg3582\",\r\n      \"storageAccountKey\": \"MDo+pLqAHP5NCum79YYJfHePs1syXPXNGeRn9Y+2cKDrPeDMMd9/EkhEgDSM4ubbHwpwfF22x2R3vvoJ7Gtl1A==\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"CustomScriptForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"http://stg3582.blob.core.windows.net/scripts2/install_apache.sh\"\r\n      ]\r\n    },\r\n    \"protectedSettings\": {\r\n      \"commandToExecute\": \"bash install_apache.sh\",\r\n      \"storageAccountName\": \"stg3582\",\r\n      \"storageAccountKey\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "e17c2672-ea35-49e2-93e1-9bf75a688e24"
@@ -1746,7 +1746,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"MDo+pLqAHP5NCum79YYJfHePs1syXPXNGeRn9Y+2cKDrPeDMMd9/EkhEgDSM4ubbHwpwfF22x2R3vvoJ7Gtl1A==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Rx7Z0Y4A9XcdfD0au8DvcrT3PBfUH1QoHZO7kIZXeuqKjwwqUvs8iK5Kxhgumyf3jal1gaDfhDOFfX9MKRDung==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

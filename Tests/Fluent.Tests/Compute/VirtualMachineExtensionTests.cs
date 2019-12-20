@@ -361,7 +361,10 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(keys.Count() > 0);
                     var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
                     Assert.NotNull(updatedStorageAccountKey);
-                    Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+                    }
 
                     // Upload the script to a different container ("scripts2") in the same storage account
                     //

@@ -1,0 +1,78 @@
+{
+  "tool": "Credential Scanner",
+  "suppressions": [
+    {
+      "placeholder": "$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$",
+      "_justification": "Credential placeholder used in test session records."
+    },
+    {
+      "file": [
+        "Samples\\Asset\\jsdkdemo-039967180.com.pfx",
+        "Samples\\Asset\\jsdkdemo-1ff78626f.com.pfx",
+        "Samples\\Asset\\jsdkdemo-25f68561f.com.pfx",
+        "Samples\\Asset\\jsdkdemo-63776289b.com.pfx",
+        "Samples\\Asset\\jsdkdemo-bad939600.com.pfx",
+        "Samples\\Asset\\NetworkTestCertificate1.pfx",
+        "Samples\\Asset\\NetworkTestCertificate2.pfx",
+        "Samples\\Asset\\SampleTestCertificate.pfx"
+      ],
+      "_justification": "Certs used by test cases"
+    },
+    {
+      "placeholder": "ebc6e170-72b2-4b6f-9de2-99410964d2d0",
+      "_justification": "This is used as example secret in auth file format"
+    },
+    {
+      "placeholder": "StrongPass!12",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "StrongPass!123",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "P@ssw0rd",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "12NewPA$$w0rd!",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "tirekicker",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "muy!234OR",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "B12a6@12xyz!",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "12xyz!B12a6@",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "myS3cureP@ssword",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "123tEst!@|ac",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "123OData!@#123",
+      "_justification": "This value is used by test cases."
+    },
+    {
+      "placeholder": "N0t@P@ssw0rd!",
+      "_justification": "This value is used by test cases."
+    }
+  ]
+}

@@ -1074,7 +1074,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"YO0nvlS3ZTCm9e68fB/DZKuyDGSjfj6JBeTlMU4Jf1jlyuFdfVVvKiR0NNfANFJX60FlB2L05l9yI85vDsBTNg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"/1NAVFMkqk8JbBUk7PIYEoXdnccRzkADGAARGtj4n26NNUajh6yP3X7kvv5vbYFgzggLPMqREVwaS95UopZ3Gw==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1151,7 +1151,7 @@
       "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg9156/providers/Microsoft.Web/sites/IAmAFuncitonNameThatIsLonger3881/config/appsettings?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzkxNTYvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvSUFtQUZ1bmNpdG9uTmFtZVRoYXRJc0xvbmdlcjM4ODEvY29uZmlnL2FwcHNldHRpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=YO0nvlS3ZTCm9e68fB/DZKuyDGSjfj6JBeTlMU4Jf1jlyuFdfVVvKiR0NNfANFJX60FlB2L05l9yI85vDsBTNg==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=YO0nvlS3ZTCm9e68fB/DZKuyDGSjfj6JBeTlMU4Jf1jlyuFdfVVvKiR0NNfANFJX60FlB2L05l9yI85vDsBTNg==\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "b7382012-17eb-43ed-a1ab-72ee24945f36"
@@ -1223,7 +1223,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg9156/providers/Microsoft.Web/sites/IAmAFuncitonNameThatIsLonger3881/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=YO0nvlS3ZTCm9e68fB/DZKuyDGSjfj6JBeTlMU4Jf1jlyuFdfVVvKiR0NNfANFJX60FlB2L05l9yI85vDsBTNg==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=YO0nvlS3ZTCm9e68fB/DZKuyDGSjfj6JBeTlMU4Jf1jlyuFdfVVvKiR0NNfANFJX60FlB2L05l9yI85vDsBTNg==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg9156/providers/Microsoft.Web/sites/IAmAFuncitonNameThatIsLonger3881/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javast1487;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {

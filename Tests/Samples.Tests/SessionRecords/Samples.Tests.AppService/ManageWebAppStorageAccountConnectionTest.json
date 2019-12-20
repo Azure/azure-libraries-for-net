@@ -390,7 +390,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"OOotB+5hJtCjYsfI1wnFuSiiz0S99KA6AhMFJXi8h9gaaFTFh79BCh8AQ3BtAO7h1qCUxKoX/SPcmrKhBu+zQA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"g0wfe8YMHgY8pRKtMl1UckylfZCkYCT+bMSG0jzGTpXB2Q/lxqil0SdJYd69uE0xw+lbrra3xJbGo2bTVpfFIg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1199,7 +1199,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=OOotB+5hJtCjYsfI1wnFuSiiz0S99KA6AhMFJXi8h9gaaFTFh79BCh8AQ3BtAO7h1qCUxKoX/SPcmrKhBu+zQA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1269,14 +1269,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=OOotB+5hJtCjYsfI1wnFuSiiz0S99KA6AhMFJXi8h9gaaFTFh79BCh8AQ3BtAO7h1qCUxKoX/SPcmrKhBu+zQA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfZWViMDQ1NTA2Nzk4L3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcDEtODkyODgwMzRhYS9jb25maWcvY29ubmVjdGlvbnN0cmluZ3M/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=OOotB+5hJtCjYsfI1wnFuSiiz0S99KA6AhMFJXi8h9gaaFTFh79BCh8AQ3BtAO7h1qCUxKoX/SPcmrKhBu+zQA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "a5cdb136-00df-4e7d-850a-235f23ab1575"
@@ -1348,7 +1348,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=OOotB+5hJtCjYsfI1wnFuSiiz0S99KA6AhMFJXi8h9gaaFTFh79BCh8AQ3BtAO7h1qCUxKoX/SPcmrKhBu+zQA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg1nemv_eeb045506798/providers/Microsoft.Web/sites/webapp1-89288034aa/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore668894060;AccountKey=$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
