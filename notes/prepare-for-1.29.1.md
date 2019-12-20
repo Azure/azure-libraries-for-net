@@ -15,8 +15,8 @@ The following methods and/or types have been changed in V1.29.1 compared to the 
 <table>
   <tr>
     <th align=left>Area/Model</th>
-    <th align=left>In V1.28.1</th>
     <th align=left>In V1.29</th>
+    <th align=left>In V1.29.1</th>
     <th align=left>Remarks</th>
     <th align=left>Ref</th>
   </tr>
