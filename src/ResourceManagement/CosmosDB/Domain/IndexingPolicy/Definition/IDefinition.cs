@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// </summary>
         /// <param name="indexingMode">The indexing mode.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithIndexingMode(string indexingMode);
+        IWithAttach<ParentT> WithIndexingMode(IndexingMode indexingMode);
     }
 
     /// <summary>
@@ -121,14 +121,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// </summary>
         /// <param name="compositePaths">The list of the composite path.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithCompositeIndexes(IList<CompositePath> compositePaths);
+        IWithAttach<ParentT> WithCompositeIndexes(IList<IList<CompositePath>> compositePaths);
 
         /// <summary>
         /// Specifies composite index.
         /// </summary>
         /// <param name="compositePath">One of the composite path.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithCompositeIndex(CompositePath compositePath);
+        IWithAttach<ParentT> WithCompositeIndex(IList<CompositePath> compositePath);
     }
 
     /// <summary>

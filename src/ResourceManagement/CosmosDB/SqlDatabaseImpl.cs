@@ -21,15 +21,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private ISqlResourcesOperations Client { get; set; }
         private SqlDatabaseCreateUpdateParameters createUpdateParameters;
         private ThroughputSettingsUpdateParameters ThroughputSettingsToUpdate;
+        private SqlContainersImpl sqlContainers;
 
         internal SqlDatabaseImpl(string name, CosmosDBAccountImpl parent, SqlDatabaseGetResultsInner inner, ISqlResourcesOperations client)
             : base(name, parent, inner)
         {
             this.Client = client;
+            this.sqlContainers = new SqlContainersImpl(this.Client, this);
+            SetCreateUpdateParameters();
+        }
+
+        private void SetCreateUpdateParameters()
+        {
             this.createUpdateParameters = new SqlDatabaseCreateUpdateParameters()
             {
-                Location = parent.Inner.Location,
-                Resource = new SqlDatabaseResource(id: name),
+                Location = Parent.Inner.Location,
+                Resource = new SqlDatabaseResource(id: this.Name()),
                 Options = new Dictionary<string, string>(),
             };
         }
@@ -133,6 +140,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 );
 
             SetInner(inner);
+            SetCreateUpdateParameters();
 
             if (this.ThroughputSettingsToUpdate != null)
             {
@@ -189,6 +197,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 cancellationToken
                 );
             return throughput.Resource;
+        }
+
+        public SqlDatabaseImpl WithSqlContainer(SqlContainerImpl sqlContainer)
+        {
+            this.sqlContainers.AddSqlContainer(sqlContainer);
+            return this;
         }
     }
 }

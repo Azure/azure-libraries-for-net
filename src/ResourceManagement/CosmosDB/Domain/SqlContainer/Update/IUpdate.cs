@@ -4,7 +4,7 @@
 using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Management.CosmosDB.Fluent.Sqlcontainers.Update
+namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
 {
     /// <summary>
     /// The entirety of a sql container update as a part of parent update.
@@ -120,19 +120,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Sqlcontainers.Update
         IUpdate WithoutUniqueKeyPolicy();
 
         /// <summary>
-        /// Specifies the list of unique key.
+        /// Appends the list of unique key.
         /// </summary>
         /// <param name="uniqueKeys">The list of unique key.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithUniqueKeys(IList<UniqueKey> uniqueKeys);
 
         /// <summary>
-        /// Specifies the a unique key appended to original list.
+        /// Specifies a unique key.
         /// </summary>
+        /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="uniqueKey">A unique key.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithUniqueKey(UniqueKey uniqueKey);
-
+        IUpdate WithUniqueKey(int index, UniqueKey uniqueKey);
 
         /// <summary>
         /// Removes a unique key.
@@ -140,6 +140,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Sqlcontainers.Update
         /// <param name="index">The index of the unique key.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutUniqueKey(int index);
+
+        /// <summary>
+        /// Removes a unique key.
+        /// </summary>
+        /// <param name="uniqueKey">A unique key.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithoutUniqueKey(UniqueKey uniqueKey);
     }
 
     /// <summary>

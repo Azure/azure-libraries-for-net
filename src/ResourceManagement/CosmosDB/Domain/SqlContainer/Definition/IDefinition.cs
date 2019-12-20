@@ -4,7 +4,7 @@
 using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Management.CosmosDB.Fluent.Sqlcontainers.Definition
+namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
 {
     /// <summary>
     /// The entirety of a sql container definition as a part of parent definition.
