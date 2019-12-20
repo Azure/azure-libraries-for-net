@@ -653,5 +653,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
         }
+
+        SqlDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewSqlDatabase(string name)
+        {
+            return this.DefineNewSqlDatabase(name);
+        }
+
+        SqlDatabase.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewSqlDatabase(string name)
+        {
+            return this.DefineNewSqlDatabase(name);
+        }
+
+        SqlDatabase.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateSqlDatabase(string name)
+        {
+            return this.UpdateSqlDatabase(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutSqlDatabase(string name)
+        {
+            return this.WithoutSqlDatabase(name);
+        }
     }
 }

@@ -136,5 +136,51 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.Attach();
         }
+
+        // definition for parent update
+        SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals> HasOptions.Definition.IWithOptions<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>>.WithOption(string key, string value)
+        {
+            return this.WithOption(key, value);
+        }
+
+        SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals> HasOptions.Definition.IWithOptions<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsAppend(options);
+        }
+
+        SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals> HasThroughputSettings.Definition.IWithThroughput<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>>.WithThroughput(int throughput)
+        {
+            return this.WithThroughput(throughput);
+        }
+
+        CosmosDBAccount.Update.IWithOptionals Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<CosmosDBAccount.Update.IWithOptionals>.Attach()
+        {
+            return this.Attach();
+        }
+
+        SqlContainer.Definition.IBlank<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>> SqlDatabase.Definition.IWithChildResource<CosmosDBAccount.Definition.IWithCreate>.DefineNewSqlContainer(string name)
+        {
+            return this.DefineNewSqlContainer(name);
+        }
+
+        SqlContainer.Definition.IBlank<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>> SqlDatabase.Definition.IWithChildResource<CosmosDBAccount.Update.IWithOptionals>.DefineNewSqlContainer(string name)
+        {
+            return this.DefineNewSqlContainer(name);
+        }
+
+        SqlContainer.Definition.IBlank<SqlDatabase.Update.IUpdate> SqlDatabase.Update.IWithChildResource.DefineNewSqlContainer(string name)
+        {
+            return this.DefineNewSqlContainer(name);
+        }
+
+        SqlContainer.Update.IUpdate SqlDatabase.Update.IWithChildResource.UpdateSqlContainer(string name)
+        {
+            return this.UpdateSqlContainer(name);
+        }
+
+        SqlDatabase.Update.IUpdate SqlDatabase.Update.IWithChildResource.WithoutSqlContainer(string name)
+        {
+            return this.WithoutSqlContainer(name);
+        }
     }
 }

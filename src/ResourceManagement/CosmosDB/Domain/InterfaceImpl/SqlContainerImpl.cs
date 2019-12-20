@@ -3,6 +3,8 @@
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
     using DefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>;
+    using UpdateDefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>;
+    using UpdateParentT = SqlDatabase.Update.IUpdate;
     internal partial class SqlContainerImpl
     {
         string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<ISqlContainer, ISqlDatabase>.Id
@@ -253,6 +255,128 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithConflictResolutionPolicy.WithoutConflictResolutionPolicy()
         {
             return this.WithoutConflictResolutionPolicy();
+        }
+
+        // definition for UpdateDefinitionParentT
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT>>.WithOption(string key, string value)
+        {
+            return this.WithOption(key, value);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT>>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsAppend(options);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> HasThroughputSettings.Definition.IWithThroughput<SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT>>.WithThroughput(int throughput)
+        {
+            return this.WithThroughput(throughput);
+        }
+
+        UpdateDefinitionParentT Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<UpdateDefinitionParentT>.Attach()
+        {
+            return this.Attach();
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithIndexingPolicy<UpdateDefinitionParentT>.WithIndexingPolicy(Models.IndexingPolicy indexingPolicy)
+        {
+            return this.WithIndexingPolicy(indexingPolicy);
+        }
+
+        IndexingPolicy.Definition.IBlank<SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT>> SqlContainer.Definition.IWithIndexingPolicy<UpdateDefinitionParentT>.DefineIndexingPolicy()
+        {
+            return this.DefineIndexingPolicyInParentUpdateDefinition();
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        {
+            return this.WithContainerPartitionKey(containerPartitionKey);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<UpdateDefinitionParentT>.WithDefaultTtl(int ttl)
+        {
+            return this.WithDefaultTtl(ttl);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateDefinitionParentT>.WithUniqueKeyPolicy(Models.UniqueKeyPolicy uniqueKeyPolicy)
+        {
+            return this.WithUniqueKeyPolicy(uniqueKeyPolicy);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateDefinitionParentT>.WithUniqueKeys(System.Collections.Generic.IList<Models.UniqueKey> uniqueKeys)
+        {
+            return this.WithUniqueKeys(uniqueKeys);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateDefinitionParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
+        {
+            return this.WithUniqueKey(-1, uniqueKey);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<UpdateDefinitionParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
+        {
+            return this.WithConflictResolutionPolicy(conflictResolutionPolicy);
+        }
+
+        // definition for UpdateParentT
+        SqlContainer.Definition.IWithAttach<UpdateParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<UpdateParentT>>.WithOption(string key, string value)
+        {
+            return this.WithOption(key, value);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<UpdateParentT>>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsAppend(options);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> HasThroughputSettings.Definition.IWithThroughput<SqlContainer.Definition.IWithAttach<UpdateParentT>>.WithThroughput(int throughput)
+        {
+            return this.WithThroughput(throughput);
+        }
+
+        UpdateParentT Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<UpdateParentT>.Attach()
+        {
+            return this.Attach();
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithIndexingPolicy<UpdateParentT>.WithIndexingPolicy(Models.IndexingPolicy indexingPolicy)
+        {
+            return this.WithIndexingPolicy(indexingPolicy);
+        }
+
+        IndexingPolicy.Definition.IBlank<SqlContainer.Definition.IWithAttach<UpdateParentT>> SqlContainer.Definition.IWithIndexingPolicy<UpdateParentT>.DefineIndexingPolicy()
+        {
+            return this.DefineIndexingPolicyInParentUpdate();
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithPartitionKey<UpdateParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        {
+            return this.WithContainerPartitionKey(containerPartitionKey);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithDefaultTtl<UpdateParentT>.WithDefaultTtl(int ttl)
+        {
+            return this.WithDefaultTtl(ttl);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateParentT>.WithUniqueKeyPolicy(Models.UniqueKeyPolicy uniqueKeyPolicy)
+        {
+            return this.WithUniqueKeyPolicy(uniqueKeyPolicy);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateParentT>.WithUniqueKeys(System.Collections.Generic.IList<Models.UniqueKey> uniqueKeys)
+        {
+            return this.WithUniqueKeys(uniqueKeys);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
+        {
+            return this.WithUniqueKey(-1, uniqueKey);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<UpdateParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
+        {
+            return this.WithConflictResolutionPolicy(conflictResolutionPolicy);
         }
     }
 }

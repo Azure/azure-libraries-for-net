@@ -9,7 +9,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IUpdate>,
         IWithOptions,
-        IWithThroughput
+        IWithThroughput,
+        IWithChildResource
     {
     }
 
@@ -27,5 +28,32 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
     public interface IWithThroughput :
         HasThroughputSettings.Update.IWithThroughput<IUpdate>
     {
+    }
+
+    /// <summary>
+    /// The stage of the sql database update allowing to set child resources.
+    /// </summary>
+    public interface IWithChildResource
+    {
+        /// <summary>
+        /// Defines a new sql container.
+        /// </summary>
+        /// <param name="name">The name of sql container.</param>
+        /// <returns>The next stage of the update.</returns>
+        SqlContainer.Definition.IBlank<IUpdate> DefineNewSqlContainer(string name);
+
+        /// <summary>
+        /// Updates a sql container.
+        /// </summary>
+        /// <param name="name">The name of sql container.</param>
+        /// <returns>The next stage of the update.</returns>
+        SqlContainer.Update.IUpdate UpdateSqlContainer(string name);
+
+        /// <summary>
+        /// Removes a sql container.
+        /// </summary>
+        /// <param name="name">The name of sql container.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithoutSqlContainer(string name);
     }
 }

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Definition
     public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         IWithOptions<ParentT>,
-        IWithThroughput<ParentT>
+        IWithThroughput<ParentT>,
+        IWithChildResource<ParentT>
     {
     }
 
@@ -51,5 +52,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Definition
     public interface IWithThroughput<Parent> :
         HasThroughputSettings.Definition.IWithThroughput<IWithAttach<Parent>>
     {
+    }
+
+    /// <summary>
+    /// The stage of the sql database definition allowing to set child resources.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithChildResource<ParentT>
+    {
+        /// <summary>
+        /// Defines a new sql container.
+        /// </summary>
+        /// <param name="name">The name of sql container.</param>
+        /// <returns>The next stage of the definition.</returns>
+        SqlContainer.Definition.IBlank<IWithAttach<ParentT>> DefineNewSqlContainer(string name);
     }
 }

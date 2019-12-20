@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify metadata write access.
     /// </summary>
-    public interface IWithKeyBasedMetadataWriteAccess 
+    public interface IWithKeyBasedMetadataWriteAccess
     {
         /// <summary>
         /// Specifies whether metadata write access should be disabled.
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify private endpoint connection.
     /// </summary>
-    public interface IWithPrivateEndpointConnection 
+    public interface IWithPrivateEndpointConnection
     {
         /// <summary>
         /// Starts the definition of a private endpoint connection to be attached
@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKind,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithReadReplication,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithChildResource,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate
     {
     }
@@ -268,5 +269,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// </summary>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication WithSessionConsistency();
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to set child resources.
+    /// </summary>
+    public interface IWithChildResource
+    {
+        /// <summary>
+        /// Defines a new sql database.
+        /// </summary>
+        /// <param name="name">The name of sql database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        SqlDatabase.Definition.IBlank<IWithCreate> DefineNewSqlDatabase(string name);
     }
 }

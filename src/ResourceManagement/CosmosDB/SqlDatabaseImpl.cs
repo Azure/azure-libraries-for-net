@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             CosmosDBAccountImpl>,
         ISqlDatabase,
         SqlDatabase.Definition.IDefinition<CosmosDBAccount.Definition.IWithCreate>,
-        SqlDatabase.Update.IUpdate
+        SqlDatabase.Update.IUpdate,
+        SqlDatabase.Definition.IDefinition<CosmosDBAccount.Update.IWithOptionals>
     {
         private ISqlResourcesOperations Client { get; set; }
         private SqlDatabaseCreateUpdateParameters createUpdateParameters;
@@ -202,6 +203,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public SqlDatabaseImpl WithSqlContainer(SqlContainerImpl sqlContainer)
         {
             this.sqlContainers.AddSqlContainer(sqlContainer);
+            return this;
+        }
+
+        public SqlContainerImpl DefineNewSqlContainer(string name)
+        {
+            return this.sqlContainers.Define(name);
+        }
+
+        public SqlContainerImpl UpdateSqlContainer(string name)
+        {
+            return this.sqlContainers.Update(name);
+        }
+
+        public SqlDatabaseImpl WithoutSqlContainer(string name)
+        {
+            this.sqlContainers.Remove(name);
             return this;
         }
     }

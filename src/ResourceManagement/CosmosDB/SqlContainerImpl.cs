@@ -10,7 +10,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
 
     using DefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>;
-    using SqlContainerIndexingPolicyImpl = IndexingPolicyImpl<SqlContainerImpl, ISqlContainer, SqlContainer.Definition.IWithAttach<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>>, SqlContainer.Update.IUpdate>;
+    using UpdateDefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>;
+    using DefinitionIndexingPolicyImpl = IndexingPolicyImpl<SqlContainerImpl, ISqlContainer, SqlContainer.Definition.IWithAttach<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>>, SqlContainer.Update.IUpdate>;
+    using UpdateDefinitionIndexingPolicyImpl = IndexingPolicyImpl<SqlContainerImpl, ISqlContainer, SqlContainer.Definition.IWithAttach<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>>, SqlContainer.Update.IUpdate>;
+    using UpdateIndexingPolicyImpl = IndexingPolicyImpl<SqlContainerImpl, ISqlContainer, SqlContainer.Definition.IWithAttach<SqlDatabase.Update.IUpdate>, SqlContainer.Update.IUpdate>;
 
     internal partial class SqlContainerImpl :
         ExternalChildResource<ISqlContainer,
@@ -19,6 +22,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             SqlDatabaseImpl>,
         ISqlContainer,
         SqlContainer.Definition.IDefinition<DefinitionParentT>,
+        SqlContainer.Definition.IDefinition<UpdateDefinitionParentT>,
+        SqlContainer.Definition.IDefinition<SqlDatabase.Update.IUpdate>,
         SqlContainer.Update.IUpdate,
         IHasIndexingPolicy<SqlContainerImpl>
     {
@@ -242,15 +247,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerIndexingPolicyImpl DefineIndexingPolicy()
+        public DefinitionIndexingPolicyImpl DefineIndexingPolicy()
         {
-            return new SqlContainerIndexingPolicyImpl(new Models.IndexingPolicy(), this);
+            return new DefinitionIndexingPolicyImpl(new Models.IndexingPolicy(), this);
         }
 
-        public SqlContainerIndexingPolicyImpl UpdateIndexingPolicy()
+        public DefinitionIndexingPolicyImpl UpdateIndexingPolicy()
         {
             var indexingPolicyInner = this.createUpdateParameters.Resource.IndexingPolicy ?? new Models.IndexingPolicy();
-            return new SqlContainerIndexingPolicyImpl(this.createUpdateParameters.Resource.IndexingPolicy, this);
+            return new DefinitionIndexingPolicyImpl(indexingPolicyInner, this);
+        }
+
+        public UpdateDefinitionIndexingPolicyImpl DefineIndexingPolicyInParentUpdateDefinition()
+        {
+            return new UpdateDefinitionIndexingPolicyImpl(new Models.IndexingPolicy(), this);
+        }
+
+        public UpdateIndexingPolicyImpl DefineIndexingPolicyInParentUpdate()
+        {
+            return new UpdateIndexingPolicyImpl(new Models.IndexingPolicy(), this);
         }
 
         public SqlContainerImpl WithContainerPartitionKey(ContainerPartitionKey containerPartitionKey)
