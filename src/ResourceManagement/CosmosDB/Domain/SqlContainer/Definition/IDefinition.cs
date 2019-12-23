@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     public interface IWithIndexingPolicy<ParentT>
     {
         /// <summary>
-        /// Specifies indexing policy.
+        /// Specifies the indexing policy.
         /// </summary>
         /// <param name="indexingPolicy">The whole object of the indexing policy.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithIndexingPolicy(Models.IndexingPolicy indexingPolicy);
 
         /// <summary>
-        /// Starts the definition of indexing policy.
+        /// Starts the definition of the indexing policy.
         /// </summary>
         /// <returns>The next stage of the definition.</returns>
         IndexingPolicy.Definition.IBlank<IWithAttach<ParentT>> DefineIndexingPolicy();
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     public interface IWithPartitionKey<ParentT>
     {
         /// <summary>
-        /// Specifies container partition key.
+        /// Specifies the container partition key.
         /// </summary>
         /// <param name="containerPartitionKey">The whole object of the container partition key.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     public interface IWithDefaultTtl<ParentT>
     {
         /// <summary>
-        /// Specifies default ttl.
+        /// Specifies the default ttl.
         /// </summary>
         /// <param name="ttl">The default time to live.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     public interface IWithUniqueKeyPolicy<ParentT>
     {
         /// <summary>
-        /// Specifies unique key policy.
+        /// Specifies the unique key policy.
         /// </summary>
         /// <param name="uniqueKeyPolicy">The whole object of the unique key policy.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         IWithAttach<ParentT> WithUniqueKeys(IList<UniqueKey> uniqueKeys);
 
         /// <summary>
-        /// Specifies the a unique key appended to original list.
+        /// Specifies a unique key appended to original list.
         /// </summary>
         /// <param name="uniqueKey">A unique key.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     public interface IWithConflictResolutionPolicy<ParentT>
     {
         /// <summary>
-        /// Specifies conflict resolution policy.
+        /// Specifies the conflict resolution policy.
         /// </summary>
         /// <param name="conflictResolutionPolicy">The whole object of the conflict resolution policy.</param>
         /// <returns>The next stage of the definition.</returns>

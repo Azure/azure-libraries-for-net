@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     public interface IWithAutomatic<ParentT>
     {
         /// <summary>
-        /// Specifies automatic setting.
+        /// Specifies the automatic setting.
         /// </summary>
-        /// <param name="isAutomatic">The bool about it is automatic or not</param>
+        /// <param name="isAutomatic">Whether index automatically or not.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithAutomatic(bool isAutomatic);
     }
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     public interface IWithIndexingMode<ParentT>
     {
         /// <summary>
-        /// Specifies indexing mode.
+        /// Specifies the indexing mode.
         /// </summary>
         /// <param name="indexingMode">The indexing mode.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -75,14 +75,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     public interface IWithIncludedPaths<ParentT>
     {
         /// <summary>
-        /// Specifies included path.
+        /// Specifies the included paths.
         /// </summary>
         /// <param name="includedPaths">The list of the included path.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithIncludedPaths(IList<IncludedPath> includedPaths);
 
         /// <summary>
-        /// Specifies included path.
+        /// Specifies an included path.
         /// </summary>
         /// <param name="includedPath">One of the included path.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -96,14 +96,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     public interface IWithExcludedPaths<ParentT>
     {
         /// <summary>
-        /// Specifies excluded path.
+        /// Specifies the excluded paths.
         /// </summary>
         /// <param name="excludedPaths">The list of the excluded path.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithExcludedPaths(IList<ExcludedPath> excludedPaths);
 
         /// <summary>
-        /// Specifies excluded path.
+        /// Specifies an excluded path.
         /// </summary>
         /// <param name="excludedPath">One of the excluded path.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -117,14 +117,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     public interface IWithCompositeIndexes<ParentT>
     {
         /// <summary>
-        /// Specifies composite index.
+        /// Specifies the composite indexes.
         /// </summary>
         /// <param name="compositePaths">The list of the composite path.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithCompositeIndexes(IList<IList<CompositePath>> compositePaths);
 
         /// <summary>
-        /// Specifies composite index.
+        /// Specifies a composite index.
         /// </summary>
         /// <param name="compositePath">One of the composite path.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -138,14 +138,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     public interface IWithSpatialIndexes<ParentT>
     {
         /// <summary>
-        /// Specifies spatial index.
+        /// Specifies the spatial indexes.
         /// </summary>
         /// <param name="spatialSpecs">The list of the spatial spec.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithSpatialIndexes(IList<SpatialSpec> spatialSpecs);
 
         /// <summary>
-        /// Specifies spatial index.
+        /// Specifies a spatial index.
         /// </summary>
         /// <param name="spatialSpec">One of the spatial spec.</param>
         /// <returns>The next stage of the definition.</returns>

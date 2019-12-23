@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.HasThroughputSettings.Defin
     public interface IWithThroughput<ReturnT>
     {
         /// <summary>
-        /// Specifies throughput.
+        /// Specifies the throughput value.
         /// </summary>
-        /// <param name="throughput">The vaule of throughput.</param>
+        /// <param name="throughput">The vaule of the throughput.</param>
         /// <returns>The next stage of the definition.</returns>
         ReturnT WithThroughput(int throughput);
     }

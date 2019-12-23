@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Definition
         /// <summary>
         /// Defines a new sql container.
         /// </summary>
-        /// <param name="name">The name of sql container.</param>
+        /// <param name="name">The name of the sql container.</param>
         /// <returns>The next stage of the definition.</returns>
         SqlContainer.Definition.IBlank<IWithAttach<ParentT>> DefineNewSqlContainer(string name);
     }

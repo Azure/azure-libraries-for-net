@@ -44,20 +44,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
     public interface IWithIndexingPolicy
     {
         /// <summary>
-        /// Specifies indexing policy.
+        /// Specifies the indexing policy.
         /// </summary>
         /// <param name="indexingPolicy">The whole object of the indexing policy.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithIndexingPolicy(Models.IndexingPolicy indexingPolicy);
 
         /// <summary>
-        /// Removes indexing policy.
+        /// Removes the indexing policy.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutIndexingPolicy();
 
         /// <summary>
-        /// Starts the update of indexing policy.
+        /// Starts the update of the indexing policy.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IndexingPolicy.Update.IUpdate<IUpdate> UpdateIndexingPolicy();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
     public interface IWithPartitionKey
     {
         /// <summary>
-        /// Specifies container partition key.
+        /// Specifies the container partition key.
         /// </summary>
         /// <param name="containerPartitionKey">The whole object of the container partition key.</param>
         /// <returns>The next stage of the update.</returns>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
 
 
         /// <summary>
-        /// Removes container partition key.
+        /// Removes the container partition key.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutContainerPartitionKey();
@@ -89,14 +89,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
     public interface IWithDefaultTtl
     {
         /// <summary>
-        /// Specifies default ttl.
+        /// Specifies the default ttl.
         /// </summary>
         /// <param name="ttl">The default time to live.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithDefaultTtl(int ttl);
 
         /// <summary>
-        /// Remove default ttl.
+        /// Removes the default ttl.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutDefaultTtl();
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
     public interface IWithUniqueKeyPolicy
     {
         /// <summary>
-        /// Specifies unique key policy.
+        /// Specifies the unique key policy.
         /// </summary>
         /// <param name="uniqueKeyPolicy">The whole object of the unique key policy.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithUniqueKeyPolicy(UniqueKeyPolicy uniqueKeyPolicy);
 
         /// <summary>
-        /// Removes unique key policy.
+        /// Removes the unique key policy.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutUniqueKeyPolicy();
@@ -156,14 +156,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
     public interface IWithConflictResolutionPolicy
     {
         /// <summary>
-        /// Specifies conflict resolution policy.
+        /// Specifies the conflict resolution policy.
         /// </summary>
         /// <param name="conflictResolutionPolicy">The whole object of the conflict resolution policy.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy);
 
         /// <summary>
-        /// Removes conflict resolution policy.
+        /// Removes the conflict resolution policy.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutConflictResolutionPolicy();

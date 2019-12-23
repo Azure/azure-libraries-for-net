@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
     public interface IWithAutomatic<ParentT>
     {
         /// <summary>
-        /// Specifies automatic setting.
+        /// Specifies the automatic setting.
         /// </summary>
-        /// <param name="isAutomatic">The bool about it is automatic or not</param>
+        /// <param name="isAutomatic">Whether index automatically or not.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithAutomatic(bool isAutomatic);
     }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
     public interface IWithIndexingMode<ParentT>
     {
         /// <summary>
-        /// Specifies indexing mode.
+        /// Specifies the indexing mode.
         /// </summary>
         /// <param name="indexingMode">The indexing mode.</param>
         /// <returns>The next stage of the update.</returns>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
 
 
         /// <summary>
-        /// Removes indexing mode.
+        /// Removes the indexing mode.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutIndexingMode();
@@ -63,21 +63,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
     public interface IWithIncludedPaths<ParentT>
     {
         /// <summary>
-        /// Specifies included path.
+        /// Appends included paths.
         /// </summary>
         /// <param name="includedPaths">The list of the included path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithIncludedPathsAppend(IList<IncludedPath> includedPaths);
 
         /// <summary>
-        /// Specifies included path.
+        /// Replaces the included paths.
         /// </summary>
         /// <param name="includedPaths">The list of the included path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithIncludedPathsReplace(IList<IncludedPath> includedPaths);
 
         /// <summary>
-        /// Specifies included path.
+        /// Specifies an included path.
         /// </summary>
         /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="includedPath">One of the included path.</param>
@@ -85,21 +85,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         IUpdate<ParentT> WithIncludedPath(int index, IncludedPath includedPath);
 
         /// <summary>
-        /// Removes included path.
+        /// Removes an included path.
         /// </summary>
         /// <param name="index">The index of the included path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutIncludedPath(int index);
 
         /// <summary>
-        /// Removes included path.
+        /// Removes an included path.
         /// </summary>
         /// <param name="includedPath">The included path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutIncludedPath(IncludedPath includedPath);
 
         /// <summary>
-        /// Removes included path.
+        /// Removes all included paths.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutIncludedPaths();
@@ -112,21 +112,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
     public interface IWithExcludedPaths<ParentT>
     {
         /// <summary>
-        /// Specifies excluded path.
+        /// Appends excluded paths.
         /// </summary>
         /// <param name="excludedPaths">The list of the excluded path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithExcludedPathsAppend(IList<ExcludedPath> excludedPaths);
 
         /// <summary>
-        /// Specifies excluded path.
+        /// Replaces the excluded paths.
         /// </summary>
         /// <param name="excludedPaths">The list of the excluded path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithExcludedPathsReplace(IList<ExcludedPath> excludedPaths);
 
         /// <summary>
-        /// Specifies excluded path.
+        /// Specifies an excluded path.
         /// </summary>
         /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="excludedPath">One of the excluded path.</param>
@@ -134,21 +134,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         IUpdate<ParentT> WithExcludedPath(int index, ExcludedPath excludedPath);
 
         /// <summary>
-        /// Removes excluded path.
+        /// Removes an excluded path.
         /// </summary>
         /// <param name="index">The index of the excluded path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutExcludedPath(int index);
 
         /// <summary>
-        /// Removes excluded path.
+        /// Removes an excluded path.
         /// </summary>
         /// <param name="excludedPath">The excluded path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutExcludedPath(ExcludedPath excludedPath);
 
         /// <summary>
-        /// Removes excluded path.
+        /// Removes all excluded paths.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutExcludedPaths();
@@ -161,21 +161,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
     public interface IWithCompositeIndexes<ParentT>
     {
         /// <summary>
-        /// Specifies composite index.
+        /// Appends composite indexes.
         /// </summary>
         /// <param name="compositePaths">The list of the composite path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithCompositeIndexesAppend(IList<IList<CompositePath>> compositePaths);
 
         /// <summary>
-        /// Specifies composite index.
+        /// Replaces the composite indexes.
         /// </summary>
         /// <param name="compositePaths">The list of the composite path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithCompositeIndexesReplace(IList<IList<CompositePath>> compositePaths);
 
         /// <summary>
-        /// Specifies composite index.
+        /// Specifies a composite index.
         /// </summary>
         /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="compositePath">One of the composite path.</param>
@@ -183,21 +183,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         IUpdate<ParentT> WithCompositeIndex(int index, IList<CompositePath> compositePath);
 
         /// <summary>
-        /// Removes composite index.
+        /// Removes a composite index.
         /// </summary>
         /// <param name="index">The index of the composite path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutCompositeIndex(int index);
 
         /// <summary>
-        /// Removes composite index.
+        /// Removes a composite index.
         /// </summary>
         /// <param name="compositePath">The composite path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutCompositeIndex(IList<CompositePath> compositePath);
 
         /// <summary>
-        /// Removes composite index.
+        /// Removes all composite indexes.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutCompositeIndexes();
@@ -210,21 +210,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
     public interface IWithSpatialIndexes<ParentT>
     {
         /// <summary>
-        /// Specifies spatial index.
+        /// Appends spatial indexes.
         /// </summary>
         /// <param name="spatialSpecs">The list of the spatial spec.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithSpatialIndexesAppend(IList<SpatialSpec> spatialSpecs);
 
         /// <summary>
-        /// Specifies spatial index.
+        /// Replaces the spatial indexes.
         /// </summary>
         /// <param name="spatialSpecs">The list of the spatial spec.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithSpatialIndexesReplace(IList<SpatialSpec> spatialSpecs);
 
         /// <summary>
-        /// Specifies spatial index.
+        /// Specifies a spatial index.
         /// </summary>
         /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="spatialSpec">One of the spatial spec.</param>
@@ -232,21 +232,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         IUpdate<ParentT> WithSpatialIndex(int index, SpatialSpec spatialSpec);
 
         /// <summary>
-        /// Removes spatial index.
+        /// Removes a spatial index.
         /// </summary>
         /// <param name="index">The index of the spatial spec.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutSpatialIndex(int index);
 
         /// <summary>
-        /// Removes spatial index.
+        /// Removes a spatial index.
         /// </summary>
         /// <param name="spatialSpec">The spatial spec.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutSpatialIndex(SpatialSpec spatialSpec);
 
         /// <summary>
-        /// Removes spatial index.
+        /// Removes all spatial indexes.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithoutSpatialIndexes();

@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
         /// <summary>
         /// Updates a sql container.
         /// </summary>
-        /// <param name="name">The name of sql container.</param>
+        /// <param name="name">The name of the sql container.</param>
         /// <returns>The next stage of the update.</returns>
         SqlContainer.Update.IUpdate UpdateSqlContainer(string name);
 
         /// <summary>
         /// Removes a sql container.
         /// </summary>
-        /// <param name="name">The name of sql container.</param>
+        /// <param name="name">The name of the sql container.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutSqlContainer(string name);
     }
