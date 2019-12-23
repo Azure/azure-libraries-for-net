@@ -35,7 +35,7 @@ namespace ManageVirtualMachineAsync
             var linuxVmName = Utilities.CreateRandomName("lVM");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var userName = "tirekicker";
-            var password = "12NewPA$$w0rd!";
+            var password = "StrongPass!123";
 
             try
             {

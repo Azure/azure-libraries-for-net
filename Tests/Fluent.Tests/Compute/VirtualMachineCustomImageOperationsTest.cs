@@ -98,7 +98,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryPublicIPAddress()
                             .WithLinuxCustomImage(image.Id)
                             .WithRootUsername("javauser")
-                            .WithRootPassword("12NewPA$$w0rd!")
+                            .WithRootPassword("StrongPass!123")
                             .WithSize(VirtualMachineSizeTypes.StandardD5V2)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();

@@ -645,7 +645,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var vmName = TestUtilities.GenerateName("vm");
                 var username = "testuser";
-                var password = "12NewPA$$w0rd!";
+                var password = "StrongPass!123";
                 var publicIPDnsLabel = TestUtilities.GenerateName("abc");
                 var region = Region.USEast;
                 var cloudInitEncodedString = Convert.ToBase64String(Encoding.ASCII.GetBytes("#cloud-config\r\npackages:\r\n - pwgen"));

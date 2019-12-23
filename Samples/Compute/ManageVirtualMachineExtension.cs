@@ -18,7 +18,7 @@ namespace ManageVirtualMachineExtension
         // Linux configurations
         //
         readonly static string FirstLinuxUserName = "tirekicker";
-        readonly static string FirstLinuxUserPassword = "12NewPA$$w0rd!";
+        readonly static string FirstLinuxUserPassword = "StrongPass!123";
         readonly static string FirstLinuxUserNewPassword = "muy!234OR";
 
         readonly static string SecondLinuxUserName = "seconduser";

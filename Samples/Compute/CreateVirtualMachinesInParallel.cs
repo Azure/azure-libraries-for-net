@@ -17,7 +17,7 @@ namespace CreateVirtualMachinesInParallel
     public class Program
     {
         private const string Username = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private const string Password = "StrongPass!123";
 
         /**
          * Azure compute sample for creating multiple virtual machines in parallel.

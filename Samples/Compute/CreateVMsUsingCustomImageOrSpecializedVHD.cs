@@ -17,7 +17,7 @@ namespace CreateVMsUsingCustomImageOrSpecializedVHD
     public class Program
     {
         private static readonly string UserName = "tirekicker";
-        private static readonly string Password = "12NewPA$$w0rd!";
+        private static readonly string Password = "StrongPass!123";
         private readonly static List<string> ApacheInstallScriptUris = new List<string>()
         {
             "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh"

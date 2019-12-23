@@ -22,10 +22,10 @@ namespace ManageVirtualMachinesInParallelWithNetwork
         private const int FrontendVMCount = 10;
         private const int BackendVMCount = 10;
         private const string UserName = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private const string Password = "StrongPass!123";
 
         /**
-         * Create a virtual network with two Subnets – frontend and backend
+         * Create a virtual network with two Subnets ï¿½ frontend and backend
          * Frontend allows HTTP in and denies Internet out
          * Backend denies Internet in and Internet out
          * Create m Linux virtual machines in the frontend

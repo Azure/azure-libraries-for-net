@@ -101,7 +101,7 @@ namespace ManageStorageAccountNetworkRules
                         .WithExistingPrimaryPublicIPAddress(publicIPAddress)
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("tirekicker")
-                        .WithRootPassword("12NewPA$$w0rd!")
+                        .WithRootPassword("StrongPass!123")
                         .WithSize(VirtualMachineSizeTypes.StandardD3V2)
                         .Create();
 

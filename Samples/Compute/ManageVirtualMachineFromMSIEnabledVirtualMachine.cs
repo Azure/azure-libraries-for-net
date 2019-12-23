@@ -36,7 +36,7 @@ namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
             Region region = Region.USWestCentral;
             string linuxVMName = SdkContext.RandomResourceName("vm", 30);
             string userName = "tirekicker";
-            string password = "12NewPA$$w0rd!";
+            string password = "StrongPass!123";
 
             //=============================================================
             // MSI Authenticate

@@ -579,7 +579,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string userName = "tirekicker";
-                string password = "12NewPA$$w0rd!";
+                string password = "StrongPass!123";
 
                 var rgName = SdkContext.RandomResourceName("jMonitor_", 18);
                 var alertName = SdkContext.RandomResourceName("jMonitorMA", 18);

@@ -18,7 +18,7 @@ namespace ManageVirtualMachinesInParallel
     {
         private const int vmCount = 2;
         private const string userName = "tirekicker";
-        private const string password = "12NewPA$$w0rd!";
+        private const string password = "StrongPass!123";
 
         /**
          * Azure Compute sample for managing virtual machines -

@@ -3081,7 +3081,7 @@ namespace Microsoft.Azure.Management.Samples.Common
         public static string GetArmTemplate(string templateFileName)
         {
             var adminUsername = "tirekicker";
-            var adminPassword = "12NewPA$$w0rd!";
+            var adminPassword = "StrongPass!123";
             var hostingPlanName = SdkContext.RandomResourceName("hpRSAT", 24);
             var webAppName = SdkContext.RandomResourceName("wnRSAT", 24);
             var armTemplateString = File.ReadAllText(Path.Combine(Utilities.ProjectPath, "Asset", templateFileName));

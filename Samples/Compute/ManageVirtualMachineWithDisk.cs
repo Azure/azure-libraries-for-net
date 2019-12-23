@@ -15,7 +15,7 @@ namespace ManageVirtualMachineWithDisk
     public class Program
     {
         private static string userName = "tirekicker";
-        private static string password = "12NewPA$$w0rd!";
+        private static string password = "StrongPass!123";
         private static Region region = Region.USWestCentral;
 
         /**

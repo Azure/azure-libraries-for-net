@@ -162,7 +162,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var userName = "tirekicker";
-                var password = "12NewPA$$w0rd!";
+                var password = "StrongPass!123";
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 10);
                 var customImageName = SdkContext.RandomResourceName("img", 10);
                 var vmssName = SdkContext.RandomResourceName("vmss", 10);

@@ -129,7 +129,7 @@ namespace ManageDns
                         .WithNewPrimaryPublicIPAddress(SdkContext.RandomResourceName("empip-", 20))
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername("testuser")
-                        .WithAdminPassword("12NewPA$$w0rd!")
+                        .WithAdminPassword("StrongPass!123")
                         .WithSize(VirtualMachineSizeTypes.StandardD12V2)
                         .Create();
                 Utilities.Log("Virtual machine created");

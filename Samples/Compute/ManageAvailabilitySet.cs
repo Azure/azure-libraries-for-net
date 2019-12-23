@@ -14,7 +14,7 @@ namespace ManageAvailabilitySet
     public class Program
     {
         private const string UserName = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private const string Password = "StrongPass!123";
         
         /**
          * Azure Compute sample for managing availability sets -
