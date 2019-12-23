@@ -706,7 +706,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var rgName = TestUtilities.GenerateName("rg");
                 var vmName = TestUtilities.GenerateName("vm");
                 var username = "testuser";
-                var password = "12NewPA$$w0rd!";
+                var password = "StrongPass!123";
                 var publicIPDnsLabel = TestUtilities.GenerateName("abc");
                 var region = Region.USEast;
 
@@ -757,7 +757,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var vmName = TestUtilities.GenerateName("vm");
                 var pipName = TestUtilities.GenerateName("pip");
                 var username = "testuser";
-                var password = "12NewPA$$w0rd!";
+                var password = "StrongPass!123";
                 var publicIPDnsLabel = TestUtilities.GenerateName("abc");
                 var region = Region.USEast;
 

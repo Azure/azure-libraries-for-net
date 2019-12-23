@@ -357,7 +357,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                                      IComputeManager computeManager)
         {
             var uname = "javauser";
-            var password = "12NewPA$$w0rd!";
+            var password = "StrongPass!123";
             KnownLinuxVirtualMachineImage linuxImage = KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts;
             var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
 

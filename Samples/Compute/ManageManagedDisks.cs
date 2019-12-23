@@ -391,7 +391,7 @@ namespace ManageManagedDisks
         private static IVirtualMachine PrepareSpecializedManagedVirtualMachine(IAzure azure, Region region, string rgName)
         {
             var userName = "tirekicker";
-            var password = "12NewPA$$w0rd!";
+            var password = "StrongPass!123";
             var linuxVmName1 = SdkContext.RandomResourceName("vm" + "-", 10);
             var publicIpDnsLabel = SdkContext.RandomResourceName("pip" + "-", 20);
 

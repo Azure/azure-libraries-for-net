@@ -59,7 +59,7 @@ namespace ManageVirtualMachineExtension
         // Windows configurations
         //
         readonly static string firstWindowsUserName = "tirekicker";
-        readonly static string firstWindowsUserPassword = "12NewPA$$w0rd!";
+        readonly static string firstWindowsUserPassword = "StrongPass!123";
         readonly static string firstWindowsUserNewPassword = "muy!234OR";
 
         readonly static string secondWindowsUserName = "seconduser";
