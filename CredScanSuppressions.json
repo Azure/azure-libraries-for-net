@@ -5,6 +5,10 @@
       "placeholder": "$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$",
       "_justification": "Credential placeholder used in test session records."
     },
+	{
+      "placeholder": "$_AZURE_FLUENT_CREDENTIAL_PLACEHOLDER_$.*.*",
+      "_justification": "Credential placeholder used with session records of FunctionCredentials token."
+    },
     {
       "file": [
         "Samples\\Asset\\jsdkdemo-039967180.com.pfx",
@@ -17,6 +21,24 @@
         "Samples\\Asset\\SampleTestCertificate.pfx"
       ],
       "_justification": "Certs used by test cases"
+    },
+	{
+      "file": [
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\PrivateComplex.json",
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\PrivateMinimal.json",
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\PublicComplex.json",
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\PublicMinimal.json",
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\WebApplicationFirewall.json",
+        "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.AppService\\ManageFunctionAppWithDomainSslTest.json",
+        "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.TrafficManager\\ManageTrafficManagerTest.json",
+		"Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.AppService\\ManageLinuxWebAppWithDomainSslTest.json",
+		"Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.Network\\ManageApplicationGatewayTest.json",
+		"Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.AppService\\ManageLinuxWebAppWithTrafficManagerTest.json",
+		"Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.Network\\ManageSimpleApplicationGatewayTest.json",
+		"Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.AppService\\ManageWebAppWithDomainSslTest.json",
+        "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.AppService\\ManageWebAppWithTrafficManagerTest.json"
+      ],
+      "_justification": "X.509 Certificate Private Key in session records for testing"
     },
     {
       "placeholder": "ebc6e170-72b2-4b6f-9de2-99410964d2d0",
