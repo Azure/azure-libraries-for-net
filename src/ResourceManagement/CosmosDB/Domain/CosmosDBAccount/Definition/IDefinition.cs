@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConnector,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithPrivateEndpointConnection,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithChildResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
     }

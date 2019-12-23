@@ -145,7 +145,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.ThroughputSettingsToUpdate != null)
             {
-                await this.Client.BeginUpdateSqlDatabaseThroughputAsync(
+                this.ThroughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
+                await this.Client.UpdateSqlDatabaseThroughputAsync(
                     Parent.ResourceGroupName,
                     Parent.Name,
                     this.Name(),
@@ -155,6 +156,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
                 this.ThroughputSettingsToUpdate = null;
             }
+
+            await this.sqlContainers.CommitAndGetAllAsync(cancellationToken);
 
             return this;
         }

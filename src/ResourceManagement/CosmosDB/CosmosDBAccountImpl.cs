@@ -113,8 +113,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 }
             }
 
-            await this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken);
-            await this.sqlDatabases.CommitAndGetAllAsync(cancellationToken);
+            var ChildResourceTasks = new List<Task>();
+            ChildResourceTasks.Add(this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken));
+            ChildResourceTasks.Add(this.sqlDatabases.CommitAndGetAllAsync(cancellationToken));
+            await Task.WhenAll(ChildResourceTasks);
+
             this.SetInner(databaseAccount.Inner);
             this.initializeFailover();
             return databaseAccount;

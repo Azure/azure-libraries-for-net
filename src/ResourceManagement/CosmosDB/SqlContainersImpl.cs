@@ -22,11 +22,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             SqlDatabaseImpl>
     {
         private ISqlResourcesOperations Client { get; set; }
+        private string Location
+        {
+            get
+            {
+                return Parent.Parent.RegionName?.ToLower();
+            }
+        }
         internal SqlContainersImpl(ISqlResourcesOperations client, SqlDatabaseImpl parent)
             : base(parent, "SqlContainer")
         {
             this.Client = client;
-            this.CacheCollection();
+            if (parent.Id() != null)
+            {
+                this.CacheCollection();
+            }
         }
 
         protected override IList<SqlContainerImpl> ListChildResources()
@@ -36,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         protected override SqlContainerImpl NewChildResource(string name)
         {
-            return new SqlContainerImpl(name, Parent, new SqlContainerGetResultsInner(null, name: name), Client);
+            return new SqlContainerImpl(name, Parent, new SqlContainerGetResultsInner(Location, name: name), Client);
 
         }
 

@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using System.Collections.Generic;
     using DefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>;
     using UpdateDefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>;
     using UpdateParentT = SqlDatabase.Update.IUpdate;
@@ -87,16 +88,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<DefinitionParentT>>.WithOption(string key, string value)
-        {
-            return this.WithOption(key, value);
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<DefinitionParentT>>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
-        {
-            return this.WithOptionsAppend(options);
-        }
-
         SqlContainer.Update.IUpdate HasOptions.Update.IWithOptions<SqlContainer.Update.IUpdate>.WithOption(string key, string value)
         {
             return this.WithOption(key, value);
@@ -122,64 +113,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutOptions();
         }
 
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> HasThroughputSettings.Definition.IWithThroughput<SqlContainer.Definition.IWithAttach<DefinitionParentT>>.WithThroughput(int throughput)
-        {
-            return this.WithThroughput(throughput);
-        }
-
         SqlContainer.Update.IUpdate HasThroughputSettings.Update.IWithThroughput<SqlContainer.Update.IUpdate>.WithThroughput(int throughput)
         {
             return this.WithThroughput(throughput);
         }
 
-        DefinitionParentT Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<DefinitionParentT>.Attach()
-        {
-            return this.Attach();
-        }
-
         SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update.IUpdate>.Parent()
         {
             return this.Attach();
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithIndexingPolicy<DefinitionParentT>.WithIndexingPolicy(Models.IndexingPolicy indexingPolicy)
-        {
-            return this.WithIndexingPolicy(indexingPolicy);
-        }
-
-        IndexingPolicy.Definition.IBlank<SqlContainer.Definition.IWithAttach<DefinitionParentT>> SqlContainer.Definition.IWithIndexingPolicy<DefinitionParentT>.DefineIndexingPolicy()
-        {
-            return this.DefineIndexingPolicy();
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
-        {
-            return this.WithContainerPartitionKey(containerPartitionKey);
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<DefinitionParentT>.WithDefaultTtl(int ttl)
-        {
-            return this.WithDefaultTtl(ttl);
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKeyPolicy(Models.UniqueKeyPolicy uniqueKeyPolicy)
-        {
-            return this.WithUniqueKeyPolicy(uniqueKeyPolicy);
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKeys(System.Collections.Generic.IList<Models.UniqueKey> uniqueKeys)
-        {
-            return this.WithUniqueKeys(uniqueKeys);
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
-        {
-            return this.WithUniqueKey(-1, uniqueKey);
-        }
-
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<DefinitionParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
-        {
-            return this.WithConflictResolutionPolicy(conflictResolutionPolicy);
         }
 
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithIndexingPolicy.WithIndexingPolicy(Models.IndexingPolicy indexingPolicy)
@@ -257,6 +198,113 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutConflictResolutionPolicy();
         }
 
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithChildResource.WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options)
+        {
+            return this.WithStoredProcedure(name, resource, options);
+        }
+
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithChildResource.WithoutStoredProcedure(string name)
+        {
+            return this.WithoutStoredProcedure(name);
+        }
+
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithChildResource.WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options)
+        {
+            return this.WithUserDefinedFunction(name, resource, options);
+        }
+
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithChildResource.WithoutUserDefinedFunction(string name)
+        {
+            return this.WithoutUserDefinedFunction(name);
+        }
+
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithChildResource.WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options)
+        {
+            return this.WithTrigger(name, resource, options);
+        }
+
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithChildResource.WithoutTrigger(string name)
+        {
+            return this.WithoutTrigger(name);
+        }
+
+        // definition for DefinitionParentT
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<DefinitionParentT>>.WithOption(string key, string value)
+        {
+            return this.WithOption(key, value);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<DefinitionParentT>>.WithOptionsAppend(System.Collections.Generic.IDictionary<string, string> options)
+        {
+            return this.WithOptionsAppend(options);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> HasThroughputSettings.Definition.IWithThroughput<SqlContainer.Definition.IWithAttach<DefinitionParentT>>.WithThroughput(int throughput)
+        {
+            return this.WithThroughput(throughput);
+        }
+
+        DefinitionParentT Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<DefinitionParentT>.Attach()
+        {
+            return this.Attach();
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithIndexingPolicy<DefinitionParentT>.WithIndexingPolicy(Models.IndexingPolicy indexingPolicy)
+        {
+            return this.WithIndexingPolicy(indexingPolicy);
+        }
+
+        IndexingPolicy.Definition.IBlank<SqlContainer.Definition.IWithAttach<DefinitionParentT>> SqlContainer.Definition.IWithIndexingPolicy<DefinitionParentT>.DefineIndexingPolicy()
+        {
+            return this.DefineIndexingPolicy();
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        {
+            return this.WithContainerPartitionKey(containerPartitionKey);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<DefinitionParentT>.WithDefaultTtl(int ttl)
+        {
+            return this.WithDefaultTtl(ttl);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKeyPolicy(Models.UniqueKeyPolicy uniqueKeyPolicy)
+        {
+            return this.WithUniqueKeyPolicy(uniqueKeyPolicy);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKeys(System.Collections.Generic.IList<Models.UniqueKey> uniqueKeys)
+        {
+            return this.WithUniqueKeys(uniqueKeys);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
+        {
+            return this.WithUniqueKey(-1, uniqueKey);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<DefinitionParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
+        {
+            return this.WithConflictResolutionPolicy(conflictResolutionPolicy);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithChildResource<DefinitionParentT>.WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options)
+        {
+            return this.WithStoredProcedure(name, resource, options);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithChildResource<DefinitionParentT>.WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options)
+        {
+            return this.WithUserDefinedFunction(name, resource, options);
+        }
+
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithChildResource<DefinitionParentT>.WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options)
+        {
+            return this.WithTrigger(name, resource, options);
+        }
+
         // definition for UpdateDefinitionParentT
         SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT>>.WithOption(string key, string value)
         {
@@ -318,6 +366,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithConflictResolutionPolicy(conflictResolutionPolicy);
         }
 
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithChildResource<UpdateDefinitionParentT>.WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options)
+        {
+            return this.WithStoredProcedure(name, resource, options);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithChildResource<UpdateDefinitionParentT>.WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options)
+        {
+            return this.WithUserDefinedFunction(name, resource, options);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithChildResource<UpdateDefinitionParentT>.WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options)
+        {
+            return this.WithTrigger(name, resource, options);
+        }
+
         // definition for UpdateParentT
         SqlContainer.Definition.IWithAttach<UpdateParentT> HasOptions.Definition.IWithOptions<SqlContainer.Definition.IWithAttach<UpdateParentT>>.WithOption(string key, string value)
         {
@@ -377,6 +440,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<UpdateParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
         {
             return this.WithConflictResolutionPolicy(conflictResolutionPolicy);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithChildResource<UpdateParentT>.WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options)
+        {
+            return this.WithStoredProcedure(name, resource, options);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithChildResource<UpdateParentT>.WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options)
+        {
+            return this.WithUserDefinedFunction(name, resource, options);
+        }
+
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithChildResource<UpdateParentT>.WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options)
+        {
+            return this.WithTrigger(name, resource, options);
         }
     }
 }

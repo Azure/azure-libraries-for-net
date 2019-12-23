@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Linq;
 
     using DefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>;
     using UpdateDefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>;
@@ -29,13 +30,74 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     {
         private ISqlResourcesOperations Client { get; set; }
         private SqlContainerCreateUpdateParameters createUpdateParameters;
-        private ThroughputSettingsUpdateParameters ThroughputSettingsToUpdate;
+        private ThroughputSettingsUpdateParameters throughputSettingsToUpdate;
+        private IDictionary<string, SqlStoredProcedureCreateUpdateParameters> storedProcedureToUpdate;
+        private IList<string> storedProcedureToDelete;
+        private IDictionary<string, SqlUserDefinedFunctionCreateUpdateParameters> userDefinedFunctionToUpdate;
+        private IList<string> userDefinedFunctionToDelete;
+        private IDictionary<string, SqlTriggerCreateUpdateParameters> triggerToUpdate;
+        private IList<string> triggerToDelete;
+
+        public string Location
+        {
+            get
+            {
+                return Parent.Parent.RegionName.ToLower();
+            }
+        }
+
+        public string ResourceGroupName
+        {
+            get
+            {
+                return Parent.Parent.ResourceGroupName;
+            }
+        }
+
+        public string AccountName
+        {
+            get
+            {
+                return Parent.Parent.Name;
+            }
+        }
+
+        public string SqlDatabaseName
+        {
+            get
+            {
+                return Parent.Name();
+            }
+        }
 
         internal SqlContainerImpl(string name, SqlDatabaseImpl parent, SqlContainerGetResultsInner inner, ISqlResourcesOperations client)
             : base(name, parent, inner)
         {
             this.Client = client;
             SetCreateUpdateParameters();
+        }
+
+        private void InitChildResource(bool firstInitial)
+        {
+            this.throughputSettingsToUpdate = null;
+            if (firstInitial)
+            {
+                this.storedProcedureToUpdate = new Dictionary<string, SqlStoredProcedureCreateUpdateParameters>();
+                this.storedProcedureToDelete = new List<string>();
+                this.userDefinedFunctionToUpdate = new Dictionary<string, SqlUserDefinedFunctionCreateUpdateParameters>();
+                this.userDefinedFunctionToDelete = new List<string>();
+                this.triggerToUpdate = new Dictionary<string, SqlTriggerCreateUpdateParameters>();
+                this.triggerToDelete = new List<string>();
+            }
+            else
+            {
+                this.storedProcedureToDelete.Clear();
+                this.storedProcedureToUpdate.Clear();
+                this.userDefinedFunctionToDelete.Clear();
+                this.userDefinedFunctionToUpdate.Clear();
+                this.triggerToDelete.Clear();
+                this.triggerToUpdate.Clear();
+            }
         }
 
         private void SetCreateUpdateParameters()
@@ -142,16 +204,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlContainerImpl WithThroughput(int throughput)
         {
-            if (this.ThroughputSettingsToUpdate == null)
+            if (this.throughputSettingsToUpdate == null)
             {
-                this.ThroughputSettingsToUpdate = new ThroughputSettingsUpdateParameters();
+                this.throughputSettingsToUpdate = new ThroughputSettingsUpdateParameters();
             }
-            if (this.ThroughputSettingsToUpdate.Resource == null)
+            if (this.throughputSettingsToUpdate.Resource == null)
             {
-                this.ThroughputSettingsToUpdate.Resource = new ThroughputSettingsResource();
+                this.throughputSettingsToUpdate.Resource = new ThroughputSettingsResource();
             }
 
-            this.ThroughputSettingsToUpdate.Resource.Throughput = throughput;
+            this.throughputSettingsToUpdate.Resource.Throughput = throughput;
             return this;
         }
 
@@ -163,9 +225,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public async override Task<ISqlContainer> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var inner = await this.Client.CreateUpdateSqlContainerAsync(
-                Parent.Parent.ResourceGroupName,
-                Parent.Parent.Name,
-                Parent.Name(),
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
                 this.Name(),
                 this.createUpdateParameters,
                 cancellationToken
@@ -173,20 +235,98 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             SetInner(inner);
             SetCreateUpdateParameters();
+            var ChildTask = new List<Task>();
 
-            if (this.ThroughputSettingsToUpdate != null)
+            if (this.throughputSettingsToUpdate != null)
             {
-                await this.Client.BeginUpdateSqlContainerThroughputAsync(
-                    Parent.Parent.ResourceGroupName,
-                    Parent.Parent.Name,
-                    Parent.Name(),
-                    this.Name(),
-                    this.ThroughputSettingsToUpdate,
+                this.throughputSettingsToUpdate.Location = Location;
+                ChildTask.Add(this.Client.UpdateSqlContainerThroughputAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    this.throughputSettingsToUpdate,
                     cancellationToken
-                    );
-
-                this.ThroughputSettingsToUpdate = null;
+                    ));
             }
+
+            if (this.storedProcedureToDelete.Count > 0)
+            {
+                ChildTask.AddRange(this.storedProcedureToDelete.Select(name => this.Client.DeleteSqlStoredProcedureAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    name,
+                    cancellationToken
+                    )));
+            }
+
+            if (this.storedProcedureToUpdate.Count > 0)
+            {
+                ChildTask.AddRange(this.storedProcedureToUpdate.Select(param => this.Client.CreateUpdateSqlStoredProcedureAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    param.Key,
+                    param.Value,
+                    cancellationToken
+                    )));
+            }
+
+            if (this.userDefinedFunctionToDelete.Count > 0)
+            {
+                ChildTask.AddRange(this.userDefinedFunctionToDelete.Select(name => this.Client.DeleteSqlUserDefinedFunctionAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    name,
+                    cancellationToken
+                    )));
+            }
+
+            if (this.userDefinedFunctionToUpdate.Count > 0)
+            {
+                ChildTask.AddRange(this.userDefinedFunctionToUpdate.Select(param => this.Client.CreateUpdateSqlUserDefinedFunctionAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    param.Key,
+                    param.Value,
+                    cancellationToken
+                    )));
+            }
+
+            if (this.triggerToDelete.Count > 0)
+            {
+                ChildTask.AddRange(this.triggerToDelete.Select(name => this.Client.DeleteSqlTriggerAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    name,
+                    cancellationToken
+                    )));
+            }
+
+            if (this.triggerToUpdate.Count > 0)
+            {
+                ChildTask.AddRange(this.triggerToUpdate.Select(param => this.Client.CreateUpdateSqlTriggerAsync(
+                    ResourceGroupName,
+                    AccountName,
+                    SqlDatabaseName,
+                    Name(),
+                    param.Key,
+                    param.Value,
+                    cancellationToken
+                    )));
+            }
+
+            await Task.WhenAll(ChildTask);
+            InitChildResource();
 
             return this;
         }
@@ -372,6 +512,63 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public SqlContainerImpl WithoutConflictResolutionPolicy()
         {
             this.createUpdateParameters.Resource.ConflictResolutionPolicy = null;
+            return this;
+        }
+
+        public SqlContainerImpl WithStoredProcedure(string name, SqlStoredProcedureResource resource = default(SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>))
+        {
+            var parameter = new SqlStoredProcedureCreateUpdateParameters()
+            {
+                Location = this.Location,
+                Resource = resource ?? new SqlStoredProcedureResource(),
+                Options = options ?? new Dictionary<string, string>(),
+            };
+            parameter.Resource.Id = name;
+            this.storedProcedureToUpdate.Add(name, parameter);
+            return this;
+        }
+
+        public SqlContainerImpl WithoutStoredProcedure(string name)
+        {
+            this.storedProcedureToDelete.Add(name);
+            return this;
+        }
+
+        public SqlContainerImpl WithUserDefinedFunction(string name, SqlUserDefinedFunctionResource resource = default(SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>))
+        {
+            var parameter = new SqlUserDefinedFunctionCreateUpdateParameters()
+            {
+                Location = this.Location,
+                Resource = resource ?? new SqlUserDefinedFunctionResource(),
+                Options = options ?? new Dictionary<string, string>(),
+            };
+            parameter.Resource.Id = name;
+            this.userDefinedFunctionToUpdate.Add(name, parameter);
+            return this;
+        }
+
+        public SqlContainerImpl WithoutUserDefinedFunction(string name)
+        {
+            this.userDefinedFunctionToDelete.Add(name);
+            return this;
+        }
+
+        public SqlContainerImpl WithTrigger(string name, SqlTriggerResource resource = default(SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>))
+        {
+            var parameter = new SqlTriggerCreateUpdateParameters()
+            {
+                Location = this.Location,
+                Resource = resource ?? new SqlTriggerResource(),
+                Options = options ?? new Dictionary<string, string>(),
+            };
+            parameter.Resource.Id = name;
+            this.triggerToUpdate.Add(name, parameter);
+            return this;
+        }
+
+        public SqlContainerImpl WithoutTrigger(string name)
+        {
+            this.triggerToDelete.Add(name);
             return this;
         }
     }

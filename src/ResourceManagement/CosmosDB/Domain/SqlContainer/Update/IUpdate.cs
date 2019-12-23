@@ -17,7 +17,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         IWithPartitionKey,
         IWithDefaultTtl,
         IWithUniqueKeyPolicy,
-        IWithConflictResolutionPolicy
+        IWithConflictResolutionPolicy,
+        IWithChildResource
     {
     }
 
@@ -166,5 +167,59 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// </summary>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutConflictResolutionPolicy();
+    }
+
+    /// <summary>
+    /// The stage of a sql container update allowing to specify child resource.
+    /// </summary>
+    public interface IWithChildResource
+    {
+        /// <summary>
+        /// Specifies a stored procedure.
+        /// </summary>
+        /// <param name="name">The name of the stored procedure.</param>
+        /// <param name="resource">The store procedure resource, no need to specify id.</param>
+        /// <param name="options">The options for the store procedure.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithStoredProcedure(string name, SqlStoredProcedureResource resource = default(SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+
+        /// <summary>
+        /// Removes a stored procedure.
+        /// </summary>
+        /// <param name="name">The name of the stored procedure.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithoutStoredProcedure(string name);
+
+        /// <summary>
+        /// Specifies a user defined function.
+        /// </summary>
+        /// <param name="name">The name of the user defined function.</param>
+        /// <param name="resource">The user defined function resource, no need to specify id.</param>
+        /// <param name="options">The options for the user defined function.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithUserDefinedFunction(string name, SqlUserDefinedFunctionResource resource = default(SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+
+        /// <summary>
+        /// Removes a user defined function.
+        /// </summary>
+        /// <param name="name">The name of the user defined function.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithoutUserDefinedFunction(string name);
+
+        /// <summary>
+        /// Specifies a trigger.
+        /// </summary>
+        /// <param name="name">The name of the trigger.</param>
+        /// <param name="resource">The trigger resource, no need to specify id.</param>
+        /// <param name="options">The options for the trigger.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithTrigger(string name, SqlTriggerResource resource = default(SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+
+        /// <summary>
+        /// Removes a trigger.
+        /// </summary>
+        /// <param name="name">The name of the trigger.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithoutTrigger(string name);
     }
 }

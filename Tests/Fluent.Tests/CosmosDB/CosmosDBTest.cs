@@ -270,5 +270,53 @@ namespace Fluent.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanCRUDSqlContainer()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var sqlDbName = SdkContext.RandomResourceName("sqldb", 22);
+                var sqlContainerName = SdkContext.RandomResourceName("sqlcontainer", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelSql()
+                        .WithStrongConsistency()
+                        .DefineNewSqlDatabase(sqlDbName)
+                            .WithThroughput(1)
+                            .DefineNewSqlContainer(sqlContainerName)
+                                .WithThroughput(2)
+                                .DefineIndexingPolicy()
+                                    .WithIndexingMode(IndexingMode.Consistent)
+                                    .WithIncludedPath(new IncludedPath(path: "/*"))
+                                    .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
+                                    .Attach()
+                                .WithContainerPartitionKey(new ContainerPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash))
+                                .Attach()
+                            .Attach()
+                        .Create();
+
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }
