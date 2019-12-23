@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.Client = client;
             SetCreateUpdateParameters();
+            InitChildResource(true);
         }
 
         private void InitChildResource(bool firstInitial)
@@ -326,7 +327,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
 
             await Task.WhenAll(ChildTask);
-            InitChildResource();
+            InitChildResource(false);
 
             return this;
         }
