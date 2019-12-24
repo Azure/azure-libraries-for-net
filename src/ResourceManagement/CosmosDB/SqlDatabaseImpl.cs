@@ -224,5 +224,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.sqlContainers.Remove(name);
             return this;
         }
+
+        public IEnumerable<ISqlContainer> ListSqlContainers()
+        {
+            return Extensions.Synchronize(() => this.ListSqlContainersAsync());
+        }
+
+        public async Task<IEnumerable<ISqlContainer>> ListSqlContainersAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.sqlContainers.ListAsync(cancellationToken);
+        }
+
+        public ISqlContainer GetSqlContainer(string name)
+        {
+            return Extensions.Synchronize(() => this.GetSqlContainerAsync(name));
+        }
+
+        public async Task<ISqlContainer> GetSqlContainerAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.sqlContainers.GetImplAsync(name, cancellationToken);
+        }
     }
 }

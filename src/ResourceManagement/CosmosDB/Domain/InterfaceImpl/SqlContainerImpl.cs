@@ -2,7 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
     using DefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>;
     using UpdateDefinitionParentT = SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Update.IWithOptionals>;
     using UpdateParentT = SqlDatabase.Update.IUpdate;
@@ -86,6 +89,76 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 return this.ConflictResolutionPolicy();
             }
+        }
+
+        ThroughputSettingsGetPropertiesResource ISqlContainer.GetThroughputSettings()
+        {
+            return this.GetThroughputSettings();
+        }
+
+        Task<ThroughputSettingsGetPropertiesResource> ISqlContainer.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetThroughputSettingsAsync();
+        }
+
+        IEnumerable<SqlStoredProcedureGetPropertiesResource> ISqlContainer.ListStoredProcedures()
+        {
+            return this.ListStoredProcedures();
+        }
+
+        Task<IEnumerable<SqlStoredProcedureGetPropertiesResource>> ISqlContainer.ListStoredProceduresAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListStoredProceduresAsync(cancellationToken);
+        }
+
+        SqlStoredProcedureGetPropertiesResource ISqlContainer.GetStoredProcedure(string name)
+        {
+            return this.GetStoredProcedure(name);
+        }
+
+        Task<SqlStoredProcedureGetPropertiesResource> ISqlContainer.GetStoredProcedureAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetStoredProcedureAsync(name, cancellationToken);
+        }
+
+        IEnumerable<SqlUserDefinedFunctionGetPropertiesResource> ISqlContainer.ListUserDefinedFunctions()
+        {
+            return this.ListUserDefinedFunctions();
+        }
+
+        Task<IEnumerable<SqlUserDefinedFunctionGetPropertiesResource>> ISqlContainer.ListUserDefinedFunctionsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListUserDefinedFunctionsAsync(cancellationToken);
+        }
+
+        SqlUserDefinedFunctionGetPropertiesResource ISqlContainer.GetUserDefinedFunction(string name)
+        {
+            return this.GetUserDefinedFunction(name);
+        }
+
+        Task<SqlUserDefinedFunctionGetPropertiesResource> ISqlContainer.GetUserDefinedFunctionAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetUserDefinedFunctionAsync(name, cancellationToken);
+        }
+
+        IEnumerable<SqlTriggerGetPropertiesResource> ISqlContainer.ListTriggers()
+        {
+            return this.ListTriggers();
+        }
+
+        Task<IEnumerable<SqlTriggerGetPropertiesResource>> ISqlContainer.ListTriggersAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListTriggersAsync(cancellationToken);
+        }
+
+        SqlTriggerGetPropertiesResource ISqlContainer.GetTrigger(string name)
+        {
+            return this.GetTrigger(name);
+        }
+
+        Task<SqlTriggerGetPropertiesResource> ISqlContainer.GetTriggerAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetTriggerAsync(name, cancellationToken);
         }
 
         SqlContainer.Update.IUpdate HasOptions.Update.IWithOptions<SqlContainer.Update.IUpdate>.WithOption(string key, string value)

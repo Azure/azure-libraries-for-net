@@ -572,5 +572,110 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.triggerToDelete.Add(name);
             return this;
         }
+
+        public IEnumerable<SqlStoredProcedureGetPropertiesResource> ListStoredProcedures()
+        {
+            return Extensions.Synchronize(() => this.ListStoredProceduresAsync());
+        }
+
+        public async Task<IEnumerable<SqlStoredProcedureGetPropertiesResource>> ListStoredProceduresAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inners = await this.Client.ListSqlStoredProceduresAsync(
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
+                Name(),
+                cancellationToken
+                );
+            return inners.Select(inner => inner.Resource);
+        }
+
+        public SqlStoredProcedureGetPropertiesResource GetStoredProcedure(string name)
+        {
+            return Extensions.Synchronize(() => this.GetStoredProcedureAsync(name));
+        }
+
+        public async Task<SqlStoredProcedureGetPropertiesResource> GetStoredProcedureAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await this.Client.GetSqlStoredProcedureAsync(
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
+                Name(),
+                name,
+                cancellationToken
+                );
+            return inner.Resource;
+        }
+
+        public IEnumerable<SqlUserDefinedFunctionGetPropertiesResource> ListUserDefinedFunctions()
+        {
+            return Extensions.Synchronize(() => this.ListUserDefinedFunctionsAsync());
+        }
+
+        public async Task<IEnumerable<SqlUserDefinedFunctionGetPropertiesResource>> ListUserDefinedFunctionsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inners = await this.Client.ListSqlUserDefinedFunctionsAsync(
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
+                Name(),
+                cancellationToken
+                );
+            return inners.Select(inner => inner.Resource);
+        }
+
+        public SqlUserDefinedFunctionGetPropertiesResource GetUserDefinedFunction(string name)
+        {
+            return Extensions.Synchronize(() => this.GetUserDefinedFunctionAsync(name));
+        }
+
+        public async Task<SqlUserDefinedFunctionGetPropertiesResource> GetUserDefinedFunctionAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await this.Client.GetSqlUserDefinedFunctionAsync(
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
+                Name(),
+                name,
+                cancellationToken
+                );
+            return inner.Resource;
+        }
+
+        public IEnumerable<SqlTriggerGetPropertiesResource> ListTriggers()
+        {
+            return Extensions.Synchronize(() => this.ListTriggersAsync());
+        }
+
+        public async Task<IEnumerable<SqlTriggerGetPropertiesResource>> ListTriggersAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inners = await this.Client.ListSqlTriggersAsync(
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
+                Name(),
+                cancellationToken
+                );
+            return inners.Select(inner => inner.Resource);
+        }
+
+        public SqlTriggerGetPropertiesResource GetTrigger(string name)
+        {
+            return Extensions.Synchronize(() => this.GetTriggerAsync(name));
+        }
+
+        public async Task<SqlTriggerGetPropertiesResource> GetTriggerAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await this.Client.GetSqlTriggerAsync(
+                ResourceGroupName,
+                AccountName,
+                SqlDatabaseName,
+                Name(),
+                name,
+                cancellationToken
+                );
+            return inner.Resource;
+        }
     }
 }

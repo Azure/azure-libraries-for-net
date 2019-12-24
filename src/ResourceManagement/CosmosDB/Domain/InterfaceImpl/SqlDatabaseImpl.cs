@@ -1,5 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
     internal partial class SqlDatabaseImpl
@@ -80,6 +85,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 return this.Id();
             }
+        }
+
+        IEnumerable<ISqlContainer> ISqlDatabase.ListSqlContainers()
+        {
+            return this.ListSqlContainers();
+        }
+
+        Task<IEnumerable<ISqlContainer>> ISqlDatabase.ListSqlContainersAsync(CancellationToken cancellationToken)
+        {
+            return this.ListSqlContainersAsync(cancellationToken);
+        }
+
+        ISqlContainer ISqlDatabase.GetSqlContainer(string name)
+        {
+            return this.GetSqlContainer(name);
+        }
+
+        Task<ISqlContainer> ISqlDatabase.GetSqlContainerAsync(string name, CancellationToken cancellationToken)
+        {
+            return this.GetSqlContainerAsync(name, cancellationToken);
         }
 
         SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate> HasOptions.Definition.IWithOptions<SqlDatabase.Definition.IWithAttach<CosmosDBAccount.Definition.IWithCreate>>.WithOption(string key, string value)
