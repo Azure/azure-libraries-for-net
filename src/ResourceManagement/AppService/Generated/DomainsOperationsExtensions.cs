@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Check if a domain is available for registration.
             /// </summary>
             /// <remarks>
-            /// Check if a domain is available for registration.
+            /// Description for Check if a domain is available for registration.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DomainAvailablilityCheckResultInner> CheckAvailabilityAsync(this IDomainsOperations operations, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DomainAvailabilityCheckResultInner> CheckAvailabilityAsync(this IDomainsOperations operations, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckAvailabilityWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get all domains in a subscription.
             /// </summary>
             /// <remarks>
-            /// Get all domains in a subscription.
+            /// Description for Get all domains in a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Generate a single sign-on request for the domain management portal.
             /// </summary>
             /// <remarks>
-            /// Generate a single sign-on request for the domain management portal.
+            /// Description for Generate a single sign-on request for the domain management
+            /// portal.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get domain name recommendations based on keywords.
             /// </summary>
             /// <remarks>
-            /// Get domain name recommendations based on keywords.
+            /// Description for Get domain name recommendations based on keywords.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get all domains in a resource group.
             /// </summary>
             /// <remarks>
-            /// Get all domains in a resource group.
+            /// Description for Get all domains in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get a domain.
             /// </summary>
             /// <remarks>
-            /// Get a domain.
+            /// Description for Get a domain.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Creates or updates a domain.
             /// </summary>
             /// <remarks>
-            /// Creates or updates a domain.
+            /// Description for Creates or updates a domain.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -187,7 +188,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Delete a domain.
             /// </summary>
             /// <remarks>
-            /// Delete a domain.
+            /// Description for Delete a domain.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -215,7 +216,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Creates or updates a domain.
             /// </summary>
             /// <remarks>
-            /// Creates or updates a domain.
+            /// Description for Creates or updates a domain.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -244,7 +245,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Lists domain ownership identifiers.
             /// </summary>
             /// <remarks>
-            /// Lists domain ownership identifiers.
+            /// Description for Lists domain ownership identifiers.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -270,7 +271,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get ownership identifier for domain
             /// </summary>
             /// <remarks>
-            /// Get ownership identifier for domain
+            /// Description for Get ownership identifier for domain
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -300,8 +301,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// for an existing identifer
             /// </summary>
             /// <remarks>
-            /// Creates an ownership identifier for a domain or updates identifier details
-            /// for an existing identifer
+            /// Description for Creates an ownership identifier for a domain or updates
+            /// identifier details for an existing identifer
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -333,7 +334,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Delete ownership identifier for domain
             /// </summary>
             /// <remarks>
-            /// Delete ownership identifier for domain
+            /// Description for Delete ownership identifier for domain
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -360,8 +361,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// for an existing identifer
             /// </summary>
             /// <remarks>
-            /// Creates an ownership identifier for a domain or updates identifier details
-            /// for an existing identifer
+            /// Description for Creates an ownership identifier for a domain or updates
+            /// identifier details for an existing identifer
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -393,7 +394,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Renew a domain.
             /// </summary>
             /// <remarks>
-            /// Renew a domain.
+            /// Description for Renew a domain.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -416,7 +417,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Creates or updates a domain.
             /// </summary>
             /// <remarks>
-            /// Creates or updates a domain.
+            /// Description for Creates or updates a domain.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -445,7 +446,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get all domains in a subscription.
             /// </summary>
             /// <remarks>
-            /// Get all domains in a subscription.
+            /// Description for Get all domains in a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -468,7 +469,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get domain name recommendations based on keywords.
             /// </summary>
             /// <remarks>
-            /// Get domain name recommendations based on keywords.
+            /// Description for Get domain name recommendations based on keywords.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -491,7 +492,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get all domains in a resource group.
             /// </summary>
             /// <remarks>
-            /// Get all domains in a resource group.
+            /// Description for Get all domains in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -514,7 +515,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Lists domain ownership identifiers.
             /// </summary>
             /// <remarks>
-            /// Lists domain ownership identifiers.
+            /// Description for Lists domain ownership identifiers.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

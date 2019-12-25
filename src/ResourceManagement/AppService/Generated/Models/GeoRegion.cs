@@ -33,11 +33,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="description">Region description.</param>
         /// <param name="displayName">Display name for region.</param>
-        public GeoRegion(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string description = default(string), string displayName = default(string))
+        /// <param name="orgDomain">Display name for region.</param>
+        public GeoRegion(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string description = default(string), string displayName = default(string), string orgDomain = default(string))
             : base(id, name, type, kind)
         {
             Description = description;
             DisplayName = displayName;
+            OrgDomain = orgDomain;
             CustomInit();
         }
 
@@ -57,6 +59,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName { get; private set; }
+
+        /// <summary>
+        /// Gets display name for region.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.orgDomain")]
+        public string OrgDomain { get; private set; }
 
     }
 }

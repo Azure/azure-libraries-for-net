@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Read-only.</param>
         /// <param name="possibleOutboundIpAddresses">List of IP addresses that
         /// the app uses for outbound connections (e.g. database access).
-        /// Includes VIPs from all tenants. Read-only.</param>
+        /// Includes VIPs from all tenants except dataComponent.
+        /// Read-only.</param>
         /// <param name="containerSize">Size of the function container.</param>
         /// <param name="dailyMemoryTimeQuota">Maximum allowed daily
         /// memory-time quota (applicable on dynamic apps only).</param>
@@ -122,10 +123,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'GeoRedundant'</param>
         /// <param name="inProgressOperationId">Specifies an operation id if
         /// this site has a pending operation.</param>
-        /// <param name="geoDistributions">GeoDistributions for this
-        /// site</param>
         /// <param name="kind">Kind of resource.</param>
-        public SiteInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), IList<GeoDistribution> geoDistributions = default(IList<GeoDistribution>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string))
+        public SiteInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             State = state;
@@ -164,7 +163,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             HttpsOnly = httpsOnly;
             RedundancyMode = redundancyMode;
             InProgressOperationId = inProgressOperationId;
-            GeoDistributions = geoDistributions;
             Identity = identity;
             Kind = kind;
             CustomInit();
@@ -349,8 +347,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         /// <summary>
         /// Gets list of IP addresses that the app uses for outbound
-        /// connections (e.g. database access). Includes VIPs from all tenants.
-        /// Read-only.
+        /// connections (e.g. database access). Includes VIPs from all tenants
+        /// except dataComponent. Read-only.
         /// </summary>
         [JsonProperty(PropertyName = "properties.possibleOutboundIpAddresses")]
         public string PossibleOutboundIpAddresses { get; private set; }
@@ -435,12 +433,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.inProgressOperationId")]
         public System.Guid? InProgressOperationId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets geoDistributions for this site
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.geoDistributions")]
-        public IList<GeoDistribution> GeoDistributions { get; set; }
 
         /// <summary>
         /// </summary>

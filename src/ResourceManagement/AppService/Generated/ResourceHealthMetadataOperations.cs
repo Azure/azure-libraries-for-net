@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all ResourceHealthMetadata for all sites in the subscription.
         /// </summary>
         /// <remarks>
-        /// List all ResourceHealthMetadata for all sites in the subscription.
+        /// Description for List all ResourceHealthMetadata for all sites in the
+        /// subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -229,8 +230,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// subscription.
         /// </summary>
         /// <remarks>
-        /// List all ResourceHealthMetadata for all sites in the resource group in the
-        /// subscription.
+        /// Description for List all ResourceHealthMetadata for all sites in the
+        /// resource group in the subscription.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -431,8 +432,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// collection
         /// </summary>
         /// <remarks>
-        /// Gets the category of ResourceHealthMetadata to use for the given site as a
-        /// collection
+        /// Description for Gets the category of ResourceHealthMetadata to use for the
+        /// given site as a collection
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -641,7 +642,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the category of ResourceHealthMetadata to use for the given site
         /// </summary>
         /// <remarks>
-        /// Gets the category of ResourceHealthMetadata to use for the given site
+        /// Description for Gets the category of ResourceHealthMetadata to use for the
+        /// given site
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -851,8 +853,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// collection
         /// </summary>
         /// <remarks>
-        /// Gets the category of ResourceHealthMetadata to use for the given site as a
-        /// collection
+        /// Description for Gets the category of ResourceHealthMetadata to use for the
+        /// given site as a collection
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1071,7 +1073,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the category of ResourceHealthMetadata to use for the given site
         /// </summary>
         /// <remarks>
-        /// Gets the category of ResourceHealthMetadata to use for the given site
+        /// Description for Gets the category of ResourceHealthMetadata to use for the
+        /// given site
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1290,7 +1293,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all ResourceHealthMetadata for all sites in the subscription.
         /// </summary>
         /// <remarks>
-        /// List all ResourceHealthMetadata for all sites in the subscription.
+        /// Description for List all ResourceHealthMetadata for all sites in the
+        /// subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1462,8 +1466,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// subscription.
         /// </summary>
         /// <remarks>
-        /// List all ResourceHealthMetadata for all sites in the resource group in the
-        /// subscription.
+        /// Description for List all ResourceHealthMetadata for all sites in the
+        /// resource group in the subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1635,8 +1639,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// collection
         /// </summary>
         /// <remarks>
-        /// Gets the category of ResourceHealthMetadata to use for the given site as a
-        /// collection
+        /// Description for Gets the category of ResourceHealthMetadata to use for the
+        /// given site as a collection
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1808,8 +1812,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// collection
         /// </summary>
         /// <remarks>
-        /// Gets the category of ResourceHealthMetadata to use for the given site as a
-        /// collection
+        /// Description for Gets the category of ResourceHealthMetadata to use for the
+        /// given site as a collection
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

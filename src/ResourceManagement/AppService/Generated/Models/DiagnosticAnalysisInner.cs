@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="payload">Data by each detector</param>
         /// <param name="nonCorrelatedDetectors">Data by each detector for
         /// detectors that did not corelate</param>
-        public DiagnosticAnalysisInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<AbnormalTimePeriod> abnormalTimePeriods = default(IList<AbnormalTimePeriod>), IList<AnalysisData> payload = default(IList<AnalysisData>), IList<DetectorDefinition> nonCorrelatedDetectors = default(IList<DetectorDefinition>))
+        public DiagnosticAnalysisInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<AbnormalTimePeriod> abnormalTimePeriods = default(IList<AbnormalTimePeriod>), IList<AnalysisData> payload = default(IList<AnalysisData>), IList<DetectorDefinitionInner> nonCorrelatedDetectors = default(IList<DetectorDefinitionInner>))
             : base(id, name, type, kind)
         {
             StartTime = startTime;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// corelate
         /// </summary>
         [JsonProperty(PropertyName = "properties.nonCorrelatedDetectors")]
-        public IList<DetectorDefinition> NonCorrelatedDetectors { get; set; }
+        public IList<DetectorDefinitionInner> NonCorrelatedDetectors { get; set; }
 
     }
 }

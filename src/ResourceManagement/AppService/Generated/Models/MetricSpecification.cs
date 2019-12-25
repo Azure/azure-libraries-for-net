@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the MetricSpecification class.
         /// </summary>
-        public MetricSpecification(string name = default(string), string displayName = default(string), string displayDescription = default(string), string unit = default(string), string aggregationType = default(string), bool? supportsInstanceLevelAggregation = default(bool?), bool? enableRegionalMdmAccount = default(bool?), string sourceMdmAccount = default(string), string sourceMdmNamespace = default(string), string metricFilterPattern = default(string), bool? fillGapWithZero = default(bool?), bool? isInternal = default(bool?), IList<Dimension> dimensions = default(IList<Dimension>), string category = default(string), IList<MetricAvailability> availabilities = default(IList<MetricAvailability>))
+        public MetricSpecification(string name = default(string), string displayName = default(string), string displayDescription = default(string), string unit = default(string), string aggregationType = default(string), bool? supportsInstanceLevelAggregation = default(bool?), bool? enableRegionalMdmAccount = default(bool?), string sourceMdmAccount = default(string), string sourceMdmNamespace = default(string), string metricFilterPattern = default(string), bool? fillGapWithZero = default(bool?), bool? isInternal = default(bool?), IList<Dimension> dimensions = default(IList<Dimension>), string category = default(string), IList<MetricAvailability> availabilities = default(IList<MetricAvailability>), IList<string> supportedTimeGrainTypes = default(IList<string>))
         {
             Name = name;
             DisplayName = displayName;
@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             Dimensions = dimensions;
             Category = category;
             Availabilities = availabilities;
+            SupportedTimeGrainTypes = supportedTimeGrainTypes;
             CustomInit();
         }
 
@@ -128,6 +129,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "availabilities")]
         public IList<MetricAvailability> Availabilities { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "supportedTimeGrainTypes")]
+        public IList<string> SupportedTimeGrainTypes { get; set; }
 
     }
 }

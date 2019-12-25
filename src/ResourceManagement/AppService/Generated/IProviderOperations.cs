@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get available application frameworks and their versions
         /// </summary>
         /// <remarks>
-        /// Get available application frameworks and their versions
+        /// Description for Get available application frameworks and their
+        /// versions
         /// </remarks>
         /// <param name='osTypeSelected'>
         /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
@@ -46,14 +47,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ApplicationStack>>> GetAvailableStacksWithHttpMessagesAsync(OsTypeSelected osTypeSelected = default(OsTypeSelected), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ApplicationStackResource>>> GetAvailableStacksWithHttpMessagesAsync(OsTypeSelected osTypeSelected = default(OsTypeSelected), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all available operations for the Microsoft.Web resource
         /// provider. Also exposes resource metric definitions
         /// </summary>
         /// <remarks>
-        /// Gets all available operations for the Microsoft.Web resource
-        /// provider. Also exposes resource metric definitions
+        /// Description for Gets all available operations for the Microsoft.Web
+        /// resource provider. Also exposes resource metric definitions
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,7 +76,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get available application frameworks and their versions
         /// </summary>
         /// <remarks>
-        /// Get available application frameworks and their versions
+        /// Description for Get available application frameworks and their
+        /// versions
         /// </remarks>
         /// <param name='osTypeSelected'>
         /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
@@ -96,12 +98,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ApplicationStack>>> GetAvailableStacksOnPremWithHttpMessagesAsync(OsTypeSelected1 osTypeSelected = default(OsTypeSelected1), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ApplicationStackResource>>> GetAvailableStacksOnPremWithHttpMessagesAsync(OsTypeSelected1 osTypeSelected = default(OsTypeSelected1), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get available application frameworks and their versions
         /// </summary>
         /// <remarks>
-        /// Get available application frameworks and their versions
+        /// Description for Get available application frameworks and their
+        /// versions
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -121,14 +124,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ApplicationStack>>> GetAvailableStacksNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ApplicationStackResource>>> GetAvailableStacksNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all available operations for the Microsoft.Web resource
         /// provider. Also exposes resource metric definitions
         /// </summary>
         /// <remarks>
-        /// Gets all available operations for the Microsoft.Web resource
-        /// provider. Also exposes resource metric definitions
+        /// Description for Gets all available operations for the Microsoft.Web
+        /// resource provider. Also exposes resource metric definitions
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -153,7 +156,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get available application frameworks and their versions
         /// </summary>
         /// <remarks>
-        /// Get available application frameworks and their versions
+        /// Description for Get available application frameworks and their
+        /// versions
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -173,6 +177,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ApplicationStack>>> GetAvailableStacksOnPremNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ApplicationStackResource>>> GetAvailableStacksOnPremNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

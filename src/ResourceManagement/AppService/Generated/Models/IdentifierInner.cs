@@ -31,12 +31,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the IdentifierInner class.
         /// </summary>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="identifierId">String representation of the
-        /// identity.</param>
-        public IdentifierInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string identifierId = default(string))
+        /// <param name="value">String representation of the identity.</param>
+        public IdentifierInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string value = default(string))
             : base(id, name, type, kind)
         {
-            IdentifierId = identifierId;
+            Value = value;
             CustomInit();
         }
 
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Gets or sets string representation of the identity.
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public string IdentifierId { get; set; }
+        public string Value { get; set; }
 
     }
 }

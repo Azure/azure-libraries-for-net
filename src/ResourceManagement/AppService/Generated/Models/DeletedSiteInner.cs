@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// A deleted app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DeletedSite : ProxyOnlyResourceInner
+    public partial class DeletedSiteInner : ProxyOnlyResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the DeletedSite class.
+        /// Initializes a new instance of the DeletedSiteInner class.
         /// </summary>
-        public DeletedSite()
+        public DeletedSiteInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DeletedSite class.
+        /// Initializes a new instance of the DeletedSiteInner class.
         /// </summary>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="deletedSiteId">Numeric id for the deleted site</param>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="slot">Slot of the deleted site</param>
         /// <param name="deletedSiteKind">Kind of site that was deleted</param>
         /// <param name="geoRegionName">Geo Region of the deleted site</param>
-        public DeletedSite(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? deletedSiteId = default(int?), string deletedTimestamp = default(string), string subscription = default(string), string resourceGroup = default(string), string deletedSiteName = default(string), string slot = default(string), string deletedSiteKind = default(string), string geoRegionName = default(string))
+        public DeletedSiteInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? deletedSiteId = default(int?), string deletedTimestamp = default(string), string subscription = default(string), string resourceGroup = default(string), string deletedSiteName = default(string), string slot = default(string), string deletedSiteKind = default(string), string geoRegionName = default(string))
             : base(id, name, type, kind)
         {
             DeletedSiteId = deletedSiteId;

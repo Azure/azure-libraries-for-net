@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List Hosting Environment Detector Responses
             /// </summary>
             /// <remarks>
-            /// List Hosting Environment Detector Responses
+            /// Description for List Hosting Environment Detector Responses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Hosting Environment Detector Response
             /// </summary>
             /// <remarks>
-            /// Get Hosting Environment Detector Response
+            /// Description for Get Hosting Environment Detector Response
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List Site Detector Responses
             /// </summary>
             /// <remarks>
-            /// List Site Detector Responses
+            /// Description for List Site Detector Responses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get site detector response
             /// </summary>
             /// <remarks>
-            /// Get site detector response
+            /// Description for Get site detector response
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Diagnostics Categories
             /// </summary>
             /// <remarks>
-            /// Get Diagnostics Categories
+            /// Description for Get Diagnostics Categories
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Diagnostics Category
             /// </summary>
             /// <remarks>
-            /// Get Diagnostics Category
+            /// Description for Get Diagnostics Category
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Site Analyses
             /// </summary>
             /// <remarks>
-            /// Get Site Analyses
+            /// Description for Get Site Analyses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AnalysisDefinition>> ListSiteAnalysesAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AnalysisDefinitionInner>> ListSiteAnalysesAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteAnalysesWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Site Analysis
             /// </summary>
             /// <remarks>
-            /// Get Site Analysis
+            /// Description for Get Site Analysis
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiagnosticAnalysisInner> GetSiteAnalysisAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AnalysisDefinitionInner> GetSiteAnalysisAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteAnalysisWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, analysisName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Execute Analysis
             /// </summary>
             /// <remarks>
-            /// Execute Analysis
+            /// Description for Execute Analysis
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Detectors
             /// </summary>
             /// <remarks>
-            /// Get Detectors
+            /// Description for Get Detectors
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DetectorDefinition>> ListSiteDetectorsAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DetectorDefinitionInner>> ListSiteDetectorsAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteDetectorsWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Detector
             /// </summary>
             /// <remarks>
-            /// Get Detector
+            /// Description for Get Detector
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DetectorDefinition>> GetSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DetectorDefinitionInner> GetSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteDetectorWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Execute Detector
             /// </summary>
             /// <remarks>
-            /// Execute Detector
+            /// Description for Execute Detector
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List Site Detector Responses
             /// </summary>
             /// <remarks>
-            /// List Site Detector Responses
+            /// Description for List Site Detector Responses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get site detector response
             /// </summary>
             /// <remarks>
-            /// Get site detector response
+            /// Description for Get site detector response
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Diagnostics Categories
             /// </summary>
             /// <remarks>
-            /// Get Diagnostics Categories
+            /// Description for Get Diagnostics Categories
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Diagnostics Category
             /// </summary>
             /// <remarks>
-            /// Get Diagnostics Category
+            /// Description for Get Diagnostics Category
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Site Analyses
             /// </summary>
             /// <remarks>
-            /// Get Site Analyses
+            /// Description for Get Site Analyses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AnalysisDefinition>> ListSiteAnalysesSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AnalysisDefinitionInner>> ListSiteAnalysesSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteAnalysesSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Site Analysis
             /// </summary>
             /// <remarks>
-            /// Get Site Analysis
+            /// Description for Get Site Analysis
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiagnosticAnalysisInner> GetSiteAnalysisSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AnalysisDefinitionInner> GetSiteAnalysisSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteAnalysisSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, analysisName, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Execute Analysis
             /// </summary>
             /// <remarks>
-            /// Execute Analysis
+            /// Description for Execute Analysis
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Detectors
             /// </summary>
             /// <remarks>
-            /// Get Detectors
+            /// Description for Get Detectors
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DetectorDefinition>> ListSiteDetectorsSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DetectorDefinitionInner>> ListSiteDetectorsSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteDetectorsSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Detector
             /// </summary>
             /// <remarks>
-            /// Get Detector
+            /// Description for Get Detector
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DetectorDefinition>> GetSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DetectorDefinitionInner> GetSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteDetectorSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Execute Detector
             /// </summary>
             /// <remarks>
-            /// Execute Detector
+            /// Description for Execute Detector
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List Hosting Environment Detector Responses
             /// </summary>
             /// <remarks>
-            /// List Hosting Environment Detector Responses
+            /// Description for List Hosting Environment Detector Responses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List Site Detector Responses
             /// </summary>
             /// <remarks>
-            /// List Site Detector Responses
+            /// Description for List Site Detector Responses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Diagnostics Categories
             /// </summary>
             /// <remarks>
-            /// Get Diagnostics Categories
+            /// Description for Get Diagnostics Categories
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Site Analyses
             /// </summary>
             /// <remarks>
-            /// Get Site Analyses
+            /// Description for Get Site Analyses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AnalysisDefinition>> ListSiteAnalysesNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AnalysisDefinitionInner>> ListSiteAnalysesNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteAnalysesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Detectors
             /// </summary>
             /// <remarks>
-            /// Get Detectors
+            /// Description for Get Detectors
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DetectorDefinition>> ListSiteDetectorsNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DetectorDefinitionInner>> ListSiteDetectorsNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteDetectorsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -875,33 +875,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
-            /// Get Detector
-            /// </summary>
-            /// <remarks>
-            /// Get Detector
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<DetectorDefinition>> GetSiteDetectorNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetSiteDetectorNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// List Site Detector Responses
             /// </summary>
             /// <remarks>
-            /// List Site Detector Responses
+            /// Description for List Site Detector Responses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -924,7 +901,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Diagnostics Categories
             /// </summary>
             /// <remarks>
-            /// Get Diagnostics Categories
+            /// Description for Get Diagnostics Categories
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -947,7 +924,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Site Analyses
             /// </summary>
             /// <remarks>
-            /// Get Site Analyses
+            /// Description for Get Site Analyses
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -958,7 +935,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AnalysisDefinition>> ListSiteAnalysesSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AnalysisDefinitionInner>> ListSiteAnalysesSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteAnalysesSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -970,7 +947,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get Detectors
             /// </summary>
             /// <remarks>
-            /// Get Detectors
+            /// Description for Get Detectors
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -981,32 +958,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DetectorDefinition>> ListSiteDetectorsSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DetectorDefinitionInner>> ListSiteDetectorsSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListSiteDetectorsSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Get Detector
-            /// </summary>
-            /// <remarks>
-            /// Get Detector
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<DetectorDefinition>> GetSiteDetectorSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetSiteDetectorSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
