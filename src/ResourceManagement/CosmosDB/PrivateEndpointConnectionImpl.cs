@@ -23,12 +23,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         IUpdateDefinition<CosmosDBAccount.Update.IWithOptionals>,
         PrivateEndpointConnection.Update.IUpdate
     {
-        private IPrivateEndpointConnectionsOperations Client { get; set; }
+        private IPrivateEndpointConnectionsOperations Client { get { return Parent.Manager.Inner.PrivateEndpointConnections; } }
 
-        internal PrivateEndpointConnectionImpl(string name, CosmosDBAccountImpl parent, PrivateEndpointConnectionInner inner, IPrivateEndpointConnectionsOperations client)
+        internal PrivateEndpointConnectionImpl(string name, CosmosDBAccountImpl parent, PrivateEndpointConnectionInner inner)
             : base(name, parent, inner)
         {
-            Client = client;
         }
 
         public string Id

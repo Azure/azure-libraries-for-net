@@ -19,16 +19,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         SqlDatabase.Update.IUpdate,
         SqlDatabase.Definition.IDefinition<CosmosDBAccount.Update.IWithOptionals>
     {
-        private ISqlResourcesOperations Client { get; set; }
+        private ISqlResourcesOperations Client { get { return Parent.Manager.Inner.SqlResources; } }
         private SqlDatabaseCreateUpdateParameters createUpdateParameters;
         private ThroughputSettingsUpdateParameters ThroughputSettingsToUpdate;
         private SqlContainersImpl sqlContainers;
 
-        internal SqlDatabaseImpl(string name, CosmosDBAccountImpl parent, SqlDatabaseGetResultsInner inner, ISqlResourcesOperations client)
+        internal SqlDatabaseImpl(string name, CosmosDBAccountImpl parent, SqlDatabaseGetResultsInner inner)
             : base(name, parent, inner)
         {
-            this.Client = client;
-            this.sqlContainers = new SqlContainersImpl(this.Client, this);
+            this.sqlContainers = new SqlContainersImpl(this);
             SetCreateUpdateParameters();
         }
 

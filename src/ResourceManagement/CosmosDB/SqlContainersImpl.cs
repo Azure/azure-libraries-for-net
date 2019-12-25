@@ -21,7 +21,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             ISqlDatabase,
             SqlDatabaseImpl>
     {
-        private ISqlResourcesOperations Client { get; set; }
+        private ISqlResourcesOperations Client
+        {
+            get
+            {
+                return Parent.Parent.Manager.Inner.SqlResources;
+            }
+        }
         private string Location
         {
             get
@@ -29,10 +35,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return Parent.Parent.RegionName?.ToLower();
             }
         }
-        internal SqlContainersImpl(ISqlResourcesOperations client, SqlDatabaseImpl parent)
+        internal SqlContainersImpl(SqlDatabaseImpl parent)
             : base(parent, "SqlContainer")
         {
-            this.Client = client;
             if (parent.Id() != null)
             {
                 this.CacheCollection();

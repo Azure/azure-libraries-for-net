@@ -20,11 +20,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             ICosmosDBAccount,
             CosmosDBAccountImpl>
     {
-        private IPrivateEndpointConnectionsOperations Client { get; set; }
-        internal PrivateEndpointConnectionsImpl(IPrivateEndpointConnectionsOperations client, CosmosDBAccountImpl parent)
+        private IPrivateEndpointConnectionsOperations Client
+        {
+            get
+            {
+                return Parent.Manager.Inner.PrivateEndpointConnections;
+            }
+        }
+        internal PrivateEndpointConnectionsImpl(CosmosDBAccountImpl parent)
             : base(parent, "PrivateEndpointConnection")
         {
-            this.Client = client;
         }
 
         protected override IList<PrivateEndpointConnectionImpl> ListChildResources()
@@ -34,7 +39,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         protected override PrivateEndpointConnectionImpl NewChildResource(string name)
         {
-            return new PrivateEndpointConnectionImpl(name, Parent, new PrivateEndpointConnectionInner(null, name), Client);
+            return new PrivateEndpointConnectionImpl(name, Parent, new PrivateEndpointConnectionInner(null, name));
 
         }
 
@@ -50,7 +55,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             var result = new Dictionary<string, IPrivateEndpointConnection>();
             foreach (var privateEndpointConnectionInner in privateEndpointConnectionInners)
             {
-                var childResource = new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner, Client);
+                var childResource = new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner);
                 this.AddPrivateEndpointConnection(childResource);
                 result.Add(privateEndpointConnectionInner.Name, childResource);
             }
@@ -61,7 +66,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public async Task<PrivateEndpointConnectionImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
             var inner = await Client.GetAsync(Parent.ResourceGroupName, Parent.Name, name, cancellationToken);
-            var childResource = new PrivateEndpointConnectionImpl(name, Parent, inner, Client);
+            var childResource = new PrivateEndpointConnectionImpl(name, Parent, inner);
             this.AddPrivateEndpointConnection(childResource);
             return childResource;
         }
@@ -78,7 +83,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             var result = new List<PrivateEndpointConnectionImpl>();
             foreach (var privateEndpointConnectionInner in privateEndpointConnectionInners)
             {
-                var childeResource = new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner, Client);
+                var childeResource = new PrivateEndpointConnectionImpl(privateEndpointConnectionInner.Name, Parent, privateEndpointConnectionInner);
                 this.AddPrivateEndpointConnection(childeResource);
                 result.Add(childeResource);
             }

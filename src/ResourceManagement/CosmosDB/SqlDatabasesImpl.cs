@@ -21,7 +21,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             ICosmosDBAccount,
             CosmosDBAccountImpl>
     {
-        private ISqlResourcesOperations Client { get; set; }
+        private ISqlResourcesOperations Client
+        {
+            get
+            {
+                return Parent.Manager.Inner.SqlResources;
+            }
+        }
         private string Location
         {
             get
@@ -29,10 +35,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return Parent.RegionName?.ToLower();
             }
         }
-        internal SqlDatabasesImpl(ISqlResourcesOperations client, CosmosDBAccountImpl parent)
+        internal SqlDatabasesImpl(CosmosDBAccountImpl parent)
             : base(parent, "SqlDatabase")
         {
-            this.Client = client;
             if (Parent.Id != null)
             {
                 this.CacheCollection();
@@ -46,7 +51,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         protected override SqlDatabaseImpl NewChildResource(string name)
         {
-            return new SqlDatabaseImpl(name, Parent, new SqlDatabaseGetResultsInner(Location, name: name), Client);
+            return new SqlDatabaseImpl(name, Parent, new SqlDatabaseGetResultsInner(Location, name: name));
 
         }
 
@@ -58,7 +63,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 name,
                 cancellationToken
                 );
-            return new SqlDatabaseImpl(name, Parent, inner, Client);
+            return new SqlDatabaseImpl(name, Parent, inner);
         }
 
         public SqlDatabaseImpl Define(string name)
@@ -69,7 +74,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public async Task<IEnumerable<SqlDatabaseImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await ListInnerAsync(cancellationToken);
-            return result.Select(inner => new SqlDatabaseImpl(inner.Name, Parent, inner, Client));
+            return result.Select(inner => new SqlDatabaseImpl(inner.Name, Parent, inner));
         }
 
         private async Task<IEnumerable<SqlDatabaseGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))

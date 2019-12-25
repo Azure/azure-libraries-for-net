@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             base(name, innerObject, manager)
         {
             this.failoverPolicies = new List<Models.FailoverPolicy>();
-            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this.Manager.Inner.PrivateEndpointConnections, this);
-            this.sqlDatabases = new SqlDatabasesImpl(this.Manager.Inner.SqlResources, this);
+            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this);
+            this.sqlDatabases = new SqlDatabasesImpl(this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         SqlContainer.Update.IUpdate,
         IHasIndexingPolicy<SqlContainerImpl>
     {
-        private ISqlResourcesOperations Client { get; set; }
+        private ISqlResourcesOperations Client { get { return Parent.Parent.Manager.Inner.SqlResources; } }
         private SqlContainerCreateUpdateParameters createUpdateParameters;
         private ThroughputSettingsUpdateParameters throughputSettingsToUpdate;
         private IDictionary<string, SqlStoredProcedureCreateUpdateParameters> storedProcedureToUpdate;
@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal SqlContainerImpl(string name, SqlDatabaseImpl parent, SqlContainerGetResultsInner inner, ISqlResourcesOperations client)
             : base(name, parent, inner)
         {
-            this.Client = client;
             SetCreateUpdateParameters();
             InitChildResource(true);
         }
