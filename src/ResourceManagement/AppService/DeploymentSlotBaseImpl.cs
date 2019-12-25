@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             IdentifierInner identifierInner = new IdentifierInner()
             {
-                IdentifierId = domainVerificationToken
+                Value = domainVerificationToken
             };
 
             await Manager.Inner.WebApps.CreateOrUpdateDomainOwnershipIdentifierSlotAsync(ResourceGroupName, parent.Name, Name, identifierInner, certificateOrderName, cancellationToken);

@@ -514,7 +514,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     CloningInfo = siteInner1.CloningInfo,
                     HttpsOnly = siteInner1.HttpsOnly,
                     RedundancyMode = siteInner1.RedundancyMode,
-                    GeoDistributions = siteInner1.GeoDistributions,
                     
                     SiteConfig = new SiteConfig()
                 };

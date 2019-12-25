@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         [EnumMember(Value = "SystemAssigned")]
         SystemAssigned,
         [EnumMember(Value = "UserAssigned")]
-        UserAssigned
+        UserAssigned,
+        [EnumMember(Value = "SystemAssignedUserAssigned")]
+        SystemAssignedUserAssigned
     }
     internal static class ManagedServiceIdentityTypeEnumExtension
     {

@@ -1764,7 +1764,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             List<string> _queryParameters = new List<string>();
             if (sku != null)
             {
-                _queryParameters.Add(string.Format("sku={0}", System.Uri.EscapeDataString(sku)));
+                _queryParameters.Add(string.Format("sku={0}", System.Uri.EscapeDataString(sku.Value)));
             }
             if (linuxWorkersEnabled != null)
             {
