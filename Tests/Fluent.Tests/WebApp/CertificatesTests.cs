@@ -3,8 +3,10 @@
 
 using Azure.Tests;
 using Fluent.Tests.Common;
+using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
@@ -50,6 +52,17 @@ namespace Fluent.Tests.WebApp
                     }
                     catch { }
                 }
+            }
+        }
+
+        [Fact]
+        public void CanListCertificate()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                IEnumerable<IAppServiceCertificate> certificates = appServiceManager.AppServiceCertificates.List();
             }
         }
     }
