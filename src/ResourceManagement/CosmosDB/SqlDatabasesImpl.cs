@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a sql database collection.
+    /// Represents a SQL database collection.
     /// </summary>
     internal partial class SqlDatabasesImpl :
         ExternalChildResourcesCached<

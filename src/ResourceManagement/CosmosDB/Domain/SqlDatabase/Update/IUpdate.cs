@@ -4,7 +4,7 @@
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
 {
     /// <summary>
-    /// The entirety of sql database update as a part of parent cosmos db account update.
+    /// The entirety of SQL database update as a part of parent cosmos db account update.
     /// </summary>
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IUpdate>,
@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
     }
 
     /// <summary>
-    /// The stage of the sql database update allowing to set options.
+    /// The stage of the SQL database update allowing to set options.
     /// </summary>
     public interface IWithOptions :
         HasOptions.Update.IWithOptions<IUpdate>
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
     }
 
     /// <summary>
-    /// The stage of the sql database update allowing to set throughput.
+    /// The stage of the SQL database update allowing to set throughput.
     /// </summary>
     public interface IWithThroughput :
         HasThroughputSettings.Update.IWithThroughput<IUpdate>
@@ -31,28 +31,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update
     }
 
     /// <summary>
-    /// The stage of the sql database update allowing to set child resources.
+    /// The stage of the SQL database update allowing to set child resources.
     /// </summary>
     public interface IWithChildResource
     {
         /// <summary>
-        /// Defines a new sql container.
+        /// Defines a new SQL container.
         /// </summary>
-        /// <param name="name">The name of sql container.</param>
+        /// <param name="name">The name of SQL container.</param>
         /// <returns>The next stage of the update.</returns>
         SqlContainer.Definition.IBlank<IUpdate> DefineNewSqlContainer(string name);
 
         /// <summary>
-        /// Updates a sql container.
+        /// Updates a SQL container.
         /// </summary>
-        /// <param name="name">The name of the sql container.</param>
+        /// <param name="name">The name of the SQL container.</param>
         /// <returns>The next stage of the update.</returns>
         SqlContainer.Update.IUpdate UpdateSqlContainer(string name);
 
         /// <summary>
-        /// Removes a sql container.
+        /// Removes a SQL container.
         /// </summary>
-        /// <param name="name">The name of the sql container.</param>
+        /// <param name="name">The name of the SQL container.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithoutSqlContainer(string name);
     }

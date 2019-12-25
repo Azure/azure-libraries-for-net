@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
 {
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using System.Collections.Generic;
+
     /// <summary>
     /// The entirety of an indexing policy update as a part of parent update.
     /// </summary>
@@ -79,17 +79,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Specifies an included path.
         /// </summary>
-        /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="includedPath">One of the included path.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithIncludedPath(int index, IncludedPath includedPath);
-
-        /// <summary>
-        /// Removes an included path.
-        /// </summary>
-        /// <param name="index">The index of the included path.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutIncludedPath(int index);
+        IUpdate<ParentT> WithIncludedPath(IncludedPath includedPath);
 
         /// <summary>
         /// Removes an included path.
@@ -128,17 +120,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Specifies an excluded path.
         /// </summary>
-        /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="excludedPath">One of the excluded path.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithExcludedPath(int index, ExcludedPath excludedPath);
-
-        /// <summary>
-        /// Removes an excluded path.
-        /// </summary>
-        /// <param name="index">The index of the excluded path.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutExcludedPath(int index);
+        IUpdate<ParentT> WithExcludedPath(ExcludedPath excludedPath);
 
         /// <summary>
         /// Removes an excluded path.
@@ -177,17 +161,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Specifies a composite index.
         /// </summary>
-        /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="compositePath">One of the composite path.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithCompositeIndex(int index, IList<CompositePath> compositePath);
-
-        /// <summary>
-        /// Removes a composite index.
-        /// </summary>
-        /// <param name="index">The index of the composite path.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutCompositeIndex(int index);
+        IUpdate<ParentT> WithCompositeIndex(IList<CompositePath> compositePath);
 
         /// <summary>
         /// Removes a composite index.
@@ -226,17 +202,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Specifies a spatial index.
         /// </summary>
-        /// <param name="index">The specific index, append to list when index is out of range.</param>
         /// <param name="spatialSpec">One of the spatial spec.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithSpatialIndex(int index, SpatialSpec spatialSpec);
-
-        /// <summary>
-        /// Removes a spatial index.
-        /// </summary>
-        /// <param name="index">The index of the spatial spec.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutSpatialIndex(int index);
+        IUpdate<ParentT> WithSpatialIndex(SpatialSpec spatialSpec);
 
         /// <summary>
         /// Removes a spatial index.

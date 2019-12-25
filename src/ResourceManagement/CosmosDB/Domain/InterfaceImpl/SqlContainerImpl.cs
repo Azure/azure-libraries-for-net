@@ -216,6 +216,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithContainerPartitionKey(containerPartitionKey);
         }
 
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        {
+            return this.WithContainerPartitionKey(paths, kind, version);
+        }
+
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithoutContainerPartitionKey()
         {
             return this.WithoutContainerPartitionKey();
@@ -231,11 +236,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutDefaultTtl();
         }
 
-        SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithoutUniqueKey(int index)
-        {
-            return this.WithoutUniqueKey(index);
-        }
-
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithoutUniqueKey(Models.UniqueKey uniqueKey)
         {
             return this.WithoutUniqueKey(uniqueKey);
@@ -246,9 +246,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutUniqueKeyPolicy();
         }
 
-        SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithUniqueKey(int index, Models.UniqueKey uniqueKey)
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithUniqueKey(Models.UniqueKey uniqueKey)
         {
-            return this.WithUniqueKey(index, uniqueKey);
+            return this.WithUniqueKey(uniqueKey);
         }
 
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithUniqueKeyPolicy(Models.UniqueKeyPolicy uniqueKeyPolicy)
@@ -338,6 +338,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithContainerPartitionKey(containerPartitionKey);
         }
 
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        {
+            return this.WithContainerPartitionKey(paths, kind, version);
+        }
+
         SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<DefinitionParentT>.WithDefaultTtl(int ttl)
         {
             return this.WithDefaultTtl(ttl);
@@ -355,7 +360,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<DefinitionParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
         {
-            return this.WithUniqueKey(-1, uniqueKey);
+            return this.WithUniqueKey(uniqueKey);
         }
 
         SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<DefinitionParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
@@ -414,6 +419,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithContainerPartitionKey(containerPartitionKey);
         }
 
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        {
+            return this.WithContainerPartitionKey(paths, kind, version);
+        }
+
         SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<UpdateDefinitionParentT>.WithDefaultTtl(int ttl)
         {
             return this.WithDefaultTtl(ttl);
@@ -431,7 +441,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateDefinitionParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
         {
-            return this.WithUniqueKey(-1, uniqueKey);
+            return this.WithUniqueKey(uniqueKey);
         }
 
         SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<UpdateDefinitionParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)
@@ -490,6 +500,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithContainerPartitionKey(containerPartitionKey);
         }
 
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithPartitionKey<UpdateParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        {
+            return this.WithContainerPartitionKey(paths, kind, version);
+        }
+
         SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithDefaultTtl<UpdateParentT>.WithDefaultTtl(int ttl)
         {
             return this.WithDefaultTtl(ttl);
@@ -507,7 +522,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithUniqueKeyPolicy<UpdateParentT>.WithUniqueKey(Models.UniqueKey uniqueKey)
         {
-            return this.WithUniqueKey(-1, uniqueKey);
+            return this.WithUniqueKey(uniqueKey);
         }
 
         SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithConflictResolutionPolicy<UpdateParentT>.WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy)

@@ -1,27 +1,24 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
+    using System.Linq;
 
     internal partial class IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> :
-        ChildResource<Models.IndexingPolicy, ParentImplT, IParentT>,
+        Wrapper<Models.IndexingPolicy>,
         IndexingPolicy.Definition.IDefinition<DefinitionParentT>,
         IndexingPolicy.Update.IUpdate<UpdateParentT>
         where ParentImplT : IParentT, DefinitionParentT, UpdateParentT, IHasIndexingPolicy<ParentImplT>
     {
+        private ParentImplT Parent { get; set; }
         public IndexingPolicyImpl(Models.IndexingPolicy inner, ParentImplT parent)
-            : base(inner, parent)
+            : base(inner)
         {
-        }
-
-        public override string Name()
-        {
-            return null;
+            Parent = parent;
         }
 
         public ParentImplT Attach()
@@ -54,7 +51,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 Inner.IncludedPaths = new List<IncludedPath>();
             }
 
-            foreach (var includePath in includedPaths)
+            foreach (IncludedPath includePath in includedPaths)
             {
                 Inner.IncludedPaths.Add(includePath);
             }
@@ -63,38 +60,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithIncludedPathsReplace(IList<IncludedPath> includedPaths)
         {
-            Inner.IncludedPaths = includedPaths;
+            Inner.IncludedPaths = new List<IncludedPath>();
+            foreach (IncludedPath includedPath in includedPaths)
+            {
+                Inner.IncludedPaths.Add(includedPath);
+            }
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithIncludedPath(int index, IncludedPath includedPath)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithIncludedPath(IncludedPath includedPath)
         {
             if (Inner.IncludedPaths == null)
             {
                 Inner.IncludedPaths = new List<IncludedPath>();
             }
 
-            if (index < 0 || Inner.IncludedPaths.Count <= index)
-            {
-                Inner.IncludedPaths.Add(includedPath);
-            }
-            else
-            {
-                Inner.IncludedPaths[index] = includedPath;
-            }
-
-            return this;
-        }
-
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutIncludedPath(int index)
-        {
-            Inner.IncludedPaths.RemoveAt(index);
+            Inner.IncludedPaths.Add(includedPath);
             return this;
         }
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutIncludedPath(IncludedPath includedPath)
         {
-            Inner.IncludedPaths.Remove(includedPath);
+            Inner.IncludedPaths?.Remove(includedPath);
             return this;
         }
 
@@ -111,7 +98,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 Inner.ExcludedPaths = new List<ExcludedPath>();
             }
 
-            foreach (var encludePath in encludedPaths)
+            foreach (ExcludedPath encludePath in encludedPaths)
             {
                 Inner.ExcludedPaths.Add(encludePath);
             }
@@ -120,38 +107,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithExcludedPathsReplace(IList<ExcludedPath> excludedPaths)
         {
-            Inner.ExcludedPaths = excludedPaths;
+            Inner.ExcludedPaths = new List<ExcludedPath>();
+            foreach (ExcludedPath excludedPath in excludedPaths)
+            {
+                Inner.ExcludedPaths.Add(excludedPath);
+            }
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithExcludedPath(int index, ExcludedPath excludedPath)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithExcludedPath(ExcludedPath excludedPath)
         {
             if (Inner.ExcludedPaths == null)
             {
                 Inner.ExcludedPaths = new List<ExcludedPath>();
             }
 
-            if (index < 0 || Inner.ExcludedPaths.Count <= index)
-            {
-                Inner.ExcludedPaths.Add(excludedPath);
-            }
-            else
-            {
-                Inner.ExcludedPaths[index] = excludedPath;
-            }
-
-            return this;
-        }
-
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutExcludedPath(int index)
-        {
-            Inner.ExcludedPaths.RemoveAt(index);
+            Inner.ExcludedPaths.Add(excludedPath);
             return this;
         }
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutExcludedPath(ExcludedPath excludedPath)
         {
-            Inner.ExcludedPaths.Remove(excludedPath);
+            Inner.ExcludedPaths?.Remove(excludedPath);
             return this;
         }
 
@@ -168,47 +145,37 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 Inner.CompositeIndexes = new List<IList<CompositePath>>();
             }
 
-            foreach (var compositePath in compositePaths)
+            foreach (IList<CompositePath> compositePath in compositePaths)
             {
-                Inner.CompositeIndexes.Add(compositePath);
+                Inner.CompositeIndexes.Add(compositePath.Select(path => path).ToList());
             }
             return this;
         }
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithCompositeIndexesReplace(IList<IList<CompositePath>> compositePaths)
         {
-            Inner.CompositeIndexes = compositePaths;
+            Inner.CompositeIndexes = new List<IList<CompositePath>>();
+            foreach (IList<CompositePath> compositePath in compositePaths)
+            {
+                Inner.CompositeIndexes.Add(compositePath.Select(path => path).ToList());
+            }
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithCompositeIndex(int index, IList<CompositePath> compositePath)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithCompositeIndex(IList<CompositePath> compositePath)
         {
             if (Inner.CompositeIndexes == null)
             {
                 Inner.CompositeIndexes = new List<IList<CompositePath>>();
             }
 
-            if (index < 0 || Inner.CompositeIndexes.Count <= index)
-            {
-                Inner.CompositeIndexes.Add(compositePath);
-            }
-            else
-            {
-                Inner.CompositeIndexes[index] = compositePath;
-            }
-
-            return this;
-        }
-
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutCompositeIndex(int index)
-        {
-            Inner.CompositeIndexes.RemoveAt(index);
+            Inner.CompositeIndexes.Add(compositePath.Select(path => path).ToList());
             return this;
         }
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutCompositeIndex(IList<CompositePath> compositePath)
         {
-            Inner.CompositeIndexes.Remove(compositePath);
+            Inner.CompositeIndexes?.Remove(compositePath);
             return this;
         }
 
@@ -225,7 +192,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 Inner.SpatialIndexes = new List<SpatialSpec>();
             }
 
-            foreach (var spatialSpec in spatialSpecs)
+            foreach (SpatialSpec spatialSpec in spatialSpecs)
             {
                 Inner.SpatialIndexes.Add(spatialSpec);
             }
@@ -234,32 +201,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithSpatialIndexesReplace(IList<SpatialSpec> spatialSpecs)
         {
-            Inner.SpatialIndexes = spatialSpecs;
+            Inner.SpatialIndexes = new List<SpatialSpec>();
+            foreach (SpatialSpec spatialSpec in spatialSpecs)
+            {
+                Inner.SpatialIndexes.Add(spatialSpec);
+            }
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithSpatialIndex(int index, SpatialSpec spatialSpec)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithSpatialIndex(SpatialSpec spatialSpec)
         {
             if (Inner.SpatialIndexes == null)
             {
                 Inner.SpatialIndexes = new List<SpatialSpec>();
             }
 
-            if (index < 0 || Inner.SpatialIndexes.Count <= index)
-            {
-                Inner.SpatialIndexes.Add(spatialSpec);
-            }
-            else
-            {
-                Inner.SpatialIndexes[index] = spatialSpec;
-            }
-
-            return this;
-        }
-
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutSpatialIndex(int index)
-        {
-            Inner.SpatialIndexes.RemoveAt(index);
+            Inner.SpatialIndexes.Add(spatialSpec);
             return this;
         }
 

@@ -94,7 +94,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlDatabaseImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options = options;
+            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            foreach (var option in options)
+            {
+                this.createUpdateParameters.Options.Add(option);
+            }
             return this;
         }
 
@@ -142,22 +146,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             SetInner(inner);
             SetCreateUpdateParameters();
+            List<Task> childTasks = new List<Task>();
 
             if (this.ThroughputSettingsToUpdate != null)
             {
                 this.ThroughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
-                await this.Client.UpdateSqlDatabaseThroughputAsync(
+                childTasks.Add(this.Client.UpdateSqlDatabaseThroughputAsync(
                     Parent.ResourceGroupName,
                     Parent.Name,
                     this.Name(),
                     this.ThroughputSettingsToUpdate,
                     cancellationToken
-                    );
+                    ));
 
                 this.ThroughputSettingsToUpdate = null;
             }
 
-            await this.sqlContainers.CommitAndGetAllAsync(cancellationToken);
+            childTasks.Add(this.sqlContainers.CommitAndGetAllAsync(cancellationToken));
+            await Task.WhenAll(childTasks);
 
             return this;
         }

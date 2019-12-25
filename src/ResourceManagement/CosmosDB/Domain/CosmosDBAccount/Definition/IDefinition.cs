@@ -278,9 +278,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     public interface IWithChildResource
     {
         /// <summary>
-        /// Defines a new sql database.
+        /// Defines a new SQL database.
         /// </summary>
-        /// <param name="name">The name of sql database.</param>
+        /// <param name="name">The name of SQL database.</param>
         /// <returns>The next stage of the definition.</returns>
         SqlDatabase.Definition.IBlank<IWithCreate> DefineNewSqlDatabase(string name);
     }

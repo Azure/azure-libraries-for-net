@@ -1,13 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
 {
+    using System.Collections.Generic;
+
     /// <summary>
-    /// The entirety of a sql container definition as a part of parent definition.
+    /// The entirety of a SQL container definition as a part of parent definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IDefinition<ParentT> :
@@ -17,7 +16,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The first stage of a sql container definition.
+    /// The first stage of a SQL container definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IBlank<ParentT> :
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The final stage of the sql container definition.
+    /// The final stage of the SQL container definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAttach<ParentT> :
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set options.
+    /// The stage of a SQL container definition allowing to set options.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithOptions<ParentT> :
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set through put.
+    /// The stage of a SQL container definition allowing to set through put.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithThroughput<ParentT> :
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set indexing policy.
+    /// The stage of a SQL container definition allowing to set indexing policy.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithIndexingPolicy<ParentT>
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <summary>
         /// Specifies the indexing policy.
         /// </summary>
-        /// <param name="indexingPolicy">The whole object of the indexing policy.</param>
+        /// <param name="indexingPolicy">The indexing policy.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithIndexingPolicy(Models.IndexingPolicy indexingPolicy);
 
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set partition key.
+    /// The stage of a SQL container definition allowing to set partition key.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithPartitionKey<ParentT>
@@ -91,17 +90,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// </summary>
         /// <param name="containerPartitionKey">The whole object of the container partition key.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithContainerPartitionKey(ContainerPartitionKey containerPartitionKey);
+        IWithAttach<ParentT> WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey);
+
+        /// <summary>
+        /// Specifies the container partition key.
+        /// </summary>
+        /// <param name="paths">List of paths using which data within the container can be partitioned.</param>
+        /// <param name="kind">Indicates the kind of algorithm used for partitioning. Possible values include: 'Hash', 'Range'.</param>
+        /// <param name="version">Indicates the version of the partition key definition.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version);
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set default ttl.
+    /// The stage of a SQL container definition allowing to set default ttl.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithDefaultTtl<ParentT>
     {
         /// <summary>
-        /// Specifies the default ttl.
+        /// Specifies the default time to live.
         /// </summary>
         /// <param name="ttl">The default time to live.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -109,7 +117,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set unique key policy.
+    /// The stage of a SQL container definition allowing to set unique key policy.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithUniqueKeyPolicy<ParentT>
@@ -119,25 +127,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// </summary>
         /// <param name="uniqueKeyPolicy">The whole object of the unique key policy.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUniqueKeyPolicy(UniqueKeyPolicy uniqueKeyPolicy);
+        IWithAttach<ParentT> WithUniqueKeyPolicy(Models.UniqueKeyPolicy uniqueKeyPolicy);
 
         /// <summary>
         /// Specifies the list of unique key.
         /// </summary>
         /// <param name="uniqueKeys">The list of unique key.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUniqueKeys(IList<UniqueKey> uniqueKeys);
+        IWithAttach<ParentT> WithUniqueKeys(IList<Models.UniqueKey> uniqueKeys);
 
         /// <summary>
         /// Specifies a unique key appended to original list.
         /// </summary>
         /// <param name="uniqueKey">A unique key.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUniqueKey(UniqueKey uniqueKey);
+        IWithAttach<ParentT> WithUniqueKey(Models.UniqueKey uniqueKey);
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to set conflict resolution policy.
+    /// The stage of a SQL container definition allowing to set conflict resolution policy.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithConflictResolutionPolicy<ParentT>
@@ -147,11 +155,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// </summary>
         /// <param name="conflictResolutionPolicy">The whole object of the conflict resolution policy.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy);
+        IWithAttach<ParentT> WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy);
     }
 
     /// <summary>
-    /// The stage of a sql container definition allowing to specify child resource.
+    /// The stage of a SQL container definition allowing to specify child resource.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithChildResource<ParentT>
@@ -163,7 +171,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The store procedure resource, no need to specify id.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithStoredProcedure(string name, SqlStoredProcedureResource resource = default(SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource = default(Models.SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Specifies a user defined function.
@@ -172,7 +180,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The user defined function resource, no need to specify id.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUserDefinedFunction(string name, SqlUserDefinedFunctionResource resource = default(SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource = default(Models.SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Specifies a trigger.
@@ -181,6 +189,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The trigger resource, no need to specify id.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithTrigger(string name, SqlTriggerResource resource = default(SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource = default(Models.SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>));
     }
 }

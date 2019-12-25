@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a sql container collection.
+    /// Represents a SQL container collection.
     /// </summary>
     internal partial class SqlContainersImpl :
         ExternalChildResourcesCached<

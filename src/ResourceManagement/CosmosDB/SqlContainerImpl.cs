@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private IDictionary<string, SqlTriggerCreateUpdateParameters> triggerToUpdate;
         private IList<string> triggerToDelete;
 
-        public string Location
+        private string Location
         {
             get
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        public string ResourceGroupName
+        private string ResourceGroupName
         {
             get
             {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        public string AccountName
+        private string AccountName
         {
             get
             {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        public string SqlDatabaseName
+        private string SqlDatabaseName
         {
             get
             {
@@ -187,13 +187,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlContainerImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options = options;
+            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            foreach (var option in options)
+            {
+                this.createUpdateParameters.Options.Add(option);
+            }
             return this;
         }
 
         public SqlContainerImpl WithoutOption(string key)
         {
-            this.createUpdateParameters.Options.Remove(key);
+            this.createUpdateParameters.Options?.Remove(key);
             return this;
         }
 
@@ -236,12 +240,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             SetInner(inner);
             SetCreateUpdateParameters();
-            var ChildTask = new List<Task>();
+            List<Task> childTasks = new List<Task>();
 
             if (this.throughputSettingsToUpdate != null)
             {
                 this.throughputSettingsToUpdate.Location = Location;
-                ChildTask.Add(this.Client.UpdateSqlContainerThroughputAsync(
+                childTasks.Add(this.Client.UpdateSqlContainerThroughputAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -253,7 +257,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.storedProcedureToDelete.Count > 0)
             {
-                ChildTask.AddRange(this.storedProcedureToDelete.Select(name => this.Client.DeleteSqlStoredProcedureAsync(
+                childTasks.AddRange(this.storedProcedureToDelete.Select(name => this.Client.DeleteSqlStoredProcedureAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -265,7 +269,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.storedProcedureToUpdate.Count > 0)
             {
-                ChildTask.AddRange(this.storedProcedureToUpdate.Select(param => this.Client.CreateUpdateSqlStoredProcedureAsync(
+                childTasks.AddRange(this.storedProcedureToUpdate.Select(param => this.Client.CreateUpdateSqlStoredProcedureAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -278,7 +282,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.userDefinedFunctionToDelete.Count > 0)
             {
-                ChildTask.AddRange(this.userDefinedFunctionToDelete.Select(name => this.Client.DeleteSqlUserDefinedFunctionAsync(
+                childTasks.AddRange(this.userDefinedFunctionToDelete.Select(name => this.Client.DeleteSqlUserDefinedFunctionAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -290,7 +294,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.userDefinedFunctionToUpdate.Count > 0)
             {
-                ChildTask.AddRange(this.userDefinedFunctionToUpdate.Select(param => this.Client.CreateUpdateSqlUserDefinedFunctionAsync(
+                childTasks.AddRange(this.userDefinedFunctionToUpdate.Select(param => this.Client.CreateUpdateSqlUserDefinedFunctionAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -303,7 +307,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.triggerToDelete.Count > 0)
             {
-                ChildTask.AddRange(this.triggerToDelete.Select(name => this.Client.DeleteSqlTriggerAsync(
+                childTasks.AddRange(this.triggerToDelete.Select(name => this.Client.DeleteSqlTriggerAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -315,7 +319,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             if (this.triggerToUpdate.Count > 0)
             {
-                ChildTask.AddRange(this.triggerToUpdate.Select(param => this.Client.CreateUpdateSqlTriggerAsync(
+                childTasks.AddRange(this.triggerToUpdate.Select(param => this.Client.CreateUpdateSqlTriggerAsync(
                     ResourceGroupName,
                     AccountName,
                     SqlDatabaseName,
@@ -326,7 +330,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     )));
             }
 
-            await Task.WhenAll(ChildTask);
+            await Task.WhenAll(childTasks);
             InitChildResource(false);
 
             return this;
@@ -395,7 +399,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public DefinitionIndexingPolicyImpl UpdateIndexingPolicy()
         {
-            var indexingPolicyInner = this.createUpdateParameters.Resource.IndexingPolicy ?? new Models.IndexingPolicy();
+            Models.IndexingPolicy indexingPolicyInner = this.createUpdateParameters.Resource.IndexingPolicy ?? new Models.IndexingPolicy();
             return new DefinitionIndexingPolicyImpl(indexingPolicyInner, this);
         }
 
@@ -413,6 +417,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.createUpdateParameters.Resource.PartitionKey = containerPartitionKey;
             return this;
+        }
+
+        public SqlContainerImpl WithContainerPartitionKey(IList<string> paths, PartitionKind kind, int? version)
+        {
+            return this.WithContainerPartitionKey(new ContainerPartitionKey(paths: paths, kind: kind, version: version));
         }
 
         public SqlContainerImpl WithoutContainerPartitionKey()
@@ -462,7 +471,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithUniqueKey(int index, UniqueKey uniqueKey)
+        public SqlContainerImpl WithUniqueKey(UniqueKey uniqueKey)
         {
             if (this.createUpdateParameters.Resource.UniqueKeyPolicy == null)
             {
@@ -473,30 +482,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 this.createUpdateParameters.Resource.UniqueKeyPolicy.UniqueKeys = new List<UniqueKey>();
             }
 
-            if (index < 0 || this.createUpdateParameters.Resource.UniqueKeyPolicy.UniqueKeys.Count <= index)
-            {
-                this.createUpdateParameters.Resource.UniqueKeyPolicy.UniqueKeys.Add(uniqueKey);
-            }
-            else
-            {
-                this.createUpdateParameters.Resource.UniqueKeyPolicy.UniqueKeys[index] = uniqueKey;
-            }
-            return this;
-        }
-
-        public SqlContainerImpl WithoutUniqueKey(int index)
-        {
-            var uniqueKeys = this.createUpdateParameters.Resource.UniqueKeyPolicy?.UniqueKeys;
-            if (uniqueKeys != null)
-            {
-                uniqueKeys.RemoveAt(index);
-            }
+            this.createUpdateParameters.Resource.UniqueKeyPolicy.UniqueKeys.Add(uniqueKey);
             return this;
         }
 
         public SqlContainerImpl WithoutUniqueKey(UniqueKey uniqueKey)
         {
-            var uniqueKeys = this.createUpdateParameters.Resource.UniqueKeyPolicy?.UniqueKeys;
+            IList<UniqueKey> uniqueKeys = this.createUpdateParameters.Resource.UniqueKeyPolicy?.UniqueKeys;
             if (uniqueKeys != null)
             {
                 uniqueKeys.Remove(uniqueKey);

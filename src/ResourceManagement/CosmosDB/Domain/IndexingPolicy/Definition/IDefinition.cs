@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
 {
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using System.Collections.Generic;
+
     /// <summary>
     /// The entirety of an indexing policy definition as a part of parent definition.
     /// </summary>

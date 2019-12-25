@@ -222,23 +222,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     public interface IWithChildResource
     {
         /// <summary>
-        /// Defines a new sql database.
+        /// Defines a new SQL database.
         /// </summary>
-        /// <param name="name">The name of sql database.</param>
+        /// <param name="name">The name of SQL database.</param>
         /// <returns>The next stage of the update.</returns>
         SqlDatabase.Definition.IBlank<IWithOptionals> DefineNewSqlDatabase(string name);
 
         /// <summary>
-        /// Updates a sql database.
+        /// Updates a SQL database.
         /// </summary>
-        /// <param name="name">The name of sql database.</param>
+        /// <param name="name">The name of SQL database.</param>
         /// <returns>The next stage of the update.</returns>
         SqlDatabase.Update.IUpdate UpdateSqlDatabase(string name);
 
         /// <summary>
-        /// Removes a sql database.
+        /// Removes a SQL database.
         /// </summary>
-        /// <param name="name">The name of sql database.</param>
+        /// <param name="name">The name of SQL database.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithoutSqlDatabase(string name);
     }

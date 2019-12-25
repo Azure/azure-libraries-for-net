@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Management.CosmosDB.Fluent.HasOptions.Update
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The stage of a resource update allowing to set options.
     /// </summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.HasOptions.Update
         ReturnT WithoutOption(string key);
 
         /// <summary>
-        /// Remove all options.
+        /// Removes all options.
         /// </summary>
         /// <returns>The next stage of update.</returns>
         ReturnT WithoutOptions();
