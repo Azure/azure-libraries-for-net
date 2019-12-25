@@ -37,7 +37,7 @@ namespace Fluent.Tests.WebApp
                         .WithRegion(Region.USWest)
                         .WithNewResourceGroup(GroupName1)
                         .WithNewWindowsPlan(PricingTier.BasicB1)
-                        .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2015)
+                        .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2019)
                         .Create();
                     Assert.NotNull(webApp1);
                     Assert.Equal(Region.USWest, webApp1.Region);
