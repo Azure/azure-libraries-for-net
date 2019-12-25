@@ -107,7 +107,7 @@ namespace ManageLinuxWebAppWithDomainSsl
                 //============================================================
                 // Create a self-singed SSL certificate
 
-                var pfxPath = domainName + ".pfx";
+                var pfxPath = "webapp_" + nameof(ManageLinuxWebAppWithDomainSsl).ToLower() + ".pfx";
 
                 Utilities.Log("Creating a self-signed certificate " + pfxPath + "...");
 
