@@ -294,19 +294,59 @@ namespace Fluent.Tests
                         .WithDataModelSql()
                         .WithStrongConsistency()
                         .DefineNewSqlDatabase(sqlDbName)
-                            .WithThroughput(1)
+                            .WithThroughput(1000)
                             .DefineNewSqlContainer(sqlContainerName)
-                                .WithThroughput(2)
+                                .WithThroughput(400)
                                 .DefineIndexingPolicy()
                                     .WithIndexingMode(IndexingMode.Consistent)
                                     .WithIncludedPath(new IncludedPath(path: "/*"))
                                     .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
                                     .Attach()
-                                .WithContainerPartitionKey(new ContainerPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash))
+                                .WithContainerPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
                                 .Attach()
                             .Attach()
                         .Create();
 
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDMongoDBCollection()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var mongoDBName = SdkContext.RandomResourceName("mongodb", 22);
+                var mongoCollectionName = SdkContext.RandomResourceName("mongocollection", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelMongoDB()
+                        .WithStrongConsistency()
+                        .DefineNewMongoDB(mongoDBName)
+                            .WithOption("throughput", "400")
+                            .DefineNewCollection(mongoCollectionName)
+                                .WithShardKey("test")
+                                .Attach()
+                            .Attach()
+                        .Create();
                 }
                 finally
                 {

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        internal SqlContainerImpl(string name, SqlDatabaseImpl parent, SqlContainerGetResultsInner inner, ISqlResourcesOperations client)
+        internal SqlContainerImpl(string name, SqlDatabaseImpl parent, SqlContainerGetResultsInner inner)
             : base(name, parent, inner)
         {
             SetCreateUpdateParameters();
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlContainerImpl WithoutOption(string key)
         {
-            this.createUpdateParameters.Options?.Remove(key);
+            this.createUpdateParameters.Options.Remove(key);
             return this;
         }
 

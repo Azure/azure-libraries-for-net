@@ -10,10 +10,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.MongoCollection.Update
     /// The entirety of mongo collection update as a part of parent cosmos db account update.
     /// </summary>
     public interface IUpdate :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IUpdate>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.MongoDB.Update.IUpdate>,
         IWithOptions,
         IWithThroughput,
-        IWithSharedKey,
+        IWithShardKey,
         IWithIndex
     {
     }
@@ -35,44 +35,44 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.MongoCollection.Update
     }
 
     /// <summary>
-    /// The stage of the mongo collection update allowing to set shared keys.
+    /// The stage of the mongo collection update allowing to set shard keys.
     /// </summary>
-    public interface IWithSharedKey
+    public interface IWithShardKey
     {
         /// <summary>
-        /// Specifies a shared key with default partition kind "Hash".
+        /// Specifies a shard key with default partition kind "Hash".
         /// </summary>
-        /// <param name="sharedKey">The shared key.</param>
+        /// <param name="shardKey">The shard key.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithSharedKey(string sharedKey);
+        IUpdate WithShardKey(string shardKey);
 
         /// <summary>
-        /// Specifies a shared key.
+        /// Specifies a shard key.
         /// </summary>
-        /// <param name="sharedKey">The shared key.</param>
+        /// <param name="shardKey">The shard key.</param>
         /// <param name="partitionKind">The partition kind, only support "Hash" partition kind in api-version 2019-08-01.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithSharedKey(string sharedKey, string partitionKind);
+        IUpdate WithShardKey(string shardKey, string partitionKind);
 
         /// <summary>
-        /// Removes a shared key.
+        /// Removes a shard key.
         /// </summary>
-        /// <param name="sharedKey">The shared key.</param>
+        /// <param name="shardKey">The shard key.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithoutSharedKey(string sharedKey);
+        IUpdate WithoutShardKey(string shardKey);
 
         /// <summary>
-        /// Appends all shared keys to current shared keys.
+        /// Appends all shard keys to current shard keys.
         /// </summary>
-        /// <param name="sharedKeys">The shared keys needs appending.</param>
+        /// <param name="shardKeys">The shard keys needs appending.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithSharedKeys(IDictionary<string, string> sharedKeys);
+        IUpdate WithShardKeys(IDictionary<string, string> shardKeys);
 
         /// <summary>
-        /// Removes all shared keys.
+        /// Removes all shard keys.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithoutSharedKeys();
+        IUpdate WithoutShardKeys();
     }
 
     /// <summary>

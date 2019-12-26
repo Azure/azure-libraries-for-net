@@ -654,6 +654,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
         }
 
+        IMongoDB ICosmosDBAccount.GetMongoDB(string databaseName)
+        {
+            return this.GetMongoDB(databaseName);
+        }
+
+        Task<IMongoDB> ICosmosDBAccount.GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetMongoDBAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<IMongoDB> ICosmosDBAccount.ListMongoDBs()
+        {
+            return this.ListMongoDBs();
+        }
+
+        Task<IEnumerable<IMongoDB>> ICosmosDBAccount.ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListMongoDBsAsync(cancellationToken);
+        }
+
         SqlDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewSqlDatabase(string name)
         {
             return this.DefineNewSqlDatabase(name);
@@ -672,6 +692,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutSqlDatabase(string name)
         {
             return this.WithoutSqlDatabase(name);
+        }
+
+        MongoDB.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewMongoDB(string name)
+        {
+            return this.DefineNewMongoDB(name);
+        }
+
+        MongoDB.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewMongoDB(string name)
+        {
+            return this.DefineNewMongoDB(name);
+        }
+
+        MongoDB.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateMongoDB(string name)
+        {
+            return this.UpdateMongoDB(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutMongoDB(string name)
+        {
+            return this.WithoutMongoDB(name);
         }
     }
 }

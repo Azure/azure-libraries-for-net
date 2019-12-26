@@ -3,6 +3,7 @@
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -85,6 +86,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 return this.Id();
             }
+        }
+
+        ThroughputSettingsGetPropertiesResource ISqlDatabase.GetThroughputSettings()
+        {
+            return this.GetThroughputSettings();
+        }
+
+        Task<ThroughputSettingsGetPropertiesResource> ISqlDatabase.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetThroughputSettingsAsync();
         }
 
         IEnumerable<ISqlContainer> ISqlDatabase.ListSqlContainers()

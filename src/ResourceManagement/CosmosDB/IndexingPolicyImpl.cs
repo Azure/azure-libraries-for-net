@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutSpatialIndex(SpatialSpec spatialSpec)
         {
-            Inner.SpatialIndexes.Remove(spatialSpec);
+            Inner.SpatialIndexes?.Remove(spatialSpec);
             return this;
         }
 

@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
         private SqlDatabasesImpl sqlDatabases;
+        private MongoDBsImpl mongoDBs;
 
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.failoverPolicies = new List<Models.FailoverPolicy>();
             this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this);
             this.sqlDatabases = new SqlDatabasesImpl(this);
+            this.mongoDBs = new MongoDBsImpl(this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
@@ -116,6 +118,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             List<Task> childTasks = new List<Task>();
             childTasks.Add(this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.sqlDatabases.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.mongoDBs.CommitAndGetAllAsync(cancellationToken));
             await Task.WhenAll(childTasks);
 
             this.SetInner(databaseAccount.Inner);
@@ -772,6 +775,47 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public CosmosDBAccountImpl WithoutSqlDatabase(string name)
         {
             this.sqlDatabases.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<IMongoDB> ListMongoDBs()
+        {
+            return Extensions.Synchronize(() => this.ListMongoDBsAsync());
+        }
+
+        public async Task<IEnumerable<IMongoDB>> ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.mongoDBs.ListAsync(cancellationToken);
+        }
+
+        public IMongoDB GetMongoDB(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetMongoDBAsync(databaseName));
+        }
+
+        public async Task<IMongoDB> GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.mongoDBs.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithMongoDB(MongoDBImpl mongoDB)
+        {
+            this.mongoDBs.AddMongoDB(mongoDB);
+            return this;
+        }
+
+        internal MongoDBImpl DefineNewMongoDB(string name)
+        {
+            return this.mongoDBs.Define(name);
+        }
+
+        internal MongoDBImpl UpdateMongoDB(string name)
+        {
+            return this.mongoDBs.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutMongoDB(string name)
+        {
+            this.mongoDBs.Remove(name);
             return this;
         }
 

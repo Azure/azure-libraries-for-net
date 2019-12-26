@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.MongoCollection.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         IWithOptions<ParentT>,
         IWithThroughput<ParentT>,
-        IWithSharedKey<ParentT>,
+        IWithShardKey<ParentT>,
         IWithIndex<ParentT>
     {
     }
@@ -57,32 +57,32 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.MongoCollection.Definition
     }
 
     /// <summary>
-    /// The stage of the mongo collection definition allowing to set shared keys.
+    /// The stage of the mongo collection definition allowing to set shard keys.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSharedKey<ParentT>
+    public interface IWithShardKey<ParentT>
     {
         /// <summary>
-        /// Specifies a shared key with default partition kind "Hash".
+        /// Specifies a shard key with default partition kind "Hash".
         /// </summary>
-        /// <param name="sharedKey">The shared key.</param>
+        /// <param name="shardKey">The shard key.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithSharedKey(string sharedKey);
+        IWithAttach<ParentT> WithShardKey(string shardKey);
 
         /// <summary>
-        /// Specifies a shared key.
+        /// Specifies a shard key.
         /// </summary>
-        /// <param name="sharedKey">The shared key.</param>
+        /// <param name="shardKey">The shard key.</param>
         /// <param name="partitionKind">The partition kind, only support "Hash" partition kind in api-version 2019-08-01.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithSharedKey(string sharedKey, string partitionKind);
+        IWithAttach<ParentT> WithShardKey(string shardKey, string partitionKind);
 
         /// <summary>
-        /// Appends all shared keys to current shared keys.
+        /// Appends all shard keys to current shard keys.
         /// </summary>
-        /// <param name="sharedKeys">The shared keys needs appending.</param>
+        /// <param name="shardKeys">The shard keys needs appending.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithSharedKeys(IDictionary<string, string> sharedKeys);
+        IWithAttach<ParentT> WithShardKeys(IDictionary<string, string> shardKeys);
     }
 
     /// <summary>

@@ -11,21 +11,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a SQL container collection.
+    /// Represents a collection of mongo db collection.
     /// </summary>
-    internal partial class SqlContainersImpl :
+    internal partial class MongoCollectionsImpl :
         ExternalChildResourcesCached<
-            SqlContainerImpl,
-            ISqlContainer,
-            SqlContainerGetResultsInner,
-            ISqlDatabase,
-            SqlDatabaseImpl>
+            MongoCollectionImpl,
+            IMongoCollection,
+            MongoDBCollectionGetResultsInner,
+            IMongoDB,
+            MongoDBImpl>
     {
-        private ISqlResourcesOperations Client
+        private IMongoDBResourcesOperations Client
         {
             get
             {
-                return Parent.Parent.Manager.Inner.SqlResources;
+                return Parent.Parent.Manager.Inner.MongoDBResources;
             }
         }
         private string Location
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return Parent.Parent.RegionName?.ToLower();
             }
         }
-        internal SqlContainersImpl(SqlDatabaseImpl parent)
-            : base(parent, "SqlContainer")
+        internal MongoCollectionsImpl(MongoDBImpl parent)
+            : base(parent, "MongoCollection")
         {
             if (parent.Id() != null)
             {
@@ -44,43 +44,43 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        protected override IList<SqlContainerImpl> ListChildResources()
+        protected override IList<MongoCollectionImpl> ListChildResources()
         {
             return Extensions.Synchronize(() => ListAsync()).ToList();
         }
 
-        protected override SqlContainerImpl NewChildResource(string name)
+        protected override MongoCollectionImpl NewChildResource(string name)
         {
-            return new SqlContainerImpl(name, Parent, new SqlContainerGetResultsInner(Location, name: name));
+            return new MongoCollectionImpl(name, Parent, new MongoDBCollectionGetResultsInner(Location, name: name));
 
         }
 
-        public async Task<SqlContainerImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<MongoCollectionImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await Client.GetSqlContainerAsync(
+            var inner = await Client.GetMongoDBCollectionAsync(
                 Parent.Parent.ResourceGroupName,
                 Parent.Parent.Name,
                 Parent.Name(),
                 name,
                 cancellationToken
                 );
-            return new SqlContainerImpl(name, Parent, inner);
+            return new MongoCollectionImpl(name, Parent, inner);
         }
 
-        public SqlContainerImpl Define(string name)
+        public MongoCollectionImpl Define(string name)
         {
             return this.PrepareDefine(name);
         }
 
-        public async Task<IEnumerable<SqlContainerImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<MongoCollectionImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await ListInnerAsync(cancellationToken);
-            return result.Select(inner => new SqlContainerImpl(inner.Name, Parent, inner));
+            return result.Select(inner => new MongoCollectionImpl(inner.Name, Parent, inner));
         }
 
-        private async Task<IEnumerable<SqlContainerGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        private async Task<IEnumerable<MongoDBCollectionGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Client.ListSqlContainersAsync(
+            return await Client.ListMongoDBCollectionsAsync(
                 Parent.Parent.ResourceGroupName,
                 Parent.Parent.Name,
                 Parent.Name(),
@@ -93,14 +93,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.PrepareRemove(name);
         }
 
-        public SqlContainerImpl Update(string name)
+        public MongoCollectionImpl Update(string name)
         {
             return this.PrepareUpdate(name);
         }
 
-        public void AddSqlContainer(SqlContainerImpl SqlContainer)
+        public void AddMongoCollection(MongoCollectionImpl MongoCollection)
         {
-            this.AddChildResource(SqlContainer);
+            this.AddChildResource(MongoCollection);
         }
     }
 }

@@ -283,5 +283,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="name">The name of SQL database.</param>
         /// <returns>The next stage of the definition.</returns>
         SqlDatabase.Definition.IBlank<IWithCreate> DefineNewSqlDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        MongoDB.Definition.IBlank<IWithCreate> DefineNewMongoDB(string name);
     }
 }

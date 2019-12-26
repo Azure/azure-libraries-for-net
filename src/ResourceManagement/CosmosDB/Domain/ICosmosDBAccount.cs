@@ -186,5 +186,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         /// <param name="keyKind">The key kind.</param>
         void RegenerateKey(string keyKind);
+
+        /// <param name="databaseName">Database name of Mongo database.</param>
+        /// <returns>The specific Mongo database.</returns>
+        IMongoDB GetMongoDB(string databaseName);
+
+        /// <param name="databaseName">Database name of Mongo database.</param>
+        /// <returns>The specific Mongo database.</returns>
+        Task<IMongoDB> GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Mongo databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<IMongoDB> ListMongoDBs();
+
+        /// <return>The Mongo databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<IMongoDB>> ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

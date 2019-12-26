@@ -241,5 +241,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="name">The name of SQL database.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithoutSqlDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the update.</returns>
+        MongoDB.Definition.IBlank<IWithOptionals> DefineNewMongoDB(string name);
+
+        /// <summary>
+        /// Updates a Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the update.</returns>
+        MongoDB.Update.IUpdate UpdateMongoDB(string name);
+
+        /// <summary>
+        /// Removes a Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutMongoDB(string name);
     }
 }
