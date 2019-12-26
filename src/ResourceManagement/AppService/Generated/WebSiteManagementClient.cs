@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -25,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// WebSite Management Client
     /// </summary>
-    public partial class WebSiteManagementClient : FluentServiceClientBase<WebSiteManagementClient>, IWebSiteManagementClient, IAzureClient
+    public partial class WebSiteManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<WebSiteManagementClient>, IWebSiteManagementClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -142,8 +144,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public WebSiteManagementClient(RestClient restClient) 
-            : base(restClient)
+        public WebSiteManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -170,8 +171,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             AppServiceEnvironments = new AppServiceEnvironmentsOperations(this);
             AppServicePlans = new AppServicePlansOperations(this);
             ResourceHealthMetadata = new ResourceHealthMetadataOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-02-01";
+            this.BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2019-08-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -209,7 +210,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets publishing user
         /// </summary>
         /// <remarks>
-        /// Gets publishing user
+        /// Description for Gets publishing user
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -249,7 +250,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "GetPublishingUser", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Web/publishingUsers/web").ToString();
             List<string> _queryParameters = new List<string>();
             if (ApiVersion != null)
@@ -295,10 +296,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -306,7 +307,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -380,7 +381,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Updates publishing user
         /// </summary>
         /// <remarks>
-        /// Updates publishing user
+        /// Description for Updates publishing user
         /// </remarks>
         /// <param name='userDetails'>
         /// Details of publishing user
@@ -432,7 +433,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "UpdatePublishingUser", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Web/publishingUsers/web").ToString();
             List<string> _queryParameters = new List<string>();
             if (ApiVersion != null)
@@ -484,10 +485,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -495,7 +496,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -569,7 +570,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the source controls available for Azure websites.
         /// </summary>
         /// <remarks>
-        /// Gets the source controls available for Azure websites.
+        /// Description for Gets the source controls available for Azure websites.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -609,7 +610,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ListSourceControls", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Web/sourcecontrols").ToString();
             List<string> _queryParameters = new List<string>();
             if (ApiVersion != null)
@@ -655,10 +656,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -666,7 +667,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -740,7 +741,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets source control token
         /// </summary>
         /// <remarks>
-        /// Gets source control token
+        /// Description for Gets source control token
         /// </remarks>
         /// <param name='sourceControlType'>
         /// Type of source control
@@ -788,7 +789,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "GetSourceControl", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Web/sourcecontrols/{sourceControlType}").ToString();
             _url = _url.Replace("{sourceControlType}", System.Uri.EscapeDataString(sourceControlType));
             List<string> _queryParameters = new List<string>();
@@ -835,10 +836,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -846,7 +847,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -920,7 +921,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Updates source control token
         /// </summary>
         /// <remarks>
-        /// Updates source control token
+        /// Description for Updates source control token
         /// </remarks>
         /// <param name='sourceControlType'>
         /// Type of source control
@@ -976,7 +977,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateSourceControl", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Web/sourcecontrols/{sourceControlType}").ToString();
             _url = _url.Replace("{sourceControlType}", System.Uri.EscapeDataString(sourceControlType));
             List<string> _queryParameters = new List<string>();
@@ -1029,10 +1030,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -1040,7 +1041,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -1114,7 +1115,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets a list of meters for a given location.
         /// </summary>
         /// <remarks>
-        /// Gets a list of meters for a given location.
+        /// Description for Gets a list of meters for a given location.
         /// </remarks>
         /// <param name='billingLocation'>
         /// Azure Location of billable resource
@@ -1166,7 +1167,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ListBillingMeters", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/billingMeters").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -1221,10 +1222,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -1232,7 +1233,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -1306,7 +1307,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Check if a resource name is available.
         /// </summary>
         /// <remarks>
-        /// Check if a resource name is available.
+        /// Description for Check if a resource name is available.
         /// </remarks>
         /// <param name='name'>
         /// Resource name to verify.
@@ -1378,7 +1379,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "CheckNameAvailability", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -1431,10 +1432,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -1442,7 +1443,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -1516,7 +1517,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets list of available geo regions plus ministamps
         /// </summary>
         /// <remarks>
-        /// Gets list of available geo regions plus ministamps
+        /// Description for Gets list of available geo regions plus ministamps
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1560,7 +1561,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "GetSubscriptionDeploymentLocations", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/deploymentLocations").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -1607,10 +1608,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -1618,7 +1619,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -1692,7 +1693,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get a list of available geographical regions.
         /// </summary>
         /// <remarks>
-        /// Get a list of available geographical regions.
+        /// Description for Get a list of available geographical regions.
         /// </remarks>
         /// <param name='sku'>
         /// Name of SKU used to filter the regions. Possible values include: 'Free',
@@ -1757,13 +1758,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ListGeoRegions", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (sku != null)
             {
-                _queryParameters.Add(string.Format("sku={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(sku, SerializationSettings).Trim('"'))));
+                _queryParameters.Add(string.Format("sku={0}", System.Uri.EscapeDataString(sku.Value)));
             }
             if (linuxWorkersEnabled != null)
             {
@@ -1820,10 +1821,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -1831,7 +1832,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -1905,7 +1906,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all apps that are assigned to a hostname.
         /// </summary>
         /// <remarks>
-        /// List all apps that are assigned to a hostname.
+        /// Description for List all apps that are assigned to a hostname.
         /// </remarks>
         /// <param name='name'>
         /// Name of the object.
@@ -1958,7 +1959,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ListSiteIdentifiersAssignedToHostName", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/listSitesAssignedToHostName").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -2011,10 +2012,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -2022,7 +2023,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -2096,7 +2097,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all premier add-on offers.
         /// </summary>
         /// <remarks>
-        /// List all premier add-on offers.
+        /// Description for List all premier add-on offers.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2140,7 +2141,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ListPremierAddOnOffers", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -2187,10 +2188,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -2198,7 +2199,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -2272,7 +2273,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all SKUs.
         /// </summary>
         /// <remarks>
-        /// List all SKUs.
+        /// Description for List all SKUs.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2316,7 +2317,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ListSkus", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/skus").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -2363,10 +2364,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -2374,7 +2375,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -2449,8 +2450,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// analyzing the Network Security Group rules.
         /// </summary>
         /// <remarks>
-        /// Verifies if this VNET is compatible with an App Service Environment by
-        /// analyzing the Network Security Group rules.
+        /// Description for Verifies if this VNET is compatible with an App Service
+        /// Environment by analyzing the Network Security Group rules.
         /// </remarks>
         /// <param name='parameters'>
         /// VNET information
@@ -2502,7 +2503,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "VerifyHostingEnvironmentVnet", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/verifyHostingEnvironmentVnet").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -2555,10 +2556,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -2566,7 +2567,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -2640,7 +2641,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Move resources between resource groups.
         /// </summary>
         /// <remarks>
-        /// Move resources between resource groups.
+        /// Description for Move resources between resource groups.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2654,7 +2655,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -2716,7 +2717,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Move", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
@@ -2770,10 +2771,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -2781,7 +2782,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -2791,14 +2792,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2808,10 +2808,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2842,7 +2838,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Validate if a resource can be created.
         /// </summary>
         /// <remarks>
-        /// Validate if a resource can be created.
+        /// Description for Validate if a resource can be created.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2921,7 +2917,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "Validate", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
@@ -2975,10 +2971,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -2986,7 +2982,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -3057,223 +3053,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Validate if the container settings are correct.
-        /// </summary>
-        /// <remarks>
-        /// Validate if the container settings are correct.
-        /// </remarks>
-        /// <param name='validateContainerSettingsRequest'>
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<object>> ValidateContainerSettingsWithHttpMessagesAsync(ValidateContainerSettingsRequest validateContainerSettingsRequest, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (validateContainerSettingsRequest == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "validateContainerSettingsRequest");
-            }
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
-            }
-            if (SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
-            }
-            if (ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("validateContainerSettingsRequest", validateContainerSettingsRequest);
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ValidateContainerSettings", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validateContainerSettings").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (GenerateClientRequestId != null && GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            if(validateContainerSettingsRequest != null)
-            {
-                _requestContent = SafeJsonConvert.SerializeObject(validateContainerSettingsRequest, SerializationSettings);
-                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    DefaultErrorResponse _errorBody =  SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<object>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<object>(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
         /// Validate whether a resource can be moved.
         /// </summary>
         /// <remarks>
-        /// Validate whether a resource can be moved.
+        /// Description for Validate whether a resource can be moved.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3287,7 +3070,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -3349,7 +3132,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ValidateMove", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
@@ -3403,10 +3186,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -3414,7 +3197,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -3424,14 +3207,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3441,10 +3223,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -3475,7 +3253,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the source controls available for Azure websites.
         /// </summary>
         /// <remarks>
-        /// Gets the source controls available for Azure websites.
+        /// Description for Gets the source controls available for Azure websites.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3561,10 +3339,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -3572,7 +3350,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -3646,7 +3424,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets a list of meters for a given location.
         /// </summary>
         /// <remarks>
-        /// Gets a list of meters for a given location.
+        /// Description for Gets a list of meters for a given location.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3732,10 +3510,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -3743,7 +3521,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -3817,7 +3595,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get a list of available geographical regions.
         /// </summary>
         /// <remarks>
-        /// Get a list of available geographical regions.
+        /// Description for Get a list of available geographical regions.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3903,10 +3681,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -3914,7 +3692,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -3988,7 +3766,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all apps that are assigned to a hostname.
         /// </summary>
         /// <remarks>
-        /// List all apps that are assigned to a hostname.
+        /// Description for List all apps that are assigned to a hostname.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -4074,10 +3852,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -4085,7 +3863,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -4159,7 +3937,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all premier add-on offers.
         /// </summary>
         /// <remarks>
-        /// List all premier add-on offers.
+        /// Description for List all premier add-on offers.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -4245,10 +4023,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Serialize Request
             string _requestContent = null;
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -4256,7 +4034,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);

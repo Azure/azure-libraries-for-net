@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Process Thread Information.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ProcessThreadInfoInner : ProxyOnlyResourceInner
+    public partial class ProcessThreadInfo : ProxyOnlyResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the ProcessThreadInfoInner class.
+        /// Initializes a new instance of the ProcessThreadInfo class.
         /// </summary>
-        public ProcessThreadInfoInner()
+        public ProcessThreadInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ProcessThreadInfoInner class.
+        /// Initializes a new instance of the ProcessThreadInfo class.
         /// </summary>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="identifier">Site extension ID.</param>
@@ -41,11 +41,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="startTime">Start time.</param>
         /// <param name="totalProcessorTime">Total processor time.</param>
         /// <param name="userProcessorTime">User processor time.</param>
-        /// <param name="priviledgedProcessorTime">Privileged processor
-        /// time.</param>
         /// <param name="state">Thread state.</param>
         /// <param name="waitReason">Wait reason.</param>
-        public ProcessThreadInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? identifier = default(int?), string href = default(string), string process = default(string), string startAddress = default(string), int? currentPriority = default(int?), string priorityLevel = default(string), int? basePriority = default(int?), System.DateTime? startTime = default(System.DateTime?), string totalProcessorTime = default(string), string userProcessorTime = default(string), string priviledgedProcessorTime = default(string), string state = default(string), string waitReason = default(string))
+        public ProcessThreadInfo(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? identifier = default(int?), string href = default(string), string process = default(string), string startAddress = default(string), int? currentPriority = default(int?), string priorityLevel = default(string), int? basePriority = default(int?), System.DateTime? startTime = default(System.DateTime?), string totalProcessorTime = default(string), string userProcessorTime = default(string), string state = default(string), string waitReason = default(string))
             : base(id, name, type, kind)
         {
             Identifier = identifier;
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             StartTime = startTime;
             TotalProcessorTime = totalProcessorTime;
             UserProcessorTime = userProcessorTime;
-            PriviledgedProcessorTime = priviledgedProcessorTime;
             State = state;
             WaitReason = waitReason;
             CustomInit();
@@ -128,12 +125,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.user_processor_time")]
         public string UserProcessorTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets privileged processor time.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.priviledged_processor_time")]
-        public string PriviledgedProcessorTime { get; set; }
 
         /// <summary>
         /// Gets or sets thread state.

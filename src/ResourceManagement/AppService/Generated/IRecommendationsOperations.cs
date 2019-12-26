@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all recommendations for a subscription.
         /// </summary>
         /// <remarks>
-        /// List all recommendations for a subscription.
+        /// Description for List all recommendations for a subscription.
         /// </remarks>
         /// <param name='featured'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to return only the most
@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Reset all recommendation opt-out settings for a subscription.
         /// </summary>
         /// <remarks>
-        /// Reset all recommendation opt-out settings for a subscription.
+        /// Description for Reset all recommendation opt-out settings for a
+        /// subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -78,8 +79,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// in the future.
         /// </summary>
         /// <remarks>
-        /// Disables the specified rule so it will not apply to a subscription
-        /// in the future.
+        /// Description for Disables the specified rule so it will not apply to
+        /// a subscription in the future.
         /// </remarks>
         /// <param name='name'>
         /// Rule name
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -102,8 +103,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// time range.
         /// </summary>
         /// <remarks>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
+        /// Description for Get past recommendations for an app, optionally
+        /// specified by the time range.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all recommendations for an app.
         /// </summary>
         /// <remarks>
-        /// Get all recommendations for an app.
+        /// Description for Get all recommendations for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Disable all recommendations for an app.
         /// </summary>
         /// <remarks>
-        /// Disable all recommendations for an app.
+        /// Description for Disable all recommendations for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -196,7 +197,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -207,7 +208,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Reset all recommendation opt-out settings for an app.
         /// </summary>
         /// <remarks>
-        /// Reset all recommendation opt-out settings for an app.
+        /// Description for Reset all recommendation opt-out settings for an
+        /// app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -223,7 +225,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -234,7 +236,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get a recommendation rule for an app.
         /// </summary>
         /// <remarks>
-        /// Get a recommendation rule for an app.
+        /// Description for Get a recommendation rule for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -273,7 +275,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Disables the specific rule for a web site permanently.
         /// </summary>
         /// <remarks>
-        /// Disables the specific rule for a web site permanently.
+        /// Description for Disables the specific rule for a web site
+        /// permanently.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -292,7 +295,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -304,8 +307,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// time range.
         /// </summary>
         /// <remarks>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
+        /// Description for Get past recommendations for an app, optionally
+        /// specified by the time range.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -344,7 +347,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all recommendations for an app.
         /// </summary>
         /// <remarks>
-        /// Get all recommendations for an app.
+        /// Description for Get all recommendations for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -382,7 +385,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Disable all recommendations for an app.
         /// </summary>
         /// <remarks>
-        /// Disable all recommendations for an app.
+        /// Description for Disable all recommendations for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -396,7 +399,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -407,7 +410,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Reset all recommendation opt-out settings for an app.
         /// </summary>
         /// <remarks>
-        /// Reset all recommendation opt-out settings for an app.
+        /// Description for Reset all recommendation opt-out settings for an
+        /// app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -421,7 +425,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -432,7 +436,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get a recommendation rule for an app.
         /// </summary>
         /// <remarks>
-        /// Get a recommendation rule for an app.
+        /// Description for Get a recommendation rule for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -471,7 +475,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Disables the specific rule for a web site permanently.
         /// </summary>
         /// <remarks>
-        /// Disables the specific rule for a web site permanently.
+        /// Description for Disables the specific rule for a web site
+        /// permanently.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -488,7 +493,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -499,7 +504,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List all recommendations for a subscription.
         /// </summary>
         /// <remarks>
-        /// List all recommendations for a subscription.
+        /// Description for List all recommendations for a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -525,8 +530,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// time range.
         /// </summary>
         /// <remarks>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
+        /// Description for Get past recommendations for an app, optionally
+        /// specified by the time range.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -551,7 +556,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all recommendations for an app.
         /// </summary>
         /// <remarks>
-        /// Get all recommendations for an app.
+        /// Description for Get all recommendations for an app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -577,8 +582,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// time range.
         /// </summary>
         /// <remarks>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
+        /// Description for Get past recommendations for an app, optionally
+        /// specified by the time range.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -603,7 +608,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all recommendations for an app.
         /// </summary>
         /// <remarks>
-        /// Get all recommendations for an app.
+        /// Description for Get all recommendations for an app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

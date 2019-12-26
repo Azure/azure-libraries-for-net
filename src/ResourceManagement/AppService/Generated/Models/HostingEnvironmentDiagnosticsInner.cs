@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// HostingEnvironmentDiagnosticsInner class.
         /// </summary>
         /// <param name="name">Name/identifier of the diagnostics.</param>
-        /// <param name="diagnosicsOutput">Diagnostics output.</param>
-        public HostingEnvironmentDiagnosticsInner(string name = default(string), string diagnosicsOutput = default(string))
+        /// <param name="diagnosticsOutput">Diagnostics output.</param>
+        public HostingEnvironmentDiagnosticsInner(string name = default(string), string diagnosticsOutput = default(string))
         {
             Name = name;
-            DiagnosicsOutput = diagnosicsOutput;
+            DiagnosticsOutput = diagnosticsOutput;
             CustomInit();
         }
 
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets diagnostics output.
         /// </summary>
-        [JsonProperty(PropertyName = "diagnosicsOutput")]
-        public string DiagnosicsOutput { get; set; }
+        [JsonProperty(PropertyName = "diagnosticsOutput")]
+        public string DiagnosticsOutput { get; set; }
 
     }
 }

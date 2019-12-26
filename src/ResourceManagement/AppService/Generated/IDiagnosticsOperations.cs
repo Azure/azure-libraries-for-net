@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List Hosting Environment Detector Responses
         /// </summary>
         /// <remarks>
-        /// List Hosting Environment Detector Responses
+        /// Description for List Hosting Environment Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Hosting Environment Detector Response
         /// </summary>
         /// <remarks>
-        /// Get Hosting Environment Detector Response
+        /// Description for Get Hosting Environment Detector Response
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List Site Detector Responses
         /// </summary>
         /// <remarks>
-        /// List Site Detector Responses
+        /// Description for List Site Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get site detector response
         /// </summary>
         /// <remarks>
-        /// Get site detector response
+        /// Description for Get site detector response
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Categories
+        /// Description for Get Diagnostics Categories
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Diagnostics Category
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Category
+        /// Description for Get Diagnostics Category
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Site Analyses
         /// </summary>
         /// <remarks>
-        /// Get Site Analyses
+        /// Description for Get Site Analyses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -246,12 +246,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AnalysisDefinition>>> ListSiteAnalysesWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AnalysisDefinitionInner>>> ListSiteAnalysesWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Site Analysis
         /// </summary>
         /// <remarks>
-        /// Get Site Analysis
+        /// Description for Get Site Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -280,12 +280,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiagnosticAnalysisInner>> GetSiteAnalysisWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AnalysisDefinitionInner>> GetSiteAnalysisWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Execute Analysis
         /// </summary>
         /// <remarks>
-        /// Execute Analysis
+        /// Description for Execute Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Detectors
         /// </summary>
         /// <remarks>
-        /// Get Detectors
+        /// Description for Get Detectors
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -354,12 +354,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> ListSiteDetectorsWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DetectorDefinitionInner>>> ListSiteDetectorsWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Detector
         /// </summary>
         /// <remarks>
-        /// Get Detector
+        /// Description for Get Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -388,12 +388,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DetectorDefinitionInner>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Execute Detector
         /// </summary>
         /// <remarks>
-        /// Execute Detector
+        /// Description for Execute Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List Site Detector Responses
         /// </summary>
         /// <remarks>
-        /// List Site Detector Responses
+        /// Description for List Site Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get site detector response
         /// </summary>
         /// <remarks>
-        /// Get site detector response
+        /// Description for Get site detector response
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Categories
+        /// Description for Get Diagnostics Categories
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Diagnostics Category
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Category
+        /// Description for Get Diagnostics Category
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Site Analyses
         /// </summary>
         /// <remarks>
-        /// Get Site Analyses
+        /// Description for Get Site Analyses
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -604,12 +604,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AnalysisDefinition>>> ListSiteAnalysesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AnalysisDefinitionInner>>> ListSiteAnalysesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Site Analysis
         /// </summary>
         /// <remarks>
-        /// Get Site Analysis
+        /// Description for Get Site Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -641,12 +641,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiagnosticAnalysisInner>> GetSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AnalysisDefinitionInner>> GetSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Execute Analysis
         /// </summary>
         /// <remarks>
-        /// Execute Analysis
+        /// Description for Execute Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Detectors
         /// </summary>
         /// <remarks>
-        /// Get Detectors
+        /// Description for Get Detectors
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -721,12 +721,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> ListSiteDetectorsSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DetectorDefinitionInner>>> ListSiteDetectorsSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Detector
         /// </summary>
         /// <remarks>
-        /// Get Detector
+        /// Description for Get Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -758,12 +758,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DetectorDefinitionInner>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Execute Detector
         /// </summary>
         /// <remarks>
-        /// Execute Detector
+        /// Description for Execute Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List Hosting Environment Detector Responses
         /// </summary>
         /// <remarks>
-        /// List Hosting Environment Detector Responses
+        /// Description for List Hosting Environment Detector Responses
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// List Site Detector Responses
         /// </summary>
         /// <remarks>
-        /// List Site Detector Responses
+        /// Description for List Site Detector Responses
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Categories
+        /// Description for Get Diagnostics Categories
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Site Analyses
         /// </summary>
         /// <remarks>
-        /// Get Site Analyses
+        /// Description for Get Site Analyses
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -904,12 +904,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AnalysisDefinition>>> ListSiteAnalysesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AnalysisDefinitionInner>>> ListSiteAnalysesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Detectors
         /// </summary>
         /// <remarks>
-        /// Get Detectors
+        /// Description for Get Detectors
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -929,37 +929,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> ListSiteDetectorsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get Detector
-        /// </summary>
-        /// <remarks>
-        /// Get Detector
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> GetSiteDetectorNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DetectorDefinitionInner>>> ListSiteDetectorsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List Site Detector Responses
         /// </summary>
         /// <remarks>
-        /// List Site Detector Responses
+        /// Description for List Site Detector Responses
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -984,7 +959,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Diagnostics Categories
         /// </summary>
         /// <remarks>
-        /// Get Diagnostics Categories
+        /// Description for Get Diagnostics Categories
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1009,7 +984,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get Site Analyses
         /// </summary>
         /// <remarks>
-        /// Get Site Analyses
+        /// Description for Get Site Analyses
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1029,12 +1004,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AnalysisDefinition>>> ListSiteAnalysesSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AnalysisDefinitionInner>>> ListSiteAnalysesSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get Detectors
         /// </summary>
         /// <remarks>
-        /// Get Detectors
+        /// Description for Get Detectors
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1054,31 +1029,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> ListSiteDetectorsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get Detector
-        /// </summary>
-        /// <remarks>
-        /// Get Detector
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<DetectorDefinition>>> GetSiteDetectorSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DetectorDefinitionInner>>> ListSiteDetectorsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

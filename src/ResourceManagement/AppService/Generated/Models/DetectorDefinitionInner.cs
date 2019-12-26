@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Class representing detector definition
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DetectorDefinition : ProxyOnlyResourceInner
+    public partial class DetectorDefinitionInner : ProxyOnlyResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the DetectorDefinition class.
+        /// Initializes a new instance of the DetectorDefinitionInner class.
         /// </summary>
-        public DetectorDefinition()
+        public DetectorDefinitionInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DetectorDefinition class.
+        /// Initializes a new instance of the DetectorDefinitionInner class.
         /// </summary>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="displayName">Display name of the detector</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="rank">Detector Rank</param>
         /// <param name="isEnabled">Flag representing whether detector is
         /// enabled or not.</param>
-        public DetectorDefinition(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string displayName = default(string), string description = default(string), double? rank = default(double?), bool? isEnabled = default(bool?))
+        public DetectorDefinitionInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string displayName = default(string), string description = default(string), double? rank = default(double?), bool? isEnabled = default(bool?))
             : base(id, name, type, kind)
         {
             DisplayName = displayName;

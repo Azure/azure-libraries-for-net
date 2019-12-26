@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all top-level domains supported for registration.
         /// </summary>
         /// <remarks>
-        /// Get all top-level domains supported for registration.
+        /// Description for Get all top-level domains supported for registration.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get details of a top-level domain.
         /// </summary>
         /// <remarks>
-        /// Get details of a top-level domain.
+        /// Description for Get details of a top-level domain.
         /// </remarks>
         /// <param name='name'>
         /// Name of the top-level domain.
@@ -414,8 +414,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// domain.
         /// </summary>
         /// <remarks>
-        /// Gets all legal agreements that user needs to accept before purchasing a
-        /// domain.
+        /// Description for Gets all legal agreements that user needs to accept before
+        /// purchasing a domain.
         /// </remarks>
         /// <param name='name'>
         /// Name of the top-level domain.
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all top-level domains supported for registration.
         /// </summary>
         /// <remarks>
-        /// Get all top-level domains supported for registration.
+        /// Description for Get all top-level domains supported for registration.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -786,8 +786,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// domain.
         /// </summary>
         /// <remarks>
-        /// Gets all legal agreements that user needs to accept before purchasing a
-        /// domain.
+        /// Description for Gets all legal agreements that user needs to accept before
+        /// purchasing a domain.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

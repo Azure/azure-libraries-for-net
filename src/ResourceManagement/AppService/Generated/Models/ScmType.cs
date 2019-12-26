@@ -36,5 +36,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public static readonly ScmType ExternalHg = Parse("ExternalHg");
         public static readonly ScmType OneDrive = Parse("OneDrive");
         public static readonly ScmType VSO = Parse("VSO");
+        public static readonly ScmType VSTSRM = Parse("VSTSRM");
     }
 }

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// addresses.</param>
         /// <param name="isSwift">Flag that is used to denote if this is VNET
         /// injection</param>
-        public VnetInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), byte[] certBlob = default(byte[]), IList<VnetRouteInner> routes = default(IList<VnetRouteInner>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
+        public VnetInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), string certBlob = default(string), IList<VnetRouteInner> routes = default(IList<VnetRouteInner>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
             : base(id, name, type, kind)
         {
             VnetResourceId = vnetResourceId;
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Point-To-Site VPN connection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.certBlob")]
-        public byte[] CertBlob { get; set; }
+        public string CertBlob { get; set; }
 
         /// <summary>
         /// Gets the routes that this Virtual Network connection uses.

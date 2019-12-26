@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get available application frameworks and their versions
             /// </summary>
             /// <remarks>
-            /// Get available application frameworks and their versions
+            /// Description for Get available application frameworks and their versions
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStack>> GetAvailableStacksAsync(this IProviderOperations operations, OsTypeSelected osTypeSelected = default(OsTypeSelected), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksAsync(this IProviderOperations operations, OsTypeSelected osTypeSelected = default(OsTypeSelected), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAvailableStacksWithHttpMessagesAsync(osTypeSelected, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// exposes resource metric definitions
             /// </summary>
             /// <remarks>
-            /// Gets all available operations for the Microsoft.Web resource provider. Also
-            /// exposes resource metric definitions
+            /// Description for Gets all available operations for the Microsoft.Web
+            /// resource provider. Also exposes resource metric definitions
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get available application frameworks and their versions
             /// </summary>
             /// <remarks>
-            /// Get available application frameworks and their versions
+            /// Description for Get available application frameworks and their versions
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStack>> GetAvailableStacksOnPremAsync(this IProviderOperations operations, OsTypeSelected1 osTypeSelected = default(OsTypeSelected1), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksOnPremAsync(this IProviderOperations operations, OsTypeSelected1 osTypeSelected = default(OsTypeSelected1), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAvailableStacksOnPremWithHttpMessagesAsync(osTypeSelected, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get available application frameworks and their versions
             /// </summary>
             /// <remarks>
-            /// Get available application frameworks and their versions
+            /// Description for Get available application frameworks and their versions
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStack>> GetAvailableStacksNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAvailableStacksNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -117,8 +117,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// exposes resource metric definitions
             /// </summary>
             /// <remarks>
-            /// Gets all available operations for the Microsoft.Web resource provider. Also
-            /// exposes resource metric definitions
+            /// Description for Gets all available operations for the Microsoft.Web
+            /// resource provider. Also exposes resource metric definitions
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get available application frameworks and their versions
             /// </summary>
             /// <remarks>
-            /// Get available application frameworks and their versions
+            /// Description for Get available application frameworks and their versions
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStack>> GetAvailableStacksOnPremNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksOnPremNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAvailableStacksOnPremNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

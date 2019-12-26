@@ -79,7 +79,7 @@ namespace ManageLinuxWebAppWithTrafficManager
                 //============================================================
                 // Create a self-singed SSL certificate
 
-                pfxPath = domainName + ".pfx";
+                pfxPath = "webapp_" + nameof(ManageLinuxWebAppWithTrafficManager).ToLower() + ".pfx";
 
                 Utilities.Log("Creating a self-signed certificate " + pfxPath + "...");
 

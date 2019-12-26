@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -16,7 +18,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// <summary>
     /// Describes main public IP address and any extra virtual IPs.
     /// </summary>
-    public partial class AddressResponseInner
+    [Rest.Serialization.JsonTransformation]
+    public partial class AddressResponseInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the AddressResponseInner class.
@@ -29,6 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the AddressResponseInner class.
         /// </summary>
+        /// <param name="kind">Kind of resource.</param>
         /// <param name="serviceIpAddress">Main public virtual IP.</param>
         /// <param name="internalIpAddress">Virtual Network internal IP address
         /// of the App Service Environment if it is in internal load-balancing
@@ -36,7 +40,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="outboundIpAddresses">IP addresses appearing on
         /// outbound connections.</param>
         /// <param name="vipMappings">Additional virtual IPs.</param>
-        public AddressResponseInner(string serviceIpAddress = default(string), string internalIpAddress = default(string), IList<string> outboundIpAddresses = default(IList<string>), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>))
+        public AddressResponseInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string serviceIpAddress = default(string), string internalIpAddress = default(string), IList<string> outboundIpAddresses = default(IList<string>), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>))
+            : base(id, name, type, kind)
         {
             ServiceIpAddress = serviceIpAddress;
             InternalIpAddress = internalIpAddress;
@@ -53,26 +58,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets main public virtual IP.
         /// </summary>
-        [JsonProperty(PropertyName = "serviceIpAddress")]
+        [JsonProperty(PropertyName = "properties.serviceIpAddress")]
         public string ServiceIpAddress { get; set; }
 
         /// <summary>
         /// Gets or sets virtual Network internal IP address of the App Service
         /// Environment if it is in internal load-balancing mode.
         /// </summary>
-        [JsonProperty(PropertyName = "internalIpAddress")]
+        [JsonProperty(PropertyName = "properties.internalIpAddress")]
         public string InternalIpAddress { get; set; }
 
         /// <summary>
         /// Gets or sets IP addresses appearing on outbound connections.
         /// </summary>
-        [JsonProperty(PropertyName = "outboundIpAddresses")]
+        [JsonProperty(PropertyName = "properties.outboundIpAddresses")]
         public IList<string> OutboundIpAddresses { get; set; }
 
         /// <summary>
         /// Gets or sets additional virtual IPs.
         /// </summary>
-        [JsonProperty(PropertyName = "vipMappings")]
+        [JsonProperty(PropertyName = "properties.vipMappings")]
         public IList<VirtualIPMapping> VipMappings { get; set; }
 
     }

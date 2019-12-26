@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="metrics">Source Metrics</param>
         /// <param name="data">Additional Source Data</param>
         /// <param name="detectorMetaData">Detector Meta Data</param>
-        public AnalysisData(string source = default(string), DetectorDefinition detectorDefinition = default(DetectorDefinition), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData detectorMetaData = default(ResponseMetaData))
+        public AnalysisData(string source = default(string), DetectorDefinitionInner detectorDefinition = default(DetectorDefinitionInner), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData detectorMetaData = default(ResponseMetaData))
         {
             Source = source;
             DetectorDefinition = detectorDefinition;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Gets or sets detector Definition
         /// </summary>
         [JsonProperty(PropertyName = "detectorDefinition")]
-        public DetectorDefinition DetectorDefinition { get; set; }
+        public DetectorDefinitionInner DetectorDefinition { get; set; }
 
         /// <summary>
         /// Gets or sets source Metrics

@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.Web/certificates?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3ccc408b-9cb9-4b1f-a3ce-8d67a225639c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.0.0.63",
+          "MacAddressHash/5b986dbc01e2cd9262cdc8765199485ab440ab932e80985aff873a3788750edd"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "aa9fa061-80f5-44eb-b36b-20c9e43a6661"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11980"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-correlation-request-id": [
+          "16cb3166-8038-4a14-b9f2-ebda84206fa9"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20191225T034618Z:16cb3166-8038-4a14-b9f2-ebda84206fa9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 25 Dec 2019 03:46:18 GMT"
+        ],
+        "Content-Length": [
+          "910"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/webtest/providers/Microsoft.Web/certificates/C41F3E969835B9246AEBEFAE8C10B572B7452E57##centralus#\",\r\n      \"name\": \"C41F3E969835B9246AEBEFAE8C10B572B7452E57##centralus#\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"*.teststar.biz\",\r\n        \"hostNames\": [\r\n          \"*.teststar.biz\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"Let's Encrypt Authority X3\",\r\n        \"issueDate\": \"2019-10-21T16:26:22+08:00\",\r\n        \"expirationDate\": \"2020-01-19T16:26:22+08:00\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"C41F3E969835B9246AEBEFAE8C10B572B7452E57\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultSecretStatus\": \"Initialized\",\r\n        \"webSpace\": \"webtest-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": {}\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "ServicePrincipal": "f963607e-882c-4ea1-95b3-0399672aea88",
+    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "SubscriptionId": "ec0aa5f7-9e78-40c9-85cd-535c6305b380"
+  }
+}

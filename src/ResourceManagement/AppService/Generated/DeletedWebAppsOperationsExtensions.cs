@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get all deleted apps for a subscription.
             /// </summary>
             /// <remarks>
-            /// Get all deleted apps for a subscription.
+            /// Description for Get all deleted apps for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -31,9 +31,56 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DeletedSite>> ListAsync(this IDeletedWebAppsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DeletedSiteInner>> ListAsync(this IDeletedWebAppsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all deleted apps for a subscription at location
+            /// </summary>
+            /// <remarks>
+            /// Description for Get all deleted apps for a subscription at location
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeletedSiteInner>> ListByLocationAsync(this IDeletedWebAppsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get deleted app for a subscription at location.
+            /// </summary>
+            /// <remarks>
+            /// Description for Get deleted app for a subscription at location.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='deletedSiteId'>
+            /// The numeric ID of the deleted app, e.g. 12345
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeletedSiteInner> GetDeletedWebAppByLocationAsync(this IDeletedWebAppsOperations operations, string location, string deletedSiteId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetDeletedWebAppByLocationWithHttpMessagesAsync(location, deletedSiteId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -43,7 +90,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get all deleted apps for a subscription.
             /// </summary>
             /// <remarks>
-            /// Get all deleted apps for a subscription.
+            /// Description for Get all deleted apps for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -54,9 +101,32 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DeletedSite>> ListNextAsync(this IDeletedWebAppsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DeletedSiteInner>> ListNextAsync(this IDeletedWebAppsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get all deleted apps for a subscription at location
+            /// </summary>
+            /// <remarks>
+            /// Description for Get all deleted apps for a subscription at location
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DeletedSiteInner>> ListByLocationNextAsync(this IDeletedWebAppsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByLocationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -109,7 +109,7 @@ namespace ManageWebAppWithDomainSsl
                 //============================================================
                 // Create a self-singed SSL certificate
 
-                var pfxPath = domainName + ".pfx";
+                var pfxPath = "webapp_" + nameof(ManageWebAppWithDomainSsl).ToLower() + ".pfx";
 
                 Utilities.Log("Creating a self-signed certificate " + pfxPath + "...");
 

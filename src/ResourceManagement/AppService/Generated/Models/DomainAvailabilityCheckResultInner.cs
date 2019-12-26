@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// <summary>
     /// Domain availability check result.
     /// </summary>
-    public partial class DomainAvailablilityCheckResultInner
+    public partial class DomainAvailabilityCheckResultInner
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// DomainAvailablilityCheckResultInner class.
+        /// DomainAvailabilityCheckResultInner class.
         /// </summary>
-        public DomainAvailablilityCheckResultInner()
+        public DomainAvailabilityCheckResultInner()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// DomainAvailablilityCheckResultInner class.
+        /// DomainAvailabilityCheckResultInner class.
         /// </summary>
         /// <param name="name">Name of the domain.</param>
         /// <param name="available">&lt;code&gt;true&lt;/code&gt; if domain can
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Purchasing this domain will simply restore it and this operation
         /// will not cost anything. Possible values include: 'Regular',
         /// 'SoftDeleted'</param>
-        public DomainAvailablilityCheckResultInner(string name = default(string), bool? available = default(bool?), DomainType? domainType = default(DomainType?))
+        public DomainAvailabilityCheckResultInner(string name = default(string), bool? available = default(bool?), DomainType? domainType = default(DomainType?))
         {
             Name = name;
             Available = available;

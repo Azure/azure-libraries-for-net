@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Check if a domain is available for registration.
         /// </summary>
         /// <remarks>
-        /// Check if a domain is available for registration.
+        /// Description for Check if a domain is available for registration.
         /// </remarks>
         /// <param name='name'>
         /// Name of the object.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DomainAvailablilityCheckResultInner>> CheckAvailabilityWithHttpMessagesAsync(string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DomainAvailabilityCheckResultInner>> CheckAvailabilityWithHttpMessagesAsync(string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<DomainAvailablilityCheckResultInner>();
+            var _result = new AzureOperationResponse<DomainAvailabilityCheckResultInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DomainAvailablilityCheckResultInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DomainAvailabilityCheckResultInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all domains in a subscription.
         /// </summary>
         /// <remarks>
-        /// Get all domains in a subscription.
+        /// Description for Get all domains in a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -419,7 +419,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Generate a single sign-on request for the domain management portal.
         /// </summary>
         /// <remarks>
-        /// Generate a single sign-on request for the domain management portal.
+        /// Description for Generate a single sign-on request for the domain management
+        /// portal.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -595,7 +596,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get domain name recommendations based on keywords.
         /// </summary>
         /// <remarks>
-        /// Get domain name recommendations based on keywords.
+        /// Description for Get domain name recommendations based on keywords.
         /// </remarks>
         /// <param name='parameters'>
         /// Search parameters for domain name recommendations.
@@ -785,7 +786,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all domains in a resource group.
         /// </summary>
         /// <remarks>
-        /// Get all domains in a resource group.
+        /// Description for Get all domains in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -985,7 +986,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get a domain.
         /// </summary>
         /// <remarks>
-        /// Get a domain.
+        /// Description for Get a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1194,7 +1195,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Creates or updates a domain.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a domain.
+        /// Description for Creates or updates a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1222,7 +1223,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Delete a domain.
         /// </summary>
         /// <remarks>
-        /// Delete a domain.
+        /// Description for Delete a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1241,7 +1242,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -1374,14 +1375,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1391,10 +1391,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1425,7 +1421,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Creates or updates a domain.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a domain.
+        /// Description for Creates or updates a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1673,7 +1669,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Lists domain ownership identifiers.
         /// </summary>
         /// <remarks>
-        /// Lists domain ownership identifiers.
+        /// Description for Lists domain ownership identifiers.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1882,7 +1878,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get ownership identifier for domain
         /// </summary>
         /// <remarks>
-        /// Get ownership identifier for domain
+        /// Description for Get ownership identifier for domain
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2101,8 +2097,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// for an existing identifer
         /// </summary>
         /// <remarks>
-        /// Creates an ownership identifier for a domain or updates identifier details
-        /// for an existing identifer
+        /// Description for Creates an ownership identifier for a domain or updates
+        /// identifier details for an existing identifer
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2334,7 +2330,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Delete ownership identifier for domain
         /// </summary>
         /// <remarks>
-        /// Delete ownership identifier for domain
+        /// Description for Delete ownership identifier for domain
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2351,7 +2347,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -2485,14 +2481,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2502,10 +2497,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2537,8 +2528,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// for an existing identifer
         /// </summary>
         /// <remarks>
-        /// Creates an ownership identifier for a domain or updates identifier details
-        /// for an existing identifer
+        /// Description for Creates an ownership identifier for a domain or updates
+        /// identifier details for an existing identifer
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2770,7 +2761,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Renew a domain.
         /// </summary>
         /// <remarks>
-        /// Renew a domain.
+        /// Description for Renew a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2784,7 +2775,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -2910,16 +2901,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 202 && (int)_statusCode != 204 && (int)_statusCode != 400 && (int)_statusCode != 500)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202 && (int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2929,10 +2919,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2963,7 +2949,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Creates or updates a domain.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a domain.
+        /// Description for Creates or updates a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3215,7 +3201,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all domains in a subscription.
         /// </summary>
         /// <remarks>
-        /// Get all domains in a subscription.
+        /// Description for Get all domains in a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3386,7 +3372,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get domain name recommendations based on keywords.
         /// </summary>
         /// <remarks>
-        /// Get domain name recommendations based on keywords.
+        /// Description for Get domain name recommendations based on keywords.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3557,7 +3543,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all domains in a resource group.
         /// </summary>
         /// <remarks>
-        /// Get all domains in a resource group.
+        /// Description for Get all domains in a resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3728,7 +3714,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Lists domain ownership identifiers.
         /// </summary>
         /// <remarks>
-        /// Lists domain ownership identifiers.
+        /// Description for Lists domain ownership identifiers.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -17,22 +17,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Definition of Analysis
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AnalysisDefinition : ProxyOnlyResourceInner
+    public partial class AnalysisDefinitionInner : ProxyOnlyResourceInner
     {
         /// <summary>
-        /// Initializes a new instance of the AnalysisDefinition class.
+        /// Initializes a new instance of the AnalysisDefinitionInner class.
         /// </summary>
-        public AnalysisDefinition()
+        public AnalysisDefinitionInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AnalysisDefinition class.
+        /// Initializes a new instance of the AnalysisDefinitionInner class.
         /// </summary>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="description">Description of the Analysis</param>
-        public AnalysisDefinition(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string description = default(string))
+        public AnalysisDefinitionInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string description = default(string))
             : base(id, name, type, kind)
         {
             Description = description;

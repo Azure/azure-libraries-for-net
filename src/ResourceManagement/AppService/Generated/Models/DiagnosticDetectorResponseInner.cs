@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="data">Additional Data that detector wants to
         /// send.</param>
         /// <param name="responseMetaData">Meta Data</param>
-        public DiagnosticDetectorResponseInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? issueDetected = default(bool?), DetectorDefinition detectorDefinition = default(DetectorDefinition), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<DetectorAbnormalTimePeriod> abnormalTimePeriods = default(IList<DetectorAbnormalTimePeriod>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData responseMetaData = default(ResponseMetaData))
+        public DiagnosticDetectorResponseInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? issueDetected = default(bool?), DetectorDefinitionInner detectorDefinition = default(DetectorDefinitionInner), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<DetectorAbnormalTimePeriod> abnormalTimePeriods = default(IList<DetectorAbnormalTimePeriod>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData responseMetaData = default(ResponseMetaData))
             : base(id, name, type, kind)
         {
             StartTime = startTime;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Gets or sets detector's definition
         /// </summary>
         [JsonProperty(PropertyName = "properties.detectorDefinition")]
-        public DetectorDefinition DetectorDefinition { get; set; }
+        public DetectorDefinitionInner DetectorDefinition { get; set; }
 
         /// <summary>
         /// Gets or sets metrics provided by the detector

@@ -85,7 +85,7 @@ namespace ManageTrafficManager
                 //============================================================
                 // Create a self-singed SSL certificate
 
-                var pfxPath = domainName + ".pfx";
+                var pfxPath = "webapp_" + nameof(ManageTrafficManager).ToLower() + ".pfx";
                 Utilities.Log("Creating a self-signed certificate " + pfxPath + "...");
                 Utilities.CreateCertificate(domainName, pfxPath, certPassword);
                 Utilities.Log("Created self-signed certificate " + pfxPath);

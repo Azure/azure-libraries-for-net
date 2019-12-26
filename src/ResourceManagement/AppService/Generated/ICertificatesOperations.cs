@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all certificates for a subscription.
         /// </summary>
         /// <remarks>
-        /// Get all certificates for a subscription.
+        /// Description for Get all certificates for a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all certificates in a resource group.
         /// </summary>
         /// <remarks>
-        /// Get all certificates in a resource group.
+        /// Description for Get all certificates in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get a certificate.
         /// </summary>
         /// <remarks>
-        /// Get a certificate.
+        /// Description for Get a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Create or update a certificate.
         /// </summary>
         /// <remarks>
-        /// Create or update a certificate.
+        /// Description for Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Delete a certificate.
         /// </summary>
         /// <remarks>
-        /// Delete a certificate.
+        /// Description for Delete a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="DefaultErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Create or update a certificate.
         /// </summary>
         /// <remarks>
-        /// Create or update a certificate.
+        /// Description for Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all certificates for a subscription.
         /// </summary>
         /// <remarks>
-        /// Get all certificates for a subscription.
+        /// Description for Get all certificates for a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Get all certificates in a resource group.
         /// </summary>
         /// <remarks>
-        /// Get all certificates in a resource group.
+        /// Description for Get all certificates in a resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

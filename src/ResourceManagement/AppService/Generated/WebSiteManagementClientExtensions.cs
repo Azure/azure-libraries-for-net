@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets publishing user
             /// </summary>
             /// <remarks>
-            /// Gets publishing user
+            /// Description for Gets publishing user
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Updates publishing user
             /// </summary>
             /// <remarks>
-            /// Updates publishing user
+            /// Description for Updates publishing user
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets the source controls available for Azure websites.
             /// </summary>
             /// <remarks>
-            /// Gets the source controls available for Azure websites.
+            /// Description for Gets the source controls available for Azure websites.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets source control token
             /// </summary>
             /// <remarks>
-            /// Gets source control token
+            /// Description for Gets source control token
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Updates source control token
             /// </summary>
             /// <remarks>
-            /// Updates source control token
+            /// Description for Updates source control token
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets a list of meters for a given location.
             /// </summary>
             /// <remarks>
-            /// Gets a list of meters for a given location.
+            /// Description for Gets a list of meters for a given location.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Check if a resource name is available.
             /// </summary>
             /// <remarks>
-            /// Check if a resource name is available.
+            /// Description for Check if a resource name is available.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets list of available geo regions plus ministamps
             /// </summary>
             /// <remarks>
-            /// Gets list of available geo regions plus ministamps
+            /// Description for Gets list of available geo regions plus ministamps
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get a list of available geographical regions.
             /// </summary>
             /// <remarks>
-            /// Get a list of available geographical regions.
+            /// Description for Get a list of available geographical regions.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List all apps that are assigned to a hostname.
             /// </summary>
             /// <remarks>
-            /// List all apps that are assigned to a hostname.
+            /// Description for List all apps that are assigned to a hostname.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List all premier add-on offers.
             /// </summary>
             /// <remarks>
-            /// List all premier add-on offers.
+            /// Description for List all premier add-on offers.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List all SKUs.
             /// </summary>
             /// <remarks>
-            /// List all SKUs.
+            /// Description for List all SKUs.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -314,8 +314,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// analyzing the Network Security Group rules.
             /// </summary>
             /// <remarks>
-            /// Verifies if this VNET is compatible with an App Service Environment by
-            /// analyzing the Network Security Group rules.
+            /// Description for Verifies if this VNET is compatible with an App Service
+            /// Environment by analyzing the Network Security Group rules.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Move resources between resource groups.
             /// </summary>
             /// <remarks>
-            /// Move resources between resource groups.
+            /// Description for Move resources between resource groups.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Validate if a resource can be created.
             /// </summary>
             /// <remarks>
-            /// Validate if a resource can be created.
+            /// Description for Validate if a resource can be created.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -384,35 +384,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
-            /// Validate if the container settings are correct.
-            /// </summary>
-            /// <remarks>
-            /// Validate if the container settings are correct.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='validateContainerSettingsRequest'>
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<object> ValidateContainerSettingsAsync(this IWebSiteManagementClient operations, ValidateContainerSettingsRequest validateContainerSettingsRequest, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ValidateContainerSettingsWithHttpMessagesAsync(validateContainerSettingsRequest, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Validate whether a resource can be moved.
             /// </summary>
             /// <remarks>
-            /// Validate whether a resource can be moved.
+            /// Description for Validate whether a resource can be moved.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -435,7 +410,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets the source controls available for Azure websites.
             /// </summary>
             /// <remarks>
-            /// Gets the source controls available for Azure websites.
+            /// Description for Gets the source controls available for Azure websites.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -458,7 +433,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Gets a list of meters for a given location.
             /// </summary>
             /// <remarks>
-            /// Gets a list of meters for a given location.
+            /// Description for Gets a list of meters for a given location.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -481,7 +456,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// Get a list of available geographical regions.
             /// </summary>
             /// <remarks>
-            /// Get a list of available geographical regions.
+            /// Description for Get a list of available geographical regions.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -504,7 +479,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List all apps that are assigned to a hostname.
             /// </summary>
             /// <remarks>
-            /// List all apps that are assigned to a hostname.
+            /// Description for List all apps that are assigned to a hostname.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -527,7 +502,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// List all premier add-on offers.
             /// </summary>
             /// <remarks>
-            /// List all premier add-on offers.
+            /// Description for List all premier add-on offers.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
