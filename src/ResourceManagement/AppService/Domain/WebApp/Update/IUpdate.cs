@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
         /// <summary>
         /// Specifies the runtime stack for the web app on Windows operating system.
         /// </summary>
-        /// <param name="runtimeStack">The next stage of the web app update.</param>
-        /// <returns></returns>
+        /// <param name="runtimeStack">The runtime stack for web app.</param>
+        /// <returns>The next stage of the web app update.</returns>
         IUpdate WithRuntimeStack(WebAppRuntimeStack runtimeStack);
     }
 

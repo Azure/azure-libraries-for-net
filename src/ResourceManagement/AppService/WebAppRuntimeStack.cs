@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-/// <summary>
-/// Defines web app runtime stack on Windows operating system.
-/// </summary>
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Defines web app runtime stack on Windows operating system.
+    /// </summary>
     public class WebAppRuntimeStack
     {
         public static WebAppRuntimeStack NETCore = new WebAppRuntimeStack("dotnetcore");
