@@ -111,13 +111,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
     }
 
     /// <summary>
+    /// A web app update allowing runtime stack on Windows operating system to be specified.
+    /// </summary>
+    public interface IWithWindowsRuntimeStack
+    {
+        /// <summary>
+        /// Specifies the runtime stack for the web app on Windows operating system.
+        /// </summary>
+        /// <param name="runtimeStack">The next stage of the web app update.</param>
+        /// <returns></returns>
+        IUpdate WithRuntimeStack(WebAppRuntimeStack runtimeStack);
+    }
+
+    /// <summary>
     /// The template for a web app update operation, containing all the settings that can be modified.
     /// </summary>
     public interface IUpdate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IWithAppServicePlan,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IWithDockerContainerImage
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IWithDockerContainerImage,
+        IWithWindowsRuntimeStack
     {
     }
 }

@@ -94,27 +94,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         /// free plans in the current subscription.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewFreeAppServicePlan();
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewFreeAppServicePlan();
 
         /// <summary>
         /// Creates a new app service plan to use.
         /// </summary>
         /// <param name="pricingTier">The sku of the app service plan.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewWindowsPlan(PricingTier pricingTier);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewWindowsPlan(PricingTier pricingTier);
 
         /// <summary>
         /// Creates a new app service plan to use.
         /// </summary>
         /// <param name="appServicePlanCreatable">The new app service plan creatable.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable);
 
         /// <summary>
         /// Creates a new shared app service plan.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewSharedAppServicePlan();
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewSharedAppServicePlan();
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         /// </summary>
         /// <param name="name">The name of the new group.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewResourceGroup(string name);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewResourceGroup(string name);
 
         /// <summary>
         /// Creates a new resource group to put the resource in.
@@ -150,28 +150,28 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         /// The group's name is automatically derived from the resource's name.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewResourceGroup();
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewResourceGroup();
 
         /// <summary>
         /// Creates a new resource group to put the resource in, based on the definition specified.
         /// </summary>
         /// <param name="groupDefinition">A creatable definition for a new resource group.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewResourceGroup(ICreatable<Microsoft.Azure.Management.ResourceManager.Fluent.IResourceGroup> groupDefinition);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithNewResourceGroup(ICreatable<Microsoft.Azure.Management.ResourceManager.Fluent.IResourceGroup> groupDefinition);
 
         /// <summary>
         /// Associates the resource with an existing resource group.
         /// </summary>
         /// <param name="groupName">The name of an existing resource group to put this resource in.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithExistingResourceGroup(string groupName);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithExistingResourceGroup(string groupName);
 
         /// <summary>
         /// Associates the resource with an existing resource group.
         /// </summary>
         /// <param name="group">An existing resource group to put the resource in.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithExistingResourceGroup(IResourceGroup group);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WithExistingResourceGroup(IResourceGroup group);
     }
 
     /// <summary>
@@ -258,5 +258,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         /// <param name="runtimeStack">The runtime stack installed on the image.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithBuiltInImage(RuntimeStack runtimeStack);
+    }
+
+    /// <summary>
+    /// A web app definition allowing runtime stack on Windows operating system to be specified.
+    /// </summary>
+    public interface IWithWindowsRuntimeStack : IWithCreate
+    {
+        /// <summary>
+        /// Specifies the runtime stack for the web app on Windows operating system.
+        /// </summary>
+        /// <param name="runtimeStack">The next stage of the definition.</param>
+        /// <returns></returns>
+        IWithCreate WithRuntimeStack(WebAppRuntimeStack runtimeStack);
     }
 }

@@ -3,22 +3,19 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition;
+    using Microsoft.Azure.Management.AppService.Fluent.WebApp.Update;
     using Microsoft.Rest.Azure;
     using Models;
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ResourceActions;
-    using ResourceManager.Fluent.Models;
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using WebApp.Definition;
-    using WebApp.Update;
 
     /// <summary>
     /// The implementation for WebApp.
@@ -37,7 +34,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Update.IUpdate,
         WebApp.Definition.IExistingWindowsPlanWithGroup,
         WebApp.Definition.IExistingLinuxPlanWithGroup,
-        IWithAppServicePlan,
+        WebApp.Definition.IWithWindowsRuntimeStack,
+        WebApp.Update.IWithAppServicePlan,
         WebApp.Update.IWithCredentials,
         WebApp.Update.IWithStartUpCommand
     {
@@ -48,6 +46,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private const string SETTING_REGISTRY_PASSWORD = "DOCKER_REGISTRY_SERVER_PASSWORD";
 
         private KuduClient kuduClient;
+
+        private WebAppRuntimeStack runtimeStackOnWindowsOSToUpdate;
 
         ///GENMHASH:B22FA99F4432342EBBDB2AB426A8D2A2:DB92CE96AE133E965FE6DE31D475D7ED
         internal WebAppImpl(
@@ -71,6 +71,40 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return deploymentSlots;
         }
 
+        public override IUpdate Update()
+        {
+            runtimeStackOnWindowsOSToUpdate = null;
+            return base.Update();
+        }
+
+        internal override async Task<SiteInner> SubmitMetadataAsync(SiteInner site, CancellationToken cancellationToken)
+        {
+            await base.SubmitMetadataAsync(site, cancellationToken);
+            if (runtimeStackOnWindowsOSToUpdate != null)
+            {
+                // list metadata
+                StringDictionaryInner metadataInner = await ListMetadataAsync(cancellationToken);
+                // merge with change
+                metadataInner = metadataInner ?? new StringDictionaryInner();
+                metadataInner.Properties = metadataInner.Properties ?? new Dictionary<string, string>();
+                metadataInner.Properties["CURRENT_STACK"] = runtimeStackOnWindowsOSToUpdate.Runtime;
+                // update metadata
+                await UpdateMetadataAsync(metadataInner);
+                // clean up
+                runtimeStackOnWindowsOSToUpdate = null;
+            }
+            return site;
+        }
+
+        internal async Task<StringDictionaryInner> ListMetadataAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.ListMetadataAsync(ResourceGroupName, Name);
+        }
+
+        internal async Task<StringDictionaryInner> UpdateMetadataAsync(StringDictionaryInner metadataInner, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.UpdateMetadataAsync(ResourceGroupName, Name, metadataInner);
+        }
 
         ///GENMHASH:E73A2BC2090FC3A00E0D2D18D7506D67:BFA1AA102FC308FAD095DF52D3D7C9F1
         public WebAppImpl WithPrivateRegistryImage(string imageAndTag, string serverUrl)
@@ -227,31 +261,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        IWithCreate IExistingWindowsPlanWithGroup.WithNewResourceGroup(string name)
+        WebApp.Definition.IWithWindowsRuntimeStack IExistingWindowsPlanWithGroup.WithNewResourceGroup(string name)
         {
             WithNewResourceGroup(name);
             return this;
         }
 
-        IWithCreate IExistingWindowsPlanWithGroup.WithNewResourceGroup()
+        WebApp.Definition.IWithWindowsRuntimeStack IExistingWindowsPlanWithGroup.WithNewResourceGroup()
         {
             WithNewResourceGroup();
             return this;
         }
 
-        IWithCreate IExistingWindowsPlanWithGroup.WithNewResourceGroup(ICreatable<IResourceGroup> groupDefinition)
+        WebApp.Definition.IWithWindowsRuntimeStack IExistingWindowsPlanWithGroup.WithNewResourceGroup(ICreatable<IResourceGroup> groupDefinition)
         {
             WithNewResourceGroup(groupDefinition);
             return this;
         }
 
-        IWithCreate IExistingWindowsPlanWithGroup.WithExistingResourceGroup(string groupName)
+        WebApp.Definition.IWithWindowsRuntimeStack IExistingWindowsPlanWithGroup.WithExistingResourceGroup(string groupName)
         {
             WithExistingResourceGroup(groupName);
             return this;
         }
 
-        IWithCreate IExistingWindowsPlanWithGroup.WithExistingResourceGroup(IResourceGroup group)
+        WebApp.Definition.IWithWindowsRuntimeStack IExistingWindowsPlanWithGroup.WithExistingResourceGroup(IResourceGroup group)
         {
             WithExistingResourceGroup(group);
             return this;
@@ -284,6 +318,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Definition.IWithDockerContainerImage IExistingLinuxPlanWithGroup.WithExistingResourceGroup(IResourceGroup group)
         {
             WithExistingResourceGroup(group);
+            return this;
+        }
+
+        WebAppImpl WithRuntimeStack(WebAppRuntimeStack runtimeStack)
+        {
+            runtimeStackOnWindowsOSToUpdate = runtimeStack;
             return this;
         }
 

@@ -561,6 +561,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 this.SiteConfig = configInner;
             }
 
+            await SubmitMetadataAsync(site, cancellationToken);
+
             // App settings && connection strings
             await Task.WhenAll(SubmitAppSettingsAsync(Inner, cancellationToken), SubmitConnectionStringsAsync(Inner, cancellationToken));
 
@@ -692,6 +694,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             throw new InvalidOperationException();
+        }
+
+        internal virtual async Task<SiteInner> SubmitMetadataAsync(SiteInner site, CancellationToken cancellationToken)
+        {
+            return await Task.FromResult(site);
         }
 
         internal virtual async Task<SiteInner> SubmitAppSettingsAsync(SiteInner site, CancellationToken cancellationToken)
