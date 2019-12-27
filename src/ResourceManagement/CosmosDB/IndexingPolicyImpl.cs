@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutIncludedPath(IncludedPath includedPath)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutIncludedPath(string path)
         {
-            Inner.IncludedPaths?.Remove(includedPath);
+            Inner.IncludedPaths?.Remove(Inner.IncludedPaths?.Single(element => element.Path == path));
             return this;
         }
 
@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutExcludedPath(ExcludedPath excludedPath)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutExcludedPath(string path)
         {
-            Inner.ExcludedPaths?.Remove(excludedPath);
+            Inner.ExcludedPaths?.Remove(Inner.ExcludedPaths?.Single(element => element.Path == path));
             return this;
         }
 
@@ -173,12 +173,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutCompositeIndex(IList<CompositePath> compositePath)
-        {
-            Inner.CompositeIndexes?.Remove(compositePath);
-            return this;
-        }
-
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutCompositeIndexes()
         {
             Inner.CompositeIndexes = null;
@@ -220,9 +214,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutSpatialIndex(SpatialSpec spatialSpec)
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutSpatialIndex(string path)
         {
-            Inner.SpatialIndexes?.Remove(spatialSpec);
+            Inner.SpatialIndexes?.Remove(Inner.SpatialIndexes?.Single(element => element.Path == path));
             return this;
         }
 

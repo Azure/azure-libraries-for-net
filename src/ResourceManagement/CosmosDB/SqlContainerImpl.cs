@@ -485,16 +485,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithoutUniqueKey(UniqueKey uniqueKey)
-        {
-            IList<UniqueKey> uniqueKeys = this.createUpdateParameters.Resource.UniqueKeyPolicy?.UniqueKeys;
-            if (uniqueKeys != null)
-            {
-                uniqueKeys.Remove(uniqueKey);
-            }
-            return this;
-        }
-
         public SqlContainerImpl WithConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy)
         {
             this.createUpdateParameters.Resource.ConflictResolutionPolicy = conflictResolutionPolicy;

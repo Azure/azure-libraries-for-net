@@ -96,13 +96,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.MongoCollection.Update
         IUpdate WithIndex(MongoIndexKeys key, MongoIndexOptions option);
 
         /// <summary>
-        /// Removes a mongo index.
-        /// </summary>
-        /// <param name="index">The specific mongo index.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate WithoutIndex(MongoIndex index);
-
-        /// <summary>
         /// Appends all mongo indexes to current indexes.
         /// </summary>
         /// <param name="indexes">The indexes needs appending.</param>

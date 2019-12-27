@@ -147,11 +147,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithIndex(key, option);
         }
 
-        MongoCollection.Update.IUpdate MongoCollection.Update.IWithIndex.WithoutIndex(MongoIndex index)
-        {
-            return this.WithoutIndex(index);
-        }
-
         MongoCollection.Update.IUpdate MongoCollection.Update.IWithIndex.WithIndexesAppend(IList<MongoIndex> indexes)
         {
             return this.WithIndexesAppend(indexes);

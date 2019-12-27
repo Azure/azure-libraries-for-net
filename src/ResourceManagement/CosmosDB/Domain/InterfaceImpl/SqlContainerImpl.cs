@@ -236,11 +236,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutDefaultTtl();
         }
 
-        SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithoutUniqueKey(Models.UniqueKey uniqueKey)
-        {
-            return this.WithoutUniqueKey(uniqueKey);
-        }
-
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithUniqueKeyPolicy.WithoutUniqueKeyPolicy()
         {
             return this.WithoutUniqueKeyPolicy();

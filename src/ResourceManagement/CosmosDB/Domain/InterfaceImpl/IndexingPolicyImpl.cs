@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithIncludedPath(includedPath);
         }
 
-        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithIncludedPaths<UpdateParentT>.WithoutIncludedPath(IncludedPath includedPath)
+        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithIncludedPaths<UpdateParentT>.WithoutIncludedPath(string path)
         {
-            return this.WithoutIncludedPath(includedPath);
+            return this.WithoutIncludedPath(path);
         }
 
         IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithIncludedPaths<UpdateParentT>.WithoutIncludedPaths()
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithExcludedPath(excludedPath);
         }
 
-        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithExcludedPaths<UpdateParentT>.WithoutExcludedPath(ExcludedPath excludedPath)
+        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithExcludedPaths<UpdateParentT>.WithoutExcludedPath(string path)
         {
-            return this.WithoutExcludedPath(excludedPath);
+            return this.WithoutExcludedPath(path);
         }
 
         IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithExcludedPaths<UpdateParentT>.WithoutExcludedPaths()
@@ -138,11 +138,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithCompositeIndex(compositePath);
         }
 
-        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithCompositeIndexes<UpdateParentT>.WithoutCompositeIndex(IList<CompositePath> compositePath)
-        {
-            return this.WithoutCompositeIndex(compositePath);
-        }
-
         IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithCompositeIndexes<UpdateParentT>.WithoutCompositeIndexes()
         {
             return this.WithoutCompositeIndexes();
@@ -163,9 +158,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithSpatialIndex(spatialSpec);
         }
 
-        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithSpatialIndexes<UpdateParentT>.WithoutSpatialIndex(SpatialSpec spatialSpec)
+        IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithSpatialIndexes<UpdateParentT>.WithoutSpatialIndex(string path)
         {
-            return this.WithoutSpatialIndex(spatialSpec);
+            return this.WithoutSpatialIndex(path);
         }
 
         IndexingPolicy.Update.IUpdate<UpdateParentT> IndexingPolicy.Update.IWithSpatialIndexes<UpdateParentT>.WithoutSpatialIndexes()

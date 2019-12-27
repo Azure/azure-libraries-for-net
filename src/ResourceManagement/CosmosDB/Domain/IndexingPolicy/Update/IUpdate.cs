@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Removes an included path.
         /// </summary>
-        /// <param name="includedPath">The included path.</param>
+        /// <param name="path">The path of the included path.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutIncludedPath(IncludedPath includedPath);
+        IUpdate<ParentT> WithoutIncludedPath(string path);
 
         /// <summary>
         /// Removes all included paths.
@@ -127,9 +127,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Removes an excluded path.
         /// </summary>
-        /// <param name="excludedPath">The excluded path.</param>
+        /// <param name="path">The path of the excluded path.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutExcludedPath(ExcludedPath excludedPath);
+        IUpdate<ParentT> WithoutExcludedPath(string path);
 
         /// <summary>
         /// Removes all excluded paths.
@@ -164,13 +164,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <param name="compositePath">One of the composite path.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate<ParentT> WithCompositeIndex(IList<CompositePath> compositePath);
-
-        /// <summary>
-        /// Removes a composite index.
-        /// </summary>
-        /// <param name="compositePath">The composite path.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutCompositeIndex(IList<CompositePath> compositePath);
 
         /// <summary>
         /// Removes all composite indexes.
@@ -209,9 +202,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// <summary>
         /// Removes a spatial index.
         /// </summary>
-        /// <param name="spatialSpec">The spatial spec.</param>
+        /// <param name="path">The path of the spatial spec.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate<ParentT> WithoutSpatialIndex(SpatialSpec spatialSpec);
+        IUpdate<ParentT> WithoutSpatialIndex(string path);
 
         /// <summary>
         /// Removes all spatial indexes.

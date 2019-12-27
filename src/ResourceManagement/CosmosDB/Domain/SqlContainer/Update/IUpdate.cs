@@ -140,13 +140,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="uniqueKey">A unique key.</param>
         /// <returns>The next stage of the update.</returns>
         IUpdate WithUniqueKey(Models.UniqueKey uniqueKey);
-
-        /// <summary>
-        /// Removes a unique key.
-        /// </summary>
-        /// <param name="uniqueKey">A unique key.</param>
-        /// <returns>The next stage of the update.</returns>
-        IUpdate WithoutUniqueKey(Models.UniqueKey uniqueKey);
     }
 
     /// <summary>
