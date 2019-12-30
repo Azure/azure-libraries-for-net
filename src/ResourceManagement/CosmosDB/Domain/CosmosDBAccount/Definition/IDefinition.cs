@@ -290,5 +290,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="name">The name of Mongo database.</param>
         /// <returns>The next stage of the definition.</returns>
         MongoDB.Definition.IBlank<IWithCreate> DefineNewMongoDB(string name);
+
+        /// <summary>
+        /// Defines a new Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the definition.</returns>
+        CassandraKeyspace.Definition.IBlank<IWithCreate> DefineNewCassandraKeyspace(string name);
     }
 }

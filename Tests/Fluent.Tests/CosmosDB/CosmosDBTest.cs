@@ -358,5 +358,45 @@ namespace Fluent.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanCRUDCassandraTable()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var cassandraName = SdkContext.RandomResourceName("cassandra", 22);
+                var cassandraTableName = SdkContext.RandomResourceName("cassandratable", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelCassandra()
+                        .WithStrongConsistency()
+                        .DefineNewCassandraKeyspace(cassandraName)
+                            .WithOption("throughput", "400")
+                            .DefineNewCassandraTable(cassandraTableName)
+                                .WithColumn("test", "boolean")
+                                .Attach()
+                            .Attach()
+                        .Create();
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }

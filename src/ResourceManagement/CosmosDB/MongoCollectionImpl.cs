@@ -204,6 +204,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             await Task.WhenAll(childTasks);
 
+            this.throughputSettingsToUpdate = null;
+
             return this;
         }
 

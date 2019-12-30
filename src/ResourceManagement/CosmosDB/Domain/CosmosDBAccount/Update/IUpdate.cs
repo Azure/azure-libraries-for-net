@@ -262,5 +262,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="name">The name of Mongo database.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithoutMongoDB(string name);
+
+        /// <summary>
+        /// Defines a new Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the update.</returns>
+        CassandraKeyspace.Definition.IBlank<IWithOptionals> DefineNewCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Updates a Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the update.</returns>
+        CassandraKeyspace.Update.IUpdate UpdateCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Removes a Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutCassandraKeyspace(string name);
     }
 }

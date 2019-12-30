@@ -654,26 +654,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
         }
 
-        IMongoDB ICosmosDBAccount.GetMongoDB(string databaseName)
-        {
-            return this.GetMongoDB(databaseName);
-        }
-
-        Task<IMongoDB> ICosmosDBAccount.GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return this.GetMongoDBAsync(databaseName, cancellationToken);
-        }
-
-        IEnumerable<IMongoDB> ICosmosDBAccount.ListMongoDBs()
-        {
-            return this.ListMongoDBs();
-        }
-
-        Task<IEnumerable<IMongoDB>> ICosmosDBAccount.ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return this.ListMongoDBsAsync(cancellationToken);
-        }
-
         SqlDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewSqlDatabase(string name)
         {
             return this.DefineNewSqlDatabase(name);
@@ -694,6 +674,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutSqlDatabase(name);
         }
 
+        IMongoDB ICosmosDBAccount.GetMongoDB(string databaseName)
+        {
+            return this.GetMongoDB(databaseName);
+        }
+
+        Task<IMongoDB> ICosmosDBAccount.GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetMongoDBAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<IMongoDB> ICosmosDBAccount.ListMongoDBs()
+        {
+            return this.ListMongoDBs();
+        }
+
+        Task<IEnumerable<IMongoDB>> ICosmosDBAccount.ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListMongoDBsAsync(cancellationToken);
+        }
+
         MongoDB.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewMongoDB(string name)
         {
             return this.DefineNewMongoDB(name);
@@ -712,6 +712,46 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutMongoDB(string name)
         {
             return this.WithoutMongoDB(name);
+        }
+
+        ICassandraKeyspace ICosmosDBAccount.GetCassandraKeyspace(string databaseName)
+        {
+            return this.GetCassandraKeyspace(databaseName);
+        }
+
+        Task<ICassandraKeyspace> ICosmosDBAccount.GetCassandraKeyspaceAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetCassandraKeyspaceAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<ICassandraKeyspace> ICosmosDBAccount.ListCassandraKeyspaces()
+        {
+            return this.ListCassandraKeyspaces();
+        }
+
+        Task<IEnumerable<ICassandraKeyspace>> ICosmosDBAccount.ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListCassandraKeyspacesAsync(cancellationToken);
+        }
+
+        CassandraKeyspace.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewCassandraKeyspace(string name)
+        {
+            return this.DefineNewCassandraKeyspace(name);
+        }
+
+        CassandraKeyspace.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewCassandraKeyspace(string name)
+        {
+            return this.DefineNewCassandraKeyspace(name);
+        }
+
+        CassandraKeyspace.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateCassandraKeyspace(string name)
+        {
+            return this.UpdateCassandraKeyspace(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutCassandraKeyspace(string name)
+        {
+            return this.WithoutCassandraKeyspace(name);
         }
     }
 }

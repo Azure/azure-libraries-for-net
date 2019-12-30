@@ -200,5 +200,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         /// <return>The Mongo databases for the specified Azure CosmosDB database account.</return>
         Task<IEnumerable<IMongoDB>> ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The specific Cassandra keyspace.</returns>
+        ICassandraKeyspace GetCassandraKeyspace(string name);
+
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The specific Cassandra keyspace.</returns>
+        Task<ICassandraKeyspace> GetCassandraKeyspaceAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Cassandra keyspaces for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ICassandraKeyspace> ListCassandraKeyspaces();
+
+        /// <return>The Cassandra keyspaces for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<ICassandraKeyspace>> ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

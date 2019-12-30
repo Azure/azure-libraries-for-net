@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
         private SqlDatabasesImpl sqlDatabases;
         private MongoDBsImpl mongoDBs;
+        private CassandraKeyspacesImpl cassandraKeyspaces;
 
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this);
             this.sqlDatabases = new SqlDatabasesImpl(this);
             this.mongoDBs = new MongoDBsImpl(this);
+            this.cassandraKeyspaces = new CassandraKeyspacesImpl(this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
@@ -119,6 +121,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             childTasks.Add(this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.sqlDatabases.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.mongoDBs.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.cassandraKeyspaces.CommitAndGetAllAsync(cancellationToken));
             await Task.WhenAll(childTasks);
 
             this.SetInner(databaseAccount.Inner);
@@ -816,6 +819,47 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public CosmosDBAccountImpl WithoutMongoDB(string name)
         {
             this.mongoDBs.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<ICassandraKeyspace> ListCassandraKeyspaces()
+        {
+            return Extensions.Synchronize(() => this.ListCassandraKeyspacesAsync());
+        }
+
+        public async Task<IEnumerable<ICassandraKeyspace>> ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.cassandraKeyspaces.ListAsync(cancellationToken);
+        }
+
+        public ICassandraKeyspace GetCassandraKeyspace(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetCassandraKeyspaceAsync(databaseName));
+        }
+
+        public async Task<ICassandraKeyspace> GetCassandraKeyspaceAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.cassandraKeyspaces.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithCassandraKeyspace(CassandraKeyspaceImpl cassandraKeyspace)
+        {
+            this.cassandraKeyspaces.AddCassandraKeyspace(cassandraKeyspace);
+            return this;
+        }
+
+        internal CassandraKeyspaceImpl DefineNewCassandraKeyspace(string name)
+        {
+            return this.cassandraKeyspaces.Define(name);
+        }
+
+        internal CassandraKeyspaceImpl UpdateCassandraKeyspace(string name)
+        {
+            return this.cassandraKeyspaces.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutCassandraKeyspace(string name)
+        {
+            this.cassandraKeyspaces.Remove(name);
             return this;
         }
 

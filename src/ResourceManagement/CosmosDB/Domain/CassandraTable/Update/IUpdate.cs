@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CassandraTable.Update
     /// The entirety of a Cassandra table update as a part of parent update.
     /// </summary>
     public interface IUpdate :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update.IUpdate>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.CassandraKeyspace.Update.IUpdate>,
         IWithOptions,
         IWithThroughput,
         IWithDefaultTtl,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CassandraTable.Update
         /// </summary>
         /// <param name="columns">The list of the Cassandra table column.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithColumnsAppendReplace(IList<Models.Column> columns);
+        IUpdate WithColumnsReplace(IList<Models.Column> columns);
 
         /// <summary>
         /// Removes all columns.
