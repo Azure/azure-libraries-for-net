@@ -211,19 +211,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.UpdateIndexingPolicy();
         }
 
-        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
-        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithoutContainerPartitionKey()
+        SqlContainer.Update.IUpdate SqlContainer.Update.IWithPartitionKey.WithoutPartitionKey()
         {
-            return this.WithoutContainerPartitionKey();
+            return this.WithoutPartitionKey();
         }
 
         SqlContainer.Update.IUpdate SqlContainer.Update.IWithDefaultTtl.WithDefaultTtl(int ttl)
@@ -328,14 +328,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.DefineIndexingPolicy();
         }
 
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithPartitionKey<DefinitionParentT>.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
         SqlContainer.Definition.IWithAttach<DefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<DefinitionParentT>.WithDefaultTtl(int ttl)
@@ -409,14 +409,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.DefineIndexingPolicyInParentUpdateDefinition();
         }
 
-        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
         SqlContainer.Definition.IWithAttach<UpdateDefinitionParentT> SqlContainer.Definition.IWithDefaultTtl<UpdateDefinitionParentT>.WithDefaultTtl(int ttl)
@@ -490,14 +490,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.DefineIndexingPolicyInParentUpdate();
         }
 
-        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithPartitionKey<UpdateParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithPartitionKey<UpdateParentT>.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithPartitionKey<UpdateParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithPartitionKey<UpdateParentT>.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
         SqlContainer.Definition.IWithAttach<UpdateParentT> SqlContainer.Definition.IWithDefaultTtl<UpdateParentT>.WithDefaultTtl(int ttl)

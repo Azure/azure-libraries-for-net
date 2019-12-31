@@ -151,19 +151,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.UpdateIndexingPolicy();
         }
 
-        GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithPartitionKey.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithPartitionKey.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithPartitionKey.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithPartitionKey.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
-        GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithPartitionKey.WithoutContainerPartitionKey()
+        GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithPartitionKey.WithoutPartitionKey()
         {
-            return this.WithoutContainerPartitionKey();
+            return this.WithoutPartitionKey();
         }
 
         GremlinGraph.Update.IUpdate GremlinGraph.Update.IWithDefaultTtl.WithDefaultTtl(int ttl)
@@ -238,14 +238,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.DefineIndexingPolicy();
         }
 
-        GremlinGraph.Definition.IWithAttach<DefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        GremlinGraph.Definition.IWithAttach<DefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<DefinitionParentT>.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        GremlinGraph.Definition.IWithAttach<DefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<DefinitionParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        GremlinGraph.Definition.IWithAttach<DefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<DefinitionParentT>.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
         GremlinGraph.Definition.IWithAttach<DefinitionParentT> GremlinGraph.Definition.IWithDefaultTtl<DefinitionParentT>.WithDefaultTtl(int ttl)
@@ -304,14 +304,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.DefineIndexingPolicyInParentUpdateDefinition();
         }
 
-        GremlinGraph.Definition.IWithAttach<UpdateDefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        GremlinGraph.Definition.IWithAttach<UpdateDefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        GremlinGraph.Definition.IWithAttach<UpdateDefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        GremlinGraph.Definition.IWithAttach<UpdateDefinitionParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateDefinitionParentT>.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
         GremlinGraph.Definition.IWithAttach<UpdateDefinitionParentT> GremlinGraph.Definition.IWithDefaultTtl<UpdateDefinitionParentT>.WithDefaultTtl(int ttl)
@@ -370,14 +370,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.DefineIndexingPolicyInParentUpdate();
         }
 
-        GremlinGraph.Definition.IWithAttach<UpdateParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateParentT>.WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
+        GremlinGraph.Definition.IWithAttach<UpdateParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateParentT>.WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey)
         {
-            return this.WithContainerPartitionKey(containerPartitionKey);
+            return this.WithPartitionKey(containerPartitionKey);
         }
 
-        GremlinGraph.Definition.IWithAttach<UpdateParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateParentT>.WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
+        GremlinGraph.Definition.IWithAttach<UpdateParentT> GremlinGraph.Definition.IWithPartitionKey<UpdateParentT>.WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(paths, kind, version);
+            return this.WithPartitionKey(paths, kind, version);
         }
 
         GremlinGraph.Definition.IWithAttach<UpdateParentT> GremlinGraph.Definition.IWithDefaultTtl<UpdateParentT>.WithDefaultTtl(int ttl)

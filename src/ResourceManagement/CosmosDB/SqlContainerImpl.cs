@@ -412,18 +412,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return new UpdateIndexingPolicyImpl(new Models.IndexingPolicy(), this);
         }
 
-        public SqlContainerImpl WithContainerPartitionKey(ContainerPartitionKey containerPartitionKey)
+        public SqlContainerImpl WithPartitionKey(ContainerPartitionKey containerPartitionKey)
         {
             this.createUpdateParameters.Resource.PartitionKey = containerPartitionKey;
             return this;
         }
 
-        public SqlContainerImpl WithContainerPartitionKey(IList<string> paths, PartitionKind kind, int? version)
+        public SqlContainerImpl WithPartitionKey(IList<string> paths, PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(new ContainerPartitionKey(paths: paths, kind: kind, version: version));
+            return this.WithPartitionKey(new PartitionKey(paths: paths, kind: kind, version: version));
         }
 
-        public SqlContainerImpl WithoutContainerPartitionKey()
+        public SqlContainerImpl WithoutPartitionKey()
         {
             this.createUpdateParameters.Resource.PartitionKey = null;
             return this;

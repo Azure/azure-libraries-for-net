@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// </summary>
         /// <param name="containerPartitionKey">The whole object of the container partition key.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey);
+        IWithAttach<ParentT> WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey);
 
         /// <summary>
         /// Specifies the container partition key.
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="kind">Indicates the kind of algorithm used for partitioning. Possible values include: 'Hash', 'Range'.</param>
         /// <param name="version">Indicates the version of the partition key definition.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version);
+        IWithAttach<ParentT> WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version);
     }
 
     /// <summary>

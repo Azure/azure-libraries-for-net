@@ -313,18 +313,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return new UpdateIndexingPolicyImpl(new Models.IndexingPolicy(), this);
         }
 
-        public GremlinGraphImpl WithContainerPartitionKey(ContainerPartitionKey containerPartitionKey)
+        public GremlinGraphImpl WithPartitionKey(ContainerPartitionKey containerPartitionKey)
         {
             this.createUpdateParameters.Resource.PartitionKey = containerPartitionKey;
             return this;
         }
 
-        public GremlinGraphImpl WithContainerPartitionKey(IList<string> paths, PartitionKind kind, int? version)
+        public GremlinGraphImpl WithPartitionKey(IList<string> paths, PartitionKind kind, int? version)
         {
-            return this.WithContainerPartitionKey(new ContainerPartitionKey(paths: paths, kind: kind, version: version));
+            return this.WithPartitionKey(new PartitionKey(paths: paths, kind: kind, version: version));
         }
 
-        public GremlinGraphImpl WithoutContainerPartitionKey()
+        public GremlinGraphImpl WithoutPartitionKey()
         {
             this.createUpdateParameters.Resource.PartitionKey = null;
             return this;

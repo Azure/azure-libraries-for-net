@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// </summary>
         /// <param name="containerPartitionKey">The whole object of the container partition key.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithContainerPartitionKey(Models.ContainerPartitionKey containerPartitionKey);
+        IUpdate WithPartitionKey(Models.ContainerPartitionKey containerPartitionKey);
 
         /// <summary>
         /// Specifies the container partition key.
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="kind">Indicates the kind of algorithm used for partitioning. Possible values include: 'Hash', 'Range'.</param>
         /// <param name="version">Indicates the version of the partition key definition.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithContainerPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version);
+        IUpdate WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version);
 
         /// <summary>
         /// Removes the container partition key.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithoutContainerPartitionKey();
+        IUpdate WithoutPartitionKey();
     }
 
     /// <summary>
