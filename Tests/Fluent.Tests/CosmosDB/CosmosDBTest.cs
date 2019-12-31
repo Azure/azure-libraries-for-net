@@ -398,5 +398,48 @@ namespace Fluent.Tests
                 }
             }
         }
+
+
+        [Fact]
+        public void CanCRUDGremlinGraph()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var gremlinName = SdkContext.RandomResourceName("gremlin", 22);
+                var gremlinGraphName = SdkContext.RandomResourceName("gremlingraph", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelGremlin()
+                        .WithStrongConsistency()
+                        .DefineNewGremlinDatabase(gremlinName)
+                            .WithOption("throughput", "400")
+                            .DefineNewGremlinGraph(gremlinGraphName)
+                                .DefineIndexingPolicy()
+                                    .WithIncludedPath(new IncludedPath(path: "/*"))
+                                    .Attach()
+                                .Attach()
+                            .Attach()
+                        .Create();
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }

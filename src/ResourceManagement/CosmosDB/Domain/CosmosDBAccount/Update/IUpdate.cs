@@ -283,5 +283,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="name">The name of Cassandra keyspace.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithoutCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Defines a new Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        GremlinDatabase.Definition.IBlank<IWithOptionals> DefineNewGremlinDatabase(string name);
+
+        /// <summary>
+        /// Updates a Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        GremlinDatabase.Update.IUpdate UpdateGremlinDatabase(string name);
+
+        /// <summary>
+        /// Removes a Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutGremlinDatabase(string name);
     }
 }

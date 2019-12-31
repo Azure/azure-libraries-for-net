@@ -11,21 +11,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a Cassandra keyspace collection.
+    /// Represents a Gremlin Database collection.
     /// </summary>
-    internal partial class CassandraKeyspacesImpl :
+    internal partial class GremlinDatabasesImpl :
         ExternalChildResourcesCached<
-            CassandraKeyspaceImpl,
-            ICassandraKeyspace,
-            CassandraKeyspaceGetResultsInner,
+            GremlinDatabaseImpl,
+            IGremlinDatabase,
+            GremlinDatabaseGetResultsInner,
             ICosmosDBAccount,
             CosmosDBAccountImpl>
     {
-        private ICassandraResourcesOperations Client
+        private IGremlinResourcesOperations Client
         {
             get
             {
-                return Parent.Manager.Inner.CassandraResources;
+                return Parent.Manager.Inner.GremlinResources;
             }
         }
         private string Location
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return Parent.RegionName?.ToLower();
             }
         }
-        internal CassandraKeyspacesImpl(CosmosDBAccountImpl parent)
-            : base(parent, "CassandraKeyspace")
+        internal GremlinDatabasesImpl(CosmosDBAccountImpl parent)
+            : base(parent, "GremlinDatabase")
         {
             if (Parent.Id != null)
             {
@@ -44,41 +44,41 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        protected override IList<CassandraKeyspaceImpl> ListChildResources()
+        protected override IList<GremlinDatabaseImpl> ListChildResources()
         {
             return Extensions.Synchronize(() => ListAsync()).ToList();
         }
 
-        protected override CassandraKeyspaceImpl NewChildResource(string name)
+        protected override GremlinDatabaseImpl NewChildResource(string name)
         {
-            return new CassandraKeyspaceImpl(name, Parent, new CassandraKeyspaceGetResultsInner(Location, name: name));
+            return new GremlinDatabaseImpl(name, Parent, new GremlinDatabaseGetResultsInner(Location, name: name));
         }
 
-        public async Task<CassandraKeyspaceImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<GremlinDatabaseImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await Client.GetCassandraKeyspaceAsync(
+            var inner = await Client.GetGremlinDatabaseAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 name,
                 cancellationToken
                 );
-            return new CassandraKeyspaceImpl(name, Parent, inner);
+            return new GremlinDatabaseImpl(name, Parent, inner);
         }
 
-        public CassandraKeyspaceImpl Define(string name)
+        public GremlinDatabaseImpl Define(string name)
         {
             return this.PrepareDefine(name);
         }
 
-        public async Task<IEnumerable<CassandraKeyspaceImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<GremlinDatabaseImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await ListInnerAsync(cancellationToken);
-            return result.Select(inner => new CassandraKeyspaceImpl(inner.Name, Parent, inner));
+            return result.Select(inner => new GremlinDatabaseImpl(inner.Name, Parent, inner));
         }
 
-        private async Task<IEnumerable<CassandraKeyspaceGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        private async Task<IEnumerable<GremlinDatabaseGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Client.ListCassandraKeyspacesAsync(
+            return await Client.ListGremlinDatabasesAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 cancellationToken
@@ -90,12 +90,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.PrepareRemove(name);
         }
 
-        public CassandraKeyspaceImpl Update(string name)
+        public GremlinDatabaseImpl Update(string name)
         {
             return this.PrepareUpdate(name);
         }
 
-        public void AddCassandraKeyspace(CassandraKeyspaceImpl sqlDatabase)
+        public void AddGremlinDatabase(GremlinDatabaseImpl sqlDatabase)
         {
             this.AddChildResource(sqlDatabase);
         }

@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         protected override PrivateEndpointConnectionImpl NewChildResource(string name)
         {
             return new PrivateEndpointConnectionImpl(name, Parent, new PrivateEndpointConnectionInner(null, name));
-
         }
 
         public IDictionary<string, IPrivateEndpointConnection> AsMap()

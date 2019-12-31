@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="kind">The account kind.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithKind(string kind);
-
     }
 
     /// <summary>
@@ -297,5 +296,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="name">The name of Cassandra keyspace.</param>
         /// <returns>The next stage of the definition.</returns>
         CassandraKeyspace.Definition.IBlank<IWithCreate> DefineNewCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Defines a new Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        GremlinDatabase.Definition.IBlank<IWithCreate> DefineNewGremlinDatabase(string name);
     }
 }

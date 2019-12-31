@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private SqlDatabasesImpl sqlDatabases;
         private MongoDBsImpl mongoDBs;
         private CassandraKeyspacesImpl cassandraKeyspaces;
+        private GremlinDatabasesImpl gremlinDatabases;
 
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.sqlDatabases = new SqlDatabasesImpl(this);
             this.mongoDBs = new MongoDBsImpl(this);
             this.cassandraKeyspaces = new CassandraKeyspacesImpl(this);
+            this.gremlinDatabases = new GremlinDatabasesImpl(this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
@@ -122,6 +124,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             childTasks.Add(this.sqlDatabases.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.mongoDBs.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.cassandraKeyspaces.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.gremlinDatabases.CommitAndGetAllAsync(cancellationToken));
             await Task.WhenAll(childTasks);
 
             this.SetInner(databaseAccount.Inner);
@@ -860,6 +863,47 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public CosmosDBAccountImpl WithoutCassandraKeyspace(string name)
         {
             this.cassandraKeyspaces.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<IGremlinDatabase> ListGremlinDatabases()
+        {
+            return Extensions.Synchronize(() => this.ListGremlinDatabasesAsync());
+        }
+
+        public async Task<IEnumerable<IGremlinDatabase>> ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.gremlinDatabases.ListAsync(cancellationToken);
+        }
+
+        public IGremlinDatabase GetGremlinDatabase(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetGremlinDatabaseAsync(databaseName));
+        }
+
+        public async Task<IGremlinDatabase> GetGremlinDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.gremlinDatabases.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithGremlinDatabase(GremlinDatabaseImpl gremlinDatabase)
+        {
+            this.gremlinDatabases.AddGremlinDatabase(gremlinDatabase);
+            return this;
+        }
+
+        internal GremlinDatabaseImpl DefineNewGremlinDatabase(string name)
+        {
+            return this.gremlinDatabases.Define(name);
+        }
+
+        internal GremlinDatabaseImpl UpdateGremlinDatabase(string name)
+        {
+            return this.gremlinDatabases.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutGremlinDatabase(string name)
+        {
+            this.gremlinDatabases.Remove(name);
             return this;
         }
 

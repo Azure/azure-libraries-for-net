@@ -37,18 +37,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         string _etag { get; }
 
-        /// <summary>
-        /// Gets a system generated property that specified the
-        /// addressable path of the collections resource.
-        /// </summary>
-        string _colls { get; }
-
-        /// <summary>
-        /// Gets a system generated property that specifies the
-        /// addressable path of the users resource.
-        /// </summary>
-        string _users { get; }
-
         /// <returns>The throughput settings of the Gremlin Database.</returns>
         ThroughputSettingsGetPropertiesResource GetThroughputSettings();
 

@@ -11,21 +11,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a SQL container collection.
+    /// Represents a Gremlin Graph collection.
     /// </summary>
-    internal partial class SqlContainersImpl :
+    internal partial class GremlinGraphsImpl :
         ExternalChildResourcesCached<
-            SqlContainerImpl,
-            ISqlContainer,
-            SqlContainerGetResultsInner,
-            ISqlDatabase,
-            SqlDatabaseImpl>
+            GremlinGraphImpl,
+            IGremlinGraph,
+            GremlinGraphGetResultsInner,
+            IGremlinDatabase,
+            GremlinDatabaseImpl>
     {
-        private ISqlResourcesOperations Client
+        private IGremlinResourcesOperations Client
         {
             get
             {
-                return Parent.Parent.Manager.Inner.SqlResources;
+                return Parent.Parent.Manager.Inner.GremlinResources;
             }
         }
         private string Location
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return Parent.Parent.RegionName?.ToLower();
             }
         }
-        internal SqlContainersImpl(SqlDatabaseImpl parent)
-            : base(parent, "SqlContainer")
+        internal GremlinGraphsImpl(GremlinDatabaseImpl parent)
+            : base(parent, "GremlinGraph")
         {
             if (parent.Id() != null)
             {
@@ -44,42 +44,42 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        protected override IList<SqlContainerImpl> ListChildResources()
+        protected override IList<GremlinGraphImpl> ListChildResources()
         {
             return Extensions.Synchronize(() => ListAsync()).ToList();
         }
 
-        protected override SqlContainerImpl NewChildResource(string name)
+        protected override GremlinGraphImpl NewChildResource(string name)
         {
-            return new SqlContainerImpl(name, Parent, new SqlContainerGetResultsInner(Location, name: name));
+            return new GremlinGraphImpl(name, Parent, new GremlinGraphGetResultsInner(Location, name: name));
         }
 
-        public async Task<SqlContainerImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<GremlinGraphImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await Client.GetSqlContainerAsync(
+            var inner = await Client.GetGremlinGraphAsync(
                 Parent.Parent.ResourceGroupName,
                 Parent.Parent.Name,
                 Parent.Name(),
                 name,
                 cancellationToken
                 );
-            return new SqlContainerImpl(name, Parent, inner);
+            return new GremlinGraphImpl(name, Parent, inner);
         }
 
-        public SqlContainerImpl Define(string name)
+        public GremlinGraphImpl Define(string name)
         {
             return this.PrepareDefine(name);
         }
 
-        public async Task<IEnumerable<SqlContainerImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<GremlinGraphImpl>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await ListInnerAsync(cancellationToken);
-            return result.Select(inner => new SqlContainerImpl(inner.Name, Parent, inner));
+            return result.Select(inner => new GremlinGraphImpl(inner.Name, Parent, inner));
         }
 
-        private async Task<IEnumerable<SqlContainerGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        private async Task<IEnumerable<GremlinGraphGetResultsInner>> ListInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Client.ListSqlContainersAsync(
+            return await Client.ListGremlinGraphsAsync(
                 Parent.Parent.ResourceGroupName,
                 Parent.Parent.Name,
                 Parent.Name(),
@@ -92,14 +92,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.PrepareRemove(name);
         }
 
-        public SqlContainerImpl Update(string name)
+        public GremlinGraphImpl Update(string name)
         {
             return this.PrepareUpdate(name);
         }
 
-        public void AddSqlContainer(SqlContainerImpl SqlContainer)
+        public void AddGremlinGraph(GremlinGraphImpl GremlinGraph)
         {
-            this.AddChildResource(SqlContainer);
+            this.AddChildResource(GremlinGraph);
         }
     }
 }

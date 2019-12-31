@@ -214,5 +214,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         /// <return>The Cassandra keyspaces for the specified Azure CosmosDB database account.</return>
         Task<IEnumerable<ICassandraKeyspace>> ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The specific Gremlin Database.</returns>
+        IGremlinDatabase GetGremlinDatabase(string name);
+
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The specific Gremlin Database.</returns>
+        Task<IGremlinDatabase> GetGremlinDatabaseAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Gremlin Databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<IGremlinDatabase> ListGremlinDatabases();
+
+        /// <return>The Gremlin Databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<IGremlinDatabase>> ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         protected override SqlDatabaseImpl NewChildResource(string name)
         {
             return new SqlDatabaseImpl(name, Parent, new SqlDatabaseGetResultsInner(Location, name: name));
-
         }
 
         public async Task<SqlDatabaseImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))

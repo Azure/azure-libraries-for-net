@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         protected override MongoDBImpl NewChildResource(string name)
         {
             return new MongoDBImpl(name, Parent, new MongoDBDatabaseGetResultsInner(Location, name: name));
-
         }
 
         public async Task<MongoDBImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))

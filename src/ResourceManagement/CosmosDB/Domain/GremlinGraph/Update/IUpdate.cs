@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.GremlinGraph.Update
     /// The entirety of a Gremlin Graph update as a part of parent update.
     /// </summary>
     public interface IUpdate :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.SqlDatabase.Update.IUpdate>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.CosmosDB.Fluent.GremlinDatabase.Update.IUpdate>,
         IWithOptions,
         IWithThroughput,
         IWithIndexingPolicy,

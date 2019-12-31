@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         protected override CassandraTableImpl NewChildResource(string name)
         {
             return new CassandraTableImpl(name, Parent, new CassandraTableGetResultsInner(Location, name: name));
-
         }
 
         public async Task<CassandraTableImpl> GetImplAsync(string name, CancellationToken cancellationToken = default(CancellationToken))

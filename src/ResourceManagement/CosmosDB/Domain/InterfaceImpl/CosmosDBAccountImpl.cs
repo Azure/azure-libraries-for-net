@@ -753,5 +753,45 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.WithoutCassandraKeyspace(name);
         }
+
+        IGremlinDatabase ICosmosDBAccount.GetGremlinDatabase(string databaseName)
+        {
+            return this.GetGremlinDatabase(databaseName);
+        }
+
+        Task<IGremlinDatabase> ICosmosDBAccount.GetGremlinDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetGremlinDatabaseAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<IGremlinDatabase> ICosmosDBAccount.ListGremlinDatabases()
+        {
+            return this.ListGremlinDatabases();
+        }
+
+        Task<IEnumerable<IGremlinDatabase>> ICosmosDBAccount.ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListGremlinDatabasesAsync(cancellationToken);
+        }
+
+        GremlinDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewGremlinDatabase(string name)
+        {
+            return this.DefineNewGremlinDatabase(name);
+        }
+
+        GremlinDatabase.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewGremlinDatabase(string name)
+        {
+            return this.DefineNewGremlinDatabase(name);
+        }
+
+        GremlinDatabase.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateGremlinDatabase(string name)
+        {
+            return this.UpdateGremlinDatabase(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutGremlinDatabase(string name)
+        {
+            return this.WithoutGremlinDatabase(name);
+        }
     }
 }
