@@ -303,5 +303,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="name">The name of Gremlin Database.</param>
         /// <returns>The next stage of the definition.</returns>
         GremlinDatabase.Definition.IBlank<IWithCreate> DefineNewGremlinDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Table.Definition.IBlank<IWithCreate> DefineNewTable(string name);
     }
 }

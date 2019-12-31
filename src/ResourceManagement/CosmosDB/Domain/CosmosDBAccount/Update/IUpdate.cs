@@ -304,5 +304,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="name">The name of Gremlin Database.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithoutGremlinDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        Table.Definition.IBlank<IWithOptionals> DefineNewTable(string name);
+
+        /// <summary>
+        /// Updates a Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        Table.Update.IUpdate UpdateTable(string name);
+
+        /// <summary>
+        /// Removes a Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutTable(string name);
     }
 }

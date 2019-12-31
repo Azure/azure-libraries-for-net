@@ -228,5 +228,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         /// <return>The Gremlin Databases for the specified Azure CosmosDB database account.</return>
         Task<IEnumerable<IGremlinDatabase>> ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The specific Table Database.</returns>
+        ITable GetTable(string name);
+
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The specific Table Database.</returns>
+        Task<ITable> GetTableAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Table Databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ITable> ListTables();
+
+        /// <return>The Table Databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<ITable>> ListTablesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
