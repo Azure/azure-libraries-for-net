@@ -302,7 +302,7 @@ namespace Fluent.Tests
                                     .WithIncludedPath(new IncludedPath(path: "/*"))
                                     .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
                                     .Attach()
-                                .WithContainerPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
+                                .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
                                 .Attach()
                             .Attach()
                         .Create();
@@ -399,7 +399,6 @@ namespace Fluent.Tests
             }
         }
 
-
         [Fact]
         public void CanCRUDGremlinGraph()
         {
@@ -428,6 +427,42 @@ namespace Fluent.Tests
                                     .WithIncludedPath(new IncludedPath(path: "/*"))
                                     .Attach()
                                 .Attach()
+                            .Attach()
+                        .Create();
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDTable()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var tableName = SdkContext.RandomResourceName("table", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelAzureTable()
+                        .WithStrongConsistency()
+                        .DefineNewTable(tableName)
+                            .WithOption("throughput", "400")
                             .Attach()
                         .Create();
                 }

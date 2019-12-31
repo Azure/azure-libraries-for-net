@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlContainerImpl WithPartitionKey(IList<string> paths, PartitionKind kind, int? version)
         {
-            return this.WithPartitionKey(new PartitionKey(paths: paths, kind: kind, version: version));
+            return this.WithPartitionKey(new ContainerPartitionKey(paths: paths, kind: kind, version: version));
         }
 
         public SqlContainerImpl WithoutPartitionKey()

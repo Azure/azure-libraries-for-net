@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private MongoDBsImpl mongoDBs;
         private CassandraKeyspacesImpl cassandraKeyspaces;
         private GremlinDatabasesImpl gremlinDatabases;
+        private TablesImpl tables;
 
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.mongoDBs = new MongoDBsImpl(this);
             this.cassandraKeyspaces = new CassandraKeyspacesImpl(this);
             this.gremlinDatabases = new GremlinDatabasesImpl(this);
+            this.tables = new TablesImpl(this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
@@ -125,6 +127,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             childTasks.Add(this.mongoDBs.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.cassandraKeyspaces.CommitAndGetAllAsync(cancellationToken));
             childTasks.Add(this.gremlinDatabases.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.tables.CommitAndGetAllAsync(cancellationToken));
             await Task.WhenAll(childTasks);
 
             this.SetInner(databaseAccount.Inner);
@@ -904,6 +907,47 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public CosmosDBAccountImpl WithoutGremlinDatabase(string name)
         {
             this.gremlinDatabases.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<ITable> ListTables()
+        {
+            return Extensions.Synchronize(() => this.ListTablesAsync());
+        }
+
+        public async Task<IEnumerable<ITable>> ListTablesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.tables.ListAsync(cancellationToken);
+        }
+
+        public ITable GetTable(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetTableAsync(databaseName));
+        }
+
+        public async Task<ITable> GetTableAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.tables.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithTable(TableImpl table)
+        {
+            this.tables.AddTable(table);
+            return this;
+        }
+
+        internal TableImpl DefineNewTable(string name)
+        {
+            return this.tables.Define(name);
+        }
+
+        internal TableImpl UpdateTable(string name)
+        {
+            return this.tables.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutTable(string name)
+        {
+            this.tables.Remove(name);
             return this;
         }
 

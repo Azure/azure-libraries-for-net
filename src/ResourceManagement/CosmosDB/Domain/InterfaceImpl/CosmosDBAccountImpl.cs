@@ -793,5 +793,45 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.WithoutGremlinDatabase(name);
         }
+
+        ITable ICosmosDBAccount.GetTable(string databaseName)
+        {
+            return this.GetTable(databaseName);
+        }
+
+        Task<ITable> ICosmosDBAccount.GetTableAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetTableAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<ITable> ICosmosDBAccount.ListTables()
+        {
+            return this.ListTables();
+        }
+
+        Task<IEnumerable<ITable>> ICosmosDBAccount.ListTablesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListTablesAsync(cancellationToken);
+        }
+
+        Table.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewTable(string name)
+        {
+            return this.DefineNewTable(name);
+        }
+
+        Table.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewTable(string name)
+        {
+            return this.DefineNewTable(name);
+        }
+
+        Table.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateTable(string name)
+        {
+            return this.UpdateTable(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutTable(string name)
+        {
+            return this.WithoutTable(name);
+        }
     }
 }
