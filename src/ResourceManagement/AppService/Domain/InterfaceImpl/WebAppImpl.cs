@@ -2,9 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    using Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebApp.Update;
-    using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.IO;
     using System.Threading;
@@ -57,7 +54,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="pricingTier">The sku of the app service plan.</param>
         /// <return>The next stage of the definition.</return>
-        WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewWindowsPlan(PricingTier pricingTier)
+        WebApp.Definition.IWithWindowsRuntimeStack WebApp.Definition.IWithNewAppServicePlan.WithNewWindowsPlan(PricingTier pricingTier)
         {
             return this.WithNewWindowsPlan(pricingTier);
         }
@@ -67,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="appServicePlanCreatable">The new app service plan creatable.</param>
         /// <return>The next stage of the definition.</return>
-        WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable)
+        WebApp.Definition.IWithWindowsRuntimeStack WebApp.Definition.IWithNewAppServicePlan.WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable)
         {
             return this.WithNewWindowsPlan(appServicePlanCreatable);
         }
@@ -97,7 +94,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// free plans in the current subscription.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewFreeAppServicePlan()
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WebApp.Definition.IWithNewAppServicePlan.WithNewFreeAppServicePlan()
         {
             return this.WithNewFreeAppServicePlan();
         }
@@ -106,7 +103,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Creates a new shared app service plan.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewSharedAppServicePlan()
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithWindowsRuntimeStack WebApp.Definition.IWithNewAppServicePlan.WithNewSharedAppServicePlan()
         {
             return this.WithNewSharedAppServicePlan();
         }
@@ -262,6 +259,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Definition.IWithStartUpCommand WebApp.Definition.IWithCredentials.WithCredentials(string username, string password)
         {
             return this.WithCredentials(username, password);
+        }
+
+        WebApp.Definition.IWithCreate WebApp.Definition.IWithWindowsRuntimeStack.WithRuntimeStack(WebAppRuntimeStack runtimeStack)
+        {
+            return this.WithRuntimeStack(runtimeStack);
+        }
+
+        WebApp.Update.IUpdate WebApp.Update.IWithWindowsRuntimeStack.WithRuntimeStack(WebAppRuntimeStack runtimeStack)
+        {
+            return this.WithRuntimeStack(runtimeStack);
         }
 
         /// <summary>

@@ -71,12 +71,14 @@ namespace Fluent.Tests.WebApp
                     // Update
                     webApp1.Update()
                         .WithNewAppServicePlan(PricingTier.StandardS2)
+                        .WithRuntimeStack(WebAppRuntimeStack.NETCore)
                         .Apply();
                     var plan2 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
                     Assert.NotNull(plan2);
                     Assert.NotEqual(plan1.Id, plan2.Id);
                     Assert.Equal(Region.USWest, plan2.Region);
                     Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+                    Assert.Equal(WebAppRuntimeStack.NETCore.Runtime, appServiceManager.Inner.WebApps.ListMetadataAsync(webApp1.ResourceGroupName, webApp1.Name).Result.Properties["CURRENT_STACK"]);
 
                     // Delete
                     string planId = webApp2.AppServicePlanId;
