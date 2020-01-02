@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     {
         private ISqlResourcesOperations Client { get { return Parent.Manager.Inner.SqlResources; } }
         private SqlDatabaseCreateUpdateParameters createUpdateParameters;
-        private ThroughputSettingsUpdateParameters ThroughputSettingsToUpdate;
+        private ThroughputSettingsUpdateParameters throughputSettingsToUpdate;
         private SqlContainersImpl sqlContainers;
 
         internal SqlDatabaseImpl(string name, CosmosDBAccountImpl parent, SqlDatabaseGetResultsInner inner)
@@ -115,17 +115,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlDatabaseImpl WithThroughput(int throughput)
         {
-            if (this.ThroughputSettingsToUpdate == null)
-            {
-                this.ThroughputSettingsToUpdate = new ThroughputSettingsUpdateParameters();
-            }
-            if (this.ThroughputSettingsToUpdate.Resource == null)
-            {
-                this.ThroughputSettingsToUpdate.Resource = new ThroughputSettingsResource();
-            }
-
-            this.ThroughputSettingsToUpdate.Resource.Throughput = throughput;
-            return this;
+            return this.WithOption("throughput", $"{throughput}");
         }
 
         public CosmosDBAccountImpl Attach()
@@ -147,18 +137,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             SetCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
-            if (this.ThroughputSettingsToUpdate != null)
+            if (this.throughputSettingsToUpdate != null)
             {
-                this.ThroughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
+                this.throughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
                 childTasks.Add(this.Client.UpdateSqlDatabaseThroughputAsync(
                     Parent.ResourceGroupName,
                     Parent.Name,
                     this.Name(),
-                    this.ThroughputSettingsToUpdate,
+                    this.throughputSettingsToUpdate,
                     cancellationToken
                     ));
 
-                this.ThroughputSettingsToUpdate = null;
+                this.throughputSettingsToUpdate = null;
             }
 
             childTasks.Add(this.sqlContainers.CommitAndGetAllAsync(cancellationToken));

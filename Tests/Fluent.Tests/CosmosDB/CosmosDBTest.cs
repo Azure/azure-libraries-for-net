@@ -10,6 +10,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Fluent.Tests
@@ -307,6 +308,39 @@ namespace Fluent.Tests
                             .Attach()
                         .Create();
 
+                    var sqldbs = databaseAccount.ListSqlDatabases().ToList();
+                    Assert.Single(sqldbs);
+
+                    var sqldb = sqldbs[0];
+                    Assert.Equal(sqlDbName, sqldb.Name);
+                    Assert.Equal(1000, sqldb.GetThroughputSettings().Throughput);
+
+                    var containers = sqldb.ListSqlContainers().ToList();
+                    Assert.Single(containers);
+
+                    var container = containers[0];
+                    Assert.Equal(sqlContainerName, container.Name);
+                    Assert.Equal(400, container.GetThroughputSettings().Throughput);
+                    Assert.Equal(IndexingMode.Consistent, container.IndexingPolicy.IndexingMode);
+                    Assert.NotNull(container.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
+                    Assert.NotNull(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.True(container.PartitionKey.Paths.Contains("/myPartitionKey"));
+                    Assert.Equal(PartitionKind.Hash, container.PartitionKey.Kind);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateSqlDatabase(sqlDbName)
+                            .WithOption("throughput", "800")
+                            .UpdateSqlContainer(sqlContainerName)
+                                .WithOption("throughput", "600")
+                                .Parent()
+                            .Parent()
+                        .Apply();
+
+                    sqldb = databaseAccount.GetSqlDatabase(sqlDbName);
+                    Assert.Equal(800, sqldb.GetThroughputSettings().Throughput);
+
+                    container = sqldb.GetSqlContainer(sqlContainerName);
+                    Assert.Equal(600, container.GetThroughputSettings().Throughput);
                 }
                 finally
                 {

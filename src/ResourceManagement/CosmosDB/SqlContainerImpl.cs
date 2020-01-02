@@ -208,17 +208,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlContainerImpl WithThroughput(int throughput)
         {
-            if (this.throughputSettingsToUpdate == null)
-            {
-                this.throughputSettingsToUpdate = new ThroughputSettingsUpdateParameters();
-            }
-            if (this.throughputSettingsToUpdate.Resource == null)
-            {
-                this.throughputSettingsToUpdate.Resource = new ThroughputSettingsResource();
-            }
-
-            this.throughputSettingsToUpdate.Resource.Throughput = throughput;
-            return this;
+            return this.WithOption("throughput", $"{throughput}");
         }
 
         public SqlDatabaseImpl Attach()

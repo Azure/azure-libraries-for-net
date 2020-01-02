@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     {
         private ICassandraResourcesOperations Client { get { return Parent.Manager.Inner.CassandraResources; } }
         private CassandraKeyspaceCreateUpdateParameters createUpdateParameters;
-        private ThroughputSettingsUpdateParameters ThroughputSettingsToUpdate;
+        private ThroughputSettingsUpdateParameters throughputSettingsToUpdate;
         private CassandraTablesImpl cassandraTables;
 
         internal CassandraKeyspaceImpl(string name, CosmosDBAccountImpl parent, CassandraKeyspaceGetResultsInner inner)
@@ -105,17 +105,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public CassandraKeyspaceImpl WithThroughput(int throughput)
         {
-            if (this.ThroughputSettingsToUpdate == null)
-            {
-                this.ThroughputSettingsToUpdate = new ThroughputSettingsUpdateParameters();
-            }
-            if (this.ThroughputSettingsToUpdate.Resource == null)
-            {
-                this.ThroughputSettingsToUpdate.Resource = new ThroughputSettingsResource();
-            }
-
-            this.ThroughputSettingsToUpdate.Resource.Throughput = throughput;
-            return this;
+            return this.WithOption("throughput", $"{throughput}");
         }
 
         public CosmosDBAccountImpl Attach()
@@ -137,18 +127,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             SetCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
-            if (this.ThroughputSettingsToUpdate != null)
+            if (this.throughputSettingsToUpdate != null)
             {
-                this.ThroughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
+                this.throughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
                 childTasks.Add(this.Client.UpdateCassandraKeyspaceThroughputAsync(
                     Parent.ResourceGroupName,
                     Parent.Name,
                     this.Name(),
-                    this.ThroughputSettingsToUpdate,
+                    this.throughputSettingsToUpdate,
                     cancellationToken
                     ));
 
-                this.ThroughputSettingsToUpdate = null;
+                this.throughputSettingsToUpdate = null;
             }
 
             childTasks.Add(this.cassandraTables.CommitAndGetAllAsync(cancellationToken));
