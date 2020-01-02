@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.createUpdateParameters = new MongoDBCollectionCreateUpdateParameters()
             {
-                Location = Parent.Inner.Location,
+                Location = this.Location,
                 Resource = new MongoDBCollectionResource(id: this.Name()),
                 Options = new Dictionary<string, string>(),
             };

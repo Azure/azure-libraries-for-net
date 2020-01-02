@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.createUpdateParameters = new GremlinGraphCreateUpdateParameters()
             {
-                Location = Parent.Inner.Location,
+                Location = this.Location,
                 Resource = new GremlinGraphResource(id: this.Name()),
                 Options = new Dictionary<string, string>(),
             };

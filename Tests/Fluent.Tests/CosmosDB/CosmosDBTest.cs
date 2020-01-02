@@ -322,8 +322,10 @@ namespace Fluent.Tests
                     Assert.Equal(sqlContainerName, container.Name);
                     Assert.Equal(400, container.GetThroughputSettings().Throughput);
                     Assert.Equal(IndexingMode.Consistent, container.IndexingPolicy.IndexingMode);
-                    Assert.NotNull(container.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
-                    Assert.NotNull(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.Equal(1, container.IndexingPolicy.IncludedPaths.Count);
+                    Assert.Equal("/*", container.IndexingPolicy.IncludedPaths[0].Path);
+                    Assert.Equal(1, container.IndexingPolicy.ExcludedPaths.Count);
+                    Assert.Equal("/myPathToNotIndex/*", container.IndexingPolicy.ExcludedPaths[0].Path);
                     Assert.True(container.PartitionKey.Paths.Contains("/myPartitionKey"));
                     Assert.Equal(PartitionKind.Hash, container.PartitionKey.Kind);
 
@@ -375,12 +377,45 @@ namespace Fluent.Tests
                         .WithDataModelMongoDB()
                         .WithStrongConsistency()
                         .DefineNewMongoDB(mongoDBName)
-                            .WithOption("throughput", "400")
+                            .WithThroughput(400)
                             .DefineNewCollection(mongoCollectionName)
+                                .WithThroughput(600)
                                 .WithShardKey("test")
+                                .WithIndex(new MongoIndex(key: new MongoIndexKeys(keys: new List<string>() { "testkey" })))
                                 .Attach()
                             .Attach()
                         .Create();
+
+                    var mongodbs = databaseAccount.ListMongoDBs().ToList();
+                    Assert.Single(mongodbs);
+
+                    var mongodb = mongodbs[0];
+                    Assert.Equal(mongoDBName, mongodb.Name);
+                    Assert.Equal(400, mongodb.GetThroughputSettings().Throughput);
+
+                    var collections = mongodb.ListCollections().ToList();
+                    Assert.Single(collections);
+
+                    var collection = collections[0];
+                    Assert.Equal(mongoCollectionName, collection.Name);
+                    Assert.Equal(600, collection.GetThroughputSettings().Throughput);
+                    Assert.Equal("Hash", collection.ShardKey.GetValueOrDefault("test", "empty"));
+                    Assert.Equal("testkey", collection.Indexes[0].Key.Keys[0]);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateMongoDB(mongoDBName)
+                            .UpdateCollection(mongoCollectionName)
+                                .WithThroughput(500)
+                                .Parent()
+                            .WithThroughput(800)
+                            .Parent()
+                        .Apply();
+
+                    mongodb = databaseAccount.GetMongoDB(mongoDBName);
+                    Assert.Equal(800, mongodb.GetThroughputSettings().Throughput);
+
+                    collection = mongodb.GetCollection(mongoCollectionName);
+                    Assert.Equal(500, collection.GetThroughputSettings().Throughput);
                 }
                 finally
                 {
@@ -415,12 +450,48 @@ namespace Fluent.Tests
                         .WithDataModelCassandra()
                         .WithStrongConsistency()
                         .DefineNewCassandraKeyspace(cassandraName)
-                            .WithOption("throughput", "400")
+                            .WithThroughput(400)
                             .DefineNewCassandraTable(cassandraTableName)
+                                .WithThroughput(600)
+                                .WithColumn("id", "int")
+                                .WithColumn("name", "string")
                                 .WithColumn("test", "boolean")
+                                .WithPartitionKey("id")
                                 .Attach()
                             .Attach()
                         .Create();
+
+                    var cassandras = databaseAccount.ListCassandraKeyspaces().ToList();
+                    Assert.Single(cassandras);
+
+                    var cassandra = cassandras[0];
+                    Assert.Equal(cassandraName, cassandra.Name);
+                    Assert.Equal(400, cassandra.GetThroughputSettings().Throughput);
+
+                    var tables = cassandra.ListCassandraTables().ToList();
+                    Assert.Single(tables);
+
+                    var table = tables[0];
+                    Assert.Equal(cassandraTableName, table.Name);
+                    Assert.Equal(600, table.GetThroughputSettings().Throughput);
+                    Assert.Equal(3, table.Schema.Columns.Count);
+                    Assert.Equal(1, table.Schema.PartitionKeys.Count);
+                    Assert.Equal("id", table.Schema.PartitionKeys[0].Name);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateMongoDB(cassandraName)
+                            .UpdateCollection(cassandraTableName)
+                                .WithThroughput(500)
+                                .Parent()
+                            .WithThroughput(800)
+                            .Parent()
+                        .Apply();
+
+                    cassandra = databaseAccount.GetCassandraKeyspace(cassandraName);
+                    Assert.Equal(800, cassandra.GetThroughputSettings().Throughput);
+
+                    table = cassandra.GetCassandraTable(cassandraTableName);
+                    Assert.Equal(500, table.GetThroughputSettings().Throughput);
                 }
                 finally
                 {
@@ -455,14 +526,54 @@ namespace Fluent.Tests
                         .WithDataModelGremlin()
                         .WithStrongConsistency()
                         .DefineNewGremlinDatabase(gremlinName)
-                            .WithOption("throughput", "400")
+                            .WithThroughput(1000)
                             .DefineNewGremlinGraph(gremlinGraphName)
+                                .WithThroughput(400)
                                 .DefineIndexingPolicy()
+                                    .WithIndexingMode(IndexingMode.Consistent)
                                     .WithIncludedPath(new IncludedPath(path: "/*"))
+                                    .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
                                     .Attach()
+                                .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
                                 .Attach()
                             .Attach()
                         .Create();
+
+                    var gremlins = databaseAccount.ListGremlinDatabases().ToList();
+                    Assert.Single(gremlins);
+
+                    var gremlin = gremlins[0];
+                    Assert.Equal(gremlinName, gremlin.Name);
+                    Assert.Equal(1000, gremlin.GetThroughputSettings().Throughput);
+
+                    var graphs = gremlin.ListGremlinGraphs().ToList();
+                    Assert.Single(graphs);
+
+                    var graph = graphs[0];
+                    Assert.Equal(gremlinGraphName, graph.Name);
+                    Assert.Equal(400, graph.GetThroughputSettings().Throughput);
+                    Assert.Equal(IndexingMode.Consistent, graph.IndexingPolicy.IndexingMode);
+                    Assert.Equal(1, graph.IndexingPolicy.IncludedPaths.Count);
+                    Assert.Equal("/*", graph.IndexingPolicy.IncludedPaths[0].Path);
+                    Assert.Equal(1, graph.IndexingPolicy.ExcludedPaths.Count);
+                    Assert.Equal("/myPathToNotIndex/*", graph.IndexingPolicy.ExcludedPaths[0].Path);
+                    Assert.True(graph.PartitionKey.Paths.Contains("/myPartitionKey"));
+                    Assert.Equal(PartitionKind.Hash, graph.PartitionKey.Kind);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateSqlDatabase(gremlinName)
+                            .WithOption("throughput", "800")
+                            .UpdateSqlContainer(gremlinGraphName)
+                                .WithOption("throughput", "600")
+                                .Parent()
+                            .Parent()
+                        .Apply();
+
+                    gremlin = databaseAccount.GetGremlinDatabase(gremlinName);
+                    Assert.Equal(800, gremlin.GetThroughputSettings().Throughput);
+
+                    graph = gremlin.GetGremlinGraph(gremlinGraphName);
+                    Assert.Equal(600, graph.GetThroughputSettings().Throughput);
                 }
                 finally
                 {

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.createUpdateParameters = new CassandraTableCreateUpdateParameters()
             {
-                Location = Parent.Inner.Location,
+                Location = this.Location,
                 Resource = new CassandraTableResource(id: this.Name()),
                 Options = new Dictionary<string, string>(),
             };

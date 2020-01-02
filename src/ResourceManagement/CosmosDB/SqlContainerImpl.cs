@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             this.createUpdateParameters = new SqlContainerCreateUpdateParameters()
             {
-                Location = Parent.Inner.Location,
+                Location = this.Location,
                 Resource = new SqlContainerResource(id: this.Name()),
                 Options = new Dictionary<string, string>(),
             };
