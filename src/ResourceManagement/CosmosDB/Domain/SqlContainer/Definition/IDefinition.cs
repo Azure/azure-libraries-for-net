@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The store procedure resource, no need to specify id.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource = default(Models.SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Specifies a user defined function.
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The user defined function resource, no need to specify id.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource = default(Models.SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Specifies a trigger.
@@ -189,6 +189,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The trigger resource, no need to specify id.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource = default(Models.SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
     }
 }

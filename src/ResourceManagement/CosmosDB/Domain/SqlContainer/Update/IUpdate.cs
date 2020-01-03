@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="resource">The store procedure resource, no need to specify id.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource = default(Models.SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IUpdate WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Removes a stored procedure.
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="resource">The user defined function resource, no need to specify id.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource = default(Models.SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IUpdate WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Removes a user defined function.
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="resource">The trigger resource, no need to specify id.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithTrigger(string name, Models.SqlTriggerResource resource = default(Models.SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>));
+        IUpdate WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
 
         /// <summary>
         /// Removes a trigger.
