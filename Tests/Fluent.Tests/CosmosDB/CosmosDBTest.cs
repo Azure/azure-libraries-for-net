@@ -265,7 +265,7 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }
@@ -304,6 +304,9 @@ namespace Fluent.Tests
                                     .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
                                     .Attach()
                                 .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
+                                .WithStoredProcedure("test", new SqlStoredProcedureResource(id: null, body: "function test(){}"))
+                                .WithUserDefinedFunction("test", new SqlUserDefinedFunctionResource(id: null, body: "function test(){}"))
+                                .WithTrigger("test", new SqlTriggerResource(id: null, body: "function test(){}", triggerType: TriggerType.Pre, triggerOperation: TriggerOperation.All))
                                 .Attach()
                             .Attach()
                         .Create();
@@ -322,12 +325,13 @@ namespace Fluent.Tests
                     Assert.Equal(sqlContainerName, container.Name);
                     Assert.Equal(400, container.GetThroughputSettings().Throughput);
                     Assert.Equal(IndexingMode.Consistent, container.IndexingPolicy.IndexingMode);
-                    Assert.Equal(1, container.IndexingPolicy.IncludedPaths.Count);
-                    Assert.Equal("/*", container.IndexingPolicy.IncludedPaths[0].Path);
-                    Assert.Equal(1, container.IndexingPolicy.ExcludedPaths.Count);
-                    Assert.Equal("/myPathToNotIndex/*", container.IndexingPolicy.ExcludedPaths[0].Path);
+                    Assert.NotNull(container.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
+                    Assert.NotNull(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
                     Assert.True(container.PartitionKey.Paths.Contains("/myPartitionKey"));
                     Assert.Equal(PartitionKind.Hash, container.PartitionKey.Kind);
+                    Assert.NotNull(container.GetStoredProcedure("test"));
+                    Assert.NotNull(container.GetUserDefinedFunction("test"));
+                    Assert.NotNull(container.GetTrigger("test"));
 
                     databaseAccount = databaseAccount.Update()
                         .UpdateSqlDatabase(sqlDbName)
@@ -348,7 +352,7 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }
@@ -421,7 +425,7 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }
@@ -497,7 +501,7 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }
@@ -579,7 +583,7 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }
@@ -615,7 +619,7 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }
