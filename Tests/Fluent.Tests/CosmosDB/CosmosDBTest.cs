@@ -350,7 +350,7 @@ namespace Fluent.Tests
 
                     container = sqldb.GetSqlContainer(sqlContainerName);
                     Assert.Equal(600, container.GetThroughputSettings().Throughput);
-                    Assert.Null(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.Null(container.IndexingPolicy.ExcludedPaths.SingleOrDefault(element => element.Path == "/myPathToNotIndex/*"));
                 }
                 finally
                 {
@@ -408,7 +408,7 @@ namespace Fluent.Tests
                     Assert.Equal(mongoCollectionName, collection.Name);
                     Assert.Equal(600, collection.GetThroughputSettings().Throughput);
                     Assert.Equal("Hash", collection.ShardKey.GetValueOrDefault("test", "empty"));
-                    Assert.Equal("testkey", collection.Indexes[0].Key.Keys[0]);
+                    Assert.NotNull(collection.Indexes.SingleOrDefault(element => element.Key.Keys.Contains("testkey")));
 
                     databaseAccount = databaseAccount.Update()
                         .UpdateMongoDB(mongoDBName)
@@ -505,7 +505,7 @@ namespace Fluent.Tests
                     table = cassandra.GetCassandraTable(cassandraTableName);
                     Assert.Equal(500, table.GetThroughputSettings().Throughput);
                     Assert.Equal(2, table.Schema.Columns.Count);
-                    Assert.Null(table.Schema.Columns.Single(element => element.Name == "test"));
+                    Assert.Null(table.Schema.Columns.SingleOrDefault(element => element.Name == "test"));
                 }
                 finally
                 {
