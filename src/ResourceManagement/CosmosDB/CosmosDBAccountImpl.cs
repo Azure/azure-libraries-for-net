@@ -660,6 +660,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             await this.Manager.Inner.DatabaseAccounts.OnlineRegionAsync(this.ResourceGroupName, this.Name, region.Name, cancellationToken);
         }
 
+        public override async Task<ICosmosDBAccount> RefreshAsync(CancellationToken cancellation = default(CancellationToken))
+        {
+            await base.RefreshAsync(cancellation);
+            this.sqlDatabases = new SqlDatabasesImpl(this);
+            this.mongoDBs = new MongoDBsImpl(this);
+            this.cassandraKeyspaces = new CassandraKeyspacesImpl(this);
+            this.gremlinDatabases = new GremlinDatabasesImpl(this);
+            this.tables = new TablesImpl(this);
+            return this;
+        }
+
         public bool CassandraConnectorEnabled()
         {
             return this.Inner.EnableCassandraConnector ?? false;
