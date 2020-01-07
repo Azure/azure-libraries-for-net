@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal SqlContainersImpl(SqlDatabaseImpl parent)
             : base(parent, "SqlContainer")
         {
-            if (parent.Id() != null)
-            {
-                this.CacheCollection();
-            }
         }
 
         protected override IList<SqlContainerImpl> ListChildResources()
@@ -89,11 +85,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public void Remove(string name)
         {
+            if (this.Collection.Count == 0)
+            {
+                this.Refresh();
+            }
             this.PrepareRemove(name);
         }
 
         public SqlContainerImpl Update(string name)
         {
+            if (this.Collection.Count == 0)
+            {
+                this.Refresh();
+            }
             return this.PrepareUpdate(name);
         }
 

@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal MongoCollectionsImpl(MongoDBImpl parent)
             : base(parent, "MongoCollection")
         {
-            if (parent.Id() != null)
-            {
-                this.CacheCollection();
-            }
         }
 
         protected override IList<MongoCollectionImpl> ListChildResources()
@@ -89,11 +85,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public void Remove(string name)
         {
+            if (this.Collection.Count == 0)
+            {
+                this.Refresh();
+            }
             this.PrepareRemove(name);
         }
 
         public MongoCollectionImpl Update(string name)
         {
+            if (this.Collection.Count == 0)
+            {
+                this.Refresh();
+            }
             return this.PrepareUpdate(name);
         }
 

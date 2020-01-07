@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal TablesImpl(CosmosDBAccountImpl parent)
             : base(parent, "Table")
         {
-            if (Parent.Id != null)
-            {
-                this.CacheCollection();
-            }
         }
 
         protected override IList<TableImpl> ListChildResources()
@@ -87,11 +83,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public void Remove(string name)
         {
+            if (this.Collection.Count == 0)
+            {
+                this.Refresh();
+            }
             this.PrepareRemove(name);
         }
 
         public TableImpl Update(string name)
         {
+            if (this.Collection.Count == 0)
+            {
+                this.Refresh();
+            }
             return this.PrepareUpdate(name);
         }
 
