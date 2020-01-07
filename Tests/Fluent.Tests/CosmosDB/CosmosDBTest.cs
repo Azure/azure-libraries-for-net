@@ -338,6 +338,9 @@ namespace Fluent.Tests
                             .WithOption("throughput", "800")
                             .UpdateSqlContainer(sqlContainerName)
                                 .WithOption("throughput", "600")
+                                .UpdateIndexingPolicy()
+                                    .WithoutExcludedPath("/myPathToNotIndex/*")
+                                    .Parent()
                                 .Parent()
                             .Parent()
                         .Apply();
@@ -347,6 +350,7 @@ namespace Fluent.Tests
 
                     container = sqldb.GetSqlContainer(sqlContainerName);
                     Assert.Equal(600, container.GetThroughputSettings().Throughput);
+                    Assert.Null(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
                 }
                 finally
                 {
@@ -410,6 +414,8 @@ namespace Fluent.Tests
                         .UpdateMongoDB(mongoDBName)
                             .UpdateCollection(mongoCollectionName)
                                 .WithThroughput(500)
+                                .WithoutShardKey("test")
+                                .WithShardKey("test1")
                                 .Parent()
                             .WithThroughput(800)
                             .Parent()
@@ -420,6 +426,7 @@ namespace Fluent.Tests
 
                     collection = mongodb.GetCollection(mongoCollectionName);
                     Assert.Equal(500, collection.GetThroughputSettings().Throughput);
+                    Assert.False(collection.ShardKey.ContainsKey("test"));
                 }
                 finally
                 {
@@ -483,9 +490,10 @@ namespace Fluent.Tests
                     Assert.Equal("id", table.Schema.PartitionKeys[0].Name);
 
                     databaseAccount = databaseAccount.Update()
-                        .UpdateMongoDB(cassandraName)
-                            .UpdateCollection(cassandraTableName)
+                        .UpdateCassandraKeyspace(cassandraName)
+                            .UpdateCassandraTable(cassandraTableName)
                                 .WithThroughput(500)
+                                .WithoutColumn("test")
                                 .Parent()
                             .WithThroughput(800)
                             .Parent()
@@ -496,6 +504,8 @@ namespace Fluent.Tests
 
                     table = cassandra.GetCassandraTable(cassandraTableName);
                     Assert.Equal(500, table.GetThroughputSettings().Throughput);
+                    Assert.Equal(2, table.Schema.Columns.Count);
+                    Assert.Null(table.Schema.Columns.Single(element => element.Name == "test"));
                 }
                 finally
                 {
@@ -557,17 +567,15 @@ namespace Fluent.Tests
                     Assert.Equal(gremlinGraphName, graph.Name);
                     Assert.Equal(400, graph.GetThroughputSettings().Throughput);
                     Assert.Equal(IndexingMode.Consistent, graph.IndexingPolicy.IndexingMode);
-                    Assert.Equal(1, graph.IndexingPolicy.IncludedPaths.Count);
-                    Assert.Equal("/*", graph.IndexingPolicy.IncludedPaths[0].Path);
-                    Assert.Equal(1, graph.IndexingPolicy.ExcludedPaths.Count);
-                    Assert.Equal("/myPathToNotIndex/*", graph.IndexingPolicy.ExcludedPaths[0].Path);
+                    Assert.NotNull(graph.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
+                    Assert.NotNull(graph.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
                     Assert.True(graph.PartitionKey.Paths.Contains("/myPartitionKey"));
                     Assert.Equal(PartitionKind.Hash, graph.PartitionKey.Kind);
 
                     databaseAccount = databaseAccount.Update()
-                        .UpdateSqlDatabase(gremlinName)
+                        .UpdateGremlinDatabase(gremlinName)
                             .WithOption("throughput", "800")
-                            .UpdateSqlContainer(gremlinGraphName)
+                            .UpdateGremlinGraph(gremlinGraphName)
                                 .WithOption("throughput", "600")
                                 .Parent()
                             .Parent()
@@ -611,9 +619,25 @@ namespace Fluent.Tests
                         .WithDataModelAzureTable()
                         .WithStrongConsistency()
                         .DefineNewTable(tableName)
-                            .WithOption("throughput", "400")
+                            .WithThroughput(400)
                             .Attach()
                         .Create();
+
+                    var tables = databaseAccount.ListTables().ToList();
+                    Assert.Single(tables);
+
+                    var table = tables[0];
+                    Assert.Equal(tableName, table.Name);
+                    Assert.Equal(400, table.GetThroughputSettings().Throughput);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateTable(tableName)
+                            .WithOption("throughput", "800")
+                            .Parent()
+                        .Apply();
+
+                    table = databaseAccount.GetTable(tableName);
+                    Assert.Equal(800, table.GetThroughputSettings().Throughput);
                 }
                 finally
                 {
