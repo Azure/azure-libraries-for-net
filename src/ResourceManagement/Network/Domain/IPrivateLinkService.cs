@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets an array of references to the load balancer IP configurations.
         /// </summary>
-        IReadOnlyList<IFrontendIPConfiguration> LoadBalancerFrontendIpConfigurations { get; }
+        IReadOnlyList<ILoadBalancerFrontend> LoadBalancerFrontendIpConfigurations { get; }
 
         /// <summary>
         /// Gets an array of private link service IP configurations.

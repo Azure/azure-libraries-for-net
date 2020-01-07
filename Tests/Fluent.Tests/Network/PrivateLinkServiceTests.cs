@@ -86,7 +86,7 @@ namespace Fluent.Tests.Network
                     Assert.NotNull(privateLinkService.IpConfigurations);
                     Assert.True(privateLinkService.IpConfigurations.Count == 1);
                     Assert.False(privateLinkService.IsProxyProtocolEnabled);
-                    Assert.Equal(IPAllocationMethod.Dynamic, privateLinkService.IpConfigurations[0].PrivateIPAllocationMethod);
+                    Assert.True(privateLinkService.LoadBalancerFrontendIpConfigurations.Count == 1);
 
                     privateLinkService.Update()
                         .EnableProxyProtocol()

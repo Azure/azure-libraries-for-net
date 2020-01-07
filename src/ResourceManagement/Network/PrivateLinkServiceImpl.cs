@@ -7,7 +7,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -39,20 +38,31 @@ namespace Microsoft.Azure.Management.Network.Fluent
             ResetIpConfigurations();
         }
 
-        public IReadOnlyList<IFrontendIPConfiguration> LoadBalancerFrontendIpConfigurations
+        public IReadOnlyList<ILoadBalancerFrontend> LoadBalancerFrontendIpConfigurations
         {
             get
             {
-                if (Inner.LoadBalancerFrontendIpConfigurations != null && Inner.LoadBalancerFrontendIpConfigurations.Count > 0)
+                List<ILoadBalancerFrontend> loadBalancerFrontends = new List<ILoadBalancerFrontend>();
+                Dictionary<string, LoadBalancerInner> loadBalancers = new Dictionary<string, LoadBalancerInner>();
+                if (Inner.LoadBalancerFrontendIpConfigurations != null)
                 {
-                    List<IFrontendIPConfiguration> res = new List<IFrontendIPConfiguration>();
-                    foreach (var frontendIpConfig in Inner.LoadBalancerFrontendIpConfigurations)
+                    LoadBalancerInner loadBalancer;
+                    foreach (var lbFrontend in Inner.LoadBalancerFrontendIpConfigurations)
                     {
-                        res.Add(new FrontendIPConfigurationImpl(frontendIpConfig));
+                        string loadBalancerId = ResourceId.FromString(lbFrontend.Id).Parent.Id;
+                        if (!loadBalancers.ContainsKey(loadBalancerId))
+                        {
+                            loadBalancer = Manager.LoadBalancers.GetById(loadBalancerId).Inner;
+                            loadBalancers.Add(loadBalancerId, loadBalancer);
+                        }
+                        else
+                        {
+                            loadBalancer = loadBalancers[loadBalancerId];
+                        }
+                        loadBalancerFrontends.Add(new LoadBalancerFrontendImpl(lbFrontend, new LoadBalancerImpl(loadBalancer.Name, loadBalancer, Manager)));
                     }
-                    return res.AsReadOnly();
                 }
-                return null;
+                return loadBalancerFrontends.AsReadOnly();
             }
         }
 
@@ -60,16 +70,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                if (Inner.IpConfigurations != null && Inner.IpConfigurations.Count > 0)
+                List<IPrivateLinkServiceIPConfiguration> privateLinkServiceIPConfigurations = new List<IPrivateLinkServiceIPConfiguration>();
+                if (Inner.IpConfigurations != null)
                 {
-                    List<IPrivateLinkServiceIPConfiguration> res = new List<IPrivateLinkServiceIPConfiguration>();
                     foreach (var ipConfig in Inner.IpConfigurations)
                     {
-                        res.Add(new PrivateLinkServiceIPConfigurationImpl(ipConfig));
+                        privateLinkServiceIPConfigurations.Add(new PrivateLinkServiceIPConfigurationImpl(ipConfig));
                     }
-                    return res.AsReadOnly();
                 }
-                return null;
+                return privateLinkServiceIPConfigurations.AsReadOnly();
             }
         }
 
@@ -77,16 +86,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                if (Inner.NetworkInterfaces != null && Inner.NetworkInterfaces.Count > 0)
+                List<INetworkInterface> networkInterfaces = new List<INetworkInterface>();
+                if (Inner.NetworkInterfaces != null)
                 {
-                    List<INetworkInterface> res = new List<INetworkInterface>();
                     foreach (var networkInterface in Inner.NetworkInterfaces)
                     {
-                        res.Add(new NetworkInterfaceImpl(networkInterface.Name, networkInterface, Manager));
+                        networkInterfaces.Add(new NetworkInterfaceImpl(networkInterface.Name, networkInterface, Manager));
                     }
-                    return res.AsReadOnly();
+                    
                 }
-                return null;
+                return networkInterfaces.AsReadOnly();
             }
         }
 
@@ -102,16 +111,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                if (Inner.PrivateEndpointConnections != null && Inner.PrivateEndpointConnections.Count > 0)
+                List<IPrivateEndpointConnection> privateEndpointConnections = new List<IPrivateEndpointConnection>();
+                if (Inner.PrivateEndpointConnections != null)
                 {
-                    List<IPrivateEndpointConnection> res = new List<IPrivateEndpointConnection>();
                     foreach (var privateEndpointConnection in Inner.PrivateEndpointConnections)
                     {
-                        res.Add(new PrivateEndpointConnectionImpl(privateEndpointConnection, Manager));
+                        privateEndpointConnections.Add(new PrivateEndpointConnectionImpl(privateEndpointConnection, Manager));
                     }
-                    return res.AsReadOnly();
                 }
-                return null;
+                return privateEndpointConnections.AsReadOnly();
             }
         }
 
@@ -122,10 +130,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 List<string> visibleIds = new List<string>();
                 if (Inner.Visibility != null && Inner.Visibility.Subscriptions != null)
                 {
-                    foreach (var id in Inner.Visibility.Subscriptions)
-                    {
-                        visibleIds.Add(id);
-                    }
+                    visibleIds = new List<string>(Inner.Visibility.Subscriptions);
                 }
                 return visibleIds.AsReadOnly();
             }
@@ -138,10 +143,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 List<string> autoApprovedIds = new List<string>();
                 if (Inner.AutoApproval != null && Inner.AutoApproval.Subscriptions != null)
                 {
-                    foreach (var id in Inner.AutoApproval.Subscriptions)
-                    {
-                        autoApprovedIds.Add(id);
-                    }
+                    autoApprovedIds = new List<string>(Inner.AutoApproval.Subscriptions);
                 }
                 return autoApprovedIds.AsReadOnly();
             }
@@ -151,11 +153,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                if (Inner.Fqdns != null && Inner.Fqdns.Count > 0)
+                List<string> fqdns = new List<string>();
+                if (Inner.Fqdns != null)
                 {
-                    return new ReadOnlyCollection<string>(Inner.Fqdns);
+                    fqdns = new List<string>(fqdns);
                 }
-                return null;
+                return fqdns.AsReadOnly();
             }
         }
 
