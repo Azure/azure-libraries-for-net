@@ -465,7 +465,7 @@ namespace Fluent.Tests
                             .DefineNewCassandraTable(cassandraTableName)
                                 .WithThroughput(600)
                                 .WithColumn("id", "int")
-                                .WithColumn("name", "string")
+                                .WithColumn("name", "text")
                                 .WithColumn("test", "boolean")
                                 .WithPartitionKey("id")
                                 .Attach()
