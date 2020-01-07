@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal TableImpl(string name, CosmosDBAccountImpl parent, TableGetResultsInner inner)
             : base(name, parent, inner)
         {
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
         }
 
-        private void SetCreateUpdateParameters()
+        private void InitializeCreateUpdateParameters()
         {
             this.createUpdateParameters = new TableCreateUpdateParameters()
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 );
 
             SetInner(inner);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
             if (this.throughputSettingsToUpdate != null)

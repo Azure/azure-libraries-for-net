@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal SqlContainerImpl(string name, SqlDatabaseImpl parent, SqlContainerGetResultsInner inner)
             : base(name, parent, inner)
         {
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             InitChildResource(true);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
-        private void SetCreateUpdateParameters()
+        private void InitializeCreateUpdateParameters()
         {
             this.createUpdateParameters = new SqlContainerCreateUpdateParameters()
             {
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 );
 
             SetInner(inner);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
             if (this.throughputSettingsToUpdate != null)

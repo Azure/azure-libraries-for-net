@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             : base(name, parent, inner)
         {
             this.sqlContainers = new SqlContainersImpl(this);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
         }
 
-        private void SetCreateUpdateParameters()
+        private void InitializeCreateUpdateParameters()
         {
             this.createUpdateParameters = new SqlDatabaseCreateUpdateParameters()
             {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 );
 
             SetInner(inner);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
             if (this.throughputSettingsToUpdate != null)

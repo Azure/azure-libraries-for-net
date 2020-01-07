@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal GremlinGraphImpl(string name, GremlinDatabaseImpl parent, GremlinGraphGetResultsInner inner)
             : base(name, parent, inner)
         {
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             InitChildResource();
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.throughputSettingsToUpdate = null;
         }
 
-        private void SetCreateUpdateParameters()
+        private void InitializeCreateUpdateParameters()
         {
             this.createUpdateParameters = new GremlinGraphCreateUpdateParameters()
             {
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 );
 
             SetInner(inner);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
             if (this.throughputSettingsToUpdate != null)

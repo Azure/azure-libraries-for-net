@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             : base(name, parent, inner)
         {
             this.collections = new MongoCollectionsImpl(this);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
         }
 
-        private void SetCreateUpdateParameters()
+        private void InitializeCreateUpdateParameters()
         {
             this.createUpdateParameters = new MongoDBDatabaseCreateUpdateParameters()
             {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 );
 
             SetInner(inner);
-            SetCreateUpdateParameters();
+            InitializeCreateUpdateParameters();
             List<Task> childTasks = new List<Task>();
 
             if (this.throughputSettingsToUpdate != null)
