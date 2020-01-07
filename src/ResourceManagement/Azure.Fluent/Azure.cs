@@ -160,6 +160,24 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        /// <returns>entry point to manage private link services</returns>
+        public IPrivateLinkServices PrivateLinkServices
+        {
+            get
+            {
+                return networkManager.PrivateLinkServices;
+            }
+        }
+
+        /// <returns>entry point to manage Azure firewalls</returns>
+        public IAzureFirewalls AzureFirewalls
+        {
+            get
+            {
+                return networkManager.AzureFirewalls;
+            }
+        }
+
         /// <returns>entry point to manage virtual load balancers</returns>
         public ILoadBalancers LoadBalancers
         {
@@ -1116,6 +1134,16 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to network interface management
         /// </summary>
         INetworkInterfaces NetworkInterfaces { get; }
+
+        /// <summary>
+        /// Entry point to private link service management
+        /// </summary>
+        IPrivateLinkServices PrivateLinkServices { get; }
+
+        /// <summary>
+        /// Entry point to Azure firewall management
+        /// </summary>
+        IAzureFirewalls AzureFirewalls { get; }
 
         /// <summary>
         /// Entry point to Azure Resource Manager template deployment management.
