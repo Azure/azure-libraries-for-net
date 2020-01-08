@@ -389,7 +389,6 @@ namespace Fluent.Tests
                             .DefineNewCollection(mongoCollectionName)
                                 .WithThroughput(600)
                                 .WithShardKey("test")
-                                .WithIndex(new MongoIndex(key: new MongoIndexKeys(keys: new List<string>() { "testkey" })))
                                 .Attach()
                             .Attach()
                         .Create();
@@ -408,14 +407,11 @@ namespace Fluent.Tests
                     Assert.Equal(mongoCollectionName, collection.Name);
                     Assert.Equal(600, collection.GetThroughputSettings().Throughput);
                     Assert.Equal("Hash", collection.ShardKey.GetValueOrDefault("test", "empty"));
-                    Assert.NotNull(collection.Indexes.SingleOrDefault(element => element.Key.Keys.Contains("testkey")));
 
                     databaseAccount = databaseAccount.Update()
                         .UpdateMongoDB(mongoDBName)
                             .UpdateCollection(mongoCollectionName)
                                 .WithThroughput(500)
-                                .WithoutShardKey("test")
-                                .WithShardKey("test1")
                                 .Parent()
                             .WithThroughput(800)
                             .Parent()
@@ -426,7 +422,6 @@ namespace Fluent.Tests
 
                     collection = mongodb.GetCollection(mongoCollectionName);
                     Assert.Equal(500, collection.GetThroughputSettings().Throughput);
-                    Assert.False(collection.ShardKey.ContainsKey("test"));
                 }
                 finally
                 {
