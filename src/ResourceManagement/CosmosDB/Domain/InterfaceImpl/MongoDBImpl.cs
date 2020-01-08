@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         Task<ThroughputSettingsGetPropertiesResource> IMongoDB.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetThroughputSettingsAsync();
+            return this.GetThroughputSettingsAsync(cancellationToken);
         }
 
         IEnumerable<IMongoCollection> IMongoDB.ListCollections()

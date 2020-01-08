@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         Task<ThroughputSettingsGetPropertiesResource> ISqlDatabase.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetThroughputSettingsAsync();
+            return this.GetThroughputSettingsAsync(cancellationToken);
         }
 
         IEnumerable<ISqlContainer> ISqlDatabase.ListSqlContainers()

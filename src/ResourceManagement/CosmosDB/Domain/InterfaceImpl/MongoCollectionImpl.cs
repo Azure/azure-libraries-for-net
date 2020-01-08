@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         Task<ThroughputSettingsGetPropertiesResource> IMongoCollection.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetThroughputSettingsAsync();
+            return this.GetThroughputSettingsAsync(cancellationToken);
         }
 
         MongoCollection.Update.IUpdate HasOptions.Update.IWithOptions<MongoCollection.Update.IUpdate>.WithOption(string key, string value)

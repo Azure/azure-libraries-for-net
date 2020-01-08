@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         Task<ThroughputSettingsGetPropertiesResource> IGremlinGraph.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetThroughputSettingsAsync();
+            return this.GetThroughputSettingsAsync(cancellationToken);
         }
 
         GremlinGraph.Update.IUpdate HasOptions.Update.IWithOptions<GremlinGraph.Update.IUpdate>.WithOption(string key, string value)

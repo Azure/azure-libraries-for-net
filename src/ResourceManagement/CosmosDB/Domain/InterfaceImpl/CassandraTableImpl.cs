@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         Task<ThroughputSettingsGetPropertiesResource> ICassandraTable.GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetThroughputSettingsAsync();
+            return this.GetThroughputSettingsAsync(cancellationToken);
         }
 
         CassandraTable.Update.IUpdate HasOptions.Update.IWithOptions<CassandraTable.Update.IUpdate>.WithOption(string key, string value)
