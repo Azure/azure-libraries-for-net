@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CassandraTable.Update
     }
 
     /// <summary>
-    /// The stage of a Cassandra table update allowing to set through put.
+    /// The stage of a Cassandra table update allowing to set throughput.
     /// </summary>
     public interface IWithThroughput :
         HasThroughputSettings.Update.IWithThroughput<IUpdate>

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
     }
 
     /// <summary>
-    /// The stage of a SQL container update allowing to set through put.
+    /// The stage of a SQL container update allowing to set throughput.
     /// </summary>
     public interface IWithThroughput :
         HasThroughputSettings.Update.IWithThroughput<IUpdate>

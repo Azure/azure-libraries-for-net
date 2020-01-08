@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CassandraTable.Definition
     }
 
     /// <summary>
-    /// The stage of a Cassandra table definition allowing to set through put.
+    /// The stage of a Cassandra table definition allowing to set throughput.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithThroughput<ParentT> :
