@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return Inner.Subnet == null ? null : Inner.Subnet.Id;
+                return Inner.Subnet?.Id;
             }
         }
 

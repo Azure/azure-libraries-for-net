@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return Inner.VirtualHub == null ? null : Inner.VirtualHub.Id;
+                return Inner.VirtualHub?.Id;
             }
         }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return Inner.FirewallPolicy == null ? null : Inner.FirewallPolicy.Id;
+                return Inner.FirewallPolicy?.Id;
             }
         }
 
@@ -153,10 +153,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                ReadOnlyDictionary<string, string> additionalProps = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>());
+                ReadOnlyDictionary<string, string> additionalProps;
                 if (Inner.AdditionalProperties != null)
                 {
                     additionalProps = new ReadOnlyDictionary<string, string>(Inner.AdditionalProperties);
+                }
+                else
+                {
+                    additionalProps = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>());
                 }
                 return additionalProps;
             }
@@ -166,10 +170,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                List<string> zones = new List<string>();
+                List<string> zones;
                 if (Inner.Zones != null)
                 {
                     zones = new List<string>(Inner.Zones);
+                }
+                else
+                {
+                    zones = new List<string>();
                 }
                 return zones.AsReadOnly();
             }

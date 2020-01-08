@@ -36,10 +36,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                List<string> ids = new List<string>();
+                List<string> ids;
                 if (Inner.GroupIds != null)
                 {
                     ids = new List<string>(Inner.GroupIds);
+                }
+                else
+                {
+                    ids = new List<string>();
                 }
                 return ids.AsReadOnly();
             }

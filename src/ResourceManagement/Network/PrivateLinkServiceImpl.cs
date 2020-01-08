@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 Dictionary<string, LoadBalancerInner> loadBalancers = new Dictionary<string, LoadBalancerInner>();
                 if (Inner.LoadBalancerFrontendIpConfigurations != null)
                 {
-                    LoadBalancerInner loadBalancer;
                     foreach (var lbFrontend in Inner.LoadBalancerFrontendIpConfigurations)
                     {
+                        LoadBalancerInner loadBalancer;
                         string loadBalancerId = ResourceId.FromString(lbFrontend.Id).Parent.Id;
                         if (!loadBalancers.ContainsKey(loadBalancerId))
                         {
@@ -127,10 +127,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                List<string> visibleIds = new List<string>();
+                List<string> visibleIds;
                 if (Inner.Visibility != null && Inner.Visibility.Subscriptions != null)
                 {
                     visibleIds = new List<string>(Inner.Visibility.Subscriptions);
+                }
+                else
+                {
+                    visibleIds = new List<string>();
                 }
                 return visibleIds.AsReadOnly();
             }
@@ -140,10 +144,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                List<string> autoApprovedIds = new List<string>();
+                List<string> autoApprovedIds;
                 if (Inner.AutoApproval != null && Inner.AutoApproval.Subscriptions != null)
                 {
                     autoApprovedIds = new List<string>(Inner.AutoApproval.Subscriptions);
+                }
+                else
+                {
+                    autoApprovedIds = new List<string>();
                 }
                 return autoApprovedIds.AsReadOnly();
             }
@@ -153,10 +161,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                List<string> fqdns = new List<string>();
+                List<string> fqdns;
                 if (Inner.Fqdns != null)
                 {
-                    fqdns = new List<string>(fqdns);
+                    fqdns = new List<string>(Inner.Fqdns);
+                }
+                else
+                {
+                    fqdns = new List<string>();
                 }
                 return fqdns.AsReadOnly();
             }
