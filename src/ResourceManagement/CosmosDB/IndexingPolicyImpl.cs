@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutIncludedPath(string path)
         {
-            Inner.IncludedPaths?.Remove(Inner.IncludedPaths?.Single(element => element.Path == path));
+            Inner.IncludedPaths?.Remove(Inner.IncludedPaths?.FirstOrDefault(element => element.Path == path));
             return this;
         }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutExcludedPath(string path)
         {
-            Inner.ExcludedPaths?.Remove(Inner.ExcludedPaths?.Single(element => element.Path == path));
+            Inner.ExcludedPaths?.Remove(Inner.ExcludedPaths?.FirstOrDefault(element => element.Path == path));
             return this;
         }
 
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutSpatialIndex(string path)
         {
-            Inner.SpatialIndexes?.Remove(Inner.SpatialIndexes?.Single(element => element.Path == path));
+            Inner.SpatialIndexes?.Remove(Inner.SpatialIndexes?.FirstOrDefault(element => element.Path == path));
             return this;
         }
 

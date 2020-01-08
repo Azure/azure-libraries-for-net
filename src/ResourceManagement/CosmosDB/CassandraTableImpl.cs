@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public CassandraTableImpl WithoutColumn(string name)
         {
-            this.createUpdateParameters.Resource.Schema?.Columns?.Remove(this.createUpdateParameters.Resource.Schema?.Columns?.Single(element => element.Name == name));
+            this.createUpdateParameters.Resource.Schema?.Columns?.Remove(this.createUpdateParameters.Resource.Schema?.Columns?.FirstOrDefault(element => element.Name == name));
             return this;
         }
 
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public CassandraTableImpl WithoutPartitionKey(string name)
         {
-            this.createUpdateParameters.Resource.Schema?.PartitionKeys?.Remove(this.createUpdateParameters.Resource.Schema?.PartitionKeys?.Single(element => element.Name == name));
+            this.createUpdateParameters.Resource.Schema?.PartitionKeys?.Remove(this.createUpdateParameters.Resource.Schema?.PartitionKeys?.FirstOrDefault(element => element.Name == name));
             return this;
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public CassandraTableImpl WithoutClusterKey(string name)
         {
-            this.createUpdateParameters.Resource.Schema?.ClusterKeys?.Remove(this.createUpdateParameters.Resource.Schema?.ClusterKeys?.Single(element => element.Name == name));
+            this.createUpdateParameters.Resource.Schema?.ClusterKeys?.Remove(this.createUpdateParameters.Resource.Schema?.ClusterKeys?.FirstOrDefault(element => element.Name == name));
             return this;
         }
 
