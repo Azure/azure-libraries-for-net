@@ -34,23 +34,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// Initializes a new instance of the
         /// SqlUserDefinedFunctionGetResultsInner class.
         /// </summary>
-        /// <param name="sqlUserDefinedFunctionGetResultsId">Name of the Cosmos
-        /// DB SQL userDefinedFunction</param>
-        /// <param name="body">Body of the User Defined Function</param>
-        /// <param name="_rid">A system generated property. A unique
-        /// identifier.</param>
-        /// <param name="_ts">A system generated property that denotes the last
-        /// updated timestamp of the resource.</param>
-        /// <param name="_etag">A system generated property representing the
-        /// resource etag required for optimistic concurrency control.</param>
-        public SqlUserDefinedFunctionGetResultsInner(string location, string sqlUserDefinedFunctionGetResultsId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string body = default(string), string _rid = default(string), object _ts = default(object), string _etag = default(string))
+        public SqlUserDefinedFunctionGetResultsInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SqlUserDefinedFunctionGetPropertiesResource resource = default(SqlUserDefinedFunctionGetPropertiesResource))
             : base(location, id, name, type, tags)
         {
-            SqlUserDefinedFunctionGetResultsId = sqlUserDefinedFunctionGetResultsId;
-            Body = body;
-            this._rid = _rid;
-            this._ts = _ts;
-            this._etag = _etag;
+            Resource = resource;
             CustomInit();
         }
 
@@ -60,36 +47,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL userDefinedFunction
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public string SqlUserDefinedFunctionGetResultsId { get; set; }
-
-        /// <summary>
-        /// Gets or sets body of the User Defined Function
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.body")]
-        public string Body { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property. A unique identifier.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties._rid")]
-        public string _rid { get; private set; }
-
-        /// <summary>
-        /// Gets a system generated property that denotes the last updated
-        /// timestamp of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties._ts")]
-        public object _ts { get; private set; }
-
-        /// <summary>
-        /// Gets a system generated property representing the resource etag
-        /// required for optimistic concurrency control.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties._etag")]
-        public string _etag { get; private set; }
+        [JsonProperty(PropertyName = "properties.resource")]
+        public SqlUserDefinedFunctionGetPropertiesResource Resource { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -100,9 +60,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public override void Validate()
         {
             base.Validate();
-            if (SqlUserDefinedFunctionGetResultsId == null)
+            if (Resource != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SqlUserDefinedFunctionGetResultsId");
+                Resource.Validate();
             }
         }
     }

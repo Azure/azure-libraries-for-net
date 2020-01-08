@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// CollectionPartitionOperations operations.
     /// </summary>
-    internal partial class CollectionPartitionOperations : IServiceOperations<CosmosDB>, ICollectionPartitionOperations
+    internal partial class CollectionPartitionOperations : IServiceOperations<CosmosDBManagementClient>, ICollectionPartitionOperations
     {
         /// <summary>
         /// Initializes a new instance of the CollectionPartitionOperations class.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal CollectionPartitionOperations(CosmosDB client)
+        internal CollectionPartitionOperations(CosmosDBManagementClient client)
         {
             if (client == null)
             {
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Gets a reference to the CosmosDB
+        /// Gets a reference to the CosmosDBManagementClient
         /// </summary>
-        public CosmosDB Client { get; private set; }
+        public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
         /// Retrieves the metrics determined by the given filter for the given

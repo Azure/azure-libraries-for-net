@@ -126,6 +126,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The specific private link resource group.</return>
         Task<Microsoft.Azure.Management.CosmosDB.Fluent.IPrivateLinkResource> GetPrivateLinkResourceAsync(string groupName, CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <param name="databaseName">Database name of SQL database.</param>
+        /// <returns>The specific SQL database.</returns>
+        ISqlDatabase GetSqlDatabase(string databaseName);
+
+        /// <param name="databaseName">Database name of SQL database.</param>
+        /// <returns>The specific SQL database.</returns>
+        Task<ISqlDatabase> GetSqlDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken));
+
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(CancellationToken cancellationToken = default(CancellationToken));
 
@@ -178,5 +186,61 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         /// <param name="keyKind">The key kind.</param>
         void RegenerateKey(string keyKind);
+
+        /// <param name="databaseName">Database name of Mongo database.</param>
+        /// <returns>The specific Mongo database.</returns>
+        IMongoDB GetMongoDB(string databaseName);
+
+        /// <param name="databaseName">Database name of Mongo database.</param>
+        /// <returns>The specific Mongo database.</returns>
+        Task<IMongoDB> GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Mongo databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<IMongoDB> ListMongoDBs();
+
+        /// <return>The Mongo databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<IMongoDB>> ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The specific Cassandra keyspace.</returns>
+        ICassandraKeyspace GetCassandraKeyspace(string name);
+
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The specific Cassandra keyspace.</returns>
+        Task<ICassandraKeyspace> GetCassandraKeyspaceAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Cassandra keyspaces for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ICassandraKeyspace> ListCassandraKeyspaces();
+
+        /// <return>The Cassandra keyspaces for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<ICassandraKeyspace>> ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The specific Gremlin Database.</returns>
+        IGremlinDatabase GetGremlinDatabase(string name);
+
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The specific Gremlin Database.</returns>
+        Task<IGremlinDatabase> GetGremlinDatabaseAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Gremlin Databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<IGremlinDatabase> ListGremlinDatabases();
+
+        /// <return>The Gremlin Databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<IGremlinDatabase>> ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The specific Table Database.</returns>
+        ITable GetTable(string name);
+
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The specific Table Database.</returns>
+        Task<ITable> GetTableAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The Table Databases for the specified Azure CosmosDB database account.</return>
+        IEnumerable<ITable> ListTables();
+
+        /// <return>The Table Databases for the specified Azure CosmosDB database account.</return>
+        Task<IEnumerable<ITable>> ListTablesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

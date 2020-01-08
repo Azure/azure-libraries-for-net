@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// PercentileSourceTargetOperations operations.
     /// </summary>
-    internal partial class PercentileSourceTargetOperations : IServiceOperations<CosmosDB>, IPercentileSourceTargetOperations
+    internal partial class PercentileSourceTargetOperations : IServiceOperations<CosmosDBManagementClient>, IPercentileSourceTargetOperations
     {
         /// <summary>
         /// Initializes a new instance of the PercentileSourceTargetOperations class.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal PercentileSourceTargetOperations(CosmosDB client)
+        internal PercentileSourceTargetOperations(CosmosDBManagementClient client)
         {
             if (client == null)
             {
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Gets a reference to the CosmosDB
+        /// Gets a reference to the CosmosDBManagementClient
         /// </summary>
-        public CosmosDB Client { get; private set; }
+        public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
         /// Retrieves the metrics determined by the given filter for the given account,

@@ -1,46 +1,243 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     internal partial class SqlDatabaseImpl :
-        Wrapper<Models.SqlDatabaseGetResultsInner>,
-        ISqlDatabase
+        ExternalChildResource<ISqlDatabase,
+            SqlDatabaseGetResultsInner,
+            ICosmosDBAccount,
+            CosmosDBAccountImpl>,
+        ISqlDatabase,
+        SqlDatabase.Definition.IDefinition<CosmosDBAccount.Definition.IWithCreate>,
+        SqlDatabase.Update.IUpdate,
+        SqlDatabase.Definition.IDefinition<CosmosDBAccount.Update.IWithOptionals>
     {
-        internal SqlDatabaseImpl(Models.SqlDatabaseGetResultsInner innerObject)
-            : base(innerObject)
+        private ISqlResourcesOperations Client { get { return Parent.Manager.Inner.SqlResources; } }
+        private SqlDatabaseCreateUpdateParameters createUpdateParameters;
+        private ThroughputSettingsUpdateParameters throughputSettingsToUpdate;
+        private SqlContainersImpl sqlContainers;
+
+        internal SqlDatabaseImpl(string name, CosmosDBAccountImpl parent, SqlDatabaseGetResultsInner inner)
+            : base(name, parent, inner)
         {
+            this.sqlContainers = new SqlContainersImpl(this);
+            InitializeCreateUpdateParameters();
+        }
+
+        private void InitializeCreateUpdateParameters()
+        {
+            this.createUpdateParameters = new SqlDatabaseCreateUpdateParameters()
+            {
+                Location = Parent.Inner.Location,
+                Resource = new SqlDatabaseResource(id: this.Name()),
+                Options = new Dictionary<string, string>(),
+            };
         }
 
         public string SqlDatabaseId()
         {
-            return this.Inner.SqlDatabaseGetResultsId;
+            return this.Inner.Resource.Id;
         }
 
         public string _rid()
         {
-            return this.Inner._rid;
+            return this.Inner.Resource._rid;
         }
 
         public object _ts()
         {
-            return this.Inner._ts;
+            return this.Inner.Resource._ts;
         }
 
         public string _etag()
         {
-            return this.Inner._etag;
+            return this.Inner.Resource._etag;
         }
 
         public string _colls()
         {
-            return this.Inner._colls;
+            return this.Inner.Resource._colls;
         }
 
         public string _users()
         {
-            return this.Inner._users;
+            return this.Inner.Resource._users;
+        }
+
+        public string Id()
+        {
+            return this.Inner.Id;
+        }
+
+        public SqlDatabaseImpl WithOption(string key, string value)
+        {
+            this.createUpdateParameters.Options.Add(key, value);
+            return this;
+        }
+
+        public SqlDatabaseImpl WithOptionsAppend(IDictionary<string, string> options)
+        {
+            foreach (var option in options)
+            {
+                this.createUpdateParameters.Options.Add(option.Key, option.Value);
+            }
+            return this;
+        }
+
+        public SqlDatabaseImpl WithOptionsReplace(IDictionary<string, string> options)
+        {
+            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            foreach (var option in options)
+            {
+                this.createUpdateParameters.Options.Add(option);
+            }
+            return this;
+        }
+
+        public SqlDatabaseImpl WithoutOption(string key)
+        {
+            this.createUpdateParameters.Options.Remove(key);
+            return this;
+        }
+
+        public SqlDatabaseImpl WithoutOptions()
+        {
+            this.createUpdateParameters.Options.Clear();
+            return this;
+        }
+
+        public SqlDatabaseImpl WithThroughput(int throughput)
+        {
+            return this.WithOption("throughput", $"{throughput}");
+        }
+
+        public CosmosDBAccountImpl Attach()
+        {
+            return this.Parent.WithSqlDatabase(this);
+        }
+
+        public async override Task<ISqlDatabase> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await this.Client.CreateUpdateSqlDatabaseAsync(
+                Parent.ResourceGroupName,
+                Parent.Name,
+                this.Name(),
+                this.createUpdateParameters,
+                cancellationToken
+                );
+
+            SetInner(inner);
+            InitializeCreateUpdateParameters();
+            List<Task> childTasks = new List<Task>();
+
+            if (this.throughputSettingsToUpdate != null)
+            {
+                this.throughputSettingsToUpdate.Location = Parent.RegionName.ToLower();
+                childTasks.Add(this.Client.UpdateSqlDatabaseThroughputAsync(
+                    Parent.ResourceGroupName,
+                    Parent.Name,
+                    this.Name(),
+                    this.throughputSettingsToUpdate,
+                    cancellationToken
+                    ));
+
+                this.throughputSettingsToUpdate = null;
+            }
+
+            childTasks.Add(this.sqlContainers.CommitAndGetAllAsync(cancellationToken));
+            await Task.WhenAll(childTasks);
+
+            return this;
+        }
+
+        public async override Task<ISqlDatabase> UpdateAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.CreateAsync(cancellationToken);
+        }
+
+        public async override Task DeleteAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Client.DeleteSqlDatabaseAsync(
+                Parent.ResourceGroupName,
+                Parent.Name,
+                this.Name(),
+                cancellationToken
+                );
+        }
+
+        protected async override Task<SqlDatabaseGetResultsInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Client.GetSqlDatabaseAsync(
+                Parent.ResourceGroupName,
+                Parent.Name,
+                this.Name(),
+                cancellationToken
+                );
+        }
+
+        public ThroughputSettingsGetPropertiesResource GetThroughputSettings()
+        {
+            return Extensions.Synchronize(() => this.GetThroughputSettingsAsync());
+        }
+
+        public async Task<ThroughputSettingsGetPropertiesResource> GetThroughputSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var throughput = await this.Client.GetSqlDatabaseThroughputAsync(
+                Parent.ResourceGroupName,
+                Parent.Name,
+                this.Name(),
+                cancellationToken
+                );
+            return throughput.Resource;
+        }
+
+        public SqlDatabaseImpl WithSqlContainer(SqlContainerImpl sqlContainer)
+        {
+            this.sqlContainers.AddSqlContainer(sqlContainer);
+            return this;
+        }
+
+        public SqlContainerImpl DefineNewSqlContainer(string name)
+        {
+            return this.sqlContainers.Define(name);
+        }
+
+        public SqlContainerImpl UpdateSqlContainer(string name)
+        {
+            return this.sqlContainers.Update(name);
+        }
+
+        public SqlDatabaseImpl WithoutSqlContainer(string name)
+        {
+            this.sqlContainers.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<ISqlContainer> ListSqlContainers()
+        {
+            return Extensions.Synchronize(() => this.ListSqlContainersAsync());
+        }
+
+        public async Task<IEnumerable<ISqlContainer>> ListSqlContainersAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.sqlContainers.ListAsync(cancellationToken);
+        }
+
+        public ISqlContainer GetSqlContainer(string name)
+        {
+            return Extensions.Synchronize(() => this.GetSqlContainerAsync(name));
+        }
+
+        public async Task<ISqlContainer> GetSqlContainerAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.sqlContainers.GetImplAsync(name, cancellationToken);
         }
     }
 }

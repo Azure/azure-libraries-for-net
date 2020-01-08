@@ -10,6 +10,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Fluent.Tests
@@ -260,7 +261,380 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDSqlContainer()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var sqlDbName = SdkContext.RandomResourceName("sqldb", 22);
+                var sqlContainerName = SdkContext.RandomResourceName("sqlcontainer", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelSql()
+                        .WithStrongConsistency()
+                        .DefineNewSqlDatabase(sqlDbName)
+                            .WithThroughput(1000)
+                            .DefineNewSqlContainer(sqlContainerName)
+                                .WithThroughput(400)
+                                .DefineIndexingPolicy()
+                                    .WithIndexingMode(IndexingMode.Consistent)
+                                    .WithIncludedPath(new IncludedPath(path: "/*"))
+                                    .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
+                                    .Attach()
+                                .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
+                                .WithStoredProcedure("test", new SqlStoredProcedureResource(id: null, body: "function test(){}"))
+                                .WithUserDefinedFunction("test", new SqlUserDefinedFunctionResource(id: null, body: "function test(){}"))
+                                .WithTrigger("test", new SqlTriggerResource(id: null, body: "function test(){}", triggerType: TriggerType.Pre, triggerOperation: TriggerOperation.All))
+                                .Attach()
+                            .Attach()
+                        .Create();
+
+                    var sqldbs = databaseAccount.ListSqlDatabases().ToList();
+                    Assert.Single(sqldbs);
+
+                    var sqldb = sqldbs[0];
+                    Assert.Equal(sqlDbName, sqldb.Name);
+                    Assert.Equal(1000, sqldb.GetThroughputSettings().Throughput);
+
+                    var containers = sqldb.ListSqlContainers().ToList();
+                    Assert.Single(containers);
+
+                    var container = containers[0];
+                    Assert.Equal(sqlContainerName, container.Name);
+                    Assert.Equal(400, container.GetThroughputSettings().Throughput);
+                    Assert.Equal(IndexingMode.Consistent, container.IndexingPolicy.IndexingMode);
+                    Assert.NotNull(container.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
+                    Assert.NotNull(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.True(container.PartitionKey.Paths.Contains("/myPartitionKey"));
+                    Assert.Equal(PartitionKind.Hash, container.PartitionKey.Kind);
+                    Assert.NotNull(container.GetStoredProcedure("test"));
+                    Assert.NotNull(container.GetUserDefinedFunction("test"));
+                    Assert.NotNull(container.GetTrigger("test"));
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateSqlDatabase(sqlDbName)
+                            .WithOption("throughput", "800")
+                            .UpdateSqlContainer(sqlContainerName)
+                                .WithOption("throughput", "600")
+                                .UpdateIndexingPolicy()
+                                    .WithoutExcludedPath("/myPathToNotIndex/*")
+                                    .Parent()
+                                .Parent()
+                            .Parent()
+                        .Apply();
+
+                    sqldb = databaseAccount.GetSqlDatabase(sqlDbName);
+                    Assert.Equal(800, sqldb.GetThroughputSettings().Throughput);
+
+                    container = sqldb.GetSqlContainer(sqlContainerName);
+                    Assert.Equal(600, container.GetThroughputSettings().Throughput);
+                    Assert.Null(container.IndexingPolicy.ExcludedPaths.SingleOrDefault(element => element.Path == "/myPathToNotIndex/*"));
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDMongoDBCollection()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var mongoDBName = SdkContext.RandomResourceName("mongodb", 22);
+                var mongoCollectionName = SdkContext.RandomResourceName("mongocollection", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelMongoDB()
+                        .WithStrongConsistency()
+                        .DefineNewMongoDB(mongoDBName)
+                            .WithThroughput(400)
+                            .DefineNewCollection(mongoCollectionName)
+                                .WithThroughput(600)
+                                .WithShardKey("test")
+                                .Attach()
+                            .Attach()
+                        .Create();
+
+                    var mongodbs = databaseAccount.ListMongoDBs().ToList();
+                    Assert.Single(mongodbs);
+
+                    var mongodb = mongodbs[0];
+                    Assert.Equal(mongoDBName, mongodb.Name);
+                    Assert.Equal(400, mongodb.GetThroughputSettings().Throughput);
+
+                    var collections = mongodb.ListCollections().ToList();
+                    Assert.Single(collections);
+
+                    var collection = collections[0];
+                    Assert.Equal(mongoCollectionName, collection.Name);
+                    Assert.Equal(600, collection.GetThroughputSettings().Throughput);
+                    Assert.Equal("Hash", collection.ShardKey.GetValueOrDefault("test", "empty"));
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateMongoDB(mongoDBName)
+                            .UpdateCollection(mongoCollectionName)
+                                .WithThroughput(500)
+                                .Parent()
+                            .WithThroughput(800)
+                            .Parent()
+                        .Apply();
+
+                    mongodb = databaseAccount.GetMongoDB(mongoDBName);
+                    Assert.Equal(800, mongodb.GetThroughputSettings().Throughput);
+
+                    collection = mongodb.GetCollection(mongoCollectionName);
+                    Assert.Equal(500, collection.GetThroughputSettings().Throughput);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDCassandraTable()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var cassandraName = SdkContext.RandomResourceName("cassandra", 22);
+                var cassandraTableName = SdkContext.RandomResourceName("cassandratable", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelCassandra()
+                        .WithStrongConsistency()
+                        .DefineNewCassandraKeyspace(cassandraName)
+                            .WithThroughput(400)
+                            .DefineNewCassandraTable(cassandraTableName)
+                                .WithThroughput(600)
+                                .WithColumn("id", "int")
+                                .WithColumn("name", "text")
+                                .WithColumn("test", "boolean")
+                                .WithPartitionKey("id")
+                                .Attach()
+                            .Attach()
+                        .Create();
+
+                    var cassandras = databaseAccount.ListCassandraKeyspaces().ToList();
+                    Assert.Single(cassandras);
+
+                    var cassandra = cassandras[0];
+                    Assert.Equal(cassandraName, cassandra.Name);
+                    Assert.Equal(400, cassandra.GetThroughputSettings().Throughput);
+
+                    var tables = cassandra.ListCassandraTables().ToList();
+                    Assert.Single(tables);
+
+                    var table = tables[0];
+                    Assert.Equal(cassandraTableName, table.Name);
+                    Assert.Equal(600, table.GetThroughputSettings().Throughput);
+                    Assert.Equal(3, table.Schema.Columns.Count);
+                    Assert.Equal(1, table.Schema.PartitionKeys.Count);
+                    Assert.Equal("id", table.Schema.PartitionKeys[0].Name);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateCassandraKeyspace(cassandraName)
+                            .UpdateCassandraTable(cassandraTableName)
+                                .WithThroughput(500)
+                                .WithoutColumn("test")
+                                .Parent()
+                            .WithThroughput(800)
+                            .Parent()
+                        .Apply();
+
+                    cassandra = databaseAccount.GetCassandraKeyspace(cassandraName);
+                    Assert.Equal(800, cassandra.GetThroughputSettings().Throughput);
+
+                    table = cassandra.GetCassandraTable(cassandraTableName);
+                    Assert.Equal(500, table.GetThroughputSettings().Throughput);
+                    Assert.Equal(2, table.Schema.Columns.Count);
+                    Assert.Null(table.Schema.Columns.SingleOrDefault(element => element.Name == "test"));
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDGremlinGraph()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var gremlinName = SdkContext.RandomResourceName("gremlin", 22);
+                var gremlinGraphName = SdkContext.RandomResourceName("gremlingraph", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelGremlin()
+                        .WithStrongConsistency()
+                        .DefineNewGremlinDatabase(gremlinName)
+                            .WithThroughput(1000)
+                            .DefineNewGremlinGraph(gremlinGraphName)
+                                .WithThroughput(400)
+                                .DefineIndexingPolicy()
+                                    .WithIndexingMode(IndexingMode.Consistent)
+                                    .WithIncludedPath(new IncludedPath(path: "/*"))
+                                    .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
+                                    .Attach()
+                                .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
+                                .Attach()
+                            .Attach()
+                        .Create();
+
+                    var gremlins = databaseAccount.ListGremlinDatabases().ToList();
+                    Assert.Single(gremlins);
+
+                    var gremlin = gremlins[0];
+                    Assert.Equal(gremlinName, gremlin.Name);
+                    Assert.Equal(1000, gremlin.GetThroughputSettings().Throughput);
+
+                    var graphs = gremlin.ListGremlinGraphs().ToList();
+                    Assert.Single(graphs);
+
+                    var graph = graphs[0];
+                    Assert.Equal(gremlinGraphName, graph.Name);
+                    Assert.Equal(400, graph.GetThroughputSettings().Throughput);
+                    Assert.Equal(IndexingMode.Consistent, graph.IndexingPolicy.IndexingMode);
+                    Assert.NotNull(graph.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
+                    Assert.NotNull(graph.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.True(graph.PartitionKey.Paths.Contains("/myPartitionKey"));
+                    Assert.Equal(PartitionKind.Hash, graph.PartitionKey.Kind);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateGremlinDatabase(gremlinName)
+                            .WithOption("throughput", "800")
+                            .UpdateGremlinGraph(gremlinGraphName)
+                                .WithOption("throughput", "600")
+                                .Parent()
+                            .Parent()
+                        .Apply();
+
+                    gremlin = databaseAccount.GetGremlinDatabase(gremlinName);
+                    Assert.Equal(800, gremlin.GetThroughputSettings().Throughput);
+
+                    graph = gremlin.GetGremlinGraph(gremlinGraphName);
+                    Assert.Equal(600, graph.GetThroughputSettings().Throughput);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDTable()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var dbName = SdkContext.RandomResourceName("cosmosdb", 22);
+                var rgName = SdkContext.RandomResourceName("cosmosdbRg", 22);
+                var tableName = SdkContext.RandomResourceName("table", 22);
+                var region = Region.USWest;
+
+                var azure = TestHelper.CreateRollupClient();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName).WithRegion(region).Create();
+                    var databaseAccount = azure.CosmosDBAccounts.Define(dbName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithDataModelAzureTable()
+                        .WithStrongConsistency()
+                        .DefineNewTable(tableName)
+                            .WithThroughput(400)
+                            .Attach()
+                        .Create();
+
+                    var tables = databaseAccount.ListTables().ToList();
+                    Assert.Single(tables);
+
+                    var table = tables[0];
+                    Assert.Equal(tableName, table.Name);
+                    Assert.Equal(400, table.GetThroughputSettings().Throughput);
+
+                    databaseAccount = databaseAccount.Update()
+                        .UpdateTable(tableName)
+                            .WithOption("throughput", "800")
+                            .Parent()
+                        .Apply();
+
+                    table = databaseAccount.GetTable(tableName);
+                    Assert.Equal(800, table.GetThroughputSettings().Throughput);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }

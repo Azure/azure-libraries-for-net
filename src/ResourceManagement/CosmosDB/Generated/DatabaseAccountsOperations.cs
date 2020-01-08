@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// <summary>
     /// DatabaseAccountsOperations operations.
     /// </summary>
-    internal partial class DatabaseAccountsOperations : IServiceOperations<CosmosDB>, IDatabaseAccountsOperations
+    internal partial class DatabaseAccountsOperations : IServiceOperations<CosmosDBManagementClient>, IDatabaseAccountsOperations
     {
         /// <summary>
         /// Initializes a new instance of the DatabaseAccountsOperations class.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal DatabaseAccountsOperations(CosmosDB client)
+        internal DatabaseAccountsOperations(CosmosDBManagementClient client)
         {
             if (client == null)
             {
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <summary>
-        /// Gets a reference to the CosmosDB
+        /// Gets a reference to the CosmosDBManagementClient
         /// </summary>
-        public CosmosDB Client { get; private set; }
+        public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
         /// Retrieves the properties of an existing Azure Cosmos DB database account.

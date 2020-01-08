@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// The stage of the cosmos db update allowing to specify metadata write access.
     /// </summary>
-    public interface IWithKeyBasedMetadataWriteAccess 
+    public interface IWithKeyBasedMetadataWriteAccess
     {
         /// <summary>
         /// Specifies whether metadata write access should be disabled.
@@ -153,7 +153,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithConnector,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithMultipleLocations,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess,
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithPrivateEndpointConnection
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithPrivateEndpointConnection,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithChildResource
     {
     }
 
@@ -190,7 +191,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// The stage of the cosmos db update allowing to specify private endpoint connection.
     /// </summary>
-    public interface IWithPrivateEndpointConnection 
+    public interface IWithPrivateEndpointConnection
     {
         /// <summary>
         /// Start the definition of a private endpoint connection to be attached
@@ -213,5 +214,116 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="name">The reference name for the private endpoint connection.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithoutPrivateEndpointConnection(string name);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db update allowing to set child resources.
+    /// </summary>
+    public interface IWithChildResource
+    {
+        /// <summary>
+        /// Defines a new SQL database.
+        /// </summary>
+        /// <param name="name">The name of SQL database.</param>
+        /// <returns>The next stage of the update.</returns>
+        SqlDatabase.Definition.IBlank<IWithOptionals> DefineNewSqlDatabase(string name);
+
+        /// <summary>
+        /// Updates a SQL database.
+        /// </summary>
+        /// <param name="name">The name of SQL database.</param>
+        /// <returns>The next stage of the update.</returns>
+        SqlDatabase.Update.IUpdate UpdateSqlDatabase(string name);
+
+        /// <summary>
+        /// Removes a SQL database.
+        /// </summary>
+        /// <param name="name">The name of SQL database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutSqlDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the update.</returns>
+        MongoDB.Definition.IBlank<IWithOptionals> DefineNewMongoDB(string name);
+
+        /// <summary>
+        /// Updates a Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the update.</returns>
+        MongoDB.Update.IUpdate UpdateMongoDB(string name);
+
+        /// <summary>
+        /// Removes a Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutMongoDB(string name);
+
+        /// <summary>
+        /// Defines a new Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the update.</returns>
+        CassandraKeyspace.Definition.IBlank<IWithOptionals> DefineNewCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Updates a Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the update.</returns>
+        CassandraKeyspace.Update.IUpdate UpdateCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Removes a Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Defines a new Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        GremlinDatabase.Definition.IBlank<IWithOptionals> DefineNewGremlinDatabase(string name);
+
+        /// <summary>
+        /// Updates a Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        GremlinDatabase.Update.IUpdate UpdateGremlinDatabase(string name);
+
+        /// <summary>
+        /// Removes a Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutGremlinDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        Table.Definition.IBlank<IWithOptionals> DefineNewTable(string name);
+
+        /// <summary>
+        /// Updates a Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        Table.Update.IUpdate UpdateTable(string name);
+
+        /// <summary>
+        /// Removes a Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutTable(string name);
     }
 }

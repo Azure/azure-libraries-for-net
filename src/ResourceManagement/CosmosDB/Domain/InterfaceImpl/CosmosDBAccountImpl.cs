@@ -653,5 +653,185 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
         }
+
+        SqlDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewSqlDatabase(string name)
+        {
+            return this.DefineNewSqlDatabase(name);
+        }
+
+        SqlDatabase.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewSqlDatabase(string name)
+        {
+            return this.DefineNewSqlDatabase(name);
+        }
+
+        SqlDatabase.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateSqlDatabase(string name)
+        {
+            return this.UpdateSqlDatabase(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutSqlDatabase(string name)
+        {
+            return this.WithoutSqlDatabase(name);
+        }
+
+        IMongoDB ICosmosDBAccount.GetMongoDB(string databaseName)
+        {
+            return this.GetMongoDB(databaseName);
+        }
+
+        Task<IMongoDB> ICosmosDBAccount.GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetMongoDBAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<IMongoDB> ICosmosDBAccount.ListMongoDBs()
+        {
+            return this.ListMongoDBs();
+        }
+
+        Task<IEnumerable<IMongoDB>> ICosmosDBAccount.ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListMongoDBsAsync(cancellationToken);
+        }
+
+        MongoDB.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewMongoDB(string name)
+        {
+            return this.DefineNewMongoDB(name);
+        }
+
+        MongoDB.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewMongoDB(string name)
+        {
+            return this.DefineNewMongoDB(name);
+        }
+
+        MongoDB.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateMongoDB(string name)
+        {
+            return this.UpdateMongoDB(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutMongoDB(string name)
+        {
+            return this.WithoutMongoDB(name);
+        }
+
+        ICassandraKeyspace ICosmosDBAccount.GetCassandraKeyspace(string databaseName)
+        {
+            return this.GetCassandraKeyspace(databaseName);
+        }
+
+        Task<ICassandraKeyspace> ICosmosDBAccount.GetCassandraKeyspaceAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetCassandraKeyspaceAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<ICassandraKeyspace> ICosmosDBAccount.ListCassandraKeyspaces()
+        {
+            return this.ListCassandraKeyspaces();
+        }
+
+        Task<IEnumerable<ICassandraKeyspace>> ICosmosDBAccount.ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListCassandraKeyspacesAsync(cancellationToken);
+        }
+
+        CassandraKeyspace.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewCassandraKeyspace(string name)
+        {
+            return this.DefineNewCassandraKeyspace(name);
+        }
+
+        CassandraKeyspace.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewCassandraKeyspace(string name)
+        {
+            return this.DefineNewCassandraKeyspace(name);
+        }
+
+        CassandraKeyspace.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateCassandraKeyspace(string name)
+        {
+            return this.UpdateCassandraKeyspace(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutCassandraKeyspace(string name)
+        {
+            return this.WithoutCassandraKeyspace(name);
+        }
+
+        IGremlinDatabase ICosmosDBAccount.GetGremlinDatabase(string databaseName)
+        {
+            return this.GetGremlinDatabase(databaseName);
+        }
+
+        Task<IGremlinDatabase> ICosmosDBAccount.GetGremlinDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetGremlinDatabaseAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<IGremlinDatabase> ICosmosDBAccount.ListGremlinDatabases()
+        {
+            return this.ListGremlinDatabases();
+        }
+
+        Task<IEnumerable<IGremlinDatabase>> ICosmosDBAccount.ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListGremlinDatabasesAsync(cancellationToken);
+        }
+
+        GremlinDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewGremlinDatabase(string name)
+        {
+            return this.DefineNewGremlinDatabase(name);
+        }
+
+        GremlinDatabase.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewGremlinDatabase(string name)
+        {
+            return this.DefineNewGremlinDatabase(name);
+        }
+
+        GremlinDatabase.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateGremlinDatabase(string name)
+        {
+            return this.UpdateGremlinDatabase(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutGremlinDatabase(string name)
+        {
+            return this.WithoutGremlinDatabase(name);
+        }
+
+        ITable ICosmosDBAccount.GetTable(string databaseName)
+        {
+            return this.GetTable(databaseName);
+        }
+
+        Task<ITable> ICosmosDBAccount.GetTableAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetTableAsync(databaseName, cancellationToken);
+        }
+
+        IEnumerable<ITable> ICosmosDBAccount.ListTables()
+        {
+            return this.ListTables();
+        }
+
+        Task<IEnumerable<ITable>> ICosmosDBAccount.ListTablesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListTablesAsync(cancellationToken);
+        }
+
+        Table.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewTable(string name)
+        {
+            return this.DefineNewTable(name);
+        }
+
+        Table.Definition.IBlank<IWithOptionals> CosmosDBAccount.Update.IWithChildResource.DefineNewTable(string name)
+        {
+            return this.DefineNewTable(name);
+        }
+
+        Table.Update.IUpdate CosmosDBAccount.Update.IWithChildResource.UpdateTable(string name)
+        {
+            return this.UpdateTable(name);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithChildResource.WithoutTable(string name)
+        {
+            return this.WithoutTable(name);
+        }
     }
 }

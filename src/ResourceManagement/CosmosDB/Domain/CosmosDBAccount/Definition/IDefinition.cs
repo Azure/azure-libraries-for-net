@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="kind">The account kind.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithKind(string kind);
-
     }
 
     /// <summary>
@@ -145,6 +144,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConnector,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithPrivateEndpointConnection,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithChildResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
     }
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify metadata write access.
     /// </summary>
-    public interface IWithKeyBasedMetadataWriteAccess 
+    public interface IWithKeyBasedMetadataWriteAccess
     {
         /// <summary>
         /// Specifies whether metadata write access should be disabled.
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify private endpoint connection.
     /// </summary>
-    public interface IWithPrivateEndpointConnection 
+    public interface IWithPrivateEndpointConnection
     {
         /// <summary>
         /// Starts the definition of a private endpoint connection to be attached
@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKind,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithReadReplication,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithChildResource,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate
     {
     }
@@ -268,5 +269,46 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// </summary>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication WithSessionConsistency();
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to set child resources.
+    /// </summary>
+    public interface IWithChildResource
+    {
+        /// <summary>
+        /// Defines a new SQL database.
+        /// </summary>
+        /// <param name="name">The name of SQL database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        SqlDatabase.Definition.IBlank<IWithCreate> DefineNewSqlDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Mongo database.
+        /// </summary>
+        /// <param name="name">The name of Mongo database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        MongoDB.Definition.IBlank<IWithCreate> DefineNewMongoDB(string name);
+
+        /// <summary>
+        /// Defines a new Cassandra keyspace.
+        /// </summary>
+        /// <param name="name">The name of Cassandra keyspace.</param>
+        /// <returns>The next stage of the definition.</returns>
+        CassandraKeyspace.Definition.IBlank<IWithCreate> DefineNewCassandraKeyspace(string name);
+
+        /// <summary>
+        /// Defines a new Gremlin Database.
+        /// </summary>
+        /// <param name="name">The name of Gremlin Database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        GremlinDatabase.Definition.IBlank<IWithCreate> DefineNewGremlinDatabase(string name);
+
+        /// <summary>
+        /// Defines a new Table Database.
+        /// </summary>
+        /// <param name="name">The name of Table Database.</param>
+        /// <returns>The next stage of the definition.</returns>
+        Table.Definition.IBlank<IWithCreate> DefineNewTable(string name);
     }
 }

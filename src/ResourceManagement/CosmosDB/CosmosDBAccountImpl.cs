@@ -36,12 +36,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
+        private SqlDatabasesImpl sqlDatabases;
+        private MongoDBsImpl mongoDBs;
+        private CassandraKeyspacesImpl cassandraKeyspaces;
+        private GremlinDatabasesImpl gremlinDatabases;
+        private TablesImpl tables;
 
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
         {
             this.failoverPolicies = new List<Models.FailoverPolicy>();
-            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this.Manager.Inner.PrivateEndpointConnections, this);
+            this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this);
+            this.sqlDatabases = new SqlDatabasesImpl(this);
+            this.mongoDBs = new MongoDBsImpl(this);
+            this.cassandraKeyspaces = new CassandraKeyspacesImpl(this);
+            this.gremlinDatabases = new GremlinDatabasesImpl(this);
+            this.tables = new TablesImpl(this);
         }
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
@@ -111,7 +121,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 }
             }
 
-            await this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken);
+            List<Task> childTasks = new List<Task>();
+            childTasks.Add(this.privateEndpointConnections.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.sqlDatabases.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.mongoDBs.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.cassandraKeyspaces.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.gremlinDatabases.CommitAndGetAllAsync(cancellationToken));
+            childTasks.Add(this.tables.CommitAndGetAllAsync(cancellationToken));
+            await Task.WhenAll(childTasks);
+
             this.SetInner(databaseAccount.Inner);
             this.initializeFailover();
             return databaseAccount;
@@ -455,9 +473,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public async Task<IEnumerable<ISqlDatabase>> ListSqlDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await this.Manager.Inner.SqlResources
-                .ListSqlDatabasesAsync(this.ResourceGroupName, this.Name);
-            return result.Select(inner => new SqlDatabaseImpl(inner));
+            return await this.sqlDatabases.ListAsync(cancellationToken);
+        }
+
+        public ISqlDatabase GetSqlDatabase(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetSqlDatabaseAsync(databaseName));
+        }
+
+        public async Task<ISqlDatabase> GetSqlDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.sqlDatabases.GetImplAsync(databaseName, cancellationToken);
         }
 
         ///GENMHASH:6A08D79B3D058AD12B94D8E88D3A66BB:CBB08B5D2F8EBB6B1A4BE51DA2907810
@@ -634,6 +660,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             await this.Manager.Inner.DatabaseAccounts.OnlineRegionAsync(this.ResourceGroupName, this.Name, region.Name, cancellationToken);
         }
 
+        public override async Task<ICosmosDBAccount> RefreshAsync(CancellationToken cancellation = default(CancellationToken))
+        {
+            await base.RefreshAsync(cancellation);
+            this.sqlDatabases = new SqlDatabasesImpl(this);
+            this.mongoDBs = new MongoDBsImpl(this);
+            this.cassandraKeyspaces = new CassandraKeyspacesImpl(this);
+            this.gremlinDatabases = new GremlinDatabasesImpl(this);
+            this.tables = new TablesImpl(this);
+            return this;
+        }
+
         public bool CassandraConnectorEnabled()
         {
             return this.Inner.EnableCassandraConnector ?? false;
@@ -737,6 +774,192 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 result.Add(new PrivateLinkResourceImpl(inner));
             }
             return result;
+        }
+
+        internal CosmosDBAccountImpl WithSqlDatabase(SqlDatabaseImpl sqlDatabase)
+        {
+            this.sqlDatabases.AddSqlDatabase(sqlDatabase);
+            return this;
+        }
+
+        internal SqlDatabaseImpl DefineNewSqlDatabase(string name)
+        {
+            return this.sqlDatabases.Define(name);
+        }
+
+        internal SqlDatabaseImpl UpdateSqlDatabase(string name)
+        {
+            return this.sqlDatabases.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutSqlDatabase(string name)
+        {
+            this.sqlDatabases.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<IMongoDB> ListMongoDBs()
+        {
+            return Extensions.Synchronize(() => this.ListMongoDBsAsync());
+        }
+
+        public async Task<IEnumerable<IMongoDB>> ListMongoDBsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.mongoDBs.ListAsync(cancellationToken);
+        }
+
+        public IMongoDB GetMongoDB(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetMongoDBAsync(databaseName));
+        }
+
+        public async Task<IMongoDB> GetMongoDBAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.mongoDBs.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithMongoDB(MongoDBImpl mongoDB)
+        {
+            this.mongoDBs.AddMongoDB(mongoDB);
+            return this;
+        }
+
+        internal MongoDBImpl DefineNewMongoDB(string name)
+        {
+            return this.mongoDBs.Define(name);
+        }
+
+        internal MongoDBImpl UpdateMongoDB(string name)
+        {
+            return this.mongoDBs.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutMongoDB(string name)
+        {
+            this.mongoDBs.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<ICassandraKeyspace> ListCassandraKeyspaces()
+        {
+            return Extensions.Synchronize(() => this.ListCassandraKeyspacesAsync());
+        }
+
+        public async Task<IEnumerable<ICassandraKeyspace>> ListCassandraKeyspacesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.cassandraKeyspaces.ListAsync(cancellationToken);
+        }
+
+        public ICassandraKeyspace GetCassandraKeyspace(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetCassandraKeyspaceAsync(databaseName));
+        }
+
+        public async Task<ICassandraKeyspace> GetCassandraKeyspaceAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.cassandraKeyspaces.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithCassandraKeyspace(CassandraKeyspaceImpl cassandraKeyspace)
+        {
+            this.cassandraKeyspaces.AddCassandraKeyspace(cassandraKeyspace);
+            return this;
+        }
+
+        internal CassandraKeyspaceImpl DefineNewCassandraKeyspace(string name)
+        {
+            return this.cassandraKeyspaces.Define(name);
+        }
+
+        internal CassandraKeyspaceImpl UpdateCassandraKeyspace(string name)
+        {
+            return this.cassandraKeyspaces.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutCassandraKeyspace(string name)
+        {
+            this.cassandraKeyspaces.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<IGremlinDatabase> ListGremlinDatabases()
+        {
+            return Extensions.Synchronize(() => this.ListGremlinDatabasesAsync());
+        }
+
+        public async Task<IEnumerable<IGremlinDatabase>> ListGremlinDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.gremlinDatabases.ListAsync(cancellationToken);
+        }
+
+        public IGremlinDatabase GetGremlinDatabase(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetGremlinDatabaseAsync(databaseName));
+        }
+
+        public async Task<IGremlinDatabase> GetGremlinDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.gremlinDatabases.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithGremlinDatabase(GremlinDatabaseImpl gremlinDatabase)
+        {
+            this.gremlinDatabases.AddGremlinDatabase(gremlinDatabase);
+            return this;
+        }
+
+        internal GremlinDatabaseImpl DefineNewGremlinDatabase(string name)
+        {
+            return this.gremlinDatabases.Define(name);
+        }
+
+        internal GremlinDatabaseImpl UpdateGremlinDatabase(string name)
+        {
+            return this.gremlinDatabases.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutGremlinDatabase(string name)
+        {
+            this.gremlinDatabases.Remove(name);
+            return this;
+        }
+
+        public IEnumerable<ITable> ListTables()
+        {
+            return Extensions.Synchronize(() => this.ListTablesAsync());
+        }
+
+        public async Task<IEnumerable<ITable>> ListTablesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.tables.ListAsync(cancellationToken);
+        }
+
+        public ITable GetTable(string databaseName)
+        {
+            return Extensions.Synchronize(() => this.GetTableAsync(databaseName));
+        }
+
+        public async Task<ITable> GetTableAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.tables.GetImplAsync(databaseName, cancellationToken);
+        }
+        internal CosmosDBAccountImpl WithTable(TableImpl table)
+        {
+            this.tables.AddTable(table);
+            return this;
+        }
+
+        internal TableImpl DefineNewTable(string name)
+        {
+            return this.tables.Define(name);
+        }
+
+        internal TableImpl UpdateTable(string name)
+        {
+            return this.tables.Update(name);
+        }
+
+        public CosmosDBAccountImpl WithoutTable(string name)
+        {
+            this.tables.Remove(name);
+            return this;
         }
 
         interface HasLocation
