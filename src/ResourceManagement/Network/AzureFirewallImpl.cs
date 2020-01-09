@@ -7,7 +7,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -153,14 +152,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                ReadOnlyDictionary<string, string> additionalProps;
+                IReadOnlyDictionary<string, string> additionalProps;
                 if (Inner.AdditionalProperties != null)
                 {
-                    additionalProps = new ReadOnlyDictionary<string, string>(Inner.AdditionalProperties);
+                    additionalProps = new Dictionary<string, string>(Inner.AdditionalProperties);
                 }
                 else
                 {
-                    additionalProps = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>());
+                    additionalProps = new Dictionary<string, string>();
                 }
                 return additionalProps;
             }
@@ -268,14 +267,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithAnyProtocol();
         }
 
-        AzureFirewall.Definition.IWithCreate AzureFirewall.Definition.IWithSku.WithAzfwHubSkuName()
+        AzureFirewall.Definition.IWithCreate AzureFirewall.Definition.IWithSku.WithAzureFirewallHubSkuName()
         {
-            return WithAzfwHubSkuName();
+            return WithAzureFirewallHubSkuName();
         }
 
-        AzureFirewall.Definition.IWithCreate AzureFirewall.Definition.IWithSku.WithAzfwVnetSkuName()
+        AzureFirewall.Definition.IWithCreate AzureFirewall.Definition.IWithSku.WithAzureFirewallVnetSkuName()
         {
-            return WithAzfwVnetSkuName();
+            return WithAzureFirewallVnetSkuName();
         }
 
         AzureFirewall.Definition.IWithApplicationRuleCollectionSettings AzureFirewall.BaseRuleCollection.IWithRuleCollectionActionType<AzureFirewall.Definition.IWithApplicationRuleCollectionSettings>.WithDenyActionType()
@@ -626,14 +625,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithFirewallPolicy(firewallPolicyId);
         }
 
-        AzureFirewall.Update.IUpdate AzureFirewall.Update.IWithSku.WithAzfwVnetSkuName()
+        AzureFirewall.Update.IUpdate AzureFirewall.Update.IWithSku.WithAzureFirewallVnetSkuName()
         {
-            return WithAzfwVnetSkuName();
+            return WithAzureFirewallVnetSkuName();
         }
 
-        AzureFirewall.Update.IUpdate AzureFirewall.Update.IWithSku.WithAzfwHubSkuName()
+        AzureFirewall.Update.IUpdate AzureFirewall.Update.IWithSku.WithAzureFirewallHubSkuName()
         {
-            return WithAzfwHubSkuName();
+            return WithAzureFirewallHubSkuName();
         }
 
         AzureFirewall.Update.IUpdate AzureFirewall.Update.IWithAdditionalProperty.WithAdditionalProperty(string key, string value)
@@ -820,7 +819,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        private AzureFirewallImpl WithAzfwHubSkuName()
+        private AzureFirewallImpl WithAzureFirewallHubSkuName()
         {
             if (Inner.Sku == null)
             {
@@ -830,7 +829,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        private AzureFirewallImpl WithAzfwVnetSkuName()
+        private AzureFirewallImpl WithAzureFirewallVnetSkuName()
         {
             if (Inner.Sku == null)
             {

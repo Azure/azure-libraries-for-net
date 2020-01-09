@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IEnumerable<IPrivateLinkService> ListBySubscription()
         {
-            throw new System.NotImplementedException();
+            return Extensions.Synchronize(() => ListBySubscriptionAsync(true, CancellationToken.None));
         }
 
         public async Task<IPagedCollection<IPrivateLinkService>> ListBySubscriptionAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))

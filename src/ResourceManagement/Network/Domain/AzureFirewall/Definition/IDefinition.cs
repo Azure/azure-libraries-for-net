@@ -273,13 +273,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.AzureFirewall.Definition
         /// Sets the resource SKU name to 'AZFW_VNet'.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        IWithCreate WithAzfwVnetSkuName();
+        IWithCreate WithAzureFirewallVnetSkuName();
 
         /// <summary>
         /// Sets the resource SKU name to 'AZFW_Hub'.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        IWithCreate WithAzfwHubSkuName();
+        IWithCreate WithAzureFirewallHubSkuName();
 
         /// <summary>
         /// Sets the resource SKU tier to 'Standard'.

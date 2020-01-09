@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the provisioning state of the Azure firewall IP configuration
         /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// 'Deleting', 'Failed'.
         /// </summary>
         ProvisioningState ProvisioningState { get; }
 

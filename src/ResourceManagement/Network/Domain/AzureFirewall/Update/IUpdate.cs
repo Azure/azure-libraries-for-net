@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.AzureFirewall.Update
         /// Sets the resource SKU name to 'AZFW_VNet'.
         /// </summary>
         /// <return>The next stage of the update.</return>
-        IUpdate WithAzfwVnetSkuName();
+        IUpdate WithAzureFirewallVnetSkuName();
 
         /// <summary>
         /// Sets the resource SKU name to 'AZFW_Hub'.
         /// </summary>
         /// <return>The next stage of the update.</return>
-        IUpdate WithAzfwHubSkuName();
+        IUpdate WithAzureFirewallHubSkuName();
     }
 
     /// <summary>
