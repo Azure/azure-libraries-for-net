@@ -1140,22 +1140,22 @@ namespace Microsoft.Azure.Management.Fluent
         IPublicIPAddresses PublicIPAddresses { get; }
 
         /// <summary>
-        /// Entry point to network interface management
+        /// Entry point to network interface management.
         /// </summary>
         INetworkInterfaces NetworkInterfaces { get; }
 
         /// <summary>
-        /// Entry point to private link service management
+        /// Entry point to private link service management.
         /// </summary>
         IPrivateLinkServices PrivateLinkServices { get; }
 
         /// <summary>
-        /// Entry point to Azure firewall management
+        /// Entry point to Azure firewall management.
         /// </summary>
         IAzureFirewalls AzureFirewalls { get; }
 
         /// <summary>
-        /// Entry point to route tables management
+        /// Entry point to route tables management.
         /// </summary>
         IRouteTables RouteTables { get; }
 
