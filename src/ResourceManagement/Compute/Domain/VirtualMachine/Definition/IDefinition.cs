@@ -364,6 +364,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="listener">A WinRM listener.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithWindowsCreateManaged WithWinRM(WinRMListener listener);
+
+        /// <summary>
+        /// Specifies a vault secret to add to the vm.
+        /// Each call to this method adds to the list of vault secrets.
+        /// </summary>
+        /// <param name="vaultId">The vault id.</param>
+        /// <param name="certificateStore">The vm certificate store e.g. "My".</param>
+        /// <param name="certificateUrl">The vault certificate URL.</param>
+        /// <return>The stage representing creatable Windows VM definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithWindowsCreateManaged WithVaultSecret(string vaultId, string certificateUrl, string certificateStore);
+
     }
 
     /// <summary>
@@ -453,6 +464,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="listener">The WinRMListener.</param>
         /// <return>The stage representing creatable Windows VM definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithWindowsCreateUnmanaged WithWinRM(WinRMListener listener);
+
+        /// <summary>
+        /// Specifies a vault secret to add to the vm.
+        /// Each call to this method adds to the list of vault secrets.
+        /// </summary>
+        /// <param name="vaultId">The vault id.</param>
+        /// <param name="certificateStore">The vm certificate store e.g. "My".</param>
+        /// <param name="certificateUrl">The vault certificate URL.</param>
+        /// <return>The stage representing creatable Windows VM definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithWindowsCreateUnmanaged WithVaultSecret(string vaultId, string certificateUrl, string certificateStore);
     }
 
     /// <summary>

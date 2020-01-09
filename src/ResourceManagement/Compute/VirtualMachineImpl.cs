@@ -690,6 +690,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public VirtualMachineImpl WithVaultSecret(string vaultId, string certificateUrl, string certificateStore)
+        {
+
+            if (Inner.OsProfile.Secrets == null)
+            {
+                Inner.OsProfile.Secrets = new List<VaultSecretGroup>();
+            }
+
+            var secretGroup = Inner.OsProfile.Secrets.FirstOrDefault(secret =>
+                secret.SourceVault.Id.Equals(vaultId, StringComparison.OrdinalIgnoreCase));
+
+            if (secretGroup == null)
+            {
+                secretGroup = new VaultSecretGroup(new SubResource(vaultId));
+                Inner.OsProfile.Secrets.Add(secretGroup);
+            }
+
+            if(secretGroup.VaultCertificates == null)
+            {
+                secretGroup.VaultCertificates = new List<VaultCertificate>();
+            }
+            secretGroup.VaultCertificates.Add(new VaultCertificate(certificateUrl,certificateStore));
+
+            return this;
+        }
+
         ///GENMHASH:F2FFAF5448D7DFAFBE00130C62E87053:31B639B9D779BF92E26C4DAAF832C9E7
         public VirtualMachineImpl WithRootPassword(string password)
         {
