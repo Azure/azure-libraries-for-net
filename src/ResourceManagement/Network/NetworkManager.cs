@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private ApplicationSecurityGroupsImpl applicationSecurityGroups;
         private RouteFiltersImpl routeFilters;
         private DdosProtectionPlansImpl ddosProtectionPlans;
+        private PrivateLinkServicesImpl privateLinkServices;
+        private AzureFirewallsImpl azureFirewalls;
 
         private NetworkManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new NetworkManagementClient(restClient)
@@ -317,6 +319,38 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return ddosProtectionPlans;
             }
         }
+
+        /// <summary>
+        /// returns entry point to private link services management
+        /// </summary>
+        public IPrivateLinkServices PrivateLinkServices
+        {
+            get
+            {
+                if (privateLinkServices == null)
+                {
+                    privateLinkServices = new PrivateLinkServicesImpl(this);
+                }
+
+                return privateLinkServices;
+            }
+        }
+
+        /// <summary>
+        /// returns entry point to Azure firewalls management
+        /// </summary>
+        public IAzureFirewalls AzureFirewalls
+        {
+            get
+            {
+                if (azureFirewalls == null)
+                {
+                    azureFirewalls = new AzureFirewallsImpl(this);
+                }
+
+                return azureFirewalls;
+            }
+        }
     }
 
     public interface INetworkManagerBeta : IBeta
@@ -393,5 +427,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Entry point to route table management
         /// </summary>
         IRouteTables RouteTables { get; }
+
+        /// <summary>
+        /// Entry point to private link service management
+        /// </summary>
+        IPrivateLinkServices PrivateLinkServices { get; }
+
+        /// <summary>
+        /// Entry point to Azure firewall management
+        /// </summary>
+        IAzureFirewalls AzureFirewalls { get; }
     }
 }
