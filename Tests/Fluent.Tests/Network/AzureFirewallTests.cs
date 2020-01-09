@@ -54,7 +54,7 @@ namespace Fluent.Tests.Network
                             .WithAllowActionType()
                             .WithPriority(200)
                             .Attach()
-                        .WithAzfwVnetSkuName()
+                        .WithAzureFirewallVnetSkuName()
                         .WithAlertModeForThreatIntel()
                         .Create();
 
