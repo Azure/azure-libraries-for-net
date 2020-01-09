@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        /// <returns>entry point to manage route tables</returns>
+        public IRouteTables RouteTables
+        {
+            get
+            {
+                return networkManager.RouteTables;
+            }
+        }
+
         /// <returns>entry point to manage virtual load balancers</returns>
         public ILoadBalancers LoadBalancers
         {
@@ -1144,6 +1153,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure firewall management
         /// </summary>
         IAzureFirewalls AzureFirewalls { get; }
+
+        /// <summary>
+        /// Entry point to route tables management
+        /// </summary>
+        IRouteTables RouteTables { get; }
 
         /// <summary>
         /// Entry point to Azure Resource Manager template deployment management.
