@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             newCertificate = async () =>
             {
-                var certs = await parent.Manager.AppServiceCertificates.ListByResourceGroupAsync(parent.ResourceGroupName);
+                var certs = await parent.Manager.AppServiceCertificates.ListAsync();
                 foreach (IAppServiceCertificate certificate in certs)
                 {
                     if (certificate.Name == certificateNameOrThumbprint ||
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 }
                 return null;
             };
-            
+
             return this;
         }
 
