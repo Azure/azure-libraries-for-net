@@ -163,6 +163,8 @@ var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
 <li><a href="https://github.com/Azure-Samples/managed-disk-dotnet-create-virtual-machine-using-specialized-disk-from-snapshot">Create virtual machine using specialized VHD from snapshot</a></li>
 <li><a href="https://github.com/Azure-Samples/managed-disk-dotnet-convert-existing-virtual-machines-to-use-managed-disks">Convert virtual machines to use managed disks</a></li>
 <li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-virtual-machine-with-unmanaged-disks">Manage virtual machine with unmanaged disks</a></li>
+<li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-virtual-machine-with-disks">Manage virtual machine with disks</a></li>
+<li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-managed-disks">Manage virtual machine with managed disks</a></li>
 <li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi">Manage Azure resources from a virtual machine with system assigned managed service identity (MSI)</a></li>
 <li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-vm-from-vm-with-msi-credentials">Manage Azure resources from a virtual machine with managed service identity (MSI) credentials</a></li>
 <li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-user-assigned-msi-enabled-virtual-machine">Manage Azure resources from a virtual machine with system assigned managed service identity (MSI)</a></li>
@@ -283,6 +285,7 @@ var applicationGateway = azure.ApplicationGateways.Define("myFirstAppGateway")
 <li><a href="https://github.com/Azure-Samples/network-dotnet-manage-virtual-network-with-site-to-site-vpn-connection">Manage virtual network with site-to-site VPN connection</a></li>
 <li><a href="https://github.com/Azure-Samples/network-dotnet-manage-virtual-network-to-virtual-network-vpn-connection">Manage virtual network to virtual network VPN connection</a></li>
 <li><a href="https://github.com/Azure-Samples/network-dotnet-manage-vpn-client-connection">Manage client to virtual network VPN connection</a></li>
+<li><a href="https://github.com/Azure-Samples/network-dotnet-create-simple-internet-facing-load-balancers">Create simple Internet facing load balancers</a></li>
 </ul>
 </td>
   </tr>
@@ -290,6 +293,12 @@ var applicationGateway = azure.ApplicationGateways.Define("myFirstAppGateway")
     <td>DNS</td>
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/dns-dotnet-host-and-manage-your-domains">Host and manage domains</a></li>
+</ul></td>
+  </tr>
+  <tr>
+    <td>Private DNS</td>
+    <td><ul style="list-style-type:circle">
+<li><a href="https://github.com/Azure-Samples/privatedns-dotnet-host-and-manage-your-domains">Host and manage domains with Private DNS</a></li>
 </ul></td>
   </tr>
   <tr>
@@ -347,6 +356,7 @@ var webApp = azure.WebApps.Define(appName)
 <li><a href="https://github.com/Azure-Samples/app-service-dotnet-manage-data-connections-for-web-apps">Manage data connections (such as SQL database and Redis cache) for Web apps</a></li>
 <li><a href="https://github.com/Azure-Samples/app-service-dotnet-manage-authentication-for-web-apps">Manage authentication for Web apps</a></li>
 <li><a href="https://github.com/Azure-Samples/app-service-dotnet-access-key-vault-by-msi-for-web-apps">Safeguard Web app secrets in Key Vault</a></li>
+<li><a href="https://github.com/Azure-Samples/app-service-dotnet-manage-logs-for-web-apps">Get logs for Web apps</a></li>
 </ul></td>
   </tr>
   <tr>
@@ -436,20 +446,21 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions">Manage SQL databases across regions</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-import-export-db">Import and export SQL databases</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-recover-or-restore-db">Restore and recover SQL databases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-get-sql-metrics">Get SQL Database metrics</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-failover-groups">Manage SQL Database Failover Groups</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-get-sql-server-metrics">Get SQL Database metrics</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-failover-groups">Manage SQL Database Failover Groups</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-server-dns-aliases">Manage SQL Server DNL aliases</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-secrets-in-key-vault">Manage SQL secrets (Server Keys) in Azure Key Vault</a></li>
-<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-virtual-network-rules">Manage SQL Virtual Network Rules</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-server-keys-with-azure-key-vault">Manage SQL secrets (Server Keys) in Azure Key Vault</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-virtual-network-rules">Manage SQL Virtual Network Rules</a></li>
 </ul></td>
   </tr>
 <tr>
     <td>Cosmos DB</td>
     <td><ul style="list-style-type:circle">
-<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-high-availability">Create a CosmosDB and configure it for high availability</a></li>
-<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-eventual-consistency">Create a CosmosDB and configure it with eventual consistency</a></li>
-<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-firewall">Create a CosmosDB, configure it for high availability and create a firewall to limit access from an approved set of IP addresses</li>
-<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-documentdb-and-get-mongodb-connection-string">Create a CosmosDB and get MongoDB connection string</li>
+<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-configure-for-high-availability">Create a CosmosDB and configure it for high availability</a></li>
+<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-configure-for-eventual-consistency">Create a CosmosDB and configure it with eventual consistency</a></li>
+<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-configure-firewall">Create a CosmosDB, configure it for high availability and create a firewall to limit access from an approved set of IP addresses</li>
+<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-get-mongodb-connection-string">Create a CosmosDB and get MongoDB connection string</li>
+<li><a href="https://github.com/Azure-Samples/cosmosdb-dotnet-create-table-with-virtual-network-rule">Create a CosmosDB configured with a virtual network rule</li>
 </ul></td>
   </tr>
 </table>  
@@ -506,6 +517,8 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/resources-dotnet-deploy-using-arm-template">Deploy resources with ARM templates</a></li>
 <li><a href="https://github.com/Azure-Samples/resources-dotnet-deploy-using-arm-template-with-progress">Deploy resources with ARM templates (with progress)</a></li>
 <li><a href="https://github.com/Azure-Samples/resources-dotnet-deploy-virtual-machine-with-managed-disks-using-arm-template">Deploy a virtual machine with managed disks using an ARM template</a></li>
+<li><a href="https://github.com/Azure-Samples/resources-dotnet-manage-policy-assignment">Manage policy assignment</a></li>
+<li><a href="https://github.com/Azure-Samples/resources-dotnet-manage-policy-definition">Manage policy definition</a></li>
 </ul></td>
   </tr>
 
