@@ -178,7 +178,7 @@ var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/azure-samples/compute-dotnet-manage-virtual-machines-in-parallel">Create multiple virtual machines in parallel</a></li>
 <li><a href="https://github.com/azure-samples/compute-dotnet-manage-virtual-machines-with-network-in-parallel">Create multiple virtual machines with network in parallel</a></li>
-<li><a href="https://github.com/Azure-Samples/compute-dotnet-create-vms-async-tracking-related-resources">Create multiple virtual machines in parallel and track related resources</li>
+<li><a href="https://github.com/azure-samples/compute-dotnet-create-virtual-machines-across-regions-in-parallel">Create multiple virtual machines across regions in parallel</a></li>
 </ul></td>
   </tr>
   <tr>
