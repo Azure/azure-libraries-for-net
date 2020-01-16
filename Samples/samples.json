@@ -19,29 +19,47 @@
       "githubPath": "Azure-Samples/resources-dotnet-manage-resource-group",
       "description": "Getting started on managing resource groups in C#"
     },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/ResourceManager/ManagePolicyDefinition.cs",
+      "githubPath": "Azure-Samples/resources-dotnet-manage-policy-definition",
+      "description": "Getting started on managing policy definition in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/ResourceManager/ManagePolicyAssignment.cs",
+      "githubPath": "Azure-Samples/resources-dotnet-manage-policy-assignment",
+      "description": "Getting started on managing policy assignment in C#"
+    },
     {
       "owner": "yaohaizh",
       "filePath": "Samples/CosmosDB/ManageHACosmosDB.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-high-availability",
-      "description": "Create a DocumentDB and configure it for high availability using C#"
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-configure-for-high-availability",
+      "description": "Create a CosmosDB and configure it for high availability using C#"
     },
     {
       "owner": "yaohaizh",
       "filePath": "Samples/CosmosDB/CreateCosmosDBWithEventualConsistency.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-eventual-consistency",
-      "description": "Create a DocumentDB and configure it with eventual consistency using C#"
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-configure-for-eventual-consistency",
+      "description": "Create a CosmosDB and configure it with eventual consistency using C#"
     },
     {
       "owner": "yaohaizh",
       "filePath": "Samples/CosmosDB/CreateCosmosDBWithIPRange.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-firewall",
-      "description": "Create a DocumentDB, configure it for high availability and create a firewall by limiting access to DocumentDB from an approved set of IP addresses using C#"
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-configure-firewall",
+      "description": "Create a CosmosDB, configure it for high availability and create a firewall by limiting access to CosmosDB from an approved set of IP addresses using C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/CosmosDB/CreateCosmosDBTableWithVirtualNetworkRule.cs",
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-table-with-virtual-network-rule",
+      "description": "Create a CosmosDB configured with a Virtual Network Rule using C#"
     },
     {
       "owner": "yaohaizh",
       "filePath": "Samples/CosmosDB/CreateCosmosDBWithKindMongoDB.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-get-mongodb-connection-string",
-      "description": "Create a DocumentDB and get MongoDB connection string using C#"
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-cosmosdb-and-get-mongodb-connection-string",
+      "description": "Create a CosmosDB and get MongoDB connection string using C#"
     },
 
 
@@ -87,6 +105,12 @@
       "githubPath": "Azure-Samples/dns-dotnet-host-and-manage-your-domains",
       "description": "Getting started on hosting and managing your domains in C#"
     },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/PrivateDns/ManagePrivateDns.cs",
+      "githubPath": "Azure-Samples/privatedns-dotnet-host-and-manage-your-domains",
+      "description": "Getting started on hosting and managing your domains in C#"
+    },
     {
       "owner": "yaohaizh",
       "filePath": "Samples/Compute/CreateVMsUsingCustomImageOrSpecializedVHD.cs",
@@ -128,6 +152,18 @@
       "filePath": "Samples/Compute/ManageVirtualMachineWithUnmanagedDisks.cs",
       "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-with-unmanaged-disks",
       "description": "Getting started with managing Virtual Machine with Managed Disks in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Compute/ManageVirtualMachineWithDisk.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-with-disks",
+      "description": "Getting started with managing Virtual Machine with Disks in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Compute/ManageManagedDisks.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-managed-disks",
+      "description": "Getting started with managing managed Disks in C#"
     },
     {
       "owner": "yaohaizh",
@@ -237,6 +273,36 @@
       "filePath": "Samples/Sql/ManageSqlImportExportDatabase.cs",
       "githubPath": "Azure-Samples/sql-database-dotnet-manage-import-export-db",
       "description": "Getting started with importing and exporting SQL databases in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Sql/GettingSqlServerMetrics.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-get-sql-server-metrics",
+      "description": "Getting started on getting SQL server metrics in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Sql/ManageSqlFailoverGroups.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-failover-groups",
+      "description": "Getting started on managing SQL failover groups in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Sql/ManageSqlServerDnsAliases.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-server-dns-aliases",
+      "description": "Getting started on managing SQL server DNS aliases in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Sql/ManageSqlVirtualNetworkRules.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-virtual-network-rules",
+      "description": "Getting started on managing SQL virtual network rules in C#"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Sql/ManageSqlServerKeysWithAzureKeyVaultKey.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-server-keys-with-azure-key-vault",
+      "description": "Getting started on managing SQL server keys with Azure key vault keys in C#"
     },
     {
       "owner": "yaohaizh",
@@ -502,9 +568,9 @@
     },
     {
       "owner": "yaohaizh",
-      "filePath": "Samples/AppService/ManageFunctionAppLogs.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-manage-logs-for-function-apps",
-      "description": "Getting started on log streaming for Functions using C#"
+      "filePath": "Samples/AppService/ManageWebAppLogs.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-manage-logs-for-web-apps",
+      "description": "Getting started on log streaming for web apps using C#"
     },
 
     {
@@ -671,6 +737,13 @@
       "filePath": "Samples/Network/ManageInternalLoadBalancer.cs",
       "githubPath": "Azure-Samples/network-dotnet-manage-internal-load-balancers",
       "description": "An example illustrating how to use .NET to manage your Azure load balancers",
+      "product": "virtual-network"
+    },
+	{
+      "owner": "yaohaizh",
+      "filePath": "Samples/Network/CreateSimpleInternetFacingLoadBalancer.cs",
+      "githubPath": "Azure-Samples/network-dotnet-create-simple-internet-facing-load-balancers",
+      "description": "Getting started on creating simple Internet facing load balancers in C#",
       "product": "virtual-network"
     },
     {
