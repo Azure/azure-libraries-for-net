@@ -17,6 +17,22 @@ jobs:
       LoggingArgs: '/flp:Summary;Verbosity=minimal;LogFile=msbuild.sum /flp1:warningsonly;logfile=msbuild.wrn /flp2:errorsonly;logfile=msbuild.err'
 
     steps:
+      - task: e587fa4a-fc98-44fd-ab3e-ddaa3025219a@2
+        displayName: 'CredScan'
+        inputs:
+          toolVersion: 'Latest'
+          suppressionsFile: './tools/credscan/CredScanSuppressions.json'
+
+      - task: 18ff34ab-7385-4b57-b5d5-a0fcc7b5b274@1
+        displayName: 'PostAnalysis'
+        inputs:
+          AllTools: false
+          BinSkim: false
+          CredScan: true
+          RoslynAnalyzers: false
+          TSLint: false
+          ToolLogsNotFoundAction: 'Standard'
+          
       - task: CmdLine@1
         inputs:
           filename: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.2 Tools\sn.exe
