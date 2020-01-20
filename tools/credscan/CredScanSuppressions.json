@@ -14,7 +14,12 @@
         "Samples\\Asset\\jsdkdemo-bad939600.com.pfx",
         "Samples\\Asset\\NetworkTestCertificate1.pfx",
         "Samples\\Asset\\NetworkTestCertificate2.pfx",
-        "Samples\\Asset\\SampleTestCertificate.pfx"
+        "Samples\\Asset\\SampleTestCertificate.pfx",
+        "Samples\\Asset\\webapp_managefunctionappwithdomainssl.pfx",
+        "Samples\\Asset\\webapp_managelinuxwebappwithdomainssl.pfx",
+        "Samples\\Asset\\webapp_managelinuxwebappwithtrafficmanager.pfx",
+        "Samples\\Asset\\webapp_managewebappwithdomainssl.pfx",
+        "Samples\\Asset\\webapp_managewebappwithtrafficmanager.pfx"
       ],
       "_justification": "[Cert] Certificates used in sample scenarios."
     },
@@ -25,6 +30,12 @@
         "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.WebApp.FunctionDeploymentSlots\\CanCRUDSwapSlots.json"
       ],
       "_justification": "[AppService] Transient secret values exist in session records when operating the short-lived resources."
+    },
+    {
+      "file": [
+        "deprecated\\Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Batch\\CanCRUDBatchAccounts.json"
+      ],
+      "_justification": "[Batch] Transient secret values exist in session records when operating the short-lived resources."
     },
     {
       "file": [
@@ -41,6 +52,12 @@
         "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Compute.VirtualMachine.VirtualMachine\\CanSShConnectToVirtualMachine.json"
       ],
       "_justification": "[Compute] Transient secret values exist in session records when operating the short-lived resources."
+    },
+    {
+      "file": [
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.ContainerRegistry\\CanRetrieveLogUrl.json"
+      ],
+      "_justification": "[ContainerRegistry] Transient secret values exist in session records when operating the short-lived resources."
     },
     {
       "file": [
@@ -63,7 +80,8 @@
         "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\PublicComplex.json",
         "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\PublicMinimal.json",
         "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\SslWithKeyVault.json",
-        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\WebApplicationFirewall.json"
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.AppGateway\\WebApplicationFirewall.json",
+        "Tests\\Fluent.Tests\\SessionRecords\\Fluent.Tests.Network.VirtualNetworkGateway\\CanCreatePointToSiteConfigurtation.json"
       ],
       "_justification": "[Network] Transient secret values exist in session records when operating the short-lived resources."
     },
@@ -139,7 +157,8 @@
         "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.Storage\\ManageManageStorageAccountNetworkRulesTest.json",
         "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.Storage\\ManageStorageAccountTest.json",
         "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.Storage\\ManageStorageAccountTestAsync.json",
-        "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.TrafficManager\\ManageTrafficManagerTest.json"
+        "Tests\\Samples.Tests\\SessionRecords\\Samples.Tests.TrafficManager\\ManageTrafficManagerTest.json",
+        "Samples\\Asset\\documentdb-dotnet-todo-app\\README.md"
       ],
       "_justification": "[Sample] Transient secret values exist in session records when operating the short-lived resources."
     },
@@ -188,7 +207,7 @@
       "_justification": "Transient secret for the short-lived resources."
     },
     {
-      "hash": "2hFXein8IhM/CqMA20qpBb6IjAzQlQ8YHhOUHZnhUzM=",
+      "placeholder": "12NewPA$$w0rd!",
       "_justification": "Transient secret for the short-lived resources."
     }
   ]
