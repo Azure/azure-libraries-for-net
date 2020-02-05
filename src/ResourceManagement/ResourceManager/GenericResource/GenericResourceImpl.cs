@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             GenericResourceInner innerModel,
             IResourceManager resourceManager) : base(key, innerModel, resourceManager)
         {
-            this.apiVersion = resourceManager.Inner.ApiVersion;
         }
 
         public void prepareDefaultValue()

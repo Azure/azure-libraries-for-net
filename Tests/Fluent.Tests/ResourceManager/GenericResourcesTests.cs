@@ -62,9 +62,9 @@ namespace Fluent.Tests.ResourceManager
                         .WithRegion(Region.USEast)
                         .Create();
                     genericResources.MoveResources(rgName, newGroup, new List<string>
-            {
-                resource.Id
-            });
+                    {
+                        resource.Id
+                    });
 
                     // Check existence [TODO: Server returned "MethodNotAllowed" for CheckExistence call]
                     /*bool exists = genericResources.CheckExistence(newRgName,
@@ -154,21 +154,9 @@ namespace Fluent.Tests.ResourceManager
                         .WithRegion(Region.USEast)
                         .Create();
                     genericResources.MoveResources(rgName, newGroup, new List<string>
-            {
-                resource.Id
-            });
-
-                    // Check existence [TODO: Server returned "MethodNotAllowed" for CheckExistence call]
-                    /*bool exists = genericResources.CheckExistence(newRgName,
-                        resource.ResourceProviderNamespace,
-                        resource.ParentResourceId,
-                        resource.ResourceType,
-                        resource.Name,
-                        resource.ApiVersion);
-
-                    Assert.True(exists);
-                    */
-
+                    {
+                        resource.Id
+                    });
                     // Get and update
                     resource = genericResources.Get(newRgName,
                         resource.ResourceProviderNamespace,
