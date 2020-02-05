@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
-        public bool CheckExistence(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
+        public bool CheckExistence(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
         {
             return Extensions.Synchronize(() => CheckExistenceAsync(
                resourceGroupName,
@@ -38,9 +38,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion,
+            string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (apiVersion == null)
+            {
+                apiVersion = Manager.Inner.ApiVersion;
+            }
             return await Inner.CheckExistenceAsync(
                 resourceGroupName,
                 resourceProviderNamespace,
@@ -56,9 +60,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return new GenericResourceImpl(name, new GenericResourceInner(), Manager);
         }
 
-        public void Delete(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
+        public void Delete(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
         {
-            Extensions.Synchronize(() => Inner.DeleteAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion));
+            Extensions.Synchronize(() => DeleteAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion));
         }
 
         public async Task DeleteAsync(
@@ -67,9 +71,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion,
+            string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (apiVersion == null)
+            {
+                apiVersion = Manager.Inner.ApiVersion;
+            }
             await Inner.DeleteAsync(
                 resourceGroupName,
                 resourceProviderNamespace,
@@ -80,21 +88,35 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 cancellationToken);
         }
 
-        public IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
+        public IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
+        {
+            return Extensions.Synchronize(() => GetAsync(
+                    resourceGroupName,
+                    resourceProviderNamespace,
+                    parentResourcePath,
+                    resourceType,
+                    resourceName,
+                    apiVersion));            
+        }
+
+        public async Task<IGenericResource> GetAsync(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // Correct for auto-gen'd API's treatment parent path as required even though it makes sense only for child resources
             if (parentResourcePath == null)
             {
                 parentResourcePath = "";
             }
-
-            GenericResourceInner inner = Extensions.Synchronize(() => Inner.GetAsync(
+            if (apiVersion == null)
+            {
+                apiVersion = Manager.Inner.ApiVersion;
+            }
+            var inner = await Inner.GetAsync(
                     resourceGroupName,
                     resourceProviderNamespace,
                     parentResourcePath,
                     resourceType,
                     resourceName,
-                    apiVersion));
+                    apiVersion);
             GenericResourceImpl resource = new GenericResourceImpl(
                     resourceName,
                     inner,

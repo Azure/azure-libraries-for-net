@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion);
+            string apiVersion = default(string));
 
         /// <summary>
         /// Checks if a resource exists in a resource group.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion,
+            string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -71,7 +71,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name="resourceName">resourceName Resource identity.</param>
         /// <param name="apiVersion">apiVersion the String value</param>
         /// <returns>the generic resource</returns>
-        IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion);
+        IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string));
+
+        /// <summary>
+        /// Returns a resource belonging to a resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">resourceGroupName The name of the resource group. The name is case insensitive.</param>
+        /// <param name="resourceProviderNamespace">resourceProviderNamespace Resource identity.</param>
+        /// <param name="parentResourcePath">parentResourcePath Resource identity.</param>
+        /// <param name="resourceType">resourceType Resource identity.</param>
+        /// <param name="resourceName">resourceName Resource identity.</param>
+        /// <param name="apiVersion">apiVersion the String value</param>
+        /// <returns>the generic resource</returns>
+        Task<IGenericResource> GetAsync(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Move resources from one resource group to another.
@@ -102,7 +114,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name="resourceType">resourceType Resource identity.</param>
         /// <param name="resourceName">resourceName Resource identity.</param>
         /// <param name="apiVersion">apiVersion the String value</param>
-        void Delete(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion);
+        void Delete(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string));
 
         /// <summary>
         /// Delete resource and all of its child resources.
@@ -119,7 +131,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion,
+            string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken));
     }
 }
