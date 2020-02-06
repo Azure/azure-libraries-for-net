@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Def
         /// <summary>
         /// Specifies the timeout for the TCP idle connection.
         /// </summary>
-        /// <param name="timtoutInMinutes">The timeout in minutes.</param>
+        /// <param name="timtoutInMinutes">The timeout in minutes. Possible values includes: 4 to 66 minutes.</param>
         /// <return>The next stage of the definition.</return>
         IWithAttach<ReturnT> WithIdleTimeoutInMinutes(int timtoutInMinutes);
     }
@@ -84,6 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Def
     {
         /// <summary>
         /// Specifies the frontend on this load balancer for outbound traffic.
+        /// The frontend is required to be a static public IP address.
         /// </summary>
         /// <param name="frontendName">The name of a frontend.</param>
         /// <returns>The next stage of the definition.</returns>
@@ -91,6 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Def
 
         /// <summary>
         /// Specifies the frontends on this load balancer for outbound traffic.
+        /// The frontend is required to be a static public IP address.
         /// </summary>
         /// <param name="frontendNames">The names of frontend.</param>
         /// <returns>The next stage of the definition.</returns>

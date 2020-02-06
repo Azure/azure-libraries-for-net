@@ -6,18 +6,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// A client-side representation of a outbound rule of the load balancer.
+    /// </summary>
     public interface ILoadBalancerOutboundRule :
         IHasInner<OutboundRuleInner>,
         IChildResource<ILoadBalancer>,
         IHasProtocol<LoadBalancerOutboundRuleProtocol>
     {
         /// <summary>
-        /// Gets the Frontend IP addresses of the load balancer.
+        /// Gets the frontend IP addresses.
         /// </summary>
         IReadOnlyList<ILoadBalancerFrontend> Frontends { get; }
 
         /// <summary>
-        /// Gets a reference to a pool of DIPs. Outbound traffic is
+        /// Gets the backend pool of DIPs. Outbound traffic is
         /// randomly load balanced across IPs in the backend IPs.
         /// </summary>
         ILoadBalancerBackend Backend { get; }

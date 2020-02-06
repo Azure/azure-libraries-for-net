@@ -218,6 +218,7 @@ namespace Fluent.Tests.Network
                         .WithoutOutboundRule(outboundRuleName2)
                         .UpdateOutboundRule(outboundRuleName1)
                             .ToFrontends(frontEndName1, frontEndName2)
+                            .WithEnableTcpReset(false)
                             .Parent()
                         .Apply();
 
@@ -225,6 +226,7 @@ namespace Fluent.Tests.Network
                     loadBalancer.Refresh();
                     Assert.Equal(1, loadBalancer.OutboundRules.Count);
                     outboundRule1 = loadBalancer.OutboundRules[outboundRuleName1];
+                    Assert.False(outboundRule1.TcpResetEnabled);
                     Assert.Equal(backendPoolName1, outboundRule1.Backend.Name);
                     Assert.Equal(2, outboundRule1.Frontends.Count);
                 }

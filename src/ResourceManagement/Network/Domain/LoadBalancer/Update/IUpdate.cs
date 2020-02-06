@@ -268,9 +268,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Update.IUpdate UpdateOutboundRule(string name);
 
         /// <summary>
-        /// Removes the specified inbound NAT rule from the load balancer.
+        /// Removes the specified outbound rule from the load balancer.
         /// </summary>
-        /// <param name="name">The name of an existing inbound NAT rule on this load balancer.</param>
+        /// <param name="name">The name of an existing outbound rule on this load balancer.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate WithoutOutboundRule(string name);
 
