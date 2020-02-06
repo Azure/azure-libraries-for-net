@@ -11,7 +11,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Text;
     using System;
     using System.Threading;
+    using System.Linq;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition;
 
     /// <summary>
     /// Implementation of the LoadBalancer interface.
@@ -26,10 +29,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             LoadBalancer.Definition.IWithGroup,
             LoadBalancer.Definition.IWithLBRuleOrNat,
             LoadBalancer.Definition.IWithCreate,
-            IUpdate>,
+            LoadBalancer.Update.IUpdate>,
         ILoadBalancer,
         LoadBalancer.Definition.IDefinition,
-        IUpdate
+        LoadBalancer.Update.IUpdate
     {
         private readonly IDictionary<string, string> nicsInBackends = new Dictionary<string, string>();
         private readonly IDictionary<string, string> nicsRemovedFromBackends = new Dictionary<string, string>();
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private Dictionary<string, ILoadBalancerFrontend> frontends;
         private Dictionary<string, ILoadBalancerInboundNatRule> inboundNatRules;
         private Dictionary<string, ILoadBalancerInboundNatPool> inboundNatPools;
-
+        private Dictionary<string, ILoadBalancerOutboundRule> outboundRules;
 
 
         ///GENMHASH:5DE6261BE9537FC28D38F310CA911C9C:3881994DCADCE14215F82F0CC81BDD88
@@ -82,6 +85,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             InitializeLoadBalancingRulesFromInner();
             InitializeInboundNatRulesFromInner();
             InitializeInboundNatPoolsFromInner();
+            InitializeOutboundRulesFromInner();
         }
 
 
@@ -136,6 +140,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     natPool.Inner.FrontendIPConfiguration = null;
                 }
+            }
+
+            // Reset and update outbound rules
+            Inner.OutboundRules = InnersFromWrappers<OutboundRuleInner, ILoadBalancerOutboundRule>(outboundRules.Values) ?? new List<OutboundRuleInner>();
+            foreach (var outboundRule in outboundRules.Values)
+            {
+                // Clear deleted frontend references
+                var frontendRefs = outboundRule.Inner.FrontendIPConfigurations;
+                frontendRefs = frontendRefs.Where(frontendRef => Frontends().ContainsKey(ResourceUtils.NameFromResourceId(frontendRef.Id))).ToList();
+                
+                // Backend refrence is required hence cannot be deleted
             }
 
             // Reset and update load balancing rules
@@ -344,6 +359,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 }
             }
         }
+
+
+        private void InitializeOutboundRulesFromInner()
+        {
+            outboundRules = new Dictionary<string, ILoadBalancerOutboundRule>();
+            if (Inner.OutboundRules != null)
+            {
+                foreach (var inner in Inner.OutboundRules)
+                {
+                    var wrapper = new LoadBalancerOutboundRuleImpl(inner, this);
+                    outboundRules.Add(inner.Name, wrapper);
+                }
+            }
+        }
+
 
 
         ///GENMHASH:B9C8411DAA4D113FE18FEEEF1BE8CDB6:4C7FE733A2E6346E63DC67876E17F890
@@ -678,7 +708,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:7208ADA144F2A47AE947A35D969811C8:93A4CB328C3C1964D107DFF10890BBF1
-        internal IUpdate WithoutInboundNatPool(string name)
+        internal LoadBalancer.Update.IUpdate WithoutInboundNatPool(string name)
         {
             this.inboundNatPools.Remove(name);
             return this;
@@ -814,6 +844,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal IReadOnlyDictionary<string, ILoadBalancingRule> LoadBalancingRules()
         {
             return loadBalancingRules;
+        }
+
+        internal IReadOnlyDictionary<string, ILoadBalancerOutboundRule> OutboundRules()
+        {
+            return outboundRules;
         }
 
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:B735363AC52A7558004775F61BD34BFB
@@ -1122,7 +1157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithNewPublicIPAddress(creatablePip, frontendName);
         }
 
-        override public IUpdate Update()
+        override public LoadBalancer.Update.IUpdate Update()
         {
             ResetBackend();
 
@@ -1133,6 +1168,47 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             nicsInBackends.Clear();
             nicsRemovedFromBackends.Clear();
+        }
+
+        internal LoadBalancerImpl WithoutOutboundRule(string name)
+        {
+            if (outboundRules != null)
+            {
+                outboundRules.Remove(name);
+            }
+            return this;
+        }
+
+        internal LoadBalancerOutboundRuleImpl UpdateOutboundRule(string name)
+        {
+            return TryGetValue<LoadBalancerOutboundRuleImpl, ILoadBalancerOutboundRule>(name, outboundRules);
+        }
+
+        internal LoadBalancerImpl WithOutboundRule(LoadBalancerOutboundRuleImpl outboundRule)
+        {
+            if (outboundRule != null)
+            {
+                outboundRules[outboundRule.Name()] = outboundRule;
+            }
+            return this;
+        }
+
+        internal LoadBalancerOutboundRuleImpl DefineOutboundRule(string name)
+        {
+            ILoadBalancerOutboundRule outboundRule;
+            if (!outboundRules.TryGetValue(name, out outboundRule))
+            {
+                OutboundRuleInner inner = new OutboundRuleInner()
+                {
+                    Name = name
+                };
+
+                return new LoadBalancerOutboundRuleImpl(inner, this);
+            }
+            else
+            {
+                return (LoadBalancerOutboundRuleImpl)outboundRule;
+            }
         }
     }
 }

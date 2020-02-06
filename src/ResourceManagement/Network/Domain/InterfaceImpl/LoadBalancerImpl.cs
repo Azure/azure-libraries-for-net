@@ -479,6 +479,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
+        IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerOutboundRule> ILoadBalancer.OutboundRules
+        {
+            get
+            {
+                return this.OutboundRules();
+            }
+        }
+
         /// <summary>
         /// Specifies the SKU for the load balancer.
         /// </summary>
@@ -538,6 +546,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         LoadBalancerBackend.Update.IUpdate LoadBalancer.Update.IWithBackend.UpdateBackend(string name)
         {
             return this.UpdateBackend(name);
+        }
+
+        LoadBalancerOutboundRule.Definition.IBlank<IWithLBRuleOrNatOrCreate> LoadBalancer.Definition.IWithOutboundRule.DefineOutboundRule(string name)
+        {
+            return this.DefineOutboundRule(name);
+        }
+
+        LoadBalancerOutboundRule.Update.IUpdate LoadBalancer.Update.IWithOutboundRule.UpdateOutboundRule(string name)
+        {
+            return this.UpdateOutboundRule(name);
+        }
+
+        LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithOutboundRule.WithoutOutboundRule(string name)
+        {
+            return this.WithoutOutboundRule(name);
+        }
+
+        LoadBalancerOutboundRule.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithOutboundRule.DefineOutboundRule(string name)
+        {
+            return this.DefineOutboundRule(name);
         }
 
         /// <summary>

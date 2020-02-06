@@ -709,5 +709,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return this.Protocol();
             }
         }
+
+        bool ILoadBalancingRule.OutboundSnatDisabled
+        {
+            get
+            {
+                return this.OutboundSnatDisabled();
+            }
+        }
+
+        LoadBalancingRule.Definition.IWithAttach<IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithOutboundSnat<IWithLBRuleOrNatOrCreate>.WithDisableOutboundSnat()
+        {
+            return this.WithDisableOutboundSnat();
+        }
+
+        LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithOutboundSnat<LoadBalancer.Update.IUpdate>.WithDisableOutboundSnat()
+        {
+            return this.WithDisableOutboundSnat();
+        }
+
+        LoadBalancingRule.Update.IUpdate LoadBalancingRule.Update.IWithOutboundSnat.WithDisableOutboundSnat(bool disable)
+        {
+            return this.WithDisableOutboundSnat(disable);
+        }
     }
 }

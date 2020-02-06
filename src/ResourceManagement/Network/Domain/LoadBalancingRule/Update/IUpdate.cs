@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithFloatingIP,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithIdleTimeoutInMinutes,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithLoadDistribution,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithProbe
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithProbe,
+        IWithOutboundSnat
     {
     }
 
@@ -110,5 +111,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     public interface IWithProtocol :
         Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate, Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
     {
+    }
+
+    /// <summary>
+    /// The stage of a load balancing rule update allowing to disable the outbound SNAT.
+    /// </summary>
+    public interface IWithOutboundSnat
+    {
+        /// <summary>
+        /// Configures SNAT for the VMs in the backend pool to use
+        /// the publicIP address specified in the frontend of the load
+        /// balancing rule.
+        /// </summary>
+        /// <param name="disable">Whether outbound SNAT is disabled or not.</param>
+        /// <returns>The next stage of the update.</returns>
+        IUpdate WithDisableOutboundSnat(bool disable);
     }
 }

@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Backends { get; }
 
         /// <summary>
+        /// Gets outbound rules for this load balancer, indexed by name.
+        /// </summary>
+        IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerOutboundRule> OutboundRules { get; }
+
+        /// <summary>
         /// Searches for the public frontend that is associated with the provided public IP address, if one exists.
         /// </summary>
         /// <param name="publicIPAddress">A public IP address to search by.</param>

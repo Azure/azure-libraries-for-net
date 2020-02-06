@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithFrontendPort<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithFrontend<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithBackend<ReturnT>,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithBackendPort<ReturnT>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithBackendPort<ReturnT>,
+        IWithOutboundSnat<ReturnT>
     {
     }
 
@@ -142,7 +143,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithFloatingIP<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithIdleTimeoutInMinutes<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithLoadDistribution<ReturnT>,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithProbe<ReturnT>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithProbe<ReturnT>,
+        IWithOutboundSnat<ReturnT>
     {
     }
 
@@ -187,5 +189,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition
         /// <param name="vms">Existing virtual machines.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IWithBackendPort<ReturnT> ToExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms);
+    }
+
+    /// <summary>
+    /// The stage of a load balancing rule definition allowing to disable the outbound SNAT.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithOutboundSnat<ReturnT>
+    {
+        /// <summary>
+        /// Configures SNAT for the VMs in the backend pool to use
+        /// the publicIP address specified in the frontend of the load
+        /// balancing rule.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ReturnT> WithDisableOutboundSnat();
     }
 }

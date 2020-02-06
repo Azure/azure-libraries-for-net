@@ -176,7 +176,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithFloatingIP<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithIdleTimeoutInMinutes<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithLoadDistribution<ReturnT>,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithProbe<ReturnT>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithProbe<ReturnT>,
+        IWithOutboundSnat<ReturnT>
     {
     }
 
@@ -187,5 +188,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     public interface IWithFrontendPort<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasFrontendPort.UpdateDefinition.IWithFrontendPort<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithBackend<ReturnT>>
     {
+    }
+
+    /// <summary>
+    /// The stage of a load balancing rule definition allowing to disable the outbound SNAT.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithOutboundSnat<ReturnT>
+    {
+        /// <summary>
+        /// Configures SNAT for the VMs in the backend pool to use
+        /// the publicIP address specified in the frontend of the load
+        /// balancing rule.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ReturnT> WithDisableOutboundSnat();
     }
 }
