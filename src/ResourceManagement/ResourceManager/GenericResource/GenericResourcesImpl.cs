@@ -88,6 +88,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 cancellationToken);
         }
 
+        public new void DeleteById(string id)
+        {
+            Extensions.Synchronize(() => DeleteByIdAsync(id, CancellationToken.None));
+        }
+
+        public async new Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await DeleteAsync(
+                ResourceUtils.GroupFromResourceId(id),
+                ResourceUtils.ResourceProviderFromResourceId(id),
+                ResourceUtils.ParentResourcePathFromResourceId(id),
+                ResourceUtils.ResourceTypeFromResourceId(id),
+                ResourceUtils.NameFromResourceId(id),
+                Manager.Inner.ApiVersion,
+                cancellationToken);
+        }
+
         public IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
         {
             return Extensions.Synchronize(() => GetAsync(
@@ -129,6 +146,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             };
 
             return resource;
+        }
+
+        public new IGenericResource GetById(string id)
+        {
+            return Extensions.Synchronize(() => GetByIdAsync(id, CancellationToken.None));
+        }
+
+        public async new Task<IGenericResource> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await GetAsync(
+                ResourceUtils.GroupFromResourceId(id),
+                ResourceUtils.ResourceProviderFromResourceId(id),
+                ResourceUtils.ParentResourcePathFromResourceId(id),
+                ResourceUtils.ResourceTypeFromResourceId(id),
+                ResourceUtils.NameFromResourceId(id),
+                Manager.Inner.ApiVersion,
+                cancellationToken);
         }
 
         protected override Task<GenericResourceInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellation)

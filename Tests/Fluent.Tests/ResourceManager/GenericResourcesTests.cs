@@ -168,7 +168,8 @@ namespace Fluent.Tests.ResourceManager
                         .WithProperties(JsonConvert.DeserializeObject("{\"SiteMode\":\"Limited\",\"ComputeMode\":\"Dynamic\"}"))
                         .Apply();
 
-                    Assert.Equal(newRgName, resource.ResourceGroupName);
+                    var target = genericResources.GetById(resource.Id);
+                    Assert.Equal(newRgName, target.ResourceGroupName);
 
                     resourceManager.ResourceGroups.BeginDeleteByName(newRgName);
                     resourceManager.ResourceGroups.BeginDeleteByName(rgName);
