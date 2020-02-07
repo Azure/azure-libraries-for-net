@@ -227,7 +227,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     public interface IWithLBRuleOrNat :
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithLoadBalancingRule,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithInboundNatRule,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithInboundNatPool
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithInboundNatPool,
+        IWithOutboundRule
     {
     }
 
@@ -242,5 +243,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
         /// <param name="name">The name of the load balancing rule.</param>
         /// <return>The first stage of the new load balancing rule definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> DefineLoadBalancingRule(string name);
+    }
+
+    /// <summary>
+    /// The stage of a load balancer definition allowing to create a load balancer outbound rule.
+    /// </summary>
+    public interface IWithOutboundRule
+    {
+        /// <summary>
+        /// Begins the definition of a new load balancer outbound rule to add to the load balancer.
+        /// </summary>
+        /// <param name="name">The name of the load balancer outbound rule.</param>
+        /// <return>The first stage of the new load balancer outbound rule definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Definition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> DefineOutboundRule(string name);
     }
 }

@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IWithPublicFrontend,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IWithPrivateFrontend,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IWithInboundNatRule,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IWithInboundNatPool
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IWithInboundNatPool,
+        IWithOutboundRule
     {
     }
 
@@ -252,5 +253,32 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
         /// <param name="name">The name for the inbound NAT rule.</param>
         /// <return>The first stage of the new inbound NAT rule definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatRule.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate> DefineInboundNatRule(string name);
+    }
+
+    /// <summary>
+    /// The stage of a load balancer update allowing to create, remove, or edit a load balancer outbound rule.
+    /// </summary>
+    public interface IWithOutboundRule
+    {
+        /// <summary>
+        /// Begins the update to an existing load balancer outbound rule.
+        /// </summary>
+        /// <param name="name">The name of the load balancer outbound rule to update.</param>
+        /// <return>The first stage of the load balancer outbound rule update.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.Update.IUpdate UpdateOutboundRule(string name);
+
+        /// <summary>
+        /// Removes the specified outbound rule from the load balancer.
+        /// </summary>
+        /// <param name="name">The name of an existing outbound rule on this load balancer.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate WithoutOutboundRule(string name);
+
+        /// <summary>
+        /// Begins the definition of a new load balancer outbound rule to add to the load balancer.
+        /// </summary>
+        /// <param name="name">The name of the load balancer outbound rule.</param>
+        /// <return>The first stage of the new load balancer outbound rule definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerOutboundRule.UpdateDefinition.IBlank<IUpdate> DefineOutboundRule(string name);
     }
 }

@@ -40,7 +40,7 @@ namespace Fluent.Tests.Network
                         .WithRegion(region)
                         .WithExistingResourceGroup(resourceGroup)
                         .WithAddressSpace("172.18.0.0/28")
-                        .WithSubnet(subnetName, "172.18.0.0/28")
+                        .WithSubnet(subnetName1, "172.18.0.0/28")
                         .Create();
 
                     ILoadBalancer loadBalancer = CreateLoadBalancer(azure, resourceGroup, network, lbName);
@@ -114,11 +114,141 @@ namespace Fluent.Tests.Network
             }
         }
 
-        private string subnetName = "subnet1";
-        private string ruleName1 = "httpRule";
-        private string ruleName2 = "httpsRule";
-        private string probeName1 = "httpProbe";
-        private string probeName2 = "httpsProbe";
+        [Fact]
+        public void CanCRUDOutboundRule()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string rgName = TestUtilities.GenerateName("rg");
+                string lbName = TestUtilities.GenerateName("lb");
+                string nwName = TestUtilities.GenerateName("nw");
+                Region region = Region.USEast;
+
+                IAzure azure = null;
+                try
+                {
+                    azure = TestHelper.CreateRollupClient();
+
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
+                        .WithRegion(region)
+                        .Create();
+
+                    INetwork network = azure.Networks
+                        .Define(nwName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithAddressSpace("172.18.0.0/28")
+                        .WithSubnet(subnetName1, "172.18.0.0/28")
+                        .Create();
+
+                    string frontEndName1 = lbName + "-FE1";
+                    string frontEndName2 = lbName + "-FE2";
+                    string backendPoolName1 = lbName + "-BAP1";
+                    string backendPoolName2 = lbName + "-BAP2";
+                    string publicIpName1 = lbName + "ip1";
+                    string publicIpName2 = lbName + "ip2";
+
+                    ILoadBalancer loadBalancer = azure.LoadBalancers.Define(lbName)
+                        .WithRegion(resourceGroup.Region)
+                        .WithExistingResourceGroup(resourceGroup)
+                        // Define outbound rule
+                        .DefineOutboundRule(outboundRuleName1)
+                            .WithProtocol(LoadBalancerOutboundRuleProtocol.Tcp)
+                            .FromBackend(backendPoolName1)
+                            .ToFrontend(frontEndName1)
+                            .WithEnableTcpReset()
+                            .WithIdleTimeoutInMinutes(10)
+                            .Attach()
+                        // Outbound rule need to use static public IP address with Standard SKU
+                        .DefinePublicFrontend(frontEndName1)
+                            .WithNewPublicIPAddress(azure.PublicIPAddresses.Define(publicIpName1).WithRegion(resourceGroup.Region).WithExistingResourceGroup(resourceGroup).WithSku(PublicIPSkuType.Standard).WithStaticIP())
+                            .Attach()
+                        .WithSku(LoadBalancerSkuType.Standard)
+                        .Create();
+
+                    // verify created rule
+                    loadBalancer.Refresh();
+                    Assert.Equal(1, loadBalancer.OutboundRules.Count);
+                    ILoadBalancerOutboundRule outboundRule1 = loadBalancer.OutboundRules[outboundRuleName1];
+                    Assert.Equal(LoadBalancerOutboundRuleProtocol.Tcp, outboundRule1.Protocol);
+                    Assert.True(outboundRule1.TcpResetEnabled);
+                    Assert.Equal(10, outboundRule1.IdleTimeoutInMinutes);
+                    Assert.Equal(backendPoolName1, outboundRule1.Backend.Name);
+                    Assert.Single(outboundRule1.Frontends);
+                    Assert.Equal(frontEndName1, outboundRule1.Frontends[0].Name);
+
+                    // update rule
+                    loadBalancer.Update()
+                        .DefineOutboundRule(outboundRuleName2)
+                            .WithProtocol(LoadBalancerOutboundRuleProtocol.All)
+                            .FromBackend(backendPoolName2)
+                            .ToFrontend(frontEndName2)
+                            .Attach()
+                        .DefineLoadBalancingRule(ruleName1)
+                            .WithProtocol(TransportProtocol.Tcp)
+                            .FromFrontend(frontEndName1)
+                            .FromFrontendPort(1000)
+                            .ToBackend(backendPoolName1)
+                            .WithProbe(probeName1)
+                            .WithDisableOutboundSnat()
+                            .Attach()
+                        .DefineHttpProbe(probeName1)
+                            .WithRequestPath("/")
+                            .Attach()
+                        .DefinePublicFrontend(frontEndName2)
+                            .WithNewPublicIPAddress(azure.PublicIPAddresses.Define(publicIpName2).WithRegion(resourceGroup.Region).WithExistingResourceGroup(resourceGroup).WithSku(PublicIPSkuType.Standard).WithStaticIP())
+                            .Attach()
+                        .Apply();
+
+                    // verify updated rule
+                    loadBalancer.Refresh();
+                    Assert.Equal(2, loadBalancer.OutboundRules.Count);
+                    ILoadBalancerOutboundRule outboundRule2 = loadBalancer.OutboundRules[outboundRuleName2];
+                    Assert.Equal(LoadBalancerOutboundRuleProtocol.All, outboundRule2.Protocol);
+                    Assert.False(outboundRule2.TcpResetEnabled);
+                    Assert.Equal(backendPoolName2, outboundRule2.Backend.Name);
+                    Assert.Single(outboundRule2.Frontends);
+                    Assert.Equal(frontEndName2, outboundRule2.Frontends[0].Name);
+                    Assert.True(loadBalancer.LoadBalancingRules[ruleName1].OutboundSnatDisabled);
+
+                    // delete rule and partial update
+                    loadBalancer.Update()
+                        .WithoutLoadBalancingRule(ruleName1)
+                        .WithoutOutboundRule(outboundRuleName2)
+                        .UpdateOutboundRule(outboundRuleName1)
+                            .ToFrontends(frontEndName1, frontEndName2)
+                            .WithEnableTcpReset(false)
+                            .Parent()
+                        .Apply();
+
+                    // verify updated rule
+                    loadBalancer.Refresh();
+                    Assert.Equal(1, loadBalancer.OutboundRules.Count);
+                    outboundRule1 = loadBalancer.OutboundRules[outboundRuleName1];
+                    Assert.False(outboundRule1.TcpResetEnabled);
+                    Assert.Equal(backendPoolName1, outboundRule1.Backend.Name);
+                    Assert.Equal(2, outboundRule1.Frontends.Count);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure?.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        private const string subnetName1 = "subnet1";
+        private const string subnetName2 = "subnet2";
+        private const string ruleName1 = "httpRule";
+        private const string ruleName2 = "httpsRule";
+        private const string probeName1 = "httpProbe";
+        private const string probeName2 = "httpsProbe";
+        private const string outboundRuleName1 = "outboundRule1";
+        private const string outboundRuleName2 = "outboundRule2";
 
         private ILoadBalancer CreateLoadBalancer(
             IAzure azure,
@@ -165,7 +295,7 @@ namespace Fluent.Tests.Network
                     .Attach()
                 // Explicitly define the frontend
                 .DefinePrivateFrontend(privateFrontEndName)
-                    .WithExistingSubnet(network, subnetName)
+                    .WithExistingSubnet(network, subnetName1)
                     .Attach()
                 // Add two probes one per rule
                 .DefineHttpProbe(probeName1)

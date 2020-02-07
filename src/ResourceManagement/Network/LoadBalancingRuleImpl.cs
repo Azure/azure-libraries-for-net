@@ -4,6 +4,9 @@
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Management.Network.Fluent.Models;
+    using Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update;
+    using Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
@@ -19,7 +22,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         LoadBalancingRule.UpdateDefinition.IUpdateDefinition<LoadBalancer.Update.IUpdate>,
         LoadBalancingRule.Update.IUpdate
     {
-
         ///GENMHASH:4C26D71C3924F5428C00A7BBACA72319:C0847EA0CDA78F6D91EFD239C70F0FA7
         internal LoadBalancingRuleImpl(LoadBalancingRuleInner inner, LoadBalancerImpl parent) : base(inner, parent)
         {
@@ -122,6 +124,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 else
                     return null;
             }
+        }
+
+        
+        internal bool OutboundSnatDisabled()
+        {
+            return Inner.DisableOutboundSnat ?? false;
         }
 
 
@@ -338,6 +346,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
             string frontendName = SdkContext.RandomResourceName("fe", 20);
             Parent.WithNewPublicIPAddress(leafDnsLabel, frontendName);
             return FromFrontend(frontendName);
+        }
+
+        internal LoadBalancingRuleImpl WithDisableOutboundSnat()
+        {
+            Inner.DisableOutboundSnat = true;
+            return this;
+        }
+
+        internal LoadBalancingRuleImpl WithDisableOutboundSnat(bool disable)
+        {
+            Inner.DisableOutboundSnat = disable;
+            return this;
         }
     }
 }

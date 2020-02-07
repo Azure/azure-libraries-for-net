@@ -36,5 +36,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets the probe associated with the load balancing rule.
         /// </summary>
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerProbe Probe { get; }
+
+        /// <summary>
+        /// Configures SNAT for the VMs in the backend pool to use
+        /// the publicIP address specified in the frontend of the load
+        /// balancing rule.
+        /// </summary>
+        bool OutboundSnatDisabled { get; }
     }
 }
