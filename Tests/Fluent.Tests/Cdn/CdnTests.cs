@@ -4,7 +4,6 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Cdn.Fluent.Models;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Linq;
@@ -14,10 +13,12 @@ namespace Fluent.Tests
 {
     public partial class Cdn
     {
-        private const string cdnEndpointName = "endpoint-f3757d2a3e10";
+        private const string cdnEndpointName = "fluentcsharp";
         private const string endpointOriginHostname = "mylinuxapp.azurewebsites.net";
+        private const string customDomainName1 = "fluent-test1-20191211.fluentsdktest.com";
+        private const string customDomainName2 = "fluent-test2-20191211.fluentsdktest.com";
 
-        [Fact(Skip = "test failed, need to fix later")]
+        [Fact]
         public void CanCRUDCdn()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
@@ -33,13 +34,10 @@ namespace Fluent.Tests
                     var cdnManager = TestHelper.CreateCdnManager();
 
                     var standardProfile = cdnManager.Profiles.Define(cdnStandardProfileName)
-                            .WithRegion(Region.USCentral)
+                            .WithRegion(Region.AsiaSouthEast)
                             .WithNewResourceGroup(rgName)
                             .WithStandardAkamaiSku()
                             .WithNewEndpoint("supername.cloudapp.net")
-                            .DefineNewEndpoint("akamiEndpointWithoutMuchProperties")
-                                .WithOrigin("originSuperName", "storageforazdevextest.blob.core.windows.net")
-                                .Attach()
                             .DefineNewEndpoint(cdnEndpointName, endpointOriginHostname)
                                 .WithContentTypeToCompress("powershell/pain")
                                 .WithGeoFilter("/path/videos", GeoFilterActions.Block, CountryISOCode.Argentina)
@@ -51,15 +49,15 @@ namespace Fluent.Tests
                                 .WithHttpsPort(444)
                                 .WithHttpAllowed(true)
                                 .WithHttpPort(85)
-                                .WithCustomDomain("sdk-1-f3757d2a3e10.azureedge-test.net")
-                                .WithCustomDomain("sdk-2-f3757d2a3e10.azureedge-test.net")
+                                .WithCustomDomain(customDomainName1)
+                                .WithCustomDomain(customDomainName2)
                                 .Attach()
                             .Create();
 
                     Assert.NotNull(standardProfile);
                     Assert.Equal(cdnStandardProfileName, standardProfile.Name);
                     Assert.False(standardProfile.IsPremiumVerizon);
-                    Assert.Equal(3, standardProfile.Endpoints.Count);
+                    Assert.Equal(2, standardProfile.Endpoints.Count);
                     Assert.True(standardProfile.Endpoints.ContainsKey(cdnEndpointName));
                     Assert.Equal(endpointOriginHostname, standardProfile.Endpoints[cdnEndpointName].OriginHostName);
                     Assert.Equal(2, standardProfile.Endpoints[cdnEndpointName].CustomDomains.Count);
@@ -72,8 +70,8 @@ namespace Fluent.Tests
 
 
                     var premiumProfile = cdnManager.Profiles.Define(cdnPremiumProfileName)
-                            .WithRegion(Region.USCentral)
-                            .WithNewResourceGroup(rgName)
+                            .WithRegion(Region.AsiaSouthEast)
+                            .WithExistingResourceGroup(rgName)
                             .WithPremiumVerizonSku()
                             .WithNewPremiumEndpoint("someweirdname.blob.core.windows.net")
                             .DefineNewPremiumEndpoint("supermuperep1")
@@ -88,7 +86,7 @@ namespace Fluent.Tests
                                 .Attach()
                             .Create();
                     Assert.NotNull(premiumProfile);
-                    Assert.Equal(Region.USCentral, premiumProfile.Region);
+                    Assert.Equal(Region.AsiaSouthEast, premiumProfile.Region);
                     Assert.True(premiumProfile.IsPremiumVerizon);
                     Assert.Equal(3, premiumProfile.Endpoints.Count);
                     Assert.True(premiumProfile.Endpoints.ContainsKey(cdnPremiumEndpointName));
@@ -105,7 +103,7 @@ namespace Fluent.Tests
                     Assert.Equal(standardProfile.Endpoints.Count, profileRead.Endpoints.Count);
 
                     profileRead = cdnManager.Profiles.GetById(standardProfile.Id);
-                    Assert.Equal(3, profileRead.Endpoints.Count);
+                    Assert.Equal(2, profileRead.Endpoints.Count);
                     Assert.Equal(2, profileRead.Endpoints[cdnEndpointName].CustomDomains.Count);
                     Assert.Equal(standardProfile.Name, profileRead.Name);
 
@@ -122,7 +120,7 @@ namespace Fluent.Tests
                                     .WithoutGeoFilters()
                                     .WithHttpAllowed(true)
                                     .WithHttpPort(1111)
-                                    .WithoutCustomDomain("sdk-2-f3757d2a3e10.azureedge-test.net")
+                                    .WithoutCustomDomain(customDomainName2)
                                     .Parent()
                         .Apply();
                     }
@@ -130,10 +128,10 @@ namespace Fluent.Tests
                     Assert.Equal(standardProfile.Region, profileRead.Region);
                     Assert.Equal(standardProfile.Name, profileRead.Name);
                     Assert.NotEqual(standardProfile.Endpoints.Count, profileRead.Endpoints.Count);
-                    Assert.Equal(5, standardProfile.Endpoints.Count);
+                    Assert.Equal(4, standardProfile.Endpoints.Count);
                     Assert.Equal(1111, standardProfile.Endpoints[cdnEndpointName].HttpPort);
                     Assert.Equal(1, standardProfile.Endpoints[cdnEndpointName].CustomDomains.Count);
-                    Assert.Equal("sdk-1-f3757d2a3e10.azureedge-test.net", standardProfile.Endpoints[cdnEndpointName].CustomDomains.ElementAt(0));
+                    Assert.Equal(customDomainName1, standardProfile.Endpoints[cdnEndpointName].CustomDomains.ElementAt(0));
                     Assert.Equal(0, standardProfile.Endpoints[cdnEndpointName].GeoFilters.Count);
 
                     premiumProfile.Update()
@@ -158,7 +156,7 @@ namespace Fluent.Tests
                     Assert.NotNull(ssoUri);
 
                     var standardEp = standardProfile.Endpoints[cdnEndpointName];
-                    var validationResult = standardEp.ValidateCustomDomain("sdk-2-f3757d2a3e10.azureedge-test.net");
+                    var validationResult = standardEp.ValidateCustomDomain(customDomainName2);
                     Assert.NotNull(validationResult);
                     Assert.True(validationResult.CustomDomainValidated);
 
@@ -177,5 +175,5 @@ namespace Fluent.Tests
                 }
             }
         }
-   }
+    }
 }
