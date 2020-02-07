@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
             if (apiVersion == null)
             {
-                apiVersion = Manager.Inner.ApiVersion;
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
+                apiVersion = ResourceUtils.ApiVersionFromResourceId(resourceId) ?? Manager.Inner.ApiVersion;
             }
             return await Inner.CheckExistenceAsync(
                 resourceGroupName,
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
             if (apiVersion == null)
             {
-                apiVersion = Manager.Inner.ApiVersion;
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
+                apiVersion = ResourceUtils.ApiVersionFromResourceId(resourceId) ?? Manager.Inner.ApiVersion;
             }
             await Inner.DeleteAsync(
                 resourceGroupName,
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceUtils.ParentResourcePathFromResourceId(id),
                 ResourceUtils.ResourceTypeFromResourceId(id),
                 ResourceUtils.NameFromResourceId(id),
-                Manager.Inner.ApiVersion,
+                ResourceUtils.ApiVersionFromResourceId(id) ?? Manager.Inner.ApiVersion,
                 cancellationToken);
         }
 
@@ -125,7 +127,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
             if (apiVersion == null)
             {
-                apiVersion = Manager.Inner.ApiVersion;
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
+                apiVersion = ResourceUtils.ApiVersionFromResourceId(resourceId) ?? Manager.Inner.ApiVersion;
             }
             var inner = await Inner.GetAsync(
                     resourceGroupName,
@@ -161,7 +164,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceUtils.ParentResourcePathFromResourceId(id),
                 ResourceUtils.ResourceTypeFromResourceId(id),
                 ResourceUtils.NameFromResourceId(id),
-                Manager.Inner.ApiVersion,
+                ResourceUtils.ApiVersionFromResourceId(id) ?? Manager.Inner.ApiVersion,
                 cancellationToken);
         }
 

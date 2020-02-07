@@ -8,6 +8,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Models;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
@@ -145,7 +146,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IWithCreate WithApiVersion(string apiVersion = default(string))
         {
-            this.apiVersion = apiVersion == null ? Manager.Inner.ApiVersion : apiVersion;
+            this.apiVersion = apiVersion ?? ResourceUtils.ApiVersionFromResourceProviderAndType(resourceProviderNamespace, resourceType);
+            this.apiVersion = apiVersion ?? Manager.Inner.ApiVersion;
             return this;
         }
 
