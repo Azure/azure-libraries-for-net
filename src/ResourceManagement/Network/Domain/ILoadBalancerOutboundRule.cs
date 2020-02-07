@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Collections.Generic;
 
     /// <summary>
-    /// A client-side representation of a outbound rule of the load balancer.
+    /// A client-side representation of an outbound rule of the load balancer.
     /// </summary>
     public interface ILoadBalancerOutboundRule :
         IHasInner<OutboundRuleInner>,
