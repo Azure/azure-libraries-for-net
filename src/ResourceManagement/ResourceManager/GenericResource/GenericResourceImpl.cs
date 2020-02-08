@@ -98,6 +98,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public async override Task<IGenericResource> CreateResourceAsync(CancellationToken cancellationToken)
         {
             prepareDefaultValue();
+            if (apiVersion == null)
+            {
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, ResourceGroupName, resourceProviderNamespace, resourceType, Name, parentResourceId);
+                apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
+                    resourceId, 
+                    await Manager.Providers.GetByNameAsync(resourceProviderNamespace, cancellationToken));
+                if (apiVersion == null)
+                {
+                    throw new ArgumentException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProviderNamespace));
+                }
+            }
             GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
                 resourceProviderNamespace,
                 parentResourceId,
@@ -146,8 +157,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IWithCreate WithApiVersion(string apiVersion = default(string))
         {
-            this.apiVersion = apiVersion ?? ResourceUtils.ApiVersionFromResourceProviderAndType(resourceProviderNamespace, resourceType);
-            this.apiVersion = apiVersion ?? Manager.Inner.ApiVersion;
+            this.apiVersion = apiVersion;
             return this;
         }
 

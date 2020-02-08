@@ -44,7 +44,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             if (apiVersion == null)
             {
                 string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
-                apiVersion = ResourceUtils.ApiVersionFromResourceId(resourceId) ?? Manager.Inner.ApiVersion;
+                apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
+                    resourceId,
+                    await Manager.Providers.GetByNameAsync(resourceProviderNamespace, cancellationToken));
+                if (apiVersion == null)
+                {
+                    throw new ArgumentException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProviderNamespace));
+                }
             }
             return await Inner.CheckExistenceAsync(
                 resourceGroupName,
@@ -78,7 +84,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             if (apiVersion == null)
             {
                 string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
-                apiVersion = ResourceUtils.ApiVersionFromResourceId(resourceId) ?? Manager.Inner.ApiVersion;
+                apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
+                    resourceId,
+                    await Manager.Providers.GetByNameAsync(resourceProviderNamespace, cancellationToken));
+                if (apiVersion == null)
+                {
+                    throw new ArgumentException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProviderNamespace));
+                }
             }
             await Inner.DeleteAsync(
                 resourceGroupName,
@@ -97,13 +109,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async new Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
+            string apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
+                id,
+                await Manager.Providers.GetByNameAsync(ResourceUtils.ResourceProviderFromResourceId(id), cancellationToken));
+            if (apiVersion == null)
+            {
+                throw new ArgumentException(string.Format("No supported API version found for resource {0}", id));
+            }
             await DeleteAsync(
                 ResourceUtils.GroupFromResourceId(id),
                 ResourceUtils.ResourceProviderFromResourceId(id),
                 ResourceUtils.ParentResourcePathFromResourceId(id),
                 ResourceUtils.ResourceTypeFromResourceId(id),
                 ResourceUtils.NameFromResourceId(id),
-                ResourceUtils.ApiVersionFromResourceId(id) ?? Manager.Inner.ApiVersion,
+                apiVersion,
                 cancellationToken);
         }
 
@@ -128,7 +147,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             if (apiVersion == null)
             {
                 string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
-                apiVersion = ResourceUtils.ApiVersionFromResourceId(resourceId) ?? Manager.Inner.ApiVersion;
+                apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
+                    resourceId,
+                    await Manager.Providers.GetByNameAsync(resourceProviderNamespace, cancellationToken));
+                if (apiVersion == null)
+                {
+                    throw new ArgumentException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProviderNamespace));
+                }
             }
             var inner = await Inner.GetAsync(
                     resourceGroupName,
@@ -158,13 +183,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async new Task<IGenericResource> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
+            string apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
+                id, 
+                await Manager.Providers.GetByNameAsync(ResourceUtils.ResourceProviderFromResourceId(id), cancellationToken));
+            if (apiVersion == null)
+            {
+                throw new ArgumentException(string.Format("No supported API version found for resource {0}", id));
+            }
             return await GetAsync(
                 ResourceUtils.GroupFromResourceId(id),
                 ResourceUtils.ResourceProviderFromResourceId(id),
                 ResourceUtils.ParentResourcePathFromResourceId(id),
                 ResourceUtils.ResourceTypeFromResourceId(id),
                 ResourceUtils.NameFromResourceId(id),
-                ResourceUtils.ApiVersionFromResourceId(id) ?? Manager.Inner.ApiVersion,
+                apiVersion,
                 cancellationToken);
         }
 

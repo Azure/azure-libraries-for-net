@@ -111,7 +111,7 @@ namespace Fluent.Tests.ResourceManager
         }
 
         [Fact]
-        public async Task CanCRUDWithClientApiVersion()
+        public async Task CanCRUDWithProviderApiVersion()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
