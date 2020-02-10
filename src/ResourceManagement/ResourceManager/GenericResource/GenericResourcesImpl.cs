@@ -275,12 +275,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         internal static async Task<string> GetApiVersionAsync(string id, IResourceManager resourceManager, CancellationToken cancellationToken)
         {
-            string apiVersionValue;
             string resourceProvider = ResourceUtils.ResourceProviderFromResourceId(id);
             string resourceType = ResourceUtils.ResourceTypeForApiVersion(id);
             string apiVersionKey = resourceProvider + "/" + resourceType;
-            
-            cachedApiVersions.TryGetValue(apiVersionKey, out apiVersionValue);
+            cachedApiVersions.TryGetValue(apiVersionKey, out string apiVersionValue);
             if (string.IsNullOrEmpty(apiVersionValue))
             {
                 apiVersionValue = ResourceUtils.DefaultApiVersionFromResourceId(
