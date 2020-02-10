@@ -236,13 +236,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Powers off (stops) the virtual machine.
         /// </summary>
-        void PowerOff();
+        void PowerOff(bool skipShutdown = false);
 
         /// <summary>
         /// Powers off (stops) the virtual machine asynchronously.
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
-        Task PowerOffAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task PowerOffAsync(CancellationToken cancellationToken = default(CancellationToken), bool skipShutdown = false);
 
         /// <summary>
         /// Redeploys the virtual machine.
