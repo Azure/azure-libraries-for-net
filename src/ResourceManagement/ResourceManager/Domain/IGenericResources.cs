@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using System.Collections.Generic;
     using Core;
-    using Management.ResourceManager.Fluent;
     using System.Threading.Tasks;
     using System.Threading;
 
@@ -17,15 +16,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         ISupportsListing<IGenericResource>,
         ISupportsListingByResourceGroup<IGenericResource>,
         ISupportsListingInResourceGroupByTag<IGenericResource>,
-        ISupportsGettingByResourceGroup<IGenericResource>,
-        ISupportsGettingById<IGenericResource>,
         ISupportsCreating<GenericResource.Definition.IBlank>,
         ISupportsBatchCreation<IGenericResource>,
         IHasManager<IResourceManager>,
         IHasInner<IResourcesOperations>
     {
         /// <summary>
-        /// Checks if a resource exists in a resource group.
+        /// Check if a resource exists in a resource group.
         /// </summary>
         /// <param name="resourceGroupName">resourceGroupName the resource group's name</param>
         /// <param name="resourceProviderNamespace">resourceProviderNamespace the resource provider's namespace</param>
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string apiVersion = default(string));
 
         /// <summary>
-        /// Checks if a resource exists in a resource group asynchronously.
+        /// Check if a resource exists in a resource group asynchronously.
         /// </summary>
         /// <param name="resourceGroupName">resourceGroupName the resource group's name</param>
         /// <param name="resourceProviderNamespace">resourceProviderNamespace the resource provider's namespace</param>
@@ -62,7 +59,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns a resource belonging to a resource group.
+        /// Return a resource belonging to a resource group.
         /// </summary>
         /// <param name="resourceGroupName">resourceGroupName The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceProviderNamespace">resourceProviderNamespace Resource identity.</param>
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string));
 
         /// <summary>
-        /// Returns a resource belonging to a resource group asynchronously.
+        /// Return a resource belonging to a resource group asynchronously.
         /// </summary>
         /// <param name="resourceGroupName">resourceGroupName The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceProviderNamespace">resourceProviderNamespace Resource identity.</param>
@@ -133,5 +130,35 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string resourceName,
             string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Return a resource by the resource ID.
+        /// </summary>
+        /// <param name="id">id The ID of the resource.</param>
+        /// <param name="apiVersion">apiVersion the String value</param>
+        /// <returns>the generic resource</returns>
+        IGenericResource GetById(string id, string apiVersion = default(string));
+
+        /// <summary>
+        /// Return a resource by the resource ID asynchronously.
+        /// </summary>
+        /// <param name="id">id The ID of the resource.</param>
+        /// <param name="apiVersion">apiVersion the String value</param>
+        /// <returns>the generic resource</returns>
+        Task<IGenericResource> GetByIdAsync(string id, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Delete a resource and all of its child resources by the resource ID.
+        /// </summary>
+        /// <param name="id">id The ID of the resource.</param>
+        /// <param name="apiVersion">apiVersion the String value</param>
+        void DeleteById(string id, string apiVersion = default(string));
+
+        /// <summary>
+        /// Delete a resource and all of its child resources by the resource ID asynchronously.
+        /// </summary>
+        /// <param name="id">id The ID of the resource.</param>
+        /// <param name="apiVersion">apiVersion the String value</param>
+        Task DeleteByIdAsync(string id, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken));
     }
 }

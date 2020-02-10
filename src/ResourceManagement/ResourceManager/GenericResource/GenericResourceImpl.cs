@@ -101,13 +101,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             if (apiVersion == null)
             {
                 string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, ResourceGroupName, resourceProviderNamespace, resourceType, Name, parentResourceId);
-                apiVersion = ResourceUtils.DefaultApiVersionFromResourceId(
-                    resourceId, 
-                    await Manager.Providers.GetByNameAsync(resourceProviderNamespace, cancellationToken));
-                if (apiVersion == null)
-                {
-                    throw new ArgumentException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProviderNamespace));
-                }
+                apiVersion = GenericResourcesImpl.GetApiVersion(resourceId, Manager);
             }
             GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
                 resourceProviderNamespace,
