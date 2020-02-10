@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     await resourceManager.Providers.GetByNameAsync(resourceProvider, cancellationToken));
                 if (string.IsNullOrEmpty(apiVersionValue))
                 {
-                    throw new ArgumentException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProvider));
+                    throw new InvalidOperationException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProvider));
                 }
                 cachedApiVersions.TryAdd(apiVersionKey, apiVersionValue);
             }
