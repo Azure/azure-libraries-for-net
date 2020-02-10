@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         {
             string type = ResourceTypeFromResourceId(id);
             string parent = ParentResourcePathFromResourceId(id);
-            while (parent != null)
+            while (!string.IsNullOrEmpty(parent))
             {
                 type = ResourceTypeFromResourceId(parent) + "/" + type;
                 parent = ParentResourcePathFromResourceId(parent);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static string DefaultApiVersionFromResourceId(string id, IProvider provider)
         {
             string resourceType = ResourceTypeForApiVersion(id);
-            if (resourceType == null)
+            if (string.IsNullOrEmpty(resourceType))
             {
                 return null;
             }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 foreach (var providerResourceType in provider.ResourceTypes)
                 {
-                    if (resourceType.Equals(providerResourceType.ResourceType) 
+                    if (string.Equals(resourceType, providerResourceType.ResourceType, StringComparison.OrdinalIgnoreCase) 
                         && providerResourceType.ApiVersions != null
                         && providerResourceType.ApiVersions.Count > 0)
                     {

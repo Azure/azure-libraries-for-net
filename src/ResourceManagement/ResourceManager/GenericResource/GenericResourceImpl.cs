@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public async override Task<IGenericResource> CreateResourceAsync(CancellationToken cancellationToken)
         {
             prepareDefaultValue();
-            if (apiVersion == null)
+            if (string.IsNullOrEmpty(apiVersion))
             {
                 string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, ResourceGroupName, resourceProviderNamespace, resourceType, Name, parentResourceId);
-                apiVersion = GenericResourcesImpl.GetApiVersion(resourceId, Manager);
+                apiVersion = await GenericResourcesImpl.GetApiVersionAsync(resourceId, Manager, cancellationToken);
             }
             GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
                 resourceProviderNamespace,
