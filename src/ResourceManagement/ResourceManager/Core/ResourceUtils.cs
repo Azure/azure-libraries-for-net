@@ -144,5 +144,38 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             return environment;
         }
 
+        public static string ResourceTypeForApiVersion(string id)
+        {
+            string type = ResourceTypeFromResourceId(id);
+            string parent = ParentResourcePathFromResourceId(id);
+            while (!string.IsNullOrEmpty(parent))
+            {
+                type = ResourceTypeFromResourceId(parent) + "/" + type;
+                parent = ParentResourcePathFromResourceId(parent);
+            }
+            return type;
+        }
+
+        public static string DefaultApiVersionFromResourceId(string id, IProvider provider)
+        {
+            string resourceType = ResourceTypeForApiVersion(id);
+            if (string.IsNullOrEmpty(resourceType))
+            {
+                return null;
+            }
+            if (provider != null && provider.ResourceTypes != null)
+            {
+                foreach (var providerResourceType in provider.ResourceTypes)
+                {
+                    if (string.Equals(resourceType, providerResourceType.ResourceType, StringComparison.OrdinalIgnoreCase) 
+                        && providerResourceType.ApiVersions != null
+                        && providerResourceType.ApiVersions.Count > 0)
+                    {
+                        return providerResourceType.ApiVersions[0];
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

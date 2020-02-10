@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.GenericResource.Defi
         /// </summary>
         /// <param name="apiVersion">apiVersion the API version of the resource</param>
         /// <returns>the next stage of the generic resource definition</returns>
-        IWithCreate WithApiVersion(string apiVersion);
+        IWithCreate WithApiVersion(string apiVersion = default(string));
 
     }
 }

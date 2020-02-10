@@ -8,6 +8,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Models;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
@@ -97,6 +98,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public async override Task<IGenericResource> CreateResourceAsync(CancellationToken cancellationToken)
         {
             prepareDefaultValue();
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, ResourceGroupName, resourceProviderNamespace, resourceType, Name, parentResourceId);
+                apiVersion = await GenericResourcesImpl.GetApiVersionAsync(resourceId, Manager, cancellationToken);
+            }
             GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
                 resourceProviderNamespace,
                 parentResourceId,
@@ -143,7 +149,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return this;
         }
 
-        public IWithCreate WithApiVersion(string apiVersion)
+        public IWithCreate WithApiVersion(string apiVersion = default(string))
         {
             this.apiVersion = apiVersion;
             return this;

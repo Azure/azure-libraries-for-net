@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Models;
 using Microsoft.Rest.Azure;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,11 +18,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         TopLevelModifiableResources<IGenericResource, GenericResourceImpl, GenericResourceInner, IResourcesOperations, IResourceManager>,
         IGenericResources
     {
+        internal static ConcurrentDictionary<string, string> cachedApiVersions = new ConcurrentDictionary<string, string>();
+
         internal GenericResourcesImpl(IResourceManager resourceManager) : base(resourceManager.Inner.Resources, resourceManager)
         {
         }
 
-        public bool CheckExistence(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
+        public bool CheckExistence(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
         {
             return Extensions.Synchronize(() => CheckExistenceAsync(
                resourceGroupName,
@@ -38,9 +41,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion,
+            string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
+                apiVersion = await GetApiVersionAsync(resourceId, Manager, cancellationToken);
+            }
             return await Inner.CheckExistenceAsync(
                 resourceGroupName,
                 resourceProviderNamespace,
@@ -56,9 +64,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             return new GenericResourceImpl(name, new GenericResourceInner(), Manager);
         }
 
-        public void Delete(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
+        public void Delete(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
         {
-            Extensions.Synchronize(() => Inner.DeleteAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion));
+            Extensions.Synchronize(() => DeleteAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion));
         }
 
         public async Task DeleteAsync(
@@ -67,9 +75,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             string parentResourcePath,
             string resourceType,
             string resourceName,
-            string apiVersion,
+            string apiVersion = default(string),
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
+                apiVersion = await GetApiVersionAsync(resourceId, Manager, cancellationToken);
+            }
             await Inner.DeleteAsync(
                 resourceGroupName,
                 resourceProviderNamespace,
@@ -80,21 +93,57 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 cancellationToken);
         }
 
-        public IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
+        public void DeleteById(string id, string apiVersion = default(string))
         {
-            // Correct for auto-gen'd API's treatment parent path as required even though it makes sense only for child resources
-            if (parentResourcePath == null)
-            {
-                parentResourcePath = "";
-            }
+            Extensions.Synchronize(() => DeleteByIdAsync(id, apiVersion, CancellationToken.None));
+        }
 
-            GenericResourceInner inner = Extensions.Synchronize(() => Inner.GetAsync(
+        public async Task DeleteByIdAsync(string id, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                apiVersion = await GetApiVersionAsync(id, Manager, cancellationToken);
+            }
+            await DeleteAsync(
+                ResourceUtils.GroupFromResourceId(id),
+                ResourceUtils.ResourceProviderFromResourceId(id),
+                ResourceUtils.ParentResourcePathFromResourceId(id),
+                ResourceUtils.ResourceTypeFromResourceId(id),
+                ResourceUtils.NameFromResourceId(id),
+                apiVersion,
+                cancellationToken);
+        }
+
+        public IGenericResource Get(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string))
+        {
+            return Extensions.Synchronize(() => GetAsync(
                     resourceGroupName,
                     resourceProviderNamespace,
                     parentResourcePath,
                     resourceType,
                     resourceName,
-                    apiVersion));
+                    apiVersion));            
+        }
+
+        public async Task<IGenericResource> GetAsync(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Correct for auto-gen'd API's treatment parent path as required even though it makes sense only for child resources
+            if (string.IsNullOrEmpty(parentResourcePath))
+            {
+                parentResourcePath = "";
+            }
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, resourceGroupName, resourceProviderNamespace, resourceType, resourceName, parentResourcePath);
+                apiVersion = await GetApiVersionAsync(resourceId, Manager, cancellationToken);
+            }
+            var inner = await Inner.GetAsync(
+                    resourceGroupName,
+                    resourceProviderNamespace,
+                    parentResourcePath,
+                    resourceType,
+                    resourceName,
+                    apiVersion);
             GenericResourceImpl resource = new GenericResourceImpl(
                     resourceName,
                     inner,
@@ -107,6 +156,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             };
 
             return resource;
+        }
+
+        public IGenericResource GetById(string id, string apiVersion = default(string))
+        {
+            return Extensions.Synchronize(() => GetByIdAsync(id, apiVersion, CancellationToken.None));
+        }
+
+        public async Task<IGenericResource> GetByIdAsync(string id, string apiVersion = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                apiVersion = await GetApiVersionAsync(id, Manager, cancellationToken);
+            }
+            return await GetAsync(
+                ResourceUtils.GroupFromResourceId(id),
+                ResourceUtils.ResourceProviderFromResourceId(id),
+                ResourceUtils.ParentResourcePathFromResourceId(id),
+                ResourceUtils.ResourceTypeFromResourceId(id),
+                ResourceUtils.NameFromResourceId(id),
+                apiVersion,
+                cancellationToken);
         }
 
         protected override Task<GenericResourceInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellation)
@@ -201,6 +271,26 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     resourceGroupName, ResourceUtils.CreateODataFilterForTags(tagName, tagValue), cancellationToken: cancellation),
                 Manager.Inner.Resources.ListByResourceGroupNextAsync,
                 WrapModel, loadAllPages, cancellationToken);
+        }
+
+        internal static async Task<string> GetApiVersionAsync(string id, IResourceManager resourceManager, CancellationToken cancellationToken)
+        {
+            string resourceProvider = ResourceUtils.ResourceProviderFromResourceId(id);
+            string resourceType = ResourceUtils.ResourceTypeForApiVersion(id);
+            string apiVersionKey = resourceProvider + "/" + resourceType;
+            cachedApiVersions.TryGetValue(apiVersionKey, out string apiVersionValue);
+            if (string.IsNullOrEmpty(apiVersionValue))
+            {
+                apiVersionValue = ResourceUtils.DefaultApiVersionFromResourceId(
+                    id,
+                    await resourceManager.Providers.GetByNameAsync(resourceProvider, cancellationToken));
+                if (string.IsNullOrEmpty(apiVersionValue))
+                {
+                    throw new InvalidOperationException(string.Format("{0} is not a supported resource type in provider {1}", resourceType, resourceProvider));
+                }
+                cachedApiVersions.TryAdd(apiVersionKey, apiVersionValue);
+            }
+            return await Task.FromResult(apiVersionValue);
         }
     }
 }
