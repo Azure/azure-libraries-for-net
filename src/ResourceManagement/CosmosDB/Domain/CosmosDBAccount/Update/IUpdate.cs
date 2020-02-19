@@ -154,6 +154,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithMultipleLocations,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithPrivateEndpointConnection,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithAutomaticFailover,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithChildResource
     {
     }
@@ -214,6 +215,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="name">The reference name for the private endpoint connection.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithoutPrivateEndpointConnection(string name);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db update allowing to set the automatic failover.
+    /// </summary>
+    public interface IWithAutomaticFailover
+    {
+        /// <summary>
+        /// Specifies whether automatic failover is enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether automatic failover is enabled or not.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithAutomaticFailoverEnabled(bool enabled);
     }
 
     /// <summary>
