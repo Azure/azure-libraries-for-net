@@ -290,6 +290,7 @@ namespace Fluent.Tests
                         .WithExistingResourceGroup(rgName)
                         .WithDataModelSql()
                         .WithStrongConsistency()
+                        .WithAutomaticFailoverEnabled(true)
                         .DefineNewSqlDatabase(sqlDbName)
                             .WithThroughput(1000)
                             .DefineNewSqlContainer(sqlContainerName)
@@ -306,6 +307,8 @@ namespace Fluent.Tests
                                 .Attach()
                             .Attach()
                         .Create();
+
+                    Assert.True(databaseAccount.AutomaticFailoverEnabled);
 
                     var sqldbs = databaseAccount.ListSqlDatabases().ToList();
                     Assert.Single(sqldbs);
@@ -330,6 +333,7 @@ namespace Fluent.Tests
                     Assert.NotNull(container.GetTrigger("test"));
 
                     databaseAccount = databaseAccount.Update()
+                        .WithAutomaticFailoverEnabled(false)
                         .UpdateSqlDatabase(sqlDbName)
                             .WithOption("throughput", "800")
                             .UpdateSqlContainer(sqlContainerName)
@@ -340,6 +344,7 @@ namespace Fluent.Tests
                                 .Parent()
                             .Parent()
                         .Apply();
+                    Assert.False(databaseAccount.AutomaticFailoverEnabled);
 
                     sqldb = databaseAccount.GetSqlDatabase(sqlDbName);
                     Assert.Equal(800, sqldb.GetThroughputSettings().Throughput);
