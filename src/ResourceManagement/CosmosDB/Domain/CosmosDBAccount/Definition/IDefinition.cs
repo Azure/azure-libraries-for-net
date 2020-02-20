@@ -144,6 +144,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConnector,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithPrivateEndpointConnection,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithAutomaticFailover,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithChildResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
@@ -269,6 +270,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// </summary>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication WithSessionConsistency();
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to set the automatic failover.
+    /// </summary>
+    public interface IWithAutomaticFailover
+    {
+        /// <summary>
+        /// Specifies whether automatic failover is enabled for this cosmos db account.
+        /// </summary>
+        /// <param name="enabled">Whether automatic failover is enabled or not.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithCreate WithAutomaticFailoverEnabled(bool enabled);
     }
 
     /// <summary>

@@ -699,9 +699,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.Inner.DisableKeyBasedMetadataWriteAccess ?? false;
         }
+
+        public bool AutomaticFailoverEnabled()
+        {
+            return this.Inner.EnableAutomaticFailover ?? false;
+        }
+
         public CosmosDBAccountImpl WithDisableKeyBaseMetadataWriteAccess(bool disabled)
         {
             this.Inner.DisableKeyBasedMetadataWriteAccess = disabled;
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithAutomaticFailoverEnabled(bool enabled)
+        {
+            this.Inner.EnableAutomaticFailover = enabled;
             return this;
         }
 

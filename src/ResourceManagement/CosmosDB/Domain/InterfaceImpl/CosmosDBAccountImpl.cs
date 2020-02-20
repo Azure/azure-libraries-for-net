@@ -339,6 +339,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        bool ICosmosDBAccount.AutomaticFailoverEnabled
+        {
+            get
+            {
+                return this.AutomaticFailoverEnabled();
+            }
+        }
+
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
@@ -652,6 +660,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess.WithDisableKeyBaseMetadataWriteAccess(bool disabled)
         {
             return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
+        }
+
+        IWithCreate CosmosDBAccount.Definition.IWithAutomaticFailover.WithAutomaticFailoverEnabled(bool enabled)
+        {
+            return this.WithAutomaticFailoverEnabled(enabled);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithAutomaticFailover.WithAutomaticFailoverEnabled(bool enabled)
+        {
+            return this.WithAutomaticFailoverEnabled(enabled);
         }
 
         SqlDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewSqlDatabase(string name)
