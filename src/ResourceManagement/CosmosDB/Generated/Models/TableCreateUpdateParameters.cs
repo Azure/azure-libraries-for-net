@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <param name="options">A key-value pair of options to be applied for
         /// the request. This corresponds to the headers sent with the
         /// request.</param>
-        public TableCreateUpdateParameters(string location, TableResourceInner resource, IDictionary<string, string> options, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public TableCreateUpdateParameters(string location, TableResourceInner resource, CreateUpdateOptions options, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(location, id, name, type, tags)
         {
             Resource = resource;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// request. This corresponds to the headers sent with the request.
         /// </summary>
         [JsonProperty(PropertyName = "properties.options")]
-        public IDictionary<string, string> Options { get; set; }
+        public CreateUpdateOptions Options { get; set; }
 
         /// <summary>
         /// Validate the object.
