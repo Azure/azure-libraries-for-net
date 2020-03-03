@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IDefinition<ParentT> :
         IBlank<ParentT>,
+        IWithCompositeIndexList<ParentT>,
         IWithAttach<ParentT>
     {
     }
@@ -87,6 +88,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// <param name="includedPath">One of the included path.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithIncludedPath(IncludedPath includedPath);
+
+        /// <summary>
+        /// Specifies an included path.
+        /// </summary>
+        /// <param name="path">One of the included path.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithIncludedPath(string path);
     }
 
     /// <summary>
@@ -108,6 +116,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// <param name="excludedPath">One of the excluded path.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithExcludedPath(ExcludedPath excludedPath);
+
+        /// <summary>
+        /// Specifies an excluded path.
+        /// </summary>
+        /// <param name="path">One of the excluded path.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithExcludedPath(string path);
     }
 
     /// <summary>
@@ -129,6 +144,40 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// <param name="compositePath">One of the composite path.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithCompositeIndex(IList<CompositePath> compositePath);
+
+        /// <summary>
+        /// Specifies a composite index empty list to set every composite path.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        IWithCompositeIndexList<ParentT> WithCompositeIndexEmptyList();
+    }
+
+    /// <summary>
+    /// The stage of the indexing policy definition allowing to set one list of composite indexes.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithCompositeIndexList<ParentT>
+    {
+        /// <summary>
+        /// Specifies a composite path attach to the last list.
+        /// </summary>
+        /// <param name="compositePath">The composite path.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithCompositeIndexList<ParentT> WithCompositePath(CompositePath compositePath);
+
+        /// <summary>
+        /// Specifies a composite path attach to the last list.
+        /// </summary>
+        /// <param name="path">The path of the composite path.</param>
+        /// <param name="order">The order of the composite path.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithCompositeIndexList<ParentT> WithCompositePath(string path, CompositePathSortOrder order);
+
+        /// <summary>
+        /// Attaches the last list of the composite index.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> Attach();
     }
 
     /// <summary>
@@ -150,5 +199,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// <param name="spatialSpec">One of the spatial spec.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithSpatialIndex(SpatialSpec spatialSpec);
+
+        /// <summary>
+        /// Specifies a spatial index.
+        /// </summary>
+        /// <param name="path">The path of the spatial index.</param>
+        /// <param name="types">The types of the spatial index.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithSpatialIndex(string path, params SpatialType[] types);
     }
 }
