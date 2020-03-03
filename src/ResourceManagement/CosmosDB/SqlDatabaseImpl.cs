@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 Location = Parent.Inner.Location,
                 Resource = new SqlDatabaseResource(id: this.Name()),
-                Options = new Dictionary<string, string>(),
+                Options = new CreateUpdateOptions(),
             };
         }
 
@@ -78,44 +78,49 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlDatabaseImpl WithOption(string key, string value)
         {
-            this.createUpdateParameters.Options.Add(key, value);
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties.Add(key, value);
             return this;
         }
 
         public SqlDatabaseImpl WithOptionsAppend(IDictionary<string, string> options)
         {
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option.Key, option.Value);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }
 
         public SqlDatabaseImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option);
             }
             return this;
         }
 
         public SqlDatabaseImpl WithoutOption(string key)
         {
-            this.createUpdateParameters.Options.Remove(key);
+            this.createUpdateParameters.Options.AdditionalProperties?.Remove(key);
             return this;
         }
 
         public SqlDatabaseImpl WithoutOptions()
         {
-            this.createUpdateParameters.Options.Clear();
+            this.createUpdateParameters.Options.AdditionalProperties = null;
             return this;
         }
 
         public SqlDatabaseImpl WithThroughput(int throughput)
         {
-            return this.WithOption("throughput", $"{throughput}");
+            this.createUpdateParameters.Options.Throughput = $"{throughput}";
+            return this;
         }
 
         public CosmosDBAccountImpl Attach()

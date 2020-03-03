@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 Location = Parent.Inner.Location,
                 Resource = new GremlinDatabaseResource(id: this.Name()),
-                Options = new Dictionary<string, string>(),
+                Options = new CreateUpdateOptions(),
             };
         }
 
@@ -68,44 +68,49 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public GremlinDatabaseImpl WithOption(string key, string value)
         {
-            this.createUpdateParameters.Options.Add(key, value);
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties.Add(key, value);
             return this;
         }
 
         public GremlinDatabaseImpl WithOptionsAppend(IDictionary<string, string> options)
         {
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option.Key, option.Value);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }
 
         public GremlinDatabaseImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option);
             }
             return this;
         }
 
         public GremlinDatabaseImpl WithoutOption(string key)
         {
-            this.createUpdateParameters.Options.Remove(key);
+            this.createUpdateParameters.Options.AdditionalProperties?.Remove(key);
             return this;
         }
 
         public GremlinDatabaseImpl WithoutOptions()
         {
-            this.createUpdateParameters.Options.Clear();
+            this.createUpdateParameters.Options.AdditionalProperties = null;
             return this;
         }
 
         public GremlinDatabaseImpl WithThroughput(int throughput)
         {
-            return this.WithOption("throughput", $"{throughput}");
+            this.createUpdateParameters.Options.Throughput = $"{throughput}";
+            return this;
         }
 
         public CosmosDBAccountImpl Attach()
