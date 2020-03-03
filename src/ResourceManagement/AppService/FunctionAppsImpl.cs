@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return base.List().Where(this.FilterFunctionApp);
         }
 
-        private bool FilterFunctionApp(IFunctionApp w)
-        {
-            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp");
-        }
-
         public override async Task<IPagedCollection<IFunctionApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var collection = await PagedCollection<IFunctionApp, SiteInner>.LoadPageWithWrapModelAsync(
@@ -62,6 +57,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
             return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp")));
+        }
+
+        private bool FilterFunctionApp(IFunctionApp w)
+        {
+            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp");
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
