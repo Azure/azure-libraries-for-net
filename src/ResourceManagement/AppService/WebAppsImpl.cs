@@ -32,14 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IWebApp> ListByResourceGroup(string resourceGroupName)
         {
-            Func<SiteInner, IWebApp> converter = inner =>
-            {
-                return Extensions.Synchronize(() => PopulateModelAsync(inner));
-            };
-
-            return Extensions.Synchronize(() => Inner.ListByResourceGroupAsync(resourceGroupName))
-                        .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByResourceGroupNextAsync(link)))
-                        .Select(inner => converter(inner));
+            return base.ListByResourceGroup(resourceGroupName).Where(this.FilterWebApp);
         }
 
         public override async Task<IPagedCollection<IWebApp>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -49,7 +42,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListByResourceGroupNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IWebApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app")));
+            return PagedCollection<IWebApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
+        }
+
+        public override IEnumerable<IWebApp> List()
+        {
+            return base.List().Where(this.FilterWebApp);
         }
 
         public override async Task<IPagedCollection<IWebApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -59,7 +57,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IWebApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app")));
+            return PagedCollection<IWebApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
+        }
+
+        private bool FilterWebApp(IWebApp w)
+        {
+            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20

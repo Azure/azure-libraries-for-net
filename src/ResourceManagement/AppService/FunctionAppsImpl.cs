@@ -31,14 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:437A8ECA353AAE23242BFC82A5066CC3
         public override IEnumerable<IFunctionApp> ListByResourceGroup(string resourceGroupName)
         {
-            Func<SiteInner, IFunctionApp> converter = inner =>
-            {
-                return Extensions.Synchronize(() => PopulateModelAsync(inner));
-            };
-
-            return Extensions.Synchronize(() => Inner.ListByResourceGroupAsync(resourceGroupName))
-                        .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByResourceGroupNextAsync(link)))
-                        .Select(inner => converter(inner));
+            return base.ListByResourceGroup(resourceGroupName).Where(this.FilterFunctionApp);
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -48,7 +41,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListByResourceGroupNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => "functionapp".Equals(w.Inner.Kind, StringComparison.OrdinalIgnoreCase)));
+            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
+        }
+
+        public override IEnumerable<IFunctionApp> List()
+        {
+            return base.List().Where(this.FilterFunctionApp);
+        }
+
+        private bool FilterFunctionApp(IFunctionApp w)
+        {
+            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp");
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => "functionapp".Equals(w.Inner.Kind, StringComparison.OrdinalIgnoreCase)));
+            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp")));
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
