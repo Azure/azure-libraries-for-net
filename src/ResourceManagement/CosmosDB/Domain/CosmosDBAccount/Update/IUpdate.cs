@@ -67,8 +67,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// The name of the subnet within the virtual network; the subnet must have the service
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
+        /// <param name="ignoreMissingVNetServiceEndpoint">The boolean decides to ignore missing endpoint or not.</param>
         /// <return>The next stage of the update definition.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetwork(string virtualNetworkId, string subnetName);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default);
+
+        /// <summary>
+        /// Specifies Virtual Network Fileter manually.
+        /// </summary>
+        /// <param name="enable">The fileter is enabled or not.</param>
+        /// <return>The next stage of the update definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetworkFilterEnabled(bool enable);
 
         /// <summary>
         /// A Virtual Network ACL Rule for the CosmosDB account.
@@ -155,6 +163,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithPrivateEndpointConnection,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithAutomaticFailover,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyVault,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithChildResource
     {
     }
@@ -228,6 +237,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="enabled">Whether automatic failover is enabled or not.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithAutomaticFailoverEnabled(bool enabled);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to specify a key vault.
+    /// </summary>
+    public interface IWithKeyVault
+    {
+        /// <summary>
+        /// Specifies a key vault uri for this cosmos db account.
+        /// </summary>
+        /// <param name="keyVaultUri">The uri of the key vault.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithKeyVault(string keyVaultUri);
+
+        /// <summary>
+        /// Removes the key vault.
+        /// </summary>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutKeyVault();
     }
 
     /// <summary>
