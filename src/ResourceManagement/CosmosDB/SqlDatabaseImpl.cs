@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public SqlDatabaseImpl WithOption(string key, string value)
         {
             if (this.createUpdateParameters.Options.AdditionalProperties == null)
-                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             this.createUpdateParameters.Options.AdditionalProperties.Add(key, value);
             return this;
         }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public SqlDatabaseImpl WithOptionsAppend(IDictionary<string, string> options)
         {
             if (this.createUpdateParameters.Options.AdditionalProperties == null)
-                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             foreach (var option in options)
             {
                 this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlDatabaseImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.AdditionalProperties.Add(option);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }

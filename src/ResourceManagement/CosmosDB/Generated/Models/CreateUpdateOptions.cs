@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// message are deserialized this collection</param>
         /// <param name="throughput">Request Units per second. For example,
         /// "throughput": "10000".</param>
-        public CreateUpdateOptions(IDictionary<string, string> additionalProperties = default(IDictionary<string, string>), string throughput = default(string))
+        public CreateUpdateOptions(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string throughput = default(string))
         {
             AdditionalProperties = additionalProperties;
             Throughput = throughput;
