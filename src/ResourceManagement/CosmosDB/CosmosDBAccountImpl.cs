@@ -160,6 +160,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.ConnectorOffer = inner.ConnectorOffer;
             createUpdateParametersInner.EnableAutomaticFailover = inner.EnableAutomaticFailover;
             createUpdateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
+            createUpdateParametersInner.KeyVaultKeyUri = inner.KeyVaultKeyUri;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
@@ -184,6 +185,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             updateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
             updateParametersInner.ConnectorOffer = inner.ConnectorOffer;
             updateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
+            updateParametersInner.KeyVaultKeyUri = inner.KeyVaultKeyUri;
             if (virtualNetworkRulesMap != null)
             {
                 updateParametersInner.VirtualNetworkRules = this.virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();

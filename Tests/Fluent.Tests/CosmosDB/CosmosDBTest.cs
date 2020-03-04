@@ -37,7 +37,7 @@ namespace Fluent.Tests
                             .WithKind(DatabaseAccountKind.GlobalDocumentDB)
                             .WithSessionConsistency()
                             .WithWriteReplication(Region.USWest)
-                            .WithReadReplication(Region.USCentral)
+                            .WithReadReplication(Region.USCentral, true)
                             .WithIpRangeFilter("")
                             .WithMultipleWriteLocationsEnabled(true)
                             .Create();
@@ -50,10 +50,12 @@ namespace Fluent.Tests
                     Assert.True(databaseAccount.MultipleWriteLocationsEnabled);
 
                     databaseAccount = databaseAccount.Update()
+                            .WithoutAllReplications()
+                            .WithWriteReplication(Region.USEast)
                             .WithReadReplication(Region.AsiaSouthEast)
-                            .WithoutReadReplication(Region.USEast)
-                            .WithoutReadReplication(Region.USCentral)
                             .Apply();
+
+                    Assert.Equal(Region.USEast.ToString(), databaseAccount.WritableReplications.First(l => l.FailoverPriority == 0).LocationName.ToLower().Replace(" ", ""));
 
                     databaseAccount = databaseAccount.Update()
                             .WithEventualConsistency()
