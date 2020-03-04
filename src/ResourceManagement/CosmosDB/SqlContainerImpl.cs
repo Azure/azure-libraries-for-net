@@ -426,6 +426,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             if (this.createUpdateParameters.Resource.PartitionKey == null)
                 this.createUpdateParameters.Resource.PartitionKey = new ContainerPartitionKey();
+            if (this.createUpdateParameters.Resource.PartitionKey.Paths == null)
+                this.createUpdateParameters.Resource.PartitionKey.Paths = new List<string>();
             foreach (string path in paths)
                 this.createUpdateParameters.Resource.PartitionKey.Paths.Add(path);
             return this;

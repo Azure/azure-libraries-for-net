@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// this collection
         /// </summary>
         [JsonExtensionData]
-        public IDictionary<string, string> AdditionalProperties { get; set; }
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         /// <summary>
         /// Gets or sets request Units per second. For example, "throughput":
