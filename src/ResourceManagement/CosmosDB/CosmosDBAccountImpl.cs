@@ -379,6 +379,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             List<Models.Location> locations = new List<Models.Location>();
             if (failoverPolicies.Count > 0)
             {
+                for (int i = 0; i < failoverPolicies.Count; ++i)
+                {
+                    failoverPolicies[i].FailoverPriority = i;
+                }
                 locations.AddRange(failoverPolicies);
             }
             else

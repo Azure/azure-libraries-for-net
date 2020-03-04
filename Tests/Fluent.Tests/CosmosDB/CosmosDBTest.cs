@@ -9,6 +9,7 @@ using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -46,16 +47,17 @@ namespace Fluent.Tests
                     Assert.Equal(DatabaseAccountKind.GlobalDocumentDB.Value, databaseAccount.Kind);
                     Assert.Equal(2, databaseAccount.WritableReplications.Count);
                     Assert.Equal(2, databaseAccount.ReadableReplications.Count);
+                    Assert.True(databaseAccount.ReadableReplications.First(l => l.LocationName.ToLower().Replace(" ", "") == Region.USCentral.ToString()).IsZoneRedundant);
                     Assert.Equal(DefaultConsistencyLevel.Session, databaseAccount.DefaultConsistencyLevel);
                     Assert.True(databaseAccount.MultipleWriteLocationsEnabled);
 
                     databaseAccount = databaseAccount.Update()
                             .WithoutAllReplications()
-                            .WithWriteReplication(Region.USEast)
-                            .WithReadReplication(Region.AsiaSouthEast)
+                            .WithWriteReplication(Region.USWest)
+                            .WithReadReplication(Region.USEast)
                             .Apply();
 
-                    Assert.Equal(Region.USEast.ToString(), databaseAccount.WritableReplications.First(l => l.FailoverPriority == 0).LocationName.ToLower().Replace(" ", ""));
+                    Assert.Equal(Region.USEast.ToString(), databaseAccount.WritableReplications.First(l => l.FailoverPriority == 1).LocationName.ToLower().Replace(" ", ""));
 
                     databaseAccount = databaseAccount.Update()
                             .WithEventualConsistency()
