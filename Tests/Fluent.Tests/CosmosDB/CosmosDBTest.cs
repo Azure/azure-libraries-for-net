@@ -297,13 +297,18 @@ namespace Fluent.Tests
                                 .WithThroughput(400)
                                 .DefineIndexingPolicy()
                                     .WithIndexingMode(IndexingMode.Consistent)
-                                    .WithIncludedPath(new IncludedPath(path: "/*"))
-                                    .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
+                                    .WithIncludedPath("/*")
+                                    .WithExcludedPath("/myPathToNotIndex/*")
+                                    .WithCompositeIndexEmptyList()
+                                        .WithCompositePath("/myOrderByPath1", CompositePathSortOrder.Ascending)
+                                        .WithCompositePath("/myOrderByPath2", CompositePathSortOrder.Descending)
+                                        .Attach()
                                     .Attach()
-                                .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
-                                .WithStoredProcedure("test", new SqlStoredProcedureResource(id: null, body: "function test(){}"))
-                                .WithUserDefinedFunction("test", new SqlUserDefinedFunctionResource(id: null, body: "function test(){}"))
-                                .WithTrigger("test", new SqlTriggerResource(id: null, body: "function test(){}", triggerType: TriggerType.Pre, triggerOperation: TriggerOperation.All))
+                                .WithPartitionKey(PartitionKind.Hash, null)
+                                .WithPartitionKeyPath("/myPartitionKey")
+                                .WithStoredProcedure("test", "function test(){}")
+                                .WithUserDefinedFunction("test",  "function test(){}")
+                                .WithTrigger("test", "function test(){}", TriggerType.Pre, TriggerOperation.All)
                                 .Attach()
                             .Attach()
                         .Create();
@@ -326,6 +331,8 @@ namespace Fluent.Tests
                     Assert.Equal(IndexingMode.Consistent, container.IndexingPolicy.IndexingMode);
                     Assert.NotNull(container.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
                     Assert.NotNull(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.Equal(1, container.IndexingPolicy.CompositeIndexes.Count);
+                    Assert.Equal(2, container.IndexingPolicy.CompositeIndexes[0].Count);
                     Assert.True(container.PartitionKey.Paths.Contains("/myPartitionKey"));
                     Assert.Equal(PartitionKind.Hash, container.PartitionKey.Kind);
                     Assert.NotNull(container.GetStoredProcedure("test"));
@@ -335,9 +342,9 @@ namespace Fluent.Tests
                     databaseAccount = databaseAccount.Update()
                         .WithAutomaticFailoverEnabled(false)
                         .UpdateSqlDatabase(sqlDbName)
-                            .WithOption("throughput", "800")
+                            .WithThroughput(800)
                             .UpdateSqlContainer(sqlContainerName)
-                                .WithOption("throughput", "600")
+                                .WithThroughput(600)
                                 .UpdateIndexingPolicy()
                                     .WithoutExcludedPath("/myPathToNotIndex/*")
                                     .Parent()
@@ -570,9 +577,9 @@ namespace Fluent.Tests
 
                     databaseAccount = databaseAccount.Update()
                         .UpdateGremlinDatabase(gremlinName)
-                            .WithOption("throughput", "800")
+                            .WithThroughput(800)
                             .UpdateGremlinGraph(gremlinGraphName)
-                                .WithOption("throughput", "600")
+                                .WithThroughput(600)
                                 .Parent()
                             .Parent()
                         .Apply();

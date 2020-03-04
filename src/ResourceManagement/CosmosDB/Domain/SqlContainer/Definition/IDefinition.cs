@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The store procedure resource, no need to specify id.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, Models.CreateUpdateOptions options = default);
 
         /// <summary>
         /// Specifies a stored procedure.
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="body">The store procedure body.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithStoredProcedure(string name, string body, IDictionary<string, string> options = default);
+        IWithAttach<ParentT> WithStoredProcedure(string name, string body, Models.CreateUpdateOptions options = default);
 
         /// <summary>
         /// Specifies a user defined function.
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The user defined function resource, no need to specify id.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, Models.CreateUpdateOptions options = default);
 
         /// <summary>
         /// Specifies a user defined function.
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="body">The user defined function body.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUserDefinedFunction(string name, string body, IDictionary<string, string> options = default);
+        IWithAttach<ParentT> WithUserDefinedFunction(string name, string body, Models.CreateUpdateOptions options = default);
 
         /// <summary>
         /// Specifies a trigger.
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The trigger resource, no need to specify id.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource, Models.CreateUpdateOptions options = default);
 
         /// <summary>
         /// Specifies a trigger.
@@ -247,6 +247,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="triggerOperation">The trigger operation.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithTrigger(string name, string body, Models.TriggerType triggerType, Models.TriggerOperation triggerOperation, IDictionary<string, string> options = default);
+        IWithAttach<ParentT> WithTrigger(string name, string body, Models.TriggerType triggerType, Models.TriggerOperation triggerOperation, Models.CreateUpdateOptions options = default);
     }
 }

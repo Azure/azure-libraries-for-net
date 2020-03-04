@@ -413,9 +413,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithPartitionKey(IList<string> paths, PartitionKind kind, int? version)
+        public SqlContainerImpl WithPartitionKey(PartitionKind kind, int? version)
         {
-            return this.WithPartitionKey(new ContainerPartitionKey(paths: paths, kind: kind, version: version));
+            if (this.createUpdateParameters.Resource.PartitionKey == null)
+                this.createUpdateParameters.Resource.PartitionKey = new ContainerPartitionKey();
+            this.createUpdateParameters.Resource.PartitionKey.Kind = kind;
+            this.createUpdateParameters.Resource.PartitionKey.Version = version;
+            return this;
+        }
+
+        public SqlContainerImpl WithPartitionKeyPath(params string[] paths)
+        {
+            if (this.createUpdateParameters.Resource.PartitionKey == null)
+                this.createUpdateParameters.Resource.PartitionKey = new ContainerPartitionKey();
+            foreach (string path in paths)
+                this.createUpdateParameters.Resource.PartitionKey.Paths.Add(path);
+            return this;
         }
 
         public SqlContainerImpl WithoutPartitionKey()
@@ -480,10 +493,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public SqlContainerImpl WithUniqueKey(params string[] paths)
+        {
+            return this.WithUniqueKey(new UniqueKey(paths: new List<string>(paths)));
+        }
+
         public SqlContainerImpl WithConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy)
         {
             this.createUpdateParameters.Resource.ConflictResolutionPolicy = conflictResolutionPolicy;
             return this;
+        }
+
+        public SqlContainerImpl WithConflictResolutionPath(ConflictResolutionMode mode, string conflictResolutionPath)
+        {
+            return this.WithConflictResolutionPolicy(new Models.ConflictResolutionPolicy(mode: mode, conflictResolutionPath: conflictResolutionPath));
+        }
+
+        public SqlContainerImpl WithConflictResolutionProcedure(ConflictResolutionMode mode, string conflictResolutionProcedure)
+        {
+            return this.WithConflictResolutionPolicy(new Models.ConflictResolutionPolicy(mode: mode, conflictResolutionProcedure: conflictResolutionProcedure));
         }
 
         public SqlContainerImpl WithoutConflictResolutionPolicy()
@@ -505,6 +533,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public SqlContainerImpl WithStoredProcedure(string name, string body, CreateUpdateOptions options)
+        {
+            return this.WithStoredProcedure(name, new SqlStoredProcedureResource(id: name, body: body), options);
+        }
+
         public SqlContainerImpl WithoutStoredProcedure(string name)
         {
             this.storedProcedureToDelete.Add(name);
@@ -524,6 +557,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public SqlContainerImpl WithUserDefinedFunction(string name, string body, CreateUpdateOptions options)
+        {
+            return this.WithUserDefinedFunction(name, new SqlUserDefinedFunctionResource(id: name, body: body), options);
+        }
+
         public SqlContainerImpl WithoutUserDefinedFunction(string name)
         {
             this.userDefinedFunctionToDelete.Add(name);
@@ -541,6 +579,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             parameter.Resource.Id = name;
             this.triggerToUpdate.Add(name, parameter);
             return this;
+        }
+
+        public SqlContainerImpl WithTrigger(string name, string body, TriggerType type, TriggerOperation operation, CreateUpdateOptions options)
+        {
+            return this.WithTrigger(name, new SqlTriggerResource(id: name, body: body, triggerType: type, triggerOperation: operation), options);
         }
 
         public SqlContainerImpl WithoutTrigger(string name)
