@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// </summary>
         /// <param name="enable">The fileter is enabled or not.</param>
         /// <return>The next stage of the update definition.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetworkFilterEnabled(bool enable);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetworkFilterEnabled(bool? enable);
 
         /// <summary>
         /// A Virtual Network ACL Rule for the CosmosDB account.
