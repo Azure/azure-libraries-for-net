@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// </summary>
         /// <param name="enable">The fileter is enabled or not.</param>
         /// <returns>The next stage.</returns>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetworkFilterEnabled(bool? enable);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetworkFilterEnabled(bool enable);
 
         /// <summary>
         /// Specifies the list of Virtual Network ACL Rules for the CosmosDB account.
@@ -187,12 +187,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     }
 
     /// <summary>
-    /// The stage of the cosmos db definition allowing the definition of a write location.
+    /// The stage of the cosmos db definition allowing the definition of a read location.
     /// </summary>
     public interface IWithReadReplication
     {
         /// <summary>
-        /// A georeplication location for the CosmosDB account.
+        /// Sets a read location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
@@ -216,12 +216,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     }
 
     /// <summary>
-    /// The stage of the cosmos db definition allowing the definition of a read location.
+    /// The stage of the cosmos db definition allowing the definition of a write location.
     /// </summary>
     public interface IWithWriteReplication
     {
         /// <summary>
-        /// A georeplication location for the CosmosDB account.
+        /// Sets a write location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>

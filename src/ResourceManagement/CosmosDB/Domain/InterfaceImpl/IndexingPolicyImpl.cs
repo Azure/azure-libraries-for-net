@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithCompositeIndex(compositePath);
         }
 
-        IndexingPolicy.Definition.IWithCompositeIndexList<DefinitionParentT> IndexingPolicy.Definition.IWithCompositeIndexes<DefinitionParentT>.WithCompositeIndexEmptyList()
+        IndexingPolicy.Definition.IWithCompositeIndexList<DefinitionParentT> IndexingPolicy.Definition.IWithCompositeIndexes<DefinitionParentT>.WithNewCompositeIndexList()
         {
-            return this.WithCompositeIndexEmptyList();
+            return this.WithNewCompositeIndexList();
         }
 
         IndexingPolicy.Definition.IWithCompositeIndexList<DefinitionParentT> IndexingPolicy.Definition.IWithCompositeIndexList<DefinitionParentT>.WithCompositePath(CompositePath compositePath)
@@ -183,9 +183,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithCompositeIndex(compositePath);
         }
 
-        IndexingPolicy.Update.IWithCompositeIndexList<UpdateParentT> IndexingPolicy.Update.IWithCompositeIndexes<UpdateParentT>.WithCompositeIndexEmptyList()
+        IndexingPolicy.Update.IWithCompositeIndexList<UpdateParentT> IndexingPolicy.Update.IWithCompositeIndexes<UpdateParentT>.WithNewCompositeIndexList()
         {
-            return this.WithCompositeIndexEmptyList();
+            return this.WithNewCompositeIndexList();
         }
 
         IndexingPolicy.Update.IWithAttach<UpdateParentT> IndexingPolicy.Update.IWithCompositeIndexes<UpdateParentT>.WithoutCompositeIndexes()

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         IUpdate
     {
         private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverPolicies;
-        private bool hasFailoverPolicyChanges;
+        private bool isFailoverPolicyLoaded;
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             FailoverPolicy.LocationName = region.Name;
             FailoverPolicy.IsZoneRedundant = isZoneRedundant;
             FailoverPolicy.FailoverPriority = this.failoverPolicies.Count;
-            this.hasFailoverPolicyChanges = true;
+            this.isFailoverPolicyLoaded = true;
             this.failoverPolicies.Add(FailoverPolicy);
             return this;
         }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public CosmosDBAccountImpl WithoutAllReplications()
         {
             this.failoverPolicies.Clear();
-            this.hasFailoverPolicyChanges = true;
+            this.isFailoverPolicyLoaded = true;
             return this;
         }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 locationParameters = new UpdateLocationParameters(updateParametersInner);
             }
             this.failoverPolicies.Clear();
-            this.hasFailoverPolicyChanges = false;
+            this.isFailoverPolicyLoaded = false;
             bool done = false;
             ICosmosDBAccount databaseAccount = null;
             while (!done)
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return;
             }
 
-            if (!this.hasFailoverPolicyChanges)
+            if (!this.isFailoverPolicyLoaded)
             {
                 this.initializeFailover();
             }
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 this.failoverPolicies.Add(locationInners[i]);
             }
 
-            this.hasFailoverPolicyChanges = true;
+            this.isFailoverPolicyLoaded = true;
         }
 
         public CosmosDBAccountImpl WithStrongConsistency()
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             FailoverPolicy.LocationName = region.Name;
             FailoverPolicy.IsZoneRedundant = isZoneRedundant;
             FailoverPolicy.FailoverPriority = this.failoverPolicies.Count;
-            this.hasFailoverPolicyChanges = true;
+            this.isFailoverPolicyLoaded = true;
             this.failoverPolicies.Add(FailoverPolicy);
             return this;
         }
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public CosmosDBAccountImpl WithVirtualNetworkFilterEnabled(bool? enable)
+        public CosmosDBAccountImpl WithVirtualNetworkFilterEnabled(bool enable)
         {
             this.Inner.IsVirtualNetworkFilterEnabled = enable;
             return this;

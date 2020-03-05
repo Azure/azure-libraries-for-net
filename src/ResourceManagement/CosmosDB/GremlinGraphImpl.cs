@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public GremlinGraphImpl WithThroughput(int throughput)
         {
-            this.createUpdateParameters.Options.Throughput = $"{throughput}";
+            this.createUpdateParameters.Options.Throughput = throughput.ToString();
             return this;
         }
 

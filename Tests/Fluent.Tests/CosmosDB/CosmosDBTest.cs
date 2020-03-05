@@ -303,7 +303,7 @@ namespace Fluent.Tests
                                     .WithIndexingMode(IndexingMode.Consistent)
                                     .WithIncludedPath("/*")
                                     .WithExcludedPath("/myPathToNotIndex/*")
-                                    .WithCompositeIndexEmptyList()
+                                    .WithNewCompositeIndexList()
                                         .WithCompositePath("/myOrderByPath1", CompositePathSortOrder.Ascending)
                                         .WithCompositePath("/myOrderByPath2", CompositePathSortOrder.Descending)
                                         .Attach()

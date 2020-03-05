@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithCompositeIndexEmptyList()
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithNewCompositeIndexList()
         {
             return this.WithCompositeIndex(new List<CompositePath>());
         }
