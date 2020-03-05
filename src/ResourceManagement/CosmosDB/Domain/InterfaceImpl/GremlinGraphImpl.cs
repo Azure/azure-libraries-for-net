@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutIndexingPolicy();
         }
 
-        IndexingPolicy.Update.IUpdate<GremlinGraph.Update.IUpdate> GremlinGraph.Update.IWithIndexingPolicy.UpdateIndexingPolicy()
+        IndexingPolicy.Update.IWithAttach<GremlinGraph.Update.IUpdate> GremlinGraph.Update.IWithIndexingPolicy.UpdateIndexingPolicy()
         {
             return this.UpdateIndexingPolicy();
         }

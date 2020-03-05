@@ -67,8 +67,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// The name of the subnet within the virtual network; the subnet must have the service
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
+        /// <param name="ignoreMissingVNetServiceEndpoint">The boolean decides to ignore missing endpoint or not.</param>
         /// <return>The next stage of the update definition.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetwork(string virtualNetworkId, string subnetName);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default(bool?));
+
+        /// <summary>
+        /// Specifies Virtual Network Fileter manually.
+        /// </summary>
+        /// <param name="enable">The fileter is enabled or not.</param>
+        /// <return>The next stage of the update definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetworkFilterEnabled(bool? enable);
 
         /// <summary>
         /// A Virtual Network ACL Rule for the CosmosDB account.
@@ -155,6 +163,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithPrivateEndpointConnection,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithAutomaticFailover,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithKeyVault,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithChildResource
     {
     }
@@ -164,6 +173,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// </summary>
     public interface IUpdate :
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithWriteReplication,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals
     {
     }
@@ -178,8 +188,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// A georeplication location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
+        /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithReadReplication(Region region);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithReadReplication(Region region, bool? isZoneRedundant = default(bool?));
 
         /// <summary>
         /// A georeplication location for the CosmosDB account.
@@ -187,7 +198,27 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithoutReadReplication(Region region);
+
+        /// <summary>
+        /// Removes all replications for the CosmosDB account.
+        /// </summary>
+        /// <returns>The next stage.</returns>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithWriteReplication WithoutAllReplications();
     }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing the definition of a write location.
+    /// </summary>
+    public interface IWithWriteReplication
+    {
+        /// <summary>
+        /// A georeplication location for the CosmosDB account.
+        /// </summary>
+        /// <param name="region">The region for the location.</param>
+        /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithWriteReplication(Region region, bool? isZoneRedundant = default(bool?));
+     }
 
     /// <summary>
     /// The stage of the cosmos db update allowing to specify private endpoint connection.
@@ -228,6 +259,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="enabled">Whether automatic failover is enabled or not.</param>
         /// <returns>The next stage of the update.</returns>
         IWithOptionals WithAutomaticFailoverEnabled(bool enabled);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to specify a key vault.
+    /// </summary>
+    public interface IWithKeyVault
+    {
+        /// <summary>
+        /// Specifies a key vault uri for this cosmos db account.
+        /// </summary>
+        /// <param name="keyVaultUri">The uri of the key vault.</param>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithKeyVault(string keyVaultUri);
+
+        /// <summary>
+        /// Removes the key vault.
+        /// </summary>
+        /// <returns>The next stage of the update.</returns>
+        IWithOptionals WithoutKeyVault();
     }
 
     /// <summary>

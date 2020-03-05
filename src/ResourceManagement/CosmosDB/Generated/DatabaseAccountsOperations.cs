@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1328,7 +1328,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1992,7 +1992,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "filter");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2226,7 +2226,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2455,7 +2455,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2686,7 +2686,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "updateParameters");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2934,7 +2934,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 createUpdateParameters.Validate();
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3167,7 +3167,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3396,7 +3396,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                     }
                 }
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             FailoverPolicies failoverParameters = new FailoverPolicies();
             if (failoverPoliciesProperty != null)
             {
@@ -3619,7 +3619,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "region");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             RegionForOnlineOffline regionParameterForOffline = new RegionForOnlineOffline();
             if (region != null)
             {
@@ -3837,7 +3837,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "region");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             RegionForOnlineOffline regionParameterForOnline = new RegionForOnlineOffline();
             if (region != null)
             {
@@ -4056,7 +4056,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "keyKind");
             }
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2019-12-12";
             DatabaseAccountRegenerateKeyParameters keyToRegenerate = new DatabaseAccountRegenerateKeyParameters();
             if (keyKind != null)
             {

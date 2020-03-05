@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.GremlinGraph.Update
         /// Starts the update of the indexing policy.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
-        IndexingPolicy.Update.IUpdate<IUpdate> UpdateIndexingPolicy();
+        IndexingPolicy.Update.IWithAttach<IUpdate> UpdateIndexingPolicy();
     }
 
     /// <summary>

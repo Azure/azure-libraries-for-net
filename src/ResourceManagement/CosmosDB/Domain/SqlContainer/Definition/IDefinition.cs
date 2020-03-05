@@ -95,11 +95,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <summary>
         /// Specifies the container partition key.
         /// </summary>
-        /// <param name="paths">List of paths using which data within the container can be partitioned.</param>
         /// <param name="kind">Indicates the kind of algorithm used for partitioning. Possible values include: 'Hash', 'Range'.</param>
         /// <param name="version">Indicates the version of the partition key definition.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithPartitionKey(IList<string> paths, Models.PartitionKind kind, int? version);
+        IWithAttach<ParentT> WithPartitionKey(Models.PartitionKind kind, int? version);
+
+        /// <summary>
+        /// Specifies the container partition key paths.
+        /// </summary>
+        /// <param name="paths">List of paths using which data within the container can be partitioned.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithPartitionKeyPath(params string[] paths);
     }
 
     /// <summary>
@@ -142,6 +148,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="uniqueKey">A unique key.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithUniqueKey(Models.UniqueKey uniqueKey);
+
+        /// <summary>
+        /// Specifies a unique key appended to original list.
+        /// </summary>
+        /// <param name="paths">The paths of the unique key.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithUniqueKey(params string[] paths);
     }
 
     /// <summary>
@@ -156,6 +169,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="conflictResolutionPolicy">The whole object of the conflict resolution policy.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithAttach<ParentT> WithConflictResolutionPolicy(Models.ConflictResolutionPolicy conflictResolutionPolicy);
+
+        /// <summary>
+        /// Specifies the conflict resolution policy with conflict resolution path.
+        /// </summary>
+        /// <param name="mode">The conflict resolution mode.</param>
+        /// <param name="conflictResolutionPath">The conflict resolution path.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithConflictResolutionPath(Models.ConflictResolutionMode mode, string conflictResolutionPath);
+
+        /// <summary>
+        /// Specifies the conflict resolution policy with conflict resolution procedure.
+        /// </summary>
+        /// <param name="mode">The conflict resolution mode.</param>
+        /// <param name="conflictResolutionProcedure">The conflict resolution procedure.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithConflictResolutionProcedure(Models.ConflictResolutionMode mode, string conflictResolutionProcedure);
     }
 
     /// <summary>
@@ -171,7 +200,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The store procedure resource, no need to specify id.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
+
+        /// <summary>
+        /// Specifies a stored procedure.
+        /// </summary>
+        /// <param name="name">The name of the stored procedure.</param>
+        /// <param name="body">The store procedure body.</param>
+        /// <param name="options">The options for the store procedure.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithStoredProcedure(string name, string body, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Specifies a user defined function.
@@ -180,7 +218,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The user defined function resource, no need to specify id.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
+
+        /// <summary>
+        /// Specifies a user defined function.
+        /// </summary>
+        /// <param name="name">The name of the user defined function.</param>
+        /// <param name="body">The user defined function body.</param>
+        /// <param name="options">The options for the user defined function.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithUserDefinedFunction(string name, string body, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Specifies a trigger.
@@ -189,6 +236,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Definition
         /// <param name="resource">The trigger resource, no need to specify id.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the definition.</returns>
-        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource, IDictionary<string, string> options = default(IDictionary<string, string>));
+        IWithAttach<ParentT> WithTrigger(string name, Models.SqlTriggerResource resource, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
+
+        /// <summary>
+        /// Specifies a trigger.
+        /// </summary>
+        /// <param name="name">The name of the trigger.</param>
+        /// <param name="body">The trigger body.</param>
+        /// <param name="triggerType">The trigger type.</param>
+        /// <param name="triggerOperation">The trigger operation.</param>
+        /// <param name="options">The options for the trigger.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithAttach<ParentT> WithTrigger(string name, string body, Models.TriggerType triggerType, Models.TriggerOperation triggerOperation, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
     }
 }

@@ -60,8 +60,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// The name of the subnet within the virtual network; the subnet must have the service
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
+        /// <param name="ignoreMissingVNetServiceEndpoint">The boolean decides to ignore missing endpoint or not.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetwork(string virtualNetworkId, string subnetName);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default(bool?));
+
+        /// <summary>
+        /// Specifies Virtual Network Fileter manually.
+        /// </summary>
+        /// <param name="enable">The fileter is enabled or not.</param>
+        /// <returns>The next stage.</returns>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetworkFilterEnabled(bool? enable);
 
         /// <summary>
         /// Specifies the list of Virtual Network ACL Rules for the CosmosDB account.
@@ -145,6 +153,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKeyBasedMetadataWriteAccess,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithPrivateEndpointConnection,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithAutomaticFailover,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKeyVault,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithChildResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
@@ -186,8 +195,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// A georeplication location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
+        /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithReadReplication(Region region);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithReadReplication(Region region, bool? isZoneRedundant = default(bool?));
     }
 
     /// <summary>
@@ -214,8 +224,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// A georeplication location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
+        /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithWriteReplication(Region region);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithWriteReplication(Region region, bool? isZoneRedundant = default(bool?));
     }
 
     /// <summary>
@@ -283,6 +294,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="enabled">Whether automatic failover is enabled or not.</param>
         /// <returns>The next stage of the definition.</returns>
         IWithCreate WithAutomaticFailoverEnabled(bool enabled);
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to specify a key vault.
+    /// </summary>
+    public interface IWithKeyVault
+    {
+        /// <summary>
+        /// Specifies a key vault uri for this cosmos db account.
+        /// </summary>
+        /// <param name="keyVaultUri">The uri of the key vault.</param>
+        /// <returns>The next stage of the definition.</returns>
+        IWithCreate WithKeyVault(string keyVaultUri);
     }
 
     /// <summary>

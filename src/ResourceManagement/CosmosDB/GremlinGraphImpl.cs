@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 Location = this.Location,
                 Resource = new GremlinGraphResource(id: this.Name()),
-                Options = new Dictionary<string, string>(),
+                Options = new CreateUpdateOptions(),
             };
 
             if (Inner.Resource != null)
@@ -147,44 +147,49 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public GremlinGraphImpl WithOption(string key, string value)
         {
-            this.createUpdateParameters.Options.Add(key, value);
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
+            this.createUpdateParameters.Options.AdditionalProperties.Add(key, value);
             return this;
         }
 
         public GremlinGraphImpl WithOptionsAppend(IDictionary<string, string> options)
         {
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option.Key, option.Value);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }
 
         public GremlinGraphImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }
 
         public GremlinGraphImpl WithoutOption(string key)
         {
-            this.createUpdateParameters.Options.Remove(key);
+            this.createUpdateParameters.Options.AdditionalProperties?.Remove(key);
             return this;
         }
 
         public GremlinGraphImpl WithoutOptions()
         {
-            this.createUpdateParameters.Options.Clear();
+            this.createUpdateParameters.Options.AdditionalProperties = null;
             return this;
         }
 
         public GremlinGraphImpl WithThroughput(int throughput)
         {
-            return this.WithOption("throughput", $"{throughput}");
+            this.createUpdateParameters.Options.Throughput = $"{throughput}";
+            return this;
         }
 
         public GremlinDatabaseImpl Attach()

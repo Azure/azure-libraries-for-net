@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 Location = this.Location,
                 Resource = new SqlContainerResource(id: this.Name()),
-                Options = new Dictionary<string, string>(),
+                Options = new CreateUpdateOptions(),
             };
 
             if (Inner.Resource != null)
@@ -171,44 +171,49 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public SqlContainerImpl WithOption(string key, string value)
         {
-            this.createUpdateParameters.Options.Add(key, value);
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
+            this.createUpdateParameters.Options.AdditionalProperties.Add(key, value);
             return this;
         }
 
         public SqlContainerImpl WithOptionsAppend(IDictionary<string, string> options)
         {
+            if (this.createUpdateParameters.Options.AdditionalProperties == null)
+                this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option.Key, option.Value);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }
 
         public SqlContainerImpl WithOptionsReplace(IDictionary<string, string> options)
         {
-            this.createUpdateParameters.Options = new Dictionary<string, string>();
+            this.createUpdateParameters.Options.AdditionalProperties = new Dictionary<string, object>();
             foreach (var option in options)
             {
-                this.createUpdateParameters.Options.Add(option);
+                this.createUpdateParameters.Options.AdditionalProperties.Add(option.Key, option.Value);
             }
             return this;
         }
 
         public SqlContainerImpl WithoutOption(string key)
         {
-            this.createUpdateParameters.Options.Remove(key);
+            this.createUpdateParameters.Options.AdditionalProperties?.Remove(key);
             return this;
         }
 
         public SqlContainerImpl WithoutOptions()
         {
-            this.createUpdateParameters.Options.Clear();
+            this.createUpdateParameters.Options.AdditionalProperties = null;
             return this;
         }
 
         public SqlContainerImpl WithThroughput(int throughput)
         {
-            return this.WithOption("throughput", $"{throughput}");
+            this.createUpdateParameters.Options.Throughput = $"{throughput}";
+            return this;
         }
 
         public SqlDatabaseImpl Attach()
@@ -408,9 +413,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithPartitionKey(IList<string> paths, PartitionKind kind, int? version)
+        public SqlContainerImpl WithPartitionKey(PartitionKind kind, int? version)
         {
-            return this.WithPartitionKey(new ContainerPartitionKey(paths: paths, kind: kind, version: version));
+            if (this.createUpdateParameters.Resource.PartitionKey == null)
+                this.createUpdateParameters.Resource.PartitionKey = new ContainerPartitionKey();
+            this.createUpdateParameters.Resource.PartitionKey.Kind = kind;
+            this.createUpdateParameters.Resource.PartitionKey.Version = version;
+            return this;
+        }
+
+        public SqlContainerImpl WithPartitionKeyPath(params string[] paths)
+        {
+            if (this.createUpdateParameters.Resource.PartitionKey == null)
+                this.createUpdateParameters.Resource.PartitionKey = new ContainerPartitionKey();
+            if (this.createUpdateParameters.Resource.PartitionKey.Paths == null)
+                this.createUpdateParameters.Resource.PartitionKey.Paths = new List<string>();
+            foreach (string path in paths)
+                this.createUpdateParameters.Resource.PartitionKey.Paths.Add(path);
+            return this;
         }
 
         public SqlContainerImpl WithoutPartitionKey()
@@ -475,10 +495,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public SqlContainerImpl WithUniqueKey(params string[] paths)
+        {
+            return this.WithUniqueKey(new UniqueKey(paths: new List<string>(paths)));
+        }
+
         public SqlContainerImpl WithConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy)
         {
             this.createUpdateParameters.Resource.ConflictResolutionPolicy = conflictResolutionPolicy;
             return this;
+        }
+
+        public SqlContainerImpl WithConflictResolutionPath(ConflictResolutionMode mode, string conflictResolutionPath)
+        {
+            return this.WithConflictResolutionPolicy(new Models.ConflictResolutionPolicy(mode: mode, conflictResolutionPath: conflictResolutionPath));
+        }
+
+        public SqlContainerImpl WithConflictResolutionProcedure(ConflictResolutionMode mode, string conflictResolutionProcedure)
+        {
+            return this.WithConflictResolutionPolicy(new Models.ConflictResolutionPolicy(mode: mode, conflictResolutionProcedure: conflictResolutionProcedure));
         }
 
         public SqlContainerImpl WithoutConflictResolutionPolicy()
@@ -487,17 +522,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithStoredProcedure(string name, SqlStoredProcedureResource resource = default(SqlStoredProcedureResource), IDictionary<string, string> options = default(IDictionary<string, string>))
+        public SqlContainerImpl WithStoredProcedure(string name, SqlStoredProcedureResource resource = default(SqlStoredProcedureResource), CreateUpdateOptions options = default(CreateUpdateOptions))
         {
             var parameter = new SqlStoredProcedureCreateUpdateParameters()
             {
                 Location = this.Location,
                 Resource = resource ?? new SqlStoredProcedureResource(),
-                Options = options ?? new Dictionary<string, string>(),
+                Options = options ?? new CreateUpdateOptions(),
             };
             parameter.Resource.Id = name;
             this.storedProcedureToUpdate.Add(name, parameter);
             return this;
+        }
+
+        public SqlContainerImpl WithStoredProcedure(string name, string body, CreateUpdateOptions options)
+        {
+            return this.WithStoredProcedure(name, new SqlStoredProcedureResource(id: name, body: body), options);
         }
 
         public SqlContainerImpl WithoutStoredProcedure(string name)
@@ -506,17 +546,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithUserDefinedFunction(string name, SqlUserDefinedFunctionResource resource = default(SqlUserDefinedFunctionResource), IDictionary<string, string> options = default(IDictionary<string, string>))
+        public SqlContainerImpl WithUserDefinedFunction(string name, SqlUserDefinedFunctionResource resource = default(SqlUserDefinedFunctionResource), CreateUpdateOptions options = default(CreateUpdateOptions))
         {
             var parameter = new SqlUserDefinedFunctionCreateUpdateParameters()
             {
                 Location = this.Location,
                 Resource = resource ?? new SqlUserDefinedFunctionResource(),
-                Options = options ?? new Dictionary<string, string>(),
+                Options = options ?? new CreateUpdateOptions(),
             };
             parameter.Resource.Id = name;
             this.userDefinedFunctionToUpdate.Add(name, parameter);
             return this;
+        }
+
+        public SqlContainerImpl WithUserDefinedFunction(string name, string body, CreateUpdateOptions options)
+        {
+            return this.WithUserDefinedFunction(name, new SqlUserDefinedFunctionResource(id: name, body: body), options);
         }
 
         public SqlContainerImpl WithoutUserDefinedFunction(string name)
@@ -525,17 +570,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public SqlContainerImpl WithTrigger(string name, SqlTriggerResource resource = default(SqlTriggerResource), IDictionary<string, string> options = default(IDictionary<string, string>))
+        public SqlContainerImpl WithTrigger(string name, SqlTriggerResource resource = default(SqlTriggerResource), CreateUpdateOptions options = default(CreateUpdateOptions))
         {
             var parameter = new SqlTriggerCreateUpdateParameters()
             {
                 Location = this.Location,
                 Resource = resource ?? new SqlTriggerResource(),
-                Options = options ?? new Dictionary<string, string>(),
+                Options = options ?? new CreateUpdateOptions(),
             };
             parameter.Resource.Id = name;
             this.triggerToUpdate.Add(name, parameter);
             return this;
+        }
+
+        public SqlContainerImpl WithTrigger(string name, string body, TriggerType type, TriggerOperation operation, CreateUpdateOptions options)
+        {
+            return this.WithTrigger(name, new SqlTriggerResource(id: name, body: body, triggerType: type, triggerOperation: operation), options);
         }
 
         public SqlContainerImpl WithoutTrigger(string name)
