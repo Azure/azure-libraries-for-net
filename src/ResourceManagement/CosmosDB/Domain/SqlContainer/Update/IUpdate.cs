@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="resource">The store procedure resource, no need to specify id.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, Models.CreateUpdateOptions options = default);
+        IUpdate WithStoredProcedure(string name, Models.SqlStoredProcedureResource resource, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Specifies a stored procedure.
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="body">The store procedure body.</param>
         /// <param name="options">The options for the store procedure.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithStoredProcedure(string name, string body, Models.CreateUpdateOptions options = default);
+        IUpdate WithStoredProcedure(string name, string body, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Removes a stored procedure.
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="resource">The user defined function resource, no need to specify id.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, Models.CreateUpdateOptions options = default);
+        IUpdate WithUserDefinedFunction(string name, Models.SqlUserDefinedFunctionResource resource, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Specifies a user defined function.
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="body">The user defined function body.</param>
         /// <param name="options">The options for the user defined function.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithUserDefinedFunction(string name, string body, Models.CreateUpdateOptions options = default);
+        IUpdate WithUserDefinedFunction(string name, string body, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Removes a user defined function.
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="resource">The trigger resource, no need to specify id.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithTrigger(string name, Models.SqlTriggerResource resource, Models.CreateUpdateOptions options = default);
+        IUpdate WithTrigger(string name, Models.SqlTriggerResource resource, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Specifies a trigger.
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.SqlContainer.Update
         /// <param name="triggerOperation">The trigger operation.</param>
         /// <param name="options">The options for the trigger.</param>
         /// <returns>The next stage of the update.</returns>
-        IUpdate WithTrigger(string name, string body, Models.TriggerType triggerType, Models.TriggerOperation triggerOperation, Models.CreateUpdateOptions options = default);
+        IUpdate WithTrigger(string name, string body, Models.TriggerType triggerType, Models.TriggerOperation triggerOperation, Models.CreateUpdateOptions options = default(Models.CreateUpdateOptions));
 
         /// <summary>
         /// Removes a trigger.

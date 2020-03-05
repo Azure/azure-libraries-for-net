@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// </param>
         /// <param name="ignoreMissingVNetServiceEndpoint">The boolean decides to ignore missing endpoint or not.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default(bool?));
 
         /// <summary>
         /// Specifies Virtual Network Fileter manually.
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="region">The region for the location.</param>
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithReadReplication(Region region, bool? isZoneRedundant = default);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithReadReplication(Region region, bool? isZoneRedundant = default(bool?));
     }
 
     /// <summary>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="region">The region for the location.</param>
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithWriteReplication(Region region, bool? isZoneRedundant = default);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithWriteReplication(Region region, bool? isZoneRedundant = default(bool?));
     }
 
     /// <summary>

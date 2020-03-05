@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithReadReplication.WithReadReplication(Region region, bool? isZoneRedundant = default)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithReadReplication.WithReadReplication(Region region, bool? isZoneRedundant)
         {
             return this.WithReadReplication(region, isZoneRedundant);
         }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant = default)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant)
         {
             return this.WithWriteReplication(region, isZoneRedundant);
         }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithReadLocations.WithReadReplication(Region region, bool? isZoneRedundant = default)
+        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithReadLocations.WithReadReplication(Region region, bool? isZoneRedundant)
         {
             return this.WithReadReplication(region, isZoneRedundant);
         }
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithoutAllReplications();
         }
 
-        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant = default)
+        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant)
         {
             return this.WithWriteReplication(region, isZoneRedundant);
         }
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
             return this.WithVirtualNetwork(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
         }
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage of the update definition.</return>
-        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint = default)
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
             return this.WithVirtualNetwork(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
         }
