@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// </summary>
         /// <param name="enable">The fileter is enabled or not.</param>
         /// <return>The next stage of the update definition.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetworkFilterEnabled(bool? enable);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals WithVirtualNetworkFilterEnabled(bool enable);
 
         /// <summary>
         /// A Virtual Network ACL Rule for the CosmosDB account.
@@ -179,13 +179,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     }
 
     /// <summary>
-    /// The stage of the cosmos db definition allowing the definition of a write location.
+    /// The stage of the cosmos db definition allowing the definition of a read location.
     /// </summary>
     public interface IWithReadLocations :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>
     {
         /// <summary>
-        /// A georeplication location for the CosmosDB account.
+        /// Sets a read location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithReadReplication(Region region, bool? isZoneRedundant = default(bool?));
 
         /// <summary>
-        /// A georeplication location for the CosmosDB account.
+        /// Removes a read location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     public interface IWithWriteReplication
     {
         /// <summary>
-        /// A georeplication location for the CosmosDB account.
+        /// Sets a write location for the CosmosDB account.
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>

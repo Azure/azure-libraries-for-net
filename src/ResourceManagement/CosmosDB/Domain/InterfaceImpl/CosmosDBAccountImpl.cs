@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithVirtualNetwork(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
         }
 
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool? enable)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool enable)
         {
             return this.WithVirtualNetworkFilterEnabled(enable);
         }
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithVirtualNetwork(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
         }
 
-        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool? enable)
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool enable)
         {
             return this.WithVirtualNetworkFilterEnabled(enable);
         }
