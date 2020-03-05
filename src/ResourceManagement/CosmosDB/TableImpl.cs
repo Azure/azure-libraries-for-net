@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public TableImpl WithThroughput(int throughput)
         {
-            this.createUpdateParameters.Options.Throughput = $"{throughput}";
+            this.createUpdateParameters.Options.Throughput = throughput.ToString();
             return this;
         }
 
