@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp")));
+            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
         }
 
         private bool FilterFunctionApp(IFunctionApp w)
         {
-            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("functionapp");
+            return w.Inner.Kind != null && w.Inner.Kind.ToLower().Split(new char[] { ',' }).Contains("functionapp");
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
