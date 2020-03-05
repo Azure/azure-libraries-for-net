@@ -357,6 +357,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        string ICosmosDBAccount.KeyVaultUri
+        {
+            get
+            {
+                return this.KeyVaultUri();
+            }
+        }
+
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {

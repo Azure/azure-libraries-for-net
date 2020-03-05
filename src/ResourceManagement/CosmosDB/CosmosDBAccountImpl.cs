@@ -732,6 +732,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.Inner.EnableAutomaticFailover ?? false;
         }
 
+        public string KeyVaultUri()
+        {
+            return this.Inner.KeyVaultKeyUri;
+        }
+
         public CosmosDBAccountImpl WithDisableKeyBaseMetadataWriteAccess(bool disabled)
         {
             this.Inner.DisableKeyBasedMetadataWriteAccess = disabled;
