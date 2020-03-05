@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Update
         /// Specifies a composite index empty list to set every composite path.
         /// </summary>
         /// <returns>The next stage of the update.</returns>
-        IWithCompositeIndexList<ParentT> WithCompositeIndexEmptyList();
+        IWithCompositeIndexList<ParentT> WithNewCompositeIndexList();
 
         /// <summary>
         /// Removes all composite indexes.

@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.IndexingPolicy.Definition
         /// Specifies a composite index empty list to set every composite path.
         /// </summary>
         /// <returns>The next stage of the definition.</returns>
-        IWithCompositeIndexList<ParentT> WithCompositeIndexEmptyList();
+        IWithCompositeIndexList<ParentT> WithNewCompositeIndexList();
     }
 
     /// <summary>
