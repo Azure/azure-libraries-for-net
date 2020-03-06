@@ -29,15 +29,18 @@ namespace Fluent.Tests
         public void CanLoadEmptyPageWithNextLink()
         {
             var taskLoadPage = PagedCollection<string, string>.LoadPage(
+                // first page, valid nextLink
                 (cancellation) => Task.FromResult(ConvertToPage(new MockPage<string> { Items = new List<string> { "1", "2" }, NextPageLink = "2" })),
                 (nextLink, cancellation) => 
                 {
                     if (nextLink == "2")
                     {
+                        // empty values, valid nextLink
                         return Task.FromResult(ConvertToPage(new MockPage<string> { Items = new List<string>(), NextPageLink = "3" }));
                     }
                     else if (nextLink == "3")
                     {
+                        // non-empty values, null nextLink
                         return Task.FromResult(ConvertToPage(new MockPage<string> { Items = new List<string> { "3", "4", "5" }, NextPageLink = null }));
                     }
                     else
