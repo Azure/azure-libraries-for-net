@@ -89,6 +89,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                   cancellationToken);
         }
 
+        public IGalleryImageVersion GetByGalleryImageWithReplicationStatus(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName)
+        {
+            return Extensions.Synchronize(() => this.GetByGalleryImageWithReplicationStatusAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName));
+        }
+
+        public async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion> GetByGalleryImageWithReplicationStatusAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await this.Inner.GetAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, ReplicationStatusTypes.ReplicationStatus, cancellationToken);
+            return this.WrapModel(inner);
+        }
+
         ///GENMHASH:B6961E0C7CB3A9659DE0E1489F44A936:A537904E18B87B9D0B8AB9A9A0FA714F
         public IComputeManager Manager()
         {

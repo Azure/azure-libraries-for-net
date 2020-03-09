@@ -82,5 +82,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
         /// <return>The observable for the request.</return>
         Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion>> ListByGalleryImageAsync(string resourceGroupName, string galleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Retrieves information about a gallery image version.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group.</param>
+        /// <param name="galleryName">The name of the gallery.</param>
+        /// <param name="galleryImageName">The name of the gallery image.</param>
+        /// <param name="galleryImageVersionName">The name of the gallery image version.</param>
+        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <return>The gallery image version resource.</return>
+        Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion GetByGalleryImageWithReplicationStatus(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName);
+
+        /// <summary>
+        /// Retrieves information about a gallery image version.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group.</param>
+        /// <param name="galleryName">The name of the gallery.</param>
+        /// <param name="galleryImageName">The name of the gallery image.</param>
+        /// <param name="galleryImageVersionName">The name of the gallery image version.</param>
+        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <return>The observable for the request.</return>
+        Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion> GetByGalleryImageWithReplicationStatusAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
