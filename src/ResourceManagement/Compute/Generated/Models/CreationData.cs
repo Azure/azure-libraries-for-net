@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Gets or sets if createOption is Import, the Azure Resource Manager
         /// identifier of the storage account containing the blob to import as
-        /// a disk. Required only if the blob is in a different subscription
+        /// a disk.
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountId")]
         public string StorageAccountId { get; set; }
