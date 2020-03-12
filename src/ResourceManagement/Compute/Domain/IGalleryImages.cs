@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the gallery.</param>
         /// <param name="galleryImageName">The name of the gallery image.</param>
-        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <throws>ValidationException thrown if parameters fail the validation.</throws>
         void DeleteByGallery(string resourceGroupName, string galleryName, string galleryImageName);
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the gallery.</param>
         /// <param name="galleryImageName">The name of the gallery image.</param>
-        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <throws>ValidationException thrown if parameters fail the validation.</throws>
         /// <return>The completable for the request.</return>
         Task DeleteByGalleryAsync(string resourceGroupName, string galleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken));
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the gallery.</param>
         /// <param name="galleryImageName">The name of the gallery image.</param>
-        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <throws>ValidationException thrown if parameters fail the validation.</throws>
         /// <return>The gallery image.</return>
         Microsoft.Azure.Management.Compute.Fluent.IGalleryImage GetByGallery(string resourceGroupName, string galleryName, string galleryImageName);
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the gallery.</param>
         /// <param name="galleryImageName">The name of the gallery image.</param>
-        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <throws>ValidationException thrown if parameters fail the validation.</throws>
         /// <return>The observable for the request.</return>
         Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage> GetByGalleryAsync(string resourceGroupName, string galleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken));
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the gallery.</param>
-        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <throws>ValidationException thrown if parameters fail the validation.</throws>
         /// <return>The list of images in the gallery.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage> ListByGallery(string resourceGroupName, string galleryName);
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the gallery.</param>
-        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <throws>ValidationException thrown if parameters fail the validation.</throws>
         /// <return>The observable for the request.</return>
         Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage>> ListByGalleryAsync(string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken));
     }
