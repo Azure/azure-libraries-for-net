@@ -17,7 +17,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.AzureFirewall.Update
         IWithFirewallPolicy,
         IWithSku,
         IWithAdditionalProperty,
-        IWithZones
+        IWithZones,
+        IWithApplicationRuleCollection,
+        IWithNatRuleCollection,
+        IWithNetworkRuleCollection
     {
     }
 
@@ -142,5 +145,102 @@ namespace Microsoft.Azure.Management.Network.Fluent.AzureFirewall.Update
         /// <param name="zone">The availability zone.</param>
         /// <return>The next stage of the update.</return>
         IUpdate WithoutZone(string zone);
+    }
+
+    public interface IWithApplicationRuleCollection
+    {
+        IWithApplicationRuleCollectionSettings DefineAzureFirewallApplicationRuleCollection(string name);
+
+        IWithApplicationRuleCollectionSettings UpdateAzureFirewallApplicationRuleCollection(string name);
+
+        IUpdate WithoutAzureFirewallApplicationRuleCollection(string name);
+    }
+
+    public interface IWithApplicationRuleCollectionSettings :
+        BaseRuleCollection.IWithPriority<IWithApplicationRuleCollectionSettings>,
+        BaseRuleCollection.IWithRuleCollectionActionType<IWithApplicationRuleCollectionSettings>,
+        ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<IUpdate>
+    {
+        IWithApplicationRuleSettings DefineAzureFirewallApplicationRule(string name);
+
+        IWithApplicationRuleSettings UpdateAzureFirewallApplicationRule(string name);
+
+        IWithApplicationRuleCollectionSettings WithoutAzureFirewallApplicationRule(string name);
+    }
+
+    public interface IWithApplicationRuleSettings :
+        BaseRule.IWithDescription<IWithApplicationRuleSettings>,
+        BaseRule.IWithSourceAddress<IWithApplicationRuleSettings>,
+        BaseRule.IWithApplicationRuleProtocol<IWithApplicationRuleSettings>,
+        BaseRule.IWithTargetFqdn<IWithApplicationRuleSettings>,
+        BaseRule.IWithFqdnTag<IWithApplicationRuleSettings>,
+        BaseRule.IWithSourceIpGroup<IWithApplicationRuleSettings>,
+        ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<IWithApplicationRuleCollectionSettings>
+    {
+    }
+
+    public interface IWithNatRuleCollection
+    {
+        IWithNatRuleCollectionSettings DefineAzureFirewallNatRuleCollection(string name);
+
+        IWithNatRuleCollectionSettings UpdateAzureFirewallNatRuleCollection(string name);
+
+        IUpdate WithoutAzureFirewallNatRuleCollection(string name);
+    }
+
+    public interface IWithNatRuleCollectionSettings :
+        BaseRuleCollection.IWithPriority<IWithNatRuleCollectionSettings>,
+        BaseRuleCollection.IWithNatRuleCollectionActionType<IWithNatRuleCollectionSettings>,
+        ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<IUpdate>
+    {
+        IWithNatRuleSettings DefineAzureFirewallNatRule(string name);
+
+        IWithNatRuleSettings UpdateAzureFirewallNatRule(string name);
+
+        IWithNatRuleCollectionSettings WithoutAzureFirewallNatRule(string name);
+    }
+
+    public interface IWithNatRuleSettings :
+        BaseRule.IWithDescription<IWithNatRuleSettings>,
+        BaseRule.IWithSourceAddress<IWithNatRuleSettings>,
+        BaseRule.IWithDestinationAddress<IWithNatRuleSettings>,
+        BaseRule.IWithDestinationPort<IWithNatRuleSettings>,
+        BaseRule.IWithRuleProtocol<IWithNatRuleSettings>,
+        ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<IWithNatRuleCollectionSettings>
+    {
+    }
+
+    public interface IWithNetworkRuleCollection
+    {
+        IWithNetworkRuleCollectionSettings DefineAzureFirewallNetworkRuleCollection(string name);
+
+        IWithNetworkRuleCollectionSettings UpdateAzureFirewallNetworkRuleCollection(string name);
+
+        IUpdate WithoutAzureFirewallNetworkRuleCollection(string name);
+    }
+
+    public interface IWithNetworkRuleCollectionSettings :
+        BaseRuleCollection.IWithPriority<IWithNetworkRuleCollectionSettings>,
+        BaseRuleCollection.IWithRuleCollectionActionType<IWithNetworkRuleCollectionSettings>,
+        ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<IUpdate>
+    {
+        IWithNetworkRuleSettings DefineAzureFirewallNetworkRule(string name);
+
+        IWithNetworkRuleSettings UpdateAzureFirewallNetworkRule(string name);
+
+        IWithNetworkRuleCollectionSettings WithoutAzureFirewallNetworkRule(string name);
+    }
+
+    public interface IWithNetworkRuleSettings :
+        BaseRule.IWithDescription<IWithNetworkRuleSettings>,
+        BaseRule.IWithRuleProtocol<IWithNetworkRuleSettings>,
+        BaseRule.IWithSourceAddress<IWithNetworkRuleSettings>,
+        BaseRule.IWithDestinationAddress<IWithNetworkRuleSettings>,
+        BaseRule.IWithDestinationPort<IWithNetworkRuleSettings>,
+        BaseRule.IWithDestinationFqdn<IWithNetworkRuleSettings>,
+        BaseRule.IWithSourceIpGroup<IWithNetworkRuleSettings>,
+        BaseRule.IWithDestinationIpGroup<IWithNetworkRuleSettings>,
+        ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<IWithNetworkRuleCollectionSettings>
+    {
     }
 }
