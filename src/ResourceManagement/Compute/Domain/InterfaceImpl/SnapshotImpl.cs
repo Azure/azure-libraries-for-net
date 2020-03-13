@@ -170,10 +170,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Specifies the source data VHD.
         /// </summary>
         /// <param name="vhdUrl">A source VHD URL.</param>
+        /// <param name="storageAccountId">A storage account ID.</param>
         /// <return>The next stage of the definition.</return>
-        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromVhd.WithDataFromVhd(string vhdUrl)
+        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromVhd.WithDataFromVhd(string vhdUrl, string storageAccountId)
         {
-            return this.WithDataFromVhd(vhdUrl);
+            return this.WithDataFromVhd(vhdUrl, storageAccountId);
         }
 
         /// <summary>
@@ -220,10 +221,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Specifies the source specialized or generalized Linux OS VHD.
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="storageAccountId">The storage account ID.</param>
         /// <return>The next stage of the definition.</return>
-        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromVhd(string vhdUrl)
+        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromVhd(string vhdUrl, string storageAccountId)
         {
-            return this.WithLinuxFromVhd(vhdUrl);
+            return this.WithLinuxFromVhd(vhdUrl, storageAccountId);
         }
 
         /// <summary>
@@ -342,10 +344,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Specifies the source specialized or generalized Windows OS VHD.
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="storageAccountId">The storage account ID.</param>
         /// <return>The next stage of the definition.</return>
-        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromVhd(string vhdUrl)
+        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromVhd(string vhdUrl, string storageAccountId)
         {
-            return this.WithWindowsFromVhd(vhdUrl);
+            return this.WithWindowsFromVhd(vhdUrl, storageAccountId);
         }
     }
 }
