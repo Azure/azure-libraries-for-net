@@ -292,5 +292,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
             return await Task.FromResult(apiVersionValue);
         }
+
+        internal static string GetApiVersion(string id, IResourceManager resourceManager)
+        {
+            return Extensions.Synchronize(() => GetApiVersionAsync(id, resourceManager, CancellationToken.None));
+        }
     }
 }
