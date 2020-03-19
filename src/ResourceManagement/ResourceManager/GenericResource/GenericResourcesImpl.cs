@@ -144,18 +144,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     resourceType,
                     resourceName,
                     apiVersion);
-            GenericResourceImpl resource = new GenericResourceImpl(
-                    resourceName,
-                    inner,
-                    Manager)
-            {
-                resourceProviderNamespace = resourceProviderNamespace,
-                parentResourceId = parentResourcePath,
-                resourceType = resourceType,
-                apiVersion = apiVersion
-            };
-
-            return resource;
+            return WrapModelWithApiVersion(inner, apiVersion);
         }
 
         public IGenericResource GetById(string id, string apiVersion = default(string))
@@ -169,14 +158,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 apiVersion = await GetApiVersionAsync(id, Manager, cancellationToken);
             }
-            return await GetAsync(
-                ResourceUtils.GroupFromResourceId(id),
-                ResourceUtils.ResourceProviderFromResourceId(id),
-                ResourceUtils.ParentResourcePathFromResourceId(id),
-                ResourceUtils.ResourceTypeFromResourceId(id),
-                ResourceUtils.NameFromResourceId(id),
-                apiVersion,
-                cancellationToken);
+            var inner = await Inner.GetByIdAsync(id, apiVersion, cancellationToken);
+            return WrapModelWithApiVersion(inner, apiVersion);
         }
 
         protected override Task<GenericResourceInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellation)
@@ -291,6 +274,30 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 cachedApiVersions.TryAdd(apiVersionKey, apiVersionValue);
             }
             return await Task.FromResult(apiVersionValue);
+        }
+
+        internal static string GetApiVersion(string id, IResourceManager resourceManager)
+        {
+            return Extensions.Synchronize(() => GetApiVersionAsync(id, resourceManager, CancellationToken.None));
+        }
+
+        protected IGenericResource WrapModelWithApiVersion(GenericResourceInner inner, string apiVersion)
+        {
+            if (inner == null)
+            {
+                return null;
+            }
+            GenericResourceImpl resource = new GenericResourceImpl(
+                    inner.Name,
+                    inner,
+                    Manager)
+            {
+                resourceProviderNamespace = ResourceUtils.ResourceProviderFromResourceId(inner.Id),
+                parentResourceId = ResourceUtils.ParentResourcePathFromResourceId(inner.Id),
+                resourceType = ResourceUtils.ResourceTypeFromResourceId(inner.Id),
+                apiVersion = apiVersion
+            };
+            return resource;
         }
     }
 }
