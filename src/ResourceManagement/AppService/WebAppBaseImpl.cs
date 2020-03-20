@@ -106,6 +106,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public ScmType ScmType => SiteConfig?.ScmType;
 
         public string DocumentRoot => SiteConfig?.DocumentRoot;
+        
+        public string MinTlsVersion => SiteConfig?.MinTlsVersion;
 
         internal ISet<string> UserAssignedManagedServiceIdentityIds()
         {
