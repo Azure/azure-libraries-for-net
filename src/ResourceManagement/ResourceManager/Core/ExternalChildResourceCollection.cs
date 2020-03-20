@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                                 exceptions.Add(deleteTask.Exception);
                             }
                         }
-                        if (deleteTask.IsCanceled)
+                        else if (deleteTask.IsCanceled)
                         {
                             exceptions.Add(new TaskCanceledException());
                         }
