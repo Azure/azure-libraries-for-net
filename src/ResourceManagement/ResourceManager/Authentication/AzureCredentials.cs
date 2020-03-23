@@ -175,8 +175,26 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 #else
                     else if (servicePrincipalLoginInformation.X509Certificate != null)
                     {
+                        Rest.Azure.Authentication.ClientAssertionCertificate clientAssertionCertificate = 
+                            new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate);
+                        CertificateAuthenticationProvider certificateAuthenticationProvider = 
+                            new CertificateAuthenticationProvider(clientAssertionCertificate, servicePrincipalLoginInformation.IsCertificateRollOverEnabled);
+
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
-                            TenantId, new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
+                            TenantId, servicePrincipalLoginInformation.ClientId, certificateAuthenticationProvider, adSettings, TokenCache.DefaultShared);
+                    }
+                    else if (servicePrincipalLoginInformation.Certificate != null)
+                    {
+                        Rest.Azure.Authentication.ClientAssertionCertificate clientAssertionCertificate = 
+                            new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(
+                                servicePrincipalLoginInformation.ClientId,
+                                servicePrincipalLoginInformation.Certificate,
+                                servicePrincipalLoginInformation.CertificatePassword);
+                        CertificateAuthenticationProvider certificateAuthenticationProvider = 
+                            new CertificateAuthenticationProvider(clientAssertionCertificate, servicePrincipalLoginInformation.IsCertificateRollOverEnabled);
+
+                        credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
+                            TenantId, servicePrincipalLoginInformation.ClientId, certificateAuthenticationProvider, adSettings, TokenCache.DefaultShared);
                     }
 #endif
                     else if (servicePrincipalLoginInformation.Certificate != null)
