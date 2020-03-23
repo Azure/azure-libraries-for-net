@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                         else if (deleteTask.IsCanceled)
                         {
+                            cancellationToken.ThrowIfCancellationRequested();
                             exceptions.Add(new TaskCanceledException());
                         }
                         else
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         else if (createTask.IsCanceled)
                         {
                             this.collection.TryRemove(res.Name(), out FluentModelTImpl val);
+                            cancellationToken.ThrowIfCancellationRequested();
                             exceptions.Add(new TaskCanceledException());
                         }
                         else
@@ -140,6 +142,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                         else if (updateTask.IsCanceled)
                         {
+                            cancellationToken.ThrowIfCancellationRequested();
                             exceptions.Add(new TaskCanceledException());
                         }
                         else
