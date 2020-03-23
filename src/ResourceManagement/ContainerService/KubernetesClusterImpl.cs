@@ -161,29 +161,29 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
         private async Task<byte[]> GetAdminKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfileAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.ADMIN.ToString(), cancellationToken: cancellationToken);
-            if (profileInner == null)
+            var credentialInner = await this.Manager.Inner.ManagedClusters
+                .ListClusterAdminCredentialsAsync(this.ResourceGroupName, this.Name, cancellationToken: cancellationToken);
+            if (credentialInner == null || credentialInner.Kubeconfigs == null || credentialInner.Kubeconfigs.Count == 0)
             {
                 return new byte[0];
             }
             else
             {
-                return profileInner.KubeConfig;
+                return credentialInner.Kubeconfigs[0].Value;
             }
         }
 
         private async Task<byte[]> GetUserKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfileAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.USER.ToString(), cancellationToken: cancellationToken);
-            if (profileInner == null)
+            var credentialInner = await this.Manager.Inner.ManagedClusters
+                .ListClusterUserCredentialsAsync(this.ResourceGroupName, this.Name, cancellationToken: cancellationToken);
+            if (credentialInner == null || credentialInner.Kubeconfigs == null || credentialInner.Kubeconfigs.Count == 0)
             {
                 return new byte[0];
             }
             else
             {
-                return profileInner.KubeConfig;
+                return credentialInner.Kubeconfigs[0].Value;
             }
         }
 
