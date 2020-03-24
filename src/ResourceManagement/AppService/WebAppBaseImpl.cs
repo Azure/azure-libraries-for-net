@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public string DocumentRoot => SiteConfig?.DocumentRoot;
         
-        public string MinTlsVersion => SiteConfig?.MinTlsVersion;
+        public SupportedTlsVersions MinTlsVersion => SiteConfig?.MinTlsVersion;
 
         internal ISet<string> UserAssignedManagedServiceIdentityIds()
         {
