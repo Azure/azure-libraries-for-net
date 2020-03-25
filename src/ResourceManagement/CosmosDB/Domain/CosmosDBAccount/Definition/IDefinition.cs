@@ -227,6 +227,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithWriteReplication(Region region, bool? isZoneRedundant = default(bool?));
+
+        /// <summary>
+        /// Sets the write location same as the CosmosDB account location.
+        /// </summary>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithDefaultWriteReplication();
     }
 
     /// <summary>

@@ -218,7 +218,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
         /// <param name="isZoneRedundant">Flag to indicate whether or not this region is an AvailabilityZone region.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithWriteReplication(Region region, bool? isZoneRedundant = default(bool?));
-     }
+
+        /// <summary>
+        /// Sets the write location same as the CosmosDB account location.
+        /// </summary>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations WithDefaultWriteReplication();
+    }
 
     /// <summary>
     /// The stage of the cosmos db update allowing to specify private endpoint connection.

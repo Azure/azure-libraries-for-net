@@ -199,6 +199,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.WithWriteReplication(region, isZoneRedundant);
         }
 
+        IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithDefaultWriteReplication()
+        {
+            return this.WithDefaultWriteReplication();
+        }
+
         /// <summary>
         /// A georeplication location for the CosmosDB account.
         /// </summary>
@@ -227,6 +232,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant)
         {
             return this.WithWriteReplication(region, isZoneRedundant);
+        }
+
+        IWithReadLocations CosmosDBAccount.Update.IWithWriteReplication.WithDefaultWriteReplication()
+        {
+            return this.WithDefaultWriteReplication();
         }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>

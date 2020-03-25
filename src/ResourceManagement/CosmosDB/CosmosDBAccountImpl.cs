@@ -413,6 +413,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public CosmosDBAccountImpl WithDefaultWriteReplication()
+        {
+            return this.WithWriteReplication(this.Region, null);
+        }
+
         public string DocumentEndpoint()
         {
             return this.Inner.DocumentEndpoint;

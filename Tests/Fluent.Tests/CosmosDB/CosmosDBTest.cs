@@ -37,7 +37,7 @@ namespace Fluent.Tests
                             .WithNewResourceGroup(rgName)
                             .WithKind(DatabaseAccountKind.GlobalDocumentDB)
                             .WithSessionConsistency()
-                            .WithWriteReplication(Region.USWest)
+                            .WithDefaultWriteReplication()
                             .WithReadReplication(Region.USCentral, true)
                             .WithIpRangeFilter("")
                             .WithMultipleWriteLocationsEnabled(true)
