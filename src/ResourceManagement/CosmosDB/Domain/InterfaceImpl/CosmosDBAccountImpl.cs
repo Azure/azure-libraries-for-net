@@ -365,6 +365,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        bool ICosmosDBAccount.VirtualNetoworkFilterEnabled
+        {
+            get
+            {
+                return this.VirtualNetoworkFilterEnabled();
+            }
+        }
+
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
@@ -513,9 +521,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage of the update definition.</return>
-        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithoutVirtualNetwork(string virtualNetworkId, string subnetName)
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithoutVirtualNetworkRule(string virtualNetworkId, string subnetName)
         {
-            return this.WithoutVirtualNetwork(virtualNetworkId, subnetName);
+            return this.WithoutVirtualNetworkRule(virtualNetworkId, subnetName);
         }
 
         /// <summary>
@@ -527,9 +535,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkRule(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
-            return this.WithVirtualNetwork(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
+            return this.WithVirtualNetworkRule(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
         }
 
         CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool enable)
@@ -551,9 +559,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage of the update definition.</return>
-        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkRule(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
-            return this.WithVirtualNetwork(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
+            return this.WithVirtualNetworkRule(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
         }
 
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool enable)

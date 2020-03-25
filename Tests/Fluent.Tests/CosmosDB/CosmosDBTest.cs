@@ -122,10 +122,12 @@ namespace Fluent.Tests
                         .Create();
 
 
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
                     // END of BUGFIX
+
+                    Assert.True(databaseAccount.VirtualNetoworkFilterEnabled);
                 }
                 finally
                 {
