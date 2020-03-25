@@ -473,5 +473,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets a open stream to all logs.
         /// </summary>
         Task<Stream> StreamAllLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets the minimum version of TLS
+        /// required for SSL requests for the web app
+        /// </summary>
+        SupportedTlsVersions MinTlsVersion { get; }
     }
 }
