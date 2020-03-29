@@ -73,7 +73,7 @@ namespace CosmosDBTableWithVirtualNetworkRule
                         .WithDataModelAzureTable()
                         .WithEventualConsistency()
                         .WithWriteReplication(Region.USEast)
-                        .WithVirtualNetwork(virtualNetwork.Id, "subnet1")
+                        .WithVirtualNetworkRule(virtualNetwork.Id, "subnet1")
                         .Create();
 
                 Console.WriteLine("Created CosmosDB");
@@ -95,7 +95,7 @@ namespace CosmosDBTableWithVirtualNetworkRule
                 // Add new virtual network rules.
 
                 cosmosDBAccount.Update()
-                    .WithVirtualNetwork(virtualNetwork.Id, "subnet2")
+                    .WithVirtualNetworkRule(virtualNetwork.Id, "subnet2")
                     .Apply();
 
 

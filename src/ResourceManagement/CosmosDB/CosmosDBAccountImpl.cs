@@ -413,6 +413,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public CosmosDBAccountImpl WithDefaultWriteReplication()
+        {
+            return this.WithWriteReplication(this.Region, null);
+        }
+
         public string DocumentEndpoint()
         {
             return this.Inner.DocumentEndpoint;
@@ -562,7 +567,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         ///GENMHASH:AC3242CC7AFA5FD11163B235DA2E6D85:F7D80B9BD1E3B78FD1EE1DF1FBB4845E
-        public CosmosDBAccountImpl WithVirtualNetwork(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
+        public CosmosDBAccountImpl WithVirtualNetworkRule(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
             this.Inner.IsVirtualNetworkFilterEnabled = true;
             string vnetId = virtualNetworkId + "/subnets/" + subnetName;
@@ -618,7 +623,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         ///GENMHASH:17381C8EEA34CDB3DCBE083E7F6D6502:89110E5415CB9D8F19001F6DD8615C07
-        public CosmosDBAccountImpl WithoutVirtualNetwork(string virtualNetworkId, string subnetName)
+        public CosmosDBAccountImpl WithoutVirtualNetworkRule(string virtualNetworkId, string subnetName)
         {
             var vnetRules = EnsureVirtualNetworkRules();
             vnetRules.Remove(virtualNetworkId + "/subnets/" + subnetName);
@@ -730,6 +735,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public bool AutomaticFailoverEnabled()
         {
             return this.Inner.EnableAutomaticFailover ?? false;
+        }
+
+        public bool VirtualNetoworkFilterEnabled()
+        {
+            return this.Inner.IsVirtualNetworkFilterEnabled ?? false;
         }
 
         public string KeyVaultUri()

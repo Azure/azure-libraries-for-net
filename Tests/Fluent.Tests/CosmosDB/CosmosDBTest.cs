@@ -37,7 +37,7 @@ namespace Fluent.Tests
                             .WithNewResourceGroup(rgName)
                             .WithKind(DatabaseAccountKind.GlobalDocumentDB)
                             .WithSessionConsistency()
-                            .WithWriteReplication(Region.USWest)
+                            .WithDefaultWriteReplication()
                             .WithReadReplication(Region.USCentral, true)
                             .WithIpRangeFilter("")
                             .WithMultipleWriteLocationsEnabled(true)
@@ -122,10 +122,12 @@ namespace Fluent.Tests
                         .Create();
 
 
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
                     // END of BUGFIX
+
+                    Assert.True(databaseAccount.VirtualNetoworkFilterEnabled);
                 }
                 finally
                 {
