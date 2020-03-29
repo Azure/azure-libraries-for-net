@@ -139,6 +139,7 @@ namespace Fluent.Tests.ResourceManager
                                  where string.Equals(r.Name, resourceName, StringComparison.OrdinalIgnoreCase)
                                  select r).FirstOrDefault();
                     Assert.NotNull(found);
+                    Assert.NotNull(found.ApiVersion);
 
                     // Get
                     resource = genericResources.Get(rgName,
@@ -146,6 +147,7 @@ namespace Fluent.Tests.ResourceManager
                         resource.ParentResourceId,
                         resource.ResourceType,
                         resource.Name);
+                    Assert.NotNull(resource.ApiVersion);
 
                     // Move
                     IResourceGroup newGroup = resourceManager

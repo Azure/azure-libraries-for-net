@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
         public async Task<byte[]> GetAdminKubeConfigContentsAsync(string resourceGroupName, string kubernetesCluster, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfileAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.ADMIN.ToString());
-            if (profileInner == null)
+            var credentialInner = await this.Manager.Inner.ManagedClusters
+                .ListClusterAdminCredentialsAsync(resourceGroupName, kubernetesCluster, cancellationToken: cancellationToken);
+            if (credentialInner == null || credentialInner.Kubeconfigs == null || credentialInner.Kubeconfigs.Count == 0)
             {
                 return new byte[0];
             }
             else
             {
-                return profileInner.KubeConfig;
+                return credentialInner.Kubeconfigs[0].Value;
             }
         }
 
@@ -107,15 +107,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
         public async Task<byte[]> GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesCluster, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfileAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.USER.ToString());
-            if (profileInner == null)
+            var credentialInner = await this.Manager.Inner.ManagedClusters
+                .ListClusterUserCredentialsAsync(resourceGroupName, kubernetesCluster, cancellationToken: cancellationToken);
+            if (credentialInner == null || credentialInner.Kubeconfigs == null || credentialInner.Kubeconfigs.Count == 0)
             {
                 return new byte[0];
             }
             else
             {
-                return profileInner.KubeConfig;
+                return credentialInner.Kubeconfigs[0].Value;
             }
         }
 

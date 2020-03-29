@@ -9,6 +9,7 @@ using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -36,8 +37,8 @@ namespace Fluent.Tests
                             .WithNewResourceGroup(rgName)
                             .WithKind(DatabaseAccountKind.GlobalDocumentDB)
                             .WithSessionConsistency()
-                            .WithWriteReplication(Region.USWest)
-                            .WithReadReplication(Region.USCentral)
+                            .WithDefaultWriteReplication()
+                            .WithReadReplication(Region.USCentral, true)
                             .WithIpRangeFilter("")
                             .WithMultipleWriteLocationsEnabled(true)
                             .Create();
@@ -46,14 +47,17 @@ namespace Fluent.Tests
                     Assert.Equal(DatabaseAccountKind.GlobalDocumentDB.Value, databaseAccount.Kind);
                     Assert.Equal(2, databaseAccount.WritableReplications.Count);
                     Assert.Equal(2, databaseAccount.ReadableReplications.Count);
+                    Assert.True(databaseAccount.ReadableReplications.First(l => l.LocationName.ToLower().Replace(" ", "") == Region.USCentral.ToString()).IsZoneRedundant);
                     Assert.Equal(DefaultConsistencyLevel.Session, databaseAccount.DefaultConsistencyLevel);
                     Assert.True(databaseAccount.MultipleWriteLocationsEnabled);
 
                     databaseAccount = databaseAccount.Update()
-                            .WithReadReplication(Region.AsiaSouthEast)
-                            .WithoutReadReplication(Region.USEast)
-                            .WithoutReadReplication(Region.USCentral)
+                            .WithoutAllReplications()
+                            .WithWriteReplication(Region.USWest)
+                            .WithReadReplication(Region.USEast)
                             .Apply();
+
+                    Assert.Equal(Region.USEast.ToString(), databaseAccount.WritableReplications.First(l => l.FailoverPriority == 1).LocationName.ToLower().Replace(" ", ""));
 
                     databaseAccount = databaseAccount.Update()
                             .WithEventualConsistency()
@@ -118,10 +122,12 @@ namespace Fluent.Tests
                         .Create();
 
 
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
-                    databaseAccount.Update().WithVirtualNetwork(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
+                    databaseAccount.Update().WithVirtualNetworkRule(vn.Id, "Subnet1").Apply();
                     // END of BUGFIX
+
+                    Assert.True(databaseAccount.VirtualNetoworkFilterEnabled);
                 }
                 finally
                 {
@@ -290,22 +296,30 @@ namespace Fluent.Tests
                         .WithExistingResourceGroup(rgName)
                         .WithDataModelSql()
                         .WithStrongConsistency()
+                        .WithAutomaticFailoverEnabled(true)
                         .DefineNewSqlDatabase(sqlDbName)
                             .WithThroughput(1000)
                             .DefineNewSqlContainer(sqlContainerName)
                                 .WithThroughput(400)
                                 .DefineIndexingPolicy()
                                     .WithIndexingMode(IndexingMode.Consistent)
-                                    .WithIncludedPath(new IncludedPath(path: "/*"))
-                                    .WithExcludedPath(new ExcludedPath(path: "/myPathToNotIndex/*"))
+                                    .WithIncludedPath("/*")
+                                    .WithExcludedPath("/myPathToNotIndex/*")
+                                    .WithNewCompositeIndexList()
+                                        .WithCompositePath("/myOrderByPath1", CompositePathSortOrder.Ascending)
+                                        .WithCompositePath("/myOrderByPath2", CompositePathSortOrder.Descending)
+                                        .Attach()
                                     .Attach()
-                                .WithPartitionKey(paths: new List<string>() { "/myPartitionKey" }, kind: PartitionKind.Hash, version: null)
-                                .WithStoredProcedure("test", new SqlStoredProcedureResource(id: null, body: "function test(){}"))
-                                .WithUserDefinedFunction("test", new SqlUserDefinedFunctionResource(id: null, body: "function test(){}"))
-                                .WithTrigger("test", new SqlTriggerResource(id: null, body: "function test(){}", triggerType: TriggerType.Pre, triggerOperation: TriggerOperation.All))
+                                .WithPartitionKey(PartitionKind.Hash, null)
+                                .WithPartitionKeyPath("/myPartitionKey")
+                                .WithStoredProcedure("test", "function test(){}")
+                                .WithUserDefinedFunction("test",  "function test(){}")
+                                .WithTrigger("test", "function test(){}", TriggerType.Pre, TriggerOperation.All)
                                 .Attach()
                             .Attach()
                         .Create();
+
+                    Assert.True(databaseAccount.AutomaticFailoverEnabled);
 
                     var sqldbs = databaseAccount.ListSqlDatabases().ToList();
                     Assert.Single(sqldbs);
@@ -323,6 +337,8 @@ namespace Fluent.Tests
                     Assert.Equal(IndexingMode.Consistent, container.IndexingPolicy.IndexingMode);
                     Assert.NotNull(container.IndexingPolicy.IncludedPaths.Single(element => element.Path == "/*"));
                     Assert.NotNull(container.IndexingPolicy.ExcludedPaths.Single(element => element.Path == "/myPathToNotIndex/*"));
+                    Assert.Equal(1, container.IndexingPolicy.CompositeIndexes.Count);
+                    Assert.Equal(2, container.IndexingPolicy.CompositeIndexes[0].Count);
                     Assert.True(container.PartitionKey.Paths.Contains("/myPartitionKey"));
                     Assert.Equal(PartitionKind.Hash, container.PartitionKey.Kind);
                     Assert.NotNull(container.GetStoredProcedure("test"));
@@ -330,16 +346,18 @@ namespace Fluent.Tests
                     Assert.NotNull(container.GetTrigger("test"));
 
                     databaseAccount = databaseAccount.Update()
+                        .WithAutomaticFailoverEnabled(false)
                         .UpdateSqlDatabase(sqlDbName)
-                            .WithOption("throughput", "800")
+                            .WithThroughput(800)
                             .UpdateSqlContainer(sqlContainerName)
-                                .WithOption("throughput", "600")
+                                .WithThroughput(600)
                                 .UpdateIndexingPolicy()
                                     .WithoutExcludedPath("/myPathToNotIndex/*")
                                     .Parent()
                                 .Parent()
                             .Parent()
                         .Apply();
+                    Assert.False(databaseAccount.AutomaticFailoverEnabled);
 
                     sqldb = databaseAccount.GetSqlDatabase(sqlDbName);
                     Assert.Equal(800, sqldb.GetThroughputSettings().Throughput);
@@ -565,9 +583,9 @@ namespace Fluent.Tests
 
                     databaseAccount = databaseAccount.Update()
                         .UpdateGremlinDatabase(gremlinName)
-                            .WithOption("throughput", "800")
+                            .WithThroughput(800)
                             .UpdateGremlinGraph(gremlinGraphName)
-                                .WithOption("throughput", "600")
+                                .WithThroughput(600)
                                 .Parent()
                             .Parent()
                         .Apply();

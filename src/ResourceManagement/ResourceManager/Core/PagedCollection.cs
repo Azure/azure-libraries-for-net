@@ -118,11 +118,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         private async Task AddCollection(IPage<InnerResourceT> currentPage, PagedCollection<IFluentResourceT, InnerResourceT> pagedCollection,
             CancellationToken cancellationToken)
         {
-            if (currentPage != null && currentPage.Any())
+            if (currentPage != null)
             {
                 pagedCollection.NextPageLink = currentPage.NextPageLink;
-                var resources = await Task.WhenAll(currentPage.Select(async (inner) => await this.WrapModelAsyncDelegate(inner, cancellationToken)));
-                ((List<IFluentResourceT>)pagedCollection.innerCollection).AddRange(resources);
+                if (currentPage.Any())
+                {
+                    var resources = await Task.WhenAll(currentPage.Select(async (inner) => await this.WrapModelAsyncDelegate(inner, cancellationToken)));
+                    ((List<IFluentResourceT>)pagedCollection.innerCollection).AddRange(resources);
+                }
             }
         }
 

@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Models;
     using ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System;
 
     /// <summary>
     /// The implementation for Snapshot and its create and update interfaces.
@@ -70,12 +71,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:AAD8E592A024E583CCB079E40FA35511:86D949645392B88CC8EBDF08E3E0EDF8
-        public SnapshotImpl WithLinuxFromVhd(string vhdUrl)
+        public SnapshotImpl WithLinuxFromVhd(string vhdUrl, string storageAccountId)
         {
             Inner.OsType = OperatingSystemTypes.Linux;
-            Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import;
-            Inner.CreationData.SourceUri = vhdUrl;
+            Inner.CreationData = new CreationData
+            {
+                CreateOption = DiskCreateOption.Import,
+                SourceUri = vhdUrl,
+                StorageAccountId = storageAccountId ?? ConstructStorageAccountId(vhdUrl)
+            };
             return this;
         }
 
@@ -180,11 +184,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:BE7E147B48A8E5D7518DE00A1A239664:B42B6D1380F4A7780F5B729A33312605
-        public SnapshotImpl WithDataFromVhd(string vhdUrl)
+        public SnapshotImpl WithDataFromVhd(string vhdUrl, string storageAccountId)
         {
-            Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import;
-            Inner.CreationData.SourceUri = vhdUrl;
+            Inner.CreationData = new CreationData
+            {
+                CreateOption = DiskCreateOption.Import,
+                SourceUri = vhdUrl,
+                StorageAccountId = storageAccountId ?? ConstructStorageAccountId(vhdUrl)
+            };
             return this;
         }
 
@@ -199,12 +206,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:28C892DD6868506954A9B3D406FE4710:E57D05C8BB272E6441E14E0F73F93F60
-        public SnapshotImpl WithWindowsFromVhd(string vhdUrl)
+        public SnapshotImpl WithWindowsFromVhd(string vhdUrl, string storageAccountId)
         {
             Inner.OsType = OperatingSystemTypes.Windows;
-            Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import;
-            Inner.CreationData.SourceUri = vhdUrl;
+            Inner.CreationData = new CreationData
+            {
+                CreateOption = DiskCreateOption.Import,
+                SourceUri = vhdUrl,
+                StorageAccountId = storageAccountId ?? ConstructStorageAccountId(vhdUrl)
+            };
             return this;
         }
 
@@ -337,6 +347,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             var snapshotInner = await Manager.Inner.Snapshots.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(snapshotInner);
             return this;
+        }
+
+        internal string ConstructStorageAccountId(string vhdUrl)
+        {
+            try
+            {
+                return ResourceUtils.ConstructResourceId(Manager.SubscriptionId,
+                    ResourceGroupName,
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    vhdUrl.Split('.')[0].Replace("https://", ""),
+                    "");
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException(string.Format("%s is not valid URI of a blob to import.", vhdUrl));
+            }
         }
     }
 }

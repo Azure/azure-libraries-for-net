@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithIncludedPath(string path)
+        {
+            return this.WithIncludedPath(new IncludedPath(path: path));
+        }
+
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutIncludedPath(string path)
         {
             Inner.IncludedPaths?.Remove(Inner.IncludedPaths?.FirstOrDefault(element => element.Path == path));
@@ -124,6 +129,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             Inner.ExcludedPaths.Add(excludedPath);
             return this;
+        }
+
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithExcludedPath(string path)
+        {
+            return this.WithExcludedPath(new ExcludedPath(path: path));
         }
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutExcludedPath(string path)
@@ -173,9 +183,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithNewCompositeIndexList()
+        {
+            return this.WithCompositeIndex(new List<CompositePath>());
+        }
+
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutCompositeIndexes()
         {
             Inner.CompositeIndexes = null;
+            return this;
+        }
+
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithCompositePath(CompositePath compositePath)
+        {
+            Inner.CompositeIndexes.Last().Add(compositePath);
+            return this;
+        }
+
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithCompositePath(string path, CompositePathSortOrder order)
+        {
+            return this.WithCompositePath(new CompositePath(path: path, order: order));
+        }
+
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> AttachSelf()
+        {
             return this;
         }
 
@@ -212,6 +243,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
             Inner.SpatialIndexes.Add(spatialSpec);
             return this;
+        }
+
+        public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithSpatialIndex(string path, params SpatialType[] types)
+        {
+            return this.WithSpatialIndex(new SpatialSpec(path: path, types: new List<SpatialType>(types)));
         }
 
         public IndexingPolicyImpl<ParentImplT, IParentT, DefinitionParentT, UpdateParentT> WithoutSpatialIndex(string path)

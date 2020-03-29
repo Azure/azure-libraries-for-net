@@ -98,6 +98,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         bool KeyBasedMetadataWriteAccessDisabled { get; }
 
+        /// <summary>
+        /// Gets the key vault identifier linked to the CosmosDB account.
+        /// </summary>
+        string KeyVaultUri { get; }
+
+        /// <summary>
+        /// Gets whether automatic failover is enabled or not.
+        /// </summary>
+        bool AutomaticFailoverEnabled { get; }
+
+        /// <summary>
+        /// Gets whether virtual network filter is enabled or not.
+        /// </summary>
+        bool VirtualNetoworkFilterEnabled { get; }
+
         /// <param name="keyKind">The key kind.</param>
         /// <return>The ServiceResponse object if successful.</return>
         Task RegenerateKeyAsync(string keyKind, CancellationToken cancellationToken = default(CancellationToken));

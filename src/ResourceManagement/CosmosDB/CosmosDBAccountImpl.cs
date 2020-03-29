@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         IDefinition,
         IUpdate
     {
-        private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies;
-        private bool hasFailoverPolicyChanges;
+        private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverPolicies;
+        private bool isFailoverPolicyLoaded;
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
         private Dictionary<string, List<Models.VirtualNetworkRule>> virtualNetworkRulesMap;
         private PrivateEndpointConnectionsImpl privateEndpointConnections;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         internal CosmosDBAccountImpl(string name, Models.DatabaseAccountGetResultsInner innerObject, ICosmosDBManager manager) :
             base(name, innerObject, manager)
         {
-            this.failoverPolicies = new List<Models.FailoverPolicy>();
+            this.failoverPolicies = new List<Models.Location>();
             this.privateEndpointConnections = new PrivateEndpointConnectionsImpl(this);
             this.sqlDatabases = new SqlDatabasesImpl(this);
             this.mongoDBs = new MongoDBsImpl(this);
@@ -54,14 +54,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.tables = new TablesImpl(this);
         }
 
-        public CosmosDBAccountImpl WithReadReplication(Region region)
+        public CosmosDBAccountImpl WithReadReplication(Region region, bool? isZoneRedundant)
         {
             this.EnsureFailoverIsInitialized();
-            Models.FailoverPolicy FailoverPolicy = new Models.FailoverPolicy();
+            Models.Location FailoverPolicy = new Models.Location();
             FailoverPolicy.LocationName = region.Name;
+            FailoverPolicy.IsZoneRedundant = isZoneRedundant;
             FailoverPolicy.FailoverPriority = this.failoverPolicies.Count;
-            this.hasFailoverPolicyChanges = true;
+            this.isFailoverPolicyLoaded = true;
             this.failoverPolicies.Add(FailoverPolicy);
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithoutAllReplications()
+        {
+            this.failoverPolicies.Clear();
+            this.isFailoverPolicyLoaded = true;
             return this;
         }
 
@@ -88,7 +96,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 locationParameters = new UpdateLocationParameters(updateParametersInner);
             }
             this.failoverPolicies.Clear();
-            this.hasFailoverPolicyChanges = false;
+            this.isFailoverPolicyLoaded = false;
             bool done = false;
             ICosmosDBAccount databaseAccount = null;
             while (!done)
@@ -152,6 +160,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.ConnectorOffer = inner.ConnectorOffer;
             createUpdateParametersInner.EnableAutomaticFailover = inner.EnableAutomaticFailover;
             createUpdateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
+            createUpdateParametersInner.KeyVaultKeyUri = inner.KeyVaultKeyUri;
             if (virtualNetworkRulesMap != null)
             {
                 createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
@@ -176,6 +185,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             updateParametersInner.EnableCassandraConnector = inner.EnableCassandraConnector;
             updateParametersInner.ConnectorOffer = inner.ConnectorOffer;
             updateParametersInner.DisableKeyBasedMetadataWriteAccess = inner.DisableKeyBasedMetadataWriteAccess;
+            updateParametersInner.KeyVaultKeyUri = inner.KeyVaultKeyUri;
             if (virtualNetworkRulesMap != null)
             {
                 updateParametersInner.VirtualNetworkRules = this.virtualNetworkRulesMap.Values.SelectMany(l => l).ToList();
@@ -241,7 +251,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 return;
             }
 
-            if (!this.hasFailoverPolicyChanges)
+            if (!this.isFailoverPolicyLoaded)
             {
                 this.initializeFailover();
             }
@@ -250,23 +260,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private void initializeFailover()
         {
             this.failoverPolicies.Clear();
-            Models.FailoverPolicy[] policyInners = new Models.FailoverPolicy[this.Inner.FailoverPolicies.Count];
-            for (var i = 0; i < policyInners.Length; i++)
+            Models.Location[] locationInners = new Models.Location[this.Inner.Locations.Count];
+            for (var i = 0; i < locationInners.Length; i++)
             {
-                policyInners[i] = this.Inner.FailoverPolicies[i];
+                locationInners[i] = this.Inner.Locations[i];
             }
 
-            Array.Sort(policyInners, (o1, o2) =>
+            Array.Sort(locationInners, (o1, o2) =>
             {
                 return o1.FailoverPriority.GetValueOrDefault().CompareTo(o2.FailoverPriority.GetValueOrDefault());
             });
 
-            for (int i = 0; i < policyInners.Length; i++)
+            for (int i = 0; i < locationInners.Length; i++)
             {
-                this.failoverPolicies.Add(policyInners[i]);
+                this.failoverPolicies.Add(locationInners[i]);
             }
 
-            this.hasFailoverPolicyChanges = true;
+            this.isFailoverPolicyLoaded = true;
         }
 
         public CosmosDBAccountImpl WithStrongConsistency()
@@ -364,19 +374,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        private void AddLocationsForParameters(HasLocation locationParameters, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicy> failoverPolicies)
+        private void AddLocationsForParameters(HasLocation locationParameters, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
             if (failoverPolicies.Count > 0)
             {
-                for (int i = 0; i < failoverPolicies.Count; i++)
+                for (int i = 0; i < failoverPolicies.Count; ++i)
                 {
-                    Models.FailoverPolicy policyInner = failoverPolicies[i];
-                    Models.Location location = new Models.Location();
-                    location.FailoverPriority = i;
-                    location.LocationName = policyInner.LocationName;
-                    locations.Add(location);
+                    failoverPolicies[i].FailoverPriority = i;
                 }
+                locations.AddRange(failoverPolicies);
             }
             else
             {
@@ -395,13 +402,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public CosmosDBAccountImpl WithWriteReplication(Region region)
+        public CosmosDBAccountImpl WithWriteReplication(Region region, bool? isZoneRedundant)
         {
-            Models.FailoverPolicy FailoverPolicy = new Models.FailoverPolicy();
+            Models.Location FailoverPolicy = new Models.Location();
             FailoverPolicy.LocationName = region.Name;
-            this.hasFailoverPolicyChanges = true;
+            FailoverPolicy.IsZoneRedundant = isZoneRedundant;
+            FailoverPolicy.FailoverPriority = this.failoverPolicies.Count;
+            this.isFailoverPolicyLoaded = true;
             this.failoverPolicies.Add(FailoverPolicy);
             return this;
+        }
+
+        public CosmosDBAccountImpl WithDefaultWriteReplication()
+        {
+            return this.WithWriteReplication(this.Region, null);
         }
 
         public string DocumentEndpoint()
@@ -553,7 +567,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         ///GENMHASH:AC3242CC7AFA5FD11163B235DA2E6D85:F7D80B9BD1E3B78FD1EE1DF1FBB4845E
-        public CosmosDBAccountImpl WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        public CosmosDBAccountImpl WithVirtualNetworkRule(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
             this.Inner.IsVirtualNetworkFilterEnabled = true;
             string vnetId = virtualNetworkId + "/subnets/" + subnetName;
@@ -562,7 +576,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             {
                 internalMap.Add(vnetId, new List<VirtualNetworkRule>());
             }
-            internalMap[vnetId].Add(new VirtualNetworkRule() { Id = vnetId });
+            internalMap[vnetId].Add(new VirtualNetworkRule() { Id = vnetId, IgnoreMissingVNetServiceEndpoint = ignoreMissingVNetServiceEndpoint });
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithVirtualNetworkFilterEnabled(bool enable)
+        {
+            this.Inner.IsVirtualNetworkFilterEnabled = enable;
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithKeyVault(string keyVaultUri)
+        {
+            this.Inner.KeyVaultKeyUri = keyVaultUri;
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithoutKeyVault()
+        {
+            this.Inner.KeyVaultKeyUri = null;
             return this;
         }
 
@@ -591,7 +623,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         ///GENMHASH:17381C8EEA34CDB3DCBE083E7F6D6502:89110E5415CB9D8F19001F6DD8615C07
-        public CosmosDBAccountImpl WithoutVirtualNetwork(string virtualNetworkId, string subnetName)
+        public CosmosDBAccountImpl WithoutVirtualNetworkRule(string virtualNetworkId, string subnetName)
         {
             var vnetRules = EnsureVirtualNetworkRules();
             vnetRules.Remove(virtualNetworkId + "/subnets/" + subnetName);
@@ -699,9 +731,31 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return this.Inner.DisableKeyBasedMetadataWriteAccess ?? false;
         }
+
+        public bool AutomaticFailoverEnabled()
+        {
+            return this.Inner.EnableAutomaticFailover ?? false;
+        }
+
+        public bool VirtualNetoworkFilterEnabled()
+        {
+            return this.Inner.IsVirtualNetworkFilterEnabled ?? false;
+        }
+
+        public string KeyVaultUri()
+        {
+            return this.Inner.KeyVaultKeyUri;
+        }
+
         public CosmosDBAccountImpl WithDisableKeyBaseMetadataWriteAccess(bool disabled)
         {
             this.Inner.DisableKeyBasedMetadataWriteAccess = disabled;
+            return this;
+        }
+
+        public CosmosDBAccountImpl WithAutomaticFailoverEnabled(bool enabled)
+        {
+            this.Inner.EnableAutomaticFailover = enabled;
             return this;
         }
 

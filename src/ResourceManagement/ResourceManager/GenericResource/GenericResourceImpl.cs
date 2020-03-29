@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
             get
             {
+                if (string.IsNullOrEmpty(apiVersion))
+                {
+                    apiVersion = GenericResourcesImpl.GetApiVersion(Id, Manager);
+                }
                 return apiVersion;
             }
         }

@@ -217,11 +217,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithLinuxFromSnapshot(ISnapshot sourceSnapshot);
 
         /// <summary>
-        /// Specifies the source specialized or generalized Linux OS VHD.
+        /// Specifies the source specialized or generalized Linux OS VHD and the storage account ID.
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="storageAccountId">The storage account ID.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithLinuxFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithLinuxFromVhd(string vhdUrl, string storageAccountId = default(string));
     }
 
     /// <summary>
@@ -277,11 +278,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromSnapshot(ISnapshot sourceSnapshot);
 
         /// <summary>
-        /// Specifies the source specialized or generalized Windows OS VHD.
+        /// Specifies the source specialized or generalized Windows OS VHD and the storage account ID.
         /// </summary>
         /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="storageAccountId">The storage account ID.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromVhd(string vhdUrl, string storageAccountId = default(string));
     }
 
     /// <summary>
@@ -322,10 +324,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     {
 
         /// <summary>
-        /// Specifies the source data VHD.
+        /// Specifies the source data VHD and the storage account ID.
         /// </summary>
-        /// <param name="vhdUrl">A source VHD URL.</param>
+        /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="storageAccountId">The storage account ID.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithDataFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithDataFromVhd(string vhdUrl, string storageAccountId = default(string));
     }
 }

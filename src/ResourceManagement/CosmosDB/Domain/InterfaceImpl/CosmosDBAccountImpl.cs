@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithReadReplication.WithReadReplication(Region region)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithReadReplication.WithReadReplication(Region region, bool? isZoneRedundant)
         {
-            return this.WithReadReplication(region);
+            return this.WithReadReplication(region, isZoneRedundant);
         }
 
         /// <summary>
@@ -194,9 +194,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithWriteReplication(Region region)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant)
         {
-            return this.WithWriteReplication(region);
+            return this.WithWriteReplication(region, isZoneRedundant);
+        }
+
+        IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithDefaultWriteReplication()
+        {
+            return this.WithDefaultWriteReplication();
         }
 
         /// <summary>
@@ -214,9 +219,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </summary>
         /// <param name="region">The region for the location.</param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithReadLocations.WithReadReplication(Region region)
+        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithReadLocations.WithReadReplication(Region region, bool? isZoneRedundant)
         {
-            return this.WithReadReplication(region);
+            return this.WithReadReplication(region, isZoneRedundant);
+        }
+
+        CosmosDBAccount.Update.IWithWriteReplication CosmosDBAccount.Update.IWithReadLocations.WithoutAllReplications()
+        {
+            return this.WithoutAllReplications();
+        }
+
+        CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithWriteReplication.WithWriteReplication(Region region, bool? isZoneRedundant)
+        {
+            return this.WithWriteReplication(region, isZoneRedundant);
+        }
+
+        IWithReadLocations CosmosDBAccount.Update.IWithWriteReplication.WithDefaultWriteReplication()
+        {
+            return this.WithDefaultWriteReplication();
         }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
@@ -336,6 +356,30 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             get
             {
                 return this.KeyBaseMetadataWriteAccessDisabled();
+            }
+        }
+
+        bool ICosmosDBAccount.AutomaticFailoverEnabled
+        {
+            get
+            {
+                return this.AutomaticFailoverEnabled();
+            }
+        }
+
+        string ICosmosDBAccount.KeyVaultUri
+        {
+            get
+            {
+                return this.KeyVaultUri();
+            }
+        }
+
+        bool ICosmosDBAccount.VirtualNetoworkFilterEnabled
+        {
+            get
+            {
+                return this.VirtualNetoworkFilterEnabled();
             }
         }
 
@@ -487,9 +531,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage of the update definition.</return>
-        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithoutVirtualNetwork(string virtualNetworkId, string subnetName)
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithoutVirtualNetworkRule(string virtualNetworkId, string subnetName)
         {
-            return this.WithoutVirtualNetwork(virtualNetworkId, subnetName);
+            return this.WithoutVirtualNetworkRule(virtualNetworkId, subnetName);
         }
 
         /// <summary>
@@ -501,9 +545,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage.</return>
-        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkRule(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
-            return this.WithVirtualNetwork(virtualNetworkId, subnetName);
+            return this.WithVirtualNetworkRule(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
+        }
+
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool enable)
+        {
+            return this.WithVirtualNetworkFilterEnabled(enable);
+        }
+
+        IWithCreate CosmosDBAccount.Definition.IWithKeyVault.WithKeyVault(string keyVaultUri)
+        {
+            return this.WithKeyVault(keyVaultUri);
         }
 
         /// <summary>
@@ -515,9 +569,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
         /// </param>
         /// <return>The next stage of the update definition.</return>
-        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkRule(string virtualNetworkId, string subnetName, bool? ignoreMissingVNetServiceEndpoint)
         {
-            return this.WithVirtualNetwork(virtualNetworkId, subnetName);
+            return this.WithVirtualNetworkRule(virtualNetworkId, subnetName, ignoreMissingVNetServiceEndpoint);
+        }
+
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkFilterEnabled(bool enable)
+        {
+            return this.WithVirtualNetworkFilterEnabled(enable);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithKeyVault.WithKeyVault(string keyVaultUri)
+        {
+            return this.WithKeyVault(keyVaultUri);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithKeyVault.WithoutKeyVault()
+        {
+            return this.WithoutKeyVault();
         }
 
         /// <summary>
@@ -652,6 +721,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithKeyBasedMetadataWriteAccess.WithDisableKeyBaseMetadataWriteAccess(bool disabled)
         {
             return this.WithDisableKeyBaseMetadataWriteAccess(disabled);
+        }
+
+        IWithCreate CosmosDBAccount.Definition.IWithAutomaticFailover.WithAutomaticFailoverEnabled(bool enabled)
+        {
+            return this.WithAutomaticFailoverEnabled(enabled);
+        }
+
+        IWithOptionals CosmosDBAccount.Update.IWithAutomaticFailover.WithAutomaticFailoverEnabled(bool enabled)
+        {
+            return this.WithAutomaticFailoverEnabled(enabled);
         }
 
         SqlDatabase.Definition.IBlank<IWithCreate> CosmosDBAccount.Definition.IWithChildResource.DefineNewSqlDatabase(string name)
