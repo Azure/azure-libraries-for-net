@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Extensions.Synchronize(() => Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, skipShutdown));
         }
 
-        public async Task PowerOffAsync(CancellationToken cancellationToken = default(CancellationToken), bool skipShutdown = false)
+        public async Task PowerOffAsync(bool skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
         {
             await Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, skipShutdown, cancellationToken);
         }

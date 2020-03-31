@@ -602,10 +602,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Powers off (stops) the virtual machine asynchronously.
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOffAsync(CancellationToken cancellationToken, bool skipShutdown)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOffAsync(CancellationToken cancellationToken)
         {
 
-            await this.PowerOffAsync(cancellationToken, skipShutdown);
+            await this.PowerOffAsync(cancellationToken: cancellationToken);
+        }
+
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOffAsync(bool skipShutdown, CancellationToken cancellationToken)
+        {
+
+            await this.PowerOffAsync(skipShutdown, cancellationToken);
         }
 
         /// <summary>
