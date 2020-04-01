@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.PowerOffAsync(CancellationToken cancellationToken)
         {
-            await this.PowerOffAsync(cancellationToken: cancellationToken);
+            await this.PowerOffAsync(false, cancellationToken);
         }
 
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.PowerOffAsync(bool skipShutdown, CancellationToken cancellationToken)

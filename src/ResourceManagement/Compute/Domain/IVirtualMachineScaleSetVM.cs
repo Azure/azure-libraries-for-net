@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="skipShutdown">The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        Task PowerOffAsync(bool skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken));
+        Task PowerOffAsync(bool skipShutdown, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Refreshes the instance view.
