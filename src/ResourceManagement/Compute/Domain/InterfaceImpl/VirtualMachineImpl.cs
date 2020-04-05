@@ -592,10 +592,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Powers off (stops) the virtual machine.
         /// </summary>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOff()
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOff(bool skipShutdown)
         {
-
-            this.PowerOff();
+            this.PowerOff(skipShutdown);
         }
 
         /// <summary>
@@ -604,8 +603,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOffAsync(CancellationToken cancellationToken)
         {
+            await this.PowerOffAsync(false, cancellationToken);
+        }
 
-            await this.PowerOffAsync(cancellationToken);
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.PowerOffAsync(bool skipShutdown, CancellationToken cancellationToken)
+        {
+            await this.PowerOffAsync(skipShutdown, cancellationToken);
         }
 
         /// <summary>

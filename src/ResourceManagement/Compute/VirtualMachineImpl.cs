@@ -236,14 +236,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:8761D0D225B7C49A7A5025186E94B263:21AAF0008CE6CF3F9846F2DFE1CBEBCB
-        public void PowerOff()
+        public void PowerOff(bool skipShutdown)
         {
-            Extensions.Synchronize(() => Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name));
+            Extensions.Synchronize(() => Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, skipShutdown));
         }
 
-        public async Task PowerOffAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task PowerOffAsync(bool skipShutdown, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, false, cancellationToken);
+            await Manager.Inner.VirtualMachines.PowerOffAsync(this.ResourceGroupName, this.Name, skipShutdown, cancellationToken);
         }
 
         ///GENMHASH:08CFC096AC6388D1C0E041ECDF099E3D:4479808A1E2B2A23538E662AD3F721EE
