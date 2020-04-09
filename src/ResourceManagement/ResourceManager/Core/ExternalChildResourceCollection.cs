@@ -69,12 +69,16 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                                 exceptions.Add(deleteTask.Exception);
                             }
                         }
+                        else if (deleteTask.IsCanceled)
+                        {
+                            cancellationToken.ThrowIfCancellationRequested();
+                            exceptions.Add(new TaskCanceledException());
+                        }
                         else
                         {
                             comitted.Add(res);
                             res.PendingOperation = PendingOperation.None;
-                            FluentModelTImpl val;
-                            this.collection.TryRemove(res.Name(), out val);
+                            this.collection.TryRemove(res.Name(), out FluentModelTImpl val);
                         }
                     },
                     cancellationToken,
@@ -91,8 +95,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                     {
                         if (createTask.IsFaulted)
                         {
-                            FluentModelTImpl val;
-                            this.collection.TryRemove(res.Name(), out val);
+                            this.collection.TryRemove(res.Name(), out FluentModelTImpl val);
                             if (createTask.Exception.InnerException != null)
                             {
                                 exceptions.Add(createTask.Exception.InnerException);
@@ -101,6 +104,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                             {
                                 exceptions.Add(createTask.Exception);
                             }
+                        }
+                        else if (createTask.IsCanceled)
+                        {
+                            this.collection.TryRemove(res.Name(), out FluentModelTImpl val);
+                            cancellationToken.ThrowIfCancellationRequested();
+                            exceptions.Add(new TaskCanceledException());
                         }
                         else
                         {
@@ -130,6 +139,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                             {
                                 exceptions.Add(updateTask.Exception);
                             }
+                        }
+                        else if (updateTask.IsCanceled)
+                        {
+                            cancellationToken.ThrowIfCancellationRequested();
+                            exceptions.Add(new TaskCanceledException());
                         }
                         else
                         {
