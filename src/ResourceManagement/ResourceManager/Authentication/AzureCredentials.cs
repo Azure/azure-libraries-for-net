@@ -9,6 +9,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -175,8 +176,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 #else
                     else if (servicePrincipalLoginInformation.X509Certificate != null)
                     {
-                        Rest.Azure.Authentication.ClientAssertionCertificate clientAssertionCertificate = 
-                            new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate);
+                        IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate clientAssertionCertificate = 
+                            new IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate);
                         CertificateAuthenticationProvider certificateAuthenticationProvider = 
                             new CertificateAuthenticationProvider(clientAssertionCertificate, servicePrincipalLoginInformation.IsCertificateRollOverEnabled);
 
@@ -185,11 +186,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                     }
                     else if (servicePrincipalLoginInformation.Certificate != null)
                     {
-                        Rest.Azure.Authentication.ClientAssertionCertificate clientAssertionCertificate = 
-                            new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(
+                        IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate clientAssertionCertificate = 
+                            new IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(
                                 servicePrincipalLoginInformation.ClientId,
-                                servicePrincipalLoginInformation.Certificate,
-                                servicePrincipalLoginInformation.CertificatePassword);
+                                new X509Certificate2(servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword));
                         CertificateAuthenticationProvider certificateAuthenticationProvider = 
                             new CertificateAuthenticationProvider(clientAssertionCertificate, servicePrincipalLoginInformation.IsCertificateRollOverEnabled);
 
@@ -233,5 +233,24 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }
             await credentialsCache[adSettings.TokenAudience].ProcessHttpRequestAsync(request, cancellationToken);
         }
+
+#if !NET45
+        class CertificateAuthenticationProvider : IApplicationAuthenticationProvider
+        {
+            private IClientAssertionCertificate certificate;
+            private bool isCertRollOverEnabled;
+
+            public CertificateAuthenticationProvider(IClientAssertionCertificate certificate, bool isCertRollOverEnabled)
+            {
+                this.certificate = certificate;
+                this.isCertRollOverEnabled = isCertRollOverEnabled;
+            }
+
+            public Task<AuthenticationResult> AuthenticateAsync(string clientId, string audience, AuthenticationContext context)
+            {
+                return context.AcquireTokenAsync(audience, certificate, isCertRollOverEnabled);
+            }
+        }
+#endif
     }
 }
