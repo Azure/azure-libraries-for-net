@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             if (this.filterForTenant)
             {
-                return ListEventDataForTenant(GetOdataFilterString() + this.filterString + " eventChannels eq 'Admin, Operation'");
+                return ListEventDataForTenant(GetOdataFilterString() + this.filterString + " and eventChannels eq 'Admin, Operation'");
             }
             return ListEventData(GetOdataFilterString() + this.filterString);
         }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             if (this.filterForTenant)
             {
-                return await ListEventDataForTenantAsync(GetOdataFilterString() + this.filterString + " eventChannels eq 'Admin, Operation'");
+                return await ListEventDataForTenantAsync(GetOdataFilterString() + this.filterString + " and eventChannels eq 'Admin, Operation'");
             }
             return await ListEventDataAsync(GetOdataFilterString() + this.filterString, cancellationToken);
         }
