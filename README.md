@@ -578,6 +578,18 @@ var database = sqlServer.Databases.Define(databaseName)
   
 </table>
 
+### Logging
+
+Logging can be enabled by providing an implementation of `IServiceClientTracingInterceptor` interface.
+
+```csharp
+ServiceClientTracing.AddTracingInterceptor(new LoggingTracer());
+ServiceClientTracing.IsEnabled = true;
+
+IAzure azure = Azure.Configure().WithLogLevel(HttpLoggingDelegatingHandler.Level.Basic)
+    .Authenticate(credFile).WithDefaultSubscription();
+``` 
+
 ## Download
 
 ### Latest stable release
