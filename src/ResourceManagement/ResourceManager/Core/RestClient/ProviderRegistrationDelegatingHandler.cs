@@ -42,22 +42,29 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                 string contentType = GetHeader(response.Content.Headers, "Content-Type");
                 if (contentType != null && contentType.Contains("application/json"))
                 {
-                    CloudError cloudError = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(content, settings);
-                    if (cloudError != null && cloudError.Code == "MissingSubscriptionRegistration")
+                    try
                     {
-                        Regex regex = new Regex("/subscriptions/([\\w-]+)/", RegexOptions.IgnoreCase);
-                        Match match = regex.Match(request.RequestUri.AbsolutePath);
-                        IResourceManager resourceManager = ResourceManager.Authenticate(credentials).WithSubscription(match.Groups[1].Value);
-                        regex = new Regex(".*'(.*)'");
-                        match = regex.Match(cloudError.Message);
-                        IProvider provider = await resourceManager.Providers.RegisterAsync(match.Groups[1].Value);
-                        while ("Unregistered".Equals(provider.RegistrationState, StringComparison.OrdinalIgnoreCase)
-                            || "Registering".Equals(provider.RegistrationState, StringComparison.OrdinalIgnoreCase))
+                        CloudError cloudError = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(content, settings);
+                        if (cloudError != null && cloudError.Code == "MissingSubscriptionRegistration")
                         {
-                            await SdkContext.DelayProvider.DelayAsync(5000, cancellationToken);
-                            provider = await resourceManager.Providers.GetByNameAsync(match.Groups[1].Value);
+                            Regex regex = new Regex("/subscriptions/([\\w-]+)/", RegexOptions.IgnoreCase);
+                            Match match = regex.Match(request.RequestUri.AbsolutePath);
+                            IResourceManager resourceManager = ResourceManager.Authenticate(credentials).WithSubscription(match.Groups[1].Value);
+                            regex = new Regex(".*'(.*)'");
+                            match = regex.Match(cloudError.Message);
+                            IProvider provider = await resourceManager.Providers.RegisterAsync(match.Groups[1].Value);
+                            while ("Unregistered".Equals(provider.RegistrationState, StringComparison.OrdinalIgnoreCase)
+                                || "Registering".Equals(provider.RegistrationState, StringComparison.OrdinalIgnoreCase))
+                            {
+                                await SdkContext.DelayProvider.DelayAsync(5000, cancellationToken);
+                                provider = await resourceManager.Providers.GetByNameAsync(match.Groups[1].Value);
+                            }
+                            response = await base.SendAsync(request, cancellationToken);
                         }
-                        response = await base.SendAsync(request, cancellationToken);
+                    }
+                    catch (JsonException)
+                    {
+                        // ignore, just skip ProviderRegistrationDelegatingHandler
                     }
                 }
 
