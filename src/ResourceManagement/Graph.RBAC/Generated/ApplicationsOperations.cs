@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -152,11 +152,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -861,7 +861,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -873,11 +873,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1239,11 +1239,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -1271,7 +1271,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1441,7 +1441,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1567,7 +1567,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1605,7 +1605,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1759,7 +1759,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1771,11 +1771,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -1803,7 +1803,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1868,7 +1868,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<Models.PasswordCredential>>> ListPasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<PasswordCredential>>> ListPasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (applicationObjectId == null)
             {
@@ -1929,7 +1929,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1967,7 +1967,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -1991,7 +1991,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IEnumerable<Models.PasswordCredential>>();
+            var _result = new AzureOperationResponse<IEnumerable<PasswordCredential>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2004,7 +2004,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Models.PasswordCredential>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<PasswordCredential>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -2050,7 +2050,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> UpdatePasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, IList<Models.PasswordCredential> value, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> UpdatePasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, IList<PasswordCredential> value, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (applicationObjectId == null)
             {
@@ -2121,7 +2121,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -2133,11 +2133,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -2165,7 +2165,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -2291,7 +2291,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -2329,7 +2329,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -2473,7 +2473,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -2511,7 +2511,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -2645,7 +2645,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -2683,7 +2683,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    GraphError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
+                    GraphError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

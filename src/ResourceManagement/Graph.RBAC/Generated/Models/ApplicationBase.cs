@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// <param name="errorUrl">A URL provided by the author of the
         /// application to report errors when using the application.</param>
         /// <param name="groupMembershipClaims">Configures the groups claim
-        /// issued in a user or OAuth 2.0 access token that the app
-        /// expects.</param>
+        /// issued in a user or OAuth 2.0 access token that the app expects.
+        /// Possible values include: 'None', 'SecurityGroup', 'All'</param>
         /// <param name="homepage">The home page of the application.</param>
         /// <param name="informationalUrls">URLs with more information about
         /// the application.</param>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// application (AzureADMyOrganization, AzureADAllOrganizations,
         /// AzureADAndMicrosoftAccounts).</param>
         /// <param name="wwwHomepage">The primary Web page.</param>
-        public ApplicationBase(bool? allowGuestsSignIn = default(bool?), bool? allowPassthroughUsers = default(bool?), string appLogoUrl = default(string), IList<AppRole> appRoles = default(IList<AppRole>), IList<string> appPermissions = default(IList<string>), bool? availableToOtherTenants = default(bool?), string errorUrl = default(string), object groupMembershipClaims = default(object), string homepage = default(string), InformationalUrl informationalUrls = default(InformationalUrl), bool? isDeviceOnlyAuthSupported = default(bool?), IList<KeyCredential> keyCredentials = default(IList<KeyCredential>), IList<string> knownClientApplications = default(IList<string>), string logoutUrl = default(string), bool? oauth2AllowImplicitFlow = default(bool?), bool? oauth2AllowUrlPathMatching = default(bool?), IList<OAuth2Permission> oauth2Permissions = default(IList<OAuth2Permission>), bool? oauth2RequirePostResponse = default(bool?), IList<string> orgRestrictions = default(IList<string>), OptionalClaims optionalClaims = default(OptionalClaims), IList<PasswordCredential> passwordCredentials = default(IList<PasswordCredential>), IList<PreAuthorizedApplication> preAuthorizedApplications = default(IList<PreAuthorizedApplication>), bool? publicClient = default(bool?), string publisherDomain = default(string), IList<string> replyUrls = default(IList<string>), IList<RequiredResourceAccess> requiredResourceAccess = default(IList<RequiredResourceAccess>), string samlMetadataUrl = default(string), string signInAudience = default(string), string wwwHomepage = default(string))
+        public ApplicationBase(bool? allowGuestsSignIn = default(bool?), bool? allowPassthroughUsers = default(bool?), string appLogoUrl = default(string), IList<AppRole> appRoles = default(IList<AppRole>), IList<string> appPermissions = default(IList<string>), bool? availableToOtherTenants = default(bool?), string errorUrl = default(string), GroupMembershipClaimTypes groupMembershipClaims = default(GroupMembershipClaimTypes), string homepage = default(string), InformationalUrl informationalUrls = default(InformationalUrl), bool? isDeviceOnlyAuthSupported = default(bool?), IList<KeyCredential> keyCredentials = default(IList<KeyCredential>), IList<string> knownClientApplications = default(IList<string>), string logoutUrl = default(string), bool? oauth2AllowImplicitFlow = default(bool?), bool? oauth2AllowUrlPathMatching = default(bool?), IList<OAuth2Permission> oauth2Permissions = default(IList<OAuth2Permission>), bool? oauth2RequirePostResponse = default(bool?), IList<string> orgRestrictions = default(IList<string>), OptionalClaims optionalClaims = default(OptionalClaims), IList<PasswordCredential> passwordCredentials = default(IList<PasswordCredential>), IList<PreAuthorizedApplication> preAuthorizedApplications = default(IList<PreAuthorizedApplication>), bool? publicClient = default(bool?), string publisherDomain = default(string), IList<string> replyUrls = default(IList<string>), IList<RequiredResourceAccess> requiredResourceAccess = default(IList<RequiredResourceAccess>), string samlMetadataUrl = default(string), string signInAudience = default(string), string wwwHomepage = default(string))
         {
             AllowGuestsSignIn = allowGuestsSignIn;
             AllowPassthroughUsers = allowPassthroughUsers;
@@ -190,10 +190,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
 
         /// <summary>
         /// Gets or sets configures the groups claim issued in a user or OAuth
-        /// 2.0 access token that the app expects.
+        /// 2.0 access token that the app expects. Possible values include:
+        /// 'None', 'SecurityGroup', 'All'
         /// </summary>
         [JsonProperty(PropertyName = "groupMembershipClaims")]
-        public object GroupMembershipClaims { get; set; }
+        public GroupMembershipClaimTypes GroupMembershipClaims { get; set; }
 
         /// <summary>
         /// Gets or sets the home page of the application.

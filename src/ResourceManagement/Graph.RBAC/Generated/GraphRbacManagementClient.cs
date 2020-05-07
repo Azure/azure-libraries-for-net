@@ -119,22 +119,6 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         }
 
         /// <summary>
-        /// Initializes a new instance of the GraphRbacManagementClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name="restClient">
-        /// RestClient to be used
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public GraphRbacManagementClient(string baseUri, RestClient restClient) : base(baseUri, restClient)
-        {
-        }
-
-        /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>
         partial void CustomInitialize();

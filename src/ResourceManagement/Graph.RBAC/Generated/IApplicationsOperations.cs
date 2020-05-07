@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Models.PasswordCredential>>> ListPasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<PasswordCredential>>> ListPasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update passwordCredentials associated with an application.
         /// </summary>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UpdatePasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, IList<Models.PasswordCredential> value, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> UpdatePasswordCredentialsWithHttpMessagesAsync(string applicationObjectId, IList<PasswordCredential> value, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets an object id for a given application id from the current
         /// tenant.
