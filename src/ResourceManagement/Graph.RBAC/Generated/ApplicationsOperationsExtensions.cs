@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<PasswordCredential>> ListPasswordCredentialsAsync(this IApplicationsOperations operations, string applicationObjectId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Models.PasswordCredential>> ListPasswordCredentialsAsync(this IApplicationsOperations operations, string applicationObjectId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListPasswordCredentialsWithHttpMessagesAsync(applicationObjectId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdatePasswordCredentialsAsync(this IApplicationsOperations operations, string applicationObjectId, IList<PasswordCredential> value, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UpdatePasswordCredentialsAsync(this IApplicationsOperations operations, string applicationObjectId, IList<Models.PasswordCredential> value, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.UpdatePasswordCredentialsWithHttpMessagesAsync(applicationObjectId, value, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
