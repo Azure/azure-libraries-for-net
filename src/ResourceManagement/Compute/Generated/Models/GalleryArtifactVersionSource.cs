@@ -58,10 +58,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Id == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
-            }
         }
     }
 }
