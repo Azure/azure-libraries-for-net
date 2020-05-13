@@ -32,7 +32,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private string GetNameFromSettingsId(string diagnosticSettingId)
         {
             var resourceId = GetResourceIdFromSettingsId(diagnosticSettingId);
-            return diagnosticSettingId.Substring(resourceId.Length + DiagnosticSettingImpl.DiagnosticSettingsUri.Length);
+
+            if (diagnosticSettingId.Contains(DiagnosticSettingImpl.DiagnosticSettingsUri))
+            {
+                return diagnosticSettingId.Substring(resourceId.Length + DiagnosticSettingImpl.DiagnosticSettingsUri.Length);
+            }
+            else
+            {
+                return diagnosticSettingId.Substring(resourceId.Length + DiagnosticSettingImpl.SubscriptionDiagnosticSettingsUri.Length);
+            }
         }
 
         ///GENMHASH:CABF94FF0395BF95E01F344ECEA8DD19:5A4C5ADEF80F3A357A8C80716593389F
@@ -42,13 +50,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ArgumentNullException("diagnosticSettingId");
             }
+
             int dsIdx = diagnosticSettingId.LastIndexOf(DiagnosticSettingImpl.DiagnosticSettingsUri);
-            if (dsIdx == -1)
+            int sdsIdx = diagnosticSettingId.LastIndexOf(DiagnosticSettingImpl.SubscriptionDiagnosticSettingsUri);
+            if (dsIdx == -1 && sdsIdx == -1)
             {
                 throw new ArgumentOutOfRangeException("resourceId", "Parameter 'resourceId' does not represent a valid Diagnostic Settings resource Id [" + diagnosticSettingId + "].");
             }
 
-            return diagnosticSettingId.Substring(0, dsIdx);
+            int targetIdx = (dsIdx != -1) ? dsIdx : sdsIdx;
+            return diagnosticSettingId.Substring(0, targetIdx);
         }
 
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:163EFE5675FB6F84E8D6F02C768400C9

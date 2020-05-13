@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         IDefinition,
         IUpdate
     {
+        internal static string SubscriptionDiagnosticSettingsUri = "/providers/AzureResourceManager/diagnosticSettings/";
         internal static string DiagnosticSettingsUri = "/providers/microsoft.insights/diagnosticSettings/";
 
         private Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.Models.LogSettings> logSet;
@@ -133,16 +134,33 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             this.logSet.Clear();
             if (!IsInCreateMode())
             {
-                this.resourceId = inner.Id.Substring(0,
-                        this.Inner.Id.Length - (DiagnosticSettingImpl.DiagnosticSettingsUri + this.Inner.Name).Length);
+                int substringLength;
 
-                foreach (MetricSettings ms in this.Inner.Metrics)
+                if (inner.Id.Contains(DiagnosticSettingImpl.DiagnosticSettingsUri))
                 {
-                    this.metricSet[ms.Category] = ms;
+                    substringLength = this.Inner.Id.Length - (DiagnosticSettingImpl.DiagnosticSettingsUri + this.Inner.Name).Length;
                 }
-                foreach (LogSettings ls in this.Inner.Logs)
+                else
                 {
-                    this.logSet[ls.Category] = ls;
+                    substringLength = this.Inner.Id.Length - (DiagnosticSettingImpl.SubscriptionDiagnosticSettingsUri + this.Inner.Name).Length;
+                }
+
+                this.resourceId = inner.Id.Substring(0, substringLength);
+
+                if (this.Inner.Metrics != null)
+                {
+                    foreach (MetricSettings ms in this.Inner.Metrics)
+                    {
+                        this.metricSet[ms.Category] = ms;
+                    }
+                }
+
+                if (this.Inner.Logs != null)
+                {
+                    foreach (LogSettings ls in this.Inner.Logs)
+                    {
+                        this.logSet[ls.Category] = ls;
+                    }
                 }
             }
         }

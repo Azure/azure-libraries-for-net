@@ -204,6 +204,41 @@ namespace Fluent.Tests
                     dsList = azure.DiagnosticSettings.ListByResource(vm.Id);
                     Assert.NotNull(dsList);
                     Assert.False(dsList.Any());
+
+                    var subId = azure.SubscriptionId;
+                    var subResourceId = "/subscriptions/" + subId;
+
+                    var subscriptionSetting = azure.DiagnosticSettings
+                        .Define(dsName)
+                        .WithResource(subResourceId)
+                        .WithStorageAccount(sa.Id)
+                        .WithEventHub(evenHubNsRule.Id)
+                        .WithLog("Administrative", 7)
+                        .WithLog("Alert", 7)
+                        .Create();
+
+                    Assert.Equal(subResourceId, subscriptionSetting.ResourceId, ignoreCase: true);
+                    Assert.Equal(sa.Id, subscriptionSetting.StorageAccountId, ignoreCase: true);
+                    Assert.Equal(evenHubNsRule.Id, subscriptionSetting.EventHubAuthorizationRuleId, ignoreCase: true);
+                    Assert.Null(subscriptionSetting.EventHubName);
+                    Assert.Null(subscriptionSetting.WorkspaceId);
+                    Assert.True(subscriptionSetting.Logs.Any());
+                    Assert.False(subscriptionSetting.Metrics.Any());
+
+                    var sds1 = azure.DiagnosticSettings.Get(subscriptionSetting.ResourceId, subscriptionSetting.Name);
+                    CheckDiagnosticSettingValues(subscriptionSetting, sds1);
+
+                    var sds2 = azure.DiagnosticSettings.GetById(subscriptionSetting.Id);
+                    CheckDiagnosticSettingValues(subscriptionSetting, sds2);
+
+                    var sdsList = azure.DiagnosticSettings.ListByResource(subResourceId);
+                    Assert.NotNull(dsList);
+                    Assert.Single(dsList);
+
+                    var sds3 = sdsList.First();
+                    CheckDiagnosticSettingValues(subscriptionSetting, sds3);
+
+                    azure.DiagnosticSettings.DeleteById(subscriptionSetting.Id);
                 }
                 finally
                 {
