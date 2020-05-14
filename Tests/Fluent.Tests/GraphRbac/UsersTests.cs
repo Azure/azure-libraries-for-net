@@ -14,6 +14,7 @@ using Azure.Tests;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+using System.Collections.Generic;
 
 namespace Fluent.Tests.Graph.RBAC
 {
@@ -89,6 +90,18 @@ namespace Fluent.Tests.Graph.RBAC
                         .Apply();
 
                 Assert.Equal(CountryISOCode.Australia, user.UsageLocation);
+            }
+        }
+
+        [Fact(Skip = "list user emails")]
+        public void CanListAll()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                IGraphRbacManager manager = TestHelper.CreateGraphRbacManager();
+                IEnumerable<IActiveDirectoryUser> users = manager.Users.ListAsync(true).Result;
+                // It might not be true in live.
+                Assert.True(users.Count() > 100);
             }
         }
     }

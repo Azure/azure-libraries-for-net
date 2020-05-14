@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
          /// <summary>
          /// Gets the link to the next page.
          /// </summary>
-         [JsonProperty("nextLink")]
+         [JsonProperty("odata.nextLink")]
          public string NextPageLink { get; private set; }
 
          [JsonProperty("value")]
