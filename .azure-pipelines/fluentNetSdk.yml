@@ -17,13 +17,13 @@ jobs:
       LoggingArgs: '/flp:Summary;Verbosity=minimal;LogFile=msbuild.sum /flp1:warningsonly;logfile=msbuild.wrn /flp2:errorsonly;logfile=msbuild.err'
 
     steps:
-      - task: ms-codeanalysis.vss-microsoft-security-code-analysis.build-task-credscan.CredScan@2
-        displayName: 'CredScan'
+      - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-credscan.CredScan@2
+        displayName: 'Run Credential Scanner'
         inputs:
-          toolVersion: 'Latest'
+          toolMajorVersion: V2
           suppressionsFile: './tools/credscan/CredScanSuppressions.json'
 
-      - task: ms-codeanalysis.vss-microsoft-security-code-analysis.build-task-postanalysis.PostAnalysis@1
+      - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-postanalysis.PostAnalysis@1
         displayName: 'PostAnalysis'
         inputs:
           AllTools: false
