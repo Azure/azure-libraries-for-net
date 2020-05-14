@@ -71,7 +71,7 @@ namespace Fluent.Tests.PrivateDns
                     AggregateException compositeException = null;
                     try
                     {
-                        //The requests of creation should fail becase resources already exist
+                        //The requests of creation should fail because resources already exist
                         privateDnsZone = azure.PrivateDnsZones.Define(topLevelDomain)
                         .WithNewResourceGroup(groupName, region)
                         .DefineARecordSet("recordA")
