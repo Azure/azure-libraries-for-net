@@ -245,7 +245,6 @@ namespace Fluent.Tests.Compute
                     Assert.NotNull(imageVersion.ReplicationStatus);
                     Assert.NotNull(imageVersion.ReplicationStatus.AggregatedState);
 
-                    /* Skip update now until service update the swagger definition for GalleryArtifactVersionSource
                     //
                     // Update image version
                     //
@@ -256,7 +255,6 @@ namespace Fluent.Tests.Compute
                     Assert.NotNull(imageVersion.PublishingProfile.TargetRegions);
                     Assert.Equal(1, imageVersion.PublishingProfile.TargetRegions.Count);
                     Assert.False(imageVersion.IsExcludedFromLatest);
-                    */
 
                     //
                     // List image versions
