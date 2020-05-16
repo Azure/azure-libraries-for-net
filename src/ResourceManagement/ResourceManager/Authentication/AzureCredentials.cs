@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
         public AzureEnvironment Environment { get; private set; }
 
+        /// <summary>
+        /// Token cache to use with authentication, defaults to <see cref="TokenCache.DefaultShared"/>
+        /// </summary>
+        public TokenCache TokenCache { get; set; } = TokenCache.DefaultShared;
+
 #if NET45
         public AzureCredentials(UserLoginInformation userLoginInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
@@ -164,25 +169,25 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                     if (servicePrincipalLoginInformation.ClientSecret != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
-                            TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.ClientSecret, adSettings, TokenCache.DefaultShared);
+                            TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.ClientSecret, adSettings, TokenCache);
                     }
 #if NET45
                     else if (servicePrincipalLoginInformation.X509Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
-                            TenantId, new ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
+                            TenantId, new ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache);
                     }
 #else
                     else if (servicePrincipalLoginInformation.X509Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
-                            TenantId, new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
+                            TenantId, new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache);
                     }
 #endif
                     else if (servicePrincipalLoginInformation.Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
-                            TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache.DefaultShared);
+                            TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache);
                     }
                     else
                     {
@@ -194,13 +199,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginSilentAsync(
                         userLoginInformation.ClientId, TenantId, userLoginInformation.UserName,
-                        userLoginInformation.Password, adSettings, TokenCache.DefaultShared);
+                        userLoginInformation.Password, adSettings, TokenCache);
                 }
 #else
                 else if (deviceCredentialInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginByDeviceCodeAsync(
-                        deviceCredentialInformation.ClientId, TenantId, adSettings, TokenCache.DefaultShared, deviceCredentialInformation.DeviceCodeFlowHandler);
+                        deviceCredentialInformation.ClientId, TenantId, adSettings, TokenCache, deviceCredentialInformation.DeviceCodeFlowHandler);
                 }
 #endif
                 else if (msiTokenProviderFactory != null)
