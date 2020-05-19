@@ -36,10 +36,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="timeAggregation">the criteria time aggregation
         /// types.</param>
         /// <param name="operatorProperty">The operator used to compare the
-        /// metric value against the threshold.</param>
+        /// metric value against the threshold. Possible values include:
+        /// 'GreaterThan', 'LessThan', 'GreaterOrLessThan'</param>
         /// <param name="alertSensitivity">The extent of deviation required to
         /// trigger an alert. This will affect how tight the threshold is to
-        /// the metric series pattern.</param>
+        /// the metric series pattern. Possible values include: 'Low',
+        /// 'Medium', 'High'</param>
         /// <param name="failingPeriods">The minimum number of violations
         /// required within the selected lookback time window required to raise
         /// an alert.</param>
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="ignoreDataBefore">Use this option to set the date from
         /// which to start learning the metric historical data and calculate
         /// the dynamic thresholds (in ISO8601 format)</param>
-        public DynamicMetricCriteria(string name, string metricName, object timeAggregation, object operatorProperty, object alertSensitivity, DynamicThresholdFailingPeriods failingPeriods, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string metricNamespace = default(string), IList<MetricDimension> dimensions = default(IList<MetricDimension>), System.DateTime? ignoreDataBefore = default(System.DateTime?))
+        public DynamicMetricCriteria(string name, string metricName, object timeAggregation, DynamicThresholdOperator operatorProperty, DynamicThresholdSensitivity alertSensitivity, DynamicThresholdFailingPeriods failingPeriods, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string metricNamespace = default(string), IList<MetricDimension> dimensions = default(IList<MetricDimension>), System.DateTime? ignoreDataBefore = default(System.DateTime?))
             : base(name, metricName, timeAggregation, additionalProperties, metricNamespace, dimensions)
         {
             OperatorProperty = operatorProperty;
@@ -67,18 +69,19 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         /// <summary>
         /// Gets or sets the operator used to compare the metric value against
-        /// the threshold.
+        /// the threshold. Possible values include: 'GreaterThan', 'LessThan',
+        /// 'GreaterOrLessThan'
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
-        public object OperatorProperty { get; set; }
+        public DynamicThresholdOperator OperatorProperty { get; set; }
 
         /// <summary>
         /// Gets or sets the extent of deviation required to trigger an alert.
         /// This will affect how tight the threshold is to the metric series
-        /// pattern.
+        /// pattern. Possible values include: 'Low', 'Medium', 'High'
         /// </summary>
         [JsonProperty(PropertyName = "alertSensitivity")]
-        public object AlertSensitivity { get; set; }
+        public DynamicThresholdSensitivity AlertSensitivity { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum number of violations required within the
