@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:16385B0F625BFE1280EAADD4C9A52F83:175426222378DAACFA1C214E2C05A68B
         public MetricAlertConditionImpl WithCondition(MetricAlertRuleTimeAggregation timeAggregation, MetricAlertRuleCondition condition, double threshold)
         {
-            this.Inner.OperatorProperty = condition.ToString();
+            this.Inner.OperatorProperty = OperatorModel.Parse(condition.ToString());
             this.Inner.TimeAggregation = timeAggregation.ToString();
             this.Inner.Threshold = threshold;
             return this;

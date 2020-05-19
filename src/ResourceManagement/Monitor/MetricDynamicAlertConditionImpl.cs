@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
         public MetricDynamicAlertConditionImpl WithCondition(MetricAlertRuleTimeAggregation timeAggregation, DynamicThresholdOperator condition, DynamicThresholdSensitivity alertSensitivity)
         {
-            this.Inner.OperatorProperty = condition.ToString();
+            this.Inner.OperatorProperty = condition;
             this.Inner.TimeAggregation = timeAggregation.ToString();
-            this.Inner.AlertSensitivity = alertSensitivity.ToString();
+            this.Inner.AlertSensitivity = alertSensitivity;
             return this;
         }
 

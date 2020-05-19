@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public ActivityLogAlertLeafCondition(string field, string equals)
         {
             Field = field;
-            Equals = equals;
+            EqualsTo = equals;
             CustomInit();
         }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// (case-insensitive) to determine if the condition is met.
         /// </summary>
         [JsonProperty(PropertyName = "equals")]
-        public string Equals { get; set; }
+        public string EqualsTo { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Field");
             }
-            if (Equals == null)
+            if (EqualsTo == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Equals");
             }
