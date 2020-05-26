@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,19 +19,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// Monitor Management Client
     /// </summary>
-    public partial class MonitorManagementClient : FluentServiceClientBase<MonitorManagementClient>, IMonitorManagementClient, IAzureClient
+    public partial class MonitorManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<MonitorManagementClient>, IMonitorManagementClient, IAzureClient
     {
-        ///// <summary>
-        ///// The base URI of the service.
-        ///// </summary>
-        //public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -39,11 +34,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        ///// <summary>
-        ///// Credentials needed for the client to connect to Azure.
-        ///// </summary>
-        //public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// The Azure subscription Id.
@@ -97,6 +87,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the IDiagnosticSettingsOperations.
         /// </summary>
         public virtual IDiagnosticSettingsOperations DiagnosticSettings { get; private set; }
+
+        /// <summary>
+        /// Gets the ISubscriptionDiagnosticSettingsOperations.
+        /// </summary>
+        public virtual ISubscriptionDiagnosticSettingsOperations SubscriptionDiagnosticSettings { get; private set; }
 
         /// <summary>
         /// Gets the IDiagnosticSettingsCategoryOperations.
@@ -173,206 +168,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         public virtual IVMInsightsOperations VMInsights { get; private set; }
 
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        //protected MonitorManagementClient(params DelegatingHandler[] handlers) : base(handlers)
-        //{
-        //    Initialize();
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='rootHandler'>
-        ///// Optional. The http client handler used to handle http transport.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        //protected MonitorManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        //{
-        //    Initialize();
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='baseUri'>
-        ///// Optional. The base URI of the service.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        ///// <exception cref="System.ArgumentNullException">
-        ///// Thrown when a required parameter is null
-        ///// </exception>
-        //protected MonitorManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
-        //{
-        //    if (baseUri == null)
-        //    {
-        //        throw new System.ArgumentNullException("baseUri");
-        //    }
-        //    BaseUri = baseUri;
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='baseUri'>
-        ///// Optional. The base URI of the service.
-        ///// </param>
-        ///// <param name='rootHandler'>
-        ///// Optional. The http client handler used to handle http transport.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        ///// <exception cref="System.ArgumentNullException">
-        ///// Thrown when a required parameter is null
-        ///// </exception>
-        //protected MonitorManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        //{
-        //    if (baseUri == null)
-        //    {
-        //        throw new System.ArgumentNullException("baseUri");
-        //    }
-        //    BaseUri = baseUri;
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='credentials'>
-        ///// Required. Credentials needed for the client to connect to Azure.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        ///// <exception cref="System.ArgumentNullException">
-        ///// Thrown when a required parameter is null
-        ///// </exception>
-        //public MonitorManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        //{
-        //    if (credentials == null)
-        //    {
-        //        throw new System.ArgumentNullException("credentials");
-        //    }
-        //    Credentials = credentials;
-        //    if (Credentials != null)
-        //    {
-        //        Credentials.InitializeServiceClient(this);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='credentials'>
-        ///// Required. Credentials needed for the client to connect to Azure.
-        ///// </param>
-        ///// <param name='rootHandler'>
-        ///// Optional. The http client handler used to handle http transport.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        ///// <exception cref="System.ArgumentNullException">
-        ///// Thrown when a required parameter is null
-        ///// </exception>
-        //public MonitorManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        //{
-        //    if (credentials == null)
-        //    {
-        //        throw new System.ArgumentNullException("credentials");
-        //    }
-        //    Credentials = credentials;
-        //    if (Credentials != null)
-        //    {
-        //        Credentials.InitializeServiceClient(this);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='baseUri'>
-        ///// Optional. The base URI of the service.
-        ///// </param>
-        ///// <param name='credentials'>
-        ///// Required. Credentials needed for the client to connect to Azure.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        ///// <exception cref="System.ArgumentNullException">
-        ///// Thrown when a required parameter is null
-        ///// </exception>
-        //public MonitorManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        //{
-        //    if (baseUri == null)
-        //    {
-        //        throw new System.ArgumentNullException("baseUri");
-        //    }
-        //    if (credentials == null)
-        //    {
-        //        throw new System.ArgumentNullException("credentials");
-        //    }
-        //    BaseUri = baseUri;
-        //    Credentials = credentials;
-        //    if (Credentials != null)
-        //    {
-        //        Credentials.InitializeServiceClient(this);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Initializes a new instance of the MonitorManagementClient class.
-        ///// </summary>
-        ///// <param name='baseUri'>
-        ///// Optional. The base URI of the service.
-        ///// </param>
-        ///// <param name='credentials'>
-        ///// Required. Credentials needed for the client to connect to Azure.
-        ///// </param>
-        ///// <param name='rootHandler'>
-        ///// Optional. The http client handler used to handle http transport.
-        ///// </param>
-        ///// <param name='handlers'>
-        ///// Optional. The delegating handlers to add to the http client pipeline.
-        ///// </param>
-        ///// <exception cref="System.ArgumentNullException">
-        ///// Thrown when a required parameter is null
-        ///// </exception>
-        //public MonitorManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        //{
-        //    if (baseUri == null)
-        //    {
-        //        throw new System.ArgumentNullException("baseUri");
-        //    }
-        //    if (credentials == null)
-        //    {
-        //        throw new System.ArgumentNullException("credentials");
-        //    }
-        //    BaseUri = baseUri;
-        //    Credentials = credentials;
-        //    if (Credentials != null)
-        //    {
-        //        Credentials.InitializeServiceClient(this);
-        //    }
-        //}
-
         /// <summary>
         /// Initializes a new instance of the MonitorManagementClient class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public MonitorManagementClient(RestClient restClient)
-            : base(restClient)
+        public MonitorManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -391,6 +193,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             AlertRules = new AlertRulesOperations(this);
             LogProfiles = new LogProfilesOperations(this);
             DiagnosticSettings = new DiagnosticSettingsOperations(this);
+            SubscriptionDiagnosticSettings = new SubscriptionDiagnosticSettingsOperations(this);
             DiagnosticSettingsCategory = new DiagnosticSettingsCategoryOperations(this);
             ActionGroups = new ActionGroupsOperations(this);
             ActivityLogAlerts = new ActivityLogAlertsOperations(this);
@@ -406,7 +209,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             ScheduledQueryRules = new ScheduledQueryRulesOperations(this);
             MetricNamespaces = new MetricNamespacesOperations(this);
             VMInsights = new VMInsightsOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            this.BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

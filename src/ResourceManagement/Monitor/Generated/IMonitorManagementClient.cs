@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IDiagnosticSettingsOperations DiagnosticSettings { get; }
 
         /// <summary>
+        /// Gets the ISubscriptionDiagnosticSettingsOperations.
+        /// </summary>
+        ISubscriptionDiagnosticSettingsOperations SubscriptionDiagnosticSettings { get; }
+
+        /// <summary>
         /// Gets the IDiagnosticSettingsCategoryOperations.
         /// </summary>
         IDiagnosticSettingsCategoryOperations DiagnosticSettingsCategory { get; }
