@@ -126,6 +126,30 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }, tenantId, environment);
         }
 
+#if !NET45
+        /// <summary>
+        /// Creates a credentials object from a service principal.
+        /// </summary>
+        /// <param name="clientId">the client ID of the application the service principal is associated with</param>
+        /// <param name="certificatePath">the certificate file for the client ID</param>]
+        /// <param name="certificatePassword">the password for the certificate</param>
+        /// <param name="IsCertificateRollOverEnabled">Set it to true if certificate KeyVault/dSMS assistend certificate (Auto Rotation)</param>
+        /// <param name="tenantId">the tenant ID or domain the application is in</param>
+        /// <param name="environment">the environment to authenticate to</param>
+        /// <returns>an authenticated credentials object</returns>
+        public AzureCredentials FromServicePrincipal(string clientId, string certificatePath, string certificatePassword, bool IsCertificateRollOverEnabled, string tenantId, AzureEnvironment environment)
+        {
+            var certBytes = File.ReadAllBytes(certificatePath);
+            return new AzureCredentials(new ServicePrincipalLoginInformation
+            {
+                ClientId = clientId,
+                Certificate = certBytes,
+                CertificatePassword = certificatePassword,
+                IsCertificateRollOverEnabled = IsCertificateRollOverEnabled,
+            }, tenantId, environment);
+        }
+#endif
+
         /// <summary>
         /// Creates a credentials object from a service principal.
         /// </summary>
@@ -142,6 +166,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 X509Certificate = certificate
             }, tenantId, environment);
         }
+
+#if !NET45
+        /// <summary>
+        /// Creates a credentials object from a service principal.
+        /// </summary>
+        /// <param name="clientId">the client ID of the application the service principal is associated with</param>
+        /// <param name="certificate">the X509 certificate for the client ID</param>
+        /// <param name="IsCertificateRollOverEnabled">Set it to true if certificate KeyVault/dSMS assistend certificate (Auto Rotation)</param>
+        /// <param name="tenantId">the tenant ID or domain the application is in</param>
+        /// <param name="environment">the environment to authenticate to</param>
+        /// <returns></returns>
+        public AzureCredentials FromServicePrincipal(string clientId, X509Certificate2 certificate, bool IsCertificateRollOverEnabled, string tenantId, AzureEnvironment environment)
+        {
+            return new AzureCredentials(new ServicePrincipalLoginInformation
+            {
+                ClientId = clientId,
+                X509Certificate = certificate,
+                IsCertificateRollOverEnabled = IsCertificateRollOverEnabled,
+            }, tenantId, environment);
+        }
+#endif
 
         /// <summary>
         /// Creates a credentials object from a file in the following format:
