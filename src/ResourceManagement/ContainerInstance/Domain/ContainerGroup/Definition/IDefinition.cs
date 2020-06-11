@@ -353,7 +353,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// The stage of the container group definition allowing to specify a volume that can be mounted by a container instance.
     /// </summary>
     public interface IWithVolume :
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistryOrVolumeBeta
+
     {
 
         /// <summary>
