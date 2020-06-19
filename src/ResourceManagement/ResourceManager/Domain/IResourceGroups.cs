@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         /// <param name="name">name The name of the resource group to check. The name is case insensitive</param>
         /// <returns>true if the resource group exists; false otherwise</returns>
-        [Obsolete("User ContainAsync() instead.")]
+        [Obsolete("Use ContainAsync() instead.")]
         Task<bool> CheckExistenceAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
