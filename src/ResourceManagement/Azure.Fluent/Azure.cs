@@ -97,6 +97,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IGenericResources GenericResources
+        {
+            get
+            {
+                return resourceManager.GenericResources;
+            }
+        }
+
         /// <returns>entry point to manage storage accounts</returns>
         public IStorageAccounts StorageAccounts
         {
@@ -1108,6 +1116,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to resource group management.
         /// </summary>
         IResourceGroups ResourceGroups { get; }
+
+        /// <summary>
+        /// Entry point to generic resource management.
+        /// </summary>
+        IGenericResources GenericResources { get; }
 
         /// <summary>
         /// Entry point to storage account management.
