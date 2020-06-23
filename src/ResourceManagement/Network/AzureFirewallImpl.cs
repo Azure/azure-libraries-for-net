@@ -1758,9 +1758,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         private AzureFirewallImpl WithTcpProtocolInNatRule()
         {
-            if (networkRule.Protocols == null)
+            if (natRule.Protocols == null)
             {
-                networkRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
+                natRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
             }
             natRule.Protocols.Add(AzureFirewallNetworkRuleProtocol.TCP);
             return this;
@@ -1778,9 +1778,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         private AzureFirewallImpl WithUdpProtocolInNatRule()
         {
-            if (networkRule.Protocols == null)
+            if (natRule.Protocols == null)
             {
-                networkRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
+                natRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
             }
             natRule.Protocols.Add(AzureFirewallNetworkRuleProtocol.UDP);
             return this;
