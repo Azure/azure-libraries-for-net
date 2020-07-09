@@ -1,6 +1,12 @@
 [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/net/azure-libraries-for-net%20-%20fluent-sdk?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=441&branchName=master)
 [![Build Status](https://travis-ci.org/Azure/azure-libraries-for-net.svg?style=flat-square&label=build&branch=master)](https://travis-ci.org/Azure/azure-libraries-for-net)
 
+# Try the Next-Generation Azure Management SDK for .NET now
+
+A new set of Azure Management Libraries for .NET that follows the [Azure SDK Design Guidelines for .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html) are now in Public Preview. If you are interested in the new generation SDK for .NET, please find the information about latest packages [here](https://azure.github.io/azure-sdk/releases/latest/dotnet.html), and look for packages that contains `Azure.ResourceManager` in the namespace.
+
+Documentation is available [on this page](http://aka.ms/azure-sdk-net-mgmt)
+
 # Azure Management Libraries for .NET
 
 This README is based on the released stable version (1.34.0). If you are looking for other releases, see [More Information](#more-information)
