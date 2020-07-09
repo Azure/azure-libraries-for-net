@@ -5,7 +5,7 @@
 
 A new set of Azure Management Libraries for .NET that follows the [Azure SDK Design Guidelines for .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html) are now in Public Preview. If you are interested in the new generation SDK for .NET, please find the information about latest packages [here](https://azure.github.io/azure-sdk/releases/latest/dotnet.html), and look for packages that contains `Azure.ResourceManager` in the namespace.
 
-Documentation is available [on this page](http://aka.ms/azure-sdk-net-mgmt)
+Documentation is available [on this page](https://aka.ms/azure-sdk-dotnet-mgmt)
 
 # Azure Management Libraries for .NET
 
