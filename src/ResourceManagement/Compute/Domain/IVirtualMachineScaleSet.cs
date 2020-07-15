@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the upgrade mode.
         /// </summary>
-        /// <deprecated>Use UpgradeMode instead.</deprecated>
+        /// [Obsolete("Use UpgradeMode instead.")]
         Models.UpgradeMode UpgradeModel { get; }
 
         /// <summary>
