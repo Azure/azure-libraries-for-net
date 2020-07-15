@@ -365,7 +365,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.UpgradeModel();
+                return this.UpgradeMode();
+            }
+        }
+        
+        Models.UpgradeMode Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.UpgradeMode
+        {
+            get
+            {
+                return this.UpgradeMode();
             }
         }
 

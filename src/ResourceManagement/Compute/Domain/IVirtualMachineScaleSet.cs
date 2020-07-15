@@ -119,9 +119,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.VirtualMachineScaleSetStorageProfile StorageProfile { get; }
 
         /// <summary>
-        /// Gets the upgrade model.
+        /// Gets the upgrade mode.
         /// </summary>
+        /// [Obsolete("Use UpgradeMode instead.")]
         Models.UpgradeMode UpgradeModel { get; }
+
+        /// <summary>
+        /// Gets the upgrade mode.
+        /// </summary>
+        Models.UpgradeMode UpgradeMode { get; }
 
         /// <summary>
         /// Gets the URL to storage containers that store the VHDs of the virtual machines in the scale set.

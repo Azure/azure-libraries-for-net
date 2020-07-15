@@ -957,10 +957,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return osDisk.CreateOption == DiskCreateOptionTypes.FromImage;
         }
 
-        ///GENMHASH:062EA8E95730159A684C56D3DFCB4846:2E75CE480B794ADCA106E649FAD94DB6
-        public UpgradeMode UpgradeModel()
+        public UpgradeMode UpgradeMode()
         {
-            return (Inner.UpgradePolicy != null) ? Inner.UpgradePolicy.Mode.Value : UpgradeMode.Automatic;
+            return (Inner.UpgradePolicy != null) ? Inner.UpgradePolicy.Mode.Value : Microsoft.Azure.Management.Compute.Fluent.Models.UpgradeMode.Automatic;
         }
 
         ///GENMHASH:B56D58DDB3B4EFB6D2FB8BFF6488E3FF:48A72DF34AA591EEC3FD96876F4C2258
@@ -2278,7 +2277,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 || Inner.UpgradePolicy.Mode == null)
             {
                 Inner.UpgradePolicy = new UpgradePolicy();
-                Inner.UpgradePolicy.Mode = UpgradeMode.Automatic;
+                Inner.UpgradePolicy.Mode = Microsoft.Azure.Management.Compute.Fluent.Models.UpgradeMode.Automatic;
             }
             VirtualMachineScaleSetOSProfile osProfile = Inner
                 .VirtualMachineProfile
