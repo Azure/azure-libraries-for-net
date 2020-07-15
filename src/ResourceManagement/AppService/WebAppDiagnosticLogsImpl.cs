@@ -243,6 +243,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
             Inner.HttpLogs.AzureBlobStorage.RetentionInDays = retentionDays;
             }
+            if (Inner.ApplicationLogs != null && Inner.ApplicationLogs.AzureBlobStorage != null && Inner.ApplicationLogs.AzureBlobStorage.Level.HasValue)
+            {
+                Inner.ApplicationLogs.AzureBlobStorage.RetentionInDays = retentionDays;
+            }
             return this;
         }
 
@@ -312,6 +316,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             if (Inner.HttpLogs != null && Inner.HttpLogs.AzureBlobStorage != null && Inner.HttpLogs.FileSystem.Enabled.HasValue && Inner.HttpLogs.FileSystem.Enabled.Value)
             {
                 Inner.HttpLogs.AzureBlobStorage.RetentionInDays = 0;
+            }
+            if (Inner.ApplicationLogs != null && Inner.ApplicationLogs.AzureBlobStorage != null && Inner.ApplicationLogs.AzureBlobStorage.Level.HasValue)
+            {
+                Inner.ApplicationLogs.AzureBlobStorage.RetentionInDays = 0;
             }
             return this;
         }
