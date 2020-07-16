@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private IDictionary<string, HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>> hostNameBindingsToCreate;
         private IList<string> hostNameBindingsToDelete;
         private IDictionary<string, HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>> sslBindingsToCreate;
-        private IDictionary<string, string> appSettingsToAdd;
-        private IList<string> appSettingsToRemove;
+        protected IDictionary<string, string> appSettingsToAdd;
+        protected IList<string> appSettingsToRemove;
         private IDictionary<string, bool> appSettingStickiness;
         private IDictionary<string, ConnStringValueTypePair> connectionStringsToAdd;
         private IList<string> connectionStringsToRemove;

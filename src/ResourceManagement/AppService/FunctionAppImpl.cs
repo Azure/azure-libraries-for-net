@@ -142,12 +142,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 var keys = await storageAccountToSet.GetKeysAsync(cancellationToken);
                 var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
                     storageAccountToSet.Name, keys[0].Value);
-                WithAppSetting("AzureWebJobsStorage", connectionString);
-                WithAppSetting("AzureWebJobsDashboard", connectionString);
+                AddAppSettingIfNotModified("AzureWebJobsStorage", connectionString);
+                AddAppSettingIfNotModified("AzureWebJobsDashboard", connectionString);
                 if (IsConsumptionAppServicePlan((await servicePlanTask)?.PricingTier))
                 {
-                    WithAppSetting("WEBSITE_CONTENTAZUREFILECONNECTIONSTRING", connectionString);
-                    WithAppSetting("WEBSITE_CONTENTSHARE", SdkContext.RandomResourceName(Name, 32));
+                    AddAppSettingIfNotModified("WEBSITE_CONTENTAZUREFILECONNECTIONSTRING", connectionString);
+                    AddAppSettingIfNotModified("WEBSITE_CONTENTSHARE", SdkContext.RandomResourceName(Name, 32));
                 }
 
                 // clean up
@@ -157,6 +157,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
                 return await base.SubmitAppSettingsAsync(site, cancellationToken);
             }
+        }
+
+        private void AddAppSettingIfNotModified(String key, String value)
+        {
+            if (!IsAppSettingModified(key))
+            {
+                WithAppSetting(key, value);
+            }
+        }
+
+        private bool IsAppSettingModified(String key)
+        {
+            return (appSettingsToAdd != null && appSettingsToAdd.ContainsKey(key))
+                || (appSettingsToRemove != null && appSettingsToRemove.Contains(key));
         }
 
         private bool IsConsumptionAppServicePlan(PricingTier pricingTier)
