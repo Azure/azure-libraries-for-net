@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return WithPricingTier(Fluent.PricingTier.SharedD1);
         }
 
+        public AppServicePlanImpl WithConsumptionPricingTier()
+        {
+            return WithPricingTier(Fluent.PricingTier.ConsumptionY1);
+        }
+
         ///GENMHASH:8DD1884D95AA83DF70C5D79066C82053:EE479BE5674DD2919F74BDF71907ED27
         public bool PerSiteScaling()
         {

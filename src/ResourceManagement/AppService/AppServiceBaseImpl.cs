@@ -185,6 +185,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return WithPricingTier(new PricingTier("Free", "F1"));
         }
 
+        public FluentImplT WithConsumptionPricingTier()
+        {
+            return WithPricingTier(PricingTier.ConsumptionY1);
+        }
+
         ///GENMHASH:256905D5B839C64BFE9830503CB5607B:7AC64BDE9A6045728A97AD3B7E256F87
         internal async override Task<SiteConfigResourceInner> GetConfigInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {

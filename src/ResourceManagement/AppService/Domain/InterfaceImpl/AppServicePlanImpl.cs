@@ -105,6 +105,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Specifies consumption pricing tier for the app service plan.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        AppServicePlan.Definition.IWithCreate AppServicePlan.Definition.IWithPricingTier.WithConsumptionPricingTier()
+        {
+            return this.WithConsumptionPricingTier();
+        }
+
+        /// <summary>
         /// Specifies the pricing tier for the app service plan.
         /// </summary>
         /// <param name="pricingTier">The pricing tier enum.</param>
