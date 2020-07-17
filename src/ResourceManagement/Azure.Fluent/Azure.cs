@@ -909,7 +909,8 @@ namespace Microsoft.Azure.Management.Fluent
                 return subscriptions
                     .FirstOrDefault(s =>
                         StringComparer.OrdinalIgnoreCase.Equals(s.State, "Enabled") ||
-                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "Warned"));
+                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "Warned") ||
+                        StringComparer.OrdinalIgnoreCase.Equals(s.State, "PastDue"));
             }
 
             private ResourceManager.Fluent.ResourceManager.IAuthenticated GetResourceManager()
