@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IWebApp> ListByResourceGroup(string resourceGroupName)
         {
-            return base.ListByResourceGroup(resourceGroupName).Where(this.FilterWebApp);
+            return Extensions.Synchronize(() => ListByResourceGroupAsync(resourceGroupName));
         }
 
         public override async Task<IPagedCollection<IWebApp>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IWebApp> List()
         {
-            return base.List().Where(this.FilterWebApp);
+            return Extensions.Synchronize(() => ListAsync());
         }
 
         public override async Task<IPagedCollection<IWebApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))

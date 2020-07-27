@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:437A8ECA353AAE23242BFC82A5066CC3
         public override IEnumerable<IFunctionApp> ListByResourceGroup(string resourceGroupName)
         {
-            return base.ListByResourceGroup(resourceGroupName).Where(this.FilterFunctionApp);
+            return Extensions.Synchronize(() => ListByResourceGroupAsync(resourceGroupName));
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IFunctionApp> List()
         {
-            return base.List().Where(this.FilterFunctionApp);
+            return Extensions.Synchronize(() => ListAsync());
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
