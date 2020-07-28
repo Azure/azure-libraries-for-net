@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ResourceUsageInnerOperations operations.
+    /// ResourceUsageOperations operations.
     /// </summary>
-    public partial interface IResourceUsageInnerOperations
+    public partial interface IResourceUsageOperations
     {
         /// <summary>
         /// Check the quota and actual usage of the CDN profiles under the

@@ -17,20 +17,18 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// Origin properties needed for origin creation or update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class OriginUpdateParametersInner
+    public partial class OriginUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the OriginUpdateParametersInner
-        /// class.
+        /// Initializes a new instance of the OriginUpdateParameters class.
         /// </summary>
-        public OriginUpdateParametersInner()
+        public OriginUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OriginUpdateParametersInner
-        /// class.
+        /// Initializes a new instance of the OriginUpdateParameters class.
         /// </summary>
         /// <param name="hostName">The address of the origin. Domain names,
         /// IPv4 addresses, and IPv6 addresses are supported.</param>
@@ -38,7 +36,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 1 and 65535.</param>
         /// <param name="httpsPort">The value of the HTTPS port. Must be
         /// between 1 and 65535.</param>
-        public OriginUpdateParametersInner(string hostName = default(string), int? httpPort = default(int?), int? httpsPort = default(int?))
+        public OriginUpdateParameters(string hostName = default(string), int? httpPort = default(int?), int? httpsPort = default(int?))
         {
             HostName = hostName;
             HttpPort = httpPort;

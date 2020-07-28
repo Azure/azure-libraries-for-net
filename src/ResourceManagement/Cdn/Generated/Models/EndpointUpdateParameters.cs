@@ -19,20 +19,18 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// Properties required to create or update an endpoint.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EndpointUpdateParametersInner
+    public partial class EndpointUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the EndpointUpdateParametersInner
-        /// class.
+        /// Initializes a new instance of the EndpointUpdateParameters class.
         /// </summary>
-        public EndpointUpdateParametersInner()
+        public EndpointUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the EndpointUpdateParametersInner
-        /// class.
+        /// Initializes a new instance of the EndpointUpdateParameters class.
         /// </summary>
         /// <param name="tags">Endpoint tags.</param>
         /// <param name="originHostHeader">The host header value sent to the
@@ -41,7 +39,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// Apps, Blob Storage, and Cloud Services require this host header
         /// value to match the origin hostname by default.</param>
         /// <param name="originPath">A directory path on the origin that CDN
-        /// can use to retreive content from, e.g.
+        /// can use to retrieve content from, e.g.
         /// contoso.cloudapp.net/originpath.</param>
         /// <param name="contentTypesToCompress">List of content types on which
         /// compression applies. The value should be a valid MIME type.</param>
@@ -74,12 +72,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// most optimal routes for the CDN. This is relative to the origin
         /// path.</param>
         /// <param name="geoFilters">List of rules defining the user's geo
-        /// access within a CDN endpoint. Each geo filter defines an acess rule
-        /// to a specified path or content, e.g. block APAC for path
+        /// access within a CDN endpoint. Each geo filter defines an access
+        /// rule to a specified path or content, e.g. block APAC for path
         /// /pictures/</param>
         /// <param name="deliveryPolicy">A policy that specifies the delivery
         /// rules to be used for an endpoint.</param>
-        public EndpointUpdateParametersInner(IDictionary<string, string> tags = default(IDictionary<string, string>), string originHostHeader = default(string), string originPath = default(string), IList<string> contentTypesToCompress = default(IList<string>), bool? isCompressionEnabled = default(bool?), bool? isHttpAllowed = default(bool?), bool? isHttpsAllowed = default(bool?), QueryStringCachingBehavior? queryStringCachingBehavior = default(QueryStringCachingBehavior?), string optimizationType = default(string), string probePath = default(string), IList<GeoFilter> geoFilters = default(IList<GeoFilter>), EndpointPropertiesUpdateParametersDeliveryPolicy deliveryPolicy = default(EndpointPropertiesUpdateParametersDeliveryPolicy))
+        public EndpointUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), string originHostHeader = default(string), string originPath = default(string), IList<string> contentTypesToCompress = default(IList<string>), bool? isCompressionEnabled = default(bool?), bool? isHttpAllowed = default(bool?), bool? isHttpsAllowed = default(bool?), QueryStringCachingBehavior? queryStringCachingBehavior = default(QueryStringCachingBehavior?), OptimizationType optimizationType = default(OptimizationType), string probePath = default(string), IList<GeoFilter> geoFilters = default(IList<GeoFilter>), EndpointPropertiesUpdateParametersDeliveryPolicy deliveryPolicy = default(EndpointPropertiesUpdateParametersDeliveryPolicy))
         {
             Tags = tags;
             OriginHostHeader = originHostHeader;
@@ -119,7 +117,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 
         /// <summary>
         /// Gets or sets a directory path on the origin that CDN can use to
-        /// retreive content from, e.g. contoso.cloudapp.net/originpath.
+        /// retrieve content from, e.g. contoso.cloudapp.net/originpath.
         /// </summary>
         [JsonProperty(PropertyName = "properties.originPath")]
         public string OriginPath { get; set; }
@@ -177,7 +175,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'DynamicSiteAcceleration'
         /// </summary>
         [JsonProperty(PropertyName = "properties.optimizationType")]
-        public string OptimizationType { get; set; }
+        public OptimizationType OptimizationType { get; set; }
 
         /// <summary>
         /// Gets or sets path to a file hosted on the origin which helps
@@ -189,7 +187,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 
         /// <summary>
         /// Gets or sets list of rules defining the user's geo access within a
-        /// CDN endpoint. Each geo filter defines an acess rule to a specified
+        /// CDN endpoint. Each geo filter defines an access rule to a specified
         /// path or content, e.g. block APAC for path /pictures/
         /// </summary>
         [JsonProperty(PropertyName = "properties.geoFilters")]

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// The cancellation token.
         /// </param>
         /// <exception cref="ErrorResponseException">
-        /// Thrown when the Operation returned an invalid status code
+        /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// Lists all of the available CDN REST API operations.
         /// </summary>
         /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List Operation.
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// The cancellation token.
         /// </param>
         /// <exception cref="ErrorResponseException">
-        /// Thrown when the Operation returned an invalid status code
+        /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response

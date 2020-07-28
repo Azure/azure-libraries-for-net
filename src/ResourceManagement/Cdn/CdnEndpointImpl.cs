@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:F08598A17ADD014E223DFD77272641FF:F733ABC4C4375BDE663CF05B96352BF2
         public async override Task<Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> UpdateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            EndpointUpdateParametersInner updateInner = new EndpointUpdateParametersInner
+            EndpointUpdateParameters updateInner = new EndpointUpdateParameters
             {
                 IsHttpAllowed = Inner.IsHttpAllowed,
                 IsHttpsAllowed = Inner.IsHttpsAllowed,
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             };
 
             DeepCreatedOrigin originInner = Inner.Origins.ElementAt(0);
-            OriginUpdateParametersInner originParameters = new OriginUpdateParametersInner
+            OriginUpdateParameters originParameters = new OriginUpdateParameters
             {
                 HostName = originInner.HostName,
                 HttpPort = originInner.HttpPort,
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         ///GENMHASH:DEAE39A7D24B41C1AF6ABFA406FD058B:997BF86B1AE48764E97C384BDB52387E
-        public string ResourceState()
+        public EndpointResourceState ResourceState()
         {
             return Inner.ResourceState;
         }
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         ///GENMHASH:B616A3CDCC5668DC239E5CB02EC9777C:8915C60D99E7BDD3A3FD9CF713070E1C
-        public string OptimizationType()
+        public OptimizationType OptimizationType()
         {
             return Inner.OptimizationType;
         }
@@ -635,11 +635,11 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:89CD44AA5060CAB16CB0AF1FB046BC64:0A693DB1A3AF2F29E579F4E675DE54E9
         public IEnumerable<ResourceUsage> ListResourceUsage()
         {
-            return Extensions.Synchronize(() => Parent.Manager.Inner.Endpoints.ListResourceUsageInnerAsync(
+            return Extensions.Synchronize(() => Parent.Manager.Inner.Endpoints.ListResourceUsageAsync(
                                             Parent.ResourceGroupName,
                                             Parent.Name,
                                             Name()))
-                     .AsContinuousCollection(link => Extensions.Synchronize(() => Parent.Manager.Inner.Endpoints.ListResourceUsageInnerNextAsync(link)))
+                     .AsContinuousCollection(link => Extensions.Synchronize(() => Parent.Manager.Inner.Endpoints.ListResourceUsageNextAsync(link)))
                      .Select(inner => new ResourceUsage(inner));
         }
 

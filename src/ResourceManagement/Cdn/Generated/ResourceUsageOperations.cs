@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ResourceUsageInnerOperations operations.
+    /// ResourceUsageOperations operations.
     /// </summary>
-    internal partial class ResourceUsageInnerOperations : IServiceOperations<CdnManagementClient>, IResourceUsageInnerOperations
+    internal partial class ResourceUsageOperations : IServiceOperations<CdnManagementClient>, IResourceUsageOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceUsageInnerOperations class.
+        /// Initializes a new instance of the ResourceUsageOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ResourceUsageInnerOperations(CdnManagementClient client)
+        internal ResourceUsageOperations(CdnManagementClient client)
         {
             if (client == null)
             {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsageInner").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)

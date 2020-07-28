@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// &lt;endpointname&gt;.azureedge.net.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EndpointInner : TrackedResourceInner
+    public partial class EndpointInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the EndpointInner class.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// Apps, Blob Storage, and Cloud Services require this host header
         /// value to match the origin hostname by default.</param>
         /// <param name="originPath">A directory path on the origin that CDN
-        /// can use to retreive content from, e.g.
+        /// can use to retrieve content from, e.g.
         /// contoso.cloudapp.net/originpath.</param>
         /// <param name="contentTypesToCompress">List of content types on which
         /// compression applies. The value should be a valid MIME type.</param>
@@ -78,19 +78,19 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// most optimal routes for the CDN. This is relative to the origin
         /// path.</param>
         /// <param name="geoFilters">List of rules defining the user's geo
-        /// access within a CDN endpoint. Each geo filter defines an acess rule
-        /// to a specified path or content, e.g. block APAC for path
+        /// access within a CDN endpoint. Each geo filter defines an access
+        /// rule to a specified path or content, e.g. block APAC for path
         /// /pictures/</param>
         /// <param name="deliveryPolicy">A policy that specifies the delivery
         /// rules to be used for an endpoint.</param>
         /// <param name="hostName">The host name of the endpoint structured as
-        /// {endpointName}.{DNSZone}, e.g. consoto.azureedge.net</param>
+        /// {endpointName}.{DNSZone}, e.g. contoso.azureedge.net</param>
         /// <param name="resourceState">Resource status of the endpoint.
         /// Possible values include: 'Creating', 'Deleting', 'Running',
         /// 'Starting', 'Stopped', 'Stopping'</param>
         /// <param name="provisioningState">Provisioning status of the
         /// endpoint.</param>
-        public EndpointInner(string location, IList<DeepCreatedOrigin> origins, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string originHostHeader = default(string), string originPath = default(string), IList<string> contentTypesToCompress = default(IList<string>), bool? isCompressionEnabled = default(bool?), bool? isHttpAllowed = default(bool?), bool? isHttpsAllowed = default(bool?), QueryStringCachingBehavior? queryStringCachingBehavior = default(QueryStringCachingBehavior?), string optimizationType = default(string), string probePath = default(string), IList<GeoFilter> geoFilters = default(IList<GeoFilter>), EndpointPropertiesUpdateParametersDeliveryPolicy deliveryPolicy = default(EndpointPropertiesUpdateParametersDeliveryPolicy), string hostName = default(string), string resourceState = default(string), string provisioningState = default(string))
+        public EndpointInner(string location, IList<DeepCreatedOrigin> origins, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string originHostHeader = default(string), string originPath = default(string), IList<string> contentTypesToCompress = default(IList<string>), bool? isCompressionEnabled = default(bool?), bool? isHttpAllowed = default(bool?), bool? isHttpsAllowed = default(bool?), QueryStringCachingBehavior? queryStringCachingBehavior = default(QueryStringCachingBehavior?), OptimizationType optimizationType = default(OptimizationType), string probePath = default(string), IList<GeoFilter> geoFilters = default(IList<GeoFilter>), EndpointPropertiesUpdateParametersDeliveryPolicy deliveryPolicy = default(EndpointPropertiesUpdateParametersDeliveryPolicy), string hostName = default(string), EndpointResourceState resourceState = default(EndpointResourceState), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             OriginHostHeader = originHostHeader;
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 
         /// <summary>
         /// Gets or sets a directory path on the origin that CDN can use to
-        /// retreive content from, e.g. contoso.cloudapp.net/originpath.
+        /// retrieve content from, e.g. contoso.cloudapp.net/originpath.
         /// </summary>
         [JsonProperty(PropertyName = "properties.originPath")]
         public string OriginPath { get; set; }
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'DynamicSiteAcceleration'
         /// </summary>
         [JsonProperty(PropertyName = "properties.optimizationType")]
-        public string OptimizationType { get; set; }
+        public OptimizationType OptimizationType { get; set; }
 
         /// <summary>
         /// Gets or sets path to a file hosted on the origin which helps
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 
         /// <summary>
         /// Gets or sets list of rules defining the user's geo access within a
-        /// CDN endpoint. Each geo filter defines an acess rule to a specified
+        /// CDN endpoint. Each geo filter defines an access rule to a specified
         /// path or content, e.g. block APAC for path /pictures/
         /// </summary>
         [JsonProperty(PropertyName = "properties.geoFilters")]
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 
         /// <summary>
         /// Gets the host name of the endpoint structured as
-        /// {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
+        /// {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostName")]
         public string HostName { get; private set; }
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'Stopping'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
-        public string ResourceState { get; private set; }
+        public EndpointResourceState ResourceState { get; private set; }
 
         /// <summary>
         /// Gets provisioning status of the endpoint.

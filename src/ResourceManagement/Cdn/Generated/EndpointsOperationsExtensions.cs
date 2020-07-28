@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EndpointInner> UpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointName, EndpointUpdateParametersInner endpointUpdateProperties, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EndpointInner> UpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointName, EndpointUpdateParameters endpointUpdateProperties, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, profileName, endpointName, endpointUpdateProperties, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -313,9 +313,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageInnerAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListResourceUsageInnerWithHttpMessagesAsync(resourceGroupName, profileName, endpointName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListResourceUsageWithHttpMessagesAsync(resourceGroupName, profileName, endpointName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EndpointInner> BeginUpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointName, EndpointUpdateParametersInner endpointUpdateProperties, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EndpointInner> BeginUpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointName, EndpointUpdateParameters endpointUpdateProperties, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, profileName, endpointName, endpointUpdateProperties, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -547,9 +547,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageInnerNextAsync(this IEndpointsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageNextAsync(this IEndpointsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListResourceUsageInnerNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListResourceUsageNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

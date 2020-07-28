@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EndpointInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, EndpointUpdateParametersInner endpointUpdateProperties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EndpointInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, EndpointUpdateParameters endpointUpdateProperties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an existing CDN endpoint with the specified endpoint name
         /// under the specified subscription, resource group and profile.
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageInnerWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new CDN endpoint with the specified endpoint name under
         /// the specified subscription, resource group and profile.
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EndpointInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, EndpointUpdateParametersInner endpointUpdateProperties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EndpointInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, EndpointUpdateParameters endpointUpdateProperties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an existing CDN endpoint with the specified endpoint name
         /// under the specified subscription, resource group and profile.
@@ -594,6 +594,6 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageInnerNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

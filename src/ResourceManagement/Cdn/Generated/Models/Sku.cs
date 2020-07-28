@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         /// <param name="name">Name of the pricing tier. Possible values
         /// include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn'</param>
-        public Sku(string name = default(string))
+        /// 'Standard_Akamai', 'Standard_ChinaCdn', 'Premium_ChinaCdn',
+        /// 'Standard_Microsoft'</param>
+        public Sku(SkuName name = default(SkuName))
         {
             Name = name;
             CustomInit();
@@ -45,10 +46,11 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// <summary>
         /// Gets or sets name of the pricing tier. Possible values include:
         /// 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn'
+        /// 'Standard_Akamai', 'Standard_ChinaCdn', 'Premium_ChinaCdn',
+        /// 'Standard_Microsoft'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public SkuName Name { get; set; }
 
     }
 }
