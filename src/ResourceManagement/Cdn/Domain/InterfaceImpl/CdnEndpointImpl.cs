@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets endpoint state.
         /// </summary>
-        string Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.ResourceState
+        EndpointResourceState Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.ResourceState
         {
             get
             {
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets optimization type.
         /// </summary>
-        string Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.OptimizationType
+        OptimizationType Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.OptimizationType
         {
             get
             {

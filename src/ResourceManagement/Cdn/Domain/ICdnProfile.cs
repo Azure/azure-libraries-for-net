@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets CDN profile state.
         /// </summary>
-        string ResourceState { get; }
+        ProfileResourceState ResourceState { get; }
 
         /// <summary>
         /// Validates a custom domain mapping to ensure it maps to the correct CNAME in DNS in current profile.

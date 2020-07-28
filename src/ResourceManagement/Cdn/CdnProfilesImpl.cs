@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:89CD44AA5060CAB16CB0AF1FB046BC64:416FABEC3862B2A47FF2F9DD56AFEFF6
         public IEnumerable<ResourceUsage> ListResourceUsage()
         {
-            return Extensions.Synchronize(() => Manager.Inner.ResourceUsageInner.ListAsync())
-                                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.ResourceUsageInner.ListNextAsync(link)))
+            return Extensions.Synchronize(() => Manager.Inner.ResourceUsage.ListAsync())
+                                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.ResourceUsage.ListNextAsync(link)))
                                 .Select(inner => new ResourceUsage(inner));
 
         }
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:6F0D776A3FBBF84EE0312C9E28F2D855:EC99713AFF94DCD8E902241A49011E4B
         public IEnumerable<EdgeNode> ListEdgeNodes()
         {
-            return Extensions.Synchronize(() => Manager.Inner.EdgeNodeInners.ListAsync())
-                                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.EdgeNodeInners.ListNextAsync(link)))
+            return Extensions.Synchronize(() => Manager.Inner.EdgeNodes.ListAsync())
+                                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.EdgeNodes.ListNextAsync(link)))
                                 .Select(inner => new EdgeNode(inner));
         }
 

@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets CDN profile state.
         /// </summary>
-        string Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.ResourceState
+        ProfileResourceState Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile.ResourceState
         {
             get
             {

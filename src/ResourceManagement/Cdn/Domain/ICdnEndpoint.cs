@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets endpoint state.
         /// </summary>
-        string ResourceState { get; }
+        EndpointResourceState ResourceState { get; }
 
         /// <summary>
         /// Forcibly purges the content of the CDN endpoint asynchronously.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets optimization type.
         /// </summary>
-        string OptimizationType { get; }
+        OptimizationType OptimizationType { get; }
 
         /// <summary>
         /// Validates a custom domain mapping to ensure it maps to the correct CNAME in DNS for current endpoint.
