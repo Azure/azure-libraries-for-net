@@ -8,16 +8,25 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for OptimizationType.
     /// </summary>
-    public static class OptimizationType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<OptimizationType>))]
+    public class OptimizationType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<OptimizationType>
     {
-        public const string GeneralWebDelivery = "GeneralWebDelivery";
-        public const string GeneralMediaStreaming = "GeneralMediaStreaming";
-        public const string VideoOnDemandMediaStreaming = "VideoOnDemandMediaStreaming";
-        public const string LargeFileDownload = "LargeFileDownload";
-        public const string DynamicSiteAcceleration = "DynamicSiteAcceleration";
+        public static readonly OptimizationType GeneralWebDelivery = Parse("GeneralWebDelivery");
+        public static readonly OptimizationType GeneralMediaStreaming = Parse("GeneralMediaStreaming");
+        public static readonly OptimizationType VideoOnDemandMediaStreaming = Parse("VideoOnDemandMediaStreaming");
+        public static readonly OptimizationType LargeFileDownload = Parse("LargeFileDownload");
+        public static readonly OptimizationType DynamicSiteAcceleration = Parse("DynamicSiteAcceleration");
     }
 }

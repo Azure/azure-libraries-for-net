@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// CDN REST API OperationInner
+    /// CDN REST API operation
     /// </summary>
     public partial class OperationInner
     {
@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the OperationInner class.
         /// </summary>
-        /// <param name="name">OperationInner name:
-        /// {provider}/{resource}/{OperationInner}</param>
+        /// <param name="name">Operation name:
+        /// {provider}/{resource}/{operation}</param>
         /// <param name="display">The object that represents the
-        /// OperationInner.</param>
+        /// operation.</param>
         public OperationInner(string name = default(string), OperationDisplay display = default(OperationDisplay))
         {
             Name = name;
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets OperationInner name: {provider}/{resource}/{OperationInner}
+        /// Gets operation name: {provider}/{resource}/{operation}
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or sets the object that represents the OperationInner.
+        /// Gets or sets the object that represents the operation.
         /// </summary>
         [JsonProperty(PropertyName = "display")]
         public OperationDisplay Display { get; set; }

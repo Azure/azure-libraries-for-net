@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         /// <param name="supportedOptimizationTypes">Supported optimization
         /// types for a profile.</param>
-        public SupportedOptimizationTypesListResultInner(IList<string> supportedOptimizationTypes = default(IList<string>))
+        public SupportedOptimizationTypesListResultInner(IList<OptimizationType> supportedOptimizationTypes = default(IList<OptimizationType>))
         {
             SupportedOptimizationTypes = supportedOptimizationTypes;
             CustomInit();
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// Gets supported optimization types for a profile.
         /// </summary>
         [JsonProperty(PropertyName = "supportedOptimizationTypes")]
-        public IList<string> SupportedOptimizationTypes { get; private set; }
+        public IList<OptimizationType> SupportedOptimizationTypes { get; private set; }
 
     }
 }

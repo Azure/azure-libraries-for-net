@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Generates a dynamic SSO URI used to sign in to the CDN supplemental
-        /// portal. Supplemnetal portal is used to configure advanced feature
+        /// portal. Supplemental portal is used to configure advanced feature
         /// capabilities that are not yet available in the Azure portal, such
         /// as core reports in a standard profile; rules engine, advanced HTTP
         /// reports, and real-time stats and alerts in a premium profile. The
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageInnerWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new CDN profile with a profile name under the specified
         /// subscription and resource group.
@@ -401,6 +401,6 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageInnerNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceUsageInner>>> ListResourceUsageNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

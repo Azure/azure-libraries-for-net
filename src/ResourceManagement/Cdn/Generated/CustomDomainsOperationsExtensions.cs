@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             }
 
             /// <summary>
-            /// Gets an exisitng custom domain within an endpoint.
+            /// Gets an existing custom domain within an endpoint.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -182,12 +182,17 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='customDomainName'>
             /// Name of the custom domain within an endpoint.
             /// </param>
+            /// <param name='customDomainHttpsParameters'>
+            /// The configuration specifying how to enable HTTPS for the custom domain -
+            /// using CDN managed certificate or user's own certificate. If not specified,
+            /// enabling ssl uses CDN managed certificate by default.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CustomDomainInner> EnableCustomHttpsAsync(this ICustomDomainsOperations operations, string resourceGroupName, string profileName, string endpointName, string customDomainName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomDomainInner> EnableCustomHttpsAsync(this ICustomDomainsOperations operations, string resourceGroupName, string profileName, string endpointName, string customDomainName, CustomDomainHttpsParameters customDomainHttpsParameters = default(CustomDomainHttpsParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.EnableCustomHttpsWithHttpMessagesAsync(resourceGroupName, profileName, endpointName, customDomainName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.EnableCustomHttpsWithHttpMessagesAsync(resourceGroupName, profileName, endpointName, customDomainName, customDomainHttpsParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

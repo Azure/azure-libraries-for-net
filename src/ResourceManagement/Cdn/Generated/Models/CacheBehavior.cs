@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 
     using Newtonsoft.Json;
     /// <summary>
-    /// Defines values for OriginResourceState.
+    /// Defines values for CacheBehavior.
     /// </summary>
     /// <summary>
     /// Determine base value for a given allowed value if exists, else return
     /// the value itself
     /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<OriginResourceState>))]
-    public class OriginResourceState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<OriginResourceState>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<CacheBehavior>))]
+    public class CacheBehavior : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<CacheBehavior>
     {
-        public static readonly OriginResourceState Creating = Parse("Creating");
-        public static readonly OriginResourceState Active = Parse("Active");
-        public static readonly OriginResourceState Deleting = Parse("Deleting");
+        public static readonly CacheBehavior BypassCache = Parse("BypassCache");
+        public static readonly CacheBehavior Override = Parse("Override");
+        public static readonly CacheBehavior SetIfMissing = Parse("SetIfMissing");
     }
 }

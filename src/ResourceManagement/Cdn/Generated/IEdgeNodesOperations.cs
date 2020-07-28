@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// EdgeNodeInnersOperations operations.
+    /// EdgeNodesOperations operations.
     /// </summary>
-    public partial interface IEdgeNodeInnersOperations
+    public partial interface IEdgeNodesOperations
     {
         /// <summary>
-        /// EdgeNodeInners are the global Point of Presence (POP) locations used to
+        /// Edgenodes are the global Point of Presence (POP) locations used to
         /// deliver CDN content to end users.
         /// </summary>
         /// <param name='customHeaders'>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<EdgeNodeInner>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// EdgeNodeInners are the global Point of Presence (POP) locations used to
+        /// Edgenodes are the global Point of Presence (POP) locations used to
         /// deliver CDN content to end users.
         /// </summary>
         /// <param name='nextPageLink'>

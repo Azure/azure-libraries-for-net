@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List Operation.
+            /// The NextLink from the previous successful call to List operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

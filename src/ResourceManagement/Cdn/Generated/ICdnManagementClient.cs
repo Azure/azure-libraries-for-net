@@ -18,9 +18,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Use these APIs to manage Azure CDN resources through the Azure Resource
-    /// Manager. You must make sure that requests made to these resources are
-    /// secure.
+    /// Cdn Management Client
     /// </summary>
     public partial interface ICdnManagementClient : System.IDisposable
     {
@@ -56,19 +54,20 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         string ApiVersion { get; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running
-        /// Operations. Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default
+        /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated
-        /// and included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// set to true a unique x-ms-client-request-id value is generated and
+        /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
@@ -94,9 +93,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ICustomDomainsOperations CustomDomains { get; }
 
         /// <summary>
-        /// Gets the IResourceUsageInnerOperations.
+        /// Gets the IResourceUsageOperations.
         /// </summary>
-        IResourceUsageInnerOperations ResourceUsageInner { get; }
+        IResourceUsageOperations ResourceUsage { get; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -104,9 +103,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IEdgeNodeInnersOperations.
+        /// Gets the IEdgeNodesOperations.
         /// </summary>
-        IEdgeNodeInnersOperations EdgeNodeInners { get; }
+        IEdgeNodesOperations EdgeNodes { get; }
 
         /// <summary>
         /// Check the availability of a resource name. This is needed for

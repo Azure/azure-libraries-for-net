@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// <param name="matchType">The match type for the condition of the
         /// delivery rule. Possible values include: 'Literal',
         /// 'Wildcard'</param>
-        public UrlPathConditionParameters(string path, string matchType)
+        public UrlPathConditionParameters(string path, MatchType matchType)
         {
             Path = path;
             MatchType = matchType;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// Possible values include: 'Literal', 'Wildcard'
         /// </summary>
         [JsonProperty(PropertyName = "matchType")]
-        public string MatchType { get; set; }
+        public MatchType MatchType { get; set; }
 
         /// <summary>
         /// </summary>
