@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// configured origins.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class OriginInner : TrackedResourceInner
+    public partial class OriginInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the OriginInner class.

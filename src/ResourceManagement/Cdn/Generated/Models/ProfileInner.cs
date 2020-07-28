@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// settings, such as CDN provider and pricing tier.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ProfileInner : TrackedResourceInner
+    public partial class ProfileInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ProfileInner class.
