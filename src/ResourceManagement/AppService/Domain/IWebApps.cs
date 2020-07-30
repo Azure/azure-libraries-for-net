@@ -65,25 +65,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="resourceGroupName"> the name of the resource group to list the resources from</param>
         /// <returns>the list of resources</returns>
-        new IEnumerable<IWebAppSimple> ListSimpleWebAppByResourceGroup(string resourceGroupName);
+        IEnumerable<IWebAppSimple> ListSimpleWebAppByResourceGroup(string resourceGroupName);
 
         /// <summary>
         /// Lists resources of the specified type in the specified resource group.
         /// </summary>
         /// <param name="resourceGroupName"> the name of the resource group to list the resources from</param>
         /// <returns>the list of resources</returns>
-        new Task<IPagedCollection<IWebAppSimple>> LisSimpleWebApptByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<IWebAppSimple>> LisSimpleWebApptByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
         /// </summary>
         /// <returns>list of resources</returns>
-        new IEnumerable<IWebAppSimple> ListSimpleWebApp();
+        IEnumerable<IWebAppSimple> ListSimpleWebApp();
 
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
         /// </summary>
         /// <returns>list of resources</returns>
-        new Task<IPagedCollection<IWebAppSimple>> ListSimpleWebAppAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<IWebAppSimple>> ListSimpleWebAppAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
