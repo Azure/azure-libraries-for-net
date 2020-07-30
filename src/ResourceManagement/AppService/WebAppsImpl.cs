@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return Extensions.Synchronize(() => LisSimpleWebApptByResourceGroupAsync(resourceGroupName));
         }
 
-        public async Task<IPagedCollection<IWebAppSimple>> LisSimpleWebApptByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default)
+        public async Task<IPagedCollection<IWebAppSimple>> LisSimpleWebApptByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var collection = await PagedCollection<IWebAppSimple, SiteInner>.LoadPage(
                 async (cancellation) => await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return Extensions.Synchronize(() => ListSimpleWebAppAsync());
         }
 
-        public async Task<IPagedCollection<IWebAppSimple>> ListSimpleWebAppAsync(bool loadAllPages = true, CancellationToken cancellationToken = default)
+        public async Task<IPagedCollection<IWebAppSimple>> ListSimpleWebAppAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var collection = await PagedCollection<IWebAppSimple, SiteInner>.LoadPage(
                 async (cancellation) => await Inner.ListAsync(cancellationToken: cancellation),
