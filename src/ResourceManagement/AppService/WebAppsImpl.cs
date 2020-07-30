@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         TopLevelModifiableResources<
             IWebApp,
             WebAppImpl,
-            Models.SiteInner,
+            SiteInner,
             IWebAppsOperations,
             IAppServiceManager>,
         IWebApps
@@ -174,6 +174,41 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
         {
             await Inner.DeleteAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm, cancellationToken);
+        }
+
+        public IEnumerable<IWebAppSimple> ListSimpleWebAppByResourceGroup(string resourceGroupName)
+        {
+            return Extensions.Synchronize(() => LisSimpleWebApptByResourceGroupAsync(resourceGroupName));
+        }
+
+        public async Task<IPagedCollection<IWebAppSimple>> LisSimpleWebApptByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default)
+        {
+            var collection = await PagedCollection<IWebAppSimple, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebAppBaseSimpleImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IWebAppSimple, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
+        }
+
+        public IEnumerable<IWebAppSimple> ListSimpleWebApp()
+        {
+            return Extensions.Synchronize(() => ListSimpleWebAppAsync());
+        }
+
+        public async Task<IPagedCollection<IWebAppSimple>> ListSimpleWebAppAsync(bool loadAllPages = true, CancellationToken cancellationToken = default)
+        {
+            var collection = await PagedCollection<IWebAppSimple, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListAsync(cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebAppBaseSimpleImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IWebAppSimple, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
+        }
+
+        private bool FilterWebApp(IWebAppSimple w)
+        {
+            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
         }
     }
 }
