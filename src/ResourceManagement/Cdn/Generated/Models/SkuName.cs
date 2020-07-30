@@ -8,16 +8,27 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for SkuName.
     /// </summary>
-    public static class SkuName
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<SkuName>))]
+    public class SkuName : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<SkuName>
     {
-        public const string StandardVerizon = "Standard_Verizon";
-        public const string PremiumVerizon = "Premium_Verizon";
-        public const string CustomVerizon = "Custom_Verizon";
-        public const string StandardAkamai = "Standard_Akamai";
-        public const string StandardChinaCdn = "Standard_ChinaCdn";
+        public static readonly SkuName StandardVerizon = Parse("Standard_Verizon");
+        public static readonly SkuName PremiumVerizon = Parse("Premium_Verizon");
+        public static readonly SkuName CustomVerizon = Parse("Custom_Verizon");
+        public static readonly SkuName StandardAkamai = Parse("Standard_Akamai");
+        public static readonly SkuName StandardChinaCdn = Parse("Standard_ChinaCdn");
+        public static readonly SkuName PremiumChinaCdn = Parse("Premium_ChinaCdn");
+        public static readonly SkuName StandardMicrosoft = Parse("Standard_Microsoft");
     }
 }

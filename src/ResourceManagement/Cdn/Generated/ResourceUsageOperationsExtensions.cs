@@ -15,9 +15,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for ResourceUsageInnerOperations.
+    /// Extension methods for ResourceUsageOperations.
     /// </summary>
-    public static partial class ResourceUsageInnerOperationsExtensions
+    public static partial class ResourceUsageOperationsExtensions
     {
             /// <summary>
             /// Check the quota and actual usage of the CDN profiles under the given
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceUsageInner>> ListAsync(this IResourceUsageInnerOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceUsageInner>> ListAsync(this IResourceUsageOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceUsageInner>> ListNextAsync(this IResourceUsageInnerOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceUsageInner>> ListNextAsync(this IResourceUsageOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

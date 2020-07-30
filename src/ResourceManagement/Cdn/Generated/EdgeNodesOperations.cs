@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// EdgeNodeInnersOperations operations.
+    /// EdgeNodesOperations operations.
     /// </summary>
-    internal partial class EdgeNodeInnersOperations : IServiceOperations<CdnManagementClient>, IEdgeNodeInnersOperations
+    internal partial class EdgeNodesOperations : IServiceOperations<CdnManagementClient>, IEdgeNodesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the EdgeNodeInnersOperations class.
+        /// Initializes a new instance of the EdgeNodesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal EdgeNodeInnersOperations(CdnManagementClient client)
+        internal EdgeNodesOperations(CdnManagementClient client)
         {
             if (client == null)
             {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         public CdnManagementClient Client { get; private set; }
 
         /// <summary>
-        /// EdgeNodeInners are the global Point of Presence (POP) locations used to deliver
+        /// Edgenodes are the global Point of Presence (POP) locations used to deliver
         /// CDN content to end users.
         /// </summary>
         /// <param name='customHeaders'>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Cdn/EdgeNodeInners").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Cdn/edgenodes").ToString();
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         /// <summary>
-        /// EdgeNodeInners are the global Point of Presence (POP) locations used to deliver
+        /// Edgenodes are the global Point of Presence (POP) locations used to deliver
         /// CDN content to end users.
         /// </summary>
         /// <param name='nextPageLink'>

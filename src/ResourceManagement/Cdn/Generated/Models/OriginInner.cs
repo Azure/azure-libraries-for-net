@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// configured origins.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class OriginInner : TrackedResourceInner
+    public partial class OriginInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the OriginInner class.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// values include: 'Creating', 'Active', 'Deleting'</param>
         /// <param name="provisioningState">Provisioning status of the
         /// origin.</param>
-        public OriginInner(string location, string hostName, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? httpPort = default(int?), int? httpsPort = default(int?), string resourceState = default(string), string provisioningState = default(string))
+        public OriginInner(string location, string hostName, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? httpPort = default(int?), int? httpsPort = default(int?), OriginResourceState resourceState = default(OriginResourceState), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             HostName = hostName;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'Creating', 'Active', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
-        public string ResourceState { get; private set; }
+        public OriginResourceState ResourceState { get; private set; }
 
         /// <summary>
         /// Gets provisioning status of the origin.

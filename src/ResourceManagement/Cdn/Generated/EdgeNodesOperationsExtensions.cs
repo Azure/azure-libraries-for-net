@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for EdgeNodeInnersOperations.
+    /// Extension methods for EdgeNodesOperations.
     /// </summary>
-    public static partial class EdgeNodeInnersOperationsExtensions
+    public static partial class EdgeNodesOperationsExtensions
     {
             /// <summary>
-            /// EdgeNodeInners are the global Point of Presence (POP) locations used to deliver
+            /// Edgenodes are the global Point of Presence (POP) locations used to deliver
             /// CDN content to end users.
             /// </summary>
             /// <param name='operations'>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<EdgeNodeInner>> ListAsync(this IEdgeNodeInnersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<EdgeNodeInner>> ListAsync(this IEdgeNodesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             }
 
             /// <summary>
-            /// EdgeNodeInners are the global Point of Presence (POP) locations used to deliver
+            /// Edgenodes are the global Point of Presence (POP) locations used to deliver
             /// CDN content to end users.
             /// </summary>
             /// <param name='operations'>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<EdgeNodeInner>> ListNextAsync(this IEdgeNodeInnersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<EdgeNodeInner>> ListNextAsync(this IEdgeNodesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

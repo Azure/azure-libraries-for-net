@@ -8,16 +8,25 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for CustomHttpsProvisioningState.
     /// </summary>
-    public static class CustomHttpsProvisioningState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<CustomHttpsProvisioningState>))]
+    public class CustomHttpsProvisioningState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<CustomHttpsProvisioningState>
     {
-        public const string Enabling = "Enabling";
-        public const string Enabled = "Enabled";
-        public const string Disabling = "Disabling";
-        public const string Disabled = "Disabled";
-        public const string Failed = "Failed";
+        public static readonly CustomHttpsProvisioningState Enabling = Parse("Enabling");
+        public static readonly CustomHttpsProvisioningState Enabled = Parse("Enabled");
+        public static readonly CustomHttpsProvisioningState Disabling = Parse("Disabling");
+        public static readonly CustomHttpsProvisioningState Disabled = Parse("Disabled");
+        public static readonly CustomHttpsProvisioningState Failed = Parse("Failed");
     }
 }

@@ -11,13 +11,11 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Friendly domain name mapping to the endpoint hostname that the customer
-    /// provides for branding purposes, e.g. www.consoto.com.
+    /// provides for branding purposes, e.g. www.contoso.com.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class CustomDomainInner : ProxyResourceInner
@@ -56,7 +54,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// required to deliver content in China.</param>
         /// <param name="provisioningState">Provisioning status of the custom
         /// domain.</param>
-        public CustomDomainInner(string hostName, string id = default(string), string name = default(string), string type = default(string), string resourceState = default(string), string customHttpsProvisioningState = default(string), string customHttpsProvisioningSubstate = default(string), string validationData = default(string), string provisioningState = default(string))
+        public CustomDomainInner(string hostName, string id = default(string), string name = default(string), string type = default(string), CustomDomainResourceState resourceState = default(CustomDomainResourceState), CustomHttpsProvisioningState customHttpsProvisioningState = default(CustomHttpsProvisioningState), CustomHttpsProvisioningSubstate customHttpsProvisioningSubstate = default(CustomHttpsProvisioningSubstate), string validationData = default(string), string provisioningState = default(string))
             : base(id, name, type)
         {
             HostName = hostName;
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'Creating', 'Active', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
-        public string ResourceState { get; private set; }
+        public CustomDomainResourceState ResourceState { get; private set; }
 
         /// <summary>
         /// Gets provisioning status of Custom Https of the custom domain.
@@ -93,7 +91,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'Disabled', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.customHttpsProvisioningState")]
-        public string CustomHttpsProvisioningState { get; private set; }
+        public CustomHttpsProvisioningState CustomHttpsProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets provisioning substate shows the progress of custom HTTPS
@@ -107,7 +105,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'DeletingCertificate', 'CertificateDeleted'
         /// </summary>
         [JsonProperty(PropertyName = "properties.customHttpsProvisioningSubstate")]
-        public string CustomHttpsProvisioningSubstate { get; private set; }
+        public CustomHttpsProvisioningSubstate CustomHttpsProvisioningSubstate { get; private set; }
 
         /// <summary>
         /// Gets or sets special validation or data may be required when

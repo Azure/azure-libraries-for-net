@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         /// <summary>
-        /// Gets an exisitng custom domain within an endpoint.
+        /// Gets an existing custom domain within an endpoint.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the Resource group within the Azure subscription.
@@ -785,6 +785,11 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name='customDomainName'>
         /// Name of the custom domain within an endpoint.
         /// </param>
+        /// <param name='customDomainHttpsParameters'>
+        /// The configuration specifying how to enable HTTPS for the custom domain -
+        /// using CDN managed certificate or user's own certificate. If not specified,
+        /// enabling ssl uses CDN managed certificate by default.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -806,7 +811,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CustomDomainInner>> EnableCustomHttpsWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, string customDomainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CustomDomainInner>> EnableCustomHttpsWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointName, string customDomainName, CustomDomainHttpsParameters customDomainHttpsParameters = default(CustomDomainHttpsParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -839,6 +844,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "customDomainName");
             }
+            if (customDomainHttpsParameters != null)
+            {
+                customDomainHttpsParameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -858,6 +867,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 tracingParameters.Add("profileName", profileName);
                 tracingParameters.Add("endpointName", endpointName);
                 tracingParameters.Add("customDomainName", customDomainName);
+                tracingParameters.Add("customDomainHttpsParameters", customDomainHttpsParameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "EnableCustomHttps", tracingParameters);
             }
@@ -912,6 +922,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
             // Serialize Request
             string _requestContent = null;
+            if(customDomainHttpsParameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(customDomainHttpsParameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {

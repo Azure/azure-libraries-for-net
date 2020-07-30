@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the CidrIpAddress class.
         /// </summary>
-        /// <param name="baseIpAddress">Ip adress itself.</param>
+        /// <param name="baseIpAddress">Ip address itself.</param>
         /// <param name="prefixLength">The length of the prefix of the ip
         /// address.</param>
         public CidrIpAddress(string baseIpAddress = default(string), int? prefixLength = default(int?))
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ip adress itself.
+        /// Gets or sets ip address itself.
         /// </summary>
         [JsonProperty(PropertyName = "baseIpAddress")]
         public string BaseIpAddress { get; set; }

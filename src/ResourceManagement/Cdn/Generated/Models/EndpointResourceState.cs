@@ -8,17 +8,26 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for EndpointResourceState.
     /// </summary>
-    public static class EndpointResourceState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<EndpointResourceState>))]
+    public class EndpointResourceState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<EndpointResourceState>
     {
-        public const string Creating = "Creating";
-        public const string Deleting = "Deleting";
-        public const string Running = "Running";
-        public const string Starting = "Starting";
-        public const string Stopped = "Stopped";
-        public const string Stopping = "Stopping";
+        public static readonly EndpointResourceState Creating = Parse("Creating");
+        public static readonly EndpointResourceState Deleting = Parse("Deleting");
+        public static readonly EndpointResourceState Running = Parse("Running");
+        public static readonly EndpointResourceState Starting = Parse("Starting");
+        public static readonly EndpointResourceState Stopped = Parse("Stopped");
+        public static readonly EndpointResourceState Stopping = Parse("Stopping");
     }
 }

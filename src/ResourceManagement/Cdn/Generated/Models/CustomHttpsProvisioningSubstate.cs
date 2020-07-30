@@ -8,21 +8,30 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for CustomHttpsProvisioningSubstate.
     /// </summary>
-    public static class CustomHttpsProvisioningSubstate
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<CustomHttpsProvisioningSubstate>))]
+    public class CustomHttpsProvisioningSubstate : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<CustomHttpsProvisioningSubstate>
     {
-        public const string SubmittingDomainControlValidationRequest = "SubmittingDomainControlValidationRequest";
-        public const string PendingDomainControlValidationREquestApproval = "PendingDomainControlValidationREquestApproval";
-        public const string DomainControlValidationRequestApproved = "DomainControlValidationRequestApproved";
-        public const string DomainControlValidationRequestRejected = "DomainControlValidationRequestRejected";
-        public const string DomainControlValidationRequestTimedOut = "DomainControlValidationRequestTimedOut";
-        public const string IssuingCertificate = "IssuingCertificate";
-        public const string DeployingCertificate = "DeployingCertificate";
-        public const string CertificateDeployed = "CertificateDeployed";
-        public const string DeletingCertificate = "DeletingCertificate";
-        public const string CertificateDeleted = "CertificateDeleted";
+        public static readonly CustomHttpsProvisioningSubstate SubmittingDomainControlValidationRequest = Parse("SubmittingDomainControlValidationRequest");
+        public static readonly CustomHttpsProvisioningSubstate PendingDomainControlValidationREquestApproval = Parse("PendingDomainControlValidationREquestApproval");
+        public static readonly CustomHttpsProvisioningSubstate DomainControlValidationRequestApproved = Parse("DomainControlValidationRequestApproved");
+        public static readonly CustomHttpsProvisioningSubstate DomainControlValidationRequestRejected = Parse("DomainControlValidationRequestRejected");
+        public static readonly CustomHttpsProvisioningSubstate DomainControlValidationRequestTimedOut = Parse("DomainControlValidationRequestTimedOut");
+        public static readonly CustomHttpsProvisioningSubstate IssuingCertificate = Parse("IssuingCertificate");
+        public static readonly CustomHttpsProvisioningSubstate DeployingCertificate = Parse("DeployingCertificate");
+        public static readonly CustomHttpsProvisioningSubstate CertificateDeployed = Parse("CertificateDeployed");
+        public static readonly CustomHttpsProvisioningSubstate DeletingCertificate = Parse("DeletingCertificate");
+        public static readonly CustomHttpsProvisioningSubstate CertificateDeleted = Parse("CertificateDeleted");
     }
 }

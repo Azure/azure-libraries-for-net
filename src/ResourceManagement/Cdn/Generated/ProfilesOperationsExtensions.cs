@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
             /// <summary>
             /// Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
-            /// Supplemnetal portal is used to configure advanced feature capabilities that
+            /// Supplemental portal is used to configure advanced feature capabilities that
             /// are not yet available in the Azure portal, such as core reports in a
             /// standard profile; rules engine, advanced HTTP reports, and real-time stats
             /// and alerts in a premium profile. The SSO URI changes approximately every 10
@@ -225,9 +225,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageInnerAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListResourceUsageInnerWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListResourceUsageWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -361,9 +361,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageInnerNextAsync(this IProfilesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceUsageInner>> ListResourceUsageNextAsync(this IProfilesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListResourceUsageInnerNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListResourceUsageNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

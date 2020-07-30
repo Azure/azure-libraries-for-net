@@ -9,35 +9,33 @@
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Edgenode is a global Point of Presence (POP) location used to deliver
-    /// CDN content to end users.
+    /// The JSON object that contains the properties to secure a custom domain.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class EdgeNodeInner : ProxyResourceInner
+    public partial class CustomDomainHttpsParameters
     {
         /// <summary>
-        /// Initializes a new instance of the EdgeNodeInner class.
+        /// Initializes a new instance of the CustomDomainHttpsParameters
+        /// class.
         /// </summary>
-        public EdgeNodeInner()
+        public CustomDomainHttpsParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the EdgeNodeInner class.
+        /// Initializes a new instance of the CustomDomainHttpsParameters
+        /// class.
         /// </summary>
-        /// <param name="ipAddressGroups">List of ip address groups.</param>
-        public EdgeNodeInner(IList<IpAddressGroup> ipAddressGroups, string id = default(string), string name = default(string), string type = default(string))
-            : base(id, name, type)
+        /// <param name="protocolType">Defines the TLS extension protocol that
+        /// is used for secure delivery. Possible values include:
+        /// 'ServerNameIndication', 'IPBased'</param>
+        public CustomDomainHttpsParameters(ProtocolType protocolType)
         {
-            IpAddressGroups = ipAddressGroups;
+            ProtocolType = protocolType;
             CustomInit();
         }
 
@@ -47,10 +45,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of ip address groups.
+        /// Gets or sets defines the TLS extension protocol that is used for
+        /// secure delivery. Possible values include: 'ServerNameIndication',
+        /// 'IPBased'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.ipAddressGroups")]
-        public IList<IpAddressGroup> IpAddressGroups { get; set; }
+        [JsonProperty(PropertyName = "protocolType")]
+        public ProtocolType ProtocolType { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (IpAddressGroups == null)
+            if (ProtocolType == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "IpAddressGroups");
+                throw new ValidationException(ValidationRules.CannotBeNull, "ProtocolType");
             }
         }
     }

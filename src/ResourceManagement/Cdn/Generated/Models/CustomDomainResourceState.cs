@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for CustomDomainResourceState.
     /// </summary>
-    public static class CustomDomainResourceState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<CustomDomainResourceState>))]
+    public class CustomDomainResourceState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<CustomDomainResourceState>
     {
-        public const string Creating = "Creating";
-        public const string Active = "Active";
-        public const string Deleting = "Deleting";
+        public static readonly CustomDomainResourceState Creating = Parse("Creating");
+        public static readonly CustomDomainResourceState Active = Parse("Active");
+        public static readonly CustomDomainResourceState Deleting = Parse("Deleting");
     }
 }

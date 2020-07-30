@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// settings, such as CDN provider and pricing tier.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ProfileInner : TrackedResourceInner
+    public partial class ProfileInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ProfileInner class.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'Disabled'</param>
         /// <param name="provisioningState">Provisioning status of the
         /// profile.</param>
-        public ProfileInner(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceState = default(string), string provisioningState = default(string))
+        public ProfileInner(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProfileResourceState resourceState = default(ProfileResourceState), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// 'Creating', 'Active', 'Deleting', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
-        public string ResourceState { get; private set; }
+        public ProfileResourceState ResourceState { get; private set; }
 
         /// <summary>
         /// Gets provisioning status of the profile.

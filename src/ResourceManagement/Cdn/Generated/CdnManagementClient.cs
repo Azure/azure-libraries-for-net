@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Cdn.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -23,11 +25,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Use these APIs to manage Azure CDN resources through the Azure Resource
-    /// Manager. You must make sure that requests made to these resources are
-    /// secure.
+    /// Cdn Management Client
     /// </summary>
-    public partial class CdnManagementClient : FluentServiceClientBase<CdnManagementClient>, ICdnManagementClient, IAzureClient
+    public partial class CdnManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<CdnManagementClient>, ICdnManagementClient, IAzureClient
     {
         /// <summary>
         /// Gets or sets json serialization settings.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-        
+
         /// <summary>
         /// Azure Subscription ID.
         /// </summary>
@@ -51,19 +51,20 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -88,9 +89,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         public virtual ICustomDomainsOperations CustomDomains { get; private set; }
 
         /// <summary>
-        /// Gets the IResourceUsageInnerOperations.
+        /// Gets the IResourceUsageOperations.
         /// </summary>
-        public virtual IResourceUsageInnerOperations ResourceUsageInner { get; private set; }
+        public virtual IResourceUsageOperations ResourceUsage { get; private set; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -98,30 +99,17 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IEdgeNodeInnersOperations.
+        /// Gets the IEdgeNodesOperations.
         /// </summary>
-        public virtual IEdgeNodeInnersOperations EdgeNodeInners { get; private set; }
+        public virtual IEdgeNodesOperations EdgeNodes { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the CdnManagementClient class.
         /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Azure.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public CdnManagementClient(RestClient restClient) 
-            : base(restClient)
+        public CdnManagementClient(RestClient restClient) : base(restClient)
         {
         }
 
@@ -138,10 +126,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             Endpoints = new EndpointsOperations(this);
             Origins = new OriginsOperations(this);
             CustomDomains = new CustomDomainsOperations(this);
-            ResourceUsageInner = new ResourceUsageInnerOperations(this);
+            ResourceUsage = new ResourceUsageOperations(this);
             Operations = new Operations(this);
-            EdgeNodeInners = new EdgeNodeInnersOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            EdgeNodes = new EdgeNodesOperations(this);
+            this.BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2017-10-12";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -176,6 +164,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DeliveryRuleAction>("name"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DeliveryRuleCondition>("name"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DeliveryRuleCondition>("name"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CustomDomainHttpsParameters>("certificateSource"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CustomDomainHttpsParameters>("certificateSource"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
@@ -235,7 +225,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "CheckNameAvailability", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Cdn/checkNameAvailability").ToString();
             List<string> _queryParameters = new List<string>();
             if (ApiVersion != null)
@@ -287,10 +277,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -298,7 +288,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -427,7 +417,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "CheckNameAvailabilityWithSubscription", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkNameAvailability").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -480,10 +470,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -491,7 +481,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -622,7 +612,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 ServiceClientTracing.Enter(_invocationId, this, "ValidateProbe", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
+            var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Cdn/validateProbe").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -675,10 +665,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
-            if (Credentials != null)
+            if (this.Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             }
             // Send Request
             if (_shouldTrace)
@@ -686,7 +676,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
