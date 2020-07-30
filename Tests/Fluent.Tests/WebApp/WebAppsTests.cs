@@ -46,9 +46,6 @@ namespace Fluent.Tests.WebApp
                     Assert.Equal(Region.USWest, plan1.Region);
                     Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
 
-                    var l1 = appServiceManager.WebApps.ListSimpleWebAppByResourceGroup(GroupName1);
-                    var w1 = appServiceManager.WebApps.GetById(l1.First().Id);
-
                     // Create in a new group with existing app service plan
                     var webApp2 = appServiceManager.WebApps.Define(WebAppName2)
                         .WithExistingWindowsPlan(plan1)
