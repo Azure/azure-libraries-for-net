@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Web App.
     /// </summary>
-    public interface IWebAppSimple : IWebAppSimpleBase
+    public interface IWebAppBasic : IWebAppBasicBase
     {
     }
 }

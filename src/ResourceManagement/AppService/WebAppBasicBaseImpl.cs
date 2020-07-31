@@ -4,20 +4,28 @@
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using Microsoft.Azure.Management.AppService.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class WebAppBaseSimpleImpl : IWebAppSimple
+    internal class WebAppBasicBaseImpl : IWebAppBasic
     {
         private Models.SiteInner inner;
 
-        public WebAppBaseSimpleImpl(Models.SiteInner inner)
+        public WebAppBasicBaseImpl(Models.SiteInner inner)
         {
             this.inner = inner;
+
+            if (Inner.Tags == null)
+            {
+                Inner.Tags = new Dictionary<string, string>();
+            }
         }
+
+        public SiteInner Inner => inner;
 
         public string Id => Inner.Id;
 
@@ -25,7 +33,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public string ResourceGroupName => Inner.ResourceGroup;
 
-        public SiteInner Inner => inner;
+        public string Type => Inner.Type;
+
+        public string RegionName => Inner.Location;
+
+        public Region Region => Region.Create(this.RegionName);
+
+        public IReadOnlyDictionary<string, string> Tags
+        {
+            get
+            {
+                return (Dictionary<string, string>)Inner.Tags;
+            }
+        }
+
+        public string Key => Name;
 
         public IList<string> HostNames => Inner.HostNames;
 

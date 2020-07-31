@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Web App or Function App.
     /// </summary>
-    public interface IWebAppSimpleBase : IHasId, IHasName, IHasResourceGroup, IHasInner<Models.SiteInner>
+    public interface IWebAppBasicBase : IResource, IHasResourceGroup, IHasInner<Models.SiteInner>
     {
         /// <summary>
         /// Gets hostnames associated with the app.
