@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         private bool FilterWebApp(IWebAppBasic w)
         {
-            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
+            return w.Inner.Kind == null || w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
         }
     }
 }
