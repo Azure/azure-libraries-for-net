@@ -169,5 +169,40 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             await Inner.DeleteAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm, cancellationToken);
         }
+
+        public IEnumerable<IFunctionAppBasic> ListFunctionAppBasicByResourceGroup(string resourceGroupName)
+        {
+            return Extensions.Synchronize(() => ListFunctionAppBasicByResourceGroupAsync(resourceGroupName));
+        }
+
+        public async Task<IPagedCollection<IFunctionAppBasic>> ListFunctionAppBasicByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var collection = await PagedCollection<IFunctionAppBasic, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebSiteBaseImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IFunctionAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
+        }
+
+        public IEnumerable<IFunctionAppBasic> ListFunctionAppBasic()
+        {
+            return Extensions.Synchronize(() => ListFunctionAppBasicAsync());
+        }
+
+        public async Task<IPagedCollection<IFunctionAppBasic>> ListFunctionAppBasicAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var collection = await PagedCollection<IFunctionAppBasic, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListAsync(cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebSiteBaseImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IFunctionAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
+        }
+
+        private bool FilterFunctionApp(IFunctionAppBasic w)
+        {
+            return w.Inner.Kind != null && w.Inner.Kind.ToLower().Split(new char[] { ',' }).Contains("functionapp");
+        }
     }
 }

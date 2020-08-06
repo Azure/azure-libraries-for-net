@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class WebSiteBaseImpl : IWebAppBasic
+    internal class WebSiteBaseImpl : IWebAppBasic, IFunctionAppBasic
     {
         private Models.SiteInner inner;
 
