@@ -61,27 +61,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Lists resources of the specified type in the specified resource group.
+        /// Lists basic info for Web Apps in the specified resource group.
         /// </summary>
         /// <param name="resourceGroupName"> the name of the resource group to list the resources from</param>
         /// <returns>the list of resources</returns>
         IEnumerable<IWebAppBasic> ListWebAppBasicByResourceGroup(string resourceGroupName);
 
         /// <summary>
-        /// Lists resources of the specified type in the specified resource group.
+        /// Lists basic info for Web Apps in the specified resource group.
         /// </summary>
         /// <param name="resourceGroupName"> the name of the resource group to list the resources from</param>
         /// <returns>the list of resources</returns>
         Task<IPagedCollection<IWebAppBasic>> ListWebAppBasicByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// Lists basic info for Web Apps in the currently selected subscription.
         /// </summary>
         /// <returns>list of resources</returns>
         IEnumerable<IWebAppBasic> ListWebAppBasic();
 
         /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// Lists basic info for Web Apps in the currently selected subscription.
         /// </summary>
         /// <returns>list of resources</returns>
         Task<IPagedCollection<IWebAppBasic>> ListWebAppBasicAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));

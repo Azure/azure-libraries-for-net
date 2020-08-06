@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Threading.Tasks;
     using System.Threading;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Entry point for web app management API.
@@ -58,5 +59,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="deleteEmptyServerFarm">if true, empty App Service plan are also deleted</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
         Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Lists basic info for Function Apps in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName"> the name of the resource group to list the resources from</param>
+        /// <returns>the list of resources</returns>
+        IEnumerable<IFunctionAppBasic> ListFunctionAppBasicByResourceGroup(string resourceGroupName);
+
+        /// <summary>
+        /// Lists basic info for Function Apps in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName"> the name of the resource group to list the resources from</param>
+        /// <returns>the list of resources</returns>
+        Task<IPagedCollection<IFunctionAppBasic>> ListFunctionAppBasicByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Lists basic info for Function Apps in the currently selected subscription.
+        /// </summary>
+        /// <returns>list of resources</returns>
+        IEnumerable<IFunctionAppBasic> ListFunctionAppBasic();
+
+        /// <summary>
+        /// Lists basic info for Function Apps in the currently selected subscription.
+        /// </summary>
+        /// <returns>list of resources</returns>
+        Task<IPagedCollection<IFunctionAppBasic>> ListFunctionAppBasicAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

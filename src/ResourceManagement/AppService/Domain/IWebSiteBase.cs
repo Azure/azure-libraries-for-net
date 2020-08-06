@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Web App or Function App.
     /// </summary>
-    public interface IWebAppBasicBase : IResource, IHasResourceGroup, IHasInner<Models.SiteInner>
+    public interface IWebSiteBase : IResource, IHasResourceGroup, IHasInner<Models.SiteInner>
     {
         /// <summary>
         /// Gets hostnames associated with the app.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. Setting this value
         /// to false disables the app (takes the app offline).
         /// </summary>
-        bool? Enabled { get; }
+        bool Enabled { get; }
 
         /// <summary>
         /// Gets enabled hostnames for the app.Hostnames need to be assigned
@@ -75,11 +75,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         bool? Reserved { get; }
 
         /// <summary>
-        /// Gets obsolete: Hyper-V sandbox.
-        /// </summary>
-        bool? IsXenon { get; }
-
-        /// <summary>
         /// Gets hyper-V sandbox.
         /// </summary>
         bool? HyperV { get; }
@@ -101,7 +96,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. The default is
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
         /// </summary>
-        bool? ScmSiteAlsoStopped { get; }
+        bool ScmSiteAlsoStopped { get; }
 
         /// <summary>
         /// Gets specifies which deployment slot this app will swap into.
@@ -122,7 +117,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// session to the same instance. Default is
         /// &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;.
         /// </summary>
-        bool? ClientAffinityEnabled { get; }
+        bool ClientAffinityEnabled { get; }
 
         /// <summary>
         /// Gets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
@@ -131,7 +126,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. Default is
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
         /// </summary>
-        bool? ClientCertEnabled { get; }
+        bool ClientCertEnabled { get; }
 
         /// <summary>
         /// Gets client certificate authentication comma-separated
@@ -146,7 +141,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// If &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;, the app is only
         /// accessible via API management process.
         /// </summary>
-        bool? HostNamesDisabled { get; }
+        bool HostNamesDisabled { get; }
 
         /// <summary>
         /// Gets list of IP addresses that the app uses for outbound
@@ -195,7 +190,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// default container; otherwise,
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
         /// </summary>
-        bool? IsDefaultContainer { get; }
+        bool IsDefaultContainer { get; }
 
         /// <summary>
         /// Gets default hostname of the app. Read-only.
@@ -212,7 +207,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// requests. Issues redirect for
         /// http requests
         /// </summary>
-        bool? HttpsOnly { get; }
+        bool HttpsOnly { get; }
 
         /// <summary>
         /// Gets site redundancy mode. Possible values include: 'None',

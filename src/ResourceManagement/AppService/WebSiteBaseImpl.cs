@@ -11,11 +11,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class WebAppBasicBaseImpl : IWebAppBasic
+    internal class WebSiteBaseImpl : IWebAppBasic
     {
         private Models.SiteInner inner;
 
-        public WebAppBasicBaseImpl(Models.SiteInner inner)
+        public WebSiteBaseImpl(Models.SiteInner inner)
         {
             this.inner = inner;
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public UsageState? UsageState => Inner.UsageState;
 
-        public bool? Enabled => Inner.Enabled;
+        public bool Enabled => Inner.Enabled ?? true;
 
         public IList<string> EnabledHostNames => Inner.EnabledHostNames;
 
@@ -67,27 +67,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public bool? Reserved => Inner.Reserved;
 
-        public bool? IsXenon => Inner.IsXenon;
-
         public bool? HyperV => Inner.HyperV;
 
         public DateTime? LastModifiedTimeUtc => Inner.LastModifiedTimeUtc;
 
         public IList<string> TrafficManagerHostNames => Inner.TrafficManagerHostNames;
 
-        public bool? ScmSiteAlsoStopped => Inner.ScmSiteAlsoStopped;
+        public bool ScmSiteAlsoStopped => Inner.ScmSiteAlsoStopped ?? false;
 
         public string TargetSwapSlot => Inner.TargetSwapSlot;
 
         public HostingEnvironmentProfile HostingEnvironmentProfile => Inner.HostingEnvironmentProfile;
 
-        public bool? ClientAffinityEnabled => Inner.ClientAffinityEnabled;
+        public bool ClientAffinityEnabled => Inner.ClientAffinityEnabled ?? false;
 
-        public bool? ClientCertEnabled => Inner.ClientCertEnabled;
+        public bool ClientCertEnabled => Inner.ClientCertEnabled ?? false;
 
         public string ClientCertExclusionPaths => Inner.ClientCertExclusionPaths;
 
-        public bool? HostNamesDisabled => Inner.HostNamesDisabled;
+        public bool HostNamesDisabled => Inner.HostNamesDisabled ?? false;
 
         public string OutboundIpAddresses => Inner.OutboundIpAddresses;
 
@@ -103,13 +101,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public CloningInfo CloningInfo => Inner.CloningInfo;
 
-        public bool? IsDefaultContainer => Inner.IsDefaultContainer;
+        public bool IsDefaultContainer => Inner.IsDefaultContainer ?? true;
 
         public string DefaultHostName => Inner.DefaultHostName;
 
         public SlotSwapStatus SlotSwapStatus => Inner.SlotSwapStatus;
 
-        public bool? HttpsOnly => Inner.HttpsOnly;
+        public bool HttpsOnly => Inner.HttpsOnly ?? false;
 
         public RedundancyMode? RedundancyMode => Inner.RedundancyMode;
 

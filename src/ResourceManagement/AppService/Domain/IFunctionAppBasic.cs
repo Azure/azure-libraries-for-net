@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// An immutable client-side representation of an Azure Web App.
+    /// An immutable client-side representation of an Azure Function App.
     /// </summary>
-    public interface IWebAppBasic : IWebSiteBase
+    public interface IFunctionAppBasic : IWebSiteBase
     {
     }
 }

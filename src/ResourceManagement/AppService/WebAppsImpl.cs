@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         private bool FilterWebApp(IWebApp w)
         {
-            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
+            return w.Inner.Kind == null || w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             var collection = await PagedCollection<IWebAppBasic, SiteInner>.LoadPage(
                 async (cancellation) => await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
                 Inner.ListByResourceGroupNextAsync,
-                inner => new WebAppBasicBaseImpl(inner),
+                inner => new WebSiteBaseImpl(inner),
                 loadAllPages, cancellationToken);
             return PagedCollection<IWebAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
         }
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             var collection = await PagedCollection<IWebAppBasic, SiteInner>.LoadPage(
                 async (cancellation) => await Inner.ListAsync(cancellationToken: cancellation),
                 Inner.ListByResourceGroupNextAsync,
-                inner => new WebAppBasicBaseImpl(inner),
+                inner => new WebSiteBaseImpl(inner),
                 loadAllPages, cancellationToken);
             return PagedCollection<IWebAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
         }
