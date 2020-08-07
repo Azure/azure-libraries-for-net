@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         TopLevelModifiableResources<
             IWebApp,
             WebAppImpl,
-            Models.SiteInner,
+            SiteInner,
             IWebAppsOperations,
             IAppServiceManager>,
         IWebApps
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IWebApp> ListByResourceGroup(string resourceGroupName)
         {
-            return base.ListByResourceGroup(resourceGroupName).Where(this.FilterWebApp);
+            return Extensions.Synchronize(() => ListByResourceGroupAsync(resourceGroupName));
         }
 
         public override async Task<IPagedCollection<IWebApp>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IWebApp> List()
         {
-            return base.List().Where(this.FilterWebApp);
+            return Extensions.Synchronize(() => ListAsync());
         }
 
         public override async Task<IPagedCollection<IWebApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -60,9 +60,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return PagedCollection<IWebApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
         }
 
-        private bool FilterWebApp(IWebApp w)
+        private bool FilterWebApp(IHasInner<SiteInner> w)
         {
-            return w.Inner.Kind != null && w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
+            if (w.Inner.Kind == null)
+            {
+                return true;
+            }
+            else
+            {
+                string[] segments = w.Inner.Kind.Split(new char[] { ',' });
+                return segments.Contains("app") || segments.Contains("api");
+            }
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
@@ -174,6 +182,36 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
         {
             await Inner.DeleteAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm, cancellationToken);
+        }
+
+        public IEnumerable<IWebAppBasic> ListWebAppBasicByResourceGroup(string resourceGroupName)
+        {
+            return Extensions.Synchronize(() => ListWebAppBasicByResourceGroupAsync(resourceGroupName));
+        }
+
+        public async Task<IPagedCollection<IWebAppBasic>> ListWebAppBasicByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var collection = await PagedCollection<IWebAppBasic, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebSiteBaseImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IWebAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
+        }
+
+        public IEnumerable<IWebAppBasic> ListWebAppBasic()
+        {
+            return Extensions.Synchronize(() => ListWebAppBasicAsync());
+        }
+
+        public async Task<IPagedCollection<IWebAppBasic>> ListWebAppBasicAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var collection = await PagedCollection<IWebAppBasic, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListAsync(cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebSiteBaseImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IWebAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
         }
     }
 }

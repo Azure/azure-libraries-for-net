@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:437A8ECA353AAE23242BFC82A5066CC3
         public override IEnumerable<IFunctionApp> ListByResourceGroup(string resourceGroupName)
         {
-            return base.ListByResourceGroup(resourceGroupName).Where(this.FilterFunctionApp);
+            return Extensions.Synchronize(() => ListByResourceGroupAsync(resourceGroupName));
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override IEnumerable<IFunctionApp> List()
         {
-            return base.List().Where(this.FilterFunctionApp);
+            return Extensions.Synchronize(() => ListAsync());
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
         }
 
-        private bool FilterFunctionApp(IFunctionApp w)
+        private bool FilterFunctionApp(IHasInner<SiteInner> w)
         {
             return w.Inner.Kind != null && w.Inner.Kind.ToLower().Split(new char[] { ',' }).Contains("functionapp");
         }
@@ -168,6 +168,36 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
         {
             await Inner.DeleteAsync(resourceGroupName, name, deleteMetrics, deleteEmptyServerFarm, cancellationToken);
+        }
+
+        public IEnumerable<IFunctionAppBasic> ListFunctionAppBasicByResourceGroup(string resourceGroupName)
+        {
+            return Extensions.Synchronize(() => ListFunctionAppBasicByResourceGroupAsync(resourceGroupName));
+        }
+
+        public async Task<IPagedCollection<IFunctionAppBasic>> ListFunctionAppBasicByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var collection = await PagedCollection<IFunctionAppBasic, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebSiteBaseImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IFunctionAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
+        }
+
+        public IEnumerable<IFunctionAppBasic> ListFunctionAppBasic()
+        {
+            return Extensions.Synchronize(() => ListFunctionAppBasicAsync());
+        }
+
+        public async Task<IPagedCollection<IFunctionAppBasic>> ListFunctionAppBasicAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var collection = await PagedCollection<IFunctionAppBasic, SiteInner>.LoadPage(
+                async (cancellation) => await Inner.ListAsync(cancellationToken: cancellation),
+                Inner.ListByResourceGroupNextAsync,
+                inner => new WebSiteBaseImpl(inner),
+                loadAllPages, cancellationToken);
+            return PagedCollection<IFunctionAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
         }
     }
 }
