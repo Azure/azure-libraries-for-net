@@ -60,9 +60,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return PagedCollection<IWebApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
         }
 
-        private bool FilterWebApp(IWebApp w)
+        private bool FilterWebApp(IHasInner<SiteInner> w)
         {
-            return w.Inner.Kind == null || w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
+            if (w.Inner.Kind == null)
+            {
+                return true;
+            }
+            else
+            {
+                string[] segments = w.Inner.Kind.Split(new char[] { ',' });
+                return segments.Contains("app") || segments.Contains("api");
+            }
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
@@ -204,11 +212,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 inner => new WebSiteBaseImpl(inner),
                 loadAllPages, cancellationToken);
             return PagedCollection<IWebAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterWebApp));
-        }
-
-        private bool FilterWebApp(IWebAppBasic w)
-        {
-            return w.Inner.Kind == null || w.Inner.Kind.Split(new char[] { ',' }).Contains("app");
         }
     }
 }

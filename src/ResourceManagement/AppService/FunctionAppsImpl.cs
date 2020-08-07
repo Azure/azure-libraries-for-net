@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
         }
 
-        private bool FilterFunctionApp(IFunctionApp w)
+        private bool FilterFunctionApp(IHasInner<SiteInner> w)
         {
             return w.Inner.Kind != null && w.Inner.Kind.ToLower().Split(new char[] { ',' }).Contains("functionapp");
         }
@@ -198,11 +198,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 inner => new WebSiteBaseImpl(inner),
                 loadAllPages, cancellationToken);
             return PagedCollection<IFunctionAppBasic, SiteInner>.CreateFromEnumerable(collection.Where(this.FilterFunctionApp));
-        }
-
-        private bool FilterFunctionApp(IFunctionAppBasic w)
-        {
-            return w.Inner.Kind != null && w.Inner.Kind.ToLower().Split(new char[] { ',' }).Contains("functionapp");
         }
     }
 }
