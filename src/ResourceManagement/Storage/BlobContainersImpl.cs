@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 
         private async Task<ImmutabilityPolicyInner> GetImmutabilityPolicyInnerUsingBlobContainersInnerAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string resourceGroupName = GetValueFromIdByName(id, "resourceGroups");
-            string accountName = GetValueFromIdByName(id, "storageAccounts");
-            string containerName = GetValueFromIdByName(id, "containers");
+            string resourceGroupName = ResourceUtils.GetValueFromIdByName(id, "resourceGroups");
+            string accountName = ResourceUtils.GetValueFromIdByName(id, "storageAccounts");
+            string containerName = ResourceUtils.GetValueFromIdByName(id, "containers");
             IBlobContainersOperations client = this.Inner;
             return await client.GetImmutabilityPolicyAsync(resourceGroupName, accountName, containerName);
         }
@@ -136,38 +136,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             IBlobContainersOperations client = this.Inner;
             LegalHoldInner legalHoldInner = await client.SetLegalHoldAsync(resourceGroupName, accountName, containerName, tags);
             return new LegalHoldImpl(legalHoldInner, this.manager);
-        }
-
-        private static string GetValueFromIdByName(string id, string name)
-        {
-            if (id == null)
-            {
-                return null;
-            }
-            else
-            {
-                IEnumerable<string> enumerable = id.Split(new char[] { '/' });
-                var itr = enumerable.GetEnumerator();
-                while (itr.MoveNext())
-                {
-                    string part = itr.Current;
-                    if (!string.IsNullOrEmpty(part))
-                    {
-                        if (part.Equals(name, StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (itr.MoveNext())
-                            {
-                                return itr.Current;
-                            }
-                            else
-                            {
-                                return null;
-                            }
-                        }
-                    }
-                }
-                return null;
-            }
         }
     }
 }
