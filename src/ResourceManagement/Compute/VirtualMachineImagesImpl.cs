@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Extensions.Synchronize(() => this.GetByIdAsync(id));
         }
 
-        public async Task<IVirtualMachineImage> GetByIdAsync(string id, CancellationToken cancellationToken = default)
+        public async Task<IVirtualMachineImage> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             string location = ResourceUtils.GetValueFromIdByName(id, "locations");
             string publisher = ResourceUtils.GetValueFromIdByName(id, "publishers");
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Extensions.Synchronize(() => this.GetImageAsync(region, publisherName, offerName, skuName, version));
         }
 
-        public async Task<IVirtualMachineImage> GetImageAsync(Region region, string publisherName, string offerName, string skuName, string version)
+        public async Task<IVirtualMachineImage> GetImageAsync(Region region, string publisherName, string offerName, string skuName, string version, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.GetImageAsync(region.Name, publisherName, offerName, skuName, version);
         }
 
-        public async Task<IVirtualMachineImage> GetImageAsync(string region, string publisherName, string offerName, string skuName, string version)
+        public async Task<IVirtualMachineImage> GetImageAsync(string region, string publisherName, string offerName, string skuName, string version, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (version != null && version.Equals("latest", System.StringComparison.OrdinalIgnoreCase))
             {
@@ -71,14 +71,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     Top = 1,
                     Filter = null
                 };
-                var innerImages = await this.client.ListAsync(region, publisherName, offerName, skuName, odataQuery: odataQuery);
+                var innerImages = await this.client.ListAsync(region, publisherName, offerName, skuName, odataQuery: odataQuery, cancellationToken: cancellationToken);
                 if (innerImages != null && innerImages.Count() != 0)
                 {
                     var innerImageResource = innerImages.FirstOrDefault();
                     version = innerImageResource.Name;
                 }
             }
-            VirtualMachineImageInner innerImage = await this.client.GetAsync(region, publisherName, offerName, skuName, version);
+            VirtualMachineImageInner innerImage = await this.client.GetAsync(region, publisherName, offerName, skuName, version, cancellationToken: cancellationToken);
             if (innerImage == null)
             {
                 return null;

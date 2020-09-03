@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="version">Version name.</param>
         /// <return>The virtual machine image.</return>
 
-        Task<IVirtualMachineImage> GetImageAsync(Region region, string publisherName, string offerName, string skuName, string version);
+        Task<IVirtualMachineImage> GetImageAsync(Region region, string publisherName, string offerName, string skuName, string version, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets a virtual machine image.
@@ -64,6 +65,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="version">Version name.</param>
         /// <return>The virtual machine image.</return>
 
-        Task<IVirtualMachineImage> GetImageAsync(string region, string publisherName, string offerName, string skuName, string version);
+        Task<IVirtualMachineImage> GetImageAsync(string region, string publisherName, string offerName, string skuName, string version, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
