@@ -3,12 +3,15 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent
 {
+    using Microsoft.Azure.Management.Network.Fluent.Network.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.Subnet.Definition;
     using Models;
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ChildResourceActions;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Implementation for Subnet and its create and update interfaces.
@@ -311,6 +314,39 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             ipAddresses.UnionWith(result.AvailableIPAddresses);
             return ipAddresses;
+        }
+
+        internal SubnetImpl WithDelegation(string serviceName)
+        {
+            if (Inner.Delegations == null)
+            {
+                Inner.Delegations = new List<DelegationInner>();
+            }
+            Inner.Delegations.Add(new DelegationInner()
+            {
+                Name = serviceName,
+                ServiceName = serviceName
+            });
+            return this;
+        }
+
+        internal SubnetImpl WithoutDelegation(string serviceName)
+        {
+            if (Inner.Delegations != null)
+            {
+                Inner.Delegations = Inner.Delegations.Where(d => !d.ServiceName.Equals(serviceName)).ToList();
+            }
+            if (Inner.Delegations.Count == 0)
+            {
+                Inner.Delegations = null;
+            }
+            return this;
+        }
+
+        internal SubnetImpl WithoutDelegations()
+        {
+            Inner.Delegations = null;
+            return this;
         }
     }
 }
