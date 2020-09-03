@@ -80,6 +80,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         private async Task<IFunctionApp> PopulateModelAsync(SiteInner inner, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (inner == null)
+            {
+                return null;
+            }
             var siteConfig = await Inner.GetConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
             var logConfig = await Inner.GetDiagnosticLogsConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
             var FunctionApp = WrapModel(inner, siteConfig, logConfig);

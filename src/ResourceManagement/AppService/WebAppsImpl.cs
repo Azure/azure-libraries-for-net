@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return webapp;
         }
 
-        private async Task<IWebApp> PopulateModelAsync(SiteInner inner, CancellationToken cancellationToken = default(CancellationToken)) {
+        private async Task<IWebApp> PopulateModelAsync(SiteInner inner, CancellationToken cancellationToken = default(CancellationToken))
+        {
             if (inner == null)
             {
                 return null;
