@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<IVirtualMachineImage> GetByIdAsync(string id, CancellationToken cancellationToken = default)
         {
             string location = ResourceUtils.GetValueFromIdByName(id, "locations");
-            string publisher = ResourceUtils.GetValueFromIdByName(id, "publisherName");
+            string publisher = ResourceUtils.GetValueFromIdByName(id, "publishers");
             string offer = ResourceUtils.GetValueFromIdByName(id, "offers");
             string sku = ResourceUtils.GetValueFromIdByName(id, "skus");
-            string version = ResourceUtils.GetValueFromIdByName(id, "version");
+            string version = ResourceUtils.GetValueFromIdByName(id, "versions");
             return await GetImageAsync(location, publisher, offer, sku, version);
         }
 
