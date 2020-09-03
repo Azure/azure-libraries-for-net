@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             // Set resource name
             this.containerName = inner.Name;
             // set resource ancestor and positional variables
-            this.resourceGroupName = GetValueFromIdByName(inner.Id, "resourceGroups");
-            this.accountName = GetValueFromIdByName(inner.Id, "storageAccounts");
-            this.containerName = GetValueFromIdByName(inner.Id, "containers");
+            this.resourceGroupName = ResourceUtils.GetValueFromIdByName(inner.Id, "resourceGroups");
+            this.accountName = ResourceUtils.GetValueFromIdByName(inner.Id, "storageAccounts");
+            this.containerName = ResourceUtils.GetValueFromIdByName(inner.Id, "containers");
 
         }
 
@@ -151,38 +151,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                 this.uimmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             }
             return this;
-        }
-
-        private static string GetValueFromIdByName(string id, string name)
-        {
-            if (id == null)
-            {
-                return null;
-            }
-            else
-            {
-                IEnumerable<string> enumerable = id.Split(new char[] { '/' });
-                var itr = enumerable.GetEnumerator();
-                while (itr.MoveNext())
-                {
-                    string part = itr.Current;
-                    if (!string.IsNullOrEmpty(part))
-                    {
-                        if (part.Equals(name, StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (itr.MoveNext())
-                            {
-                                return itr.Current;
-                            }
-                            else
-                            {
-                                return null;
-                            }
-                        }
-                    }
-                }
-                return null;
-            }
         }
     }
 }

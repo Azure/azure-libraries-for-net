@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             // Set resource name
             this.galleryImageVersionName = inner.Name;
             // resource ancestor names
-            this.resourceGroupName = GetValueFromIdByName(inner.Id, "resourceGroups");
-            this.galleryName = GetValueFromIdByName(inner.Id, "galleries");
-            this.galleryImageName = GetValueFromIdByName(inner.Id, "images");
-            this.galleryImageVersionName = GetValueFromIdByName(inner.Id, "versions");
+            this.resourceGroupName = ResourceUtils.GetValueFromIdByName(inner.Id, "resourceGroups");
+            this.galleryName = ResourceUtils.GetValueFromIdByName(inner.Id, "galleries");
+            this.galleryImageName = ResourceUtils.GetValueFromIdByName(inner.Id, "images");
+            this.galleryImageVersionName = ResourceUtils.GetValueFromIdByName(inner.Id, "versions");
         }
 
 
@@ -369,39 +369,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             this.Inner.Tags = tags;
             return this;
-        }
-
-        ///GENMHASH:040C20433B133A485717B23B1FE2B123:C873BEE2B01DFD8C21B2393F5FD68243
-        private static string GetValueFromIdByName(string id, string name)
-        {
-            if (id == null)
-            {
-                return null;
-            }
-            else
-            {
-                IEnumerable<string> enumerable = id.Split(new char[] { '/' });
-                var itr = enumerable.GetEnumerator();
-                while (itr.MoveNext())
-                {
-                    string part = itr.Current;
-                    if (!string.IsNullOrEmpty(part))
-                    {
-                        if (part.Equals(name, StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (itr.MoveNext())
-                            {
-                                return itr.Current;
-                            }
-                            else
-                            {
-                                return null;
-                            }
-                        }
-                    }
-                }
-                return null;
-            }
         }
     }
 }
