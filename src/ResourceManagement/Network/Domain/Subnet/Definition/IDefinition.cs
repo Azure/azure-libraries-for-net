@@ -78,6 +78,21 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Definition
     }
 
     /// <summary>
+    /// The stage of a subnet definition allowing to enable subnet delegation.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithDelegation<ParentT> :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies a service name for subnet delegation.
+        /// </summary>
+        /// <param name="serviceName">The service name.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithAttach<ParentT> WithDelegation(string serviceName);
+    }
+
+    /// <summary>
     /// The first stage of the subnet definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
@@ -107,7 +122,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithNetworkSecurityGroup<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithRouteTable<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithServiceEndpoint<ParentT>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithServiceEndpoint<ParentT>,
+        IWithDelegation<ParentT>
     {
     }
 }

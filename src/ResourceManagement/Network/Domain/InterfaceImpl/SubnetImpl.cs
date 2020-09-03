@@ -349,5 +349,30 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithExistingNetworkSecurityGroup(resourceId);
         }
+
+        Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithDelegation<Network.Definition.IWithCreateAndSubnet>.WithDelegation(string serviceName)
+        {
+            return this.WithDelegation(serviceName);
+        }
+
+        Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithDelegation<Network.Update.IUpdate>.WithDelegation(string serviceName)
+        {
+            return this.WithDelegation(serviceName);
+        }
+
+        Subnet.Update.IUpdate Subnet.Update.IWithDelegation.WithDelegation(string serviceName)
+        {
+            return this.WithDelegation(serviceName);
+        }
+
+        Subnet.Update.IUpdate Subnet.Update.IWithDelegation.WithoutDelegation(string serviceName)
+        {
+            return this.WithoutDelegation(serviceName);
+        }
+
+        Subnet.Update.IUpdate Subnet.Update.IWithDelegation.WithoutDelegations()
+        {
+            return this.WithoutDelegations();
+        }
     }
 }

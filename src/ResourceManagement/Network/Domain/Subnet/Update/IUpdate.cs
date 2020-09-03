@@ -56,6 +56,33 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
     }
 
     /// <summary>
+    /// The stage of a subnet update allowing to enable subnet delegation.
+    /// </summary>
+    public interface IWithDelegation :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies a service name for subnet delegation.
+        /// </summary>
+        /// <param name="serviceName">The service name.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IUpdate WithDelegation(string serviceName);
+
+        /// <summary>
+        /// Removes a service name for subnet delegation.
+        /// </summary>
+        /// <param name="serviceName">The service name.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IUpdate WithoutDelegation(string serviceName);
+
+        /// <summary>
+        /// Removes all subnet delegations.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IUpdate WithoutDelegations();
+    }
+
+    /// <summary>
     /// The entirety of a subnet update as part of a network update.
     /// </summary>
     public interface IUpdate :
@@ -63,6 +90,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithNetworkSecurityGroup,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithRouteTable,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithServiceEndpoint,
+        IWithDelegation,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate>
     {
     }
