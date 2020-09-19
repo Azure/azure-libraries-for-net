@@ -37,6 +37,7 @@ using Microsoft.Rest;
 using Xunit.Abstractions;
 using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.PrivateDns.Fluent;
+using Microsoft.Azure.Management.ServiceFabric.Fluent;
 
 namespace Fluent.Tests.Common
 {
@@ -296,6 +297,15 @@ namespace Fluent.Tests.Common
         public static IBatchAIManager CreateBatchAIManager()
         {
             return CreateMockedManager(c => BatchAIManager
+                .Configure()
+                .WithDelegatingHandlers(GetHandlers())
+                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
+                .Authenticate(c, c.DefaultSubscriptionId));
+        }
+
+        public static IServiceFabricManager CreateServiceFabricManager()
+        {
+            return CreateMockedManager(c => ServiceFabricManager
                 .Configure()
                 .WithDelegatingHandlers(GetHandlers())
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)

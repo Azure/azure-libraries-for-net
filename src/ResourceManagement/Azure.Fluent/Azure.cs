@@ -25,6 +25,8 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Search.Fluent;
 using Microsoft.Azure.Management.ServiceBus.Fluent;
+using Microsoft.Azure.Management.ServiceFabric.Fluent;
+using Microsoft.Azure.Management.ServiceFabric.Fluent.Domain;
 using Microsoft.Azure.Management.Sql.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IBatchAIManager batchAIManager;
         private IMonitorManager monitorManager;
         private IEventHubManager eventHubManager;
+        private IServiceFabricManager serviceFabricManager;
 
         /// <returns>the currently selected subscription ID this client is authenticated to work with</returns>
         public string SubscriptionId
@@ -628,6 +631,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        /// <returns>entry point to manage Service Fabric clusters.</returns>
+        public IServiceFabricClusters ServiceFabricClusters
+        {
+            get
+            {
+                return serviceFabricManager.ServiceFabricClusters;
+            }
+        }
 
         public IGalleries Galleries
         {
@@ -677,6 +688,7 @@ namespace Microsoft.Azure.Management.Fluent
             batchAIManager = BatchAIManager.Authenticate(restClient, subscriptionId);
             monitorManager = MonitorManager.Authenticate(restClient, subscriptionId);
             eventHubManager = EventHubManager.Authenticate(restClient, subscriptionId);
+            serviceFabricManager = ServiceFabricManager.Authenticate(restClient, subscriptionId);
 
             SubscriptionId = subscriptionId;
             this.authenticated = authenticated;
@@ -1292,5 +1304,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Container registry task runs management.
         /// </summary>
         IRegistryTaskRuns RegistryTaskRuns { get; }
+
+
+        /// <summary>
+        /// Entry point to Azure Service Fabric Service management.
+        /// </summary>
+        IServiceFabricClusters ServiceFabricClusters { get; }
     }
 }

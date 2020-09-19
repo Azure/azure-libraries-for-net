@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Please do not move/edit code below this line -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('AzSdk.reference.props'))" />
+  <!-- Please do not move/edit code below this line -->
+
+  <PropertyGroup>
+    <Description>Provides Service Fabric Service management (Fluent) capabilities for Microsoft Azure.</Description>
+    <AssemblyName>Microsoft.Azure.Management.ServiceFabric.Fluent</AssemblyName>
+    <PackageId>Microsoft.Azure.Management.ServiceFabric.Fluent</PackageId>
+    <PackageTags>Microsoft Azure Service Fabric management;service fabric;Fluent</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute\Microsoft.Azure.Management.Compute.Fluent.csproj" />
+    <ProjectReference Include="..\Network\Microsoft.Azure.Management.Network.Fluent.csproj" />
+    <ProjectReference Include="..\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
+    <ProjectReference Include="..\Storage\Microsoft.Azure.Management.Storage.Fluent.csproj" />
+  </ItemGroup>
+</Project>
