@@ -11,6 +11,9 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
+using Environment = Microsoft.Azure.Management.ServiceFabric.Fluent.Models.Environment;
+
+
 namespace Microsoft.Azure.Management.ServiceFabric.Fluent
 {
     /// <summary>
@@ -23,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent
             ServiceFabricClusterImpl,
             IServiceFabricManager,
             IWithGroup,
-            IWithOsType,
+            IWithParameters,
             IWithCreate,
             IUpdate>,
         IServiceFabricCluster,
@@ -43,40 +46,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent
         {
         }
 
-        public string ProvisioningState()
+        public IWithCreate WithVmImage(Environment environment)
         {
-            return this.Inner.ProvisioningState;
-        }
+            this.Inner.ClusterParameters.VmImage = Microsoft.Azure.Management.ServiceFabric.Fluent.Models.Environment.Windows.ToString();
 
-        /// <summary>
-        /// Begins a definition for a new resource.
-        /// This is the beginning of the builder pattern used to create top level resources
-        /// in Azure. The final method completing the definition and starting the actual resource creation
-        /// process in Azure is  Creatable.create().
-        /// Note that the  Creatable.create() method is
-        /// only available at the stage of the resource definition that has the minimum set of input
-        /// parameters specified. If you do not see  Creatable.create() among the available methods, it
-        /// means you have not yet specified all the required input settings. Input settings generally begin
-        /// with the word "with", for example: <code>.withNewResourceGroup()</code> and return the next stage
-        /// of the resource definition, as an interface in the "fluent interface" style.
-        /// </summary>
-        /// <param name="name">The name of the new resource.</param>
-        /// <return>The first stage of the new resource definition.</return>
-
-
-        IWithGroup IDefinitionWithRegion<IWithGroup>.WithRegion(string regionName)
-        {
-            throw new NotImplementedException();
-        }
-
-        IWithGroup IDefinitionWithRegion<IWithGroup>.WithRegion(Region region)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IWithCreate WithOsType(ServiceFabricOsType serviceFabriOsType)
-        {
-            throw new NotImplementedException();
+            return this;
         }
 
         public override Task<IServiceFabricCluster> CreateResourceAsync(CancellationToken cancellationToken)

@@ -941,7 +941,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     public interface IWithWindowsCreateManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged
     {
-
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged WithUnmanagedDisks();
     }
 
@@ -1004,6 +1003,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="capacity">Number of virtual machines.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithCapacity(int capacity);
+    }
+
+    public interface IWithVaultSecret
+    {
+        /// <summary>
+        /// Specifies a vault secret to add to the vm.
+        /// Each call to this method adds to the list of vault secrets.
+        /// </summary>
+        /// <param name="vaultId">The vault id.</param>
+        /// <param name="certificateStore">The vm certificate store e.g. "My".</param>
+        /// <param name="certificateUrl">The vault certificate URL.</param>
+        /// <return>The stage representing creatable Windows VM definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithVaultSecret(string vaultId, string certificateUrl, string certificateStore);
     }
 
     /// <summary>
@@ -1268,6 +1280,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCapacity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithUpgradePolicy,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithOverProvision,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithVaultSecret,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithStorageAccount,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCustomData,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithExtension,

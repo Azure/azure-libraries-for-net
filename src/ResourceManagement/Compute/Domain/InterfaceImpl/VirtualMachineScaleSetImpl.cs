@@ -960,6 +960,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the maximum number of virtual machines in the scale set.
+        /// </summary>
+        /// <param name="capacity">Number of virtual machines.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVaultSecret.WithVaultSecret(string vaultId, string certificateUrl, string certificateStore)
+        {
+            return this.WithVaultSecret(vaultId, certificateUrl, certificateStore);
+        }
+
+        /// <summary>
+        /// Specifies the new number of virtual machines in the scale set.
+        /// </summary>
+        /// <param name="capacity">The virtual machine capacity of the scale set.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithVaultSecret.WithVaultSecret(string vaultId, string certificateUrl, string certificateStore)
+        {
+            return this.WithVaultSecret(vaultId, certificateUrl, certificateStore);
+        }
+
+        /// <summary>
         /// Specifies the name prefix to use for auto-generating the names for the virtual machines in the scale set.
         /// </summary>
         /// <param name="namePrefix">The prefix for the auto-generated names of the virtual machines in the scale set.</param>

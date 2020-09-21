@@ -14,7 +14,10 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricCluster.D
     /// </summary>
     public interface IDefinition :
         IBlank,
-        IWithGroup
+        IWithGroup,
+        IWithCreate,
+        IWithVmImage,
+        IWithReliability
     {
     }
 
@@ -23,8 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricCluster.D
     /// but also allows for any other optional settings to be specified.
     /// </summary>
     public interface IWithCreate :
-        IWithScaleSet,
-        ICreatable<IServiceFabricService>,
+        ICreatable<IServiceFabricCluster>,
         IDefinitionWithTags<IWithCreate>
     {
     }
@@ -37,20 +39,24 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricCluster.D
     {
     }
 
-    public interface IWithGroup :
-        IWithGroup<IWithOsType>
+    public interface IWithGroup : IWithGroup<IWithVmImage>
     {
-        IWithCreate WithOsType(ServiceFabricOsType serviceFabriOsType);
     }
 
-    public interface IWithOsType
-    {
-        IWithReliability WithOsType(ServiceFabricOsType serviceFabriOsType);
+    public interface IWithParameters : 
+        IWithCreate
+    { 
+        
     }
 
-    public interface IWithReliability
+    public interface IWithVmImage : IWithCreate
     {
-        IWithOneCertificate WithReliability(ReliabilityLevel reliabilityLevel);
+        IWithCreate WithVmImage(Environment environment);
+    }
+
+    public interface IWithReliability : IWithCreate
+    {
+        IWithCreate WithReliability(ReliabilityLevel reliabilityLevel);
     }
 
     public interface IWithOneCertificate
@@ -70,11 +76,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricCluster.D
     
     public interface IAddNodeType
     {
-        IWithScaleSet AddNodeType(string nodeTypeName);
-    }
-
-    public interface IWithScaleSet
-    {
-        IWithCreate WithScaleSet(IVirtualMachineScaleSet virtualMachineScaleSet);
+        IWithCreate AddNodeType(string nodeTypeName);
     }
 }

@@ -112,6 +112,10 @@ namespace Fluent.Tests
                 {
                     Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerManagementClient).BaseUri.Host);
                 }
+                else if (client is Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricManagementClient)
+                {
+                    Assert.Equal(new Uri(environment.ResourceManagerEndpoint).Host, (client as Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricManagementClient).BaseUri.Host);
+                }
             }
         }
     }

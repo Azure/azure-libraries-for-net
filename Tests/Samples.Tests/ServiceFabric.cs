@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace Samples.Tests
 {
-    public class ServiceFabric : Samples.Tests.TestBase
+    public class ServiceFabric : TestBase
     {
         public ServiceFabric(ITestOutputHelper output)
             : base(output)
@@ -18,12 +18,12 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "Service Fabric")]
-        public void CreateBasicCluster()
+        public void ManageServiceFabricTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ProductionCluster.RunSample(rollUpClient);
+                MinimalCluster.RunSample(rollUpClient);
             }
         }
 

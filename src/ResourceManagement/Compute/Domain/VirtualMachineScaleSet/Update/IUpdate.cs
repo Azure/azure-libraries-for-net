@@ -348,6 +348,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithCapacity(int capacity);
     }
 
+    public interface IWithVaultSecret
+    {
+        /// <summary>
+        /// Specifies a vault secret to add to the vm.
+        /// Each call to this method adds to the list of vault secrets.
+        /// </summary>
+        /// <param name="vaultId">The vault id.</param>
+        /// <param name="certificateStore">The vm certificate store e.g. "My".</param>
+        /// <param name="certificateUrl">The vault certificate URL.</param>
+        /// <return>The stage representing creatable Windows VM definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithVaultSecret(string vaultId, string certificateUrl, string certificateStore);
+    }
+
     /// <summary>
     /// The stage of a virtual machine scale set update allowing to specify load balancers for the primary
     /// network interface of the scale set virtual machines.
@@ -400,6 +413,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSku,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAdditionalCapabilities,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithCapacity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithVaultSecret,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancer,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerBackend,

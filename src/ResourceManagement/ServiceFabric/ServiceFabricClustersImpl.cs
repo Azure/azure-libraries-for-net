@@ -61,22 +61,22 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent
             return this.WrapModel(name);
         }
 
-        IEnumerable<IServiceFabricService> ISupportsListing<IServiceFabricService>.List()
+        IEnumerable<IServiceFabricCluster> ISupportsListing<IServiceFabricCluster>.List()
         {
             throw new System.NotImplementedException();
         }
 
-        Task<IPagedCollection<IServiceFabricService>> ISupportsListing<IServiceFabricService>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
+        Task<IPagedCollection<IServiceFabricCluster>> ISupportsListing<IServiceFabricCluster>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
 
-        IEnumerable<IServiceFabricService> ISupportsListingByResourceGroup<IServiceFabricService>.ListByResourceGroup(string resourceGroupName)
+        IEnumerable<IServiceFabricCluster> ISupportsListingByResourceGroup<IServiceFabricCluster>.ListByResourceGroup(string resourceGroupName)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IPagedCollection<IServiceFabricService>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default)
+        public Task<IPagedCollection<IServiceFabricCluster>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default)
         {
             throw new System.NotImplementedException();
         }

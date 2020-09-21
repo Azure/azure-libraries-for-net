@@ -2702,8 +2702,33 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:085C052B5E99B190740EE6AF70CF4D53:4F450AB75A3E01A0CCB9AFBF4F23BE28
         public VirtualMachineScaleSetImpl WithCapacity(int capacity)
         {
-            Inner
-                    .Sku.Capacity = capacity;
+            Inner.Sku.Capacity = capacity;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithVaultSecret(string vaultId, string certificateUrl, string certificateStore)
+        {
+
+            if (this.Inner.VirtualMachineProfile.OsProfile.Secrets == null)
+            {
+                this.Inner.VirtualMachineProfile.OsProfile.Secrets = new List<VaultSecretGroup>();
+            }
+
+            var secretGroup = this.Inner.VirtualMachineProfile.OsProfile.Secrets.FirstOrDefault(secret =>
+                secret.SourceVault.Id.Equals(vaultId, StringComparison.OrdinalIgnoreCase));
+
+            if (secretGroup == null)
+            {
+                secretGroup = new VaultSecretGroup(new SubResource(vaultId));
+                this.Inner.VirtualMachineProfile.OsProfile.Secrets.Add(secretGroup);
+            }
+
+            if (secretGroup.VaultCertificates == null)
+            {
+                secretGroup.VaultCertificates = new List<VaultCertificate>();
+            }
+            secretGroup.VaultCertificates.Add(new VaultCertificate(certificateUrl, certificateStore));
+
             return this;
         }
 

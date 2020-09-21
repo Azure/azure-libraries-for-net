@@ -36,9 +36,11 @@
     <ProjectReference Include="..\..\src\ResourceManagement\RedisCache\Microsoft.Azure.Management.Redis.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\ServiceBus\Microsoft.Azure.Management.ServiceBus.Fluent.csproj" />
+    <ProjectReference Include="..\..\src\ResourceManagement\ServiceFabric\Microsoft.Azure.Management.ServiceFabric.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\Sql\Microsoft.Azure.Management.Sql.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\Storage\Microsoft.Azure.Management.Storage.Fluent.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\TrafficManager\Microsoft.Azure.Management.TrafficManager.Fluent.csproj" />
+    <ProjectReference Include="$(AzureCoreTestFramework)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,5 +58,9 @@
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="SessionRecords\Fluent.Tests.ServiceFabric\" />
   </ItemGroup>
 </Project>
