@@ -109,7 +109,18 @@ namespace Fluent.Tests
                     var publicIPAddress = CreatePip(region, publicIpName, networkManager, resourceGroup);
                     var loadBalancer1 = CreateLoadBalancer(region, loadBalancerName1, frontendName, backendPoolName1, httpProbe, fabricGatewayProbe, fabricHttpGatewayProbe, httpLoadBalancingRule, fabricGatewayLoadBalancingRule, fabricHttpGatewayLoadBalancingRule, rdpNatPool, networkManager, resourceGroup, publicIPAddress);
 
-                    
+
+                    var serviceFabricCluster2 = serviceFabricManager.ServiceFabricClusters.Define(clusterName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithVmImage(Environment.Windows)
+                        .WithReliability(ReliabilityLevel.Silver)
+                        .WithOneCertificate(clusterCertificate)
+                        .WithStorageAccountVmDisks(storageAccountDiagnostics)
+                        .WithStorageAccountDiagnostics(storageVmDisks)
+                        .AddNodeType(nodeTypeName)
+                        .Create();
+
                     var serviceFabricCluster = serviceFabricManager.ServiceFabricClusters.Define(clusterName)
                         .WithRegion(region)
                         .WithExistingResourceGroup(resourceGroup)

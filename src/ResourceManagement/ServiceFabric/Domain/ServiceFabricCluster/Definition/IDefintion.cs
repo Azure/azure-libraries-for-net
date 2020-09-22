@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.ServiceFabric.Fluent.ServiceFabricCluster.D
         
     }
 
-    public interface IWithVmImage : IWithCreate
+    public interface IWithVmImage
     {
-        IWithCreate WithVmImage(Environment environment);
+        IWithReliability WithVmImage(Environment environment);
     }
 
-    public interface IWithReliability : IWithCreate
+    public interface IWithReliability
     {
-        IWithCreate WithReliability(ReliabilityLevel reliabilityLevel);
+        IWithOneCertificate WithReliability(ReliabilityLevel reliabilityLevel);
     }
 
     public interface IWithOneCertificate
