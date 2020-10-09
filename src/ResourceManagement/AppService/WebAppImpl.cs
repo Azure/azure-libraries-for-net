@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Update.IUpdate,
         WebApp.Definition.IExistingWindowsPlanWithGroup,
         WebApp.Definition.IExistingLinuxPlanWithGroup,
-        WebApp.Definition.IWithWindowsRuntimeStack,
         WebApp.Update.IWithAppServicePlan,
         WebApp.Update.IWithCredentials,
         WebApp.Update.IWithStartUpCommand
@@ -115,7 +114,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 SiteConfig = new SiteConfigResourceInner();
             }
-            SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            if (OperatingSystem() == Fluent.OperatingSystem.Windows)
+            {
+                SiteConfig.WindowsFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            } 
+            else
+            {
+                SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            }
             WithAppSetting(SETTING_DOCKER_IMAGE, imageAndTag);
             WithAppSetting(SETTING_REGISTRY_SERVER, serverUrl);
             return this;
@@ -124,6 +130,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:602C33B7B682DA260F6CBFC17D1C7E12:E4FC04D27E28502A10F31E38E988A897
         private void CleanUpContainerSettings()
         {
+            if (SiteConfig != null && SiteConfig.WindowsFxVersion != null)
+            {
+                SiteConfig.WindowsFxVersion = null;
+            }
             if (SiteConfig != null && SiteConfig.LinuxFxVersion != null)
             {
                 SiteConfig.LinuxFxVersion = null;
@@ -171,18 +181,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 SiteConfig = new SiteConfigResourceInner();
             }
-            SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            if (OperatingSystem() == Fluent.OperatingSystem.Windows)
+            {
+                SiteConfig.WindowsFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            }
+            else
+            {
+                SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            }
             WithAppSetting(SETTING_DOCKER_IMAGE, imageAndTag);
             return this;
         }
-
-        //private void EnsureLinuxPlan()
-        //{
-        //    if (Fluent.OperatingSystem.Windows.Equals(OperatingSystem()))
-        //    {
-        //        throw new InvalidOperationException("Docker container settings only apply to Linux app service plans.");
-        //    }
-        //}
 
         ///GENMHASH:6799EDFB0B008F8C0EB7E07EE71E6B34:9AA0391980CD01ABEA62130DB5348393
         internal async override Task<SiteConfigResourceInner> CreateOrUpdateSiteConfigAsync(SiteConfigResourceInner siteConfig, CancellationToken cancellationToken = default(CancellationToken))
