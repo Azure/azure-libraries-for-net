@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:E73A2BC2090FC3A00E0D2D18D7506D67:BFA1AA102FC308FAD095DF52D3D7C9F1
         public WebAppImpl WithPrivateRegistryImage(string imageAndTag, string serverUrl)
         {
-            EnsureLinuxPlan();
+            //EnsureLinuxPlan();
             CleanUpContainerSettings();
             if (SiteConfig == null)
             {
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:D15FB33BB43555A701A8FD43F244B1D9:2B645488043FF9B7C9FE21F5BC901768
         public WebAppImpl WithPublicDockerHubImage(string imageAndTag)
         {
-            EnsureLinuxPlan();
+            //EnsureLinuxPlan();
             CleanUpContainerSettings();
             if (SiteConfig == null)
             {
@@ -176,14 +176,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        ///GENMHASH:4554623A20A1D1D6CA43597FA7713AD7:DD8E427B2F3E82987E90A2D5CCB5E193
-        private void EnsureLinuxPlan()
-        {
-            if (Fluent.OperatingSystem.Windows.Equals(OperatingSystem()))
-            {
-                throw new InvalidOperationException("Docker container settings only apply to Linux app service plans.");
-            }
-        }
+        //private void EnsureLinuxPlan()
+        //{
+        //    if (Fluent.OperatingSystem.Windows.Equals(OperatingSystem()))
+        //    {
+        //        throw new InvalidOperationException("Docker container settings only apply to Linux app service plans.");
+        //    }
+        //}
 
         ///GENMHASH:6799EDFB0B008F8C0EB7E07EE71E6B34:9AA0391980CD01ABEA62130DB5348393
         internal async override Task<SiteConfigResourceInner> CreateOrUpdateSiteConfigAsync(SiteConfigResourceInner siteConfig, CancellationToken cancellationToken = default(CancellationToken))
@@ -243,7 +242,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:F7734222FF39440A50483317E5DF8156:998FF6187B952D74EE89FFECAAB847A3
         public WebAppImpl WithBuiltInImage(RuntimeStack runtimeStack)
         {
-            EnsureLinuxPlan();
+            //EnsureLinuxPlan();
             CleanUpContainerSettings();
             if (SiteConfig == null) {
                 SiteConfig = new SiteConfigResourceInner();
