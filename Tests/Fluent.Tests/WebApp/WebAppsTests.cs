@@ -182,8 +182,7 @@ namespace Fluent.Tests.WebApp
                         .WithExistingWindowsPlan(appServicePlan)
                         .WithExistingResourceGroup(GroupName1)
                         .WithPublicDockerHubImage("mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest")
-                        .CreateAsync()
-                        .Result;
+                        .Create();
                 }
                 finally
                 {
