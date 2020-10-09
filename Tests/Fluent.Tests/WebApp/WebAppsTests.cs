@@ -172,7 +172,7 @@ namespace Fluent.Tests.WebApp
                 {
                     var appServicePlan = appServiceManager.AppServicePlans
                         .Define(AppServicePlanName1)
-                        .WithRegion(Region.USEast)
+                        .WithRegion(Region.USEast)          // many other regions does not have quota for PremiumP1v3
                         .WithNewResourceGroup(GroupName1)
                         .WithPricingTier(PricingTier.PremiumP1v3)
                         .WithOperatingSystem(OperatingSystem.Windows)
