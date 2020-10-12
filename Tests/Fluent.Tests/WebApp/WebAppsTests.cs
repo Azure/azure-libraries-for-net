@@ -156,5 +156,43 @@ namespace Fluent.Tests.WebApp
                 }
             }
         }
+
+        [Fact]
+        public void CanCRUDWebAppWithContainer()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                string GroupName1 = TestUtilities.GenerateName("javacsmrg");
+                string WebAppName1 = TestUtilities.GenerateName("java-webapp-");
+                string AppServicePlanName1 = TestUtilities.GenerateName("java-asp-");
+
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                try
+                {
+                    var appServicePlan = appServiceManager.AppServicePlans
+                        .Define(AppServicePlanName1)
+                        .WithRegion(Region.USEast)          // many other regions does not have quota for PremiumP1v3
+                        .WithNewResourceGroup(GroupName1)
+                        .WithPricingTier(PricingTier.PremiumP1v3)
+                        .WithOperatingSystem(OperatingSystem.Windows)
+                        .Create();
+
+                    var webApp = appServiceManager.WebApps.Define(WebAppName1)
+                        .WithExistingWindowsPlan(appServicePlan)
+                        .WithExistingResourceGroup(GroupName1)
+                        .WithPublicDockerHubImage("mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest")
+                        .Create();
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(GroupName1);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }
