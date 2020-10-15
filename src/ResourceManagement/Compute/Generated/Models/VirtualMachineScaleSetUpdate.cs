@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Scale Set.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetUpdate : UpdateResourceInner
+    public partial class VirtualMachineScaleSetUpdate : UpdateResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetUpdate
@@ -53,8 +53,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// hence ensure that the extensions do not run on the extra
         /// overprovisioned VMs.</param>
         /// <param name="singlePlacementGroup">When true this limits the scale
-        /// set to a single placement group, of max size 100 virtual
-        /// machines.</param>
+        /// set to a single placement group, of max size 100 virtual machines.
+        /// NOTE: If singlePlacementGroup is true, it may be modified to false.
+        /// However, if singlePlacementGroup is false, it may not be modified
+        /// to true.</param>
         /// <param name="additionalCapabilities">Specifies additional
         /// capabilities enabled or disabled on the Virtual Machines in the
         /// Virtual Machine Scale Set. For instance: whether the Virtual
@@ -69,8 +71,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2018-04-01.</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        public VirtualMachineScaleSetUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
-            : base(id, name, type, tags)
+        public VirtualMachineScaleSetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
+            : base(tags)
         {
             Sku = sku;
             Plan = plan;
@@ -141,7 +143,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets when true this limits the scale set to a single
-        /// placement group, of max size 100 virtual machines.
+        /// placement group, of max size 100 virtual machines. NOTE: If
+        /// singlePlacementGroup is true, it may be modified to false. However,
+        /// if singlePlacementGroup is false, it may not be modified to true.
         /// </summary>
         [JsonProperty(PropertyName = "properties.singlePlacementGroup")]
         public bool? SinglePlacementGroup { get; set; }

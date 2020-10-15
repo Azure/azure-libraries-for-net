@@ -50,6 +50,35 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             /// <summary>
+            /// The operation to update an extension.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set where the extension should be updated.
+            /// </param>
+            /// <param name='vmssExtensionName'>
+            /// The name of the VM scale set extension.
+            /// </param>
+            /// <param name='extensionParameters'>
+            /// Parameters supplied to the Update VM scale set Extension operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetExtensionInner> UpdateAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, VirtualMachineScaleSetExtensionUpdate extensionParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// The operation to delete the extension.
             /// </summary>
             /// <param name='operations'>
@@ -149,6 +178,35 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public static async Task<VirtualMachineScaleSetExtensionInner> BeginCreateOrUpdateAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, VirtualMachineScaleSetExtensionInner extensionParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to update an extension.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set where the extension should be updated.
+            /// </param>
+            /// <param name='vmssExtensionName'>
+            /// The name of the VM scale set extension.
+            /// </param>
+            /// <param name='extensionParameters'>
+            /// Parameters supplied to the Update VM scale set Extension operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetExtensionInner> BeginUpdateAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, VirtualMachineScaleSetExtensionUpdate extensionParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

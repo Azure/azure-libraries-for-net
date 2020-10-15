@@ -163,10 +163,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
             }
-            if (PlatformFaultDomain > 2)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "PlatformFaultDomain", 2);
-            }
             if (PlatformFaultDomain < 0)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomain", 0);

@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="caching">Specifies the caching requirements.
         /// &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
         /// **None** &lt;br&gt;&lt;br&gt; **ReadOnly** &lt;br&gt;&lt;br&gt;
-        /// **ReadWrite** &lt;br&gt;&lt;br&gt; Default: **None for Standard
-        /// storage. ReadOnly for Premium storage**. Possible values include:
+        /// **ReadWrite** &lt;br&gt;&lt;br&gt; Default: **None** for Standard
+        /// storage. **ReadOnly** for Premium storage. Possible values include:
         /// 'None', 'ReadOnly', 'ReadWrite'</param>
         /// <param name="writeAcceleratorEnabled">Specifies whether
         /// writeAccelerator should be enabled or disabled on the disk.</param>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public OSDisk(DiskCreateOptionTypes createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner))
+        public OSDisk(DiskCreateOptionTypes createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource))
         {
             OsType = osType;
             EncryptionSettings = encryptionSettings;
@@ -140,8 +140,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **None**
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **ReadOnly**
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **ReadWrite**
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Default: **None for Standard
-        /// storage. ReadOnly for Premium storage**. Possible values include:
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Default: **None** for Standard
+        /// storage. **ReadOnly** for Premium storage. Possible values include:
         /// 'None', 'ReadOnly', 'ReadWrite'
         /// </summary>
         [JsonProperty(PropertyName = "caching")]
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the managed disk parameters.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public ManagedDiskParametersInner ManagedDisk { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
 
         /// <summary>
         /// Validate the object.

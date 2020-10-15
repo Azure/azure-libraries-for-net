@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// machine should be assigned to. Only tags may be updated.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AvailabilitySetUpdate : UpdateResourceInner
+    public partial class AvailabilitySetUpdate : UpdateResource
     {
         /// <summary>
         /// Initializes a new instance of the AvailabilitySetUpdate class.
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2018-04-01.</param>
         /// <param name="statuses">The resource status information.</param>
         /// <param name="sku">Sku of the availability set</param>
-        public AvailabilitySetUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
-            : base(id, name, type, tags)
+        public AvailabilitySetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), Management.ResourceManager.Fluent.SubResource proximityPlacementGroup = default(Management.ResourceManager.Fluent.SubResource), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
+            : base(tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
             PlatformFaultDomainCount = platformFaultDomainCount;

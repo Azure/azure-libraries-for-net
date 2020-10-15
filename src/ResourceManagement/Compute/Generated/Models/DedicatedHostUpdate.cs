@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// autoReplaceOnFailure and licenseType may be updated.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DedicatedHostUpdate : UpdateResourceInner
+    public partial class DedicatedHostUpdate : UpdateResource
     {
         /// <summary>
         /// Initializes a new instance of the DedicatedHostUpdate class.
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// appears in the response.</param>
         /// <param name="instanceView">The dedicated host instance
         /// view.</param>
-        public DedicatedHostUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomain = default(int?), bool? autoReplaceOnFailure = default(bool?), string hostId = default(string), IList<SubResourceReadOnly> virtualMachines = default(IList<SubResourceReadOnly>), DedicatedHostLicenseTypes? licenseType = default(DedicatedHostLicenseTypes?), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), DedicatedHostInstanceView instanceView = default(DedicatedHostInstanceView))
-            : base(id, name, type, tags)
+        public DedicatedHostUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomain = default(int?), bool? autoReplaceOnFailure = default(bool?), string hostId = default(string), IList<SubResourceReadOnly> virtualMachines = default(IList<SubResourceReadOnly>), DedicatedHostLicenseTypes? licenseType = default(DedicatedHostLicenseTypes?), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), DedicatedHostInstanceView instanceView = default(DedicatedHostInstanceView))
+            : base(tags)
         {
             PlatformFaultDomain = platformFaultDomain;
             AutoReplaceOnFailure = autoReplaceOnFailure;
@@ -146,10 +146,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (PlatformFaultDomain > 2)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "PlatformFaultDomain", 2);
-            }
             if (PlatformFaultDomain < 0)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomain", 0);

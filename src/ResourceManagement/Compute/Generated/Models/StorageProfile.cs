@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// information about disks, see [About disks and VHDs for Azure
         /// virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</param>
-        public StorageProfile(ImageReferenceInner imageReference = default(ImageReferenceInner), OSDisk osDisk = default(OSDisk), IList<DataDisk> dataDisks = default(IList<DataDisk>))
+        public StorageProfile(Management.ResourceManager.Fluent.SubResource imageReference = default(Management.ResourceManager.Fluent.SubResource), OSDisk osDisk = default(OSDisk), IList<DataDisk> dataDisks = default(IList<DataDisk>))
         {
             ImageReference = imageReference;
             OsDisk = osDisk;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// but is not used in other creation operations.
         /// </summary>
         [JsonProperty(PropertyName = "imageReference")]
-        public ImageReferenceInner ImageReference { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ImageReference { get; set; }
 
         /// <summary>
         /// Gets or sets specifies information about the operating system disk

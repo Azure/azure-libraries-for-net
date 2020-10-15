@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryImageVersionUpdate : UpdateResourceInner
+    public partial class GalleryImageVersionUpdate : UpdateResourceDefinitionInner
     {
         /// <summary>
         /// Initializes a new instance of the GalleryImageVersionUpdate class.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="tags">Resource tags</param>
         /// <param name="provisioningState">The current state of the gallery
         /// Image Version.</param>
-        public GalleryImageVersionUpdate(GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), ProvisioningState provisioningState = default(ProvisioningState), ReplicationStatus replicationStatus = default(ReplicationStatus))
+        public GalleryImageVersionUpdate(GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), ProvisioningState3 provisioningState = default(ProvisioningState3), ReplicationStatus replicationStatus = default(ReplicationStatus))
             : base(id, name, type, tags)
         {
             PublishingProfile = publishingProfile;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState { get; private set; }
+        public ProvisioningState3 ProvisioningState { get; private set; }
 
         /// <summary>
         /// </summary>
@@ -88,10 +88,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             if (StorageProfile == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageProfile");
-            }
-            if (StorageProfile != null)
-            {
-                StorageProfile.Validate();
             }
         }
     }

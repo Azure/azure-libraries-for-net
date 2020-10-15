@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -28,12 +27,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the Encryption class.
         /// </summary>
-        /// <param name="type">The type of key used to encrypt the data of the
-        /// disk. Possible values include: 'EncryptionAtRestWithPlatformKey',
-        /// 'EncryptionAtRestWithCustomerKey'</param>
         /// <param name="diskEncryptionSetId">ResourceId of the disk encryption
         /// set to use for enabling encryption at rest.</param>
-        public Encryption(EncryptionType type, string diskEncryptionSetId = default(string))
+        /// <param name="type">Possible values include:
+        /// 'EncryptionAtRestWithPlatformKey',
+        /// 'EncryptionAtRestWithCustomerKey',
+        /// 'EncryptionAtRestWithPlatformAndCustomerKeys'</param>
+        public Encryption(string diskEncryptionSetId = default(string), EncryptionType type = default(EncryptionType))
         {
             DiskEncryptionSetId = diskEncryptionSetId;
             Type = type;
@@ -53,25 +53,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string DiskEncryptionSetId { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of key used to encrypt the data of the disk.
-        /// Possible values include: 'EncryptionAtRestWithPlatformKey',
-        /// 'EncryptionAtRestWithCustomerKey'
+        /// Gets or sets possible values include:
+        /// 'EncryptionAtRestWithPlatformKey',
+        /// 'EncryptionAtRestWithCustomerKey',
+        /// 'EncryptionAtRestWithPlatformAndCustomerKeys'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public EncryptionType Type { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");
-            }
-        }
     }
 }

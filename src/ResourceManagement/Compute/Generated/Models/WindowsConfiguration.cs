@@ -41,18 +41,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// property can be updated and updates will take effect on OS
         /// reprovisioning.</param>
         /// <param name="timeZone">Specifies the time zone of the virtual
-        /// machine. e.g. "Pacific Standard Time"</param>
+        /// machine. e.g. "Pacific Standard Time". &lt;br&gt;&lt;br&gt;
+        /// Possible values can be
+        /// [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+        /// value from time zones returned by
+        /// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).</param>
         /// <param name="additionalUnattendContent">Specifies additional
         /// base-64 encoded XML formatted information that can be included in
         /// the Unattend.xml file, which is used by Windows Setup.</param>
+        /// <param name="patchSettings">Specifies settings related to in-guest
+        /// patching (KBs).</param>
         /// <param name="winRM">Specifies the Windows Remote Management
         /// listeners. This enables remote Windows PowerShell.</param>
-        public WindowsConfiguration(bool? provisionVMAgent = default(bool?), bool? enableAutomaticUpdates = default(bool?), string timeZone = default(string), IList<AdditionalUnattendContent> additionalUnattendContent = default(IList<AdditionalUnattendContent>), WinRMConfiguration winRM = default(WinRMConfiguration))
+        public WindowsConfiguration(bool? provisionVMAgent = default(bool?), bool? enableAutomaticUpdates = default(bool?), string timeZone = default(string), IList<AdditionalUnattendContent> additionalUnattendContent = default(IList<AdditionalUnattendContent>), PatchSettings patchSettings = default(PatchSettings), WinRMConfiguration winRM = default(WinRMConfiguration))
         {
             ProvisionVMAgent = provisionVMAgent;
             EnableAutomaticUpdates = enableAutomaticUpdates;
             TimeZone = timeZone;
             AdditionalUnattendContent = additionalUnattendContent;
+            PatchSettings = patchSettings;
             WinRM = winRM;
             CustomInit();
         }
@@ -85,7 +92,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets specifies the time zone of the virtual machine. e.g.
-        /// "Pacific Standard Time"
+        /// "Pacific Standard Time". &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+        /// Possible values can be
+        /// [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+        /// value from time zones returned by
+        /// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
         /// </summary>
         [JsonProperty(PropertyName = "timeZone")]
         public string TimeZone { get; set; }
@@ -97,6 +108,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "additionalUnattendContent")]
         public IList<AdditionalUnattendContent> AdditionalUnattendContent { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies settings related to in-guest patching (KBs).
+        /// </summary>
+        [JsonProperty(PropertyName = "patchSettings")]
+        public PatchSettings PatchSettings { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the Windows Remote Management listeners.
