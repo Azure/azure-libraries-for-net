@@ -64,14 +64,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// appears in the response.</param>
         /// <param name="provisionAfterExtensions">Collection of extension
         /// names after which this extension needs to be provisioned.</param>
-        public VirtualMachineScaleSetExtensionInner(string id = default(string), string name = default(string), string type = default(string), string forceUpdateTag = default(string), string publisher = default(string), string type1 = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>))
+        public VirtualMachineScaleSetExtensionInner(string id = default(string), string name = default(string), string type = default(string), string forceUpdateTag = default(string), string publisher = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>))
             : base(id)
         {
             Name = name;
             Type = type;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            Type1 = type1;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             EnableAutomaticUpgrade = enableAutomaticUpgrade;
@@ -94,12 +93,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
         /// Gets or sets if a value is provided and is different from the
         /// previous value, the extension handler will be forced to update even
         /// if the extension configuration has not changed.
@@ -118,7 +111,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// "CustomScriptExtension".
         /// </summary>
         [JsonProperty(PropertyName = "properties.type")]
-        public string Type1 { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the version of the script handler.

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:36E25639805611CF89054C004B22BB15
         protected async override Task<IPage<VirtualMachineInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return await Inner.ListAllAsync(cancellationToken);
+            return await Inner.ListAllAsync(null, cancellationToken);
         }
 
         protected async override Task<IPage<VirtualMachineInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:B9B028D620AC932FDF66D2783E476B0D
         protected async override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-            await Inner.DeleteAsync(groupName, name, cancellationToken);
+            await Inner.DeleteAsync(groupName, name, null, cancellationToken);
         }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// UltraSSD_LRS. Returned only for VirtualMachine ScaleSet VM disks.
         /// Can be updated only via updates to the VirtualMachine Scale
         /// Set.</param>
-        public DataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), bool? toBeDetached = default(bool?), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?))
+        public DataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParametersInner managedDisk = default(ManagedDiskParametersInner), bool? toBeDetached = default(bool?), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?))
         {
             Lun = lun;
             Name = name;
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the managed disk parameters.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
+        public ManagedDiskParametersInner ManagedDisk { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the data disk is in process of
