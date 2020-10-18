@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 List<AzureFirewallNatRule> rules = new List<AzureFirewallNatRule>();
                 if (Inner.Rules != null)
                 {
-                    rules = new List<AzureFirewallNatRule>();
+                    rules.AddRange(Inner.Rules);
                 }
                 return rules.AsReadOnly();
             }
