@@ -15,6 +15,7 @@ using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.File;
+using ExecutionState = Microsoft.Azure.Management.BatchAI.Fluent.Models.ExecutionState;
 
 namespace ManageBatchAI
 {
