@@ -105,7 +105,7 @@ namespace ManageVirtualMachineExtension
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
                         .WithRootUsername(FirstLinuxUserName)
                         .WithRootPassword(FirstLinuxUserPassword)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM:" + linuxVM.Id);
@@ -204,7 +204,7 @@ namespace ManageVirtualMachineExtension
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername(firstWindowsUserName)
                         .WithAdminPassword(firstWindowsUserPassword)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .DefineNewExtension(windowsCustomScriptExtensionName)
                             .WithPublisher(windowsCustomScriptExtensionPublisherName)
                             .WithType(windowsCustomScriptExtensionTypeName)

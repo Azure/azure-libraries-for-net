@@ -94,7 +94,7 @@ namespace CreateSimpleInternetFacingLoadBalancer
                                 .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                                 .WithRootUsername(userName)
                                 .WithSsh(sshKey)
-                                .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                                .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                                 .WithNewAvailabilitySet(availabilitySetDefinition));
                 }
 

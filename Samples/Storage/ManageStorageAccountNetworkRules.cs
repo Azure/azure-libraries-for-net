@@ -102,7 +102,7 @@ namespace ManageStorageAccountNetworkRules
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("tirekicker")
                         .WithRootPassword("12NewPA$$w0rd!")
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log($"Created the VM: {linuxVM.Id}");

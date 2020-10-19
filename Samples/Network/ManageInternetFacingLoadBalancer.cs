@@ -293,7 +293,7 @@ namespace ManageInternetFacingLoadBalancer
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet1);
 
                 virtualMachineCreatables1.Add(virtualMachine1Creatable);
@@ -305,7 +305,7 @@ namespace ManageInternetFacingLoadBalancer
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet1);
 
                 virtualMachineCreatables1.Add(virtualMachine2Creatable);

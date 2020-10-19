@@ -99,7 +99,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithLinuxCustomImage(image.Id)
                             .WithRootUsername("javauser")
                             .WithRootPassword("12NewPA$$w0rd!")
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -240,7 +240,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .WithCaching(CachingTypes.ReadWrite)
                                 .Attach()
                             .WithNewUnmanagedDataDisk(100)
-                            .WithSize(VirtualMachineSizeTypes.StandardDS5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithNewStorageAccount(storageAccountName)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
@@ -380,7 +380,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithNewVhd(60)
                         .WithCaching(CachingTypes.ReadOnly)
                         .Attach()
-                    .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .WithNewStorageAccount(SdkContext.RandomResourceName("stg", 17))
                     .WithOSDiskCaching(CachingTypes.ReadWrite)
                     .Create();

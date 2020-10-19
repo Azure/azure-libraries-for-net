@@ -51,7 +51,7 @@ namespace ManageVirtualMachineWithUnmanagedDisks
                         .WithAdminUsername(UserName)
                         .WithAdminPassword(Password)
                         .WithUnmanagedDisks()
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
                 var endTime = DateTimeOffset.Now.UtcDateTime;
 
@@ -167,7 +167,7 @@ namespace ManageVirtualMachineWithUnmanagedDisks
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM (in the same virtual network): " + linuxVM.Id);

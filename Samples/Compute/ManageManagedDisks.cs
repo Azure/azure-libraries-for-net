@@ -48,7 +48,7 @@ namespace ManageManagedDisks
                         .WithRootUsername(userName)
                         .WithSsh(sshkey)
                         .WithNewDataDisk(100)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with an implicit Managed OS disk and explicit Managed data disk]");
@@ -111,7 +111,7 @@ namespace ManageManagedDisks
                         .WithNewDataDisk(100, 1, CachingTypes.ReadWrite)
                         .WithExistingDataDisk(dataDisk)
                         // End: Managed data disks
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with new managed data disks and disk attached]");
@@ -159,7 +159,7 @@ namespace ManageManagedDisks
                         .WithLinuxCustomImage(virtualMachineCustomImage.Id)
                         .WithRootUsername(userName)
                         .WithSsh(sshkey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [from custom image]");
@@ -180,7 +180,7 @@ namespace ManageManagedDisks
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithoutPrimaryPublicIPAddress()
                         .WithSpecializedOSUnmanagedDisk(specializedVhd, OperatingSystemTypes.Linux)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [by attaching un-managed disk]");
@@ -266,7 +266,7 @@ namespace ManageManagedDisks
                         .WithoutPrimaryPublicIPAddress()
                         .WithSpecializedOSDisk(newOSDisk, OperatingSystemTypes.Linux)
                         .WithExistingDataDisk(newDataDisk)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with specialized OS managed disk]");
@@ -288,7 +288,7 @@ namespace ManageManagedDisks
                         .WithSsh(sshkey)
                         .WithUnmanagedDisks() // uses storage accounts
                         .WithNewUnmanagedDataDisk(100)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with un-managed disk for migration]");
@@ -374,7 +374,7 @@ namespace ManageManagedDisks
                         .WithNewVhd(50)
                         .WithLun(2)
                         .Attach()
-                    .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .Create();
 
             // De-provision the virtual machine
@@ -406,7 +406,7 @@ namespace ManageManagedDisks
                     .WithRootPassword(password)
                     .WithNewDataDisk(100)
                     .WithNewDataDisk(200)
-                    .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .Create();
 
             // De-provision the virtual machine

@@ -42,7 +42,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithPopularLinuxImage(LinuxImage)
                             .WithRootUsername(uname)
                             .WithRootPassword(password)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
                     // Ensure default to managed disk
@@ -144,7 +144,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.None)       // CreateOption: ATTACH
                             .WithNewDataDisk(creatableEmptyDisk3, 3, CachingTypes.None)       // CreateOption: ATTACH
                                                                                               // End : Add 5 empty managed disks
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -319,7 +319,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.None)       // CreateOption: ATTACH
                             .WithNewDataDisk(creatableEmptyDisk3, 3, CachingTypes.None)       // CreateOption: ATTACH
                                                                                               // End : Add bunch of empty managed disks
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
                     TestHelper.Delay(60 * 1000); // Wait for some time to ensure vm is publicly accessible
@@ -367,7 +367,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootUsername(uname)
                             .WithRootPassword(password)
                             // No explicit data disks, let CRP create it from the image's data disk images
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -411,7 +411,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     }
                     var virtualMachine3 = creatableVirtualMachine3
                             .WithNewDataDisk(200)                               // CreateOption: EMPTY
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -504,7 +504,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                                                                               // End : Add bunch of empty managed disks
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -594,7 +594,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadOnly)
                             .WithEphemeralOSDisk(DiffDiskOptions.Local)
                             .Create();
@@ -655,7 +655,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootUsername(uname)
                             .WithRootPassword(password)
                             .WithUnmanagedDisks()                  /* UN-MANAGED OS and DATA DISKS */
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithNewStorageAccount(storageAccountName)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
@@ -684,7 +684,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithPrimaryPrivateIPAddressDynamic()
                             .WithoutPrimaryPublicIPAddress()
                             .WithSpecializedOSDisk(osDisk, OperatingSystemTypes.Linux)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -730,7 +730,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(100, 1, CachingTypes.ReadOnly)
                             .WithNewDataDisk(100, 2, CachingTypes.ReadWrite, StorageAccountTypes.StandardLRS)
                             .WithNewAvailabilitySet(availSetName)           // Default to managed availability set
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 

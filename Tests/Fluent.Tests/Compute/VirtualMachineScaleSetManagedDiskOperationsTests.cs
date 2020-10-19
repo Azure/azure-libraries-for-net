@@ -195,7 +195,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .WithNewVhd(50)
                                 .WithLun(2)
                                 .Attach()
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .Create();
 
                     Assert.NotNull(vm);

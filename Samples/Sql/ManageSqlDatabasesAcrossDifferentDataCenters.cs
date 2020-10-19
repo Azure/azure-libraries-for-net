@@ -142,7 +142,7 @@ namespace ManageSqlDatabasesAcrossDifferentDataCenters
                             .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                             .WithAdminUsername(administratorLogin)
                             .WithAdminPassword(administratorPassword)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2));
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4")));
                 }
                 var ipAddresses = new Dictionary<string, string>();
                 var virtualMachines = azure.VirtualMachines.Create(creatableVirtualMachines.ToArray());

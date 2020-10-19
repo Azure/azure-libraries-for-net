@@ -51,7 +51,7 @@ namespace Fluent.Tests.Compute
                                 .WithLatestLinuxImage("RedHat", "RHEL", "7.2")
                                 .WithRootUsername(uname)
                                 .WithRootPassword(password)
-                                .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                                .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                                 .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 

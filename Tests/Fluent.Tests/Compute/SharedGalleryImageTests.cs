@@ -307,7 +307,7 @@ namespace Fluent.Tests.Compute
                             .WithNewVhd(60)
                             .WithCaching(CachingTypes.ReadOnly)
                             .Attach()
-                        .WithSize(VirtualMachineSizeTypes.StandardD15V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithNewStorageAccount(storageName)
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
                         .Create();

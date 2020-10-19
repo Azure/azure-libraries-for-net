@@ -100,7 +100,7 @@ namespace CreateVirtualMachinesInParallel
                                 .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                                 .WithRootUsername(Username)
                                 .WithRootPassword(Password)
-                                .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                                .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                                 .WithNewStorageAccount(storageAccountCreatable);
                         creatableVirtualMachines.Add(virtualMachineCreatable);
                     }
