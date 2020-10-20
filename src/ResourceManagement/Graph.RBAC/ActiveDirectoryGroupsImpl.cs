@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using System.Linq;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition;
     using System;
+    using Microsoft.Rest.Azure.OData;
 
     /// <summary>
     /// The implementation of Users and its parent interfaces.
@@ -43,7 +44,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryGroup> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            IEnumerable<ADGroupInner> inners = await Inner.ListAsync(string.Format("displayName eq '{0}'", name), cancellationToken);
+            ODataQuery<ADGroupInner> oDataQuery = new ODataQuery<ADGroupInner>
+            {
+                Filter = string.Format("displayName eq '{0}'", name)
+            };
+            IEnumerable<ADGroupInner> inners = await Inner.ListAsync(oDataQuery, cancellationToken);
             if (inners == null || !inners.Any())
             {
                 return null;
