@@ -130,7 +130,7 @@ namespace ManageDns
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername("testuser")
                         .WithAdminPassword("12NewPA$$w0rd!")
-                        .WithSize(VirtualMachineSizeTypes.StandardD12V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
                 Utilities.Log("Virtual machine created");
 
@@ -217,7 +217,7 @@ namespace ManageDns
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername("testuser")
                         .WithAdminPassword("12NewPA$$w0rd!")
-                        .WithSize(VirtualMachineSizeTypes.StandardD12V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
                 Utilities.Log("Virtual machine created");
 

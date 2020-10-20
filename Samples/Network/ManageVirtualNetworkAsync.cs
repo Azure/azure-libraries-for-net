@@ -157,7 +157,7 @@ namespace ManageVirtualNetworkAsync
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .CreateAsync();
                 var t2 = DateTime.UtcNow;
                 Utilities.Log("Created Linux VM: (took "
@@ -176,7 +176,7 @@ namespace ManageVirtualNetworkAsync
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .CreateAsync();
 
                 var t3 = DateTime.UtcNow;

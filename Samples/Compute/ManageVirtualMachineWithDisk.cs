@@ -93,7 +93,7 @@ namespace ManageVirtualMachineWithDisk
                         .WithExistingDataDisk(dataDisk1)
 
                         // End: Managed data disks
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM with managed OS and data disks: " + linuxVM.Id);

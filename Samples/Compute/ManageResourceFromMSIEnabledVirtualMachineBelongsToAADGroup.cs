@@ -94,7 +94,7 @@ namespace ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup
                     .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                     .WithRootUsername(userName)
                     .WithRootPassword(password)
-                    .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .WithOSDiskCaching(CachingTypes.ReadWrite)
                     .WithSystemAssignedManagedServiceIdentity()
                     .Create();

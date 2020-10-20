@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the WinRMListener class.
         /// </summary>
-        /// <param name="protocol">Specifies the protocol of listener.
+        /// <param name="protocol">Specifies the protocol of WinRM listener.
         /// &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;**http**
         /// &lt;br&gt;&lt;br&gt; **https**. Possible values include: 'Http',
         /// 'Https'</param>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the protocol of listener.
+        /// Gets or sets specifies the protocol of WinRM listener.
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Possible values are:
         /// &amp;lt;br&amp;gt;**http** &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
         /// **https**. Possible values include: 'Http', 'Https'

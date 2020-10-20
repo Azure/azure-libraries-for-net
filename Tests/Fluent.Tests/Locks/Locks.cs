@@ -80,7 +80,7 @@ namespace Fluent.Tests
                             .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                             .WithAdminUsername("tester")
                             .WithAdminPassword(password)
-                            .WithSize(VirtualMachineSizeTypes.BasicA1);
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                     // Define a managed disk for testing locks on that
                     ICreatable<IDisk> diskDefinition = computeManager.Disks.Define(diskName)

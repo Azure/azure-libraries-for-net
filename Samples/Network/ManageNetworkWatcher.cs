@@ -111,7 +111,7 @@ namespace ManageNetworkWatcher
                     .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
                     .WithRootUsername(userName)
                     .WithRootPassword("Abcdef.123456")
-                    .WithSize(VirtualMachineSizeTypes.StandardA1)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .DefineNewExtension("packetCapture")
                         .WithPublisher("Microsoft.Azure.NetworkWatcher")
                         .WithType("NetworkWatcherAgentLinux")

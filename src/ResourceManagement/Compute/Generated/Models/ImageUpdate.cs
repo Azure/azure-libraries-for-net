@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// The source user image virtual hard disk. Only tags may be updated.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ImageUpdate : UpdateResourceInner
+    public partial class ImageUpdate : UpdateResource
     {
         /// <summary>
         /// Initializes a new instance of the ImageUpdate class.
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="hyperVGeneration">Gets the HyperVGenerationType of the
         /// VirtualMachine created from the image. Possible values include:
         /// 'V1', 'V2'</param>
-        public ImageUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string), HyperVGenerationTypes hyperVGeneration = default(HyperVGenerationTypes))
-            : base(id, name, type, tags)
+        public ImageUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource sourceVirtualMachine = default(Management.ResourceManager.Fluent.SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string), HyperVGenerationTypes hyperVGeneration = default(HyperVGenerationTypes))
+            : base(tags)
         {
             SourceVirtualMachine = sourceVirtualMachine;
             StorageProfile = storageProfile;

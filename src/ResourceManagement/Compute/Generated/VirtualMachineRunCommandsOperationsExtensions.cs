@@ -63,6 +63,225 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
 
             /// <summary>
+            /// The operation to create or update the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine where the run command should be created or
+            /// updated.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='runCommand'>
+            /// Parameters supplied to the Create Virtual Machine RunCommand operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommandInner> CreateOrUpdateAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandInner runCommand, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to update the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine where the run command should be updated.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='runCommand'>
+            /// Parameters supplied to the Update Virtual Machine RunCommand operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommandInner> UpdateAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandUpdate runCommand, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to delete the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine where the run command should be deleted.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to get the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine containing the run command.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommandInner> GetByVirtualMachineAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByVirtualMachineWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to get all run commands of a Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine containing the run command.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachineRunCommandInner>> ListByVirtualMachineAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByVirtualMachineWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to create or update the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine where the run command should be created or
+            /// updated.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='runCommand'>
+            /// Parameters supplied to the Create Virtual Machine RunCommand operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommandInner> BeginCreateOrUpdateAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandInner runCommand, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to update the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine where the run command should be updated.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='runCommand'>
+            /// Parameters supplied to the Update Virtual Machine RunCommand operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommandInner> BeginUpdateAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandUpdate runCommand, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to delete the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine where the run command should be deleted.
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Lists all available run commands for a subscription in a location.
             /// </summary>
             /// <param name='operations'>
@@ -77,6 +296,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public static async Task<IPage<RunCommandDocumentBase>> ListNextAsync(this IVirtualMachineRunCommandsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to get all run commands of a Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachineRunCommandInner>> ListByVirtualMachineNextAsync(this IVirtualMachineRunCommandsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByVirtualMachineNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

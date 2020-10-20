@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                 .WithRootUsername(vmUserName)
                 .WithRootPassword(vmPassword)
-                .WithSize(VirtualMachineSizeTypes.StandardD2V2)
+                .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                 .Create();
 
             Utilities.Log("Created Azure Virtual Machine: " + dockerVM.Id);

@@ -50,7 +50,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public VirtualMachineScaleSetDataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters))
+        /// <param name="diskIOPSReadWrite">Specifies the Read-Write IOPS for
+        /// the managed disk. Should be used only when StorageAccountType is
+        /// UltraSSD_LRS. If not specified, a default value would be assigned
+        /// based on diskSizeGB.</param>
+        /// <param name="diskMBpsReadWrite">Specifies the bandwidth in MB per
+        /// second for the managed disk. Should be used only when
+        /// StorageAccountType is UltraSSD_LRS. If not specified, a default
+        /// value would be assigned based on diskSizeGB.</param>
+        public VirtualMachineScaleSetDataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?))
         {
             Name = name;
             Lun = lun;
@@ -59,6 +67,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             CreateOption = createOption;
             DiskSizeGB = diskSizeGB;
             ManagedDisk = managedDisk;
+            DiskIOPSReadWrite = diskIOPSReadWrite;
+            DiskMBpsReadWrite = diskMBpsReadWrite;
             CustomInit();
         }
 
@@ -122,6 +132,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
         public VirtualMachineScaleSetManagedDiskParameters ManagedDisk { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Read-Write IOPS for the managed disk.
+        /// Should be used only when StorageAccountType is UltraSSD_LRS. If not
+        /// specified, a default value would be assigned based on diskSizeGB.
+        /// </summary>
+        [JsonProperty(PropertyName = "diskIOPSReadWrite")]
+        public long? DiskIOPSReadWrite { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the bandwidth in MB per second for the
+        /// managed disk. Should be used only when StorageAccountType is
+        /// UltraSSD_LRS. If not specified, a default value would be assigned
+        /// based on diskSizeGB.
+        /// </summary>
+        [JsonProperty(PropertyName = "diskMBpsReadWrite")]
+        public long? DiskMBpsReadWrite { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Specifies information about the proximity placement group.
     /// </summary>
-    public partial class ProximityPlacementGroupUpdate : UpdateResourceInner
+    public partial class ProximityPlacementGroupUpdate : UpdateResource
     {
         /// <summary>
         /// Initializes a new instance of the ProximityPlacementGroupUpdate
@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
-        public ProximityPlacementGroupUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(id, name, type, tags)
+        public ProximityPlacementGroupUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(tags)
         {
             CustomInit();
         }

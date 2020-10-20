@@ -15,18 +15,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Contains information about SSH certificate public key and the path on
     /// the Linux VM where the public key is placed.
     /// </summary>
-    public partial class SshPublicKey
+    public partial class SshPublicKeyInner
     {
         /// <summary>
-        /// Initializes a new instance of the SshPublicKey class.
+        /// Initializes a new instance of the SshPublicKeyInner class.
         /// </summary>
-        public SshPublicKey()
+        public SshPublicKeyInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SshPublicKey class.
+        /// Initializes a new instance of the SshPublicKeyInner class.
         /// </summary>
         /// <param name="path">Specifies the full path on the created VM where
         /// ssh public key is stored. If the file already exists, the specified
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 2048-bit and in ssh-rsa format. &lt;br&gt;&lt;br&gt; For creating
         /// ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in
         /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</param>
-        public SshPublicKey(string path = default(string), string keyData = default(string))
+        public SshPublicKeyInner(string path = default(string), string keyData = default(string))
         {
             Path = path;
             KeyData = keyData;

@@ -80,7 +80,7 @@ namespace Azure.Tests.Common
                     .WithRootUsername(userName)
                     .WithRootPassword("Abcdef.123456")
                     .WithNewAvailabilitySet(availabilitySetDefinition)
-                    .WithSize(VirtualMachineSizeTypes.StandardA1);
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                 vmDefinitions.Add(vm);
             }

@@ -219,7 +219,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 virtualMachineInner.InstanceView.PlatformFaultDomain, virtualMachineInner.InstanceView.PlatformUpdateDomain, virtualMachineInner.InstanceView.ComputerName,
                 virtualMachineInner.InstanceView.OsName, virtualMachineInner.InstanceView.OsVersion, virtualMachineInner.InstanceView.HyperVGeneration, virtualMachineInner.InstanceView.RdpThumbPrint,
                 virtualMachineInner.InstanceView.VmAgent, virtualMachineInner.InstanceView.MaintenanceRedeployStatus, virtualMachineInner.InstanceView.Disks,
-                virtualMachineInner.InstanceView.Extensions, virtualMachineInner.InstanceView.BootDiagnostics, virtualMachineInner.InstanceView.Statuses);
+                virtualMachineInner.InstanceView.Extensions, virtualMachineInner.InstanceView.VmHealth, virtualMachineInner.InstanceView.BootDiagnostics, virtualMachineInner.InstanceView.AssignedHost, 
+                virtualMachineInner.InstanceView.Statuses, virtualMachineInner.InstanceView.PatchStatus);
 
             return this.virtualMachineInstanceView;
         }
@@ -639,12 +640,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 SshConfiguration sshConfiguration = new SshConfiguration()
                 {
-                    PublicKeys = new List<SshPublicKey>()
+                    PublicKeys = new List<SshPublicKeyInner>()
                 };
                 osProfile.LinuxConfiguration.Ssh = sshConfiguration;
             }
 
-            SshPublicKey sshPublicKey = new SshPublicKey();
+            SshPublicKeyInner sshPublicKey = new SshPublicKeyInner();
             sshPublicKey.KeyData = publicKeyData;
             sshPublicKey.Path = "/home/" + osProfile.AdminUsername + "/.ssh/authorized_keys";
             osProfile.LinuxConfiguration.Ssh.PublicKeys.Add(sshPublicKey);

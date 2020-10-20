@@ -65,13 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (version != null && version.Equals("latest", System.StringComparison.OrdinalIgnoreCase))
             {
-                var odataQuery = new ODataQuery<VirtualMachineImageResourceInner>()
-                {
-                    OrderBy = "name desc",
-                    Top = 1,
-                    Filter = null
-                };
-                var innerImages = await this.client.ListAsync(region, publisherName, offerName, skuName, odataQuery: odataQuery, cancellationToken: cancellationToken);
+                var innerImages = await this.client.ListAsync(region, publisherName, offerName, skuName, null, 1, "name desc", cancellationToken);
                 if (innerImages != null && innerImages.Count() != 0)
                 {
                     var innerImageResource = innerImages.FirstOrDefault();

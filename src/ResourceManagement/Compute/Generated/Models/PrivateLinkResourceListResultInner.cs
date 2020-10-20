@@ -8,34 +8,33 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The Update Resource model definition.
+    /// A list of private link resources
     /// </summary>
-    public partial class UpdateResourceInner : Management.ResourceManager.Fluent.Resource
+    public partial class PrivateLinkResourceListResultInner
     {
         /// <summary>
-        /// Initializes a new instance of the UpdateResourceInner class.
+        /// Initializes a new instance of the
+        /// PrivateLinkResourceListResultInner class.
         /// </summary>
-        public UpdateResourceInner()
+        public PrivateLinkResourceListResultInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UpdateResourceInner class.
+        /// Initializes a new instance of the
+        /// PrivateLinkResourceListResultInner class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
-        public UpdateResourceInner(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(id, name, type)
+        /// <param name="value">Array of private link resources</param>
+        public PrivateLinkResourceListResultInner(IList<PrivateLinkResource> value = default(IList<PrivateLinkResource>))
         {
-            Tags = tags;
+            Value = value;
             CustomInit();
         }
 
@@ -45,10 +44,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource tags
+        /// Gets or sets array of private link resources
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<PrivateLinkResource> Value { get; set; }
 
     }
 }

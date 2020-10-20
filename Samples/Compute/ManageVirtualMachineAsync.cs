@@ -75,7 +75,7 @@ namespace ManageVirtualMachineAsync
                         .WithNewDataDisk(10)
                         .WithNewDataDisk(dataDiskCreatable)
                         .WithExistingDataDisk(dataDisk)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .CreateAsync();
 
                 var t2 = new DateTime();
@@ -101,7 +101,7 @@ namespace ManageVirtualMachineAsync
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(userName)
                         .WithRootPassword(password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .CreateAsync();
 
                 Utilities.Log("Created a Linux VM (in the same virtual network): " + linuxVM.Id);

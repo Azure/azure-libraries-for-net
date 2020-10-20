@@ -109,6 +109,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name='proximityPlacementGroupName'>
         /// The name of the proximity placement group.
         /// </param>
+        /// <param name='includeColocationStatus'>
+        /// includeColocationStatus=true enables fetching the colocation status
+        /// of all the resources in the proximity placement group.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -124,7 +128,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ProximityPlacementGroupInner>> GetWithHttpMessagesAsync(string resourceGroupName, string proximityPlacementGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ProximityPlacementGroupInner>> GetWithHttpMessagesAsync(string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all proximity placement groups in a subscription.
         /// </summary>

@@ -259,7 +259,7 @@ namespace ManageInternalLoadBalancer
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet2);
 
                 virtualMachineCreatables2.Add(virtualMachine3Creatable);
@@ -271,7 +271,7 @@ namespace ManageInternalLoadBalancer
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet2);
 
                 virtualMachineCreatables2.Add(virtualMachine4Creatable);
