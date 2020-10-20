@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using System;
     using System.Linq;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition;
+    using Microsoft.Rest.Azure.OData;
 
     /// <summary>
     /// The implementation of Applications and its parent interfaces.
@@ -33,10 +34,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         public async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryApplication> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
             var trimmedName = name.Trim('\'');
-            IEnumerable<ApplicationInner> inners = await manager.Inner.Applications.ListAsync(string.Format("displayName eq '{0}'", trimmedName), cancellationToken);
+            ODataQuery<ApplicationInner> oDataQuery = new ODataQuery<ApplicationInner>
+            {
+                Filter = string.Format("displayName eq '{0}'", trimmedName)
+            };
+            IEnumerable<ApplicationInner> inners = await manager.Inner.Applications.ListAsync(oDataQuery, cancellationToken);
             if (Guid.TryParse(trimmedName, out Guid convertedGuid) && (inners == null || !inners.Any()))
             {
-                inners = await manager.Inner.Applications.ListAsync(string.Format("appId eq '{0}'", trimmedName), cancellationToken);
+                oDataQuery.Filter = string.Format("appId eq '{0}'", trimmedName);
+                inners = await manager.Inner.Applications.ListAsync(oDataQuery, cancellationToken);
             }
             if (inners == null || !inners.Any())
             {
