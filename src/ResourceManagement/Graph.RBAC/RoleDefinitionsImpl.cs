@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using Microsoft.Rest;
     using System.Linq;
     using System;
+    using Microsoft.Rest.Azure.OData;
 
     /// <summary>
     /// The implementation of RoleDefinitions and its parent interfaces.
@@ -90,7 +91,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition> GetByScopeAndRoleNameAsync(string scope, string roleName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inners = await Inner.ListAsync(scope, string.Format("roleName eq '{0}'", roleName), cancellationToken);
+            var inners = await Inner.ListAsync(
+                scope,
+                new ODataQuery<RoleDefinitionFilter>
+                {
+                    Filter = string.Format("roleName eq '{0}'", roleName)
+                },
+                cancellationToken);
             if (inners == null || !inners.Any())
             {
                 return null;
