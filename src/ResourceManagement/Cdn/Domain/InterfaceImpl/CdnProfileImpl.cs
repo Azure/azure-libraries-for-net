@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         /// <summary>
-        /// Selects the Standard Akamai SKU.
+        /// Selects the Standard Microsoft SKU.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         CdnProfile.Definition.IWithStandardCreate CdnProfile.Definition.IWithSku.WithStandardMicrosoftSku()
