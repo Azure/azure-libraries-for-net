@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public static readonly RuntimeStack NETCore_V2_0 = new RuntimeStack("DOTNETCORE", "2.0");
         public static readonly RuntimeStack NETCore_V2_1 = new RuntimeStack("DOTNETCORE", "2.1");
         public static readonly RuntimeStack NETCore_V2_2 = new RuntimeStack("DOTNETCORE", "2.2");
+        public static readonly RuntimeStack NETCore_V3_1 = new RuntimeStack("DOTNETCORE", "3.1");
         public static readonly RuntimeStack Ruby_2_3 = new RuntimeStack("RUBY", "2.3");
         public static readonly RuntimeStack Ruby_2_4 = new RuntimeStack("RUBY", "2.4");
         public static readonly RuntimeStack Ruby_2_5 = new RuntimeStack("RUBY", "2.5");
