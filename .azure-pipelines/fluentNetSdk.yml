@@ -20,7 +20,8 @@ jobs:
       - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-credscan.CredScan@2
         displayName: 'Run Credential Scanner'
         inputs:
-          toolMajorVersion: 'Latest'
+          toolMajorVersion: V2
+          toolVersion: 'Latest'
           suppressionsFile: './tools/credscan/CredScanSuppressions.json'
 
       - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-postanalysis.PostAnalysis@1
