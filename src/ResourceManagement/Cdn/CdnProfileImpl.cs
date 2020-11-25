@@ -75,6 +75,11 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             return this;
         }
 
+        public CdnProfileImpl WithStandardMicrosoftSku()
+        {
+            Inner.Sku = new Sku(SkuName.StandardMicrosoft);
+            return this;
+        }
         ///GENMHASH:70DF47F31441CE46EC627207B2DE06E0:C8C6BDB115BB2358DEF4B1C799E01F42
         public async Task StartEndpointAsync(string endpointName, CancellationToken cancellationToken = default(CancellationToken))
         {

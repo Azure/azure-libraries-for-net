@@ -449,5 +449,14 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             return this.WithStandardVerizonSku();
         }
+
+        /// <summary>
+        /// Selects the Standard Microsoft SKU.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        CdnProfile.Definition.IWithStandardCreate CdnProfile.Definition.IWithSku.WithStandardMicrosoftSku()
+        {
+            return this.WithStandardMicrosoftSku();
+        }
     }
 }
