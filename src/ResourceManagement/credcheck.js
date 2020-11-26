@@ -18,17 +18,17 @@ function credcheck(dir) {
     redactDict.set(/;SharedAccessKey=(.*?)(;|\\")/g, ';SharedAccessKey=MGMT_PLACEHOLDER$2');
     redactDict.set(/\\"primaryKey\\": \\"(.*?)\\"/g, '\\"primaryKey\\": \\"MGMT_PLACEHOLDER\\"');
     redactDict.set(/\\"secondaryKey\\": \\"(.*?)\\"/g, '\\"secondaryKey\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"adminPassword\\": \\"(.*?)\\"/g, '\\"adminPassword\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"adminPassword\\": \\"(.*?)\\"/g, '\\"adminPassword\\": \\"MGMT_PLACEHOLDER\\"');
     redactDict.set(/\\"administratorLoginPassword\\": \\"(.*?)\\"/g, '\\"administratorLoginPassword\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"password\\": \\"(.*?)\\"/g, '\\"password\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"connectionString\\": \\"(.*?)\\"/g, '\\"connectionString\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"accessSAS\\": \\"(.*?)\\"/g, '\\"accessSAS\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"storageKey\\": \\"(.*?)\\"/g, '\\"storageKey\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"accessKey\\": \\"(.*?)\\"/g, '\\"accessKey\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"hubDatabasePassword\\": \\"(.*?)\\"/g, '\\"hubDatabasePassword\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"storageAccountKey\\": \\"(.*?)\\"/g, '\\"storageAccountKey\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"adminUserPassword\\": \\"(.*?)\\"/g, '\\"adminUserPassword\\": \\"MGMT_PLACEHOLDER\\"');
-	redactDict.set(/\\"permissions\\":\s*\\"Full\\",[\\r\\n]*\s*\\"value\\":\s*\\"(.*?)\\"/g, '\\"keyName\\": \\"key1\\",\\"value\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"password\\": \\"(.*?)\\"/g, '\\"password\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"connectionString\\": \\"(.*?)\\"/g, '\\"connectionString\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"accessSAS\\": \\"(.*?)\\"/g, '\\"accessSAS\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"storageKey\\": \\"(.*?)\\"/g, '\\"storageKey\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"accessKey\\": \\"(.*?)\\"/g, '\\"accessKey\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"hubDatabasePassword\\": \\"(.*?)\\"/g, '\\"hubDatabasePassword\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"storageAccountKey\\": \\"(.*?)\\"/g, '\\"storageAccountKey\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"adminUserPassword\\": \\"(.*?)\\"/g, '\\"adminUserPassword\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/\\"permissions\\":\s*\\"Full\\",[\\r\\n]*\s*\\"value\\":\s*\\"(.*?)\\"/g, '\\"keyName\\": \\"key1\\",\\"value\\": \\"MGMT_PLACEHOLDER\\"');
 	
     credcheckRecursive(dir, redactDict);
 }
