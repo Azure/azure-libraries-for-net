@@ -34,8 +34,8 @@ namespace ManageZonalVirtualMachine
             var pipName1 = Utilities.CreateRandomName("pip1");
             var pipName2 = Utilities.CreateRandomName("pip2");
             var diskName = Utilities.CreateRandomName("ds");
-            var userName = "tirekicker";
-            var password = "12NewPA23w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             
             try
             {

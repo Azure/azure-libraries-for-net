@@ -14,7 +14,7 @@ namespace ManageFunctionAppWithDomainSsl
 {
     public class Program
     {
-        private const string CertificatePassword = "StrongPass!12";
+        private static readonly string CertificatePassword = Utilities.CreatePassword();
 
         /**
          * Azure App Service sample for managing function apps.
@@ -32,7 +32,7 @@ namespace ManageFunctionAppWithDomainSsl
             string app2Name       = SdkContext.RandomResourceName("webapp2-", 20);
             string rgName         = SdkContext.RandomResourceName("rgNEMV_", 24);
             string domainName     = SdkContext.RandomResourceName("jsdkdemo-", 20) + ".com";
-            string certPassword   = "StrongPass!12";
+            string certPassword   = Utilities.CreatePassword();
 
             try {
                 //============================================================

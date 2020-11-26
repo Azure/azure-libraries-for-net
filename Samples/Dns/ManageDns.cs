@@ -129,7 +129,7 @@ namespace ManageDns
                         .WithNewPrimaryPublicIPAddress(SdkContext.RandomResourceName("empip-", 20))
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername("testuser")
-                        .WithAdminPassword("12NewPA$$w0rd!")
+                        .WithAdminPassword(Utilities.CreatePassword())
                         .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
                 Utilities.Log("Virtual machine created");
@@ -216,7 +216,7 @@ namespace ManageDns
                         .WithNewPrimaryPublicIPAddress(SdkContext.RandomResourceName("ptnerpip-", 20))
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername("testuser")
-                        .WithAdminPassword("12NewPA$$w0rd!")
+                        .WithAdminPassword(Utilities.CreatePassword())
                         .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
                 Utilities.Log("Virtual machine created");

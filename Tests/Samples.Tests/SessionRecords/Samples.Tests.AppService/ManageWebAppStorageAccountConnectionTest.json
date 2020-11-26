@@ -326,7 +326,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"xN+c4Z5PPCauoD90F37MbO0mHdvOvEDL+9GyFmysuRZe4ViqFrr8Hq53HwRvLXfBH4/kVIbZsP7lF5LNKymEuQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Dx/ak85DLPI7hpn9n3kBsybAO69LBXqxYbMFgtO/j2/azUjaIpltQghbx/R//ulfHwz2uU3AM1+Onq9DFShuHg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1056,7 +1056,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=xN+c4Z5PPCauoD90F37MbO0mHdvOvEDL+9GyFmysuRZe4ViqFrr8Hq53HwRvLXfBH4/kVIbZsP7lF5LNKymEuQ==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1126,7 +1126,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=xN+c4Z5PPCauoD90F37MbO0mHdvOvEDL+9GyFmysuRZe4ViqFrr8Hq53HwRvLXfBH4/kVIbZsP7lF5LNKymEuQ==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1212,7 +1212,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfZDE3MDAzMzMyOTAzL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcDEtOTllNDAwOTNiMC9jb25maWcvY29ubmVjdGlvbnN0cmluZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=xN+c4Z5PPCauoD90F37MbO0mHdvOvEDL+9GyFmysuRZe4ViqFrr8Hq53HwRvLXfBH4/kVIbZsP7lF5LNKymEuQ==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "33d4a0a5-ec44-4452-9c63-d5c35ddb41fa"
@@ -1284,7 +1284,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=xN+c4Z5PPCauoD90F37MbO0mHdvOvEDL+9GyFmysuRZe4ViqFrr8Hq53HwRvLXfBH4/kVIbZsP7lF5LNKymEuQ==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_d17003332903/providers/Microsoft.Web/sites/webapp1-99e40093b0/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.ConnectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstore759082050;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {

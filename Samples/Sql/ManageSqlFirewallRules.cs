@@ -12,7 +12,7 @@ namespace ManageSqlFirewallRules
     public class Program
     {
         private static readonly string AdministratorLogin = "sqladmin3423";
-        private static readonly string AdministratorPassword = "myS3cureP@ssword";
+        private static readonly string AdministratorPassword = Utilities.CreatePassword();
         private static readonly string FirewallRuleIPAddress = "10.0.0.1";
         private static readonly string FirewallRuleStartIPAddress = "10.2.0.1";
         private static readonly string FirewallRuleEndIPAddress = "10.2.0.10";

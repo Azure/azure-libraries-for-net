@@ -40,7 +40,7 @@ namespace Fluent.Tests.Compute
                     var publicIpDnsLabel = TestUtilities.GenerateName("pip");
                     var vmName1 = "myvm1";
                     var uname = "juser";
-                    var password = "123tEst!@|ac";
+                    var password = TestUtilities.GenerateName("Pa5$");
                     var virtualMachine = computeManager.VirtualMachines
                             .Define(vmName1)
                                 .WithRegion(Region.USEast2)

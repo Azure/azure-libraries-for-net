@@ -28,7 +28,7 @@ namespace ManageSqlDatabaseInElasticPool
         private static readonly string elasticPoolName = "myElasticPool";
         private static readonly string elasticPool2Name = "secondElasticPool";
         private static readonly string administratorLogin = "sqladmin3423";
-        private static readonly string administratorPassword = "myS3cureP@ssword";
+        private static readonly string administratorPassword = Utilities.CreatePassword();
         private static readonly string database1Name = "myDatabase1";
         private static readonly string database2Name = "myDatabase2";
         private static readonly string anotherDatabaseName = "myAnotherDatabase";

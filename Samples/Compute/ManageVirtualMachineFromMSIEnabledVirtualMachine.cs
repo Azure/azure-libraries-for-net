@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Management.Samples.Common;
 using System;
 
 namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
@@ -35,8 +36,8 @@ namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
             string clientId = args.Length > 2 ? args[2] : null;
             Region region = Region.USWestCentral;
             string linuxVMName = SdkContext.RandomResourceName("vm", 30);
-            string userName = "tirekicker";
-            string password = "12NewPA$$w0rd!";
+            string userName = Utilities.CreateUsername();
+            string password = Utilities.CreatePassword();
 
             //=============================================================
             // MSI Authenticate

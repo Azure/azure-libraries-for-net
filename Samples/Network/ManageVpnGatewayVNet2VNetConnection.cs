@@ -44,7 +44,7 @@ namespace ManageVpnGatewayVNet2VNetConnection
             string nwName = SdkContext.RandomResourceName("nw", 20);
             string vm1Name = SdkContext.RandomResourceName("vm1", 20);
             string vm2Name = SdkContext.RandomResourceName("vm2", 20);
-            string rootname = "tirekicker";
+            string rootname = Utilities.CreateUsername();
             string password = SdkContext.RandomResourceName("pWd!", 15);
             string containerName = "results";
 

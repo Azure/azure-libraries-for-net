@@ -17,7 +17,7 @@ namespace ManageWebAppSqlConnection
     {
         private const string Suffix = ".azurewebsites.net";
         private const string Admin = "jsdkadmin";
-        private const string Password = "StrongPass!123";
+        private static readonly string Password = Utilities.CreatePassword();
 
         /**
          * Azure App Service basic sample for managing web apps.

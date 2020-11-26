@@ -19,7 +19,7 @@ namespace ManageTrafficManager
 {
     public class Program
     {
-        private static readonly string certPassword             = "StrongPass!12";
+        private static readonly string certPassword             = Utilities.CreatePassword();
         private static readonly List<Region> regions            = new List<Region>();
 
         /**

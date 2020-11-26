@@ -98,7 +98,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryPublicIPAddress()
                             .WithLinuxCustomImage(image.Id)
                             .WithRootUsername("javauser")
-                            .WithRootPassword("12NewPA$$w0rd!")
+                            .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                             .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
@@ -217,7 +217,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var vmName = SdkContext.RandomResourceName("vm7-", 20);
                 var storageAccountName = SdkContext.RandomResourceName("stg", 17);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
                 var storageManager = TestHelper.CreateStorageManager();
@@ -357,7 +357,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                                      IComputeManager computeManager)
         {
             var uname = "javauser";
-            var password = "12NewPA$$w0rd!";
+            var password = TestUtilities.GenerateName("Pa5$");
             KnownLinuxVirtualMachineImage linuxImage = KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts;
             var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
 

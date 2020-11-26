@@ -32,8 +32,8 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
             var linuxVMName = Utilities.CreateRandomName("VM1");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var pipName = Utilities.CreateRandomName("pip1");
-            var userName = "tirekicker";
-            var password = "12NewPA34w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             var region = Region.USWestCentral;
 
             var installScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/create_resources_with_msi.sh";

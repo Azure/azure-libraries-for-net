@@ -72,7 +72,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithBootDiagnostics()
                         .Create();
 
@@ -148,7 +148,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithBootDiagnostics(creatableStorageAccount)
                         .Create();
 
@@ -226,7 +226,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithBootDiagnostics(storageAccount)
                         .Create();
 
@@ -296,7 +296,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithBootDiagnostics()
                         .Create();
 
@@ -373,7 +373,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithUnmanagedDisks()
                         .WithBootDiagnostics()
                         .Create();
@@ -462,7 +462,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithUnmanagedDisks()
                         .WithBootDiagnostics()
                         .WithExistingStorageAccount(storageAccount)
@@ -549,7 +549,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithUnmanagedDisks()
                         .WithBootDiagnostics(creatableStorageAccount) // This storage account should be used for BDiagnostics not OS disk storage account
                         .Create();

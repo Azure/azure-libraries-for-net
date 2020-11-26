@@ -14,8 +14,8 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromSnapshot
 {
     public class Program
     {
-        private static string userName = "tirekicker";
-        private static string password = "12NewPA$$w0rd!";
+        private static string userName = Utilities.CreateUsername();
+        private static string password = Utilities.CreatePassword();
         private static Region region = Region.USWestCentral;
 
         /**

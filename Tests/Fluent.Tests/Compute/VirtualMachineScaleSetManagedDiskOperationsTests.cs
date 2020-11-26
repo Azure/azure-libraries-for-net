@@ -56,7 +56,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryInternalLoadBalancer()
                             .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                             .WithRootUsername("jvuser")
-                            .WithRootPassword("123OData!@#123")
+                            .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                             .WithNewDataDisk(100)
                             .WithNewDataDisk(100, 1, CachingTypes.ReadWrite)
                             .WithNewDataDisk(100, 2, CachingTypes.ReadOnly)
@@ -162,7 +162,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var userName = "tirekicker";
-                var password = "12NewPA$$w0rd!";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 10);
                 var customImageName = SdkContext.RandomResourceName("img", 10);
                 var vmssName = SdkContext.RandomResourceName("vmss", 10);
