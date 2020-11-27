@@ -17,16 +17,16 @@ namespace ManageVirtualMachineExtension
     {
         // Linux configurations
         //
-        readonly static string FirstLinuxUserName = "tirekicker";
-        readonly static string FirstLinuxUserPassword = "12NewPA$$w0rd!";
-        readonly static string FirstLinuxUserNewPassword = "muy!234OR";
+        readonly static string FirstLinuxUserName = Utilities.CreateUsername();
+        readonly static string FirstLinuxUserPassword = Utilities.CreatePassword();
+        readonly static string FirstLinuxUserNewPassword = Utilities.CreatePassword();
 
         readonly static string SecondLinuxUserName = "seconduser";
-        readonly static string SecondLinuxUserPassword = "B12a6@12xyz!";
+        readonly static string SecondLinuxUserPassword = Utilities.CreatePassword();
         readonly static string SecondLinuxUserExpiration = "2020-12-31";
 
         readonly static string ThirdLinuxUserName = "thirduser";
-        readonly static string ThirdLinuxUserPassword = "12xyz!B12a6@";
+        readonly static string ThirdLinuxUserPassword = Utilities.CreatePassword();
         readonly static string ThirdLinuxUserExpiration = "2020-12-31";
 
         readonly static string LinuxCustomScriptExtensionName = "CustomScriptForLinux";
@@ -58,15 +58,15 @@ namespace ManageVirtualMachineExtension
 
         // Windows configurations
         //
-        readonly static string firstWindowsUserName = "tirekicker";
-        readonly static string firstWindowsUserPassword = "12NewPA$$w0rd!";
-        readonly static string firstWindowsUserNewPassword = "muy!234OR";
+        readonly static string firstWindowsUserName = Utilities.CreateUsername();
+        readonly static string firstWindowsUserPassword = Utilities.CreatePassword();
+        readonly static string firstWindowsUserNewPassword = Utilities.CreatePassword();
 
         readonly static string secondWindowsUserName = "seconduser";
-        readonly static string secondWindowsUserPassword = "B12a6@12xyz!";
+        readonly static string secondWindowsUserPassword = Utilities.CreatePassword();
 
         readonly static string thirdWindowsUserName = "thirduser";
-        readonly static string thirdWindowsUserPassword = "12xyz!B12a6@";
+        readonly static string thirdWindowsUserPassword = Utilities.CreatePassword();
 
         readonly static string windowsVmAccessExtensionName = "VMAccessAgent";
         readonly static string windowsVmAccessExtensionPublisherName = "Microsoft.Compute";

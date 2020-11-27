@@ -69,7 +69,7 @@
       "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgrsdsic158183815/providers/Microsoft.Sql/servers/sqlserver20f57425b?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JncnNkc2ljMTU4MTgzODE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3Fsc2VydmVyMjBmNTc0MjViP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"sqladmin3423\",\r\n    \"administratorLoginPassword\": \"myS3cureP@ssword\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"sqladmin3423\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1170,7 +1170,7 @@
           "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"rjrWq7DdHNNmjmv6WwYEsGLo3a+ENgnpasvxxg3xzNT8j3qa9WUzmJelLdTm5+VXn3Fykq/KKqef+uKiTb7h8w==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"oanRdMLjVe4GhwIBk7wU/ZaUUHMcwbEAt3ef03ujgy9DRsrPaLZgzbDYJESc2ypk2SdGnROBM+NJJGjBrxqPhA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -1235,7 +1235,7 @@
           "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"rjrWq7DdHNNmjmv6WwYEsGLo3a+ENgnpasvxxg3xzNT8j3qa9WUzmJelLdTm5+VXn3Fykq/KKqef+uKiTb7h8w==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"oanRdMLjVe4GhwIBk7wU/ZaUUHMcwbEAt3ef03ujgy9DRsrPaLZgzbDYJESc2ypk2SdGnROBM+NJJGjBrxqPhA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -1300,7 +1300,7 @@
           "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"rjrWq7DdHNNmjmv6WwYEsGLo3a+ENgnpasvxxg3xzNT8j3qa9WUzmJelLdTm5+VXn3Fykq/KKqef+uKiTb7h8w==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"oanRdMLjVe4GhwIBk7wU/ZaUUHMcwbEAt3ef03ujgy9DRsrPaLZgzbDYJESc2ypk2SdGnROBM+NJJGjBrxqPhA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -1351,7 +1351,7 @@
       "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgrsdsic158183815/providers/Microsoft.Sql/servers/sqlserver20f57425b/databases/db-from-sample/export?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JncnNkc2ljMTU4MTgzODE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3Fsc2VydmVyMjBmNTc0MjViL2RhdGFiYXNlcy9kYi1mcm9tLXNhbXBsZS9leHBvcnQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"storageKeyType\": \"StorageAccessKey\",\r\n  \"storageKey\": \"rjrWq7DdHNNmjmv6WwYEsGLo3a+ENgnpasvxxg3xzNT8j3qa9WUzmJelLdTm5+VXn3Fykq/KKqef+uKiTb7h8w==\",\r\n  \"storageUri\": \"https://sqlserverf7e721225.blob.core.windows.net/from-sample/dbfromsample.bacpac\",\r\n  \"administratorLogin\": \"sqladmin3423\",\r\n  \"administratorLoginPassword\": \"myS3cureP@ssword\",\r\n  \"authenticationType\": \"SQL\"\r\n}",
+      "RequestBody": "{\r\n  \"storageKeyType\": \"StorageAccessKey\",\r\n  \"storageKey\": \"MGMT_PLACEHOLDER\",\r\n  \"storageUri\": \"https://sqlserverf7e721225.blob.core.windows.net/from-sample/dbfromsample.bacpac\",\r\n  \"administratorLogin\": \"sqladmin3423\",\r\n  \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\",\r\n  \"authenticationType\": \"SQL\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2369,7 +2369,7 @@
       "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgrsdsic158183815/providers/Microsoft.Sql/servers/sqlserver20f57425b/import?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JncnNkc2ljMTU4MTgzODE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3Fsc2VydmVyMjBmNTc0MjViL2ltcG9ydD9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"databaseName\": \"db-from-import1\",\r\n  \"edition\": \"Standard\",\r\n  \"serviceObjectiveName\": \"S0\",\r\n  \"maxSizeBytes\": \"268435456000\",\r\n  \"storageKeyType\": \"StorageAccessKey\",\r\n  \"storageKey\": \"rjrWq7DdHNNmjmv6WwYEsGLo3a+ENgnpasvxxg3xzNT8j3qa9WUzmJelLdTm5+VXn3Fykq/KKqef+uKiTb7h8w==\",\r\n  \"storageUri\": \"https://sqlserverf7e721225.blob.core.windows.net/from-sample/dbfromsample.bacpac\",\r\n  \"administratorLogin\": \"sqladmin3423\",\r\n  \"administratorLoginPassword\": \"myS3cureP@ssword\",\r\n  \"authenticationType\": \"SQL\"\r\n}",
+      "RequestBody": "{\r\n  \"databaseName\": \"db-from-import1\",\r\n  \"edition\": \"Standard\",\r\n  \"serviceObjectiveName\": \"S0\",\r\n  \"maxSizeBytes\": \"268435456000\",\r\n  \"storageKeyType\": \"StorageAccessKey\",\r\n  \"storageKey\": \"MGMT_PLACEHOLDER\",\r\n  \"storageUri\": \"https://sqlserverf7e721225.blob.core.windows.net/from-sample/dbfromsample.bacpac\",\r\n  \"administratorLogin\": \"sqladmin3423\",\r\n  \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\",\r\n  \"authenticationType\": \"SQL\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2806,7 +2806,7 @@
       "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgrsdsic158183815/providers/Microsoft.Sql/servers/sqlserver20f57425b/databases/db-from-import2/extensions/import?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JncnNkc2ljMTU4MTgzODE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3Fsc2VydmVyMjBmNTc0MjViL2RhdGFiYXNlcy9kYi1mcm9tLWltcG9ydDIvZXh0ZW5zaW9ucy9pbXBvcnQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageKeyType\": \"StorageAccessKey\",\r\n    \"storageKey\": \"rjrWq7DdHNNmjmv6WwYEsGLo3a+ENgnpasvxxg3xzNT8j3qa9WUzmJelLdTm5+VXn3Fykq/KKqef+uKiTb7h8w==\",\r\n    \"storageUri\": \"https://sqlserverf7e721225.blob.core.windows.net/from-sample/dbfromsample.bacpac\",\r\n    \"administratorLogin\": \"sqladmin3423\",\r\n    \"administratorLoginPassword\": \"myS3cureP@ssword\",\r\n    \"authenticationType\": \"SQL\",\r\n    \"operationMode\": \"Import\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageKeyType\": \"StorageAccessKey\",\r\n    \"storageKey\": \"MGMT_PLACEHOLDER\",\r\n    \"storageUri\": \"https://sqlserverf7e721225.blob.core.windows.net/from-sample/dbfromsample.bacpac\",\r\n    \"administratorLogin\": \"sqladmin3423\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\",\r\n    \"authenticationType\": \"SQL\",\r\n    \"operationMode\": \"Import\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"

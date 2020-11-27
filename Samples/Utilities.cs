@@ -761,6 +761,16 @@ namespace Microsoft.Azure.Management.Samples.Common
             return SdkContext.RandomResourceName(namePrefix, 30);
         }
 
+        public static string CreatePassword()
+        {
+            return SdkContext.RandomResourceName("Pa5$", 15);
+        }
+
+        public static string CreateUsername()
+        {
+            return "tirekicker";
+        }
+
         public static void PrintAvailabilitySet(IAvailabilitySet resource)
         {
             Utilities.Log(new StringBuilder().Append("Availability Set: ").Append(resource.Id)
@@ -3066,6 +3076,7 @@ namespace Microsoft.Azure.Management.Samples.Common
 
         public static void DeprovisionAgentInLinuxVM(string host, int port, string userName, string password)
         {
+            Utilities.Log("is mocked:" + IsRunningMocked);
             if (!IsRunningMocked)
             {
                 Console.WriteLine("Trying to de-provision: " + host);
@@ -3081,7 +3092,7 @@ namespace Microsoft.Azure.Management.Samples.Common
         public static string GetArmTemplate(string templateFileName)
         {
             var adminUsername = "tirekicker";
-            var adminPassword = "12NewPA$$w0rd!";
+            var adminPassword = CreatePassword();
             var hostingPlanName = SdkContext.RandomResourceName("hpRSAT", 24);
             var webAppName = SdkContext.RandomResourceName("wnRSAT", 24);
             var armTemplateString = File.ReadAllText(Path.Combine(Utilities.ProjectPath, "Asset", templateFileName));

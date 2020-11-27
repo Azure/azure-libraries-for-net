@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             string dockerVMName = SdkContext.RandomResourceName("dockervm", 15);
             string publicIPDnsLabel = SdkContext.RandomResourceName("pip", 10);
             string vmUserName = "dockerUser";
-            string vmPassword = "12NewPA$$w0rd!";
+            string vmPassword = Utilities.CreatePassword();
 
             // Could not find a Docker environment; presume that there is no local Docker engine running and
             //    attempt to configure a Docker engine running inside a new Azure virtual machine

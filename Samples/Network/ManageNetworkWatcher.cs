@@ -51,7 +51,7 @@ namespace ManageNetworkWatcher
         {
             string nwName = SdkContext.RandomResourceName("nw", 8);
 
-            string userName = "tirekicker";
+            string userName = Utilities.CreateUsername();
             string vnetName = SdkContext.RandomResourceName("vnet", 20);
             string subnetName = "subnet1";
             string nsgName = SdkContext.RandomResourceName("nsg", 20);

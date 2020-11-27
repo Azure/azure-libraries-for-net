@@ -627,7 +627,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/lvm367092?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvbHZtMzY3MDkyP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"14.04.4-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      }\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"lvm367092\",\r\n      \"adminUsername\": \"tirekicker\",\r\n      \"adminPassword\": \"12NewPA$$w0rd!\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Network/networkInterfaces/niclvm3670923e890508\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"14.04.4-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      }\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"lvm367092\",\r\n      \"adminUsername\": \"tirekicker\",\r\n      \"adminPassword\": \"MGMT_PLACEHOLDER\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Network/networkInterfaces/niclvm3670923e890508\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "e1a88400-d9df-41d7-ad72-e5f9ecfc66e9"
@@ -2283,7 +2283,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/lvm367092/extensions/VMAccessForLinux?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvbHZtMzY3MDkyL2V4dGVuc2lvbnMvVk1BY2Nlc3NGb3JMaW51eD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"VMAccessForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"protectedSettings\": {\r\n      \"username\": \"seconduser\",\r\n      \"password\": \"B12a6@12xyz!\",\r\n      \"expiration\": \"2020-12-31\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"VMAccessForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"protectedSettings\": {\r\n      \"username\": \"seconduser\",\r\n      \"password\": \"MGMT_PLACEHOLDER\",\r\n      \"expiration\": \"2020-12-31\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "7f3a2f9c-9601-4d7f-aaa4-9eabaaf860fd"
@@ -2363,7 +2363,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/lvm367092/extensions/VMAccessForLinux?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvbHZtMzY3MDkyL2V4dGVuc2lvbnMvVk1BY2Nlc3NGb3JMaW51eD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"VMAccessForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"thirduser\",\r\n      \"password\": \"12xyz!B12a6@\",\r\n      \"expiration\": \"2020-12-31\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"VMAccessForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"thirduser\",\r\n      \"password\": \"MGMT_PLACEHOLDER\",\r\n      \"expiration\": \"2020-12-31\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "4d530b2f-6422-405b-831e-8f93cf640343"
@@ -2440,7 +2440,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/lvm367092/extensions/VMAccessForLinux?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvbHZtMzY3MDkyL2V4dGVuc2lvbnMvVk1BY2Nlc3NGb3JMaW51eD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"VMAccessForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"tirekicker\",\r\n      \"password\": \"muy!234OR\",\r\n      \"reset_ssh\": \"true\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"VMAccessForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"tirekicker\",\r\n      \"password\": \"MGMT_PLACEHOLDER\",\r\n      \"reset_ssh\": \"true\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "602787b6-e9ef-4022-a2ca-0a5380e918e6"
@@ -4736,7 +4736,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/wvm76950d?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvd3ZtNzY5NTBkP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2012-R2-Datacenter\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      }\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"wvm76950d\",\r\n      \"adminUsername\": \"tirekicker\",\r\n      \"adminPassword\": \"12NewPA$$w0rd!\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Network/networkInterfaces/nicwvm76950dbc225404\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2012-R2-Datacenter\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      }\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"wvm76950d\",\r\n      \"adminUsername\": \"tirekicker\",\r\n      \"adminPassword\": \"MGMT_PLACEHOLDER\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Network/networkInterfaces/nicwvm76950dbc225404\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "ae7fadfb-7c3a-458d-a6cf-401c34a0340e"
@@ -6554,7 +6554,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/wvm76950d/extensions/VMAccessAgent?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvd3ZtNzY5NTBkL2V4dGVuc2lvbnMvVk1BY2Nlc3NBZ2VudD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"VMAccessAgent\",\r\n    \"typeHandlerVersion\": \"2.3\",\r\n    \"protectedSettings\": {\r\n      \"username\": \"seconduser\",\r\n      \"password\": \"B12a6@12xyz!\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"VMAccessAgent\",\r\n    \"typeHandlerVersion\": \"2.3\",\r\n    \"protectedSettings\": {\r\n      \"username\": \"seconduser\",\r\n      \"password\": \"MGMT_PLACEHOLDER\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "0c4d6c5a-15d1-4f2a-b2ca-18a1195d4d85"
@@ -6634,7 +6634,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/wvm76950d/extensions/VMAccessAgent?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvd3ZtNzY5NTBkL2V4dGVuc2lvbnMvVk1BY2Nlc3NBZ2VudD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"VMAccessAgent\",\r\n    \"typeHandlerVersion\": \"2.3\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"thirduser\",\r\n      \"password\": \"12xyz!B12a6@\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"VMAccessAgent\",\r\n    \"typeHandlerVersion\": \"2.3\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"thirduser\",\r\n      \"password\": \"MGMT_PLACEHOLDER\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "b94c190f-1506-47f0-96a4-6dc295ebf972"
@@ -6711,7 +6711,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcove2e386509/providers/Microsoft.Compute/virtualMachines/wvm76950d/extensions/VMAccessAgent?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY292ZTJlMzg2NTA5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvd3ZtNzY5NTBkL2V4dGVuc2lvbnMvVk1BY2Nlc3NBZ2VudD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"VMAccessAgent\",\r\n    \"typeHandlerVersion\": \"2.3\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"tirekicker\",\r\n      \"password\": \"muy!234OR\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"VMAccessAgent\",\r\n    \"typeHandlerVersion\": \"2.3\",\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"protectedSettings\": {\r\n      \"username\": \"tirekicker\",\r\n      \"password\": \"MGMT_PLACEHOLDER\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "6a7d9294-ac70-492b-af90-b6a3099c87b1"
@@ -12245,12 +12245,21 @@
       "wvm76950d",
       "rgpip19a316963778e9",
       "rgpip2bc962472552ff",
-      "niclvm3670923e890508",
-      "vnetc57891969b3d",
-      "pip5813217a",
+	  "niclvm3670923e890508",
+	  "vnetc57891969b3d",
+	  "pip5813217a",
+	  "4",
+	  "5",
+	  "6",
+      "1",
+      "2",
+      "3",
+      "8",
+      "7",
       "nicwvm76950dbc225404",
-      "vnetb8391596b26a",
-      "pip449456e4"
+	  "vnetb8391596b26a",
+	  "pip449456e4",
+	  "9",
     ]
   },
   "Variables": {

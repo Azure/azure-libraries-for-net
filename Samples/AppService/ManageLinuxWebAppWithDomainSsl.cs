@@ -14,7 +14,7 @@ namespace ManageLinuxWebAppWithDomainSsl
 {
     public class Program
     {
-        private const string CertificatePassword = "StrongPass!12";
+        private static readonly string CertificatePassword = Utilities.CreatePassword();
 
         /**
          * Azure App Service sample for managing web apps.

@@ -11,6 +11,7 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Azure.Tests;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Fluent.Tests.Storage
 {
@@ -220,7 +221,10 @@ namespace Fluent.Tests.Storage
                     Assert.NotNull(updatedKeys);
                     Assert.True(updatedKeys.Count() > 0);
                     var updatedFirstKey = updatedKeys.First(f => f.KeyName == firstKey.KeyName);
-                    Assert.False(firstKey.Value.Equals(updatedFirstKey.Value, StringComparison.OrdinalIgnoreCase));
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.False(firstKey.Value.Equals(updatedFirstKey.Value, StringComparison.OrdinalIgnoreCase));
+                    }
                 }
                 finally
                 {

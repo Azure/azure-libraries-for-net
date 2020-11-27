@@ -26,7 +26,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var vmName1 = "myvm1";
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
                 var rgName = TestUtilities.GenerateName("rgfluentchash-");
@@ -88,7 +88,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -263,7 +263,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -445,7 +445,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -537,7 +537,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -634,7 +634,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var vmName = "myvm6";
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
@@ -709,7 +709,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var availSetName = SdkContext.RandomResourceName("av-", 15);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var vmName = "myvm6";
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();

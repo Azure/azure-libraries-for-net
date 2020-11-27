@@ -21,7 +21,7 @@ namespace GettingSqlServerMetrics
         private static readonly string sqlServerName = SdkContext.RandomResourceName("sqlserver", 20);
         private static readonly string rgName = SdkContext.RandomResourceName("rgsql", 20);
         private static readonly string administratorLogin = "sqladmin3423";
-        private static readonly string administratorPassword = "myS3cureP@ssword";
+        private static readonly string administratorPassword = Utilities.CreatePassword();
         private static readonly string storageName = SdkContext.RandomResourceName("sqlserver", 20);
         private static readonly string dbName = "dbSample";
         private static readonly string epName = "epSample";

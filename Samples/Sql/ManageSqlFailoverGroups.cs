@@ -18,7 +18,7 @@ namespace ManageSqlFailoverGroups
         private static readonly string rgName = SdkContext.RandomResourceName("rgsql", 20);
         private static readonly string dbName = "dbSample";
         private static readonly string administratorLogin = "sqladmin3423";
-        private static readonly string administratorPassword = "myS3cureP@ssword";
+        private static readonly string administratorPassword = Utilities.CreatePassword();
 
         /**
          * Azure SQL sample for managing SQL Failover Groups

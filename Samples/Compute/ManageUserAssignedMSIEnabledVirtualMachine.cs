@@ -30,8 +30,8 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
             var identityName = Utilities.CreateRandomName("id");
             var linuxVMName = Utilities.CreateRandomName("VM1");
             var pipName = Utilities.CreateRandomName("pip1");
-            var userName = "tirekicker";
-            var password = "12NewPAwX0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             var region = Region.USWestCentral;
 
             try

@@ -49,7 +49,7 @@ namespace ManageUsersGroupsAndRoles
             var user = authenticated.ActiveDirectoryUsers
                 .Define(userName)
                 .WithEmailAlias(userEmail)
-                .WithPassword("StrongPass!12")
+                .WithPassword(Utilities.CreatePassword())
                 .Create();
             
             Utilities.Log("Created Active Directory user " + userName);

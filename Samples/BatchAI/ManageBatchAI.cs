@@ -44,7 +44,7 @@ namespace ManageBatchAI
             Region region = Region.USWest2;
             string shareName = SdkContext.RandomResourceName("fs", 20);
             string clusterName = SdkContext.RandomResourceName("cluster", 15);
-            string userName = "tirekicker";
+            string userName = Utilities.CreateUsername();
             string sharePath = "mnistcntksample";
 
             try

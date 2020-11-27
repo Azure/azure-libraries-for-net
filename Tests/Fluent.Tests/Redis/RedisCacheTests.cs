@@ -5,6 +5,7 @@ using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Redis.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
@@ -108,11 +109,14 @@ namespace Fluent.Tests
                     Assert.NotNull(oldKeys);
                     Assert.NotNull(updatedPrimaryKey);
                     Assert.NotNull(updatedSecondaryKey);
-                    Assert.NotEqual(oldKeys.PrimaryKey, updatedPrimaryKey.PrimaryKey);
-                    Assert.Equal(oldKeys.SecondaryKey, updatedPrimaryKey.SecondaryKey);
-                    Assert.NotEqual(oldKeys.SecondaryKey, updatedSecondaryKey.SecondaryKey);
-                    Assert.NotEqual(updatedPrimaryKey.SecondaryKey, updatedSecondaryKey.SecondaryKey);
-                    Assert.Equal(updatedPrimaryKey.PrimaryKey, updatedSecondaryKey.PrimaryKey);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotEqual(oldKeys.PrimaryKey, updatedPrimaryKey.PrimaryKey);
+                        Assert.Equal(oldKeys.SecondaryKey, updatedPrimaryKey.SecondaryKey);
+                        Assert.NotEqual(oldKeys.SecondaryKey, updatedSecondaryKey.SecondaryKey);
+                        Assert.NotEqual(updatedPrimaryKey.SecondaryKey, updatedSecondaryKey.SecondaryKey);
+                        Assert.Equal(updatedPrimaryKey.PrimaryKey, updatedSecondaryKey.PrimaryKey);
+                    }
 
                     // Update to STANDARD Sku from BASIC SKU
                     redisCache = redisCache.Update()

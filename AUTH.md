@@ -119,10 +119,10 @@ This format is still supported for backward compatibility at least until 2.0 rel
 
 ```json
 {
-  "clientId": "b52dd125-9272-4b21-9862-0be667bdf6dc",
-  "clientSecret": "ebc6e170-72b2-4b6f-9de2-99410964d2d0",
-  "subscriptionId": "ffa52f27-be12-4cad-b1ea-c2c241b6cceb",
-  "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "clientId": "00000000-0000-0000-0000-000000000000",
+  "clientSecret": "00000000-0000-0000-0000-000000000000",
+  "subscriptionId": "00000000-0000-0000-0000-000000000000",
+  "tenantId": "00000000-0000-0000-0000-000000000000",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
   "activeDirectoryGraphResourceId": "https://graph.windows.net/",

@@ -21,8 +21,8 @@ namespace ManageVirtualMachinesInParallelWithNetwork
     {
         private const int FrontendVMCount = 10;
         private const int BackendVMCount = 10;
-        private const string UserName = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private static readonly string UserName = Utilities.CreateUsername();
+        private static readonly string Password = Utilities.CreatePassword();
 
         /**
          * Create a virtual network with two Subnets – frontend and backend

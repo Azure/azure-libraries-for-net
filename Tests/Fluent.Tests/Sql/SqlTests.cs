@@ -76,7 +76,7 @@ namespace Fluent.Tests
                 string syncGroupName = SdkContext.RandomResourceName("groupName", 15);
                 string syncMemberName = SdkContext.RandomResourceName("memberName", 15);
                 string administratorLogin = "sqladmin";
-                string administratorPassword = "N0t@P@ssw0rd!";
+                string administratorPassword = TestUtilities.GenerateName("Pa5$");
 
                 try
                 {
@@ -159,7 +159,7 @@ namespace Fluent.Tests
                 string dbSyncName = SdkContext.RandomResourceName("dbSync", 15);
                 string syncGroupName = SdkContext.RandomResourceName("groupName", 15);
                 string administratorLogin = "sqladmin";
-                string administratorPassword = "N0t@P@ssw0rd!";
+                string administratorPassword = TestUtilities.GenerateName("Pa5$");
                 Region region = Region.USEast2;
 
                 try
@@ -265,7 +265,7 @@ namespace Fluent.Tests
                     string failoverGroupName2 = SdkContext.RandomResourceName("fg2", 22);
                     string dbName = "dbSample";
                     string administratorLogin = "sqladmin";
-                    string administratorPassword = "N0t@P@ssw0rd!";
+                    string administratorPassword = TestUtilities.GenerateName("Pa5$");
 
                     // Create
                     var sqlPrimaryServer = rollUpClient.SqlServers.Define(sqlPrimaryServerName)
@@ -395,7 +395,7 @@ namespace Fluent.Tests
                 string rgName = GroupName;
                 string sqlServerName = SqlServerName;
                 string sqlServerAdminName = "sqladmin";
-                string sqlServerAdminPassword = "N0t@P@ssw0rd!";
+                string sqlServerAdminPassword = TestUtilities.GenerateName("Pa5$");
                 string databaseName = "db-from-sample";
 
                 try
@@ -482,7 +482,7 @@ namespace Fluent.Tests
                 string sqlServerName1 = SqlServerName + "1";
                 string sqlServerName2 = SqlServerName + "2";
                 string sqlServerAdminName = "sqladmin";
-                string sqlServerAdminPassword = "N0t@P@ssw0rd!";
+                string sqlServerAdminPassword = TestUtilities.GenerateName("Pa5$");
 
                 try
                 {
@@ -556,7 +556,7 @@ namespace Fluent.Tests
                     string rgName = GroupName;
                     string sqlServerName = SqlServerName;
                     string sqlServerAdminName = "sqladmin";
-                    string sqlServerAdminPassword = "N0t@P@ssw0rd!";
+                    string sqlServerAdminPassword = TestUtilities.GenerateName("Pa5$");
                     string databaseName = "db-from-sample";
 
                     var regionCapabilities = rollUpClient.SqlServers.GetCapabilitiesByRegion(Region.USEast);
