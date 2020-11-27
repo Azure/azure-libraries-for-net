@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:027705B70337BE533ED77421800E496A:3479885A232C974264B5B36BDBB0BC94
         public HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithDnsRecordType(CustomHostNameDnsRecordType hostNameDnsRecordType)
         {
-            var regex = new Regex("([.\\w-]+)\\.([\\w-]+\\.\\w+)");
+            var regex = new Regex("([.\\w-]+|[*])\\.([\\w-]+\\.\\w+)");
             var matcher = regex.Match(name);
             if (hostNameDnsRecordType == CustomHostNameDnsRecordType.CName && !matcher.Success)
             {
