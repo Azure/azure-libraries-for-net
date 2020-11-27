@@ -77,6 +77,12 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
         /// </summary>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithStandardCreate WithStandardAkamaiSku();
+
+        /// <summary>
+        /// Selects the Standard Microsoft SKU.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithStandardCreate WithStandardMicrosoftSku();
     }
 
     /// <summary>
