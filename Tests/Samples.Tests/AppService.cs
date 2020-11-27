@@ -70,7 +70,7 @@ namespace Samples.Tests
                ManageWebAppStorageAccountConnection.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "AppService")]
         public void ManageWebAppWithDomainSslTest()
         {
@@ -79,7 +79,7 @@ namespace Samples.Tests
                 ManageWebAppWithDomainSsl.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "AppService")]
         public void ManageWebAppWithTrafficManagerTest()
         {
@@ -124,7 +124,7 @@ namespace Samples.Tests
                ManageLinuxWebAppStorageAccountConnection.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "AppService")]
         public void ManageLinuxWebAppWithDomainSslTest()
         {
@@ -133,7 +133,7 @@ namespace Samples.Tests
                 ManageLinuxWebAppWithDomainSsl.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "AppService")]
         public void ManageLinuxWebAppWithTrafficManagerTest()
         {
@@ -170,7 +170,7 @@ namespace Samples.Tests
                ManageFunctionAppSourceControl.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "AppService")]
         public void ManageFunctionAppWithAuthenticationTest()
         {
@@ -179,7 +179,7 @@ namespace Samples.Tests
                 ManageFunctionAppWithAuthentication.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "AppService")]
         public void ManageFunctionAppWithDomainSslTest()
         {
