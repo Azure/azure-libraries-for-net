@@ -27,11 +27,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <FluentVersion>1.36.0</FluentVersion>
+    <FluentVersion>1.36.1</FluentVersion>
     <VersionPrefix>$(FluentVersion)</VersionPrefix>
 
-    <!-- Keep the assembly version pinned unless a breaking change is made -->
-    <AssemblyVersion>1.0.0.66</AssemblyVersion>
+    <!-- Always update AssemblyVersion for new release -->
+    <AssemblyVersion>1.0.0.67</AssemblyVersion>
   </PropertyGroup>
   
   <PropertyGroup>
