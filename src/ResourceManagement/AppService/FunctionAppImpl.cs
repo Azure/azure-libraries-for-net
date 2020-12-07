@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             SkuDescription description = pricingTier.SkuDescription;
             if (description.Tier.Equals("Basic", StringComparison.OrdinalIgnoreCase)
                 || description.Tier.Equals("Standard", StringComparison.OrdinalIgnoreCase)
-                || description.Tier.Equals("Premium", StringComparison.OrdinalIgnoreCase))
+                || description.Tier.StartsWith("Premium", StringComparison.OrdinalIgnoreCase))
             {
                 return WithWebAppAlwaysOn(true);
             }
@@ -181,9 +181,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             SkuDescription description = pricingTier.SkuDescription;
-            return !(description.Tier.Equals("Basic", StringComparison.OrdinalIgnoreCase)
-                || description.Tier.Equals("Standard", StringComparison.OrdinalIgnoreCase)
-                || description.Tier.Equals("Premium", StringComparison.OrdinalIgnoreCase));
+            return description.Tier.Equals("Dynamic", StringComparison.OrdinalIgnoreCase);
         }
 
         public override async Task<IFunctionApp> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
