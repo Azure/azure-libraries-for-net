@@ -153,6 +153,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             return this.WithTemplateDeploymentDisabled();
         }
 
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithSoftDeleteEnabled()
+        {
+            return this.WithSoftDeleteEnabled();
+        }
+
         /// <summary>
         /// Disable Azure Disk Encryption to retrieve secrets from the vault and unwrap keys.
         /// </summary>
@@ -205,6 +210,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithTemplateDeploymentDisabled()
         {
             return this.WithTemplateDeploymentDisabled();
+        }
+
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithSoftDeleteEnabled()
+        {
+            return this.WithSoftDeleteEnabled();
         }
 
         /// <summary>

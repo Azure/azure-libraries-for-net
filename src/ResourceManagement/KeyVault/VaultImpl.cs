@@ -258,6 +258,12 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             return this;
         }
 
+        public VaultImpl WithSoftDeleteEnabled()
+        {
+            Inner.Properties.EnableSoftDelete = true;
+            return this;
+        }
+
         ///GENMHASH:B5E3D903BDA1F2A62441339A3042D8F4:E59E1393C8B2F3C07E87C9F34E983726
         public VaultImpl WithSku(SkuName skuName)
         {
