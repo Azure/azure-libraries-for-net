@@ -49,6 +49,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentDisabled();
 
+        /// <summary>
+        /// Enable soft delete for the key vault.
+        /// </summary>
+        /// <return>The key vault update stage.</return>
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithSoftDeleteEnabled();
     }
 
     /// <summary>
