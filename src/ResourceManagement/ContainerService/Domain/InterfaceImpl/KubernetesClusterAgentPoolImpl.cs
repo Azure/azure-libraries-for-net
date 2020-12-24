@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
-    internal partial class KubernetesClusterAgentPoolImpl 
+    internal partial class KubernetesClusterAgentPoolImpl
     {
         /// <summary>
         /// Gets the number of agents (virtual machines) to host docker containers.
@@ -125,6 +125,16 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolType<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolTypeName(string agentPoolTypeName)
         {
             return this.WithAgentPoolTypeName(agentPoolTypeName);
+        }
+
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolMode<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolMode(AgentPoolMode agentPoolMode)
+        {
+            return this.WithAgentPoolMode(agentPoolMode);
+        }
+
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolMode<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolModeName(string agentPoolModeName)
+        {
+            return this.WithAgentPoolModeName(agentPoolModeName);
         }
 
         /// <summary>

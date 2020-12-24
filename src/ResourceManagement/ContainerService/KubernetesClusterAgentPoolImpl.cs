@@ -162,5 +162,17 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             this.Inner.Type = AgentPoolType.Parse(agentPoolTypeName);
             return this;
         }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolMode(AgentPoolMode agentPoolMode)
+        {
+            this.Inner.Mode = agentPoolMode;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolModeName(string agentPoolModeName)
+        {
+            this.Inner.Mode = AgentPoolMode.Parse(agentPoolModeName);
+            return this;
+        }
     }
 }
