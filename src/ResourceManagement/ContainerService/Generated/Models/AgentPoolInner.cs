@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Initializes a new instance of the AgentPoolInner class.
         /// </summary>
         /// <param name="count">Number of agents (VMs) to host docker
-        /// containers. Allowed values must be in the range of 1 to 100
-        /// (inclusive). The default value is 1. </param>
+        /// containers. Allowed values must be in the range of 0 to 100
+        /// (inclusive) for user pools and in the range of 1 to 100 (inclusive)
+        /// for system pools. The default value is 1.</param>
         /// <param name="vmSize">Size of agent VMs. Possible values include:
         /// 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
         /// 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
@@ -96,8 +97,19 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
         /// vmSize specified.</param>
+        /// <param name="osDiskType">OS disk type to be used for machines in a
+        /// given agent pool. Allowed values are 'Ephemeral' and 'Managed'.
+        /// Defaults to 'Managed'. May not be changed after creation. Possible
+        /// values include: 'Managed', 'Ephemeral'</param>
+        /// <param name="kubeletDiskType">KubeletDiskType determines the
+        /// placement of emptyDir volumes, container runtime data root, and
+        /// Kubelet ephemeral storage. Currently allows one value, OS,
+        /// resulting in Kubelet using the OS disk for data. Possible values
+        /// include: 'OS'</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the VNet's
-        /// subnet identifier.</param>
+        /// subnet identifier for nodes and maybe pods</param>
+        /// <param name="podSubnetID">Pod SubnetID specifies the VNet's subnet
+        /// identifier for pods.</param>
         /// <param name="maxPods">Maximum number of pods that can run on a
         /// node.</param>
         /// <param name="osType">OsType to be used to specify os type. Choose
@@ -112,46 +124,83 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="agentPoolType">AgentPoolType represents types of an
         /// agent pool. Possible values include: 'VirtualMachineScaleSets',
         /// 'AvailabilitySet'</param>
+        /// <param name="mode">AgentPoolMode represents mode of an agent pool.
+        /// Possible values include: 'System', 'User'</param>
         /// <param name="orchestratorVersion">Version of orchestrator specified
         /// when creating the managed cluster.</param>
+        /// <param name="nodeImageVersion">Version of node image</param>
+        /// <param name="upgradeSettings">Settings for upgrading the
+        /// agentpool</param>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response.</param>
-        /// <param name="availabilityZones">(PREVIEW) Availability zones for
-        /// nodes. Must use VirtualMachineScaleSets AgentPoolType.</param>
+        /// <param name="powerState">Describes whether the Agent Pool is
+        /// Running or Stopped</param>
+        /// <param name="availabilityZones">Availability zones for nodes. Must
+        /// use VirtualMachineScaleSets AgentPoolType.</param>
         /// <param name="enableNodePublicIP">Enable public IP for nodes</param>
         /// <param name="scaleSetPriority">ScaleSetPriority to be used to
         /// specify virtual machine scale set priority. Default to regular.
-        /// Possible values include: 'Low', 'Regular'</param>
+        /// Possible values include: 'Spot', 'Regular'</param>
         /// <param name="scaleSetEvictionPolicy">ScaleSetEvictionPolicy to be
-        /// used to specify eviction policy for low priority virtual machine
-        /// scale set. Default to Delete. Possible values include: 'Delete',
+        /// used to specify eviction policy for Spot virtual machine scale set.
+        /// Default to Delete. Possible values include: 'Delete',
         /// 'Deallocate'</param>
+        /// <param name="spotMaxPrice">SpotMaxPrice to be used to specify the
+        /// maximum price you are willing to pay in US Dollars. Possible values
+        /// are any decimal value greater than zero or -1 which indicates
+        /// default price to be up-to on-demand.</param>
+        /// <param name="tags">Agent pool tags to be persisted on the agent
+        /// pool virtual machine scale set.</param>
+        /// <param name="nodeLabels">Agent pool node labels to be persisted
+        /// across all nodes in agent pool.</param>
         /// <param name="nodeTaints">Taints added to new nodes during node pool
         /// create and scale. For example, key=value:NoSchedule.</param>
+        /// <param name="proximityPlacementGroupID">The ID for Proximity
+        /// Placement Group.</param>
+        /// <param name="kubeletConfig">KubeletConfig specifies the
+        /// configuration of kubelet on agent nodes.</param>
+        /// <param name="linuxOSConfig">LinuxOSConfig specifies the OS
+        /// configuration of linux agent nodes.</param>
+        /// <param name="enableEncryptionAtHost">Whether to enable
+        /// EncryptionAtHost</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="type">Resource type</param>
-        public AgentPoolInner(int count, ContainerServiceVMSizeTypes vmSize, string id = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), OSType osType = default(OSType), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), AgentPoolType agentPoolType = default(AgentPoolType), string orchestratorVersion = default(string), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), ScaleSetPriority scaleSetPriority = default(ScaleSetPriority), ScaleSetEvictionPolicy scaleSetEvictionPolicy = default(ScaleSetEvictionPolicy), IList<string> nodeTaints = default(IList<string>), string name = default(string), string type = default(string))
+        public AgentPoolInner(string id = default(string), int? count = default(int?), ContainerServiceVMSizeTypes vmSize = default(ContainerServiceVMSizeTypes), int? osDiskSizeGB = default(int?), OSDiskType osDiskType = default(OSDiskType), KubeletDiskType kubeletDiskType = default(KubeletDiskType), string vnetSubnetID = default(string), string podSubnetID = default(string), int? maxPods = default(int?), OSType osType = default(OSType), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), AgentPoolType agentPoolType = default(AgentPoolType), AgentPoolMode mode = default(AgentPoolMode), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), ScaleSetPriority scaleSetPriority = default(ScaleSetPriority), ScaleSetEvictionPolicy scaleSetEvictionPolicy = default(ScaleSetEvictionPolicy), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), string name = default(string), string type = default(string))
             : base(id)
         {
             Count = count;
             VmSize = vmSize;
             OsDiskSizeGB = osDiskSizeGB;
+            OsDiskType = osDiskType;
+            KubeletDiskType = kubeletDiskType;
             VnetSubnetID = vnetSubnetID;
+            PodSubnetID = podSubnetID;
             MaxPods = maxPods;
             OsType = osType;
             MaxCount = maxCount;
             MinCount = minCount;
             EnableAutoScaling = enableAutoScaling;
             AgentPoolType = agentPoolType;
+            Mode = mode;
             OrchestratorVersion = orchestratorVersion;
+            NodeImageVersion = nodeImageVersion;
+            UpgradeSettings = upgradeSettings;
             ProvisioningState = provisioningState;
+            PowerState = powerState;
             AvailabilityZones = availabilityZones;
             EnableNodePublicIP = enableNodePublicIP;
             ScaleSetPriority = scaleSetPriority;
             ScaleSetEvictionPolicy = scaleSetEvictionPolicy;
+            SpotMaxPrice = spotMaxPrice;
+            Tags = tags;
+            NodeLabels = nodeLabels;
             NodeTaints = nodeTaints;
+            ProximityPlacementGroupID = proximityPlacementGroupID;
+            KubeletConfig = kubeletConfig;
+            LinuxOSConfig = linuxOSConfig;
+            EnableEncryptionAtHost = enableEncryptionAtHost;
             Name = name;
             Type = type;
             CustomInit();
@@ -164,11 +213,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 
         /// <summary>
         /// Gets or sets number of agents (VMs) to host docker containers.
-        /// Allowed values must be in the range of 1 to 100 (inclusive). The
-        /// default value is 1.
+        /// Allowed values must be in the range of 0 to 100 (inclusive) for
+        /// user pools and in the range of 1 to 100 (inclusive) for system
+        /// pools. The default value is 1.
         /// </summary>
         [JsonProperty(PropertyName = "properties.count")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         /// <summary>
         /// Gets or sets size of agent VMs. Possible values include:
@@ -240,10 +290,36 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public int? OsDiskSizeGB { get; set; }
 
         /// <summary>
-        /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier.
+        /// Gets or sets OS disk type to be used for machines in a given agent
+        /// pool. Allowed values are 'Ephemeral' and 'Managed'. Defaults to
+        /// 'Managed'. May not be changed after creation. Possible values
+        /// include: 'Managed', 'Ephemeral'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.osDiskType")]
+        public OSDiskType OsDiskType { get; set; }
+
+        /// <summary>
+        /// Gets or sets kubeletDiskType determines the placement of emptyDir
+        /// volumes, container runtime data root, and Kubelet ephemeral
+        /// storage. Currently allows one value, OS, resulting in Kubelet using
+        /// the OS disk for data. Possible values include: 'OS'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.kubeletDiskType")]
+        public KubeletDiskType KubeletDiskType { get; set; }
+
+        /// <summary>
+        /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier
+        /// for nodes and maybe pods
         /// </summary>
         [JsonProperty(PropertyName = "properties.vnetSubnetID")]
         public string VnetSubnetID { get; set; }
+
+        /// <summary>
+        /// Gets or sets pod SubnetID specifies the VNet's subnet identifier
+        /// for pods.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.podSubnetID")]
+        public string PodSubnetID { get; set; }
 
         /// <summary>
         /// Gets or sets maximum number of pods that can run on a node.
@@ -286,11 +362,30 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public AgentPoolType AgentPoolType { get; set; }
 
         /// <summary>
+        /// Gets or sets agentPoolMode represents mode of an agent pool.
+        /// Possible values include: 'System', 'User'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.mode")]
+        public AgentPoolMode Mode { get; set; }
+
+        /// <summary>
         /// Gets or sets version of orchestrator specified when creating the
         /// managed cluster.
         /// </summary>
         [JsonProperty(PropertyName = "properties.orchestratorVersion")]
         public string OrchestratorVersion { get; set; }
+
+        /// <summary>
+        /// Gets version of node image
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nodeImageVersion")]
+        public string NodeImageVersion { get; private set; }
+
+        /// <summary>
+        /// Gets or sets settings for upgrading the agentpool
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.upgradeSettings")]
+        public AgentPoolUpgradeSettings UpgradeSettings { get; set; }
 
         /// <summary>
         /// Gets the current deployment or provisioning state, which only
@@ -300,7 +395,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets (PREVIEW) Availability zones for nodes. Must use
+        /// Gets describes whether the Agent Pool is Running or Stopped
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.powerState")]
+        public PowerState PowerState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets availability zones for nodes. Must use
         /// VirtualMachineScaleSets AgentPoolType.
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilityZones")]
@@ -315,18 +416,41 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <summary>
         /// Gets or sets scaleSetPriority to be used to specify virtual machine
         /// scale set priority. Default to regular. Possible values include:
-        /// 'Low', 'Regular'
+        /// 'Spot', 'Regular'
         /// </summary>
         [JsonProperty(PropertyName = "properties.scaleSetPriority")]
         public ScaleSetPriority ScaleSetPriority { get; set; }
 
         /// <summary>
         /// Gets or sets scaleSetEvictionPolicy to be used to specify eviction
-        /// policy for low priority virtual machine scale set. Default to
-        /// Delete. Possible values include: 'Delete', 'Deallocate'
+        /// policy for Spot virtual machine scale set. Default to Delete.
+        /// Possible values include: 'Delete', 'Deallocate'
         /// </summary>
         [JsonProperty(PropertyName = "properties.scaleSetEvictionPolicy")]
         public ScaleSetEvictionPolicy ScaleSetEvictionPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets spotMaxPrice to be used to specify the maximum price
+        /// you are willing to pay in US Dollars. Possible values are any
+        /// decimal value greater than zero or -1 which indicates default price
+        /// to be up-to on-demand.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.spotMaxPrice")]
+        public double? SpotMaxPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets agent pool tags to be persisted on the agent pool
+        /// virtual machine scale set.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets agent pool node labels to be persisted across all
+        /// nodes in agent pool.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nodeLabels")]
+        public IDictionary<string, string> NodeLabels { get; set; }
 
         /// <summary>
         /// Gets or sets taints added to new nodes during node pool create and
@@ -334,6 +458,32 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.nodeTaints")]
         public IList<string> NodeTaints { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID for Proximity Placement Group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.proximityPlacementGroupID")]
+        public string ProximityPlacementGroupID { get; set; }
+
+        /// <summary>
+        /// Gets or sets kubeletConfig specifies the configuration of kubelet
+        /// on agent nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.kubeletConfig")]
+        public KubeletConfig KubeletConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets linuxOSConfig specifies the OS configuration of linux
+        /// agent nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.linuxOSConfig")]
+        public LinuxOSConfig LinuxOSConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable EncryptionAtHost
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableEncryptionAtHost")]
+        public bool? EnableEncryptionAtHost { get; set; }
 
         /// <summary>
         /// Gets the name of the resource that is unique within a resource
@@ -356,17 +506,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (VmSize == null)
+            if (KubeletConfig != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VmSize");
-            }
-            if (Count > 100)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Count", 100);
-            }
-            if (Count < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Count", 1);
+                KubeletConfig.Validate();
             }
         }
     }

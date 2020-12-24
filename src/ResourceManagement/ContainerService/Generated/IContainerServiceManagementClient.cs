@@ -85,9 +85,29 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         IManagedClustersOperations ManagedClusters { get; }
 
         /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations.
+        /// </summary>
+        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
+
+        /// <summary>
         /// Gets the IAgentPoolsOperations.
         /// </summary>
         IAgentPoolsOperations AgentPools { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IResolvePrivateLinkServiceIdOperations.
+        /// </summary>
+        IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; }
 
     }
 }

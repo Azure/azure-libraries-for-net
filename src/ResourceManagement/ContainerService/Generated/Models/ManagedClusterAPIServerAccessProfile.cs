@@ -35,10 +35,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// API server.</param>
         /// <param name="enablePrivateCluster">Whether to create the cluster as
         /// a private cluster or not.</param>
-        public ManagedClusterAPIServerAccessProfile(IList<string> authorizedIPRanges = default(IList<string>), bool? enablePrivateCluster = default(bool?))
+        /// <param name="privateDNSZone">Private dns zone mode for private
+        /// cluster. </param>
+        public ManagedClusterAPIServerAccessProfile(IList<string> authorizedIPRanges = default(IList<string>), bool? enablePrivateCluster = default(bool?), string privateDNSZone = default(string))
         {
             AuthorizedIPRanges = authorizedIPRanges;
             EnablePrivateCluster = enablePrivateCluster;
+            PrivateDNSZone = privateDNSZone;
             CustomInit();
         }
 
@@ -59,6 +62,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "enablePrivateCluster")]
         public bool? EnablePrivateCluster { get; set; }
+
+        /// <summary>
+        /// Gets or sets private dns zone mode for private cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "privateDNSZone")]
+        public string PrivateDNSZone { get; set; }
 
     }
 }

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </return>
         public async Task<AzureOperationResponse<IEnumerable<OperationValue>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string apiVersion = "2019-08-01";
+            string apiVersion = "2020-12-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
