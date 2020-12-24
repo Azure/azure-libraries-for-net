@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
     [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ScaleSetPriority>))]
     public class ScaleSetPriority : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ScaleSetPriority>
     {
-        public static readonly ScaleSetPriority Low = Parse("Low");
+        public static readonly ScaleSetPriority Spot = Parse("Spot");
         public static readonly ScaleSetPriority Regular = Parse("Regular");
     }
 }

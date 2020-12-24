@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response.</param>
+        /// <param name="powerState">Represents the Power State of the
+        /// cluster</param>
         /// <param name="maxAgentPools">The max number of agent pools for the
         /// managed cluster.</param>
         /// <param name="kubernetesVersion">Version of Kubernetes specified
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="dnsPrefix">DNS prefix specified when creating the
         /// managed cluster.</param>
         /// <param name="fqdn">FQDN for the master pool.</param>
+        /// <param name="privateFQDN">FQDN of private cluster.</param>
         /// <param name="agentPoolProfiles">Properties of the agent
         /// pool.</param>
         /// <param name="linuxProfile">Profile for Linux VMs in the container
@@ -54,40 +57,61 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// APIs.</param>
         /// <param name="addonProfiles">Profile of managed cluster
         /// add-on.</param>
+        /// <param name="podIdentityProfile">Profile of managed cluster pod
+        /// identity.</param>
         /// <param name="nodeResourceGroup">Name of the resource group
         /// containing agent pool nodes.</param>
         /// <param name="enableRBAC">Whether to enable Kubernetes Role-Based
         /// Access Control.</param>
-        /// <param name="enablePodSecurityPolicy">(PREVIEW) Whether to enable
-        /// Kubernetes Pod security policy.</param>
+        /// <param name="enablePodSecurityPolicy">(DEPRECATING) Whether to
+        /// enable Kubernetes pod security policy (preview). This feature is
+        /// set for removal on October 15th, 2020. Learn more at
+        /// aka.ms/aks/azpodpolicy.</param>
         /// <param name="networkProfile">Profile of network
         /// configuration.</param>
         /// <param name="aadProfile">Profile of Azure Active Directory
         /// configuration.</param>
+        /// <param name="autoUpgradeProfile">Profile of auto upgrade
+        /// configuration.</param>
+        /// <param name="autoScalerProfile">Parameters to be applied to the
+        /// cluster-autoscaler when enabled</param>
         /// <param name="apiServerAccessProfile">Access profile for managed
         /// cluster API server.</param>
+        /// <param name="diskEncryptionSetID">ResourceId of the disk encryption
+        /// set to use for enabling encryption at rest.</param>
+        /// <param name="identityProfile">Identities associated with the
+        /// cluster.</param>
         /// <param name="identity">The identity of the managed cluster, if
         /// configured.</param>
-        public ManagedClusterInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string dnsPrefix = default(string), string fqdn = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), ManagedClusterIdentity identity = default(ManagedClusterIdentity))
+        /// <param name="sku">The managed cluster SKU.</param>
+        public ManagedClusterInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), PowerState powerState = default(PowerState), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string dnsPrefix = default(string), string fqdn = default(string), string privateFQDN = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetID = default(string), IDictionary<string, ManagedClusterPropertiesIdentityProfileValue> identityProfile = default(IDictionary<string, ManagedClusterPropertiesIdentityProfileValue>), ManagedClusterIdentity identity = default(ManagedClusterIdentity), ManagedClusterSKU sku = default(ManagedClusterSKU))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
+            PowerState = powerState;
             MaxAgentPools = maxAgentPools;
             KubernetesVersion = kubernetesVersion;
             DnsPrefix = dnsPrefix;
             Fqdn = fqdn;
+            PrivateFQDN = privateFQDN;
             AgentPoolProfiles = agentPoolProfiles;
             LinuxProfile = linuxProfile;
             WindowsProfile = windowsProfile;
             ServicePrincipalProfile = servicePrincipalProfile;
             AddonProfiles = addonProfiles;
+            PodIdentityProfile = podIdentityProfile;
             NodeResourceGroup = nodeResourceGroup;
             EnableRBAC = enableRBAC;
             EnablePodSecurityPolicy = enablePodSecurityPolicy;
             NetworkProfile = networkProfile;
             AadProfile = aadProfile;
+            AutoUpgradeProfile = autoUpgradeProfile;
+            AutoScalerProfile = autoScalerProfile;
             ApiServerAccessProfile = apiServerAccessProfile;
+            DiskEncryptionSetID = diskEncryptionSetID;
+            IdentityProfile = identityProfile;
             Identity = identity;
+            Sku = sku;
             CustomInit();
         }
 
@@ -102,6 +126,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets represents the Power State of the cluster
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.powerState")]
+        public PowerState PowerState { get; private set; }
 
         /// <summary>
         /// Gets the max number of agent pools for the managed cluster.
@@ -128,6 +158,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.fqdn")]
         public string Fqdn { get; private set; }
+
+        /// <summary>
+        /// Gets FQDN of private cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateFQDN")]
+        public string PrivateFQDN { get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the agent pool.
@@ -163,6 +199,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public IDictionary<string, ManagedClusterAddonProfile> AddonProfiles { get; set; }
 
         /// <summary>
+        /// Gets or sets profile of managed cluster pod identity.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.podIdentityProfile")]
+        public ManagedClusterPodIdentityProfile PodIdentityProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets name of the resource group containing agent pool
         /// nodes.
         /// </summary>
@@ -177,8 +219,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public bool? EnableRBAC { get; set; }
 
         /// <summary>
-        /// Gets or sets (PREVIEW) Whether to enable Kubernetes Pod security
-        /// policy.
+        /// Gets or sets (DEPRECATING) Whether to enable Kubernetes pod
+        /// security policy (preview). This feature is set for removal on
+        /// October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enablePodSecurityPolicy")]
         public bool? EnablePodSecurityPolicy { get; set; }
@@ -196,16 +239,48 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public ManagedClusterAADProfile AadProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets profile of auto upgrade configuration.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.autoUpgradeProfile")]
+        public ManagedClusterAutoUpgradeProfile AutoUpgradeProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets parameters to be applied to the cluster-autoscaler
+        /// when enabled
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.autoScalerProfile")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets access profile for managed cluster API server.
         /// </summary>
         [JsonProperty(PropertyName = "properties.apiServerAccessProfile")]
         public ManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets resourceId of the disk encryption set to use for
+        /// enabling encryption at rest.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskEncryptionSetID")]
+        public string DiskEncryptionSetID { get; set; }
+
+        /// <summary>
+        /// Gets or sets identities associated with the cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.identityProfile")]
+        public IDictionary<string, ManagedClusterPropertiesIdentityProfileValue> IdentityProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets the identity of the managed cluster, if configured.
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public ManagedClusterIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed cluster SKU.
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public ManagedClusterSKU Sku { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -251,10 +326,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
             if (NetworkProfile != null)
             {
                 NetworkProfile.Validate();
-            }
-            if (AadProfile != null)
-            {
-                AadProfile.Validate();
             }
         }
     }

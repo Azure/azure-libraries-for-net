@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="networkPolicy">Network policy used for building
         /// Kubernetes network. Possible values include: 'calico',
         /// 'azure'</param>
+        /// <param name="networkMode">Network mode used for building Kubernetes
+        /// network. Possible values include: 'transparent', 'bridge'</param>
         /// <param name="podCidr">A CIDR notation IP range from which to assign
         /// pod IPs when kubenet is used.</param>
         /// <param name="serviceCidr">A CIDR notation IP range from which to
@@ -47,18 +49,23 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="dockerBridgeCidr">A CIDR notation IP range assigned to
         /// the Docker bridge network. It must not overlap with any Subnet IP
         /// ranges or the Kubernetes service address range.</param>
+        /// <param name="outboundType">The outbound (egress) routing method.
+        /// Possible values include: 'loadBalancer',
+        /// 'userDefinedRouting'</param>
         /// <param name="loadBalancerSku">The load balancer sku for the managed
         /// cluster. Possible values include: 'standard', 'basic'</param>
         /// <param name="loadBalancerProfile">Profile of the cluster load
         /// balancer.</param>
-        public ContainerServiceNetworkProfile(NetworkPlugin networkPlugin = default(NetworkPlugin), NetworkPolicy networkPolicy = default(NetworkPolicy), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), LoadBalancerSku loadBalancerSku = default(LoadBalancerSku), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile))
+        public ContainerServiceNetworkProfile(NetworkPlugin networkPlugin = default(NetworkPlugin), NetworkPolicy networkPolicy = default(NetworkPolicy), NetworkMode networkMode = default(NetworkMode), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), OutboundType outboundType = default(OutboundType), LoadBalancerSku loadBalancerSku = default(LoadBalancerSku), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile))
         {
             NetworkPlugin = networkPlugin;
             NetworkPolicy = networkPolicy;
+            NetworkMode = networkMode;
             PodCidr = podCidr;
             ServiceCidr = serviceCidr;
             DnsServiceIP = dnsServiceIP;
             DockerBridgeCidr = dockerBridgeCidr;
+            OutboundType = outboundType;
             LoadBalancerSku = loadBalancerSku;
             LoadBalancerProfile = loadBalancerProfile;
             CustomInit();
@@ -82,6 +89,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "networkPolicy")]
         public NetworkPolicy NetworkPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets network mode used for building Kubernetes network.
+        /// Possible values include: 'transparent', 'bridge'
+        /// </summary>
+        [JsonProperty(PropertyName = "networkMode")]
+        public NetworkMode NetworkMode { get; set; }
 
         /// <summary>
         /// Gets or sets a CIDR notation IP range from which to assign pod IPs
@@ -112,6 +126,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "dockerBridgeCidr")]
         public string DockerBridgeCidr { get; set; }
+
+        /// <summary>
+        /// Gets or sets the outbound (egress) routing method. Possible values
+        /// include: 'loadBalancer', 'userDefinedRouting'
+        /// </summary>
+        [JsonProperty(PropertyName = "outboundType")]
+        public OutboundType OutboundType { get; set; }
 
         /// <summary>
         /// Gets or sets the load balancer sku for the managed cluster.
