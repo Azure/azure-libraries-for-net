@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
