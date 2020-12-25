@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// <summary>
     /// Defines values for IpFilterTag.
     /// </summary>
-    /// <summary>
-    /// Determine base value for a given allowed value if exists, else return
-    /// the value itself
-    /// </summary>
     [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<IpFilterTag>))]
     public class IpFilterTag : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<IpFilterTag>
     {
