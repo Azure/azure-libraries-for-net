@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="priority">Priority of IP restriction rule.</param>
         /// <param name="name">IP restriction rule name.</param>
         /// <param name="description">IP restriction rule description.</param>
-        public IpSecurityRestriction(string ipAddress = default(string), string subnetMask = default(string), string vnetSubnetResourceId = default(string), int? vnetTrafficTag = default(int?), int? subnetTrafficTag = default(int?), string action = default(string), IpFilterTag? tag = default(IpFilterTag?), int? priority = default(int?), string name = default(string), string description = default(string))
+        public IpSecurityRestriction(string ipAddress = default(string), string subnetMask = default(string), string vnetSubnetResourceId = default(string), int? vnetTrafficTag = default(int?), int? subnetTrafficTag = default(int?), string action = default(string), IpFilterTag tag = default(IpFilterTag), int? priority = default(int?), string name = default(string), string description = default(string))
         {
             IpAddress = ipAddress;
             SubnetMask = subnetMask;
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'Default', 'XffProxy'
         /// </summary>
         [JsonProperty(PropertyName = "tag")]
-        public IpFilterTag? Tag { get; set; }
+        public IpFilterTag Tag { get; set; }
 
         /// <summary>
         /// Gets or sets priority of IP restriction rule.
