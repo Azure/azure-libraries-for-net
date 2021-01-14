@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     /// The storage account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageAccountInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class StorageAccountInner : TrackedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the StorageAccountInner class.
@@ -280,6 +280,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (Sku != null)
             {
                 Sku.Validate();

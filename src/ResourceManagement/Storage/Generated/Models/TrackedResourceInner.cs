@@ -17,8 +17,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition for a ARM tracked top level resource
+    /// Tracked Resource
     /// </summary>
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has 'tags' and a 'location'
+    /// </remarks>
     public partial class TrackedResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
