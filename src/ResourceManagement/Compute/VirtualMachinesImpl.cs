@@ -293,5 +293,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return await Inner.GetAsync(groupName, name, cancellationToken: cancellationToken);
         }
+
+        public void DeleteById(string id, bool forceDeletion)
+        {
+            Extensions.Synchronize(() => this.DeleteByIdAsync(id, forceDeletion));
+        }
+
+        public async Task DeleteByIdAsync(string id, bool forceDeletion, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.DeleteByResourceGroupAsync(ResourceUtils.GroupFromResourceId(id), ResourceUtils.NameFromResourceId(id), forceDeletion, cancellationToken);
+        }
+
+        public void DeleteByResourceGroup(string resourceGroupName, string name, bool forceDeletion)
+        {
+            Extensions.Synchronize(() => this.DeleteByResourceGroupAsync(resourceGroupName, name, forceDeletion));
+        }
+
+        public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, bool forceDeletion, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Inner.DeleteAsync(resourceGroupName, name, forceDeletion);
+        }
     }
 }

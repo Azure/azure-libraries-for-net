@@ -1,5 +1,4 @@
 [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/net/azure-libraries-for-net%20-%20fluent-sdk?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=441&branchName=master)
-[![Build Status](https://travis-ci.org/Azure/azure-libraries-for-net.svg?style=flat-square&label=build&branch=master)](https://travis-ci.org/Azure/azure-libraries-for-net)
 
 # Try the Next-Generation Azure Management SDK for .NET now
 
@@ -674,9 +673,9 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| 1.36.1              | [1.34](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.36.1)      | Tagged release for 1.36.1 version of Azure management libraries |
-| 1.36              | [1.34](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.36.0)      | Tagged release for 1.36 version of Azure management libraries |
-| 1.35              | [1.34](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.35.0)      | Tagged release for 1.35 version of Azure management libraries |
+| 1.36.1              | [1.36.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.36.1)      | Tagged release for 1.36.1 version of Azure management libraries |
+| 1.36              | [1.36](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.36.0)      | Tagged release for 1.36 version of Azure management libraries |
+| 1.35              | [1.35](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.35.0)      | Tagged release for 1.35 version of Azure management libraries |
 | 1.34              | [1.34](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.34.0)      | Tagged release for 1.34 version of Azure management libraries |
 | 1.33              | [1.33](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.33.0)      | Tagged release for 1.33 version of Azure management libraries |
 | 1.32              | [1.32](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.32.0)      | Tagged release for 1.32 version of Azure management libraries |
