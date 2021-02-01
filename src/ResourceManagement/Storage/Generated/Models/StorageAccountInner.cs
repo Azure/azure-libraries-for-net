@@ -280,6 +280,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// </exception>
         public override void Validate()
         {
+            base.Validate();
             if (Sku != null)
             {
                 Sku.Validate();
