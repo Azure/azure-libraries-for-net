@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 
         protected async override Task<IPage<StorageAccountInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return ConvertToPage(await Inner.ListAsync(cancellationToken));
+            return await Inner.ListAsync(cancellationToken);
         }
 
         protected async override Task<IPage<StorageAccountInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
         {
-            return await Task.FromResult<IPage<StorageAccountInner>>(null);
+            return await Inner.ListNextAsync(nextLink, cancellationToken);
         }
 
         protected async override Task<IPage<StorageAccountInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)

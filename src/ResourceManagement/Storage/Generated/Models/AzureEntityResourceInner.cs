@@ -14,9 +14,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition for a Azure Resource Manager resource
-    /// with an etag.
+    /// Entity Resource
     /// </summary>
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager resource
+    /// with an etag.
+    /// </remarks>
     public partial class AzureEntityResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
