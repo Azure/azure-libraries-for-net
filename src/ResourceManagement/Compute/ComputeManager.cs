@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         #region ctrs
 
         public ComputeManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, ComputeManagementClient.newClient(restClient))
+            base(restClient, subscriptionId, ComputeManagementClient.NewInstance(restClient))
         {
             Inner.SubscriptionId = subscriptionId;
             storageManager = StorageManager.Authenticate(restClient, subscriptionId);

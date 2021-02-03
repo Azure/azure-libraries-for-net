@@ -13,11 +13,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         #region ctrs
 
         private StorageManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new StorageManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, StorageManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         #endregion

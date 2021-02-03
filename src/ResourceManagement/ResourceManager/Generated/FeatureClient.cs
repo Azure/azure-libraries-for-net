@@ -85,6 +85,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
+        private FeatureClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static FeatureClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new FeatureClient(restClient) : new FeatureClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

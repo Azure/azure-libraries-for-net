@@ -99,6 +99,15 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
         }
 
+        private ContainerRegistryManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static ContainerRegistryManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new ContainerRegistryManagementClient(restClient) : new ContainerRegistryManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

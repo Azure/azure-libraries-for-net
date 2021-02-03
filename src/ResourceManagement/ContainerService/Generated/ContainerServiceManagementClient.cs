@@ -115,6 +115,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
         }
 
+        private ContainerServiceManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static ContainerServiceManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new ContainerServiceManagementClient(restClient) : new ContainerServiceManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

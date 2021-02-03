@@ -100,6 +100,15 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         {
         }
 
+        private RedisManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static RedisManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new RedisManagementClient(restClient) : new RedisManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

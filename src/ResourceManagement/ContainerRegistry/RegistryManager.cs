@@ -18,11 +18,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         #endregion
 
         public RegistryManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ContainerRegistryManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, ContainerRegistryManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
             this.storageManager = StorageManager.Authenticate(restClient, subscriptionId);
         }
 

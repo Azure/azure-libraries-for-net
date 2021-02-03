@@ -87,6 +87,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
+        private PolicyClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static PolicyClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new PolicyClient(restClient) : new PolicyClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

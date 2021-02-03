@@ -230,11 +230,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
         }
 
-        public ComputeManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        private ComputeManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
         {
         }
 
-        public static ComputeManagementClient newClient(RestClient restClient)
+        public static ComputeManagementClient NewInstance(RestClient restClient)
         {
             return restClient.HttpClient == null ? new ComputeManagementClient(restClient) : new ComputeManagementClient(restClient, restClient.HttpClient);
         }

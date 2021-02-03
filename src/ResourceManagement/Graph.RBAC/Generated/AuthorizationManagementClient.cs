@@ -100,6 +100,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
         }
 
+        private AuthorizationManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static AuthorizationManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new AuthorizationManagementClient(restClient) : new AuthorizationManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

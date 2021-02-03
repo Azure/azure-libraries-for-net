@@ -519,6 +519,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
         }
 
+        private NetworkManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static NetworkManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new NetworkManagementClient(restClient) : new NetworkManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

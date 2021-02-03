@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
         }
 
+        private MonitorManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static MonitorManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new MonitorManagementClient(restClient) : new MonitorManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

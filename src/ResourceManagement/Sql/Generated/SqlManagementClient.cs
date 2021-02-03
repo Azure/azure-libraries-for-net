@@ -684,6 +684,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
         }
 
+        private SqlManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static SqlManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new SqlManagementClient(restClient) : new SqlManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>
