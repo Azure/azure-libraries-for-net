@@ -15,5 +15,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         T WithDelegatingHandlers(params DelegatingHandler[] delegatingHandlers);
 
         T WithLogLevel(HttpLoggingDelegatingHandler.Level level);
+
+        T WithHttpClient(HttpClient httpClient);
     }
 }

@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             return this as T;
         }
 
+        public T WithHttpClient(HttpClient httpClient)
+        {
+            restClientBuilder.WithHttpClient(httpClient);
+            return this as T;
+        }
+
         protected RestClient BuildRestClient(AzureCredentials credentials)
         {
             return restClientBuilder
