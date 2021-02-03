@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         string IHasId.Id => Inner.ObjectId;
 
-        GraphRbacManager IHasManager<GraphRbacManager>.Manager => throw new NotImplementedException();
+        GraphRbacManager IHasManager<GraphRbacManager>.Manager => manager;
 
         public PasswordCredentialImpl<T> DefinePasswordCredential<T>(string name) where T : class
         {

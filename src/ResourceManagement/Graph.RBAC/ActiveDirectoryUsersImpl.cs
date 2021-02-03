@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
         }
 
-        GraphRbacManager IHasManager<GraphRbacManager>.Manager => throw new NotImplementedException();
+        GraphRbacManager IHasManager<GraphRbacManager>.Manager => manager;
 
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IActiveDirectoryUser>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
