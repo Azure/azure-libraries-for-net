@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         }
 
         protected FluentServiceClientBase(string baseUri, RestClient restClient, HttpClient httpClient)
-            : base(httpClient)
+            : base(httpClient, false)
         {
             Initialize();
             PostInit(baseUri, restClient);
