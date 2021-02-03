@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
 
         public static ServiceBusManagementClient NewInstance(RestClient restClient)
         {
-            return restClient.HttpClient == null ? new ServiceBusManagementClient(restClient) : new ComputeMServiceBusManagementClientanagementClient(restClient, restClient.HttpClient);
+            return restClient.HttpClient == null ? new ServiceBusManagementClient(restClient) : new ServiceBusManagementClient(restClient, restClient.HttpClient);
         }
 
         /// <summary>
