@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
         }
 
-        GraphRbacManager IHasManager<GraphRbacManager>.Manager => throw new NotImplementedException();
+        GraphRbacManager IHasManager<GraphRbacManager>.Manager => manager;
 
         internal RoleAssignmentsImpl(GraphRbacManager manager)
         {
