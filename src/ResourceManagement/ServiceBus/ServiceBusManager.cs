@@ -20,11 +20,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
 
 
         public ServiceBusManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ServiceBusManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, ServiceBusManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         #region ServiceBusManager builder

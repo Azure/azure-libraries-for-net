@@ -134,6 +134,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
         }
 
+        public GraphRbacManagementClient(string baseUri,  RestClient restClient, System.Net.Http.HttpClient httpClient) : base(baseUri, restClient, httpClient)
+        {
+        }
+
+        public static GraphRbacManagementClient NewInstance(string baseUri, RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new GraphRbacManagementClient(baseUri, restClient) : new GraphRbacManagementClient(baseUri, restClient, restClient.HttpClient);
+        }
+        
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

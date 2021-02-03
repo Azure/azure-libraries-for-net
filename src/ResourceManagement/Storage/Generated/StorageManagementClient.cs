@@ -108,6 +108,15 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
         }
 
+        private StorageManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static StorageManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new StorageManagementClient(restClient) : new StorageManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

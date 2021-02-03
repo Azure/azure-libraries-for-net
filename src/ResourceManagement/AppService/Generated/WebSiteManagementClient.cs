@@ -148,6 +148,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
         }
 
+        private WebSiteManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static WebSiteManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new WebSiteManagementClient(restClient) : new WebSiteManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

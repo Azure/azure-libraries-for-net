@@ -16,11 +16,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         #endregion
 
         public ContainerServiceManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ContainerServiceManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, ContainerServiceManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         public static IContainerServiceManager Authenticate(AzureCredentials credentials, string subscriptionId)

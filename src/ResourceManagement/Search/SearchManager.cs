@@ -15,11 +15,9 @@ namespace Microsoft.Azure.Management.Search.Fluent
         #endregion
 
         public SearchManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new SearchManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, SearchManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         public static ISearchManager Authenticate(AzureCredentials credentials, string subscriptionId)

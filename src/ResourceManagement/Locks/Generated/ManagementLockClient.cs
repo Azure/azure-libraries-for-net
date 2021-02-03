@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         {
         }
 
+        private ManagementLockClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static ManagementLockClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new ManagementLockClient(restClient) : new ManagementLockClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

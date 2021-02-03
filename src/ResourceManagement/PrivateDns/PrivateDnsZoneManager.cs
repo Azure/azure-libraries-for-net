@@ -13,11 +13,9 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         #endregion
 
         public PrivateDnsZoneManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new PrivateDnsManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, PrivateDnsManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         #region PrivateDnsZoneManager builder

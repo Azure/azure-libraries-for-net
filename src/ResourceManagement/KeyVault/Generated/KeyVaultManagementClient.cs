@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
         }
 
+        private KeyVaultManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static KeyVaultManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new KeyVaultManagementClient(restClient) : new KeyVaultManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

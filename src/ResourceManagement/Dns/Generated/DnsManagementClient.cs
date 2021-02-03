@@ -96,6 +96,15 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
         }
 
+        private DnsManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static DnsManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new DnsManagementClient(restClient) : new DnsManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

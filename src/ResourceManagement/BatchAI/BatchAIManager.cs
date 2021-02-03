@@ -20,11 +20,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         #region ctrs
         private BatchAIManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new BatchAIManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, BatchAIManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
         #endregion
         #region BatchAIManager builder

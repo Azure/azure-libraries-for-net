@@ -30,11 +30,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private AzureFirewallsImpl azureFirewalls;
 
         private NetworkManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new NetworkManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, NetworkManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         /// <summary>

@@ -34,11 +34,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         #region ctrs
 
         public AppServiceManager(RestClient restClient, string subscriptionId, string tenantId) :
-            base(restClient, subscriptionId, new WebSiteManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, WebSiteManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
             keyVaultManager = KeyVault.Fluent.KeyVaultManager.Authenticate(restClient, subscriptionId, tenantId);
             storageManager = Storage.Fluent.StorageManager.Authenticate(restClient, subscriptionId);
             graphRbacManager = Graph.RBAC.Fluent.GraphRbacManager.Authenticate(restClient, tenantId);

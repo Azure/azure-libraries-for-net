@@ -15,11 +15,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         #endregion
 
         public CosmosDBManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new CosmosDBManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, CosmosDBManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         public static ICosmosDBManager Authenticate(AzureCredentials credentials, string subscriptionId)

@@ -23,11 +23,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
         #region ctrs
         private ContainerInstanceManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ContainerInstanceManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, ContainerInstanceManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
             this.storageManager = StorageManager.Authenticate(restClient, subscriptionId);
             this.rbacManager = GraphRbacManager.Authenticate(restClient, subscriptionId);
         }
