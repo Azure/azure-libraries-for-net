@@ -657,7 +657,7 @@ To enable Http message tracing in your code please check [this article](https://
 
 ## Contribute Code
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines.html).
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://opensource.microsoft.com/program/#program-contributing).
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
