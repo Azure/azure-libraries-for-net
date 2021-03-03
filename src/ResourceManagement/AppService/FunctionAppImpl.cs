@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             else
             {
                 AzureEnvironment environment = ResourceUtils.ExtractAzureEnvironment(Manager.RestClient) ?? AzureEnvironment.AzureGlobalCloud;
-                string endpointSuffix = Regex.Replace(environment.StorageEndpointSuffix, "^\\.*", "");
+                string endpointSuffix = Regex.Replace(environment.StorageEndpointSuffix ?? AzureEnvironment.AzureGlobalCloud.StorageEndpointSuffix, "^\\.*", "");
                 var servicePlanTask = Manager.AppServicePlans.GetByIdAsync(this.AppServicePlanId());
                 var keys = await storageAccountToSet.GetKeysAsync(cancellationToken);
                 var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={2}",
