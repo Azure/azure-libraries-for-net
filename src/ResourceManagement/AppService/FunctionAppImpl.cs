@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.IO;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using System.Collections;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The implementation for FunctionApp.
@@ -138,10 +139,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
             else
             {
+                AzureEnvironment environment = ResourceUtils.ExtractAzureEnvironment(Manager.RestClient) ?? AzureEnvironment.AzureGlobalCloud;
+                string endpointSuffix = Regex.Replace(environment.StorageEndpointSuffix ?? AzureEnvironment.AzureGlobalCloud.StorageEndpointSuffix, "^\\.*", "");
                 var servicePlanTask = Manager.AppServicePlans.GetByIdAsync(this.AppServicePlanId());
                 var keys = await storageAccountToSet.GetKeysAsync(cancellationToken);
-                var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-                    storageAccountToSet.Name, keys[0].Value);
+                var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={2}",
+                    storageAccountToSet.Name, keys[0].Value, endpointSuffix);
                 AddAppSettingIfNotModified("AzureWebJobsStorage", connectionString);
                 AddAppSettingIfNotModified("AzureWebJobsDashboard", connectionString);
                 if (IsConsumptionAppServicePlan((await servicePlanTask)?.PricingTier))
@@ -181,7 +184,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             SkuDescription description = pricingTier.SkuDescription;
-            return description.Tier.Equals("Dynamic", StringComparison.OrdinalIgnoreCase);
+            return description.Tier.Equals(SkuName.Dynamic.Value, StringComparison.OrdinalIgnoreCase) || description.Tier.Equals(SkuName.ElasticPremium.Value, StringComparison.OrdinalIgnoreCase);
         }
 
         public override async Task<IFunctionApp> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
