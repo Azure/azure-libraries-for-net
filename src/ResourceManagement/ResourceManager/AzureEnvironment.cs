@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 Name = nameof(AzureUSGovernment),
                 AuthenticationEndpoint = "https://login.microsoftonline.us/",
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
-                ManagementEndpoint = "https://management.core.usgovcloudapi.net",
+                ManagementEndpoint = "https://management.core.usgovcloudapi.net/",
                 GraphEndpoint = "https://graph.windows.net/",
                 StorageEndpointSuffix = "core.usgovcloudapi.net",
                 KeyVaultSuffix = "vault.usgovcloudapi.net"
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 Name = nameof(AzureGermanCloud),
                 AuthenticationEndpoint = "https://login.microsoftonline.de/",
                 ResourceManagerEndpoint = "https://management.microsoftazure.de/",
-                ManagementEndpoint = "https://management.core.cloudapi.de",
+                ManagementEndpoint = "https://management.core.cloudapi.de/",
                 GraphEndpoint = "https://graph.cloudapi.de/",
                 StorageEndpointSuffix = "core.cloudapi.de",
                 KeyVaultSuffix = "vault.microsoftazure.de"
