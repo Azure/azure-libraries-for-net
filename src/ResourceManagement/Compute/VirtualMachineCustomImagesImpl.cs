@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:664BEF11BF4AA10D27449EE89EF181F3
         public IBlank Define(string name)
         {
-            return this.WrapModel(name);
+            return this.WrapModel(name).WithHyperVGeneration(HyperVGenerationTypes.V1);
         }
 
         ///GENMHASH:AB63F782DA5B8D22523A284DAD664D17:0DA05B447E9373BA84F249FC22D8EDFF
