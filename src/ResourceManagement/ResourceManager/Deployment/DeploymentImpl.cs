@@ -423,17 +423,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         #region Implementation of ICreatable interface 
 
-        public new IDeployment Create()
-        {
-            if (creatableResourceGroup != null)
-            {
-                creatableResourceGroup.Create();
-            }
-            CreateResource();
-            return this;
-        }
-
-        public async new Task<IDeployment> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
+        public async override Task<IDeployment> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
         {
             if (creatableResourceGroup != null)
             {
@@ -459,24 +449,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     ParametersLink = ParametersLink
                 }
             };
-            await Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner, cancellationToken);
-            return this;
-        }
-
-        public override IDeployment CreateResource()
-        {
-            DeploymentInner inner = new DeploymentInner
-            {
-                Properties = new DeploymentProperties
-                {
-                    Mode = Mode.Value,
-                    Template = Template,
-                    TemplateLink = TemplateLink,
-                    Parameters = Parameters,
-                    ParametersLink = ParametersLink
-                }
-            };
-            SetInner(Extensions.Synchronize(() => Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner))); ;
+            SetInner(await Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner, cancellationToken));
             return this;
         }
 
