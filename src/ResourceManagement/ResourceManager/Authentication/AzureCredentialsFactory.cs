@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 #endif
 
         /// <summary>
-        /// Creates a credentail object using token from local managed service identity endpoint.
+        /// Creates a credential object using token from local managed service identity endpoint.
         /// </summary>
         /// <param name="msiLoginInformation">the information needed for MSI authentication</param>
         /// <param name="environment">the environment to authenticate to</param>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         }
 
         /// <summary>
-        /// Creates a credentail object using token from local managed service identity endpoint.
+        /// Creates a credential object using token from local managed service identity endpoint.
         /// </summary>
         /// <param name="resourceType">Resource Type for MSI Login Information</param>
         /// <param name="environment">The environment to authenticate to</param>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         }
 
         /// <summary>
-        /// Creates a credentail object using token from local managed service identity endpoint.
+        /// Creates a credential object using token from local managed service identity endpoint.
         /// </summary>
         /// <param name="clientId">User Assigned Identity Client ID</param>
         /// <param name="resourceType">Resource Type for MSI Login Information</param>
