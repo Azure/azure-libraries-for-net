@@ -82,7 +82,7 @@ namespace SecurityBreachOrRiskActivityLogAlerts
                 // for near real time monitoring.
                 SdkContext.DelayProvider.Delay(6 * 60000);
 
-                DateTime recordDateTime = DateTime.Now;
+                DateTime recordDateTime = DateTime.Now.ToUniversalTime();
                 // get activity logs for the same period.
                 var logs = azure.ActivityLogs.DefineQuery()
                         .StartingFrom(recordDateTime.AddDays(-7))
