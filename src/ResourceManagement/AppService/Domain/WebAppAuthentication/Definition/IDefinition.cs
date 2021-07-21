@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithAttach<ParentT> WithActiveDirectory(string clientId, string issuerUrl);
 
         /// <summary>
+        /// Specifies the provider to be Active Directory and its client ID and issuer URL.
+        /// </summary>
+        /// <param name="clientId">The AAD app's client ID.</param>
+        /// <param name="clientSecret">The AAD app's client secret.</param>
+        /// <param name="issuerUrl">The token issuer URL in the format of https://sts.windows.net/(tenantId).</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithAttach<ParentT> WithActiveDirectory(string clientId, string clientSecret, string issuerUrl);
+
+        /// <summary>
         /// Specifies the provider to be Google and its client ID and client secret.
         /// </summary>
         /// <param name="clientId">The Google app's client ID.</param>
