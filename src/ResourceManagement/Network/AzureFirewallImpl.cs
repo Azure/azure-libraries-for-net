@@ -1346,6 +1346,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         private AzureFirewallImpl WithAdditionalProperty(string key, string value)
         {
+            if (Inner.AdditionalProperties == null)
+            {
+                Inner.AdditionalProperties = new Dictionary<String, String>();
+            }
             Inner.AdditionalProperties.Add(key, value);
             return this;
         }
@@ -1379,12 +1383,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         private AzureFirewallImpl WithAnyProtocolInNatRule()
         {
+            if (natRule.Protocols == null)
+            {
+                natRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
+            }
             natRule.Protocols.Add(AzureFirewallNetworkRuleProtocol.Any);
             return this;
         }
 
         private AzureFirewallImpl WithAnyProtocolInNetworkRule()
         {
+            if (networkRule.Protocols == null)
+            {
+                networkRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
+            }
             networkRule.Protocols.Add(AzureFirewallNetworkRuleProtocol.Any);
             return this;
         }
@@ -1610,12 +1622,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         private AzureFirewallImpl WithIcmpProtocolInNatRule()
         {
+            if (natRule.Protocols == null)
+            {
+                natRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
+            }
             natRule.Protocols.Add(AzureFirewallNetworkRuleProtocol.ICMP);
             return this;
         }
 
         private AzureFirewallImpl WithIcmpProtocolInNetworkRule()
         {
+            if (networkRule.Protocols == null)
+            {
+                networkRule.Protocols = new List<AzureFirewallNetworkRuleProtocol>();
+            }
             networkRule.Protocols.Add(AzureFirewallNetworkRuleProtocol.ICMP);
             return this;
         }
