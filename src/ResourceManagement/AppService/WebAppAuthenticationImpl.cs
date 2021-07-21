@@ -96,6 +96,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
+        public WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
+        {
+            Inner.ClientId = clientId;
+            Inner.ClientSecret = clientSecret;
+            Inner.Issuer = issuerUrl;
+            return this;
+        }
+
         IWithCreate<FluentT> IInDefinition<IWithCreate<FluentT>>.Attach()
         {
             parent.WithAuthentication(this);
@@ -107,25 +115,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             parent.WithAuthentication(this);
             return (FluentImplT)parent;
         }
-
-        public WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
-        {
-            return this.WithActiveDirectory(clientId, clientSecret, issuerUrl);
-        }
-
-        WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
-        {
-            return this.WithActiveDirectory(clientId, clientSecret, issuerUrl);
-        }
-
-        public WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
-        {
-            Inner.ClientId = clientId;
-            Inner.ClientSecret = clientSecret;
-            Inner.Issuer = issuerUrl;
-            return this;
-        }
-
 
         internal WebAppAuthenticationImpl(SiteAuthSettingsInner inner, WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
             : base(inner)

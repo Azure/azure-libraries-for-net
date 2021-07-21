@@ -198,5 +198,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             return this.WithTokenStore(enabled);
         }
+
+        WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
+        {
+            return this.WithActiveDirectory(clientId, clientSecret, issuerUrl);
+        }
+
+        WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
+        {
+            return this.WithActiveDirectory(clientId, clientSecret, issuerUrl);
+        }
+
     }
 }
