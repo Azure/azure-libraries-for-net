@@ -1588,6 +1588,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.networkManager.NetworkInterfaces.GetById(this.PrimaryNetworkInterfaceId());
         }
 
+        public Task<INetworkInterface> GetPrimaryNetworkInterfaceAsync()
+        {
+            return this.networkManager.NetworkInterfaces.GetByIdAsync(this.PrimaryNetworkInterfaceId());
+        }
+
         ///GENMHASH:D3ADA5DC7B5CC9C5BD29AC1110C61014:EC93403D80CE55A8079C6FDA3D5DE566
         public IPublicIPAddress GetPrimaryPublicIPAddress()
         {
