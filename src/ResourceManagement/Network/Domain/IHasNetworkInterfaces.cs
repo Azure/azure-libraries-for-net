@@ -6,6 +6,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Interface exposing a list of network interfaces.
@@ -17,7 +18,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Note that this method can result in a call to the cloud to fetch the network interface information.
         /// </summary>
         /// <return>The primary network interface associated with this resource.</return>
-        Microsoft.Azure.Management.Network.Fluent.INetworkInterface GetPrimaryNetworkInterface();
+        INetworkInterface GetPrimaryNetworkInterface();
+
+        /// <summary>
+        /// Gets the primary network interface.
+        /// Note that this method can result in a call to the cloud to fetch the network interface information.
+        /// </summary>
+        /// <return>The primary network interface associated with this resource.</return>
+        Task<INetworkInterface> GetPrimaryNetworkInterfaceAsync();
 
         /// <summary>
         /// Gets the resource id of the primary network interface associated with this resource.

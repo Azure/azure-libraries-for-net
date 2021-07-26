@@ -96,6 +96,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
+        public WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithActiveDirectory(string clientId, string clientSecret, string issuerUrl)
+        {
+            Inner.ClientId = clientId;
+            Inner.ClientSecret = clientSecret;
+            Inner.Issuer = issuerUrl;
+            return this;
+        }
+
         IWithCreate<FluentT> IInDefinition<IWithCreate<FluentT>>.Attach()
         {
             parent.WithAuthentication(this);
@@ -108,7 +116,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)parent;
         }
 
-        internal  WebAppAuthenticationImpl(SiteAuthSettingsInner inner, WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
+        internal WebAppAuthenticationImpl(SiteAuthSettingsInner inner, WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
             : base(inner)
         {
             this.parent = parent;
