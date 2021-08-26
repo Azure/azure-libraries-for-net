@@ -111,10 +111,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
-        /// <summary>
-        /// An optional partial-method to perform custom initialization.
-        /// </summary>
-        partial void CustomInitialize();
+        private ResourceManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static ResourceManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new ResourceManagementClient(restClient) : new ResourceManagementClient(restClient, restClient.HttpClient);
+        }
+
+    /// <summary>
+    /// An optional partial-method to perform custom initialization.
+    /// </summary>
+    partial void CustomInitialize();
         /// <summary>
         /// Initializes client properties.
         /// </summary>
