@@ -106,7 +106,7 @@ namespace Fluent.Tests.ResourceManager
                     Assert.Equal(deployment.Name, deploymentName2);
                     deployment.Cancel();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
-                    Assert.Equal("Canceled", deployment.ProvisioningState);
+                    Assert.Equal(ProvisioningState.Canceled, deployment.ProvisioningState);
                     resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
                 }
                 finally
@@ -139,7 +139,7 @@ namespace Fluent.Tests.ResourceManager
                     Assert.Equal(deploymentName3, deployment.Name);
                     deployment.Cancel();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
-                    Assert.Equal("Canceled", deployment.ProvisioningState);
+                    Assert.Equal(ProvisioningState.Canceled, deployment.ProvisioningState);
 
                     deployment.Update()
                         .WithTemplate(updateTemplate)
@@ -148,7 +148,7 @@ namespace Fluent.Tests.ResourceManager
                         .Apply();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
                     Assert.True(deployment.Mode == DeploymentMode.Incremental);
-                    Assert.Equal("Succeeded", deployment.ProvisioningState);
+                    Assert.Equal(ProvisioningState.Succeeded, deployment.ProvisioningState);
 
                     IGenericResource genericVnet = resourceManager.GenericResources.Get(
                         rgName,
