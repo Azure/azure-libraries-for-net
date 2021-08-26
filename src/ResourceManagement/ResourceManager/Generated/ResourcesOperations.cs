@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<GenericResourceExpanded>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<GenericResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<GenericResourceExpanded>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceExpanded>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListWithHttpMessagesAsync(ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<GenericResourceExpanded>>> ListWithHttpMessagesAsync(ODataQuery<GenericResourceFilter> odataQuery = default(ODataQuery<GenericResourceFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<GenericResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<GenericResourceExpanded>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceExpanded>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -3312,7 +3312,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<GenericResourceExpanded>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -3426,7 +3426,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<GenericResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<GenericResourceExpanded>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -3439,7 +3439,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceExpanded>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -3485,7 +3485,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<GenericResourceInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<GenericResourceExpanded>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -3599,7 +3599,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<GenericResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<GenericResourceExpanded>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -3612,7 +3612,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<GenericResourceExpanded>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

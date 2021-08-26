@@ -43,7 +43,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// The property is an array and contains nested changes.
         /// </summary>
         [EnumMember(Value = "Array")]
-        Array
+        Array,
+        /// <summary>
+        /// The property will not be set or updated.
+        /// </summary>
+        [EnumMember(Value = "NoEffect")]
+        NoEffect
     }
     internal static class PropertyChangeTypeEnumExtension
     {
@@ -64,6 +69,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
                     return "Modify";
                 case PropertyChangeType.Array:
                     return "Array";
+                case PropertyChangeType.NoEffect:
+                    return "NoEffect";
             }
             return null;
         }
@@ -80,6 +87,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
                     return PropertyChangeType.Modify;
                 case "Array":
                     return PropertyChangeType.Array;
+                case "NoEffect":
+                    return PropertyChangeType.NoEffect;
             }
             return null;
         }

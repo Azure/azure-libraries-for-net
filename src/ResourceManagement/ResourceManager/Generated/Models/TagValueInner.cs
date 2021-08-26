@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the TagValueInner class.
         /// </summary>
-        /// <param name="id">The tag ID.</param>
+        /// <param name="id">The tag value ID.</param>
         /// <param name="tagValueProperty">The tag value.</param>
         /// <param name="count">The tag value count.</param>
         public TagValueInner(string id = default(string), string tagValueProperty = default(string), TagCount count = default(TagCount))
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the tag ID.
+        /// Gets the tag value ID.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }

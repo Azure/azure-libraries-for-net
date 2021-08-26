@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         IProvidersOperations Providers { get; }
 
         /// <summary>
+        /// Gets the IProviderResourceTypesOperations.
+        /// </summary>
+        IProviderResourceTypesOperations ProviderResourceTypes { get; }
+
+        /// <summary>
         /// Gets the IResourcesOperations.
         /// </summary>
         IResourcesOperations Resources { get; }

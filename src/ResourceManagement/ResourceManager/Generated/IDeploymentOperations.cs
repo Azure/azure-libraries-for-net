@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets a deployments operation.
         /// </summary>
         /// <param name='scope'>
-        /// The scope of a deployment.
+        /// The resource scope.
         /// </param>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Gets all deployments operations for a deployment.
         /// </summary>
         /// <param name='scope'>
-        /// The scope of a deployment.
+        /// The resource scope.
         /// </param>
         /// <param name='deploymentName'>
         /// The name of the deployment.
