@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
         }
 
-        public IList<ProviderResourceType> ResourceTypes
+        public IList<ProviderResourceTypeInner> ResourceTypes
         {
             get
             {

@@ -11,6 +11,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
@@ -215,29 +216,80 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async override Task<IPagedCollection<IGenericResource>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IGenericResource, GenericResourceInner>.LoadPage(
+            return await PagedCollection<IGenericResource, GenericResourceExpanded>.LoadPage(
                 async (cancellation) => await Manager.Inner.Resources.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
                 Manager.Inner.Resources.ListByResourceGroupNextAsync, WrapModel, loadAllPages, cancellationToken);
         }
 
+        private class CastedPage<T, S> : IPage<T> where S : T
+        {
+            private readonly IPage<S> inner;
+
+            internal CastedPage(IPage<S> inner)
+            {
+                this.inner = inner;
+            }
+
+            string IPage<T>.NextPageLink => inner.NextPageLink;
+
+            IEnumerator<T> IEnumerable<T>.GetEnumerator()
+            {
+                return new CastedEnumerator<T, S>(inner.GetEnumerator());
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return inner.GetEnumerator();
+            }
+        }
+
+        private class CastedEnumerator<T, S> : IEnumerator<T> where S : T
+        {
+            private readonly IEnumerator<S> inner;
+
+            internal CastedEnumerator(IEnumerator<S> inner)
+            {
+                this.inner = inner;
+            }
+
+            T IEnumerator<T>.Current => inner.Current;
+
+            object IEnumerator.Current => inner.Current;
+
+            void IDisposable.Dispose()
+            {
+                inner.Dispose();
+            }
+
+            bool IEnumerator.MoveNext()
+            {
+                return inner.MoveNext();
+            }
+
+            void IEnumerator.Reset()
+            {
+                inner.Reset();
+            }
+        }
+
         protected async override Task<IPage<GenericResourceInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return await this.Inner.ListAsync(cancellationToken: cancellationToken);
+            return new CastedPage<GenericResourceInner, GenericResourceExpanded>(await this.Inner.ListAsync(cancellationToken: cancellationToken));
         }
 
         protected async override Task<IPage<GenericResourceInner>> ListInnerNextAsync(string link, CancellationToken cancellationToken)
         {
-            return await this.Inner.ListNextAsync(link, cancellationToken);
+            return new CastedPage<GenericResourceInner, GenericResourceExpanded>(await this.Inner.ListNextAsync(link, cancellationToken));
         }
 
         protected async override Task<IPage<GenericResourceInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
         {
-            return await Manager.Inner.Resources.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellationToken);
+            return new CastedPage<GenericResourceInner, GenericResourceExpanded>(await Manager.Inner.Resources.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellationToken));
         }
 
         protected async override Task<IPage<GenericResourceInner>> ListInnerByGroupNextAsync(string link, CancellationToken cancellationToken)
         {
-            return await Manager.Inner.Resources.ListByResourceGroupNextAsync(link, cancellationToken);
+            return new CastedPage<GenericResourceInner, GenericResourceExpanded>(await Manager.Inner.Resources.ListByResourceGroupNextAsync(link, cancellationToken));
         }
 
         public IEnumerable<IGenericResource> ListByTag(string resourceGroupName, string tagName, string tagValue)
@@ -249,7 +301,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async Task<IPagedCollection<IGenericResource>> ListByTagAsync(string resourceGroupName, string tagName, string tagValue, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IGenericResource, GenericResourceInner>.LoadPage(
+            return await PagedCollection<IGenericResource, GenericResourceExpanded>.LoadPage(
                 async (cancellation) => await Manager.Inner.Resources.ListByResourceGroupAsync(
                     resourceGroupName, ResourceUtils.CreateODataFilterForTags(tagName, tagValue), cancellationToken: cancellation),
                 Manager.Inner.Resources.ListByResourceGroupNextAsync,
