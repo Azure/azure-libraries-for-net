@@ -246,7 +246,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 createUpdateParamter.Properties = new DeploymentProperties();
             }
-            createUpdateParamter.Properties.TemplateLink = new TemplateLink(uri, contentVersion);
+            createUpdateParamter.Properties.TemplateLink = new TemplateLink();
+            createUpdateParamter.Properties.TemplateLink.Uri = uri;
+            createUpdateParamter.Properties.TemplateLink.ContentVersion = contentVersion;
             createUpdateParamter.Properties.Template = null;
             return this;
         }
@@ -316,7 +318,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 createUpdateParamter.Properties = new DeploymentProperties();
             }
-            createUpdateParamter.Properties.TemplateLink = new TemplateLink(uri, contentVersion);
+            createUpdateParamter.Properties.TemplateLink = new TemplateLink();
+            createUpdateParamter.Properties.TemplateLink.Uri = uri;
+            createUpdateParamter.Properties.TemplateLink.ContentVersion = contentVersion;
             createUpdateParamter.Properties.Template = null;
             return this;
         }
