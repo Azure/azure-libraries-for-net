@@ -79,12 +79,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group to delete. The name is case insensitive.
             /// </param>
+            /// <param name='forceDeletionTypes'>
+            /// The resource types you want to force delete. Currently, only the following
+            /// is supported:
+            /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -192,12 +197,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group to delete. The name is case insensitive.
             /// </param>
+            /// <param name='forceDeletionTypes'>
+            /// The resource types you want to force delete. Currently, only the following
+            /// is supported:
+            /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

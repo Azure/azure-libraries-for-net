@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public virtual IProvidersOperations Providers { get; private set; }
 
         /// <summary>
+        /// Gets the IProviderResourceTypesOperations.
+        /// </summary>
+        public virtual IProviderResourceTypesOperations ProviderResourceTypes { get; private set; }
+
+        /// <summary>
         /// Gets the IResourcesOperations.
         /// </summary>
         public virtual IResourcesOperations Resources { get; private set; }
@@ -119,6 +124,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// An optional partial-method to perform custom initialization.
         /// </summary>
         partial void CustomInitialize();
+
         /// <summary>
         /// Initializes client properties.
         /// </summary>
@@ -127,12 +133,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             Operations = new Operations(this);
             Deployments = new DeploymentsOperations(this);
             Providers = new ProvidersOperations(this);
+            ProviderResourceTypes = new ProviderResourceTypesOperations(this);
             Resources = new ResourcesOperations(this);
             ResourceGroups = new ResourceGroupsOperations(this);
             Tags = new TagsOperations(this);
             DeploymentOperations = new DeploymentOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-08-01";
+            ApiVersion = "2021-01-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

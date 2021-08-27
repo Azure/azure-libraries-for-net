@@ -9,6 +9,8 @@
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -27,10 +29,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DeploymentExtendedInner class.
         /// </summary>
-        /// <param name="location">the location of the deployment.</param>
         /// <param name="properties">Deployment properties.</param>
-        public DeploymentExtendedInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), DeploymentPropertiesExtended properties = default(DeploymentPropertiesExtended))
-            : base(location, id, name, type)
+        public DeploymentExtendedInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DeploymentPropertiesExtended properties = default(DeploymentPropertiesExtended))
+            : base(location, id, name, type, tags)
         {
             Properties = properties;
             CustomInit();
@@ -53,8 +54,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Properties != null)
             {
                 Properties.Validate();

@@ -171,7 +171,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         && providerResourceType.ApiVersions != null
                         && providerResourceType.ApiVersions.Count > 0)
                     {
-                        return providerResourceType.ApiVersions[0];
+                        if (providerResourceType.DefaultApiVersion != null)
+                        {
+                            return providerResourceType.DefaultApiVersion;
+                        } 
+                        else 
+                        {
+                            return providerResourceType.ApiVersions[0];
+                        }
                     }
                 }
             }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         string ResourceGroupName { get; }
 
         /// <returns>the state of the provisioning process of the resources being deployed</returns>
-        string ProvisioningState { get; }
+        ProvisioningState ProvisioningState { get; }
 
         /// <returns>the correlation ID of the deployment</returns>
         string CorrelationId { get; }
@@ -43,9 +43,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         /// <returns>the list of deployment dependencies</returns>
         IList<Dependency> Dependencies { get; }
-
-        /// <returns>the template content</returns>
-        object Template { get; }
 
         /// <returns>the URI referencing the template</returns>
         TemplateLink TemplateLink { get; }

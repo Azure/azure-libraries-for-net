@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// resource.</param>
         /// <param name="sku">The SKU of the resource.</param>
         /// <param name="identity">The identity of the resource.</param>
-        public GenericResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), object properties = default(object), string kind = default(string), string managedBy = default(string), Sku sku = default(Sku), Identity identity = default(Identity))
+        /// <param name="extendedLocation">Resource extended location.</param>
+        public GenericResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), object properties = default(object), string kind = default(string), string managedBy = default(string), Sku sku = default(Sku), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(location, id, name, type, tags)
         {
             Plan = plan;
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
             ManagedBy = managedBy;
             Sku = sku;
             Identity = identity;
+            ExtendedLocation = extendedLocation;
             CustomInit();
         }
 
@@ -89,6 +91,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public Identity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource extended location.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Validate the object.

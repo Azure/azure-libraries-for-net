@@ -56,9 +56,9 @@ namespace DeployUsingARMTemplateWithProgress
                 var deployment = azure.Deployments.GetByResourceGroup(rgName, deploymentName);
                 Utilities.Log("Current deployment status : " + deployment.ProvisioningState);
 
-                while (!(StringComparer.OrdinalIgnoreCase.Equals(deployment.ProvisioningState, "Succeeded") || 
-                        StringComparer.OrdinalIgnoreCase.Equals(deployment.ProvisioningState, "Failed") || 
-                        StringComparer.OrdinalIgnoreCase.Equals(deployment.ProvisioningState, "Cancelled")))
+                while (!(deployment.ProvisioningState == ProvisioningState.Succeeded || 
+                        deployment.ProvisioningState == ProvisioningState.Failed || 
+                        deployment.ProvisioningState == ProvisioningState.Canceled))
                 {
                     SdkContext.DelayProvider.Delay(10000);
                     deployment = azure.Deployments.GetByResourceGroup(rgName, deploymentName);

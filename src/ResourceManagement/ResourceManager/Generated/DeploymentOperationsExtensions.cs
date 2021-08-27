@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.

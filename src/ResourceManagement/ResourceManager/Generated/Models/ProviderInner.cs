@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// resource provider.</param>
         /// <param name="resourceTypes">The collection of provider resource
         /// types.</param>
-        public ProviderInner(string id = default(string), string namespaceProperty = default(string), string registrationState = default(string), string registrationPolicy = default(string), IList<ProviderResourceType> resourceTypes = default(IList<ProviderResourceType>))
+        public ProviderInner(string id = default(string), string namespaceProperty = default(string), string registrationState = default(string), string registrationPolicy = default(string), IList<ProviderResourceTypeInner> resourceTypes = default(IList<ProviderResourceTypeInner>))
         {
             Id = id;
             NamespaceProperty = namespaceProperty;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// Gets the collection of provider resource types.
         /// </summary>
         [JsonProperty(PropertyName = "resourceTypes")]
-        public IList<ProviderResourceType> ResourceTypes { get; private set; }
+        public IList<ProviderResourceTypeInner> ResourceTypes { get; private set; }
 
     }
 }

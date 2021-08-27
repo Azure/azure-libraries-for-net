@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -360,9 +360,33 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentValidateResultInner> ValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentValidateResultInner> ValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the tenant group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> WhatIfAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.WhatIfAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -484,7 +508,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentExtendedInner> CreateOrUpdateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -560,9 +584,36 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentValidateResultInner> ValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentValidateResultInner> ValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the management group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> WhatIfAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.WhatIfAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1098,7 +1149,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -1122,7 +1173,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of a deployment.
+            /// The resource scope.
             /// </param>
             /// <param name='deploymentName'>
             /// The name of the deployment.
@@ -1136,6 +1187,33 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> BeginValidateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginValidateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1188,9 +1266,57 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> BeginValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the tenant group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> BeginWhatIfAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginWhatIfAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1249,9 +1375,63 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> BeginValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns changes that will be made by the deployment if executed at the
+            /// scope of the management group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// The management group ID.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WhatIfOperationResultInner> BeginWhatIfAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeploymentWhatIf parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginWhatIfAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1307,6 +1487,30 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> BeginValidateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1395,6 +1599,34 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             public static async Task<DeploymentExtendedInner> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validates whether the specified template is syntactically correct and will
+            /// be accepted by Azure Resource Manager..
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group the template will be deployed to. The name
+            /// is case insensitive.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the deployment.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters to validate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DeploymentValidateResultInner> BeginValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, DeploymentInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

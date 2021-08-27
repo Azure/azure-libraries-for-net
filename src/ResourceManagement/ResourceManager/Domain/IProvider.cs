@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         string RegistrationState { get; }
 
         /// <returns>the list of provider resource types</returns>
-        IList<ProviderResourceType> ResourceTypes { get; }
+        IList<ProviderResourceTypeInner> ResourceTypes { get; }
 
     }
 }
