@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 AuthenticationEndpoint = "https://login.microsoftonline.us/",
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
                 ManagementEndpoint = "https://management.core.usgovcloudapi.net/",
-                GraphEndpoint = "https://graph.windows.net/",
+                GraphEndpoint = "https://graph.microsoft.us/",
                 StorageEndpointSuffix = "core.usgovcloudapi.net",
                 KeyVaultSuffix = "vault.usgovcloudapi.net"
             };
