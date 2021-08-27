@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         private IResourceManager resourceManager;
         private string resourceGroupName;
         private ICreatable<IResourceGroup> creatableResourceGroup;
-        private readonly DeploymentInner createUpdateParamter = new DeploymentInner();
+        private DeploymentInner createUpdateParamter = new DeploymentInner();
 
         internal DeploymentImpl(DeploymentExtendedInner innerModel, IResourceManager resourceManager) : base(innerModel.Name, innerModel)
         {
@@ -370,6 +370,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public override IUpdate Update()
         {
             object template = createUpdateParamter.Properties == null ? null : createUpdateParamter.Properties.Template;
+
+            createUpdateParamter = new DeploymentInner();
 
             createUpdateParamter.Location = Inner.Location;
             createUpdateParamter.Tags = Inner.Tags;
