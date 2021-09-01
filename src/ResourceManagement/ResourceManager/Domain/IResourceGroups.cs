@@ -51,5 +51,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name="name">name The name of the resource group to check. The name is case insensitive</param>
         /// <returns>true if the resource group exists; false otherwise</returns>
         Task<bool> ContainAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Deletes a resource from Azure, identifying it by its resource name.
+        /// </summary>
+        /// <param name="name">the name of the resource to delete</param>
+        /// <param name="forceDeletionTypes">The resource types you want to force delete. Currently, only the following is supported: Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets</param>
+        void DeleteByName(string name, string forceDeletionTypes);
+
+        /// <summary>
+        /// Deletes a resource asynchronously from Azure, identifying it by its resource name.
+        /// </summary>
+        /// <param name="name">the name of the resource to delete</param>
+        /// <param name="forceDeletionTypes">The resource types you want to force delete. Currently, only the following is supported: Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets</param>
+        /// <param name="cancellationToken"></param>
+        Task DeleteByNameAsync(string name, string forceDeletionTypes, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -128,5 +128,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
             await Inner.BeginDeleteAsync(name, null, cancellationToken);
         }
+
+        public void DeleteByName(string name, string forceDeletionTypes)
+        {
+            Extensions.Synchronize(() => DeleteByNameAsync(name, forceDeletionTypes));
+        }
+
+        public async Task DeleteByNameAsync(string name, string forceDeletionTypes, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Inner.DeleteAsync(name, forceDeletionTypes, cancellationToken);
+        }
     }
 }
