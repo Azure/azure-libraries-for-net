@@ -42,6 +42,7 @@ jobs:
         displayName: 'Getting latest build tools'
         inputs:
           solution: build.proj
+          configuration: release
       - task: MSBuild@1
         displayName: 'Running tests'
         inputs:
