@@ -52,6 +52,7 @@ jobs:
         displayName: 'creating packages'
         inputs:
           solution: build.proj
+          configuration: release
           msbuildArguments: /t:PackageNoBuild /clp:ShowTimestamp $(LoggingArgs) /p:PackageOutputPath="$(Build.ArtifactStagingDirectory)"
       - task: PublishBuildArtifacts@1
         condition: succeededOrFailed()
