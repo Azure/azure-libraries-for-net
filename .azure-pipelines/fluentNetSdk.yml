@@ -46,6 +46,7 @@ jobs:
         displayName: 'Running tests'
         inputs:
           solution: build.proj
+          configuration: release
           msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs) 
       - task: MSBuild@1
         displayName: 'creating packages'
