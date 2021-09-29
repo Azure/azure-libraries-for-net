@@ -612,11 +612,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             ContainerGroupNetworkProfile containerGroupNetworkProfile = new ContainerGroupNetworkProfile();
             containerGroupNetworkProfile.Id = networkProfileId;
             this.Inner.NetworkProfile = containerGroupNetworkProfile;
-            if (this.Inner.IpAddress == null)
+            if (this.Inner.IpAddress != null)
             {
-                this.Inner.IpAddress = new IpAddress();
+                this.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private.ToString();
             }
-            this.Inner.IpAddress.Type = ContainerGroupIpAddressType.Private.ToString();
             return this;
         }
 
