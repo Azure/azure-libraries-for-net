@@ -653,7 +653,7 @@ In general, Azure Libraries for .Net follow [semantic versioning](http://semver.
 
 If you encounter any bugs with these libraries, please file issues via [Issues](https://github.com/Azure/azure-libraries-for-net/issues) or checkout [StackOverflow for Azure Management Libraries for .NET](http://stackoverflow.com/questions/tagged/azure-sdk).
 
-To enable Http message tracing in your code please check [this article](https://github.com/Azure/autorest/blob/master/docs/client/tracing.md#tracing).
+To enable Http message tracing in your code please check [logging](#logging).
 
 ## Contribute Code
 
