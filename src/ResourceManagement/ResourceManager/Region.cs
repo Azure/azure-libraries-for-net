@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region GermanyWestCentral = new Region("germanywestcentral");
         public static readonly Region NorwayWest = new Region("norwaywest");
         public static readonly Region NorwayEast = new Region("norwayeast");
+        public static readonly Region SwedenCentral = new Region("swedencentral");
         #endregion
 
         #region Asia
