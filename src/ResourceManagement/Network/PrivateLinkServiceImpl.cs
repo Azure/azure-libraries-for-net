@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -48,18 +49,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     foreach (var lbFrontend in Inner.LoadBalancerFrontendIpConfigurations)
                     {
+                        FrontendIPConfigurationInner lbFrontendInner = lbFrontend;
+
                         LoadBalancerInner loadBalancer;
                         string loadBalancerId = ResourceId.FromString(lbFrontend.Id).Parent.Id;
                         if (!loadBalancers.ContainsKey(loadBalancerId))
                         {
                             loadBalancer = Manager.LoadBalancers.GetById(loadBalancerId).Inner;
                             loadBalancers.Add(loadBalancerId, loadBalancer);
+
+                            if (lbFrontend.Name == null)
+                            {
+                                // resposne of PrivateLinkServiceInner only have Id in item of LoadBalancerFrontendIpConfigurations
+                                // so use the FrontendIPConfigurationInner from LoadBalancerInner instead
+                                lbFrontendInner = loadBalancer.FrontendIPConfigurations.Where(f => f.Id == lbFrontend.Id).FirstOrDefault() ?? lbFrontend;
+                            }
                         }
                         else
                         {
                             loadBalancer = loadBalancers[loadBalancerId];
                         }
-                        loadBalancerFrontends.Add(new LoadBalancerFrontendImpl(lbFrontend, new LoadBalancerImpl(loadBalancer.Name, loadBalancer, Manager)));
+                        loadBalancerFrontends.Add(new LoadBalancerFrontendImpl(lbFrontendInner, new LoadBalancerImpl(loadBalancer.Name, loadBalancer, Manager)));
                     }
                 }
                 return loadBalancerFrontends.AsReadOnly();
@@ -479,7 +489,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 foreach (var frontendIpConfig in inner.LoadBalancerFrontendIpConfigurations)
                 {
-                    frontendIpConfigurations[frontendIpConfig.Name] = frontendIpConfig;
+                    string frontendIpConfigName = frontendIpConfig.Name ?? ResourceUtils.NameFromResourceId(frontendIpConfig.Id);
+                    frontendIpConfigurations[frontendIpConfigName] = frontendIpConfig;
                 }
             }
 
