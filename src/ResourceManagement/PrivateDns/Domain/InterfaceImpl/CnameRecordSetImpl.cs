@@ -28,6 +28,14 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
 
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
+            if (resource.CnameRecord == null)
+            {
+                resource.CnameRecord = new CnameRecord();
+            }
+            if (Inner.CnameRecord.Cname != null)
+            {
+                resource.CnameRecord.Cname = Inner.CnameRecord.Cname;
+            }
             return resource;
         }
 
