@@ -334,45 +334,48 @@ namespace Fluent.Tests.Dns
             var groupName = TestUtilities.GenerateName("rgdnschash");
             var topLevelDomain = $"{TestUtilities.GenerateName("www.contoso-")}.com";
 
-            var azure = TestHelper.CreateRollupClient();
-            try
+            using (var context = FluentMockContext.Start(GetType().FullName))
             {
-                var dnsZone = azure.DnsZones.Define(topLevelDomain)
-                    .WithNewResourceGroup(groupName, region)
-                    .DefineCNameRecordSet("www")
-                        .WithAlias("cname.contoso.com")
-                        .Attach()
-                    .Create();
-
-                Assert.Equal("cname.contoso.com", dnsZone.CNameRecordSets.GetByName("www").CanonicalName);
-
-                var sb = new StringBuilder();
-                sb.Append('a', 255);
-                sb.Append('b', 255);
-                sb.Append('c', 1);
-                var text = sb.ToString();
-
-                dnsZone.Update()
-                    .UpdateCNameRecordSet("www")
-                        .WithAlias("new.contoso.com")
-                        .Parent()
-                    .DefineTxtRecordSet("@")
-                        .WithText(text)
-                        .Attach()
-                    .Apply();
-
-                Assert.Equal("new.contoso.com", dnsZone.CNameRecordSets.GetByName("www").CanonicalName);
-                var text2 = string.Join("", dnsZone.TxtRecordSets.GetByName("@").Records[0].Value);
-                Assert.Equal(text, text2);
-            }
-            finally
-            {
+                var azure = TestHelper.CreateRollupClient();
                 try
                 {
-                    azure.ResourceGroups.BeginDeleteByName(groupName);
+                    var dnsZone = azure.DnsZones.Define(topLevelDomain)
+                        .WithNewResourceGroup(groupName, region)
+                        .DefineCNameRecordSet("www")
+                            .WithAlias("cname.contoso.com")
+                            .Attach()
+                        .Create();
+
+                    Assert.Equal("cname.contoso.com", dnsZone.CNameRecordSets.GetByName("www").CanonicalName);
+
+                    var sb = new StringBuilder();
+                    sb.Append('a', 255);
+                    sb.Append('b', 255);
+                    sb.Append('c', 1);
+                    var text = sb.ToString();
+
+                    dnsZone.Update()
+                        .UpdateCNameRecordSet("www")
+                            .WithAlias("new.contoso.com")
+                            .Parent()
+                        .DefineTxtRecordSet("@")
+                            .WithText(text)
+                            .Attach()
+                        .Apply();
+
+                    Assert.Equal("new.contoso.com", dnsZone.CNameRecordSets.GetByName("www").CanonicalName);
+                    var text2 = string.Join("", dnsZone.TxtRecordSets.GetByName("@").Records[0].Value);
+                    Assert.Equal(text, text2);
                 }
-                catch
-                { }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(groupName);
+                    }
+                    catch
+                    { }
+                }
             }
         }
 
