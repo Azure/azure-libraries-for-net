@@ -29,6 +29,7 @@ function credcheck(dir) {
     redactDict.set(/\\"storageAccountKey\\": \\"(.*?)\\"/g, '\\"storageAccountKey\\": \\"MGMT_PLACEHOLDER\\"');
     redactDict.set(/\\"adminUserPassword\\": \\"(.*?)\\"/g, '\\"adminUserPassword\\": \\"MGMT_PLACEHOLDER\\"');
     redactDict.set(/\\"permissions\\":\s*\\"Full\\",[\\r\\n]*\s*\\"value\\":\s*\\"(.*?)\\"/g, '\\"keyName\\": \\"key1\\",\\"value\\": \\"MGMT_PLACEHOLDER\\"');
+    redactDict.set(/userPWD=\\"(.*?)\\"/g, 'userPWD=\\"MGMT_PLACEHOLDER\\"');
 	
     credcheckRecursive(dir, redactDict);
 }
