@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the PrivateRegistryCredentials class.
         /// </summary>
-        /// <param name="username">User name.</param>
-        /// <param name="password">Password.</param>
+        /// <param name="user">User.</param>
+        /// <param name="pass">Pass</param>
         /// <param name="passwordSecretReference">Password secret
         /// reference.</param>
-        public PrivateRegistryCredentials(string username, string password = default(string), KeyVaultSecretReference passwordSecretReference = default(KeyVaultSecretReference))
+        public PrivateRegistryCredentials(string user, string pass = default(string), KeyVaultSecretReference passwordSecretReference = default(KeyVaultSecretReference))
         {
-            Username = username;
-            Password = password;
+            Username = user;
+            Password = pass;
             PasswordSecretReference = passwordSecretReference;
             CustomInit();
         }

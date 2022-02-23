@@ -33,6 +33,14 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:AF11C8A7E2B299112E3CED7714F622A7
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
+            if (resource.CnameRecord == null)
+            {
+                resource.CnameRecord = new CnameRecord();
+            }
+            if (Inner.CnameRecord.Cname != null)
+            {
+                resource.CnameRecord.Cname = Inner.CnameRecord.Cname;
+            }
             return resource;
         }
 

@@ -327,6 +327,58 @@ namespace Fluent.Tests.Dns
             }
         }
 
+        [Fact]
+        public void CanUpdateCnameAndTxt()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var region = Region.USEast;
+                var groupName = TestUtilities.GenerateName("rgdnschash");
+                var topLevelDomain = $"{TestUtilities.GenerateName("www.contoso-")}.com";
+
+                var azure = TestHelper.CreateRollupClient();
+                try
+                {
+                    var dnsZone = azure.DnsZones.Define(topLevelDomain)
+                        .WithNewResourceGroup(groupName, region)
+                        .DefineCNameRecordSet("www")
+                            .WithAlias("cname.contoso.com")
+                            .Attach()
+                        .Create();
+
+                    Assert.Equal("cname.contoso.com", dnsZone.CNameRecordSets.GetByName("www").CanonicalName);
+
+                    var sb = new StringBuilder();
+                    sb.Append('a', 255);
+                    sb.Append('b', 255);
+                    sb.Append('c', 1);
+                    var text = sb.ToString();
+
+                    dnsZone.Update()
+                        .UpdateCNameRecordSet("www")
+                            .WithAlias("new.contoso.com")
+                            .Parent()
+                        .DefineTxtRecordSet("@")
+                            .WithText(text)
+                            .Attach()
+                        .Apply();
+
+                    Assert.Equal("new.contoso.com", dnsZone.CNameRecordSets.GetByName("www").CanonicalName);
+                    var text2 = string.Join("", dnsZone.TxtRecordSets.GetByName("@").Records[0].Value);
+                    Assert.Equal(text, text2);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(groupName);
+                    }
+                    catch
+                    { }
+                }
+            }
+        }
+
         private void EnsureETagExceptionIsThrown(Action action)
         {
             var isCloudExceptionThrown = false;
