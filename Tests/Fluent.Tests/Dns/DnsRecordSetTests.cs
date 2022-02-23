@@ -330,12 +330,12 @@ namespace Fluent.Tests.Dns
         [Fact]
         public void CanUpdateCnameAndTxt()
         {
-            var region = Region.USEast;
-            var groupName = TestUtilities.GenerateName("rgdnschash");
-            var topLevelDomain = $"{TestUtilities.GenerateName("www.contoso-")}.com";
-
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
+                var region = Region.USEast;
+                var groupName = TestUtilities.GenerateName("rgdnschash");
+                var topLevelDomain = $"{TestUtilities.GenerateName("www.contoso-")}.com";
+
                 var azure = TestHelper.CreateRollupClient();
                 try
                 {
