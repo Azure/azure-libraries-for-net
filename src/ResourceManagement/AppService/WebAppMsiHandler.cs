@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                             {
                                 Type = ManagedServiceIdentityType.None
                             };
-                        } else if (currentIdentity.Type.Equals(ManagedServiceIdentityType.SystemAssigned)) {
+                        } else if (currentIdentity.Type.Equals(ManagedServiceIdentityType.SystemAssignedUserAssigned)) {
                             siteUpdate.Identity = currentIdentity;
                             siteUpdate.Identity.Type = ManagedServiceIdentityType.SystemAssigned;
                         } else if (currentIdentity.Type.Equals(ManagedServiceIdentityType.UserAssigned)) {
