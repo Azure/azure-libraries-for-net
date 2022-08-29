@@ -12,7 +12,7 @@ variables:
 jobs:
   - job: Windows_Build
     pool:
-      vmImage: 'VS2017-Win2016'
+      vmImage: 'windows-2019'
     variables:
       LoggingArgs: '/flp:Summary;Verbosity=minimal;LogFile=msbuild.sum /flp1:warningsonly;logfile=msbuild.wrn /flp2:errorsonly;logfile=msbuild.err'
 
