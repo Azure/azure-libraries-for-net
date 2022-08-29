@@ -34,10 +34,12 @@ jobs:
           TSLint: false
           ToolLogsNotFoundAction: 'Standard'
           
-      - task: CmdLine@1
+      - task: CmdLine@2
         inputs:
-          filename: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.2 Tools\sn.exe
-          arguments: -Vr *,31bf3856ad364e35
+          script: 'dir "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin"'
+      - task: CmdLine@2
+        inputs:
+          script: '"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\sn.exe" -Vr *,31bf3856ad364e35'
       - task: MSBuild@1
         displayName: 'Getting latest build tools'
         inputs:
