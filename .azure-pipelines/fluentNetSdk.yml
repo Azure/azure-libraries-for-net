@@ -33,6 +33,13 @@ jobs:
           RoslynAnalyzers: false
           TSLint: false
           ToolLogsNotFoundAction: 'Standard'
+
+      - task: UseDotNet@2
+        displayName: 'Use .NET Core sdk $(DotNetCoreVersion)'
+        inputs:
+          packageType: sdk
+          version: '$(DotNetCoreVersion)'
+          installationPath: $(Agent.ToolsDirectory)/dotnet
           
       - task: CmdLine@2
         inputs:
@@ -75,10 +82,13 @@ jobs:
       vmImage: 'ubuntu-18.04'
   
     steps:
-        - task: DotNetCoreInstaller@0
+        - task: UseDotNet@2
           displayName: 'Use .NET Core sdk $(DotNetCoreVersion)'
           inputs:
+            packageType: sdk
             version: '$(DotNetCoreVersion)'
+            installationPath: $(Agent.ToolsDirectory)/dotnet
+
         - script: './test_on_linux.sh'
           displayName: 'Build and test on Non-windows machine'
         - task: PublishTestResults@2
