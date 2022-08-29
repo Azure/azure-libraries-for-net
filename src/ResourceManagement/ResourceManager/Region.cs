@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region UAENorth = new Region("uaenorth");
         public static readonly Region SouthAfricaNorth = new Region("southafricanorth");
         public static readonly Region SouthAfricaWest = new Region("southafricawest");
+        public static readonly Region QatarCentral = new Region("qatarcentral");
         #endregion
 
         #region China
