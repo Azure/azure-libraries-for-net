@@ -1,10 +1,15 @@
 [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/net/azure-libraries-for-net%20-%20fluent-sdk?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=441&branchName=master)
 
-# Try the Next-Generation Azure Management SDK for .NET now
+# This Repository was Deprecated in September 2022
 
-A new set of Azure Management Libraries for .NET that follows the [Azure SDK Design Guidelines for .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html) are now in Public Preview. If you are interested in the new generation SDK for .NET, please find the information about latest packages [here](https://azure.github.io/azure-sdk/releases/latest/dotnet.html), and look for packages that contains `Azure.ResourceManager` in the namespace.
+Thank you for the interest in this package.
 
-Documentation is available [on this page](https://aka.ms/azure-sdk-dotnet-mgmt)
+If you are looking for the latest packages to interact with Azure resources, please use the following libraries:
+https://aka.ms/azsdk/dotnet/mgmt
+
+Here is all of the latest packages: https://azure.github.io/azure-sdk/releases/latest/mgmt/dotnet.html
+
+You can refer to this https://aka.ms/dotnet/t2/migration for more details about how to migrate your current code to our new SDK.
 
 # Azure Management Libraries for .NET
 
