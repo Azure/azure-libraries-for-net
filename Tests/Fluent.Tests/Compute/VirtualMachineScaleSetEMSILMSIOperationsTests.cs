@@ -103,7 +103,7 @@ namespace Fluent.Tests.Compute.VirtualMachineScaleSet
                         .WithExistingPrimaryInternalLoadBalancer(vmssInternalLoadBalancer)
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithExistingUserAssignedManagedServiceIdentity(createdIdentity)
                         .WithNewUserAssignedManagedServiceIdentity(creatableIdentity)
                         .Create();
@@ -330,7 +330,7 @@ namespace Fluent.Tests.Compute.VirtualMachineScaleSet
                         .WithExistingPrimaryInternalLoadBalancer(vmssInternalLoadBalancer)
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithSystemAssignedManagedServiceIdentity()
                         .WithSystemAssignedIdentityBasedAccessTo(network.Id, BuiltInRole.Contributor)
                         .WithNewUserAssignedManagedServiceIdentity(creatableIdentity)
@@ -440,7 +440,7 @@ namespace Fluent.Tests.Compute.VirtualMachineScaleSet
                         .WithExistingPrimaryInternalLoadBalancer(vmssInternalLoadBalancer)
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .Create();
 
                     // Prepare a definition for yet-to-be-created "User Assigned (External) MSI" with contributor access to the resource group

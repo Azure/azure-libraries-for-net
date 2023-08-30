@@ -14,8 +14,8 @@ namespace ManageVirtualMachineWithDisk
 {
     public class Program
     {
-        private static string userName = "tirekicker";
-        private static string password = "12NewPA$$w0rd!";
+        private static string userName = Utilities.CreateUsername();
+        private static string password = Utilities.CreatePassword();
         private static Region region = Region.USWestCentral;
 
         /**
@@ -93,7 +93,7 @@ namespace ManageVirtualMachineWithDisk
                         .WithExistingDataDisk(dataDisk1)
 
                         // End: Managed data disks
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM with managed OS and data disks: " + linuxVM.Id);

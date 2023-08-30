@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
             }
             else
             {
-                value.AddRange(Enumerable.Range(0, (int)(Math.Ceiling(text.Length / (double)255))).Select(i => text.Substring(i * 255, 255)));
+                value.AddRange(Enumerable.Range(0, (int)(Math.Ceiling(text.Length / (double)255))).Select(i => text.Substring(i * 255, Math.Min(255, text.Length - i * 255))));
             }
             Inner.TxtRecords.Add(new TxtRecord { Value = value });
             return this;

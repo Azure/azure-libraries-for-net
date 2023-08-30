@@ -27,7 +27,7 @@
     "dir": "Compute",
     "source": "specification/compute/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Compute.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2019-07-01 --remove-inner=VirtualMachineInstanceView,VirtualMachineScaleSetVMInstanceView"
+    "args": "--payload-flattening-threshold=1 --tag=package-2020-06-30 --remove-inner=VirtualMachineInstanceView,VirtualMachineScaleSetVMInstanceView"
   },
   "containerinstance": {
     "dir": "ContainerInstance",
@@ -45,7 +45,7 @@
     "dir": "ContainerService",
     "source": "specification/containerservice/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.ContainerService.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2019-08 --title=ContainerServiceManagementClient --description=\"Container Service Client\""
+    "args": "--payload-flattening-threshold=1 --tag=package-2020-12 --title=ContainerServiceManagementClient --description=\"Container Service Client\""
   },
   "cosmosdb": {
     "dir": "CosmosDB",
@@ -123,7 +123,7 @@
     "dir": "ResourceManager",
     "source": "specification/resources/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.ResourceManager.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-resources-2019-08"
+    "args": "--payload-flattening-threshold=1 --tag=package-resources-2021-01"
   },
   "search": {
     "dir": "Search",

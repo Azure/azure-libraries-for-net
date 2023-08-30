@@ -57,7 +57,7 @@ namespace VerifyNetworkPeeringWithNetworkWatcher
             };
 
             string peeringABName = SdkContext.RandomResourceName("peer", 15);
-            string rootname = "tirekicker";
+            string rootname = Utilities.CreateUsername();
             string password = SdkContext.RandomResourceName("pWd!", 15);
             string networkWatcherName = SdkContext.RandomResourceName("netwch", 20);
 

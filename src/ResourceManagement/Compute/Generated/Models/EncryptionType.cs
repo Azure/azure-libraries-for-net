@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     {
         public static readonly EncryptionType EncryptionAtRestWithPlatformKey = Parse("EncryptionAtRestWithPlatformKey");
         public static readonly EncryptionType EncryptionAtRestWithCustomerKey = Parse("EncryptionAtRestWithCustomerKey");
+        public static readonly EncryptionType EncryptionAtRestWithPlatformAndCustomerKeys = Parse("EncryptionAtRestWithPlatformAndCustomerKeys");
     }
 }

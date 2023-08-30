@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using System;
     using System.Linq;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition;
+    using Microsoft.Rest.Azure.OData;
 
     /// <summary>
     /// The implementation of ServicePrincipals and its parent interfaces.
@@ -57,10 +58,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            IEnumerable<ServicePrincipalInner> inners = await manager.Inner.ServicePrincipals.ListAsync(string.Format("displayName eq '{0}'", name), cancellationToken);
+            ODataQuery<ServicePrincipalInner> oDataQuery = new ODataQuery<ServicePrincipalInner>
+            {
+                Filter = string.Format("displayName eq '{0}'", name)
+            };
+            IEnumerable<ServicePrincipalInner> inners = await manager.Inner.ServicePrincipals.ListAsync(oDataQuery, cancellationToken);
             if (inners == null || !inners.Any())
             {
-                inners = await manager.Inner.ServicePrincipals.ListAsync(string.Format("servicePrincipalNames/any(c:c eq '{0}')", name), cancellationToken);
+                oDataQuery.Filter = string.Format("servicePrincipalNames/any(c:c eq '{0}')", name);
+                inners = await manager.Inner.ServicePrincipals.ListAsync(oDataQuery, cancellationToken);
             }
             if (inners == null || !inners.Any())
             {

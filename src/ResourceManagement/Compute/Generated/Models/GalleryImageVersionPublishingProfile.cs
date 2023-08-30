@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// purposes. This property is updatable.</param>
         /// <param name="storageAccountType">Specifies the storage account type
         /// to be used to store the image. This property is not updatable.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS'</param>
+        /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
+        /// 'Premium_LRS'</param>
         public GalleryImageVersionPublishingProfile(IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), StorageAccountType storageAccountType = default(StorageAccountType))
             : base(targetRegions, replicaCount, excludeFromLatest, publishedDate, endOfLifeDate, storageAccountType)
         {

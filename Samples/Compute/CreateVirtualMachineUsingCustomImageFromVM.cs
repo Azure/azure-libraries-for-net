@@ -15,8 +15,8 @@ namespace CreateVirtualMachineUsingCustomImageFromVM
 {
     public class Program
     {
-        private static string userName = "tirekicker";
-        private static string password = "12NewPA$$w0rd!";
+        private static string userName = Utilities.CreateUsername();
+        private static string password = Utilities.CreatePassword();
         private static Region region = Region.USWest;
 
         /**
@@ -77,7 +77,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVM
                             .WithPublicSetting("fileUris", apacheInstallScriptUris)
                             .WithPublicSetting("commandToExecute", apacheInstallCommand)
                             .Attach()
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM with un-managed OS and data disks: " + linuxVM.Id);
@@ -132,7 +132,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVM
                         .WithLinuxCustomImage(virtualMachineCustomImage.Id)
                         .WithRootUsername(userName)
                         .WithRootPassword(password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.PrintVirtualMachine(linuxVM2);
@@ -155,7 +155,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVM
                         .WithNewDataDiskFromImage(1, 200, CachingTypes.ReadWrite)  // TODO: Naming needs to be finalized
                         .WithNewDataDiskFromImage(2, 100, CachingTypes.ReadOnly)
                         .WithNewDataDisk(50)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.PrintVirtualMachine(linuxVM3);

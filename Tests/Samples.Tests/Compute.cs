@@ -33,7 +33,7 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                CreateVMsUsingCustomImageOrSpecializedVHD.Program.RunSample(rollUpClient);
+                RunSampleAsTest(this.GetType().FullName, CreateVMsUsingCustomImageOrSpecializedVHD.Program.RunSample);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                CreateVirtualMachineUsingCustomImageFromVHD.Program.RunSample(rollUpClient);
+                RunSampleAsTest(this.GetType().FullName, CreateVirtualMachineUsingCustomImageFromVHD.Program.RunSample);
             }
         }
 
@@ -142,7 +142,7 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                CreateVirtualMachineUsingCustomImageFromVM.Program.RunSample(rollUpClient);
+                RunSampleAsTest(this.GetType().FullName, CreateVirtualMachineUsingCustomImageFromVM.Program.RunSample);
             }
         }
 

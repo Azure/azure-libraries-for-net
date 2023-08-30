@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,19 +19,12 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// The Azure Storage Management API.
     /// </summary>
-    public partial class StorageManagementClient : FluentServiceClientBase<StorageManagementClient>, IStorageManagementClient, IAzureClient
+    public partial class StorageManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<StorageManagementClient>, IStorageManagementClient, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        //public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -39,11 +34,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        ///// <summary>
-        ///// Credentials needed for the client to connect to Azure.
-        ///// </summary>
-        //public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// The ID of the target subscription.
@@ -114,9 +104,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public StorageManagementClient(RestClient restClient)
-            : base(restClient)
+        public StorageManagementClient(RestClient restClient) : base(restClient)
         {
+        }
+
+        private StorageManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static StorageManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new StorageManagementClient(restClient) : new StorageManagementClient(restClient, restClient.HttpClient);
         }
 
         /// <summary>
@@ -135,7 +133,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             ManagementPolicies = new ManagementPoliciesOperations(this);
             BlobServices = new BlobServicesOperations(this);
             BlobContainers = new BlobContainersOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            this.BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2018-11-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

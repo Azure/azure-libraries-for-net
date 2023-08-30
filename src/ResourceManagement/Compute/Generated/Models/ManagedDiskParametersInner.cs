@@ -34,10 +34,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disks, it cannot be used with OS Disk. Possible values include:
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
         /// 'UltraSSD_LRS'</param>
-        public ManagedDiskParametersInner(string id = default(string), StorageAccountTypes storageAccountType = default(StorageAccountTypes))
+        /// <param name="diskEncryptionSet">Specifies the customer managed disk
+        /// encryption set resource id for the managed disk.</param>
+        public ManagedDiskParametersInner(string id = default(string), StorageAccountTypes storageAccountType = default(StorageAccountTypes), Management.ResourceManager.Fluent.SubResource diskEncryptionSet = default(Management.ResourceManager.Fluent.SubResource))
             : base(id)
         {
             StorageAccountType = storageAccountType;
+            DiskEncryptionSet = diskEncryptionSet;
             CustomInit();
         }
 
@@ -54,6 +57,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
         public StorageAccountTypes StorageAccountType { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the customer managed disk encryption set
+        /// resource id for the managed disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "diskEncryptionSet")]
+        public Management.ResourceManager.Fluent.SubResource DiskEncryptionSet { get; set; }
 
     }
 }

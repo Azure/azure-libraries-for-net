@@ -25,7 +25,7 @@ namespace ManageManagedDisks
         {
             var region = Region.USEast;
             var rgName = Utilities.CreateRandomName("rgCOMV");
-            var userName = "tirekicker";
+            var userName = Utilities.CreateUsername();
             var sshkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfSPC2K7LZcFKEO+/t3dzmQYtrJFZNxOsbVgOVKietqHyvmYGHEC0J2wPdAqQ/63g/hhAEFRoyehM+rbeDri4txB3YFfnOK58jqdkyXzupWqXzOrlKY4Wz9SKjjN765+dqUITjKRIaAip1Ri137szRg71WnrmdP3SphTRlCx1Bk2nXqWPsclbRDCiZeF8QOTi4JqbmJyK5+0UqhqYRduun8ylAwKKQJ1NJt85sYIHn9f1Rfr6Tq2zS0wZ7DHbZL+zB5rSlAr8QyUdg/GQD+cmSs6LvPJKL78d6hMGk84ARtFo4A79ovwX/Fj01znDQkU6nJildfkaolH2rWFG/qttD azjava@javalib.Com";
 
             try
@@ -48,7 +48,7 @@ namespace ManageManagedDisks
                         .WithRootUsername(userName)
                         .WithSsh(sshkey)
                         .WithNewDataDisk(100)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with an implicit Managed OS disk and explicit Managed data disk]");
@@ -69,7 +69,7 @@ namespace ManageManagedDisks
                         .WithExistingPrimaryInternetFacingLoadBalancer(PrepareLoadBalancer(azure, region, rgName))
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("tirekicker")
+                        .WithRootUsername(Utilities.CreateUsername())
                         .WithSsh(sshkey)
                         .WithNewDataDisk(100)
                         .WithNewDataDisk(100, 1, CachingTypes.ReadWrite)
@@ -111,7 +111,7 @@ namespace ManageManagedDisks
                         .WithNewDataDisk(100, 1, CachingTypes.ReadWrite)
                         .WithExistingDataDisk(dataDisk)
                         // End: Managed data disks
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with new managed data disks and disk attached]");
@@ -159,7 +159,7 @@ namespace ManageManagedDisks
                         .WithLinuxCustomImage(virtualMachineCustomImage.Id)
                         .WithRootUsername(userName)
                         .WithSsh(sshkey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [from custom image]");
@@ -180,7 +180,7 @@ namespace ManageManagedDisks
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithoutPrimaryPublicIPAddress()
                         .WithSpecializedOSUnmanagedDisk(specializedVhd, OperatingSystemTypes.Linux)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [by attaching un-managed disk]");
@@ -266,7 +266,7 @@ namespace ManageManagedDisks
                         .WithoutPrimaryPublicIPAddress()
                         .WithSpecializedOSDisk(newOSDisk, OperatingSystemTypes.Linux)
                         .WithExistingDataDisk(newDataDisk)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with specialized OS managed disk]");
@@ -284,11 +284,11 @@ namespace ManageManagedDisks
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithNewPrimaryPublicIPAddress(linuxVM7Pip)
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("tirekicker")
+                        .WithRootUsername(Utilities.CreateUsername())
                         .WithSsh(sshkey)
                         .WithUnmanagedDisks() // uses storage accounts
                         .WithNewUnmanagedDataDisk(100)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created VM [with un-managed disk for migration]");
@@ -351,8 +351,8 @@ namespace ManageManagedDisks
 
         private static IVirtualMachine PrepareSpecializedUnmanagedVirtualMachine(IAzure azure, Region region, string rgName)
         {
-            var userName = "tirekicker";
-            var password = "12NewPA$$w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             var linuxVmName1 = SdkContext.RandomResourceName("vm" + "-", 10);
             var publicIpDnsLabel = SdkContext.RandomResourceName("pip" + "-", 20);
 
@@ -374,7 +374,7 @@ namespace ManageManagedDisks
                         .WithNewVhd(50)
                         .WithLun(2)
                         .Attach()
-                    .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .Create();
 
             // De-provision the virtual machine
@@ -390,8 +390,8 @@ namespace ManageManagedDisks
 
         private static IVirtualMachine PrepareSpecializedManagedVirtualMachine(IAzure azure, Region region, string rgName)
         {
-            var userName = "tirekicker";
-            var password = "12NewPA$$w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             var linuxVmName1 = SdkContext.RandomResourceName("vm" + "-", 10);
             var publicIpDnsLabel = SdkContext.RandomResourceName("pip" + "-", 20);
 
@@ -406,7 +406,7 @@ namespace ManageManagedDisks
                     .WithRootPassword(password)
                     .WithNewDataDisk(100)
                     .WithNewDataDisk(200)
-                    .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .Create();
 
             // De-provision the virtual machine

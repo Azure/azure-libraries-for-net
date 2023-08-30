@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0Mzk/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0Mzk/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
@@ -822,10 +822,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"name\": \"vm14cb60348ce7d4439d-os-disk\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-os-disk-61a5a6ce-0fdb-4b98-84f1-31c095edd877.Vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\"\r\n      },\r\n      \"dataDisks\": [\r\n        {\r\n          \"lun\": 1,\r\n          \"name\": \"disk-1\",\r\n          \"vhd\": {\r\n            \"uri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-data-disk-1-e8c7ad44-602a-479d-b601-e41625de8633.Vhd\"\r\n          },\r\n          \"caching\": \"ReadWrite\",\r\n          \"createOption\": \"Empty\",\r\n          \"diskSizeGB\": 50\r\n        },\r\n        {\r\n          \"lun\": 2,\r\n          \"name\": \"disk-2\",\r\n          \"vhd\": {\r\n            \"uri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-data-disk-2-c6d26683-f36b-4e95-a7ab-3d49042896c7.Vhd\"\r\n          },\r\n          \"caching\": \"ReadWrite\",\r\n          \"createOption\": \"Empty\",\r\n          \"diskSizeGB\": 50\r\n        }\r\n      ]\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm68e3512075\",\r\n      \"adminUsername\": \"tirekicker\",\r\n      \"adminPassword\": \"12NewPA$$w0rd!\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Network/networkInterfaces/nic217985544e8\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"16.04.0-LTS\",\r\n        \"version\": \"latest\"\r\n      },\r\n      \"osDisk\": {\r\n        \"name\": \"vm14cb60348ce7d4439d-os-disk\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-os-disk-61a5a6ce-0fdb-4b98-84f1-31c095edd877.Vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"FromImage\"\r\n      },\r\n      \"dataDisks\": [\r\n        {\r\n          \"lun\": 1,\r\n          \"name\": \"disk-1\",\r\n          \"vhd\": {\r\n            \"uri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-data-disk-1-e8c7ad44-602a-479d-b601-e41625de8633.Vhd\"\r\n          },\r\n          \"caching\": \"ReadWrite\",\r\n          \"createOption\": \"Empty\",\r\n          \"diskSizeGB\": 50\r\n        },\r\n        {\r\n          \"lun\": 2,\r\n          \"name\": \"disk-2\",\r\n          \"vhd\": {\r\n            \"uri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-data-disk-2-c6d26683-f36b-4e95-a7ab-3d49042896c7.Vhd\"\r\n          },\r\n          \"caching\": \"ReadWrite\",\r\n          \"createOption\": \"Empty\",\r\n          \"diskSizeGB\": 50\r\n        }\r\n      ]\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vm68e3512075\",\r\n      \"adminUsername\": \"tirekicker\",\r\n      \"adminPassword\": \"MGMT_PLACEHOLDER\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false\r\n      }\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Network/networkInterfaces/nic217985544e8\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "a4f832f9-5c47-42e9-9ff8-096e0f17ff7a"
@@ -1094,8 +1094,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1156,8 +1156,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1224,8 +1224,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d/extensions/CustomScriptForLinux?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZC9leHRlbnNpb25zL0N1c3RvbVNjcmlwdEZvckxpbnV4P2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d/extensions/CustomScriptForLinux?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZC9leHRlbnNpb25zL0N1c3RvbVNjcmlwdEZvckxpbnV4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.OSTCExtensions\",\r\n    \"type\": \"CustomScriptForLinux\",\r\n    \"typeHandlerVersion\": \"1.4\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh\"\r\n      ],\r\n      \"commandToExecute\": \"bash install_apache.sh\"\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
@@ -1428,8 +1428,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d/extensions/CustomScriptForLinux?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZC9leHRlbnNpb25zL0N1c3RvbVNjcmlwdEZvckxpbnV4P2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d/extensions/CustomScriptForLinux?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZC9leHRlbnNpb25zL0N1c3RvbVNjcmlwdEZvckxpbnV4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1490,8 +1490,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm14cb60348ce7d4439d?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTE0Y2I2MDM0OGNlN2Q0NDM5ZD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1815,8 +1815,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-os-0b516445498bb830?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLW9zLTBiNTE2NDQ1NDk4YmI4MzA/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-os-0b516445498bb830?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLW9zLTBiNTE2NDQ1NDk4YmI4MzA/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"osType\": \"Linux\",\r\n    \"creationData\": {\r\n      \"createOption\": \"Import\",\r\n      \"storageAccountId\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439/providers/Microsoft.Storage/storageAccounts/stgde5869951fb895eae\",\r\n      \"sourceUri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-os-disk-61a5a6ce-0fdb-4b98-84f1-31c095edd877.Vhd\"\r\n    },\r\n    \"diskSizeGB\": 100\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -1966,8 +1966,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-os-0b516445498bb830?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLW9zLTBiNTE2NDQ1NDk4YmI4MzA/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-os-0b516445498bb830?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLW9zLTBiNTE2NDQ1NDk4YmI4MzA/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2031,8 +2031,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTA/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTA/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\"\r\n  },\r\n  \"properties\": {\r\n    \"creationData\": {\r\n      \"createOption\": \"Import\",\r\n      \"storageAccountId\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439/providers/Microsoft.Storage/storageAccounts/stgde5869951fb895eae\",\r\n      \"sourceUri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-data-disk-1-e8c7ad44-602a-479d-b601-e41625de8633.Vhd\"\r\n    },\r\n    \"diskSizeGB\": 150\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -2182,8 +2182,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTA/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTA/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2247,8 +2247,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTA/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTA/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2318,8 +2318,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTE/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTE/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\"\r\n  },\r\n  \"properties\": {\r\n    \"creationData\": {\r\n      \"createOption\": \"Import\",\r\n      \"storageAccountId\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439/providers/Microsoft.Storage/storageAccounts/stgde5869951fb895eae\",\r\n      \"sourceUri\": \"https://stgde5869951fb895eae.blob.core.windows.net/vhds/vm14cb60348ce7d4439d-data-disk-2-c6d26683-f36b-4e95-a7ab-3d49042896c7.Vhd\"\r\n    },\r\n    \"diskSizeGB\": 150\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -2469,8 +2469,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTE/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTE/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2534,8 +2534,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTE/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTE/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2954,8 +2954,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"Attach\",\r\n        \"managedDisk\": {\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-os-0b516445498bb830\"\r\n        }\r\n      },\r\n      \"dataDisks\": [\r\n        {\r\n          \"lun\": 0,\r\n          \"caching\": \"ReadWrite\",\r\n          \"createOption\": \"Attach\",\r\n          \"managedDisk\": {\r\n            \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0\"\r\n          }\r\n        },\r\n        {\r\n          \"lun\": 1,\r\n          \"caching\": \"ReadWrite\",\r\n          \"createOption\": \"Attach\",\r\n          \"managedDisk\": {\r\n            \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Network/networkInterfaces/nic4404979fb03\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -3161,8 +3161,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3223,8 +3223,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3285,8 +3285,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/virtualMachines/vm25b226957c64e75c5e?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bTI1YjIyNjk1N2M2NGU3NWM1ZT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D3_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"ds-os-0b516445498bb830\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"createOption\": \"Attach\",\r\n        \"diskSizeGB\": 100,\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-os-0b516445498bb830\"\r\n        }\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Network/networkInterfaces/nic4404979fb03\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -3427,8 +3427,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0/beginGetAccess?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTAvYmVnaW5HZXRBY2Nlc3M/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-0/beginGetAccess?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTAvYmVnaW5HZXRBY2Nlc3M/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"access\": \"Read\",\r\n  \"durationInSeconds\": 1440\r\n}",
       "RequestHeaders": {
@@ -3568,7 +3568,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-16T19:49:41.4120905+08:00\",\r\n  \"endTime\": \"2019-12-16T19:49:41.5839475+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"accessSAS\": \"https://md-rphl5zmktn3n.blob.core.windows.net/g04xvztx4tqp/abcd?sv=2017-04-17&sr=b&si=20eb5419-875d-42d4-b104-72db3c985328&sig=8CLRMgKd5ExRiuX%2BzfFY%2FZFO4l39du20vSkTwZ%2B%2BUdM%3D\"\r\n    }\r\n  },\r\n  \"name\": \"48f68347-7035-452b-b0a2-d2bbc2923b7a\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-16T19:49:41.4120905+08:00\",\r\n  \"endTime\": \"2019-12-16T19:49:41.5839475+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"accessSAS\": \"MGMT_PLACEHOLDER\"\r\n    }\r\n  },\r\n  \"name\": \"48f68347-7035-452b-b0a2-d2bbc2923b7a\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3633,12 +3633,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"accessSAS\": \"https://md-rphl5zmktn3n.blob.core.windows.net/g04xvztx4tqp/abcd?sv=2017-04-17&sr=b&si=20eb5419-875d-42d4-b104-72db3c985328&sig=8CLRMgKd5ExRiuX%2BzfFY%2FZFO4l39du20vSkTwZ%2B%2BUdM%3D\"\r\n}",
+      "ResponseBody": "{\r\n  \"accessSAS\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1/beginGetAccess?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTEvYmVnaW5HZXRBY2Nlc3M/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgcomv8e58846986bf0439/providers/Microsoft.Compute/disks/ds-data-61f253918e6e92b-1/beginGetAccess?api-version=2020-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0MzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2Rpc2tzL2RzLWRhdGEtNjFmMjUzOTE4ZTZlOTJiLTEvYmVnaW5HZXRBY2Nlc3M/YXBpLXZlcnNpb249MjAyMC0wNi0zMA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"access\": \"Read\",\r\n  \"durationInSeconds\": 1440\r\n}",
       "RequestHeaders": {
@@ -3778,7 +3778,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-16T19:50:12.6152533+08:00\",\r\n  \"endTime\": \"2019-12-16T19:50:12.7714817+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"accessSAS\": \"https://md-rphl5zmktn3n.blob.core.windows.net/slz44bh0422n/abcd?sv=2017-04-17&sr=b&si=e0e11ad7-5048-4ab6-9e37-81ad24f76780&sig=LUyiUoKtHH7gXeu%2F26PYod8L%2FEaTyRYakPy7Fc9rG4E%3D\"\r\n    }\r\n  },\r\n  \"name\": \"5f5f761d-b867-454e-a9bc-fa22bd6fa0a0\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-12-16T19:50:12.6152533+08:00\",\r\n  \"endTime\": \"2019-12-16T19:50:12.7714817+08:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"accessSAS\": \"MGMT_PLACEHOLDER\"\r\n    }\r\n  },\r\n  \"name\": \"5f5f761d-b867-454e-a9bc-fa22bd6fa0a0\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3843,12 +3843,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"accessSAS\": \"https://md-rphl5zmktn3n.blob.core.windows.net/slz44bh0422n/abcd?sv=2017-04-17&sr=b&si=e0e11ad7-5048-4ab6-9e37-81ad24f76780&sig=LUyiUoKtHH7gXeu%2F26PYod8L%2FEaTyRYakPy7Fc9rG4E%3D\"\r\n}",
+      "ResponseBody": "{\r\n  \"accessSAS\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0Mzk/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgcomv8e58846986bf0439?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnY29tdjhlNTg4NDY5ODZiZjA0Mzk/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -5598,6 +5598,7 @@
       "ds-data-61f253918e6e92b",
       "rgcomv8e58846986bf0439",
       "pip8b72876076bb9c4e8",
+      "stgde5869951fb895eae",
       "stgde5869951fb895eae",
       "nic217985544e8",
       "vnet5f279746f363",

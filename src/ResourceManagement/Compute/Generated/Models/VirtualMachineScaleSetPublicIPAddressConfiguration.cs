@@ -46,13 +46,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// IP address.</param>
         /// <param name="publicIPPrefix">The PublicIPPrefix from which to
         /// allocate publicIP addresses.</param>
-        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), Management.ResourceManager.Fluent.SubResource publicIPPrefix = default(Management.ResourceManager.Fluent.SubResource))
+        /// <param name="publicIPAddressVersion">Available from Api-Version
+        /// 2019-07-01 onwards, it represents whether the specific
+        /// ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+        /// values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+        /// 'IPv6'</param>
+        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), Management.ResourceManager.Fluent.SubResource publicIPPrefix = default(Management.ResourceManager.Fluent.SubResource), IPVersion publicIPAddressVersion = default(IPVersion))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             DnsSettings = dnsSettings;
             IpTags = ipTags;
             PublicIPPrefix = publicIPPrefix;
+            PublicIPAddressVersion = publicIPAddressVersion;
             CustomInit();
         }
 
@@ -93,6 +99,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPPrefix")]
         public Management.ResourceManager.Fluent.SubResource PublicIPPrefix { get; set; }
+
+        /// <summary>
+        /// Gets or sets available from Api-Version 2019-07-01 onwards, it
+        /// represents whether the specific ipconfiguration is IPv4 or IPv6.
+        /// Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
+        /// Possible values include: 'IPv4', 'IPv6'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicIPAddressVersion")]
+        public IPVersion PublicIPAddressVersion { get; set; }
 
         /// <summary>
         /// Validate the object.

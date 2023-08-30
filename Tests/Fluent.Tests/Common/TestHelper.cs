@@ -394,6 +394,7 @@ namespace Fluent.Tests.Common
             catch (InvalidOperationException)
             {
                 // mock server has never been initialized, we will need to initialize it.
+                HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
                 HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
                 server = HttpMockServer.CreateInstance();
             }

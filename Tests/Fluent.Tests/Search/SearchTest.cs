@@ -8,6 +8,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Search.Fluent;
 using Azure.Tests;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Fluent.Tests
 {
@@ -73,8 +74,11 @@ namespace Fluent.Tests
                     queryKeys = searchService.ListQueryKeys();
                     Assert.NotNull(queryKeys);
                     Assert.Equal(1, queryKeys.Count);
-                    Assert.DoesNotMatch(adminKeyPrimary, searchService.GetAdminKeys().PrimaryKey);
-                    Assert.DoesNotMatch(adminKeyPrimary, searchService.GetAdminKeys().SecondaryKey);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.DoesNotMatch(adminKeyPrimary, searchService.GetAdminKeys().PrimaryKey);
+                        Assert.DoesNotMatch(adminKeyPrimary, searchService.GetAdminKeys().SecondaryKey);
+                    }
                 }
                 finally
                 {

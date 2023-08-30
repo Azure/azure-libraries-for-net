@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         #region Americas
         public static readonly Region USWest = new Region("westus");
         public static readonly Region USWest2 = new Region("westus2");
+        public static readonly Region USWest3 = new Region("westus3");
         public static readonly Region USCentral = new Region("centralus");
         public static readonly Region USEast = new Region("eastus");
         public static readonly Region USEast2 = new Region("eastus2");
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region GermanyWestCentral = new Region("germanywestcentral");
         public static readonly Region NorwayWest = new Region("norwaywest");
         public static readonly Region NorwayEast = new Region("norwayeast");
+        public static readonly Region SwedenCentral = new Region("swedencentral");
         #endregion
 
         #region Asia
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region UAENorth = new Region("uaenorth");
         public static readonly Region SouthAfricaNorth = new Region("southafricanorth");
         public static readonly Region SouthAfricaWest = new Region("southafricawest");
+        public static readonly Region QatarCentral = new Region("qatarcentral");
         #endregion
 
         #region China

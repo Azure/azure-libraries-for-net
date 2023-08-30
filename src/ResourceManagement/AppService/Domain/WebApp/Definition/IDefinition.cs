@@ -127,6 +127,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCredentials,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithStartUpCommand,
+        IWithWindowsRuntimeStack,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate
     {
     }
@@ -226,9 +227,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     }
 
     /// <summary>
-    /// A web app definition allowing docker image source to be specified.
+    /// A web app definition allowing container image source to be specified.
     /// </summary>
-    public interface IWithDockerContainerImage 
+    public interface IWithContainerImage
     {
         /// <summary>
         /// Specifies the docker container image to be one from Docker Hub.
@@ -252,6 +253,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCredentials WithPrivateRegistryImage(string imageAndTag, string serverUrl);
 
+    }
+
+    /// <summary>
+    /// A web app definition allowing docker image source to be specified.
+    /// </summary>
+    public interface IWithDockerContainerImage : IWithContainerImage
+    {
         /// <summary>
         /// Specifies the docker container image to be a built in one.
         /// </summary>
@@ -263,7 +271,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing runtime stack on Windows operating system to be specified.
     /// </summary>
-    public interface IWithWindowsRuntimeStack : IWithCreate
+    public interface IWithWindowsRuntimeStack : IWithContainerImage, IWithCreate
     {
         /// <summary>
         /// Specifies the runtime stack for the web app on Windows operating system.

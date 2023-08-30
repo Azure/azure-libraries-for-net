@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rg20c63426?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnMjBjNjM0MjY/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rg20c63426?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnMjBjNjM0MjY/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
       "RequestHeaders": {
@@ -357,7 +357,7 @@
       "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg20c63426/providers/Microsoft.BatchAI/workspaces/ws7ae19019/fileServers/fsad498830a6?api-version=2018-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnMjBjNjM0MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaEFJL3dvcmtzcGFjZXMvd3M3YWUxOTAxOS9maWxlU2VydmVycy9mc2FkNDk4ODMwYTY/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vmSize\": \"Standard_D1_v2\",\r\n    \"sshConfiguration\": {\r\n      \"userAccountSettings\": {\r\n        \"adminUserName\": \"tirekicker\",\r\n        \"adminUserPassword\": \"MyPassword!\"\r\n      }\r\n    },\r\n    \"dataDisks\": {\r\n      \"diskSizeInGB\": 10,\r\n      \"cachingType\": \"readwrite\",\r\n      \"diskCount\": 2,\r\n      \"storageAccountType\": \"Standard_LRS\"\r\n    },\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg20c63426/providers/Microsoft.Network/virtualNetworks/vnet99484/subnets/MySubnet\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vmSize\": \"Standard_D1_v2\",\r\n    \"sshConfiguration\": {\r\n      \"userAccountSettings\": {\r\n        \"adminUserName\": \"tirekicker\",\r\n        \"adminUserPassword\": \"MGMT_PLACEHOLDER\"\r\n      }\r\n    },\r\n    \"dataDisks\": {\r\n      \"diskSizeInGB\": 10,\r\n      \"cachingType\": \"readwrite\",\r\n      \"diskCount\": 2,\r\n      \"storageAccountType\": \"Standard_LRS\"\r\n    },\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rg20c63426/providers/Microsoft.Network/virtualNetworks/vnet99484/subnets/MySubnet\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "66e5c7e6-2c6a-4324-941d-1082e4d2d67d"
@@ -1412,8 +1412,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rg20c63426?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnMjBjNjM0MjY/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rg20c63426?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnMjBjNjM0MjY/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

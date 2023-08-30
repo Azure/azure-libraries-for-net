@@ -123,7 +123,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply to the operation.
+            /// The expand expression to apply to the operation. Allowed values are
+            /// 'instanceView'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

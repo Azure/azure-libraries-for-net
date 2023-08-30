@@ -19,10 +19,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
         {
-            return new MonitorManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            };
+            IMonitorManagementClient monitorManagementClient = MonitorManagementClient.NewInstance(restClient);
+            monitorManagementClient.SubscriptionId = subscriptionId;
+            return monitorManagementClient;
         }
 
         private MonitorManager(RestClient restClient, string subscriptionId) :

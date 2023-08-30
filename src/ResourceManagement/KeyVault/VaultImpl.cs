@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         IDefinition,
         IUpdate
     {
-        private IKeyVaultClient client;
+        private Lazy<IKeyVaultClient> client;
         private IKeys keys;
         private ISecrets secrets;
         private IGraphRbacManager graphRbacManager;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                     this.accessPolicies.Add(new AccessPolicyImpl(entry, this));
                 }
             }
-            this.client = new KeyVaultClientInternal(Manager.RestClient.Credentials, Manager.RestClient.RootHttpHandler, Manager.RestClient.Handlers.ToArray());
+            this.client = new Lazy<IKeyVaultClient>(() => new KeyVaultClientInternal(Manager.RestClient.Credentials, Manager.RestClient.RootHttpHandler, Manager.RestClient.Handlers.ToArray()));
         }
 
         ///GENMHASH:FAAD3C3E07174E29B21DE058D968BBF7:A534A23FE2D228AC3080C1CF07E66439
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             {
                 if (keys == null)
                 {
-                    keys = new KeysImpl(client, this);
+                    keys = new KeysImpl(client.Value, this);
                 }
                 return keys;
             }
@@ -161,13 +161,13 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             {
                 if (secrets == null)
                 {
-                    secrets = new SecretsImpl(client, this);
+                    secrets = new SecretsImpl(client.Value, this);
                 }
                 return secrets;
             }
         }
 
-        IKeyVaultClient IVaultBeta.Client => client;
+        IKeyVaultClient IVaultBeta.Client => client.Value;
 
         ///GENMHASH:577E5E9CE0B513EB5189E6F44BB732C7:3949CE4CBC4994E8C88DF2E4815A8696
         public VaultImpl WithEmptyAccessPolicy()
@@ -255,6 +255,12 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         public VaultImpl WithTemplateDeploymentDisabled()
         {
             Inner.Properties.EnabledForTemplateDeployment = false;
+            return this;
+        }
+
+        public VaultImpl WithSoftDeleteEnabled()
+        {
+            Inner.Properties.EnableSoftDelete = true;
             return this;
         }
 

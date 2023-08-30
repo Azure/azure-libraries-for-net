@@ -19,8 +19,8 @@ namespace Fluent.Tests.ResourceManager
         private string deploymentName1 = "deployment1";
         private string deploymentName2 = "deployment2";
         private string deploymentName3 = "deployment3";
-        private string templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json";
-        private string parametersUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.parameters.json";
+        private string templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.json";
+        private string parametersUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.parameters.json";
         private string updateTemplate = "{\"$schema\":\"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\"contentVersion\":\"1.0.0.0\",\"parameters\":{\"vnetName\":{\"type\":\"string\",\"defaultValue\":\"VNet2\",\"metadata\":{\"description\":\"VNet name\"}},\"vnetAddressPrefix\":{\"type\":\"string\",\"defaultValue\":\"10.0.0.0/16\",\"metadata\":{\"description\":\"Address prefix\"}},\"subnet1Prefix\":{\"type\":\"string\",\"defaultValue\":\"10.0.0.0/24\",\"metadata\":{\"description\":\"Subnet 1 Prefix\"}},\"subnet1Name\":{\"type\":\"string\",\"defaultValue\":\"Subnet1\",\"metadata\":{\"description\":\"Subnet 1 Name\"}},\"subnet2Prefix\":{\"type\":\"string\",\"defaultValue\":\"10.0.1.0/24\",\"metadata\":{\"description\":\"Subnet 2 Prefix\"}},\"subnet2Name\":{\"type\":\"string\",\"defaultValue\":\"Subnet222\",\"metadata\":{\"description\":\"Subnet 2 Name\"}}},\"variables\":{\"apiVersion\":\"2015-06-15\"},\"resources\":[{\"apiVersion\":\"[variables('apiVersion')]\",\"type\":\"Microsoft.Network/virtualNetworks\",\"name\":\"[parameters('vnetName')]\",\"location\":\"[resourceGroup().location]\",\"properties\":{\"addressSpace\":{\"addressPrefixes\":[\"[parameters('vnetAddressPrefix')]\"]},\"subnets\":[{\"name\":\"[parameters('subnet1Name')]\",\"properties\":{\"addressPrefix\":\"[parameters('subnet1Prefix')]\"}},{\"name\":\"[parameters('subnet2Name')]\",\"properties\":{\"addressPrefix\":\"[parameters('subnet2Prefix')]\"}}]}}]}";
         private string updateParameters = "{\"vnetAddressPrefix\":{\"value\":\"10.0.0.0/16\"},\"subnet1Name\":{\"value\":\"Subnet1\"},\"subnet1Prefix\":{\"value\":\"10.0.0.0/24\"}}";
         private string contentVersion = "1.0.0.0";
@@ -69,11 +69,11 @@ namespace Fluent.Tests.ResourceManager
 
                     // Deployment operations
                     var deploymentOperations = deployment.DeploymentOperations.List();
-                    Assert.Equal(4, deploymentOperations.Count());
+                    Assert.Equal(5, deploymentOperations.Count());
                     IDeploymentOperation deploymentOperation = deployment.DeploymentOperations.GetById(deploymentOperations.First().OperationId);
                     Assert.NotNull(deploymentOperation);
 
-                    resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
+                    resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2020-11-01");
                 }
                 finally
                 {
@@ -106,8 +106,8 @@ namespace Fluent.Tests.ResourceManager
                     Assert.Equal(deployment.Name, deploymentName2);
                     deployment.Cancel();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
-                    Assert.Equal("Canceled", deployment.ProvisioningState);
-                    resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
+                    Assert.Equal(ProvisioningState.Canceled, deployment.ProvisioningState);
+                    resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2020-11-01");
                 }
                 finally
                 {
@@ -139,7 +139,7 @@ namespace Fluent.Tests.ResourceManager
                     Assert.Equal(deploymentName3, deployment.Name);
                     deployment.Cancel();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
-                    Assert.Equal("Canceled", deployment.ProvisioningState);
+                    Assert.Equal(ProvisioningState.Canceled, deployment.ProvisioningState);
 
                     deployment.Update()
                         .WithTemplate(updateTemplate)
@@ -148,7 +148,7 @@ namespace Fluent.Tests.ResourceManager
                         .Apply();
                     deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
                     Assert.True(deployment.Mode == DeploymentMode.Incremental);
-                    Assert.Equal("Succeeded", deployment.ProvisioningState);
+                    Assert.Equal(ProvisioningState.Succeeded, deployment.ProvisioningState);
 
                     IGenericResource genericVnet = resourceManager.GenericResources.Get(
                         rgName,
@@ -156,7 +156,7 @@ namespace Fluent.Tests.ResourceManager
                         "",
                         "virtualnetworks",
                         "VNet2",
-                        "2015-06-15");
+                        "2020-11-01");
                     Assert.NotNull(genericVnet);
                     resourceManager.GenericResources.Delete(
                         rgName,
@@ -164,7 +164,7 @@ namespace Fluent.Tests.ResourceManager
                         "",
                         "virtualnetworks",
                         "VNet2",
-                        "2015-06-15");
+                        "2020-11-01");
                 }
                 finally
                 {

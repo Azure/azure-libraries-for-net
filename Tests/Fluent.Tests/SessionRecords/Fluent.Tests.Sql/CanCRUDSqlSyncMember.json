@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/netsqlserver1978?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL25ldHNxbHNlcnZlcjE5Nzg/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/netsqlserver1978?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL25ldHNxbHNlcnZlcjE5Nzg/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"southeastasia\"\r\n}",
       "RequestHeaders": {
@@ -71,7 +71,7 @@
       "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/netsqlserver1978/providers/Microsoft.Sql/servers/sqlpri1d6498161e4d?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL25ldHNxbHNlcnZlcjE5NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWxwcmkxZDY0OTgxNjFlNGQ/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"sqladmin\",\r\n    \"administratorLoginPassword\": \"N0t@P@ssw0rd!\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"sqladmin\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "c15c872a-d2bb-4828-aee1-a55ce8bb49d5"
@@ -1638,7 +1638,7 @@
       "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/netsqlserver1978/providers/Microsoft.Sql/servers/sqlpri1d6498161e4d/databases/dbsync2ec59898/syncGroups/groupname97283?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL25ldHNxbHNlcnZlcjE5NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWxwcmkxZDY0OTgxNjFlNGQvZGF0YWJhc2VzL2Ric3luYzJlYzU5ODk4L3N5bmNHcm91cHMvZ3JvdXBuYW1lOTcyODM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"interval\": -1,\r\n    \"conflictResolutionPolicy\": \"HubWin\",\r\n    \"syncDatabaseId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/netsqlserver1978/providers/Microsoft.Sql/servers/sqlpri1d6498161e4d/databases/dbsample111924\",\r\n    \"hubDatabaseUserName\": \"sqladmin\",\r\n    \"hubDatabasePassword\": \"N0t@P@ssw0rd!\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"interval\": -1,\r\n    \"conflictResolutionPolicy\": \"HubWin\",\r\n    \"syncDatabaseId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/netsqlserver1978/providers/Microsoft.Sql/servers/sqlpri1d6498161e4d/databases/dbsample111924\",\r\n    \"hubDatabaseUserName\": \"sqladmin\",\r\n    \"hubDatabasePassword\": \"MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "8022f0aa-9c3e-4095-a469-4904852d22f3"
@@ -1900,7 +1900,7 @@
       "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/netsqlserver1978/providers/Microsoft.Sql/servers/sqlpri1d6498161e4d/databases/dbsync2ec59898/syncGroups/groupname97283/syncMembers/membername38808?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL25ldHNxbHNlcnZlcjE5NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWxwcmkxZDY0OTgxNjFlNGQvZGF0YWJhc2VzL2Ric3luYzJlYzU5ODk4L3N5bmNHcm91cHMvZ3JvdXBuYW1lOTcyODMvc3luY01lbWJlcnMvbWVtYmVybmFtZTM4ODA4P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"databaseType\": \"AzureSqlDatabase\",\r\n    \"serverName\": \"sqlpri1d6498161e4d\",\r\n    \"databaseName\": \"dbmember335333\",\r\n    \"userName\": \"sqladmin\",\r\n    \"password\": \"N0t@P@ssw0rd!\",\r\n    \"syncDirection\": \"OneWayHubToMember\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"databaseType\": \"AzureSqlDatabase\",\r\n    \"serverName\": \"sqlpri1d6498161e4d\",\r\n    \"databaseName\": \"dbmember335333\",\r\n    \"userName\": \"sqladmin\",\r\n    \"password\": \"MGMT_PLACEHOLDER\",\r\n    \"syncDirection\": \"OneWayHubToMember\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "059a0d04-513d-430b-b74b-07a60d1a2f4c"
@@ -1976,7 +1976,7 @@
       "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/netsqlserver1978/providers/Microsoft.Sql/servers/sqlpri1d6498161e4d/databases/dbsync2ec59898/syncGroups/groupname97283/syncMembers/membername38808?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL25ldHNxbHNlcnZlcjE5NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWxwcmkxZDY0OTgxNjFlNGQvZGF0YWJhc2VzL2Ric3luYzJlYzU5ODk4L3N5bmNHcm91cHMvZ3JvdXBuYW1lOTcyODMvc3luY01lbWJlcnMvbWVtYmVybmFtZTM4ODA4P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"databaseType\": \"AzureSqlDatabase\",\r\n    \"serverName\": \"sqlpri1d6498161e4d\",\r\n    \"databaseName\": \"dbmember335333\",\r\n    \"userName\": \"sqladmin\",\r\n    \"password\": \"N0t@P@ssw0rd!\",\r\n    \"syncDirection\": \"Bidirectional\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"databaseType\": \"AzureSqlDatabase\",\r\n    \"serverName\": \"sqlpri1d6498161e4d\",\r\n    \"databaseName\": \"dbmember335333\",\r\n    \"userName\": \"sqladmin\",\r\n    \"password\": \"MGMT_PLACEHOLDER\",\r\n    \"syncDirection\": \"Bidirectional\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "2f105ea4-cb42-4c09-8bad-ece2d3c19c3c"
@@ -2921,8 +2921,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/netsqlserver1978?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL25ldHNxbHNlcnZlcjE5Nzg/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/netsqlserver1978?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL25ldHNxbHNlcnZlcjE5Nzg/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3445,6 +3445,7 @@
       "dbsync2ec59898",
       "dbmember335333",
       "groupname97283",
+      "membername38808",
       "membername38808"
     ]
   },

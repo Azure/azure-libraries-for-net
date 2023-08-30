@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_74715893d330?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfNzQ3MTU4OTNkMzMwP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_74715893d330?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfNzQ3MTU4OTNkMzMwP2FwaS12ZXJzaW9uPTIwMjEtMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
       "RequestHeaders": {
@@ -326,7 +326,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"T6ggm1Nz3XLWU+sSP+6GhViqkbi/MczZkyf7tfMygQgdnJdG7GHY8Vw98+w/vHu6S6iTmwhLqrUxvg2Yb0rKxA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"EqjGMYwE/IsaM5rxayCO9x6R9UZg17nUY2Hcnn98exBmQ4Tjaut/aEsnCqHINIpX1dcELFajC6pg79ZXQ9cbrg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1056,7 +1056,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=T6ggm1Nz3XLWU+sSP+6GhViqkbi/MczZkyf7tfMygQgdnJdG7GHY8Vw98+w/vHu6S6iTmwhLqrUxvg2Yb0rKxA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1126,14 +1126,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=T6ggm1Nz3XLWU+sSP+6GhViqkbi/MczZkyf7tfMygQgdnJdG7GHY8Vw98+w/vHu6S6iTmwhLqrUxvg2Yb0rKxA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfNzQ3MTU4OTNkMzMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcDEtOTU1OTIwMDQwOC9jb25maWcvY29ubmVjdGlvbnN0cmluZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=T6ggm1Nz3XLWU+sSP+6GhViqkbi/MczZkyf7tfMygQgdnJdG7GHY8Vw98+w/vHu6S6iTmwhLqrUxvg2Yb0rKxA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "91c40711-51f2-48e2-abf8-dda8a3f0f31d"
@@ -1205,7 +1205,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=T6ggm1Nz3XLWU+sSP+6GhViqkbi/MczZkyf7tfMygQgdnJdG7GHY8Vw98+w/vHu6S6iTmwhLqrUxvg2Yb0rKxA==\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg1nemv_74715893d330/providers/Microsoft.Web/sites/webapp1-9559200408/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"storage.connectionString\": {\r\n      \"value\": \"DefaultEndpointsProtocol=https;AccountName=jsdkstoreb53226875;AccountKey=MGMT_PLACEHOLDER\",\r\n      \"type\": \"Custom\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1786,12 +1786,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"webapp1-9559200408 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"webapp1-9559200408.scm.azurewebsites.net:443\" msdeploySite=\"webapp1-9559200408\" userName=\"$webapp1-9559200408\" userPWD=\"rlpd0nPfQ5hDvwzlaKTcDLjtYSSK1sG3rWqpE7sGtrQ1Cgi2jv5Jwg8dKjto\" destinationAppUrl=\"http://webapp1-9559200408.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-9559200408 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-129.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-9559200408\\$webapp1-9559200408\" userPWD=\"rlpd0nPfQ5hDvwzlaKTcDLjtYSSK1sG3rWqpE7sGtrQ1Cgi2jv5Jwg8dKjto\" destinationAppUrl=\"http://webapp1-9559200408.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-9559200408 - ReadOnly - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-129dr.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-9559200408\\$webapp1-9559200408\" userPWD=\"rlpd0nPfQ5hDvwzlaKTcDLjtYSSK1sG3rWqpE7sGtrQ1Cgi2jv5Jwg8dKjto\" destinationAppUrl=\"http://webapp1-9559200408.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
+      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"webapp1-9559200408 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"webapp1-9559200408.scm.azurewebsites.net:443\" msdeploySite=\"webapp1-9559200408\" userName=\"$webapp1-9559200408\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp1-9559200408.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-9559200408 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-129.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-9559200408\\$webapp1-9559200408\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp1-9559200408.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-9559200408 - ReadOnly - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-129dr.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-9559200408\\$webapp1-9559200408\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp1-9559200408.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_74715893d330?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfNzQ3MTU4OTNkMzMwP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_74715893d330?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfNzQ3MTU4OTNkMzMwP2FwaS12ZXJzaW9uPTIwMjEtMDEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

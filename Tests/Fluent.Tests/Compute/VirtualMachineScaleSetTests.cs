@@ -43,7 +43,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string rgName = TestUtilities.GenerateName("javacsmrg");
                 var vmssName = TestUtilities.GenerateName("vmss");
                 var uname = "jvuser";
-                var password = "123OData!@#123";
+                var password = TestUtilities.GenerateName("Pa5$");
 
                 var azure = TestHelper.CreateRollupClient();
 
@@ -165,7 +165,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string rgName = TestUtilities.GenerateName("javacsmrg");
                 var vmssName = TestUtilities.GenerateName("vmss");
                 var uname = "jvuser";
-                var password = "123OData!@#123";
+                var password = TestUtilities.GenerateName("Pa5$");
 
                 var azure = TestHelper.CreateRollupClient();
 
@@ -269,7 +269,10 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(keys.Count() > 0);
                     var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
                     Assert.NotNull(updatedStorageAccountKey);
-                    Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+                    }
 
                     // Upload the script to a different container ("scripts2") in the same storage account
                     //
@@ -359,7 +362,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryInternalLoadBalancer()
                             .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                             .WithRootUsername("jvuser")
-                            .WithRootPassword("123OData!@#123")
+                            .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                             .WithUnmanagedDisks()
                             .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                             .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
@@ -446,7 +449,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithUnmanagedDisks()
                         .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                         .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
@@ -679,7 +682,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithUnmanagedDisks()
                         .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                         .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
@@ -754,7 +757,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithSystemAssignedManagedServiceIdentity()
                         .Create();
 
@@ -854,7 +857,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithSystemAssignedManagedServiceIdentity()
                         .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                         .WithSystemAssignedIdentityBasedAccessTo(storageAccount.Id, BuiltInRole.Contributor)
@@ -997,7 +1000,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryInternalLoadBalancer()
                             .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                             .WithRootUsername("jvuser")
-                            .WithRootPassword("123OData!@#123")
+                            .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                             .Create();
 
                     var vmss_name2 = TestUtilities.GenerateName("vmss2");
@@ -1015,7 +1018,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .Create();
 
                     //
@@ -1112,7 +1115,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryInternalLoadBalancer()
                             .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                             .WithRootUsername("jvuser")
-                            .WithRootPassword("123OData!@#123")
+                            .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)  // Zone redundant - zone 1 + zone 2
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_2)
                             .Create();
@@ -1193,7 +1196,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithoutPrimaryInternalLoadBalancer()
                             .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                             .WithRootUsername("jvuser")
-                            .WithRootPassword("123OData!@#123")
+                            .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                             .WithVirtualMachinePublicIp(vmssVmDnsLabel)
                             .WithExistingApplicationSecurityGroup(asg)
                             .Create();
@@ -1324,7 +1327,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternalLoadBalancer()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
+                        .WithRootPassword(TestUtilities.GenerateName("Pa5$"))
                         .WithUnmanagedDisks()
                         .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                         .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))

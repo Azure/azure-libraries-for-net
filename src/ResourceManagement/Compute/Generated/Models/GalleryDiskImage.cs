@@ -64,18 +64,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "source")]
         public GalleryArtifactVersionSource Source { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Source != null)
-            {
-                Source.Validate();
-            }
-        }
     }
 }

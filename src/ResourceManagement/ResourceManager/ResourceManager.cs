@@ -19,19 +19,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         #region ctrs
 
         private ResourceManager(RestClient restClient, string subscriptionId) :
-            base(null, subscriptionId, new ResourceManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(null, subscriptionId, ResourceManagementClient.NewInstance(restClient))
         {
-            featureClient = new FeatureClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            };
-            policyClient = new PolicyClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            };
+            Inner.SubscriptionId = subscriptionId;
+            featureClient = FeatureClient.NewInstance(restClient);
+            featureClient.SubscriptionId = subscriptionId;
+            policyClient = PolicyClient.NewInstance(restClient);
+            policyClient.SubscriptionId = subscriptionId;
             ResourceManager = this;
         }
 
@@ -42,11 +36,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public static IAuthenticated Authenticate(AzureCredentials credentials)
         {
             return new Authenticated(RestClient.Configure()
-                    .WithEnvironment(credentials.Environment)
-                    .WithCredentials(credentials)
-                    .WithDelegatingHandler(new ProviderRegistrationDelegatingHandler(credentials))
-                    .Build()
-                );
+                .WithEnvironment(credentials.Environment)
+                .WithCredentials(credentials)
+                .WithDelegatingHandler(new ProviderRegistrationDelegatingHandler(credentials))
+                .Build());
         }
 
         public static IAuthenticated Authenticate(RestClient restClient)
@@ -94,7 +87,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             public Authenticated(RestClient restClient)
             {
                 this.restClient = restClient;
-                subscriptionClient = new SubscriptionClient(restClient);
+                subscriptionClient = SubscriptionClient.NewInstance(restClient);
             }
 
             #region Implementaiton of IAuthenticated interface

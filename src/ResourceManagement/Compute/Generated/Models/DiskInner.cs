@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// created.</param>
         /// <param name="managedBy">A relative URI containing the ID of the VM
         /// that has the disk attached.</param>
+        /// <param name="managedByExtended">List of relative URIs containing
+        /// the IDs of the VMs that have the disk attached. maxShares should be
+        /// set to a value greater than one for disks to allow attaching them
+        /// to multiple VMs.</param>
         /// <param name="zones">The Logical zone list for Disk.</param>
         /// <param name="timeCreated">The time when the disk was
         /// created.</param>
@@ -69,16 +73,38 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk; only settable for UltraSSD disks. MBps means millions of
         /// bytes per second - MB here uses the ISO notation, of powers of
         /// 10.</param>
+        /// <param name="diskIOPSReadOnly">The total number of IOPS that will
+        /// be allowed across all VMs mounting the shared disk as ReadOnly. One
+        /// operation can transfer between 4k and 256k bytes.</param>
+        /// <param name="diskMBpsReadOnly">The total throughput (MBps) that
+        /// will be allowed across all VMs mounting the shared disk as
+        /// ReadOnly. MBps means millions of bytes per second - MB here uses
+        /// the ISO notation, of powers of 10.</param>
         /// <param name="diskState">The state of the disk. Possible values
         /// include: 'Unattached', 'Attached', 'Reserved', 'ActiveSAS',
         /// 'ReadyToUpload', 'ActiveUpload'</param>
         /// <param name="encryption">Encryption property can be used to encrypt
         /// data at rest with customer managed keys or platform managed
         /// keys.</param>
-        public DiskInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), HyperVGeneration hyperVGeneration = default(HyperVGeneration), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), int? diskMBpsReadWrite = default(int?), DiskState diskState = default(DiskState), Encryption encryption = default(Encryption))
+        /// <param name="maxShares">The maximum number of VMs that can attach
+        /// to the disk at the same time. Value greater than one indicates a
+        /// disk that can be mounted on multiple VMs at the same time.</param>
+        /// <param name="shareInfo">Details of the list of all VMs that have
+        /// the disk attached. maxShares should be set to a value greater than
+        /// one for disks to allow attaching them to multiple VMs.</param>
+        /// <param name="networkAccessPolicy">Possible values include:
+        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="diskAccessId">ARM id of the DiskAccess resource for
+        /// using private endpoints on disks.</param>
+        /// <param name="tier">Performance tier of the disk (e.g, P4, S10) as
+        /// described here:
+        /// https://azure.microsoft.com/en-us/pricing/details/managed-disks/.
+        /// Does not apply to Ultra disks.</param>
+        public DiskInner(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), IList<string> managedByExtended = default(IList<string>), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), HyperVGeneration hyperVGeneration = default(HyperVGeneration), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), DiskState diskState = default(DiskState), Encryption encryption = default(Encryption), int? maxShares = default(int?), IList<ShareInfoElement> shareInfo = default(IList<ShareInfoElement>), NetworkAccessPolicy networkAccessPolicy = default(NetworkAccessPolicy), string diskAccessId = default(string), string tier = default(string))
             : base(location, id, name, type, tags)
         {
             ManagedBy = managedBy;
+            ManagedByExtended = managedByExtended;
             Sku = sku;
             Zones = zones;
             TimeCreated = timeCreated;
@@ -92,8 +118,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             ProvisioningState = provisioningState;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
+            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskMBpsReadOnly = diskMBpsReadOnly;
             DiskState = diskState;
             Encryption = encryption;
+            MaxShares = maxShares;
+            ShareInfo = shareInfo;
+            NetworkAccessPolicy = networkAccessPolicy;
+            DiskAccessId = diskAccessId;
+            Tier = tier;
             CustomInit();
         }
 
@@ -108,6 +141,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "managedBy")]
         public string ManagedBy { get; private set; }
+
+        /// <summary>
+        /// Gets list of relative URIs containing the IDs of the VMs that have
+        /// the disk attached. maxShares should be set to a value greater than
+        /// one for disks to allow attaching them to multiple VMs.
+        /// </summary>
+        [JsonProperty(PropertyName = "managedByExtended")]
+        public IList<string> ManagedByExtended { get; private set; }
 
         /// <summary>
         /// </summary>
@@ -197,15 +238,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// uses the ISO notation, of powers of 10.
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskMBpsReadWrite")]
-        public int? DiskMBpsReadWrite { get; set; }
+        public long? DiskMBpsReadWrite { get; set; }
 
         /// <summary>
-        /// Gets the state of the disk. Possible values include: 'Unattached',
-        /// 'Attached', 'Reserved', 'ActiveSAS', 'ReadyToUpload',
+        /// Gets or sets the total number of IOPS that will be allowed across
+        /// all VMs mounting the shared disk as ReadOnly. One operation can
+        /// transfer between 4k and 256k bytes.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskIOPSReadOnly")]
+        public long? DiskIOPSReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total throughput (MBps) that will be allowed
+        /// across all VMs mounting the shared disk as ReadOnly. MBps means
+        /// millions of bytes per second - MB here uses the ISO notation, of
+        /// powers of 10.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskMBpsReadOnly")]
+        public long? DiskMBpsReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets or sets the state of the disk. Possible values include:
+        /// 'Unattached', 'Attached', 'Reserved', 'ActiveSAS', 'ReadyToUpload',
         /// 'ActiveUpload'
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskState")]
-        public DiskState DiskState { get; private set; }
+        public DiskState DiskState { get; set; }
 
         /// <summary>
         /// Gets or sets encryption property can be used to encrypt data at
@@ -213,6 +271,45 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryption")]
         public Encryption Encryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum number of VMs that can attach to the disk
+        /// at the same time. Value greater than one indicates a disk that can
+        /// be mounted on multiple VMs at the same time.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.maxShares")]
+        public int? MaxShares { get; set; }
+
+        /// <summary>
+        /// Gets details of the list of all VMs that have the disk attached.
+        /// maxShares should be set to a value greater than one for disks to
+        /// allow attaching them to multiple VMs.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.shareInfo")]
+        public IList<ShareInfoElement> ShareInfo { get; private set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
+        public NetworkAccessPolicy NetworkAccessPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets ARM id of the DiskAccess resource for using private
+        /// endpoints on disks.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diskAccessId")]
+        public string DiskAccessId { get; set; }
+
+        /// <summary>
+        /// Gets or sets performance tier of the disk (e.g, P4, S10) as
+        /// described here:
+        /// https://azure.microsoft.com/en-us/pricing/details/managed-disks/.
+        /// Does not apply to Ultra disks.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tier")]
+        public string Tier { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -234,10 +331,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             if (EncryptionSettingsCollection != null)
             {
                 EncryptionSettingsCollection.Validate();
-            }
-            if (Encryption != null)
-            {
-                Encryption.Validate();
             }
         }
     }

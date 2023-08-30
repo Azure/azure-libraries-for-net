@@ -9,6 +9,7 @@ using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
 using System.Net;
@@ -579,7 +580,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string userName = "tirekicker";
-                string password = "12NewPA$$w0rd!";
+                string password = TestUtilities.GenerateName("Pa5$");
 
                 var rgName = SdkContext.RandomResourceName("jMonitor_", 18);
                 var alertName = SdkContext.RandomResourceName("jMonitorMA", 18);

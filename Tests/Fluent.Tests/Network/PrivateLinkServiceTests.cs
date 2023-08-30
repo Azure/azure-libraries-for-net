@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using System.Linq;
 using Xunit;
 
 namespace Fluent.Tests.Network
@@ -88,6 +89,11 @@ namespace Fluent.Tests.Network
                     Assert.False(privateLinkService.IsProxyProtocolEnabled);
                     Assert.True(privateLinkService.LoadBalancerFrontendIpConfigurations.Count == 1);
 
+                    privateLinkService = azure.PrivateLinkServices.GetByResourceGroup(rgName, plsName);
+                    Assert.Equal("myFrontEnd", privateLinkService.LoadBalancerFrontendIpConfigurations.First().Name);
+                    Assert.Equal("myHttpRule", privateLinkService.LoadBalancerFrontendIpConfigurations.First().LoadBalancingRules["myHttpRule"].Name);
+
+                    privateLinkService = azure.PrivateLinkServices.GetByResourceGroup(rgName, plsName);
                     privateLinkService.Update()
                         .EnableProxyProtocol()
                         .UpdatePrivateLinkServiceIpConfiguration("myPrivateIPConfig")

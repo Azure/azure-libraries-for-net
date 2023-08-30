@@ -65,7 +65,7 @@
       "RequestUri": "/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI1ZWI2OGUtNzNlMi00ZmE4LWIxOGEtNDZjZDFiZTRjY2U1L3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfOGFlOTg5MjU1OThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvanNka3NlcnZlcmU4NjQ3Mzk2MT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"2.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"2.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,7 +84,7 @@
           "Microsoft.Azure.Management.Sql.Fluent.SqlManagementClient/1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "517"
@@ -132,7 +132,7 @@
       "RequestUri": "/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI1ZWI2OGUtNzNlMi00ZmE4LWIxOGEtNDZjZDFiZTRjY2U1L3Jlc291cmNlR3JvdXBzL3JnMW5lbXZfOGFlOTg5MjU1OThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvanNka3NlcnZlcmU4NjQ3Mzk2MT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"12.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\"\r\n  },\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"12.0\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\"\r\n  },\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -151,7 +151,7 @@
           "Microsoft.Azure.Management.Sql.Fluent.SqlManagementClient/1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"StrongPass!123\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/db5eb68e-73e2-4fa8-b18a-46cd1be4cce5/resourceGroups/rg1nemv_8ae98925598d/providers/Microsoft.Sql/servers/jsdkservere86473961\",\r\n  \"name\": \"jsdkservere86473961\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"jsdkservere86473961.database.windows.net\",\r\n    \"administratorLogin\": \"jsdkadmin\",\r\n    \"administratorLoginPassword\": \"MGMT_PLACEHOLDER\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"

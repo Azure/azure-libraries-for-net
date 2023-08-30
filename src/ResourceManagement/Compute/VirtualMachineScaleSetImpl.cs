@@ -1986,10 +1986,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (osProfile.LinuxConfiguration.Ssh == null)
             {
                 SshConfiguration sshConfiguration = new SshConfiguration();
-                sshConfiguration.PublicKeys = new List<SshPublicKey>();
+                sshConfiguration.PublicKeys = new List<SshPublicKeyInner>();
                 osProfile.LinuxConfiguration.Ssh = sshConfiguration;
             }
-            SshPublicKey sshPublicKey = new SshPublicKey();
+            SshPublicKeyInner sshPublicKey = new SshPublicKeyInner();
             sshPublicKey.KeyData = publicKeyData;
             sshPublicKey.Path = "/home/" + osProfile.AdminUsername + "/.ssh/authorized_keys";
             osProfile.LinuxConfiguration.Ssh.PublicKeys.Add(sshPublicKey);

@@ -113,6 +113,15 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
         }
 
+        private CdnManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static CdnManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new CdnManagementClient(restClient) : new CdnManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

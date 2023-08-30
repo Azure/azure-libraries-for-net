@@ -15,11 +15,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         #endregion
 
         public TrafficManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new TrafficManagerManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, TrafficManagerManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         #region DnsZoneManager builder

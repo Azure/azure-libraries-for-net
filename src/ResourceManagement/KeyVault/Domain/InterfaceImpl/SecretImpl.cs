@@ -95,9 +95,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         /// <return>A list of individual secret versions with the same secret name.</return>
-        async Task<Microsoft.Azure.Management.KeyVault.Fluent.ISecret> Microsoft.Azure.Management.KeyVault.Fluent.ISecret.ListVersionsAsync(CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<Microsoft.Azure.Management.KeyVault.Fluent.ISecret>> Microsoft.Azure.Management.KeyVault.Fluent.ISecret.ListVersionsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListVersionsAsync(cancellationToken) as Microsoft.Azure.Management.KeyVault.Fluent.ISecret;
+            return await this.ListVersionsAsync(cancellationToken);
         }
 
         /// <summary>

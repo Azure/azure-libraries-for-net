@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgnemv51929839f15f1?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnbmVtdjUxOTI5ODM5ZjE1ZjE/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgnemv51929839f15f1?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnbmVtdjUxOTI5ODM5ZjE1ZjE/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
       "RequestHeaders": {
@@ -2531,7 +2531,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryMasterKey\": \"3Utts5ED8KRwrZEF4NE310kOI5R6zlNafbaziO6Upg4VxfLmxeWxRv0YckJOY2zCB6XHpzk8PIaO3qLKoDBRag==\",\r\n  \"secondaryMasterKey\": \"NtJUanHnv1VuDRQGeuQUDd5gNXpVzPpo1tACSvyNKFolvRGUdwHuoF5W7xZmkRiIfaA3TmEyBuE6J79LG3OBgw==\",\r\n  \"primaryReadonlyMasterKey\": \"6Ts7Ctc2tPZmbrC5jRItBiwkwnk64xPXC8rzuhyU0mB5P2GFdI9h0ChFsDv23RUn9iFO2Du5zB4yH2hYVrGK7g==\",\r\n  \"secondaryReadonlyMasterKey\": \"26X5AhwcISuvxiKIsxannJFXlPEqJyHS6w6ZPn7KXXB1LwB9waLVBZMVOsDBbigfruRwVxBM08YU3YDuGFi5mg==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryMasterKey\": \"MGMT_PLACEHOLDER\",\r\n  \"secondaryMasterKey\":\"MGMT_PLACEHOLDER\",\r\n  \"primaryReadonlyMasterKey\": \"MGMT_PLACEHOLDER\",\r\n  \"secondaryReadonlyMasterKey\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -2595,7 +2595,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"connectionStrings\": [\r\n    {\r\n      \"connectionString\": \"mongodb://docdb58007:3Utts5ED8KRwrZEF4NE310kOI5R6zlNafbaziO6Upg4VxfLmxeWxRv0YckJOY2zCB6XHpzk8PIaO3qLKoDBRag==@docdb58007.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Primary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://docdb58007:NtJUanHnv1VuDRQGeuQUDd5gNXpVzPpo1tACSvyNKFolvRGUdwHuoF5W7xZmkRiIfaA3TmEyBuE6J79LG3OBgw==@docdb58007.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Secondary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://docdb58007:6Ts7Ctc2tPZmbrC5jRItBiwkwnk64xPXC8rzuhyU0mB5P2GFdI9h0ChFsDv23RUn9iFO2Du5zB4yH2hYVrGK7g==@docdb58007.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Primary Read-Only MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://docdb58007:26X5AhwcISuvxiKIsxannJFXlPEqJyHS6w6ZPn7KXXB1LwB9waLVBZMVOsDBbigfruRwVxBM08YU3YDuGFi5mg==@docdb58007.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Secondary Read-Only MongoDB Connection String\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"connectionStrings\": [\r\n    {\r\n      \"connectionString\": \"MGMT_PLACEHOLDER\",\r\n      \"description\": \"Primary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"MGMT_PLACEHOLDER\",\r\n      \"description\": \"Secondary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"MGMT_PLACEHOLDER\",\r\n      \"description\": \"Primary Read-Only MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"MGMT_PLACEHOLDER\",\r\n      \"description\": \"Secondary Read-Only MongoDB Connection String\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -4191,8 +4191,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgnemv51929839f15f1?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnbmVtdjUxOTI5ODM5ZjE1ZjE/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgnemv51929839f15f1?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnbmVtdjUxOTI5ODM5ZjE1ZjE/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

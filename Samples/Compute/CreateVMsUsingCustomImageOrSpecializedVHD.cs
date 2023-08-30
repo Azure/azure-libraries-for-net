@@ -16,8 +16,8 @@ namespace CreateVMsUsingCustomImageOrSpecializedVHD
 {
     public class Program
     {
-        private static readonly string UserName = "tirekicker";
-        private static readonly string Password = "12NewPA$$w0rd!";
+        private static readonly string UserName = Utilities.CreateUsername();
+        private static readonly string Password = Utilities.CreatePassword();
         private readonly static List<string> ApacheInstallScriptUris = new List<string>()
         {
             "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh"
@@ -59,7 +59,7 @@ namespace CreateVMsUsingCustomImageOrSpecializedVHD
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
                         .WithUnmanagedDisks()
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .DefineNewExtension("CustomScriptForLinux")
                             .WithPublisher("Microsoft.OSTCExtensions")
                             .WithType("CustomScriptForLinux")
@@ -121,7 +121,7 @@ namespace CreateVMsUsingCustomImageOrSpecializedVHD
                         .WithStoredLinuxImage(capturedImageUri) // Note: A Generalized Image can also be an uploaded VHD prepared from an on-premise generalized VM.
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.PrintVirtualMachine(linuxVM2);
@@ -150,7 +150,7 @@ namespace CreateVMsUsingCustomImageOrSpecializedVHD
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithoutPrimaryPublicIPAddress()
                         .WithSpecializedOSUnmanagedDisk(specializedVhd, OperatingSystemTypes.Linux) // New user credentials cannot be specified
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)         // when attaching a specialized VHD
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))         // when attaching a specialized VHD
                         .Create();
 
                 Utilities.PrintVirtualMachine(linuxVM3);

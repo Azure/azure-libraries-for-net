@@ -31,11 +31,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="createOption">This enumerates the possible sources of
         /// a disk's creation. Possible values include: 'Empty', 'Attach',
         /// 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'</param>
-        /// <param name="storageAccountId">If createOption is Import, the Azure
-        /// Resource Manager identifier of the storage account containing the
-        /// blob to import as a disk. Required only if the blob is in a
-        /// different subscription</param>
+        /// <param name="storageAccountId">Required if createOption is Import.
+        /// The Azure Resource Manager identifier of the storage account
+        /// containing the blob to import as a disk.</param>
         /// <param name="imageReference">Disk source information.</param>
+        /// <param name="galleryImageReference">Required if creating from a
+        /// Gallery Image. The id of the ImageDiskReference will be the ARM id
+        /// of the shared galley image version from which to create a
+        /// disk.</param>
         /// <param name="sourceUri">If createOption is Import, this is the URI
         /// of a blob to be imported into a managed disk.</param>
         /// <param name="sourceResourceId">If createOption is Copy, this is the
@@ -47,15 +50,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// This value should be between 20972032 (20 MiB + 512 bytes for the
         /// VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the
         /// VHD footer).</param>
-        public CreationData(DiskCreateOption createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?))
+        /// <param name="logicalSectorSize">Logical sector size in bytes for
+        /// Ultra disks. Supported values are 512 ad 4096. 4096 is the
+        /// default.</param>
+        public CreationData(DiskCreateOption createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?))
         {
             CreateOption = createOption;
             StorageAccountId = storageAccountId;
             ImageReference = imageReference;
+            GalleryImageReference = galleryImageReference;
             SourceUri = sourceUri;
             SourceResourceId = sourceResourceId;
             SourceUniqueId = sourceUniqueId;
             UploadSizeBytes = uploadSizeBytes;
+            LogicalSectorSize = logicalSectorSize;
             CustomInit();
         }
 
@@ -73,9 +81,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public DiskCreateOption CreateOption { get; set; }
 
         /// <summary>
-        /// Gets or sets if createOption is Import, the Azure Resource Manager
-        /// identifier of the storage account containing the blob to import as
-        /// a disk.
+        /// Gets or sets required if createOption is Import. The Azure Resource
+        /// Manager identifier of the storage account containing the blob to
+        /// import as a disk.
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountId")]
         public string StorageAccountId { get; set; }
@@ -85,6 +93,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "imageReference")]
         public ImageDiskReference ImageReference { get; set; }
+
+        /// <summary>
+        /// Gets or sets required if creating from a Gallery Image. The id of
+        /// the ImageDiskReference will be the ARM id of the shared galley
+        /// image version from which to create a disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "galleryImageReference")]
+        public ImageDiskReference GalleryImageReference { get; set; }
 
         /// <summary>
         /// Gets or sets if createOption is Import, this is the URI of a blob
@@ -117,6 +133,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public long? UploadSizeBytes { get; set; }
 
         /// <summary>
+        /// Gets or sets logical sector size in bytes for Ultra disks.
+        /// Supported values are 512 ad 4096. 4096 is the default.
+        /// </summary>
+        [JsonProperty(PropertyName = "logicalSectorSize")]
+        public int? LogicalSectorSize { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -131,6 +154,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             if (ImageReference != null)
             {
                 ImageReference.Validate();
+            }
+            if (GalleryImageReference != null)
+            {
+                GalleryImageReference.Validate();
             }
         }
     }

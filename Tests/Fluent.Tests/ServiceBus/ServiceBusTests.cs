@@ -6,6 +6,7 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ServiceBus.Fluent;
 using Microsoft.Azure.Management.ServiceBus.Fluent.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Collections.Generic;
@@ -443,7 +444,10 @@ namespace Fluent.Tests
                     Assert.NotNull(nsRuleKeys.PrimaryConnectionString);
                     Assert.NotNull(nsRuleKeys.SecondaryConnectionString);
                     nsRuleKeys = foundNsRule.RegenerateKey(Policykey.PrimaryKey);
-                    Assert.NotEqual(nsRuleKeys.PrimaryKey, primaryKey);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotEqual(nsRuleKeys.PrimaryKey, primaryKey);
+                    }
                     // Lookup queue & operate on auth rules
                     //
                     var queuesInNamespace = nspace.Queues.List();

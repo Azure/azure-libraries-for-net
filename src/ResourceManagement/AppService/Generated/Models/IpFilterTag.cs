@@ -8,51 +8,19 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Runtime;
-    using System.Runtime.Serialization;
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for IpFilterTag.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum IpFilterTag
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<IpFilterTag>))]
+    public class IpFilterTag : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<IpFilterTag>
     {
-        [EnumMember(Value = "Default")]
-        Default,
-        [EnumMember(Value = "XffProxy")]
-        XffProxy
-    }
-    internal static class IpFilterTagEnumExtension
-    {
-        internal static string ToSerializedValue(this IpFilterTag? value)
-        {
-            return value == null ? null : ((IpFilterTag)value).ToSerializedValue();
-        }
-
-        internal static string ToSerializedValue(this IpFilterTag value)
-        {
-            switch( value )
-            {
-                case IpFilterTag.Default:
-                    return "Default";
-                case IpFilterTag.XffProxy:
-                    return "XffProxy";
-            }
-            return null;
-        }
-
-        internal static IpFilterTag? ParseIpFilterTag(this string value)
-        {
-            switch( value )
-            {
-                case "Default":
-                    return IpFilterTag.Default;
-                case "XffProxy":
-                    return IpFilterTag.XffProxy;
-            }
-            return null;
-        }
+        public static readonly IpFilterTag Default = Parse("Default");
+        public static readonly IpFilterTag XffProxy = Parse("XffProxy");
+        public static readonly IpFilterTag ServiceTag = Parse("ServiceTag");
     }
 }

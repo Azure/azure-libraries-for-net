@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="imageAndTag">Image and optional tag (eg 'image:tag').</param>
         /// <return>The next stage of the definition.</return>
-        WebApp.Definition.IWithCredentials WebApp.Definition.IWithDockerContainerImage.WithPrivateDockerHubImage(string imageAndTag)
+        WebApp.Definition.IWithCredentials WebApp.Definition.IWithContainerImage.WithPrivateDockerHubImage(string imageAndTag)
         {
             return this.WithPrivateDockerHubImage(imageAndTag);
         }
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="imageAndTag">Image and optional tag (eg 'image:tag').</param>
         /// <return>The next stage of the definition.</return>
-        WebApp.Definition.IWithStartUpCommand WebApp.Definition.IWithDockerContainerImage.WithPublicDockerHubImage(string imageAndTag)
+        WebApp.Definition.IWithStartUpCommand WebApp.Definition.IWithContainerImage.WithPublicDockerHubImage(string imageAndTag)
         {
             return this.WithPublicDockerHubImage(imageAndTag);
         }
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="imageAndTag">Image and optional tag (eg 'image:tag').</param>
         /// <param name="serverUrl">The URL to the private registry server.</param>
         /// <return>The next stage of the definition.</return>
-        WebApp.Definition.IWithCredentials WebApp.Definition.IWithDockerContainerImage.WithPrivateRegistryImage(string imageAndTag, string serverUrl)
+        WebApp.Definition.IWithCredentials WebApp.Definition.IWithContainerImage.WithPrivateRegistryImage(string imageAndTag, string serverUrl)
         {
             return this.WithPrivateRegistryImage(imageAndTag, serverUrl);
         }

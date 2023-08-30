@@ -30,8 +30,8 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
             var identityName = Utilities.CreateRandomName("id");
             var linuxVMName = Utilities.CreateRandomName("VM1");
             var pipName = Utilities.CreateRandomName("pip1");
-            var userName = "tirekicker";
-            var password = "12NewPAwX0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             var region = Region.USWestCentral;
 
             try
@@ -82,7 +82,7 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(userName)
                         .WithRootPassword(password)
-                        .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingUserAssignedManagedServiceIdentity(identity)
                         .DefineNewExtension("CustomScriptForLinux")
                             .WithPublisher("Microsoft.OSTCExtensions")

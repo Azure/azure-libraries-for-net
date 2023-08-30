@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.IO;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using System.Collections;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The implementation for FunctionApp.
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             SkuDescription description = pricingTier.SkuDescription;
             if (description.Tier.Equals("Basic", StringComparison.OrdinalIgnoreCase)
                 || description.Tier.Equals("Standard", StringComparison.OrdinalIgnoreCase)
-                || description.Tier.Equals("Premium", StringComparison.OrdinalIgnoreCase))
+                || description.Tier.StartsWith("Premium", StringComparison.OrdinalIgnoreCase))
             {
                 return WithWebAppAlwaysOn(true);
             }
@@ -138,10 +139,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
             else
             {
+                AzureEnvironment environment = ResourceUtils.ExtractAzureEnvironment(Manager.RestClient) ?? AzureEnvironment.AzureGlobalCloud;
+                string endpointSuffix = Regex.Replace(environment.StorageEndpointSuffix ?? AzureEnvironment.AzureGlobalCloud.StorageEndpointSuffix, "^\\.*", "");
                 var servicePlanTask = Manager.AppServicePlans.GetByIdAsync(this.AppServicePlanId());
                 var keys = await storageAccountToSet.GetKeysAsync(cancellationToken);
-                var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-                    storageAccountToSet.Name, keys[0].Value);
+                var connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={2}",
+                    storageAccountToSet.Name, keys[0].Value, endpointSuffix);
                 AddAppSettingIfNotModified("AzureWebJobsStorage", connectionString);
                 AddAppSettingIfNotModified("AzureWebJobsDashboard", connectionString);
                 if (IsConsumptionAppServicePlan((await servicePlanTask)?.PricingTier))
@@ -181,9 +184,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             SkuDescription description = pricingTier.SkuDescription;
-            return !(description.Tier.Equals("Basic", StringComparison.OrdinalIgnoreCase)
-                || description.Tier.Equals("Standard", StringComparison.OrdinalIgnoreCase)
-                || description.Tier.Equals("Premium", StringComparison.OrdinalIgnoreCase));
+            return description.Tier.Equals(SkuName.Dynamic.Value, StringComparison.OrdinalIgnoreCase) || description.Tier.Equals(SkuName.ElasticPremium.Value, StringComparison.OrdinalIgnoreCase);
         }
 
         public override async Task<IFunctionApp> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
@@ -226,7 +227,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <returns>the master key of the function app.</returns>
         public async Task<string> GetMasterKeyAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            string apiVersion = "2016-08-01";
+            string apiVersion = "2019-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
             // Construct URL
             var _baseUrl = Manager.Inner.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/masterkey").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listkeys").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(ResourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(Name));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Manager.Inner.SubscriptionId));
@@ -258,7 +259,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Manager.Inner.GenerateClientRequestId != null && Manager.Inner.GenerateClientRequestId.Value)
@@ -336,8 +337,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    var map = Rest.Serialization.SafeJsonConvert.DeserializeObject<Dictionary<string, string>>(_responseContent, Manager.Inner.DeserializationSettings);
-                    return map["masterKey"];
+                    var map = Rest.Serialization.SafeJsonConvert.DeserializeObject<Dictionary<string, Object>>(_responseContent, Manager.Inner.DeserializationSettings);
+                    return map["masterKey"] == null ? null : map["masterKey"].ToString();
                 }
                 catch (JsonException ex)
                 {

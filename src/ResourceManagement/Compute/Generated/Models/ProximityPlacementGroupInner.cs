@@ -49,13 +49,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// group.</param>
         /// <param name="availabilitySets">A list of references to all
         /// availability sets in the proximity placement group.</param>
-        public ProximityPlacementGroupInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProximityPlacementGroupType proximityPlacementGroupType = default(ProximityPlacementGroupType), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> virtualMachineScaleSets = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> availabilitySets = default(IList<Management.ResourceManager.Fluent.SubResource>))
+        /// <param name="colocationStatus">Describes colocation status of the
+        /// Proximity Placement Group.</param>
+        public ProximityPlacementGroupInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProximityPlacementGroupType proximityPlacementGroupType = default(ProximityPlacementGroupType), IList<SubResourceWithColocationStatusInner> virtualMachines = default(IList<SubResourceWithColocationStatusInner>), IList<SubResourceWithColocationStatusInner> virtualMachineScaleSets = default(IList<SubResourceWithColocationStatusInner>), IList<SubResourceWithColocationStatusInner> availabilitySets = default(IList<SubResourceWithColocationStatusInner>), InstanceViewStatus colocationStatus = default(InstanceViewStatus))
             : base(location, id, name, type, tags)
         {
             ProximityPlacementGroupType = proximityPlacementGroupType;
             VirtualMachines = virtualMachines;
             VirtualMachineScaleSets = virtualMachineScaleSets;
             AvailabilitySets = availabilitySets;
+            ColocationStatus = colocationStatus;
             CustomInit();
         }
 
@@ -80,21 +83,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// placement group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachines")]
-        public IList<Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; private set; }
+        public IList<SubResourceWithColocationStatusInner> VirtualMachines { get; private set; }
 
         /// <summary>
         /// Gets a list of references to all virtual machine scale sets in the
         /// proximity placement group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachineScaleSets")]
-        public IList<Management.ResourceManager.Fluent.SubResource> VirtualMachineScaleSets { get; private set; }
+        public IList<SubResourceWithColocationStatusInner> VirtualMachineScaleSets { get; private set; }
 
         /// <summary>
         /// Gets a list of references to all availability sets in the proximity
         /// placement group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilitySets")]
-        public IList<Management.ResourceManager.Fluent.SubResource> AvailabilitySets { get; private set; }
+        public IList<SubResourceWithColocationStatusInner> AvailabilitySets { get; private set; }
+
+        /// <summary>
+        /// Gets or sets describes colocation status of the Proximity Placement
+        /// Group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.colocationStatus")]
+        public InstanceViewStatus ColocationStatus { get; set; }
 
         /// <summary>
         /// Validate the object.

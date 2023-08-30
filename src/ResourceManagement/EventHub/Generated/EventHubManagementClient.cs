@@ -116,6 +116,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         {
         }
 
+        private EventHubManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static EventHubManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new EventHubManagementClient(restClient) : new EventHubManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

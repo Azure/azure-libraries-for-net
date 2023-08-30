@@ -17,8 +17,8 @@ namespace ManageVirtualMachinesInParallel
     public class Program
     {
         private const int vmCount = 2;
-        private const string userName = "tirekicker";
-        private const string password = "12NewPA$$w0rd!";
+        private static readonly string userName = Utilities.CreateUsername();
+        private static readonly string password = Utilities.CreatePassword();
 
         /**
          * Azure Compute sample for managing virtual machines -
@@ -64,9 +64,9 @@ namespace ManageVirtualMachinesInParallel
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithoutPrimaryPublicIPAddress()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("tirekicker")
-                        .WithRootPassword("12NewPA$$w0rd!")
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithRootUsername(Utilities.CreateUsername())
+                        .WithRootPassword(Utilities.CreatePassword())
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithNewStorageAccount(creatableStorageAccount);
                     creatableVirtualMachines.Add(creatableVirtualMachine);
                 }

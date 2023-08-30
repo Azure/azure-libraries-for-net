@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryImageVersionUpdate : UpdateResourceInner
+    public partial class GalleryImageVersionUpdate : UpdateResourceDefinitionInner
     {
         /// <summary>
         /// Initializes a new instance of the GalleryImageVersionUpdate class.
@@ -88,10 +88,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             if (StorageProfile == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageProfile");
-            }
-            if (StorageProfile != null)
-            {
-                StorageProfile.Validate();
             }
         }
     }

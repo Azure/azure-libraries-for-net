@@ -14,8 +14,8 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromSnapshot
 {
     public class Program
     {
-        private static string userName = "tirekicker";
-        private static string password = "12NewPA$$w0rd!";
+        private static string userName = Utilities.CreateUsername();
+        private static string password = Utilities.CreatePassword();
         private static Region region = Region.USWestCentral;
 
         /**
@@ -62,7 +62,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromSnapshot
                         .WithRootPassword(password)
                         .WithNewDataDisk(100)
                         .WithNewDataDisk(100, 1, CachingTypes.ReadWrite)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .DefineNewExtension("CustomScriptForLinux")
                             .WithPublisher("Microsoft.OSTCExtensions")
                             .WithType("CustomScriptForLinux")
@@ -182,7 +182,7 @@ namespace CreateVirtualMachineUsingSpecializedDiskFromSnapshot
                         .WithSpecializedOSDisk(newOSDisk, OperatingSystemTypes.Linux)
                         .WithExistingDataDisk(newDataDisks[0])
                         .WithExistingDataDisk(newDataDisks[1], 1, CachingTypes.ReadWrite)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.PrintVirtualMachine(linuxVM2);

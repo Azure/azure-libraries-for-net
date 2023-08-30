@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650Second?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTBTZWNvbmQ/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650Second?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTBTZWNvbmQ/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"centralus\"\r\n}",
       "RequestHeaders": {
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTA/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTA/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"eastasia\"\r\n}",
       "RequestHeaders": {
@@ -207,7 +207,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg4650/providers/Microsoft.Cache/Redis/javacsmrc9480\",\r\n  \"location\": \"East Asia\",\r\n  \"name\": \"javacsmrc9480\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.2.7\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"256\",\r\n      \"maxmemory-reserved\": \"2\",\r\n      \"maxfragmentationmemory-reserved\": \"12\",\r\n      \"maxmemory-delta\": \"2\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"61jHmY5swu9IknrAWuLqNciw4O4dBA4AGE9y342KVaM=\",\r\n      \"secondaryKey\": \"B4E1csvOPZPne0hJIqfBO8LoNPODMkiyFuPZFJuHIZA=\"\r\n    },\r\n    \"hostName\": \"javacsmrc9480.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg4650/providers/Microsoft.Cache/Redis/javacsmrc9480\",\r\n  \"location\": \"East Asia\",\r\n  \"name\": \"javacsmrc9480\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.2.7\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"256\",\r\n      \"maxmemory-reserved\": \"2\",\r\n      \"maxfragmentationmemory-reserved\": \"12\",\r\n      \"maxmemory-delta\": \"2\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n      \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n    },\r\n    \"hostName\": \"javacsmrc9480.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -1686,7 +1686,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg4650Second/providers/Microsoft.Cache/Redis/javacsmrc9480Second\",\r\n  \"location\": \"Central US\",\r\n  \"name\": \"javacsmrc9480Second\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"4.0.14\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"7500\",\r\n      \"maxmemory-reserved\": \"200\",\r\n      \"maxfragmentationmemory-reserved\": \"300\",\r\n      \"maxmemory-delta\": \"200\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"PrJhDETovI5tdIq5AHNkPCRKDWjsgM2x8sUcb8sEe0w=\",\r\n      \"secondaryKey\": \"aCmGS09sx0wwII8rT3Bq2DmtAKyyvLY2YO63WGdE8ZU=\"\r\n    },\r\n    \"hostName\": \"javacsmrc9480Second.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"shardCount\": 10,\r\n    \"linkedServers\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg4650Second/providers/Microsoft.Cache/Redis/javacsmrc9480Second\",\r\n  \"location\": \"Central US\",\r\n  \"name\": \"javacsmrc9480Second\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"4.0.14\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"7500\",\r\n      \"maxmemory-reserved\": \"200\",\r\n      \"maxfragmentationmemory-reserved\": \"300\",\r\n      \"maxmemory-delta\": \"200\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n      \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n    },\r\n    \"hostName\": \"javacsmrc9480Second.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"shardCount\": 10,\r\n    \"linkedServers\": []\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -3970,7 +3970,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg4650Second/providers/Microsoft.Cache/Redis/javacsmrc9480Third\",\r\n  \"location\": \"Central US\",\r\n  \"name\": \"javacsmrc9480Third\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"4.0.14\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 2\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"15000\",\r\n      \"maxmemory-reserved\": \"500\",\r\n      \"maxfragmentationmemory-reserved\": \"650\",\r\n      \"maxmemory-delta\": \"500\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"rJKConucW9kpBdqAisjoKzB96tjljBogJ8LERmwLbGE=\",\r\n      \"secondaryKey\": \"t6qmhFyxdaJ3Xlci9jBNAPhc+zYrcLprGqO0nibyeW0=\"\r\n    },\r\n    \"hostName\": \"javacsmrc9480Third.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/javacsmrg4650Second/providers/Microsoft.Cache/Redis/javacsmrc9480Third\",\r\n  \"location\": \"Central US\",\r\n  \"name\": \"javacsmrc9480Third\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"4.0.14\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 2\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"15000\",\r\n      \"maxmemory-reserved\": \"500\",\r\n      \"maxfragmentationmemory-reserved\": \"650\",\r\n      \"maxmemory-delta\": \"500\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n      \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n    },\r\n    \"hostName\": \"javacsmrc9480Third.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -7990,7 +7990,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"61jHmY5swu9IknrAWuLqNciw4O4dBA4AGE9y342KVaM=\",\r\n  \"secondaryKey\": \"B4E1csvOPZPne0hJIqfBO8LoNPODMkiyFuPZFJuHIZA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n  \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -8057,7 +8057,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"61jHmY5swu9IknrAWuLqNciw4O4dBA4AGE9y342KVaM=\",\r\n  \"secondaryKey\": \"B4E1csvOPZPne0hJIqfBO8LoNPODMkiyFuPZFJuHIZA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n  \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -8130,7 +8130,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"O8ahbRZucg7Hl2CdMD6OgVMovGyNj1hB+wzZmH6+n6A=\",\r\n  \"secondaryKey\": \"B4E1csvOPZPne0hJIqfBO8LoNPODMkiyFuPZFJuHIZA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n  \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -8203,7 +8203,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"O8ahbRZucg7Hl2CdMD6OgVMovGyNj1hB+wzZmH6+n6A=\",\r\n  \"secondaryKey\": \"CMLaulSJ2gujhmUSmnmU7QxxAkG9ma5p7knc77dYxws=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"MGMT_PLACEHOLDER\",\r\n  \"secondaryKey\": \"MGMT_PLACEHOLDER\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -9611,8 +9611,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTA/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTA/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -9675,8 +9675,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650Second?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTBTZWNvbmQ/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/javacsmrg4650Second?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzQ2NTBTZWNvbmQ/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

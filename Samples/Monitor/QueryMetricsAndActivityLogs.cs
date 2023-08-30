@@ -55,7 +55,7 @@ namespace QueryMetricsAndActivityLogs
                 // Add some blob transaction events
                 AddBlobTransactions(storageConnectionString);
 
-                DateTime recordDateTime = DateTime.Now;
+                DateTime recordDateTime = DateTime.Now.ToUniversalTime();
                 // get metric definitions for storage account.
                 foreach (var metricDefinition in azure.MetricDefinitions.ListByResource(storageAccount.Id))
                 {

@@ -4,7 +4,8 @@
   <!-- Please do not move/edit code below this line -->
 
   <PropertyGroup>
-    <Description>Provides resource group and resource management (Fluent) capabilities for Microsoft Azure.</Description>
+    <Description>Provides resource group and resource management (Fluent) capabilities for Microsoft Azure.
+    This package is in low maintenance mode and being phased out. To use the latest Azure SDK for resource management, please see https://aka.ms/azsdk/dotnet/mgmt</Description>
     <AssemblyName>Microsoft.Azure.Management.ResourceManager.Fluent</AssemblyName>
     <PackageId>Microsoft.Azure.Management.ResourceManager.Fluent</PackageId>
     <PackageTags>Microsoft Azure Resource Manager;resource;Fluent</PackageTags>
@@ -14,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.DeleteAsync(name, cancellationToken);
+            await Inner.DeleteAsync(name, null, cancellationToken);
         }
 
         public override void DeleteById(string id)
@@ -126,7 +126,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async Task BeginDeleteByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.BeginDeleteAsync(name, cancellationToken);
+            await Inner.BeginDeleteAsync(name, null, cancellationToken);
+        }
+
+        public void DeleteByName(string name, string forceDeletionTypes)
+        {
+            Extensions.Synchronize(() => DeleteByNameAsync(name, forceDeletionTypes));
+        }
+
+        public async Task DeleteByNameAsync(string name, string forceDeletionTypes, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Inner.DeleteAsync(name, forceDeletionTypes, cancellationToken);
         }
     }
 }

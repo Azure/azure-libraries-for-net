@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Update.IUpdate,
         WebApp.Definition.IExistingWindowsPlanWithGroup,
         WebApp.Definition.IExistingLinuxPlanWithGroup,
-        WebApp.Definition.IWithWindowsRuntimeStack,
         WebApp.Update.IWithAppServicePlan,
         WebApp.Update.IWithCredentials,
         WebApp.Update.IWithStartUpCommand
@@ -109,13 +108,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:E73A2BC2090FC3A00E0D2D18D7506D67:BFA1AA102FC308FAD095DF52D3D7C9F1
         public WebAppImpl WithPrivateRegistryImage(string imageAndTag, string serverUrl)
         {
-            EnsureLinuxPlan();
+            //EnsureLinuxPlan();
             CleanUpContainerSettings();
             if (SiteConfig == null)
             {
                 SiteConfig = new SiteConfigResourceInner();
             }
-            SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            if (OperatingSystem() == Fluent.OperatingSystem.Windows)
+            {
+                SiteConfig.WindowsFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            } 
+            else
+            {
+                SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            }
             WithAppSetting(SETTING_DOCKER_IMAGE, imageAndTag);
             WithAppSetting(SETTING_REGISTRY_SERVER, serverUrl);
             return this;
@@ -124,6 +130,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:602C33B7B682DA260F6CBFC17D1C7E12:E4FC04D27E28502A10F31E38E988A897
         private void CleanUpContainerSettings()
         {
+            if (SiteConfig != null && SiteConfig.WindowsFxVersion != null)
+            {
+                SiteConfig.WindowsFxVersion = null;
+            }
             if (SiteConfig != null && SiteConfig.LinuxFxVersion != null)
             {
                 SiteConfig.LinuxFxVersion = null;
@@ -165,24 +175,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:D15FB33BB43555A701A8FD43F244B1D9:2B645488043FF9B7C9FE21F5BC901768
         public WebAppImpl WithPublicDockerHubImage(string imageAndTag)
         {
-            EnsureLinuxPlan();
+            //EnsureLinuxPlan();
             CleanUpContainerSettings();
             if (SiteConfig == null)
             {
                 SiteConfig = new SiteConfigResourceInner();
             }
-            SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            if (OperatingSystem() == Fluent.OperatingSystem.Windows)
+            {
+                SiteConfig.WindowsFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            }
+            else
+            {
+                SiteConfig.LinuxFxVersion = string.Format("DOCKER|{0}", imageAndTag);
+            }
             WithAppSetting(SETTING_DOCKER_IMAGE, imageAndTag);
             return this;
-        }
-
-        ///GENMHASH:4554623A20A1D1D6CA43597FA7713AD7:DD8E427B2F3E82987E90A2D5CCB5E193
-        private void EnsureLinuxPlan()
-        {
-            if (Fluent.OperatingSystem.Windows.Equals(OperatingSystem()))
-            {
-                throw new InvalidOperationException("Docker container settings only apply to Linux app service plans.");
-            }
         }
 
         ///GENMHASH:6799EDFB0B008F8C0EB7E07EE71E6B34:9AA0391980CD01ABEA62130DB5348393
@@ -243,7 +251,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:F7734222FF39440A50483317E5DF8156:998FF6187B952D74EE89FFECAAB847A3
         public WebAppImpl WithBuiltInImage(RuntimeStack runtimeStack)
         {
-            EnsureLinuxPlan();
+            //EnsureLinuxPlan();
             CleanUpContainerSettings();
             if (SiteConfig == null) {
                 SiteConfig = new SiteConfigResourceInner();

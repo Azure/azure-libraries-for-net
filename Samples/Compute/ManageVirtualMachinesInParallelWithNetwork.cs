@@ -21,8 +21,8 @@ namespace ManageVirtualMachinesInParallelWithNetwork
     {
         private const int FrontendVMCount = 10;
         private const int BackendVMCount = 10;
-        private const string UserName = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private static readonly string UserName = Utilities.CreateUsername();
+        private static readonly string Password = Utilities.CreatePassword();
 
         /**
          * Create a virtual network with two Subnets – frontend and backend
@@ -162,7 +162,7 @@ namespace ManageVirtualMachinesInParallelWithNetwork
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithNewStorageAccount(creatableStorageAccount);
                     frontendCreatableVirtualMachines.Add(creatableVirtualMachine);
                 }
@@ -182,7 +182,7 @@ namespace ManageVirtualMachinesInParallelWithNetwork
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithNewStorageAccount(creatableStorageAccount);
                     backendCreatableVirtualMachines.Add(creatableVirtualMachine);
                 }

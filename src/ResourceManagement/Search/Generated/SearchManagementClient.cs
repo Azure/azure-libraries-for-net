@@ -92,6 +92,15 @@ namespace Microsoft.Azure.Management.Search.Fluent
         {
         }
 
+        private SearchManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static SearchManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new SearchManagementClient(restClient) : new SearchManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

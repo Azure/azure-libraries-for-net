@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='filter'>
-            /// The filter to apply on the operation.
+            /// The filter to apply on the operation. Only **location** filter is supported
+            /// currently.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

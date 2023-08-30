@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_bd449117026c?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfYmQ0NDkxMTcwMjZjP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_bd449117026c?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfYmQ0NDkxMTcwMjZjP2FwaS12ZXJzaW9uPTIwMjEtMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
       "RequestHeaders": {
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_bd449117026c?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfYmQ0NDkxMTcwMjZjP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_bd449117026c?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfYmQ0NDkxMTcwMjZjP2FwaS12ZXJzaW9uPTIwMjEtMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -1293,7 +1293,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"webapp1-5299426100 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"webapp1-5299426100.scm.azurewebsites.net:443\" msdeploySite=\"webapp1-5299426100\" userName=\"$webapp1-5299426100\" userPWD=\"vcMDwi30n2sirdQGHoYjRXkKiJ5koEhbJwi2f3ijWZJTEyj9GaFtB1htmeyf\" destinationAppUrl=\"http://webapp1-5299426100.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-5299426100 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-5299426100\\$webapp1-5299426100\" userPWD=\"vcMDwi30n2sirdQGHoYjRXkKiJ5koEhbJwi2f3ijWZJTEyj9GaFtB1htmeyf\" destinationAppUrl=\"http://webapp1-5299426100.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-5299426100 - ReadOnly - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071dr.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-5299426100\\$webapp1-5299426100\" userPWD=\"vcMDwi30n2sirdQGHoYjRXkKiJ5koEhbJwi2f3ijWZJTEyj9GaFtB1htmeyf\" destinationAppUrl=\"http://webapp1-5299426100.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
+      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"webapp1-5299426100 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"webapp1-5299426100.scm.azurewebsites.net:443\" msdeploySite=\"webapp1-5299426100\" userName=\"$webapp1-5299426100\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp1-5299426100.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-5299426100 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-5299426100\\$webapp1-5299426100\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp1-5299426100.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp1-5299426100 - ReadOnly - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071dr.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp1-5299426100\\$webapp1-5299426100\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp1-5299426100.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
       "StatusCode": 200
     },
     {
@@ -2449,7 +2449,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"webapp2-cd51839472 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"webapp2-cd51839472.scm.azurewebsites.net:443\" msdeploySite=\"webapp2-cd51839472\" userName=\"$webapp2-cd51839472\" userPWD=\"u83WlfSdJGNYc7MLtf6PCLbgnNgGM5hRDtCbRmfyxraP76R2wfw9bM2Y2nPH\" destinationAppUrl=\"http://webapp2-cd51839472.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp2-cd51839472 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp2-cd51839472\\$webapp2-cd51839472\" userPWD=\"u83WlfSdJGNYc7MLtf6PCLbgnNgGM5hRDtCbRmfyxraP76R2wfw9bM2Y2nPH\" destinationAppUrl=\"http://webapp2-cd51839472.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp2-cd51839472 - ReadOnly - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071dr.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp2-cd51839472\\$webapp2-cd51839472\" userPWD=\"u83WlfSdJGNYc7MLtf6PCLbgnNgGM5hRDtCbRmfyxraP76R2wfw9bM2Y2nPH\" destinationAppUrl=\"http://webapp2-cd51839472.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
+      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"webapp2-cd51839472 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"webapp2-cd51839472.scm.azurewebsites.net:443\" msdeploySite=\"webapp2-cd51839472\" userName=\"$webapp2-cd51839472\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp2-cd51839472.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp2-cd51839472 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp2-cd51839472\\$webapp2-cd51839472\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp2-cd51839472.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"webapp2-cd51839472 - ReadOnly - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-bay-071dr.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"webapp2-cd51839472\\$webapp2-cd51839472\" userPWD=\"MGMT_PLACEHOLDER\" destinationAppUrl=\"http://webapp2-cd51839472.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"http://windows.azure.com\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
       "StatusCode": 200
     },
     {
@@ -5205,8 +5205,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_bd449117026c?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfYmQ0NDkxMTcwMjZjP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg1nemv_bd449117026c?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMW5lbXZfYmQ0NDkxMTcwMjZjP2FwaS12ZXJzaW9uPTIwMjEtMDEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

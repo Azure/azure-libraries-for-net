@@ -284,7 +284,7 @@ namespace Fluent.Tests.Compute
         {
             string vmName = TestUtilities.GenerateName("muldvm");
             string uname = "javauser";
-            string password = "12NewPA$$w0rd!";
+            string password = TestUtilities.GenerateName("Pa5$");
             KnownLinuxVirtualMachineImage linuxImage = KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts;
             string publicIpDnsLabel = TestUtilities.GenerateName("pip");
             string storageName = TestUtilities.GenerateName("stg");
@@ -307,7 +307,7 @@ namespace Fluent.Tests.Compute
                             .WithNewVhd(60)
                             .WithCaching(CachingTypes.ReadOnly)
                             .Attach()
-                        .WithSize(VirtualMachineSizeTypes.StandardD15V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithNewStorageAccount(storageName)
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
                         .Create();

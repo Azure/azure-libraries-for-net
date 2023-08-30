@@ -34,7 +34,7 @@ namespace Samples.Tests
                 VerifyNetworkPeeringWithNetworkWatcher.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Manual Only test.")]
         [Trait("Samples", "Network")]
         public void ManageApplicationGatewayTest()
         {

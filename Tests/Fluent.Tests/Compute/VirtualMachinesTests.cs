@@ -133,7 +133,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithAdminPassword("BaR@12!Foo")
                         .WithUnmanagedDisks()
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithOSDiskName("javatest")
                         .Create();
 
@@ -198,7 +198,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithAdminPassword("BaR@12!Foo")
                         .WithUnmanagedDisks()
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithOSDiskName("javatest")
                         .WithLowPriority(VirtualMachineEvictionPolicyTypes.Deallocate)
                         .WithMaxPrice(1000.0)
@@ -342,7 +342,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithAdminUsername("Foo12")
                             .WithAdminPassword("abc!@#F0orL")
                             .WithUnmanagedDisks()
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .WithOSDiskName("javatest")
                             .WithLicenseType("Windows_Server")
@@ -458,7 +458,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithAdminUsername("Foo12")
                             .WithAdminPassword("abc!@#F0orL")
                             .WithUnmanagedDisks()
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .WithOSDiskName("javatest")
                             .WithLicenseType("Windows_Server")
@@ -645,7 +645,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var vmName = TestUtilities.GenerateName("vm");
                 var username = "testuser";
-                var password = "12NewPA$$w0rd!";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var publicIPDnsLabel = TestUtilities.GenerateName("abc");
                 var region = Region.USEast;
                 var cloudInitEncodedString = Convert.ToBase64String(Encoding.ASCII.GetBytes("#cloud-config\r\npackages:\r\n - pwgen"));
@@ -706,7 +706,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var rgName = TestUtilities.GenerateName("rg");
                 var vmName = TestUtilities.GenerateName("vm");
                 var username = "testuser";
-                var password = "12NewPA$$w0rd!";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var publicIPDnsLabel = TestUtilities.GenerateName("abc");
                 var region = Region.USEast;
 
@@ -757,7 +757,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var vmName = TestUtilities.GenerateName("vm");
                 var pipName = TestUtilities.GenerateName("pip");
                 var username = "testuser";
-                var password = "12NewPA$$w0rd!";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var publicIPDnsLabel = TestUtilities.GenerateName("abc");
                 var region = Region.USEast;
 
@@ -789,7 +789,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(username)
                         .WithRootPassword(password)
-                        .WithSize(VirtualMachineSizeTypes.StandardA0)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                     var publicIPAddress = virtualMachine.GetPrimaryPublicIPAddress();
@@ -856,7 +856,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                 .WithLun(3)
                                 .StoreAt(storageAccount.Name, "diskvhds", "datadisk2vhd.vhd")
                                 .Attach()
-                            .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -890,7 +890,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootPassword("abc!@#F0orL")
                             .WithUnmanagedDisks()
                             .WithExistingUnmanagedDataDisk(storageAccount.Name, "diskvhds", "datadisk1vhd.vhd")
-                            .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .Create();
                     // Gets the vm
                     //
@@ -1016,7 +1016,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2008R2_SP1)
                         .WithAdminUsername("Foo12")
                         .WithAdminPassword("abc!@#F0orL")
-                        .WithSize(VirtualMachineSizeTypes.StandardE2sV3)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                     vm.DiskEncryption.Enable(vault.Id);
@@ -1040,7 +1040,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("Foo12")
                         .WithRootPassword("abc!@#F0orL")
-                        .WithSize(VirtualMachineSizeTypes.StandardE2sV3)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                     vm.DiskEncryption.Enable(vault.Id);

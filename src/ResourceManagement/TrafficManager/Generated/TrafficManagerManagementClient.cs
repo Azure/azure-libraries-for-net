@@ -102,6 +102,15 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
         }
 
+        private TrafficManagerManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static TrafficManagerManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new TrafficManagerManagementClient(restClient) : new TrafficManagerManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

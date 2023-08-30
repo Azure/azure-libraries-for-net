@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private string ftpPassword;
         private string gitPassword;
         private static readonly Regex gitRegex = new Regex("publishMethod=\"MSDeploy\" publishUrl=\"([^\"]+)\".+userName=\"(\\$[^\"]+)\".+userPWD=\"([^\"]+)\"");
-        private static readonly Regex ftpRegex = new Regex("publishMethod=\"FTP\" publishUrl=\"ftp://([^\"]+).+userName=\"([^\"]+\\\\\\$[^\"]+)\".+userPWD=\"([^\"]+)\"");
+        private static readonly Regex ftpRegex = new Regex("publishMethod=\"FTP\" publishUrl=\"ftps?://([^\"]+).+userName=\"([^\"]+\\\\\\$[^\"]+)\".+userPWD=\"([^\"]+)\"");
 
         ///GENMHASH:EED906EE02A83607395DD16B6C952CB5:F903566E74A7E102149C01EBDACBA16F
         public string GitPassword()

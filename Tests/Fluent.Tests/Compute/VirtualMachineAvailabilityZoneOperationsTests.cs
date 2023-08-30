@@ -46,7 +46,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                         .WithRootPassword("abc!@#F0orL")
                         // Optionals
                         .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
                         // Create VM
                         .Create();
@@ -148,7 +148,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                             // Optionals
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
                             .WithExistingDataDisk(dataDisk)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             // Create VM
                             .Create();
 
@@ -238,7 +238,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                             .WithRootPassword("abc!@#F0orL")
                             // Optionals
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             // Create VM
                             .Create();
                     // Checks the zone assigned to the virtual machine
@@ -313,7 +313,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                             .WithRootUsername("Foo12")
                             .WithRootPassword("abc!@#F0orL")
                             // Optionals
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2);
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                     subnets.MoveNext();
                     var creatableVM2 = azure.VirtualMachines
@@ -328,7 +328,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                             .WithRootUsername("Foo12")
                             .WithRootPassword("abc!@#F0orL")
                             // Optionals
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2);
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                     ICreatedResources<IVirtualMachine> createdVMs = azure.VirtualMachines.Create(creatableVM1, creatableVM2);
 
@@ -466,7 +466,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                             .WithRootPassword("abc!@#F0orL")
                             // Optionals
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2);
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                     subnets.MoveNext();
                     var creatableVM2 = azure.VirtualMachines
@@ -482,7 +482,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                             .WithRootPassword("abc!@#F0orL")
                             // Optionals
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2);
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                     ICreatedResources<IVirtualMachine> createdVMs = azure.VirtualMachines.Create(creatableVM1, creatableVM2);
 

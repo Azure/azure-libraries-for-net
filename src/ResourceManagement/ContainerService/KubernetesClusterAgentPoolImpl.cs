@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                 return 0;
             }
 
-            return this.Inner.Count;
+            return this.Inner.Count ?? 0;
         }
 
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
@@ -160,6 +160,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public KubernetesClusterAgentPoolImpl WithAgentPoolTypeName(string agentPoolTypeName)
         {
             this.Inner.Type = AgentPoolType.Parse(agentPoolTypeName);
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolMode(AgentPoolMode agentPoolMode)
+        {
+            this.Inner.Mode = agentPoolMode;
+            return this;
+        }
+
+        public KubernetesClusterAgentPoolImpl WithAgentPoolModeName(string agentPoolModeName)
+        {
+            this.Inner.Mode = AgentPoolMode.Parse(agentPoolModeName);
             return this;
         }
     }

@@ -26,7 +26,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var vmName1 = "myvm1";
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
                 var rgName = TestUtilities.GenerateName("rgfluentchash-");
@@ -42,7 +42,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithPopularLinuxImage(LinuxImage)
                             .WithRootUsername(uname)
                             .WithRootPassword(password)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
                     // Ensure default to managed disk
@@ -88,7 +88,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -144,7 +144,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.None)       // CreateOption: ATTACH
                             .WithNewDataDisk(creatableEmptyDisk3, 3, CachingTypes.None)       // CreateOption: ATTACH
                                                                                               // End : Add 5 empty managed disks
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -263,7 +263,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -319,7 +319,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.None)       // CreateOption: ATTACH
                             .WithNewDataDisk(creatableEmptyDisk3, 3, CachingTypes.None)       // CreateOption: ATTACH
                                                                                               // End : Add bunch of empty managed disks
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
                     TestHelper.Delay(60 * 1000); // Wait for some time to ensure vm is publicly accessible
@@ -367,7 +367,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootUsername(uname)
                             .WithRootPassword(password)
                             // No explicit data disks, let CRP create it from the image's data disk images
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -411,7 +411,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     }
                     var virtualMachine3 = creatableVirtualMachine3
                             .WithNewDataDisk(200)                               // CreateOption: EMPTY
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -445,7 +445,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -504,7 +504,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                                                                                               // End : Add bunch of empty managed disks
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -537,7 +537,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var publicIPDnsLabel = SdkContext.RandomResourceName("pip", 20);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 // Create with implicit + explicit empty disks, check default and override
                 //
                 var vmName1 = "myvm1";
@@ -594,7 +594,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(creatableEmptyDisk2, 2, CachingTypes.ReadOnly)
                             .WithDataDiskDefaultCachingType(CachingTypes.ReadOnly)
                             .WithDataDiskDefaultStorageAccountType(StorageAccountTypes.StandardLRS)
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadOnly)
                             .WithEphemeralOSDisk(DiffDiskOptions.Local)
                             .Create();
@@ -634,7 +634,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var vmName = "myvm6";
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
@@ -655,7 +655,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootUsername(uname)
                             .WithRootPassword(password)
                             .WithUnmanagedDisks()                  /* UN-MANAGED OS and DATA DISKS */
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithNewStorageAccount(storageAccountName)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
@@ -684,7 +684,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithPrimaryPrivateIPAddressDynamic()
                             .WithoutPrimaryPublicIPAddress()
                             .WithSpecializedOSDisk(osDisk, OperatingSystemTypes.Linux)
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 
@@ -709,7 +709,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var availSetName = SdkContext.RandomResourceName("av-", 15);
                 var uname = "juser";
-                var password = "123tEst!@|ac";
+                var password = TestUtilities.GenerateName("Pa5$");
                 var vmName = "myvm6";
                 var resourceManager = TestHelper.CreateRollupClient();
                 var computeManager = TestHelper.CreateComputeManager();
@@ -730,7 +730,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewDataDisk(100, 1, CachingTypes.ReadOnly)
                             .WithNewDataDisk(100, 2, CachingTypes.ReadWrite, StorageAccountTypes.StandardLRS)
                             .WithNewAvailabilitySet(availSetName)           // Default to managed availability set
-                            .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 

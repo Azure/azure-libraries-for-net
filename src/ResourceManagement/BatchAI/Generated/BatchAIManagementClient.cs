@@ -108,6 +108,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
         }
 
+        private BatchAIManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static BatchAIManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new BatchAIManagementClient(restClient) : new BatchAIManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using System.Net;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition;
     using System;
+    using Microsoft.Rest.Azure.OData;
 
     /// <summary>
     /// The implementation of Users and its parent interfaces.
@@ -69,7 +70,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
             if (name.Contains("@"))
             {
-                var inners = await Inner.ListAsync(string.Format("mail eq '{0}' or mailNickName eq '{1}%23EXT%23'", name, name.Replace("@", "_")), cancellationToken);
+                var inners = await Inner.ListAsync(
+                    new ODataQuery<UserInner>
+                    {
+                        Filter = string.Format("mail eq '{0}' or mailNickName eq '{1}%23EXT%23'", name, name.Replace("@", "_"))
+                    }, 
+                    cancellationToken);
                 if (inners != null && inners.Any())
                 {
                     return WrapModel(inners.First());
@@ -77,7 +83,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
             else
             {
-                var inners = await Inner.ListAsync(string.Format("displayName eq '{0}'", name), cancellationToken);
+                var inners = await Inner.ListAsync(
+                    new ODataQuery<UserInner>
+                    {
+                        Filter = string.Format("displayName eq '{0}'", name)
+                    }, 
+                    cancellationToken);
                 if (inners != null && inners.Any())
                 {
                     return WrapModel(inners.First());
@@ -99,7 +110,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             }
         }
 
-        GraphRbacManager IHasManager<GraphRbacManager>.Manager => throw new NotImplementedException();
+        GraphRbacManager IHasManager<GraphRbacManager>.Manager => manager;
 
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IActiveDirectoryUser>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {

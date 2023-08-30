@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         /// <param name="publicKeys">The list of SSH public keys used to
         /// authenticate with linux based VMs.</param>
-        public SshConfiguration(IList<SshPublicKey> publicKeys = default(IList<SshPublicKey>))
+        public SshConfiguration(IList<SshPublicKeyInner> publicKeys = default(IList<SshPublicKeyInner>))
         {
             PublicKeys = publicKeys;
             CustomInit();
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// linux based VMs.
         /// </summary>
         [JsonProperty(PropertyName = "publicKeys")]
-        public IList<SshPublicKey> PublicKeys { get; set; }
+        public IList<SshPublicKeyInner> PublicKeys { get; set; }
 
     }
 }

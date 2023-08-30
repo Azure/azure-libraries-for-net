@@ -80,7 +80,7 @@ namespace ManageServicePrincipal
             var name = SdkContext.RandomResourceName("adapp-sample", 20);
             //create a self-sighed certificate
             var domainName = name + ".com";
-            var certPassword = "StrongPass!12";
+            var certPassword = Utilities.CreatePassword();
             Certificate certificate = Certificate.CreateSelfSigned(domainName, certPassword);
 
             // create Active Directory application
@@ -114,7 +114,7 @@ namespace ManageServicePrincipal
             string name = SdkContext.RandomResourceName("sp-sample", 20);
             //create a self-sighed certificate
             string domainName = name + ".com";
-            string certPassword = "StrongPass!12";
+            string certPassword = Utilities.CreatePassword();
             Certificate certificate = Certificate.CreateSelfSigned(domainName, certPassword);
 
             // create  a Service Principal and assign it to a subscription with the role Contributor
@@ -123,7 +123,7 @@ namespace ManageServicePrincipal
                         .WithExistingApplication(activeDirectoryApplication)
                         // password credentials definition
                         .DefinePasswordCredential("ServicePrincipalAzureSample")
-                            .WithPasswordValue("StrongPass!12")
+                            .WithPasswordValue(Utilities.CreatePassword())
                             .Attach()
                         // certificate credentials definition
                         .DefineCertificateCredential("spcert")

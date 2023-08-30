@@ -34,8 +34,8 @@ namespace ManageZonalVirtualMachine
             var pipName1 = Utilities.CreateRandomName("pip1");
             var pipName2 = Utilities.CreateRandomName("pip2");
             var diskName = Utilities.CreateRandomName("ds");
-            var userName = "tirekicker";
-            var password = "12NewPA23w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
             
             try
             {
@@ -56,7 +56,7 @@ namespace ManageZonalVirtualMachine
                             .WithRootPassword(password)
                             // Optional
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             // Create VM
                             .Create();
 
@@ -116,7 +116,7 @@ namespace ManageZonalVirtualMachine
                             // Optional
                             .WithAvailabilityZone(AvailabilityZoneId.Zone_1)
                             .WithExistingDataDisk(dataDisk)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             // Create VM
                             .Create();
 

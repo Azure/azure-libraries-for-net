@@ -1,15 +1,19 @@
 [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/net/azure-libraries-for-net%20-%20fluent-sdk?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=441&branchName=master)
-[![Build Status](https://travis-ci.org/Azure/azure-libraries-for-net.svg?style=flat-square&label=build&branch=master)](https://travis-ci.org/Azure/azure-libraries-for-net)
 
-# Try the Next-Generation Azure Management SDK for .NET now
+# This Repository was Deprecated in September 2022
 
-A new set of Azure Management Libraries for .NET that follows the [Azure SDK Design Guidelines for .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html) are now in Public Preview. If you are interested in the new generation SDK for .NET, please find the information about latest packages [here](https://azure.github.io/azure-sdk/releases/latest/dotnet.html), and look for packages that contains `Azure.ResourceManager` in the namespace.
+Thank you for the interest in this package.
 
-Documentation is available [on this page](https://aka.ms/azure-sdk-dotnet-mgmt)
+If you are looking for the latest packages to interact with Azure resources, please use the following libraries:
+https://aka.ms/azsdk/dotnet/mgmt
+
+Here is all of the latest packages: https://azure.github.io/azure-sdk/releases/latest/mgmt/dotnet.html
+
+You can refer to this https://aka.ms/dotnet/t2/migration for more details about how to migrate your current code to our new SDK.
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.34.0). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.38.1). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -29,7 +33,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.34.0*
+:triangular_flag_on_post: *as of Version 1.38.1*
 
 <table>
   <tr>
@@ -600,7 +604,7 @@ IAzure azure = Azure.Configure().WithLogLevel(HttpLoggingDelegatingHandler.Level
 
 ### Latest stable release
 
-**1.34.0** release builds are available on NuGet:
+**1.38.1** release builds are available on NuGet:
 
 |Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
@@ -639,7 +643,7 @@ IAzure azure = Azure.Configure().WithLogLevel(HttpLoggingDelegatingHandler.Level
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.33.0 to 1.34.0, you can use these release notes for [preparing your code for 1.34.0 from 1.33.0](./notes/prepare-for-1.34.0.md).
+If you are migrating your code from 1.38.0 to 1.38.1, you can use these release notes for [preparing your code for 1.38.1 from 1.38.0](./notes/prepare-for-1.38.1.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -654,11 +658,11 @@ In general, Azure Libraries for .Net follow [semantic versioning](http://semver.
 
 If you encounter any bugs with these libraries, please file issues via [Issues](https://github.com/Azure/azure-libraries-for-net/issues) or checkout [StackOverflow for Azure Management Libraries for .NET](http://stackoverflow.com/questions/tagged/azure-sdk).
 
-To enable Http message tracing in your code please check [this article](https://github.com/Azure/autorest/blob/master/docs/client/tracing.md#tracing).
+To enable Http message tracing in your code please check [logging](#logging).
 
 ## Contribute Code
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines.html).
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://opensource.microsoft.com/program/#program-contributing).
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -674,6 +678,13 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.38.1              | [1.38.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.38.1)      | Tagged release for 1.38.1 version of Azure management libraries |
+| 1.38              | [1.38](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.38.0)      | Tagged release for 1.38 version of Azure management libraries |
+| 1.37.1              | [1.37.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.37.1)      | Tagged release for 1.37.1 version of Azure management libraries |
+| 1.37              | [1.37](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.37.0)      | Tagged release for 1.37 version of Azure management libraries |
+| 1.36.1              | [1.36.1](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.36.1)      | Tagged release for 1.36.1 version of Azure management libraries |
+| 1.36              | [1.36](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.36.0)      | Tagged release for 1.36 version of Azure management libraries |
+| 1.35              | [1.35](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.35.0)      | Tagged release for 1.35 version of Azure management libraries |
 | 1.34              | [1.34](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.34.0)      | Tagged release for 1.34 version of Azure management libraries |
 | 1.33              | [1.33](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.33.0)      | Tagged release for 1.33 version of Azure management libraries |
 | 1.32              | [1.32](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.32.0)      | Tagged release for 1.32 version of Azure management libraries |

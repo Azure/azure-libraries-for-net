@@ -100,9 +100,9 @@ namespace ManageStorageAccountNetworkRules
                         .WithPrimaryPrivateIPAddressDynamic()
                         .WithExistingPrimaryPublicIPAddress(publicIPAddress)
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("tirekicker")
-                        .WithRootPassword("12NewPA$$w0rd!")
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithRootUsername(Utilities.CreateUsername())
+                        .WithRootPassword(Utilities.CreatePassword())
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log($"Created the VM: {linuxVM.Id}");

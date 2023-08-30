@@ -15,11 +15,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         #endregion
 
         public CdnManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new CdnManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, CdnManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
         }
 
         public static ICdnManager Authenticate(AzureCredentials credentials, string subscriptionId)

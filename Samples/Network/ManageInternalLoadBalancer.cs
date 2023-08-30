@@ -24,7 +24,7 @@ namespace ManageInternalLoadBalancer
         private static readonly string NatRule6001to23forVM3 = "nat6001to23forVM3";
         private static readonly string NatRule6002to22forVM4 = "nat6002to22forVM4";
         private static readonly string NatRule6003to23forVM4 = "nat6003to23forVM4";
-        private static readonly string UserName = "tirekicker";
+        private static readonly string UserName = Utilities.CreateUsername();
         private static readonly string SshKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfSPC2K7LZcFKEO+/t3dzmQYtrJFZNxOsbVgOVKietqHyvmYGHEC0J2wPdAqQ/63g/hhAEFRoyehM+rbeDri4txB3YFfnOK58jqdkyXzupWqXzOrlKY4Wz9SKjjN765+dqUITjKRIaAip1Ri137szRg71WnrmdP3SphTRlCx1Bk2nXqWPsclbRDCiZeF8QOTi4JqbmJyK5+0UqhqYRduun8ylAwKKQJ1NJt85sYIHn9f1Rfr6Tq2zS0wZ7DHbZL+zB5rSlAr8QyUdg/GQD+cmSs6LvPJKL78d6hMGk84ARtFo4A79ovwX/Fj01znDQkU6nJildfkaolH2rWFG/qttD azjava@javalib.Com";
 
         private static readonly int OracleSQLNodePort = 1521;
@@ -259,7 +259,7 @@ namespace ManageInternalLoadBalancer
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet2);
 
                 virtualMachineCreatables2.Add(virtualMachine3Creatable);
@@ -271,7 +271,7 @@ namespace ManageInternalLoadBalancer
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithSsh(SshKey)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet2);
 
                 virtualMachineCreatables2.Add(virtualMachine4Creatable);

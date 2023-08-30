@@ -32,8 +32,8 @@ namespace ManageVirtualMachine
             var windowsVmName = Utilities.CreateRandomName("wVM");
             var linuxVmName = Utilities.CreateRandomName("lVM");
             var rgName = Utilities.CreateRandomName("rgCOMV");
-            var userName = "tirekicker";
-            var password = "12NewPA$$w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
 
             try
             {
@@ -73,7 +73,7 @@ namespace ManageVirtualMachine
                         .WithNewDataDisk(10)
                         .WithNewDataDisk(dataDiskCreatable)
                         .WithExistingDataDisk(dataDisk)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 var t2 = new DateTime();
@@ -146,7 +146,7 @@ namespace ManageVirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(userName)
                         .WithRootPassword(password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM (in the same virtual network): " + linuxVM.Id);

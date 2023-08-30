@@ -39,8 +39,8 @@ namespace ManageZonalVirtualMachineScaleSet
             var natPoolName2 = loadBalancerName + "-INP2";
             var vmssName1 = Utilities.CreateRandomName("vmss1");
             var vmssName2 = Utilities.CreateRandomName("vmss2");
-            var userName = "tirekicker";
-            var password = "12NewPA23w0rd!";
+            var userName = Utilities.CreateUsername();
+            var password = Utilities.CreatePassword();
 
             try
             {

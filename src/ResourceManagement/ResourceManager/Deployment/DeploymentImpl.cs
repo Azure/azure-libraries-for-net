@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         private IResourceManager resourceManager;
         private string resourceGroupName;
         private ICreatable<IResourceGroup> creatableResourceGroup;
+        private DeploymentInner createUpdateParamter = new DeploymentInner();
 
         internal DeploymentImpl(DeploymentExtendedInner innerModel, IResourceManager resourceManager) : base(innerModel.Name, innerModel)
         {
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
         }
 
-        public string ProvisioningState
+        public ProvisioningState ProvisioningState
         {
             get
             {
@@ -120,18 +121,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                     return null;
                 }
                 return Inner.Properties.Dependencies;
-            }
-        }
-
-        public object Template
-        {
-            get
-            {
-                if (Inner.Properties == null)
-                {
-                    return null;
-                }
-                return Inner.Properties.Template;
             }
         }
 
@@ -236,13 +225,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public Deployment.Definition.IWithParameters WithTemplate(object template)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
 
-            Inner.Properties.Template = template;
-            Inner.Properties.TemplateLink = null;
+            createUpdateParamter.Properties.Template = template;
+            createUpdateParamter.Properties.TemplateLink = null;
             return this;
         }
 
@@ -253,23 +242,25 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public Deployment.Definition.IWithParameters WithTemplateLink(string uri, string contentVersion)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.TemplateLink = new TemplateLink(uri, contentVersion);
-            Inner.Properties.Template = null;
+            createUpdateParamter.Properties.TemplateLink = new TemplateLink();
+            createUpdateParamter.Properties.TemplateLink.Uri = uri;
+            createUpdateParamter.Properties.TemplateLink.ContentVersion = contentVersion;
+            createUpdateParamter.Properties.Template = null;
             return this;
         }
 
         public Deployment.Definition.IWithMode WithParameters(object parameters)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.Parameters = parameters;
-            Inner.Properties.ParametersLink = null;
+            createUpdateParamter.Properties.Parameters = parameters;
+            createUpdateParamter.Properties.ParametersLink = null;
             return this;
         }
 
@@ -280,22 +271,22 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public Deployment.Definition.IWithMode WithParametersLink(string uri, string contentVersion)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.ParametersLink = new ParametersLink(uri, contentVersion);
-            Inner.Properties.Parameters = null;
+            createUpdateParamter.Properties.ParametersLink = new ParametersLink(uri, contentVersion);
+            createUpdateParamter.Properties.Parameters = null;
             return this;
         }
 
         public IWithCreate WithMode(DeploymentMode mode)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.Mode = mode;
+            createUpdateParamter.Properties.Mode = mode;
             return this;
         }
 
@@ -305,13 +296,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate Deployment.Update.IWithTemplate.WithTemplate(object template)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
 
-            Inner.Properties.Template = template;
-            Inner.Properties.TemplateLink = null;
+            createUpdateParamter.Properties.Template = template;
+            createUpdateParamter.Properties.TemplateLink = null;
             return this;
         }
 
@@ -323,23 +314,25 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate Deployment.Update.IWithTemplate.WithTemplateLink(string uri, string contentVersion)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.TemplateLink = new TemplateLink(uri, contentVersion);
-            Inner.Properties.Template = null;
+            createUpdateParamter.Properties.TemplateLink = new TemplateLink();
+            createUpdateParamter.Properties.TemplateLink.Uri = uri;
+            createUpdateParamter.Properties.TemplateLink.ContentVersion = contentVersion;
+            createUpdateParamter.Properties.Template = null;
             return this;
         }
 
         IUpdate Deployment.Update.IWithParameters.WithParameters(object parameters)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.Parameters = parameters;
-            Inner.Properties.ParametersLink = null;
+            createUpdateParamter.Properties.Parameters = parameters;
+            createUpdateParamter.Properties.ParametersLink = null;
             return this;
         }
 
@@ -351,29 +344,57 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate Deployment.Update.IWithParameters.WithParametersLink(string uri, string contentVersion)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.ParametersLink = new ParametersLink(uri, contentVersion);
-            Inner.Properties.Parameters = null;
+            createUpdateParamter.Properties.ParametersLink = new ParametersLink(uri, contentVersion);
+            createUpdateParamter.Properties.Parameters = null;
             return this;
         }
 
         IUpdate Deployment.Update.IWithMode.WithMode(DeploymentMode mode)
         {
-            if (Inner.Properties == null)
+            if (createUpdateParamter.Properties == null)
             {
-                Inner.Properties = new DeploymentPropertiesExtended();
+                createUpdateParamter.Properties = new DeploymentProperties();
             }
-            Inner.Properties.Mode = mode;
+            createUpdateParamter.Properties.Mode = mode;
             return this;
         }
 
         #endregion
 
         #endregion
-        
+
+        public override IUpdate Update()
+        {
+            object template = createUpdateParamter.Properties == null ? null : createUpdateParamter.Properties.Template;
+
+            createUpdateParamter = new DeploymentInner();
+
+            createUpdateParamter.Location = Inner.Location;
+            createUpdateParamter.Tags = Inner.Tags;
+            if (Inner.Properties != null)
+            {
+                createUpdateParamter.Properties = new DeploymentProperties();
+                createUpdateParamter.Properties.DebugSetting = Inner.Properties.DebugSetting;
+                createUpdateParamter.Properties.Mode = Inner.Properties.Mode ?? DeploymentMode.Incremental;
+                createUpdateParamter.Properties.Parameters = Inner.Properties.Parameters;
+                createUpdateParamter.Properties.ParametersLink = Inner.Properties.ParametersLink;
+                createUpdateParamter.Properties.Template = template;
+                createUpdateParamter.Properties.TemplateLink = Inner.Properties.TemplateLink;
+                if (Inner.Properties.OnErrorDeployment != null)
+                {
+                    createUpdateParamter.Properties.OnErrorDeployment = new OnErrorDeployment();
+                    createUpdateParamter.Properties.OnErrorDeployment.DeploymentName = Inner.Properties.OnErrorDeployment.DeploymentName;
+                    createUpdateParamter.Properties.OnErrorDeployment.Type = Inner.Properties.OnErrorDeployment.Type;
+                }
+            }
+            return base.Update();
+        }
+
+
         public void Cancel()
         {
             Extensions.Synchronize(() => this.CancelAsync());
@@ -406,34 +427,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 await creatableResourceGroup.CreateAsync(cancellationToken);
             }
-            DeploymentInner inner = new DeploymentInner()
-            {
-                Properties = new DeploymentProperties
-                {
-                    Mode = Mode.Value,
-                    Template = Template,
-                    TemplateLink = TemplateLink,
-                    Parameters = Parameters,
-                    ParametersLink = ParametersLink
-                }
-            };
-            SetInner(await Manager.Inner.Deployments.BeginCreateOrUpdateAsync(resourceGroupName, Name, inner, cancellationToken));
+            SetInner(await Manager.Inner.Deployments.BeginCreateOrUpdateAsync(resourceGroupName, Name, createUpdateParamter, cancellationToken));
             return this;
         }
 
         #region Implementation of ICreatable interface 
 
-        public new IDeployment Create()
-        {
-            if (creatableResourceGroup != null)
-            {
-                creatableResourceGroup.Create();
-            }
-            CreateResource();
-            return this;
-        }
-
-        public async new Task<IDeployment> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
+        public async override Task<IDeployment> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
         {
             if (creatableResourceGroup != null)
             {
@@ -448,35 +448,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public async override Task<IDeployment> CreateResourceAsync(CancellationToken cancellationToken)
         {
-            DeploymentInner inner = new DeploymentInner
-            {
-                Properties = new DeploymentProperties
-                {
-                    Mode = Mode.Value,
-                    Template = Template,
-                    TemplateLink = TemplateLink,
-                    Parameters = Parameters,
-                    ParametersLink = ParametersLink
-                }
-            };
-            await Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner, cancellationToken);
-            return this;
-        }
-
-        public override IDeployment CreateResource()
-        {
-            DeploymentInner inner = new DeploymentInner
-            {
-                Properties = new DeploymentProperties
-                {
-                    Mode = Mode.Value,
-                    Template = Template,
-                    TemplateLink = TemplateLink,
-                    Parameters = Parameters,
-                    ParametersLink = ParametersLink
-                }
-            };
-            SetInner(Extensions.Synchronize(() => Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, inner))); ;
+            SetInner(await Manager.Inner.Deployments.CreateOrUpdateAsync(ResourceGroupName, Name, createUpdateParamter, cancellationToken));
             return this;
         }
 

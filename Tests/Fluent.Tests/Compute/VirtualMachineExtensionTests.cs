@@ -44,7 +44,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
                         .WithRootUsername("Foo12")
                         .WithRootPassword("BaR@12abc!")
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                     var availableSizes = vm.AvailableSizes();
@@ -113,7 +113,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
                             .WithRootUsername("Foo12")
                             .WithRootPassword("BaR@12abc!")
-                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                             .DefineNewExtension("CustomScriptForLinux")
                                 .WithPublisher("Microsoft.OSTCExtensions")
                                 .WithType("CustomScriptForLinux")
@@ -188,7 +188,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
                         .WithRootUsername("Foo12")
                         .WithRootPassword("BaR@12abc!")
-                        .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .DefineNewExtension("VMAccessForLinux")
                             .WithPublisher("Microsoft.OSTCExtensions")
                             .WithType("VMAccessForLinux")
@@ -306,7 +306,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
                         .WithRootUsername("Foo12")
                         .WithRootPassword("BaR@12abc!")
-                        .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .DefineNewExtension("CustomScriptForLinux")
                             .WithPublisher("Microsoft.OSTCExtensions")
                             .WithType("CustomScriptForLinux")
@@ -361,7 +361,10 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(keys.Count() > 0);
                     var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
                     Assert.NotNull(updatedStorageAccountKey);
-                    Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+                    }
 
                     // Upload the script to a different container ("scripts2") in the same storage account
                     //

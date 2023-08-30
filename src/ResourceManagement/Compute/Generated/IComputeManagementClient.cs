@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IDedicatedHostsOperations DedicatedHosts { get; }
 
         /// <summary>
+        /// Gets the ISshPublicKeysOperations.
+        /// </summary>
+        ISshPublicKeysOperations SshPublicKeys { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
         /// </summary>
         IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImages { get; }
@@ -140,6 +145,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgrades { get; }
 
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMExtensionsOperations.
+        /// </summary>
+        IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMsOperations.
         /// </summary>
         IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; }
@@ -153,6 +163,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IVirtualMachineRunCommandsOperations.
         /// </summary>
         IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
+        /// </summary>
+        IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; }
 
         /// <summary>
         /// Gets the IResourceSkusOperations.
@@ -173,6 +188,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the IDiskEncryptionSetsOperations.
         /// </summary>
         IDiskEncryptionSetsOperations DiskEncryptionSets { get; }
+
+        /// <summary>
+        /// Gets the IDiskAccessesOperations.
+        /// </summary>
+        IDiskAccessesOperations DiskAccesses { get; }
 
         /// <summary>
         /// Gets the IGalleriesOperations.

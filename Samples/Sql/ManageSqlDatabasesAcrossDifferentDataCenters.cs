@@ -20,7 +20,7 @@ namespace ManageSqlDatabasesAcrossDifferentDataCenters
     public class Program
     {
         private static readonly string administratorLogin = "sqladmin3423";
-        private static readonly string administratorPassword = "myS3cureP@ssword";
+        private static readonly string administratorPassword = Utilities.CreatePassword();
         private static readonly string slaveSqlServer1Name = "slave1sql";
         private static readonly string slaveSqlServer2Name = "slave2sql";
         private static readonly string databaseName = "mydatabase";
@@ -142,7 +142,7 @@ namespace ManageSqlDatabasesAcrossDifferentDataCenters
                             .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                             .WithAdminUsername(administratorLogin)
                             .WithAdminPassword(administratorPassword)
-                            .WithSize(VirtualMachineSizeTypes.StandardD3V2));
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4")));
                 }
                 var ipAddresses = new Dictionary<string, string>();
                 var virtualMachines = azure.VirtualMachines.Create(creatableVirtualMachines.ToArray());

@@ -16,7 +16,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
-     <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>true</GenerateAssemblyFileVersionAttribute>
@@ -27,11 +27,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <FluentVersion>1.34.0</FluentVersion>
+    <FluentVersion>1.38.1</FluentVersion>
     <VersionPrefix>$(FluentVersion)</VersionPrefix>
 
-    <!-- Keep the assembly version pinned unless a breaking change is made -->
-    <AssemblyVersion>1.0.0.66</AssemblyVersion>
+    <!-- Always update AssemblyVersion for new release -->
+    <AssemblyVersion>1.0.0.71</AssemblyVersion>
   </PropertyGroup>
   
   <PropertyGroup>

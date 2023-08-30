@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// other rules match. Possible values include: 'Allow', 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "defaultAction")]
-        public DefaultAction? DefaultAction { get; set; }
+        public DefaultAction DefaultAction { get; set; }
 
         /// <summary>
         /// Validate the object.

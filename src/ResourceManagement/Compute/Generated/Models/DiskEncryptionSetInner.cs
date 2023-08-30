@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DiskEncryptionSetInner class.
         /// </summary>
+        /// <param name="encryptionType">Possible values include:
+        /// 'EncryptionAtRestWithCustomerKey',
+        /// 'EncryptionAtRestWithPlatformAndCustomerKeys'</param>
         /// <param name="activeKey">The key vault key which is currently used
         /// by this disk encryption set.</param>
         /// <param name="previousKeys">A readonly collection of key vault keys
@@ -42,10 +45,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// rotation.</param>
         /// <param name="provisioningState">The disk encryption set
         /// provisioning state.</param>
-        public DiskEncryptionSetInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionSetIdentity identity = default(EncryptionSetIdentity), KeyVaultAndKeyReference activeKey = default(KeyVaultAndKeyReference), IList<KeyVaultAndKeyReference> previousKeys = default(IList<KeyVaultAndKeyReference>), string provisioningState = default(string))
+        public DiskEncryptionSetInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionSetIdentity identity = default(EncryptionSetIdentity), DiskEncryptionSetType encryptionType = default(DiskEncryptionSetType), KeyVaultAndKeyReference activeKey = default(KeyVaultAndKeyReference), IList<KeyVaultAndKeyReference> previousKeys = default(IList<KeyVaultAndKeyReference>), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             Identity = identity;
+            EncryptionType = encryptionType;
             ActiveKey = activeKey;
             PreviousKeys = previousKeys;
             ProvisioningState = provisioningState;
@@ -61,6 +65,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public EncryptionSetIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include:
+        /// 'EncryptionAtRestWithCustomerKey',
+        /// 'EncryptionAtRestWithPlatformAndCustomerKeys'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.encryptionType")]
+        public DiskEncryptionSetType EncryptionType { get; set; }
 
         /// <summary>
         /// Gets or sets the key vault key which is currently used by this disk

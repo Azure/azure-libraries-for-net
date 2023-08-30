@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
         /// </summary>
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate WithTemplateDeploymentDisabled();
+
+        /// <summary>
+        /// Enable soft delete for the key vault.
+        /// </summary>
+        /// <return>The next stage of key vault definition.</return>
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate WithSoftDeleteEnabled();
     }
     /// <summary>
     /// A key vault definition allowing the sku to be set.

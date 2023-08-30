@@ -32,9 +32,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Initializes a new instance of the ManagedClusterAgentPoolProfile
         /// class.
         /// </summary>
+        /// <param name="name">Unique name of the agent pool profile in the
+        /// context of the subscription and resource group.</param>
         /// <param name="count">Number of agents (VMs) to host docker
-        /// containers. Allowed values must be in the range of 1 to 100
-        /// (inclusive). The default value is 1. </param>
+        /// containers. Allowed values must be in the range of 0 to 100
+        /// (inclusive) for user pools and in the range of 1 to 100 (inclusive)
+        /// for system pools. The default value is 1.</param>
         /// <param name="vmSize">Size of agent VMs. Possible values include:
         /// 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
         /// 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
@@ -90,14 +93,23 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// 'Standard_NC6s_v2', 'Standard_NC6s_v3', 'Standard_ND12s',
         /// 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
         /// 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'</param>
-        /// <param name="name">Unique name of the agent pool profile in the
-        /// context of the subscription and resource group.</param>
         /// <param name="osDiskSizeGB">OS Disk Size in GB to be used to specify
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
         /// vmSize specified.</param>
+        /// <param name="osDiskType">OS disk type to be used for machines in a
+        /// given agent pool. Allowed values are 'Ephemeral' and 'Managed'.
+        /// Defaults to 'Managed'. May not be changed after creation. Possible
+        /// values include: 'Managed', 'Ephemeral'</param>
+        /// <param name="kubeletDiskType">KubeletDiskType determines the
+        /// placement of emptyDir volumes, container runtime data root, and
+        /// Kubelet ephemeral storage. Currently allows one value, OS,
+        /// resulting in Kubelet using the OS disk for data. Possible values
+        /// include: 'OS'</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the VNet's
-        /// subnet identifier.</param>
+        /// subnet identifier for nodes and maybe pods</param>
+        /// <param name="podSubnetID">Pod SubnetID specifies the VNet's subnet
+        /// identifier for pods.</param>
         /// <param name="maxPods">Maximum number of pods that can run on a
         /// node.</param>
         /// <param name="osType">OsType to be used to specify os type. Choose
@@ -112,24 +124,47 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="type">AgentPoolType represents types of an agent pool.
         /// Possible values include: 'VirtualMachineScaleSets',
         /// 'AvailabilitySet'</param>
+        /// <param name="mode">AgentPoolMode represents mode of an agent pool.
+        /// Possible values include: 'System', 'User'</param>
         /// <param name="orchestratorVersion">Version of orchestrator specified
         /// when creating the managed cluster.</param>
+        /// <param name="nodeImageVersion">Version of node image</param>
+        /// <param name="upgradeSettings">Settings for upgrading the
+        /// agentpool</param>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response.</param>
-        /// <param name="availabilityZones">(PREVIEW) Availability zones for
-        /// nodes. Must use VirtualMachineScaleSets AgentPoolType.</param>
+        /// <param name="powerState">Describes whether the Agent Pool is
+        /// Running or Stopped</param>
+        /// <param name="availabilityZones">Availability zones for nodes. Must
+        /// use VirtualMachineScaleSets AgentPoolType.</param>
         /// <param name="enableNodePublicIP">Enable public IP for nodes</param>
         /// <param name="scaleSetPriority">ScaleSetPriority to be used to
         /// specify virtual machine scale set priority. Default to regular.
-        /// Possible values include: 'Low', 'Regular'</param>
+        /// Possible values include: 'Spot', 'Regular'</param>
         /// <param name="scaleSetEvictionPolicy">ScaleSetEvictionPolicy to be
-        /// used to specify eviction policy for low priority virtual machine
-        /// scale set. Default to Delete. Possible values include: 'Delete',
+        /// used to specify eviction policy for Spot virtual machine scale set.
+        /// Default to Delete. Possible values include: 'Delete',
         /// 'Deallocate'</param>
+        /// <param name="spotMaxPrice">SpotMaxPrice to be used to specify the
+        /// maximum price you are willing to pay in US Dollars. Possible values
+        /// are any decimal value greater than zero or -1 which indicates
+        /// default price to be up-to on-demand.</param>
+        /// <param name="tags">Agent pool tags to be persisted on the agent
+        /// pool virtual machine scale set.</param>
+        /// <param name="nodeLabels">Agent pool node labels to be persisted
+        /// across all nodes in agent pool.</param>
         /// <param name="nodeTaints">Taints added to new nodes during node pool
         /// create and scale. For example, key=value:NoSchedule.</param>
-        public ManagedClusterAgentPoolProfile(int count, ContainerServiceVMSizeTypes vmSize, string name, int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), OSType osType = default(OSType), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), AgentPoolType type = default(AgentPoolType), string orchestratorVersion = default(string), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), ScaleSetPriority scaleSetPriority = default(ScaleSetPriority), ScaleSetEvictionPolicy scaleSetEvictionPolicy = default(ScaleSetEvictionPolicy), IList<string> nodeTaints = default(IList<string>))
-            : base(count, vmSize, osDiskSizeGB, vnetSubnetID, maxPods, osType, maxCount, minCount, enableAutoScaling, type, orchestratorVersion, provisioningState, availabilityZones, enableNodePublicIP, scaleSetPriority, scaleSetEvictionPolicy, nodeTaints)
+        /// <param name="proximityPlacementGroupID">The ID for Proximity
+        /// Placement Group.</param>
+        /// <param name="kubeletConfig">KubeletConfig specifies the
+        /// configuration of kubelet on agent nodes.</param>
+        /// <param name="linuxOSConfig">LinuxOSConfig specifies the OS
+        /// configuration of linux agent nodes.</param>
+        /// <param name="enableEncryptionAtHost">Whether to enable
+        /// EncryptionAtHost</param>
+        public ManagedClusterAgentPoolProfile(string name, int? count = default(int?), ContainerServiceVMSizeTypes vmSize = default(ContainerServiceVMSizeTypes), int? osDiskSizeGB = default(int?), OSDiskType osDiskType = default(OSDiskType), KubeletDiskType kubeletDiskType = default(KubeletDiskType), string vnetSubnetID = default(string), string podSubnetID = default(string), int? maxPods = default(int?), OSType osType = default(OSType), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), AgentPoolType type = default(AgentPoolType), AgentPoolMode mode = default(AgentPoolMode), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), ScaleSetPriority scaleSetPriority = default(ScaleSetPriority), ScaleSetEvictionPolicy scaleSetEvictionPolicy = default(ScaleSetEvictionPolicy), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?))
+            : base(count, vmSize, osDiskSizeGB, osDiskType, kubeletDiskType, vnetSubnetID, podSubnetID, maxPods, osType, maxCount, minCount, enableAutoScaling, type, mode, orchestratorVersion, nodeImageVersion, upgradeSettings, provisioningState, powerState, availabilityZones, enableNodePublicIP, scaleSetPriority, scaleSetEvictionPolicy, spotMaxPrice, tags, nodeLabels, nodeTaints, proximityPlacementGroupID, kubeletConfig, linuxOSConfig, enableEncryptionAtHost)
         {
             Name = name;
             CustomInit();

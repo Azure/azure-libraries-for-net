@@ -84,6 +84,15 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         {
         }
 
+        private ManagedServiceIdentityClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static ManagedServiceIdentityClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new ManagedServiceIdentityClient(restClient) : new ManagedServiceIdentityClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

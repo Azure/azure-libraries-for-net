@@ -28,7 +28,7 @@ namespace ManageWebAppWithTrafficManager
 
     public class Program
     {
-        private static string CERT_PASSWORD = "StrongPass!12";
+        private static string CERT_PASSWORD = Utilities.CreatePassword();
         private static string pfxPath;
 
         public static void RunSample(IAzure azure)

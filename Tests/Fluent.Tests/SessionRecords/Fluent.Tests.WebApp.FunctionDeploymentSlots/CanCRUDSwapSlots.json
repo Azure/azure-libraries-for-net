@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/javacsmrg6578?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzY1Nzg/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/javacsmrg6578?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzY1Nzg/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
       "RequestHeaders": {
@@ -706,7 +706,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"MHwiM9wcb17mzA+5vXwcJYZbQWTWYwLAREPbydwNeOllxWHXfQzGOAmSkTcR19XF5OACrD/YfNBDvC6yBW18ZA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\"value\": \"MGMT_PLACEHOLDER\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1056,7 +1056,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1142,7 +1142,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/config/appsettings?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzY1NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtMzIzMy9jb25maWcvYXBwc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "61463b03-0c5e-480d-b2ff-412a1e9236a9"
@@ -1214,7 +1214,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -3155,7 +3155,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-5907/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"appkey\": \"appvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-5907/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"appkey\": \"appvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -3824,7 +3824,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -3894,7 +3894,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -3964,7 +3964,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -4034,7 +4034,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -4104,14 +4104,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzY1NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtMzIzMy9zbG90cy9qYXZhLXNsb3QtNTU4L2NvbmZpZy9hcHBzZXR0aW5ncz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "63d34c89-7ac3-485b-9916-8cf4c9c65c25"
@@ -4183,14 +4183,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzY1NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtMzIzMy9zbG90cy9qYXZhLXNsb3QtNTU4L2NvbmZpZy9hcHBzZXR0aW5ncz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "c3ef2cd2-8c5b-4f16-9c90-29210f02b715"
@@ -4262,7 +4262,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-558/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -5220,7 +5220,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -5290,7 +5290,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -5446,7 +5446,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL2phdmFjc21yZzY1NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvamF2YS13ZWJhcHAtMzIzMy9zbG90cy9qYXZhLXNsb3QtNzkyOS9jb25maWcvYXBwc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "46154b5d-5e52-4cfa-aee2-628e8bd22959"
@@ -5518,7 +5518,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=t2+eDDRVZO148B3h/igtXdoflEgBVWeJgPEuGikRhGFDVc3wclys9vyI+jvQFo9vM/MI/b1mf8mtM88IWwD5Ug==\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/javacsmrg6578/providers/Microsoft.Web/sites/java-webapp-3233/slots/java-slot-7929/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~1\",\r\n    \"appkey\": \"appvalue\",\r\n    \"stickykey\": \"stickyvalue\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=javawebapp323317535;AccountKey=MGMT_PLACEHOLDER\",\r\n    \"slot2key\": \"slot2value\",\r\n    \"sticky2key\": \"sticky2value\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -6782,8 +6782,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/javacsmrg6578?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzY1Nzg/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/javacsmrg6578?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL2phdmFjc21yZzY1Nzg/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

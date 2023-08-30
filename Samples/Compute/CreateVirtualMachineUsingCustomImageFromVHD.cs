@@ -15,9 +15,9 @@ namespace CreateVirtualMachineUsingCustomImageFromVHD
 {
     public class Program
     {
-        private static string userName = "tirekicker";
-        private static string password = "12NewPA$$w0rd!";
-        private static Region region = Region.USWest;
+        private static readonly string userName = Utilities.CreateUsername();
+        private static readonly string password = Utilities.CreatePassword();
+        private static readonly Region region = Region.USWest;
 
         /**
          * Azure Compute sample for managing virtual machines -
@@ -82,7 +82,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVHD
                             .WithPublicSetting("fileUris", apacheInstallScriptUris)
                             .WithPublicSetting("commandToExecute", apacheInstallCommand)
                             .Attach()
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created a Linux VM with un-managed OS and data disks: " + linuxVM.Id);
@@ -150,7 +150,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVHD
                         .WithLinuxCustomImage(virtualMachineCustomImage.Id)
                         .WithRootUsername(userName)
                         .WithRootPassword(password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.Log("Created Linux VM");
@@ -173,7 +173,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVHD
                         .WithNewDataDiskFromImage(2, 100, CachingTypes.ReadOnly)
                         .WithNewDataDiskFromImage(3, 100, CachingTypes.ReadWrite)
                         .WithNewDataDisk(50)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .Create();
 
                 Utilities.PrintVirtualMachine(linuxVM3);

@@ -4,7 +4,8 @@
   <!-- Please do not move/edit code below this line -->
 
   <PropertyGroup>
-    <Description>Provides Key Vault service management (Fluent) capabilities for Microsoft Azure.</Description>
+    <Description>Provides Key Vault service management (Fluent) capabilities for Microsoft Azure.
+    This package is in low maintenance mode and being phased out. To use the latest Azure SDK for resource management, please see https://aka.ms/azsdk/dotnet/mgmt</Description>
     <AssemblyName>Microsoft.Azure.Management.KeyVault.Fluent</AssemblyName>
     <PackageId>Microsoft.Azure.Management.KeyVault.Fluent</PackageId>
     <PackageTags>Microsoft Azure Key Vault management;key vault;Fluent</PackageTags>
@@ -16,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="$(FluentVersion)" />
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
   </ItemGroup>
 
 

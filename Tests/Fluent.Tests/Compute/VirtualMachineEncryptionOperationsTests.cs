@@ -40,7 +40,7 @@ namespace Fluent.Tests.Compute
                     var publicIpDnsLabel = TestUtilities.GenerateName("pip");
                     var vmName1 = "myvm1";
                     var uname = "juser";
-                    var password = "123tEst!@|ac";
+                    var password = TestUtilities.GenerateName("Pa5$");
                     var virtualMachine = computeManager.VirtualMachines
                             .Define(vmName1)
                                 .WithRegion(Region.USEast2)
@@ -51,7 +51,7 @@ namespace Fluent.Tests.Compute
                                 .WithLatestLinuxImage("RedHat", "RHEL", "7.2")
                                 .WithRootUsername(uname)
                                 .WithRootPassword(password)
-                                .WithSize(VirtualMachineSizeTypes.StandardD5V2)
+                                .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                                 .WithOSDiskCaching(CachingTypes.ReadWrite)
                             .Create();
 

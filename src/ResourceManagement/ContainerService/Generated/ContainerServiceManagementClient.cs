@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,19 +19,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
 
     /// <summary>
     /// Container Service Client
     /// </summary>
-    public partial class ContainerServiceManagementClient : FluentServiceClientBase<ContainerServiceManagementClient>, IContainerServiceManagementClient, IAzureClient
+    public partial class ContainerServiceManagementClient : Management.ResourceManager.Fluent.Core.FluentServiceClientBase<ContainerServiceManagementClient>, IContainerServiceManagementClient, IAzureClient
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        /// public System.Uri BaseUri { get; set; }
-
         /// <summary>
         /// Gets or sets json serialization settings.
         /// </summary>
@@ -39,11 +34,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// Gets or sets json deserialization settings.
         /// </summary>
         public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Credentials needed for the client to connect to Azure.
-        /// </summary>
-        /// public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure
@@ -91,19 +81,47 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public virtual IManagedClustersOperations ManagedClusters { get; private set; }
 
         /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations.
+        /// </summary>
+        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
+
+        /// <summary>
         /// Gets the IAgentPoolsOperations.
         /// </summary>
         public virtual IAgentPoolsOperations AgentPools { get; private set; }
 
-        /// <summary> 
-        /// Initializes a new instance of the ContainerServiceManagementClient class. 
-        /// </summary> 
-        /// <exception cref="System.ArgumentNullException"> 
-        /// Thrown when a required parameter is null 
-        /// </exception> 
-        public ContainerServiceManagementClient(RestClient restClient)
-            : base(restClient)
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IResolvePrivateLinkServiceIdOperations.
+        /// </summary>
+        public virtual IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the ContainerServiceManagementClient class.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        public ContainerServiceManagementClient(RestClient restClient) : base(restClient)
         {
+        }
+
+        private ContainerServiceManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static ContainerServiceManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new ContainerServiceManagementClient(restClient) : new ContainerServiceManagementClient(restClient, restClient.HttpClient);
         }
 
         /// <summary>
@@ -119,8 +137,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             ContainerServices = new ContainerServicesOperations(this);
             Operations = new Operations(this);
             ManagedClusters = new ManagedClustersOperations(this);
+            MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
             AgentPools = new AgentPoolsOperations(this);
-            BaseUri = new System.Uri("https://management.azure.com");
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            ResolvePrivateLinkServiceId = new ResolvePrivateLinkServiceIdOperations(this);
+            this.BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

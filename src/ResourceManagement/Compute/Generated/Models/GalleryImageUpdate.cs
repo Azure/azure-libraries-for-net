@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// to update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryImageUpdate : UpdateResourceInner
+    public partial class GalleryImageUpdate : UpdateResourceDefinitionInner
     {
         /// <summary>
         /// Initializes a new instance of the GalleryImageUpdate class.

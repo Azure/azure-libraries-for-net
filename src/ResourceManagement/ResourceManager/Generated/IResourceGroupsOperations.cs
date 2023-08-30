@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// The name of the resource group to delete. The name is case
         /// insensitive.
         /// </param>
+        /// <param name='forceDeletionTypes'>
+        /// The resource types you want to force delete. Currently, only the
+        /// following is supported:
+        /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -93,7 +98,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string forceDeletionTypes = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a resource group.
         /// </summary>
@@ -208,6 +213,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// The name of the resource group to delete. The name is case
         /// insensitive.
         /// </param>
+        /// <param name='forceDeletionTypes'>
+        /// The resource types you want to force delete. Currently, only the
+        /// following is supported:
+        /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -220,7 +230,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string forceDeletionTypes = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Captures the specified resource group as a template.
         /// </summary>

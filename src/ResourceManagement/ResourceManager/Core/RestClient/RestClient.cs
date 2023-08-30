@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             get; private set;
         }
 
+        public HttpClient HttpClient
+        {
+            get; private set;
+        }
+
         /// <summary>
         /// Builder to configure and build a RestClient.
         /// </summary>
@@ -79,6 +84,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             private RetryPolicy retryPolicy;
             private HttpLoggingDelegatingHandler loggingDelegatingHandler;
             private UserAgentDelegatingHandler userAgentDelegatingHandler;
+            private HttpClient httpClient;
 
             /// <summary>
             /// Restrict access so that for users it can be created only by <HttpClient cref="RestClient.Configure" />
@@ -152,6 +158,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
                 IBuildable WithCredentials(AzureCredentials credentials);
 
+                IBuildable WithHttpClient(HttpClient httpClient);
+
                 RestClient Build();
             }
             
@@ -213,6 +221,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                 return this;
             }
 
+            public IBuildable WithHttpClient(HttpClient httpClient)
+            {
+                this.httpClient = httpClient;
+                return this;
+            }
+
             public RestClient Build()
             {
                 HttpClientHandler httpClientHandler = new HttpClientHandler();
@@ -222,7 +236,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                     BaseUri = baseUri,
                     Credentials = credentials,
                     RetryPolicy = retryPolicy,
-                    Environment = this.Environment
+                    Environment = this.Environment,
+                    HttpClient = this.httpClient
                 };
             }
 

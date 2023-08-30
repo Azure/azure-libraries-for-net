@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Management.Samples.Common;
 using System;
 
 namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
@@ -35,8 +36,8 @@ namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
             string clientId = args.Length > 2 ? args[2] : null;
             Region region = Region.USWestCentral;
             string linuxVMName = SdkContext.RandomResourceName("vm", 30);
-            string userName = "tirekicker";
-            string password = "12NewPA$$w0rd!";
+            string userName = Utilities.CreateUsername();
+            string password = Utilities.CreatePassword();
 
             //=============================================================
             // MSI Authenticate
@@ -69,7 +70,7 @@ namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
                     .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                     .WithRootUsername(userName)
                     .WithRootPassword(password)
-                    .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                    .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                     .Create();
 
             Console.WriteLine($"Created virtual machine using MSI credentials: {virtualMachine.Id}");

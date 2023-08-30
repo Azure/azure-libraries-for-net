@@ -11,10 +11,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// can be attached to the parent container service definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSDiskSize<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolType<ParentT>,
+        IWithAgentPoolMode<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<ParentT>,
@@ -27,12 +28,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// The entirety of a container service agent pool definition as a part of a parent definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSDiskSize<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolType<ParentT>,
+        IWithAgentPoolMode<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<ParentT>,
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// The stage of a container service agent pool definition allowing to specify the agent pool OS type.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithOSType<ParentT> 
+    public interface IWithOSType<ParentT>
     {
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// The stage of a container service agent pool definition allowing to specify the maximum number of pods that can run on a node.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithMaxPodsCount<ParentT>  :
+    public interface IWithMaxPodsCount<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// The stage of a container service agent pool definition allowing to specify a virtual network to be used for the agents.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithVirtualNetwork<ParentT>  :
+    public interface IWithVirtualNetwork<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -99,7 +101,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// Allowed values must be in the range of 1 to 100 (inclusive); the default value is 1.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithAgentPoolVirtualMachineCount<ParentT>  :
+    public interface IWithAgentPoolVirtualMachineCount<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -118,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// The first stage of a container service agent pool definition allowing to specify the agent virtual machine size.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
 
@@ -134,7 +136,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// The stage of a container service agent pool definition allowing to specify the agent pool OS disk size.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithOSDiskSize<ParentT> 
+    public interface IWithOSDiskSize<ParentT>
     {
 
         /// <summary>
@@ -150,7 +152,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// Allowed values could be seen in AgentPoolType Class.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithAgentPoolType<ParentT> 
+    public interface IWithAgentPoolType<ParentT>
     {
 
         /// <summary>
@@ -166,5 +168,28 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
         /// <param name="agentPoolTypeName">The agent pool type name in string format.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithAgentPoolTypeName(string agentPoolTypeName);
+    }
+
+    /// <summary>
+    /// The stage of a container service agent pool definition allowing to specify the mode of agent pool.
+    /// Allowed values could be seen in AgentPoolMode Class.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
+    public interface IWithAgentPoolMode<ParentT>
+    {
+
+        /// <summary>
+        /// Set agent pool type to every virtual machine in the agent pool.
+        /// </summary>
+        /// <param name="agentPoolMode">The agent pool mode for the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithAgentPoolMode(AgentPoolMode agentPoolMode);
+
+        /// <summary>
+        /// Set agent pool type by type name.
+        /// </summary>
+        /// <param name="agentPoolModeName">The agent pool mode name in string format.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithAgentPoolModeName(string agentPoolModeName);
     }
 }

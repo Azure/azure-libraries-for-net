@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public GalleryImageVersionImpl WithLocation(Region location)
         {
             this.Inner.Location = location.ToString();
-            return null;
+            return this;
         }
 
         ///GENMHASH:03B1F797E02E1089DCD5EB13134EB163:0206C7B1F86570DBFF6507721145FD4A

@@ -16,8 +16,8 @@ namespace CreateVirtualMachinesInParallel
 {
     public class Program
     {
-        private const string Username = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private static readonly string Username = Utilities.CreateUsername();
+        private static readonly string Password = Utilities.CreatePassword();
 
         /**
          * Azure compute sample for creating multiple virtual machines in parallel.
@@ -100,7 +100,7 @@ namespace CreateVirtualMachinesInParallel
                                 .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                                 .WithRootUsername(Username)
                                 .WithRootPassword(Password)
-                                .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                                .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                                 .WithNewStorageAccount(storageAccountCreatable);
                         creatableVirtualMachines.Add(virtualMachineCreatable);
                     }

@@ -583,7 +583,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     Inner.InstanceView.PlatformFaultDomain, Inner.InstanceView.PlatformUpdateDomain, null,
                     null, null, default(HyperVGenerationType), Inner.InstanceView.RdpThumbPrint,
                     Inner.InstanceView.VmAgent, Inner.InstanceView.MaintenanceRedeployStatus, Inner.InstanceView.Disks,
-                    Inner.InstanceView.Extensions, Inner.InstanceView.BootDiagnostics, Inner.InstanceView.Statuses);
+                    Inner.InstanceView.Extensions, Inner.InstanceView.VmHealth, Inner.InstanceView.BootDiagnostics, 
+                    Inner.InstanceView.AssignedHost, Inner.InstanceView.Statuses, null);
             }
             else
             {

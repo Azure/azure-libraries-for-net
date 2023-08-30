@@ -22,11 +22,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         #region ctrs
 
         public KeyVaultManager(RestClient restClient, string subscriptionId, string tenantId) :
-            base(restClient, subscriptionId, new KeyVaultManagementClient(restClient)
-            {
-                SubscriptionId = subscriptionId
-            })
+            base(restClient, subscriptionId, KeyVaultManagementClient.NewInstance(restClient))
         {
+            Inner.SubscriptionId = subscriptionId;
             graphRbacManager = GraphRbacManager.Authenticate(restClient, tenantId);
             this.tenantId = tenantId;
         }

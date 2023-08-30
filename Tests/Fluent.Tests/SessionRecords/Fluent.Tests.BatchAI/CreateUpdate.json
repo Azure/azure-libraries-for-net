@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg05991241?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMDU5OTEyNDE/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg05991241?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMDU5OTEyNDE/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
       "RequestHeaders": {
@@ -357,7 +357,7 @@
       "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg05991241/providers/Microsoft.BatchAI/workspaces/wsec259045/clusters/cluster99796928?api-version=2018-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnMDU5OTEyNDEvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaEFJL3dvcmtzcGFjZXMvd3NlYzI1OTA0NS9jbHVzdGVycy9jbHVzdGVyOTk3OTY5Mjg/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vmSize\": \"Standard_D1_v2\",\r\n    \"vmPriority\": \"lowpriority\",\r\n    \"scaleSettings\": {\r\n      \"autoScale\": {\r\n        \"minimumNodeCount\": 1,\r\n        \"maximumNodeCount\": 1\r\n      }\r\n    },\r\n    \"virtualMachineConfiguration\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"microsoft-ads\",\r\n        \"offer\": \"linux-data-science-vm-ubuntu\",\r\n        \"sku\": \"linuxdsvmubuntu\"\r\n      }\r\n    },\r\n    \"nodeSetup\": {\r\n      \"setupTask\": {\r\n        \"commandLine\": \"echo Hello World!\",\r\n        \"stdOutErrPathPrefix\": \"./outputpath\"\r\n      },\r\n      \"mountVolumes\": {\r\n        \"azureFileShares\": [\r\n          {\r\n            \"accountName\": \"sa55b31645a0\",\r\n            \"azureFileUrl\": \"dummy_uri\",\r\n            \"credentials\": {\r\n              \"accountKey\": \"dummy_key\"\r\n            },\r\n            \"relativeMountPath\": \"azurefileshare\"\r\n          }\r\n        ],\r\n        \"azureBlobFileSystems\": [\r\n          {\r\n            \"accountName\": \"sa55b31645a0\",\r\n            \"containerName\": \"mycontainer\",\r\n            \"credentials\": {\r\n              \"accountKey\": \"dummy_key\"\r\n            },\r\n            \"relativeMountPath\": \"myblobsystem\"\r\n          }\r\n        ]\r\n      },\r\n      \"performanceCountersSettings\": {\r\n        \"appInsightsReference\": {\r\n          \"component\": {\r\n            \"id\": \"appinsightsId\"\r\n          },\r\n          \"instrumentationKey\": \"appInsightsKey\"\r\n        }\r\n      }\r\n    },\r\n    \"userAccountSettings\": {\r\n      \"adminUserName\": \"tirekicker\",\r\n      \"adminUserPassword\": \"MyPassword\"\r\n    },\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg05991241/providers/Microsoft.Network/virtualNetworks/vnet90153/subnets/MySubnet\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vmSize\": \"Standard_D1_v2\",\r\n    \"vmPriority\": \"lowpriority\",\r\n    \"scaleSettings\": {\r\n      \"autoScale\": {\r\n        \"minimumNodeCount\": 1,\r\n        \"maximumNodeCount\": 1\r\n      }\r\n    },\r\n    \"virtualMachineConfiguration\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"microsoft-ads\",\r\n        \"offer\": \"linux-data-science-vm-ubuntu\",\r\n        \"sku\": \"linuxdsvmubuntu\"\r\n      }\r\n    },\r\n    \"nodeSetup\": {\r\n      \"setupTask\": {\r\n        \"commandLine\": \"echo Hello World!\",\r\n        \"stdOutErrPathPrefix\": \"./outputpath\"\r\n      },\r\n      \"mountVolumes\": {\r\n        \"azureFileShares\": [\r\n          {\r\n            \"accountName\": \"sa55b31645a0\",\r\n            \"azureFileUrl\": \"dummy_uri\",\r\n            \"credentials\": {\r\n              \"accountKey\": \"dummy_key\"\r\n            },\r\n            \"relativeMountPath\": \"azurefileshare\"\r\n          }\r\n        ],\r\n        \"azureBlobFileSystems\": [\r\n          {\r\n            \"accountName\": \"sa55b31645a0\",\r\n            \"containerName\": \"mycontainer\",\r\n            \"credentials\": {\r\n              \"accountKey\": \"dummy_key\"\r\n            },\r\n            \"relativeMountPath\": \"myblobsystem\"\r\n          }\r\n        ]\r\n      },\r\n      \"performanceCountersSettings\": {\r\n        \"appInsightsReference\": {\r\n          \"component\": {\r\n            \"id\": \"appinsightsId\"\r\n          },\r\n          \"instrumentationKey\": \"appInsightsKey\"\r\n        }\r\n      }\r\n    },\r\n    \"userAccountSettings\": {\r\n      \"adminUserName\": \"tirekicker\",\r\n      \"adminUserPassword\": \"MGMT_PLACEHOLDER\"\r\n    },\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rg05991241/providers/Microsoft.Network/virtualNetworks/vnet90153/subnets/MySubnet\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "ceae0d18-f245-45f9-81c6-cd6a7911022d"
@@ -637,8 +637,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg05991241?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMDU5OTEyNDE/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rg05991241?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnMDU5OTEyNDE/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

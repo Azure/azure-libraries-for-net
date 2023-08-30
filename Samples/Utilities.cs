@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                         .Append(" [").Append(address.IpAddress).Append("]");
                 }
 
-                
+
                 info
                     // Show SSL cert
                     .Append("\n\t\t\tSSL certificate name: ").Append(rule.SslCertificate?.Name ?? "(none)")
@@ -759,6 +759,16 @@ namespace Microsoft.Azure.Management.Samples.Common
         public static string CreateRandomName(string namePrefix)
         {
             return SdkContext.RandomResourceName(namePrefix, 30);
+        }
+
+        public static string CreatePassword()
+        {
+            return SdkContext.RandomResourceName("Pa5$", 15);
+        }
+
+        public static string CreateUsername()
+        {
+            return "tirekicker";
         }
 
         public static void PrintAvailabilitySet(IAvailabilitySet resource)
@@ -2610,7 +2620,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             if (actionGroup.AzureFunctionReceivers != null && actionGroup.AzureFunctionReceivers.Any())
             {
                 info.Append("\n\tAzure Functions receivers: ");
-                foreach(var er in actionGroup.AzureFunctionReceivers)
+                foreach (var er in actionGroup.AzureFunctionReceivers)
                 {
                     info.Append("\n\t\tName: ").Append(er.Name);
                     info.Append("\n\t\tFunction Name: ").Append(er.FunctionName);
@@ -2635,7 +2645,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             if (actionGroup.ItsmReceivers != null && actionGroup.ItsmReceivers.Any())
             {
                 info.Append("\n\tITSM receivers: ");
-                foreach(var er in actionGroup.ItsmReceivers)
+                foreach (var er in actionGroup.ItsmReceivers)
                 {
                     info.Append("\n\t\tName: ").Append(er.Name);
                     info.Append("\n\t\tWorkspace Id: ").Append(er.WorkspaceId);
@@ -2674,7 +2684,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             if (activityLogAlert.ActionGroupIds != null && activityLogAlert.ActionGroupIds.Any())
             {
                 info.Append("\n\tAction Groups: ");
-                foreach(var er in activityLogAlert.ActionGroupIds)
+                foreach (var er in activityLogAlert.ActionGroupIds)
                 {
                     info.Append("\n\t\tAction Group Id: ").Append(er);
                 }
@@ -3017,7 +3027,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                 {
                     using (var client = new HttpClient())
                     {
-                        client.Timeout = TimeSpan.FromSeconds(300);
+                        client.Timeout = System.TimeSpan.FromSeconds(300);
                         if (headers != null)
                         {
                             foreach (var header in headers)
@@ -3066,6 +3076,7 @@ namespace Microsoft.Azure.Management.Samples.Common
 
         public static void DeprovisionAgentInLinuxVM(string host, int port, string userName, string password)
         {
+            Utilities.Log("is mocked:" + IsRunningMocked);
             if (!IsRunningMocked)
             {
                 Console.WriteLine("Trying to de-provision: " + host);
@@ -3081,7 +3092,7 @@ namespace Microsoft.Azure.Management.Samples.Common
         public static string GetArmTemplate(string templateFileName)
         {
             var adminUsername = "tirekicker";
-            var adminPassword = "12NewPA$$w0rd!";
+            var adminPassword = CreatePassword();
             var hostingPlanName = SdkContext.RandomResourceName("hpRSAT", 24);
             var webAppName = SdkContext.RandomResourceName("wnRSAT", 24);
             var armTemplateString = File.ReadAllText(Path.Combine(Utilities.ProjectPath, "Asset", templateFileName));

@@ -29,10 +29,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         {
         }
 
+        protected FluentServiceClientBase(RestClient restClient, HttpClient httpClient)
+            : this(restClient.BaseUri, restClient, httpClient)
+        {
+        }
+
         protected FluentServiceClientBase(string baseUri, RestClient restClient)
             : base(restClient.RootHttpHandler, restClient.Handlers.ToArray())
         {
             Initialize();
+            PostInit(baseUri, restClient);
+        }
+
+        protected FluentServiceClientBase(string baseUri, RestClient restClient, HttpClient httpClient)
+            : base(httpClient, false)
+        {
+            Initialize();
+            PostInit(baseUri, restClient);
+        }
+
+        private void PostInit(string baseUri, RestClient restClient)
+        {
             this._restClient = restClient;
             if (baseUri == null)
             {

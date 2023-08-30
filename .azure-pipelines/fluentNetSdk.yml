@@ -12,7 +12,7 @@ variables:
 jobs:
   - job: Windows_Build
     pool:
-      vmImage: 'VS2017-Win2016'
+      vmImage: 'windows-2019'
     variables:
       LoggingArgs: '/flp:Summary;Verbosity=minimal;LogFile=msbuild.sum /flp1:warningsonly;logfile=msbuild.wrn /flp2:errorsonly;logfile=msbuild.err'
 
@@ -21,6 +21,7 @@ jobs:
         displayName: 'Run Credential Scanner'
         inputs:
           toolMajorVersion: V2
+          toolVersionV2: 'Latest'
           suppressionsFile: './tools/credscan/CredScanSuppressions.json'
 
       - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-postanalysis.PostAnalysis@1
@@ -32,24 +33,36 @@ jobs:
           RoslynAnalyzers: false
           TSLint: false
           ToolLogsNotFoundAction: 'Standard'
-          
-      - task: CmdLine@1
+
+      - task: UseDotNet@2
+        displayName: 'Use .NET Core sdk $(DotNetCoreVersion)'
         inputs:
-          filename: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.2 Tools\sn.exe
-          arguments: -Vr *,31bf3856ad364e35
+          packageType: sdk
+          version: '$(DotNetCoreVersion)'
+          installationPath: $(Agent.ToolsDirectory)/dotnet
+          
+      - task: CmdLine@2
+        inputs:
+          script: 'dir "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin"'
+      - task: CmdLine@2
+        inputs:
+          script: '"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\sn.exe" -Vr *,31bf3856ad364e35'
       - task: MSBuild@1
         displayName: 'Getting latest build tools'
         inputs:
           solution: build.proj
+          configuration: release
       - task: MSBuild@1
         displayName: 'Running tests'
         inputs:
           solution: build.proj
+          configuration: release
           msbuildArguments: /t:RunTests /clp:ShowTimestamp $(LoggingArgs) 
       - task: MSBuild@1
         displayName: 'creating packages'
         inputs:
           solution: build.proj
+          configuration: release
           msbuildArguments: /t:PackageNoBuild /clp:ShowTimestamp $(LoggingArgs) /p:PackageOutputPath="$(Build.ArtifactStagingDirectory)"
       - task: PublishBuildArtifacts@1
         condition: succeededOrFailed()
@@ -66,13 +79,16 @@ jobs:
           
   - job: Ubuntu_Build
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
   
     steps:
-        - task: DotNetCoreInstaller@0
+        - task: UseDotNet@2
           displayName: 'Use .NET Core sdk $(DotNetCoreVersion)'
           inputs:
+            packageType: sdk
             version: '$(DotNetCoreVersion)'
+            installationPath: $(Agent.ToolsDirectory)/dotnet
+
         - script: './test_on_linux.sh'
           displayName: 'Build and test on Non-windows machine'
         - task: PublishTestResults@2

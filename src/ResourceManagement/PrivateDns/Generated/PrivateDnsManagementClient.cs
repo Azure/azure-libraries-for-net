@@ -90,6 +90,15 @@ namespace Microsoft.Azure.Management.PrivateDns.Fluent
         {
         }
 
+        private PrivateDnsManagementClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static PrivateDnsManagementClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new PrivateDnsManagementClient(restClient) : new PrivateDnsManagementClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

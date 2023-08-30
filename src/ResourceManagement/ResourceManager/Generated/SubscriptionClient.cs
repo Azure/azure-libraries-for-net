@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
         }
 
+        private SubscriptionClient(RestClient restClient, System.Net.Http.HttpClient httpClient) : base(restClient, httpClient)
+        {
+        }
+
+        public static SubscriptionClient NewInstance(RestClient restClient)
+        {
+            return restClient.HttpClient == null ? new SubscriptionClient(restClient) : new SubscriptionClient(restClient, restClient.HttpClient);
+        }
+
         /// <summary>
         /// An optional partial-method to perform custom initialization.
         /// </summary>

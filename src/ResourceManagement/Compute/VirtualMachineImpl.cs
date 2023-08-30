@@ -219,7 +219,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 virtualMachineInner.InstanceView.PlatformFaultDomain, virtualMachineInner.InstanceView.PlatformUpdateDomain, virtualMachineInner.InstanceView.ComputerName,
                 virtualMachineInner.InstanceView.OsName, virtualMachineInner.InstanceView.OsVersion, virtualMachineInner.InstanceView.HyperVGeneration, virtualMachineInner.InstanceView.RdpThumbPrint,
                 virtualMachineInner.InstanceView.VmAgent, virtualMachineInner.InstanceView.MaintenanceRedeployStatus, virtualMachineInner.InstanceView.Disks,
-                virtualMachineInner.InstanceView.Extensions, virtualMachineInner.InstanceView.BootDiagnostics, virtualMachineInner.InstanceView.Statuses);
+                virtualMachineInner.InstanceView.Extensions, virtualMachineInner.InstanceView.VmHealth, virtualMachineInner.InstanceView.BootDiagnostics, virtualMachineInner.InstanceView.AssignedHost, 
+                virtualMachineInner.InstanceView.Statuses, virtualMachineInner.InstanceView.PatchStatus);
 
             return this.virtualMachineInstanceView;
         }
@@ -639,12 +640,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 SshConfiguration sshConfiguration = new SshConfiguration()
                 {
-                    PublicKeys = new List<SshPublicKey>()
+                    PublicKeys = new List<SshPublicKeyInner>()
                 };
                 osProfile.LinuxConfiguration.Ssh = sshConfiguration;
             }
 
-            SshPublicKey sshPublicKey = new SshPublicKey();
+            SshPublicKeyInner sshPublicKey = new SshPublicKeyInner();
             sshPublicKey.KeyData = publicKeyData;
             sshPublicKey.Path = "/home/" + osProfile.AdminUsername + "/.ssh/authorized_keys";
             osProfile.LinuxConfiguration.Ssh.PublicKeys.Add(sshPublicKey);
@@ -1585,6 +1586,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public INetworkInterface GetPrimaryNetworkInterface()
         {
             return this.networkManager.NetworkInterfaces.GetById(this.PrimaryNetworkInterfaceId());
+        }
+
+        public Task<INetworkInterface> GetPrimaryNetworkInterfaceAsync()
+        {
+            return this.networkManager.NetworkInterfaces.GetByIdAsync(this.PrimaryNetworkInterfaceId());
         }
 
         ///GENMHASH:D3ADA5DC7B5CC9C5BD29AC1110C61014:EC93403D80CE55A8079C6FDA3D5DE566

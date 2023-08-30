@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.KeyVault.Fluent.ISecret> ListVersions();
 
         /// <return>A list of individual secret versions with the same secret name.</return>
-        Task<Microsoft.Azure.Management.KeyVault.Fluent.ISecret> ListVersionsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<Microsoft.Azure.Management.KeyVault.Fluent.ISecret>> ListVersionsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets true if the secret's lifetime is managed by key vault. If this is a key

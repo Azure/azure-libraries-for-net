@@ -95,7 +95,7 @@ namespace ManageLocks
                             .WithAdminUsername("tester")
                             .WithAdminPassword(password)
                             .WithNewDataDisk(diskDefinition, 1, CachingTypes.None)
-                            .WithSize(VirtualMachineSizeTypes.BasicA1);
+                            .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"));
 
                 // Define a storage account to apply a lock to
                 ICreatable<IStorageAccount> storageDefinition = azure.StorageAccounts.Define(storageName)

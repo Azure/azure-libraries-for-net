@@ -13,8 +13,8 @@ namespace ManageAvailabilitySet
 {
     public class Program
     {
-        private const string UserName = "tirekicker";
-        private const string Password = "12NewPA$$w0rd!";
+        private static readonly string UserName = Utilities.CreateUsername();
+        private static readonly string Password = Utilities.CreatePassword();
         
         /**
          * Azure Compute sample for managing availability sets -
@@ -77,7 +77,7 @@ namespace ManageAvailabilitySet
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername(UserName)
                         .WithAdminPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet1)
                         .Create();
 
@@ -98,7 +98,7 @@ namespace ManageAvailabilitySet
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingAvailabilitySet(availSet1)
                         .Create();
 

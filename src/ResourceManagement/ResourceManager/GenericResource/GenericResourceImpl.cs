@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         internal string resourceType;
         internal string apiVersion;
 
+        private GenericResourceInner updateParameter = new GenericResourceInner();
+
         #region Getters
 
         public string ResourceProviderNamespace
@@ -107,15 +109,31 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 string resourceId = ResourceUtils.ConstructResourceId(Manager.Inner.SubscriptionId, ResourceGroupName, resourceProviderNamespace, resourceType, Name, parentResourceId);
                 apiVersion = await GenericResourcesImpl.GetApiVersionAsync(resourceId, Manager, cancellationToken);
             }
-            GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
-                resourceProviderNamespace,
-                parentResourceId,
-                resourceType,
-                Name,
-                apiVersion,
-                Inner,
-                cancellationToken);
-            SetInner(inner);
+            if (IsInCreateMode)
+            {
+                GenericResourceInner inner = await Manager.Inner.Resources.CreateOrUpdateAsync(ResourceGroupName,
+                    resourceProviderNamespace,
+                    parentResourceId,
+                    resourceType,
+                    Name,
+                    apiVersion,
+                    Inner,
+                    cancellationToken);
+                SetInner(inner);
+            }
+            else
+            {
+                updateParameter.Tags = Inner.Tags;
+                GenericResourceInner inner = await Manager.Inner.Resources.UpdateAsync(ResourceGroupName,
+                    resourceProviderNamespace,
+                    parentResourceId,
+                    resourceType,
+                    Name,
+                    apiVersion,
+                    updateParameter,
+                    cancellationToken);
+                SetInner(inner);
+            }
             return this;
         }
 
@@ -134,6 +152,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public new GenericResource.Update.IWithApiVersion Update()
         {
+            updateParameter = new GenericResourceInner();
+            base.Update();
             return this;
         }
 
@@ -196,7 +216,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate GenericResource.Update.IWithPlan.WithPlan(string name, string publisher, string product, string promotionCode)
         {
-            Inner.Plan = new Plan
+            updateParameter.Plan = new Plan
             {
                 Name = name,
                 Publisher = publisher,
@@ -214,7 +234,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate IWithProperties.WithProperties(object properties)
         {
-            Inner.Properties = properties;
+            updateParameter.Properties = properties;
             return this;
         }
 
@@ -226,7 +246,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate GenericResource.Update.IWithPlan.WithoutPlan()
         {
-            Inner.Plan = null;
+            updateParameter.Plan = null;
             return this;
         }
 

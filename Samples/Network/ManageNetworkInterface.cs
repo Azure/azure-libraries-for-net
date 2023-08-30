@@ -13,8 +13,8 @@ namespace ManageNetworkInterface
 {
     public class Program
     {
-        private static readonly string UserName = "tirekicker";
-        private static readonly string Password = "12NewPA$$w0rd!";
+        private static readonly string UserName = Utilities.CreateUsername();
+        private static readonly string Password = Utilities.CreatePassword();
 
         /**
          * Azure Network sample for managing network interfaces -
@@ -118,7 +118,7 @@ namespace ManageNetworkInterface
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername(UserName)
                         .WithAdminPassword(Password)
-                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .WithSize(VirtualMachineSizeTypes.Parse("Standard_D2a_v4"))
                         .WithExistingSecondaryNetworkInterface(networkInterface2)
                         .WithExistingSecondaryNetworkInterface(networkInterface3)
                         .Create();

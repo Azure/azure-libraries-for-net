@@ -312,7 +312,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
                 this.Inner.CustomHeaders = new List<EndpointPropertiesCustomHeadersItem>();
             }
 
-            foreach(var item in headers)
+            this.Inner.CustomHeaders = this.Inner.CustomHeaders.Where((header) => !headers.ContainsKey(header.Name)).ToList();
+            foreach (var item in headers)
             {
                 this.Inner.CustomHeaders.Add(new EndpointPropertiesCustomHeadersItem(item.Key, item.Value));
             }
@@ -327,7 +328,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
                 this.Inner.CustomHeaders = new List<EndpointPropertiesCustomHeadersItem>();
             }
 
-
+            this.Inner.CustomHeaders = this.Inner.CustomHeaders.Where((header) => header.Name != name).ToList();
             this.Inner.CustomHeaders.Add(new EndpointPropertiesCustomHeadersItem(name, value));
             return this;
         }
